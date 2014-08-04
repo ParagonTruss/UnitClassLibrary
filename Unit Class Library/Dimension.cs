@@ -43,7 +43,7 @@ namespace UnitClassLibrary
         #region Constructors
 
         /// <summary>
-        /// Accepts any valid AutoCAD or Mitek architectural string value for input.
+        /// Accepts any valid AutoCAD architectural string value for input.
         /// </summary>
         public Dimension(string passedArchitecturalString)
         {
