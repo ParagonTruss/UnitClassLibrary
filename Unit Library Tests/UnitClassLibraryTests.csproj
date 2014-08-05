@@ -69,9 +69,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Unit Class Library\Unit Class Library.csproj">
+    <ProjectReference Include="..\Unit Class Library\UnitClassLibrary.csproj">
       <Project>{4d89e91c-bf44-49d8-acf4-be105c3428fe}</Project>
-      <Name>Unit Class Library</Name>
+      <Name>UnitClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

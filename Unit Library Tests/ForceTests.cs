@@ -4,7 +4,7 @@ using FluentAssertions;
 using UnitClassLibrary;
 
 
-namespace UnitClassLibraryTest
+namespace UnitClassLibraryTests
 {
     [TestClass()]
     public class ForceTests

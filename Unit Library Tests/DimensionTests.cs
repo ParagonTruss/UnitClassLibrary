@@ -4,7 +4,7 @@ using UnitClassLibrary;
 using System.Collections.Generic;
 using FluentAssertions;
 
-namespace UnitClassLibraryTest
+namespace UnitClassLibraryTests
 {
     /// <summary>
     /// Test Class for all conversion functions 

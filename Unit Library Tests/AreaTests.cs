@@ -4,7 +4,7 @@ using UnitClassLibrary;
 using FluentAssertions;
 using System.Collections.Generic;
 
-namespace UnitClassLibraryTest
+namespace UnitClassLibraryTests
 {
     [TestClass()]
     public class AreaTests

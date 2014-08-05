@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Class Library", "Unit Class Library\Unit Class Library.csproj", "{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibrary", "Unit Class Library\UnitClassLibrary.csproj", "{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit Library Tests", "Unit Library Tests\Unit Library Tests.csproj", "{068B36A8-619B-4E04-A05D-291823C80DD7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibraryTests", "Unit Library Tests\UnitClassLibraryTests.csproj", "{068B36A8-619B-4E04-A05D-291823C80DD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

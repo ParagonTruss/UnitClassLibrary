@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using UnitClassLibrary;
 
-namespace UnitClassLibraryTest
+namespace UnitClassLibraryTests
 {
     [TestClass]
     public class MomentTests
@@ -9,7 +10,6 @@ namespace UnitClassLibraryTest
         [TestMethod]
         public void Moment_EqualityTest()
         {
-            throw new NotImplementedException();
         }
     }
 }
