@@ -114,6 +114,13 @@ namespace UnitClassLibrary
             return new Force(InternalUnitType, (f1._intrinsicValue - f2._intrinsicValue));
         }
 
+        public static Force operator *(Force f1, double f2)
+        {
+            //multiply a force by a scalar
+            //return a new Force with the new value
+            return new Force(InternalUnitType, (f1._intrinsicValue * f2));
+        }
+
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
