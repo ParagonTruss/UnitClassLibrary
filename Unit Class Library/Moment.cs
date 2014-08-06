@@ -7,8 +7,8 @@ namespace UnitClassLibrary
 {
     public class Moment
     {
-        Force _force;
-        public Force Force
+        ForceUnit _force;
+        public ForceUnit Force
         {
             get { return _force; }
             set { _force = value; }
@@ -38,11 +38,11 @@ namespace UnitClassLibrary
 
         public Moment()
         {
-            _force = new Force();
+            _force = new ForceUnit();
             _dimension = new Dimension();
         }
 
-        public Moment(Force passeForce, Dimension passedDimension)
+        public Moment(ForceUnit passeForce, Dimension passedDimension)
         {
             _force = passeForce;
             _dimension = passedDimension;
@@ -94,22 +94,22 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool operator >(Moment s1, Moment s2)
         {
-            return s1.Magnitude > s2.Magnitude;
+            return s1.PoundsFeet > s2.PoundsFeet;
         }
 
         public static bool operator <(Moment s1, Moment s2)
         {
-            return s1.Magnitude < s2.Magnitude;
+            return s1.PoundsFeet < s2.PoundsFeet;
         }
 
         public static bool operator >=(Moment s1, Moment s2)
         {
-            return s1.Equals(s2) || s1.Magnitude > s2.Magnitude;
+            return s1.Equals(s2) || s1.PoundsFeet > s2.PoundsFeet;
         }
 
         public static bool operator <=(Moment s1, Moment s2)
         {
-            return s1.Equals(s2) || s1.Magnitude < s2.Magnitude;
+            return s1.Equals(s2) || s1.PoundsFeet < s2.PoundsFeet;
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return this.Magnitude.GetHashCode();
+            return this.PoundsFeet.GetHashCode();
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return this.Magnitude.CompareTo(other.Magnitude);
+                return this.PoundsFeet.CompareTo(other.PoundsFeet);
         }
     }
 }

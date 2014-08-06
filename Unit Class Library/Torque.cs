@@ -8,7 +8,7 @@ namespace UnitClassLibrary
 {
     public class Torque : Moment
     {
-        public Torque(Force passeForce, Dimension passedDimension)
+        public Torque(ForceUnit passeForce, Dimension passedDimension)
             : base(passeForce, passedDimension)
         {
 
