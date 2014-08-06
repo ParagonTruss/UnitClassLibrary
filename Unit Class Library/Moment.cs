@@ -21,9 +21,19 @@ namespace UnitClassLibrary
             set { _dimension = value; }
         }
 
-        private double Magnitude
+        private double PoundsMillimeters
         {
             get { return _dimension.Millimeters * _force.Pounds; }
+        }
+
+        private double PoundsFeet
+        {
+            get { return _dimension.Feet * _force.Pounds; }
+        }
+
+        private double NewtonMeters
+        {
+            get { return _dimension.Meters * _force.Newtons; }
         }
 
         public Moment()
