@@ -5,22 +5,34 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// defines force in a direction
+    /// </summary>
     public class Moment
     {
-        ForceUnit _force;
+        #region Properties / _internalVariables
+        /// <summary>
+        /// Force that is applied in a direction
+        /// </summary>
         public ForceUnit Force
         {
             get { return _force; }
             set { _force = value; }
         }
+        private ForceUnit _force;
 
-        Dimension _dimension;
+        /// <summary>
+        /// direction that force is applied in
+        /// </summary>
         public Dimension Dimension
         {
             get { return _dimension; }
             set { _dimension = value; }
         }
+        Dimension _dimension;
+        #endregion
 
+        #region Mathematical Getters
         private double PoundsMillimeters
         {
             get { return _dimension.Millimeters * _force.Pounds; }
@@ -35,18 +47,29 @@ namespace UnitClassLibrary
         {
             get { return _dimension.Meters * _force.Newtons; }
         }
+        #endregion
 
+        #region Constructors
+        /// <summary>
+        /// zero constructor for moment
+        /// </summary>
         public Moment()
         {
             _force = new ForceUnit();
             _dimension = new Dimension();
         }
 
+        /// <summary>
+        /// constructor that creates moment based on the direction passed and force
+        /// </summary>
+        /// <param name="passeForce">amount of force applied</param>
+        /// <param name="passedDimension">direction of force applied</param>
         public Moment(ForceUnit passeForce, Dimension passedDimension)
         {
             _force = passeForce;
             _dimension = passedDimension;
         }
+        #endregion
 
         #region Overloaded Operators
 
@@ -152,11 +175,12 @@ namespace UnitClassLibrary
 
         #endregion
 
+        #region Interface Methods
         /// <summary>
         /// This implements the IComparable interface and allows Moments to be sorted and such
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
+        /// <param name="other">other moment to compare</param>
+        /// <returns>0 if equal; 1 if this > other; -1 if this < other</returns>
         public int CompareTo(Moment other)
         {
             // The comparison depends on the comparison of  
@@ -166,5 +190,6 @@ namespace UnitClassLibrary
             else
                 return this.PoundsFeet.CompareTo(other.PoundsFeet);
         }
+        #endregion
     }
 }
