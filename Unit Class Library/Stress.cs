@@ -11,7 +11,7 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
 
-        private Force _force;
+        private ForceUnit _force;
         private Area _area;
 
         #endregion
@@ -24,7 +24,7 @@ namespace UnitClassLibrary
         public Stress()
         {
             _area = new Area();
-            _force = new Force();
+            _force = new ForceUnit();
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="passedArea"></param>
         /// <param name="passedForce"></param>
-        public Stress(Force passedForce, Area passedArea)
+        public Stress(ForceUnit passedForce, Area passedArea)
         {
             _area = passedArea;
             _force = passedForce;

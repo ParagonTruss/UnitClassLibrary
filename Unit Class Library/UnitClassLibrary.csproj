@@ -46,7 +46,7 @@
     <Compile Include="ExtensionMethods\AreaListExtensionMethods.cs" />
     <Compile Include="Dimension.cs" />
     <Compile Include="Enums.cs" />
-    <Compile Include="Force.cs" />
+    <Compile Include="ForceUnit.cs" />
     <Compile Include="Generators\DimensionGenerator.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Moment.cs" />

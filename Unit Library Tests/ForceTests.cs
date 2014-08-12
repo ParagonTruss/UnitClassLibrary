@@ -13,9 +13,9 @@ namespace UnitClassLibraryTests
         public void ForceConstructorAndConversionTests()
         {
             // arrange
-            Force poundForce = new Force(ForceType.Pounds, 100);
-            Force newtonForce = new Force(ForceType.Newtons, 100);
-            Force kipForce = new Force(ForceType.Kips, 100);
+            ForceUnit poundForce = new ForceUnit(ForceType.Pounds, 100);
+            ForceUnit newtonForce = new ForceUnit(ForceType.Newtons, 100);
+            ForceUnit kipForce = new ForceUnit(ForceType.Kips, 100);
 
             // act
             double pound = poundForce.Pounds;
