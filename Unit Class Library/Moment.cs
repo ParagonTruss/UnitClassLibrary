@@ -43,6 +43,7 @@ namespace UnitClassLibrary
             get { return _dimension.Feet * _force.Pounds; }
         }
 
+
         private double NewtonMeters
         {
             get { return _dimension.Meters * _force.Newtons; }
