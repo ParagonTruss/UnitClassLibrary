@@ -13,16 +13,16 @@ namespace UnitClassLibrary
         {
             get
             {
-                try
-                {
-                    //double.Parse(Resources.ResourceManager.GetString("AcceptedEqualityDeviationConstant"));
-                }
-                catch (Exception)
-                {
+                //try
+                //{
+                //    //double.Parse(Resources.ResourceManager.GetString("AcceptedEqualityDeviationConstant"));
+                //}
+                //catch (Exception)
+                //{
 
-                    return 0.0000001;
-                }
-                return 0.0000001;
+                //    return 0.0001;
+                //}
+                return 0.0001;
 
             }
 

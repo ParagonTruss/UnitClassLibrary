@@ -49,7 +49,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [TestMethod()]
-        public void Angle_AngleMathOperatorTest()
+        public void Angle_MathOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -86,6 +86,18 @@ namespace UnitClassLibrary.Tests
             a1.CompareTo(a2).Should().Be(0);
             a1.CompareTo(a3).Should().Be(-1);
             a3.CompareTo(a2).Should().Be(1);
+        }
+
+        [TestMethod()]
+        public void Angle_NegationTest()
+        {
+            Angle a1 = new Angle(AngleType.Degree, 360);
+            Angle a2 = new Angle(AngleType.Radian, Math.PI);
+
+            a1.Negate().Degrees.Should().Be(-360);
+            a2.Negate().Radians.Should().Be(Math.PI * -1);
+            a1.Negate().Radians.Should().Be(Math.PI * -2);
+            a2.Negate().Degrees.Should().Be(-180);
         }
     }
 }

@@ -538,6 +538,7 @@ namespace UnitClassLibrary
 
         #endregion
 
+        #region Interface Methods
         /// <summary>
         /// This implements the IComparable interface and allows Dimensions to be sorted and such
         /// </summary>
@@ -552,5 +553,6 @@ namespace UnitClassLibrary
             else
                 return _intrinsicValue.CompareTo(other._intrinsicValue);
         }
+        #endregion
     }
 }

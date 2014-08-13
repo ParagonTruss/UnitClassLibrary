@@ -72,5 +72,44 @@ namespace UnitClassLibraryTests
             KilometerInches.Should().Be(155000310000);
             MileInches.Should().Be(401448959990);
         }
+
+        [TestMethod()]
+        public void Area_CompareToTest()
+        {
+            Area a1 = new Area(AreaType.InchesSquared, 100);
+            Area a2 = new Area(AreaType.MetersSquared, 0.5);
+            Area a3 = new Area(AreaType.CentimetersSquared, 5);
+            Area a4 = new Area(AreaType.KilometersSquared, 0.0000005);
+
+            a1.CompareTo(a2).Should().Be(-1);
+            a2.CompareTo(a3).Should().Be(1);
+            a3.CompareTo(a1).Should().Be(-1);
+            a4.CompareTo(a2).Should().Be(0);
+        }
+
+        [TestMethod()]
+        public void Area_ConstructorTests()
+        {
+            Area a1 = new Area();
+            Area a2 = new Area(AreaType.InchesSquared, 100);
+            Area a3 = new Area(AreaType.KilometersSquared, 100);
+
+            a1.MillimetersSquared.Should().Be(0);
+            a2.InchesSquared.Should().Be(100);
+            a3.InchesSquared.Should().Be(155000310000);
+        }
+
+        [TestMethod()]
+        public void Area_EqualsTests()
+        {
+            Area a1 = new Area();
+            Area a2 = new Area(AreaType.InchesSquared, 100);
+            Area a3 = new Area(AreaType.CentimetersSquared, 645.16);
+            Area a4 = new Area(AreaType.KilometersSquared, 0.00064516);
+
+            a1.Equals(a2).Should().BeFalse();
+            a2.Equals(a3).Should().BeTrue();
+            a3.Equals(a4).Should().BeFalse();
+        }
     }
 }
