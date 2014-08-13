@@ -442,9 +442,9 @@ namespace UnitClassLibrary
             return new Dimension(InternalUnitType, (d1._intrinsicValue - d2._intrinsicValue));
         }
 
-        public static Dimension operator /(Dimension d1, Dimension d2)
+        public static double operator /(Dimension d1, Dimension d2)
         {
-            return new Dimension(InternalUnitType, d1._intrinsicValue / d2._intrinsicValue);
+            return d1._intrinsicValue / d2._intrinsicValue;
         }
 
         public static Dimension operator *(Dimension d1, Dimension d2)
