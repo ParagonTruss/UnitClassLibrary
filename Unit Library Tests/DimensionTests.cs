@@ -119,7 +119,7 @@ namespace UnitClassLibraryTests
         public void Dimensions_GetHashCode()
         {
             // arrange
-            Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
+            Dimension dimension = new Dimension(DimensionType.Meter, 14.1875);
             double number = 14.1875;
 
             // act

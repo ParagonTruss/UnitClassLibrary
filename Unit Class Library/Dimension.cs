@@ -33,7 +33,7 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
         //internal Dimension type is set to millimeter to cause the least amount of rounding error when performing calculations.
-        const DimensionType InternalUnitType = DimensionType.Millimeter;
+        const DimensionType InternalUnitType = DimensionType.Meter;
 
         //dimension value
         private double _intrinsicValue = 0.0;
@@ -228,7 +228,7 @@ namespace UnitClassLibrary
             //combine the results
             double result = sign * (feet * 12 + inch + sixt / 16.0 + numer / Convert.ToDouble(denom));
 
-            return ConvertDimension(DimensionType.Inch, result, DimensionType.Millimeter);
+            return ConvertDimension(DimensionType.Inch, result, InternalUnitType);
         }
 
         /// <summary>
@@ -236,10 +236,10 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="millimeters"> the millimeters being converted into a string</param>
         /// <returns></returns>
-        private static string ConvertMillimetersToArchitecturalString(double millimeters, int precision = 16)
+        private static string ConvertToArchitecturalString(DimensionType typeConvertingFrom, double passedValue, int precision = 16)
         {
             //Convert into inches before proceeding
-            double workingValue = ConvertDimension(DimensionType.Millimeter, millimeters, DimensionType.Inch);
+            double workingValue = ConvertDimension(typeConvertingFrom, passedValue, DimensionType.Inch);
 
             //detect need for sign
             string sign = "";
@@ -320,7 +320,7 @@ namespace UnitClassLibrary
             double returnDouble = 0.0;
             double internalDecimalMillimeters = 0.0;
 
-            //first convert value passedValue to inches
+            //first convert value passedValue to Millimeters
             switch (typeConvertingFrom)
             {
                 case DimensionType.ThirtySecond:
@@ -355,7 +355,7 @@ namespace UnitClassLibrary
                     break;
             }
 
-            //Now convert the value from inches to the desired output
+            //Now convert the value from Millimeters to the desired output
             switch (typeConvertingTo)
             {
                 case DimensionType.ThirtySecond:
@@ -398,11 +398,7 @@ namespace UnitClassLibrary
         /// </summary>
         public static double ConvertDimension(DimensionType typeConvertingTo, string passedValue)
         {
-            //first convert value passedValue to millimeters
-            double internalUnits = ConvertArchitectualStringtoInternalUnits(passedValue);
-
-            //Now convert the value from millimeters to the desired output
-            return ConvertDimension(DimensionType.Millimeter, internalUnits, typeConvertingTo);
+            return ConvertArchitectualStringtoInternalUnits(passedValue);
         }
 
         /// <summary>
@@ -412,11 +408,8 @@ namespace UnitClassLibrary
         /// <returns>converted dimension</returns>
         public static string ConvertDimensionIntoArchitecturalString(DimensionType typeConvertingFrom, double passedValue)
         {
-            //first convert value passedValue to millimeters
-            double internalDecimalMillimeters = ConvertDimension(DimensionType.Millimeter, passedValue, typeConvertingFrom);
-
             //Now convert the value from millimeters to the desired output
-            return ConvertMillimetersToArchitecturalString(internalDecimalMillimeters);
+            return ConvertToArchitecturalString(typeConvertingFrom, passedValue);
         }
         
         #endregion
