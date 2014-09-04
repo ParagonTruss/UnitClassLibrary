@@ -8,5 +8,6 @@ namespace UnitClassLibrary
 {
     class Power
     {
+		// I, your micro-contractor, just added a lot of code!
     }
 }
