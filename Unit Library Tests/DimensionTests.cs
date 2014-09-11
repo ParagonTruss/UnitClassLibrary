@@ -50,8 +50,16 @@ namespace UnitClassLibraryTests
             Dimension additionDimension = inchDimension + architecturalDimension;
 
             // assert
+            /* changed it so it rounds the math class when we convert values so we prevent the errors
             subtractionDimension.Feet.Should().BeApproximately(0, .00000001, "Doubles math should get us at least this close");
             additionDimension.Millimeters.Should().BeApproximately(720.725, .00000001, "Doubles math should get us at least this close");
+            additionDimension.Architectural.ShouldBeEquivalentTo("2'4 6/16\"");
+             */
+
+            subtractionDimension.Feet.Should().Be(0);
+            double test = additionDimension.Millimeters;
+            Dimension test2 = new Dimension(DimensionType.Millimeter, 720.72499999999991);
+            additionDimension.Millimeters.Should().Be(720.725);
             additionDimension.Architectural.ShouldBeEquivalentTo("2'4 6/16\"");
         }
 
@@ -119,7 +127,7 @@ namespace UnitClassLibraryTests
         public void Dimensions_GetHashCode()
         {
             // arrange
-            Dimension dimension = new Dimension(DimensionType.Meter, 14.1875);
+            Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
             double number = 14.1875;
 
             // act

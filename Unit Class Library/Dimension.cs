@@ -33,7 +33,7 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
         //internal Dimension type is set to millimeter to cause the least amount of rounding error when performing calculations.
-        const DimensionType InternalUnitType = DimensionType.Meter;
+        const DimensionType InternalUnitType = DimensionType.Millimeter;
 
         //dimension value
         private double _intrinsicValue = 0.0;
@@ -355,6 +355,13 @@ namespace UnitClassLibrary
                     break;
             }
 
+            /*//check to see if a number is within the accepted equaility range
+            double roundedValue = Math.Round(internalDecimalMillimeters, (Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant.Length - 2));
+            if (Math.Abs(roundedValue - internalDecimalMillimeters) < Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant))
+            {
+                internalDecimalMillimeters = roundedValue;
+            }*/
+
             //Now convert the value from Millimeters to the desired output
             switch (typeConvertingTo)
             {
@@ -390,8 +397,46 @@ namespace UnitClassLibrary
                     break;
             }
 
+            //this rounds the double due to how C# calls the toString function and gets rid of the double's errors
+            //see http://codereview.stackexchange.com/questions/62651/which-method-of-fixing-double-arithmetic-errors-should-i-use
+            string returnDoubleAsString = "" + returnDouble;
+            return double.Parse(returnDoubleAsString);
+        }
+            //attempt to fix double arithmetic errors
+            /*double errorMargins = returnDouble * Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant);
+            double roundedValue = 0;
+            for (int i = 1; i <= returnDoubleAsString.Length; i++)
+            {
+                roundedValue = RoundToSignificantDigits(returnDouble, i);
+                if (Math.Abs(roundedValue - returnDouble) < Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant))
+                {
+                    returnDouble = roundedValue;
+                    i = returnDoubleAsString.Length;
+                }
+
+            }
+
             return returnDouble;
         }
+
+        //code adapted from http://stackoverflow.com/questions/374316/round-a-double-to-x-significant-figures by P Daddy
+        public static double RoundToSignificantDigits(double d, int digits)
+        {
+            if (d == 0)
+                return 0;
+
+            bool isNegative = false;
+            if (d < 0)
+                isNegative = true;
+    
+            double scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(d))) + 1);
+            double returnValue =  scale * Math.Round(d / scale, digits);
+
+            if (isNegative)
+                returnValue = -returnValue;
+
+            return returnValue;
+        }*/
 
         /// <summary>
         /// Converts Architectural strings into a decimal unit
