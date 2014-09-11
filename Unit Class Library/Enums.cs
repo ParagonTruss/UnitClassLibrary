@@ -23,6 +23,10 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit an angle is
     /// </summary>
-    public enum AngleType { Radian, Degree}
+    public enum AngleType { Radian, Degree }
 
+    /// <summary>
+    /// Enum for specifying the type of unit a power is
+    /// </summary>
+    public enum PowerType { Watt, Horsepower, FootPoundsPerSecond, MetricHorsepower, ErgsPerSecond }
 }
