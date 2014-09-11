@@ -40,6 +40,8 @@
   <ItemGroup>
     <Compile Include="AngleNUnitTests.cs" />
     <Compile Include="AreaNUnitTests.cs" />
+    <Compile Include="DimensionNUnitTests.cs" />
+    <Compile Include="ForceNUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Unit Class Library\UnitClassLibrary.csproj">
