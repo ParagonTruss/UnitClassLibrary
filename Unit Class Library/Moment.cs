@@ -166,7 +166,7 @@ namespace UnitClassLibrary
             {
                 Moment compare = (Moment)obj;
 
-                return compare._dimension == this._dimension && compare._force == this._force;
+                return compare._dimension.Equals(this._dimension) && compare._force.Equals(this._force);
             }
             catch (InvalidCastException)
             {
