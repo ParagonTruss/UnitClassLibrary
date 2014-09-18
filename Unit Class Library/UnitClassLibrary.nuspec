@@ -7,7 +7,7 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <projectUrl>https://bitbucket.org/Clearspan/unit-class-library</projectUrl>
-	<iconUrl>http://www.clearspaninc.com/ccd/Images/website%20logo.png</iconUrl>
+	<iconUrl>http://chattanooga.clearspaninc.com/images/unit-class-library.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
   </metadata>
