@@ -10,7 +10,7 @@ namespace UnitClassLibrary.Tests
     public class AngleTests
     {
         [Test()]
-        public void Angle_GetHashCode()
+        public void AngleN_GetHashCode()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -26,7 +26,7 @@ namespace UnitClassLibrary.Tests
 
         // SHOULD BE 275 BUT HAS ROUNDING ERRORS
         [Test()]
-        public void Angle_ToStringOverride()
+        public void AngleN_ToStringOverride()
         {
             Angle a1 = new Angle(AngleType.Degree, 275);
             Angle a2 = new Angle(AngleType.Radian, 2 * Math.PI);
@@ -35,7 +35,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_EqualsTest()
+        public void AngleN_EqualsTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -49,7 +49,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_MathOperatorTest()
+        public void AngleN_MathOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -62,7 +62,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_ComparisonOperatorTest()
+        public void AngleN_ComparisonOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -76,7 +76,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_CompareToTest()
+        public void AngleN_CompareToTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -89,7 +89,7 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_NegationTest()
+        public void AngleN_NegationTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI);

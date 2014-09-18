@@ -9,7 +9,7 @@ namespace UnitClassLibraryTests
     public class ForceTests
     {
         [Test()]
-        public void Force_ConstructorAndCoversionTests()
+        public void ForceN_ConstructorAndCoversionTests()
         {
             // arrange
             ForceUnit poundForce = new ForceUnit(ForceType.Pounds, 100);
@@ -28,7 +28,7 @@ namespace UnitClassLibraryTests
         }
 
         [Test()]
-        public void Force_MathOperatorTests()
+        public void ForceN_MathOperatorTests()
         {
             ForceUnit pound = new ForceUnit(ForceType.Pounds, 250);
             ForceUnit pound2 = new ForceUnit(ForceType.Pounds, 250);

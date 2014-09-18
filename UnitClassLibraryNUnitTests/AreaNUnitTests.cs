@@ -12,7 +12,7 @@ namespace UnitClassLibraryTests
         /// Conversions to tests.
         /// </summary>
         [Test()]
-        public void Area_ConversionToTests()
+        public void AreaN_ConversionToTests()
         {
             // arrange
             Area SquareInchesArea = new Area(AreaType.InchesSquared, 1024);
@@ -39,7 +39,7 @@ namespace UnitClassLibraryTests
         }
 
         [Test()]
-        public void Area_ConversionFromTests()
+        public void AreaN_ConversionFromTests()
         {
             // arrange
             Area MillimetersArea = new Area(AreaType.MillimetersSquared, 100);
@@ -73,7 +73,7 @@ namespace UnitClassLibraryTests
         }
 
         [Test()]
-        public void Area_CompareToTest()
+        public void AreaN_CompareToTest()
         {
             Area a1 = new Area(AreaType.InchesSquared, 100);
             Area a2 = new Area(AreaType.MetersSquared, 0.5);
@@ -87,7 +87,7 @@ namespace UnitClassLibraryTests
         }
 
         [Test()]
-        public void Area_ConstructorTests()
+        public void AreaN_ConstructorTests()
         {
             Area a1 = new Area();
             Area a2 = new Area(AreaType.InchesSquared, 100);
@@ -99,7 +99,7 @@ namespace UnitClassLibraryTests
         }
 
         [Test()]
-        public void Area_EqualsTests()
+        public void AreaN_EqualsTests()
         {
             Area a1 = new Area();
             Area a2 = new Area(AreaType.InchesSquared, 100);

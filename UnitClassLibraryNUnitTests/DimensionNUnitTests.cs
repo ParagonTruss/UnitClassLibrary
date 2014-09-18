@@ -15,7 +15,7 @@ namespace UnitClassLibraryTests
         /// Tests the architectural string constructor and the regular dimension constructor
         /// </summary>
         [Test()]
-        public void Dimensions_Constructors()
+        public void DimensionN_Constructors()
         {
 
             // arrange & act
@@ -38,7 +38,7 @@ namespace UnitClassLibraryTests
         /// Tests mathmatical operators we will test the properties at the same time.
         /// </summary>
         [Test()]
-        public void Dimensions_Math_Operators()
+        public void DimensionN_Math_Operators()
         {
             // arrange
             Dimension inchDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -58,7 +58,7 @@ namespace UnitClassLibraryTests
         /// Tests Architectural string inputs.
         /// </summary>
         [Test()]
-        public void Dimensions_Architectural_Constructor()
+        public void DimensionN_Architectural_Constructor()
         {
             // arrange
             Dimension dimension1 = new Dimension("1'2 3/16\"");
@@ -85,7 +85,7 @@ namespace UnitClassLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimensions_Equality_Operators()
+        public void DimensionN_Equality_Operators()
         {
             // arrange
             Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -115,7 +115,7 @@ namespace UnitClassLibraryTests
         /// Tests GetHashCodeOperation
         /// </summary>
         [Test()]
-        public void Dimensions_GetHashCode()
+        public void DimensionN_GetHashCode()
         {
             // arrange
             Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
@@ -135,7 +135,7 @@ namespace UnitClassLibraryTests
         /// </summary>
         [Test()]
         [ExpectedException(typeof(NotImplementedException))]
-        public void Dimensions_ToString()
+        public void DimensionN_ToString()
         {
             // arrange
             Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
@@ -151,7 +151,7 @@ namespace UnitClassLibraryTests
         /// Tests CompareTo implementation
         /// </summary>
         [Test()]
-        public void Dimensions_CompareTo()
+        public void DimensionN_CompareTo()
         {
             // arrange
             Dimension smallDimension = new Dimension(DimensionType.Millimeter, 1);
