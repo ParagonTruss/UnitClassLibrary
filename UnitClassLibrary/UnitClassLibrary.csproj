@@ -7,8 +7,8 @@
     <ProjectGuid>{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Unit_Class_Library</RootNamespace>
-    <AssemblyName>Unit Class Library</AssemblyName>
+    <RootNamespace>UnitClassLibrary</RootNamespace>
+    <AssemblyName>UnitClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Unit Class Library.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\UnitClassLibrary.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
