@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UnitClassLibrary
 {
-    class Speed
+    public class Speed
     {
     }
 }

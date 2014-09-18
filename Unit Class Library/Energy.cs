@@ -6,46 +6,46 @@ using System.Threading.Tasks;
 
 namespace UnitClassLibrary
 {
-    public class Time
+    public class Energy
     {
         #region _internalVariables
-        private TimeType InternalUnitType;
+        private EnergyType InternalUnitType;
         private double _intrinsicValue;
         #endregion
 
         #region Constructors
-        public Time()
+        public Energy()
         {
             _intrinsicValue = 0.0;
         }
 
-        public Time(TimeType passedTimeType, double passedValue)
+        public Energy(EnergyType passedEnergyType, double passedValue)
         {
-            InternalUnitType = passedTimeType;
+            InternalUnitType = passedEnergyType;
             _intrinsicValue = passedValue;
         }
         #endregion
 
         #region Properties
-        public double Second
+        public double Joule
         {
             get;
             set;
         }
 
-        public double Minute
+        public double FootPound
         {
             get;
             set;
         }
 
-        public double Hour
+        public double Erg
         {
             get;
             set;
         }
 
-        public DateTime DateTime
+        public double KilogramMeter
         {
             get;
             set;

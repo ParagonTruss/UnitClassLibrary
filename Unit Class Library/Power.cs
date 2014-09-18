@@ -12,147 +12,57 @@ namespace UnitClassLibrary
     public class Power
     {
         #region _internalVariables
-        private PowerType InternalUnitType;
-        private double _intrinsicValue;
+        private Energy _energy;
+        private Time _time;
         #endregion
 
         #region Constructors
 
+        public Power()
+        {
+            _energy = new Energy();
+            _time = new Time();
+        }
+
+        public Power(Energy passedEnergy, Time passedTime)
+        {
+            _energy = passedEnergy;
+            _time = passedTime;
+        }
+
         public Power(PowerType passedPowerType, double passedValue)
         {
-            InternalUnitType = passedPowerType;
-            _intrinsicValue = passedValue;
+            switch (passedPowerType)
+            {
+                case PowerType.Watt:
+                    _energy = new Energy(EnergyType.Joule, passedValue);
+                    _time = new Time(TimeType.Second, 1);
+                    break;
+                case PowerType.Horsepower:
+                    _energy = new Energy(EnergyType.FootPound, passedValue/33000);
+                    _time = new Time(TimeType.Minute, 1);
+                    break;
+                case PowerType.MetricHorsepower:
+                    _energy = new Energy(EnergyType.KilogramMeter, passedValue/75);
+                    _time = new Time(TimeType.Second, 1);
+                    break;
+                case PowerType.FootPoundsPerSecond:
+                    _energy = new Energy(EnergyType.FootPound, passedValue);
+                    _time = new Time(TimeType.Second, 1);
+                    break;
+                case PowerType.ErgsPerSecond:
+                    _energy = new Energy(EnergyType.Erg, passedValue);
+                    _time = new Time(TimeType.Second, 1);
+                    break;
+                default:
+                    // Should never reach; cases should cover all members of enumerated set
+                    break;
+            }
         }
 
         #endregion
 
         #region Helper Methods
-
-        /// <summary>
-        /// Retrieves the power as the unit specified
-        /// </summary>
-        /// <param name="powerType">unit of power</param>
-        /// <returns></returns>
-        private double retrieveAsExternalUnit(PowerType powerType)
-        {
-            return ConvertPower(InternalUnitType, _intrinsicValue, powerType);
-        }
-
-        public static double ConvertPower(PowerType fromPowerType, double _intrinsicValue, PowerType toPowerType)
-        {
-            double returnValue = 0;
-            
-            switch (fromPowerType)
-            {
-                // Convert Watts or Ergs/Second to another unit
-                case PowerType.Watt:
-                case PowerType.ErgsPerSecond:
-                    // An erg/second is simply 1/10000000 of a Watt, so just convert it to Watts and then perfrom the conversion
-                    if (fromPowerType == PowerType.ErgsPerSecond)
-                    {
-                        _intrinsicValue /= 10000000;
-                    }
-                    switch (toPowerType)
-                    {
-                        case PowerType.Watt:
-                            returnValue = _intrinsicValue; // Return given Watts
-                            break;
-                        case PowerType.Horsepower:
-                            returnValue = _intrinsicValue * 0.00134102209; // Convert Watts to Horsepower
-                            break;
-                        case PowerType.FootPoundsPerSecond:
-                            returnValue = _intrinsicValue * 0.737562149; // Convert Watts to FootPounds/Second
-                            break;
-                        case PowerType.MetricHorsepower:
-                            returnValue = _intrinsicValue * 0.00135962162; // Convert Watts to Metric Horsepower
-                            break;
-                        case PowerType.ErgsPerSecond:
-                            returnValue = _intrinsicValue * 10000000; // Convert Watts to Ergs/Second
-                            break;
-                        default:
-                            //code should never run
-                            throw new NotSupportedException("Unit not supported!");
-                    }
-                    break;
-                // Convert Horsepower to another unit
-                case PowerType.Horsepower:
-                    switch (toPowerType)
-                    {
-                        case PowerType.Watt:
-                            returnValue = _intrinsicValue * 745.699872; // Convert Horsepower to Watts
-                            break;
-                        case PowerType.Horsepower:
-                            returnValue = _intrinsicValue; // Return given Horsepower
-                            break;
-                        case PowerType.FootPoundsPerSecond:
-                            returnValue = _intrinsicValue * 550; // Convert Horsepower to FootPounds/Second
-                            break;
-                        case PowerType.MetricHorsepower:
-                            returnValue = _intrinsicValue * 1.01386967; // Convert Horsepower to Metric Horsepower
-                            break;
-                        case PowerType.ErgsPerSecond:
-                            returnValue = _intrinsicValue * 7456998720; // Convert Horsepower to Ergs/Second
-                            break;
-                        default:
-                            //code should never run
-                            throw new NotSupportedException("Unit not supported!");
-                    }
-                    break;
-                // Convert FootPounds/Second to another unit
-                case PowerType.FootPoundsPerSecond:
-                    switch (toPowerType)
-                    {
-                        case PowerType.Watt:
-                            returnValue = _intrinsicValue * 1.35581795; // Convert FootPounds/Second to Watts
-                            break;
-                        case PowerType.Horsepower:
-                            returnValue = _intrinsicValue * 0.00181818182; // Convert FootPounds/Second to Horsepower
-                            break;
-                        case PowerType.FootPoundsPerSecond:
-                            returnValue = _intrinsicValue; // Return given FootPounds/Second
-                            break;
-                        case PowerType.MetricHorsepower:
-                            returnValue = _intrinsicValue * 0.00184339939; // Convert FootPounds/Second to Metric Horsepower
-                            break;
-                        case PowerType.ErgsPerSecond:
-                            returnValue = _intrinsicValue * 13558179.5; // Convert FootPounds/Second to Ergs/Second
-                            break;
-                        default:
-                            //code should never run
-                            throw new NotSupportedException("Unit not supported!");
-                    }
-                    break;
-                // Convert Metric Horsepower to another unit
-                case PowerType.MetricHorsepower:
-                    switch (toPowerType)
-                    {
-                        case PowerType.Watt:
-                            returnValue = _intrinsicValue * 735.49875; // Convert Metric Horsepower to Watts
-                            break;
-                        case PowerType.Horsepower:
-                            returnValue = _intrinsicValue * 0.986320071; // Convert Metric Horsepower to Horsepower
-                            break;
-                        case PowerType.FootPoundsPerSecond:
-                            returnValue = _intrinsicValue * 542.476039; // Convert Metric Horsepower to FootPounds/Second
-                            break;
-                        case PowerType.MetricHorsepower:
-                            returnValue = _intrinsicValue; // Return given Metric Horsepower
-                            break;
-                        case PowerType.ErgsPerSecond:
-                            returnValue = _intrinsicValue * 7354987500; // Convert Metric Horsepower to Ergs/Second
-                            break;
-                        default:
-                            //code should never run
-                            throw new NotSupportedException("Unit not supported!");
-                    }
-                    break;
-                default:
-                    //code should never run
-                    throw new NotSupportedException("Unit not supported!");
-            }
-
-            return returnValue;
-        }
 
         #endregion
 
@@ -163,7 +73,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Watt
         {
-            get { return retrieveAsExternalUnit(PowerType.Watt); }
+            get { return _energy.Joule / _time.Second; }
         }
 
         /// <summary>
@@ -171,7 +81,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Horsepower
         {
-            get { return retrieveAsExternalUnit(PowerType.Horsepower); }
+            get { return 33000 * _energy.FootPound / _time.Minute; }
         }
 
         /// <summary>
@@ -179,7 +89,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FootPoundsPerSecond
         {
-            get { return retrieveAsExternalUnit(PowerType.FootPoundsPerSecond); } 
+            get { return _energy.FootPound / _time.Second; } 
         }
 
         /// <summary>
@@ -187,7 +97,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetricHorsepower
         {
-            get { return retrieveAsExternalUnit(PowerType.MetricHorsepower); }
+            get { return 75 * _energy.KilogramMeter / _time.Second; }
         }
 
         /// <summary>
@@ -195,7 +105,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ErgsPerSecond
         {
-            get { return retrieveAsExternalUnit(PowerType.ErgsPerSecond); }
+            get { return _energy.Erg / _time.Second; }
         }
 
         #endregion

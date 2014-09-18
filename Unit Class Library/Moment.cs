@@ -10,41 +10,31 @@ namespace UnitClassLibrary
     /// </summary>
     public class Moment
     {
-        #region Properties / _internalVariables
+        #region _internalVariables
         /// <summary>
         /// Force that is applied in a direction
         /// </summary>
-        public ForceUnit Force
-        {
-            get { return _force; }
-            set { _force = value; }
-        }
         private ForceUnit _force;
 
         /// <summary>
-        /// direction that force is applied in
+        /// The distance upon which the force acts
         /// </summary>
-        public Dimension Dimension
-        {
-            get { return _dimension; }
-            set { _dimension = value; }
-        }
-        Dimension _dimension;
+        private Dimension _dimension;
         #endregion
 
-        #region Mathematical Getters
-        private double PoundsMillimeters
+        #region Properties
+        public double PoundsMillimeters
         {
             get { return _dimension.Millimeters * _force.Pounds; }
         }
 
-        private double PoundsFeet
+        public double PoundsFeet
         {
             get { return _dimension.Feet * _force.Pounds; }
         }
 
 
-        private double NewtonMeters
+        public double NewtonMeters
         {
             get { return _dimension.Meters * _force.Newtons; }
         }
@@ -69,6 +59,33 @@ namespace UnitClassLibrary
         {
             _force = passeForce;
             _dimension = passedDimension;
+        }
+
+        /// <summary>
+        /// constructor that creates moment with composite unit that expresses a moment and value
+        /// </summary>
+        /// <param name="passedMomentType"></param>
+        /// <param name="passedValue"></param>
+        public Moment(MomentType passedMomentType, double passedValue)
+        {
+            switch (passedMomentType)
+            {
+                case MomentType.PoundsMillimeters:
+                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _dimension = new Dimension(DimensionType.Millimeter, 1);
+                    break;
+                case MomentType.NewtonMeters:
+                    _force = new ForceUnit(ForceType.Newtons, passedValue);
+                    _dimension = new Dimension(DimensionType.Meter, 1);
+                    break;
+                case MomentType.PoundsFeet:
+                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _dimension = new Dimension(DimensionType.Foot, 1);
+                    break;
+                default:
+                    // Should never reach; cases should cover all members of enumerated set
+                    break;
+            }
         }
         #endregion
 

@@ -29,4 +29,19 @@ namespace UnitClassLibrary
     /// Enum for specifying the type of unit a power is
     /// </summary>
     public enum PowerType { Watt, Horsepower, FootPoundsPerSecond, MetricHorsepower, ErgsPerSecond }
+
+    /// <summary>
+    /// Enum for specifying the type of unit a moment is
+    /// </summary>
+    public enum MomentType { PoundsMillimeters, PoundsFeet, NewtonMeters}
+
+    /// <summary>
+    /// Enum for specifying the type of unit a energy is
+    /// </summary>
+    public enum EnergyType { Joule, Erg, FootPound, KilogramMeter }
+
+    /// <summary>
+    /// Enum for specifying the type of unit a time is
+    /// </summary>
+    public enum TimeType { Second, Minute, Hour }
 }
