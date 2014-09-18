@@ -127,7 +127,7 @@ namespace UnitClassLibrary
         /// <param name="fromType">unit type to convert from</param>
         /// <param name="passedValue">value to convert</param>
         /// <param name="toType">unit type to convert to</param>
-        /// <returns>doulbe of area in toType</returns>
+        /// <returns>double of area in toType</returns>
         public static double ConvertArea(AreaType fromType, double passedValue, AreaType toType)
         {
             // sets up internal variables
