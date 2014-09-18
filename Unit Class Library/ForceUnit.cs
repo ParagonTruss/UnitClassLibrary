@@ -91,42 +91,42 @@ namespace UnitClassLibrary
                 case ForceType.Newtons:
                     switch (toForceType)
                     {
-                        case ForceType.Pounds:
-                            returnMagnitude = passedMagnitude / 4.44822162;
-                            break;
                         case ForceType.Newtons:
                             returnMagnitude = passedMagnitude;
                             break;
+                        case ForceType.Pounds:
+                            returnMagnitude = passedMagnitude / 4.44822162;
+                            break;
                         case ForceType.Kips:
-                            returnMagnitude = passedMagnitude * 0.000224809;
+                            returnMagnitude = passedMagnitude / 4448.2216;
                             break;
                     }
                     break;
                 case ForceType.Pounds:
                     switch (toForceType)
                     {
-                        case ForceType.Pounds:
-                            returnMagnitude = passedMagnitude;
-                            break;
                         case ForceType.Newtons:
                             returnMagnitude = passedMagnitude * 4.44822162;
                             break;
+                        case ForceType.Pounds:
+                            returnMagnitude = passedMagnitude;
+                            break;
                         case ForceType.Kips:
-                            returnMagnitude = passedMagnitude * 1000;
+                            returnMagnitude = passedMagnitude / 1000;
                             break;
                     }
                     break;
                 case ForceType.Kips:
                     switch (toForceType)
                     {
-                        case ForceType.Kips:
-                            returnMagnitude = passedMagnitude;
+                        case ForceType.Newtons:
+                            returnMagnitude = passedMagnitude * 4448.2216;
                             break;
                         case ForceType.Pounds:
-                            returnMagnitude = passedMagnitude / 1000;
+                            returnMagnitude = passedMagnitude * 1000;
                             break;
-                        case ForceType.Newtons:
-                            returnMagnitude = passedMagnitude / 4448.2216;
+                        case ForceType.Kips:
+                            returnMagnitude = passedMagnitude;
                             break;
                     }
                     break;

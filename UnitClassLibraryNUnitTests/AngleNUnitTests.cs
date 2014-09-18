@@ -94,7 +94,7 @@ namespace UnitClassLibrary.Tests
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI);
 
-            Assert.AreEqual(-360,a1.Negate().Degrees,-360);
+            Assert.AreEqual(-360,a1.Negate().Degrees);
             Assert.AreEqual(Math.PI * -1,a2.Negate().Radians);
             Assert.AreEqual(Math.PI * -2,a1.Negate().Radians);
             Assert.AreEqual(-180,a2.Negate().Degrees);
