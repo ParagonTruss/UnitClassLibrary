@@ -59,7 +59,7 @@ namespace UnitClassLibrary
         /// <param name="passedValue">amount of force in unit passed</param>
         public ForceUnit(ForceType forceType, double passedValue)
         {
-            storeAsInternalUnit(forceType, passedValue);
+            
         }
         #endregion
 
@@ -72,16 +72,6 @@ namespace UnitClassLibrary
         private double retrieveAsExternalUnit(ForceType forceType)
         {
             return ConvertTo(InternalUnitType, _intrinsicValue, forceType);
-        }
-
-        /// <summary>
-        /// stores force
-        /// </summary>
-        /// <param name="forceType">unit to store force as</param>
-        /// <param name="passedValue">value of force</param>
-        private void storeAsInternalUnit(ForceType forceType, double passedValue)
-        {
-            _intrinsicValue = ConvertTo(forceType, passedValue, InternalUnitType);
         }
 
         /// <summary>
