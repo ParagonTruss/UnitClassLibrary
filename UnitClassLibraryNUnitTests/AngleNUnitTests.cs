@@ -31,7 +31,7 @@ namespace UnitClassLibrary.Tests
             Angle a1 = new Angle(AngleType.Degree, 275);
             Angle a2 = new Angle(AngleType.Radian, 2 * Math.PI);
 
-            Assert.AreEqual(a1.ToString(AngleType.Degree),"275°0'-16500\"°");
+            Assert.AreEqual("275°0'-16500\"°", a1.ToString(AngleType.Degree));
         }
 
         [Test()]
@@ -55,10 +55,10 @@ namespace UnitClassLibrary.Tests
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
 
             Angle addedAngle = a1 + a2;
-            Assert.AreEqual(addedAngle.Degrees,720);
+            Assert.AreEqual(720,addedAngle.Degrees);
 
             Angle subtractedAngle = a1 - a2;
-            Assert.AreEqual(subtractedAngle.Radians,0);
+            Assert.AreEqual(0,subtractedAngle.Radians);
         }
 
         [Test()]
@@ -82,10 +82,10 @@ namespace UnitClassLibrary.Tests
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, 720);
 
-            Assert.AreEqual(a1.CompareTo(a2),0);
-            Assert.AreEqual(a1.CompareTo(a2),0);
-            Assert.AreEqual(a1.CompareTo(a3),-1);
-            Assert.AreEqual(a3.CompareTo(a2), 1);
+            Assert.AreEqual(0,a1.CompareTo(a2));
+            Assert.AreEqual(0,a1.CompareTo(a2));
+            Assert.AreEqual(-1,a1.CompareTo(a3));
+            Assert.AreEqual(1,a3.CompareTo(a2));
         }
 
         [Test()]
@@ -94,10 +94,10 @@ namespace UnitClassLibrary.Tests
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI);
 
-            Assert.AreEqual(a1.Negate().Degrees,-360);
-            Assert.AreEqual(a2.Negate().Radians,Math.PI * -1);
-            Assert.AreEqual(a1.Negate().Radians,Math.PI * -2);
-            Assert.AreEqual(a2.Negate().Degrees, -180);
+            Assert.AreEqual(-360,a1.Negate().Degrees,-360);
+            Assert.AreEqual(Math.PI * -1,a2.Negate().Radians);
+            Assert.AreEqual(Math.PI * -2,a1.Negate().Radians);
+            Assert.AreEqual(-180,a2.Negate().Degrees);
         }
     }
 }

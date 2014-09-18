@@ -22,9 +22,9 @@ namespace UnitClassLibraryTests
             double kip = poundForce.Kips;
 
             // assert
-            Assert.AreEqual(pound,100);
-            Assert.AreEqual(newton,444.822162);
-            Assert.AreEqual(kip, 0.1);
+            Assert.AreEqual(100,pound);
+            Assert.AreEqual(444.822162,newton);
+            Assert.AreEqual(0.1,kip);
         }
 
         [Test()]
@@ -41,9 +41,9 @@ namespace UnitClassLibraryTests
             ForceUnit differenceKip = kip - kip2;
             ForceUnit differenceNewton = newton - newton2;
 
-            Assert.AreEqual(sumPound.Pounds,500);
-            Assert.AreEqual(differenceKip.Kips,-250);
-            Assert.AreEqual(differenceNewton.Newtons, 250);
+            Assert.AreEqual(500,sumPound.Pounds);
+            Assert.AreEqual(-250,differenceKip.Kips);
+            Assert.AreEqual(250,differenceNewton.Newtons);
         }
     }
 }

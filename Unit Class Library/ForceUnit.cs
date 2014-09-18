@@ -13,7 +13,7 @@ namespace UnitClassLibrary
     public class ForceUnit : IComparable<ForceUnit>
     {
         #region _internalVariables
-        private const ForceType InternalUnitType = ForceType.Pounds;
+        private ForceType InternalUnitType;
         private double _intrinsicValue = 0.0;
         #endregion
 
@@ -59,7 +59,8 @@ namespace UnitClassLibrary
         /// <param name="passedValue">amount of force in unit passed</param>
         public ForceUnit(ForceType forceType, double passedValue)
         {
-            
+            InternalUnitType = forceType;
+            _intrinsicValue = passedValue;
         }
         #endregion
 
@@ -83,36 +84,55 @@ namespace UnitClassLibrary
         /// <returns>value of force in the toForceType unit</returns>
         public static double ConvertTo(ForceType fromForceType, double passedMagnitude, ForceType toForceType)
         {
-            double poundMagnitude = 0;
             double returnMagnitude = 0;
 
             switch (fromForceType)
             {
-                case ForceType.Pounds:
-                    poundMagnitude = passedMagnitude;
-                    break;
                 case ForceType.Newtons:
-                    poundMagnitude = passedMagnitude / 4.44822162;
+                    switch (toForceType)
+                    {
+                        case ForceType.Pounds:
+                            returnMagnitude = passedMagnitude / 4.44822162;
+                            break;
+                        case ForceType.Newtons:
+                            returnMagnitude = passedMagnitude;
+                            break;
+                        case ForceType.Kips:
+                            returnMagnitude = passedMagnitude * 0.000224809;
+                            break;
+                    }
+                    break;
+                case ForceType.Pounds:
+                    switch (toForceType)
+                    {
+                        case ForceType.Pounds:
+                            returnMagnitude = passedMagnitude;
+                            break;
+                        case ForceType.Newtons:
+                            returnMagnitude = passedMagnitude * 4.44822162;
+                            break;
+                        case ForceType.Kips:
+                            returnMagnitude = passedMagnitude * 1000;
+                            break;
+                    }
                     break;
                 case ForceType.Kips:
-                    poundMagnitude = passedMagnitude * 1000;
+                    switch (toForceType)
+                    {
+                        case ForceType.Kips:
+                            returnMagnitude = passedMagnitude;
+                            break;
+                        case ForceType.Pounds:
+                            returnMagnitude = passedMagnitude / 1000;
+                            break;
+                        case ForceType.Newtons:
+                            returnMagnitude = passedMagnitude / 4448.2216;
+                            break;
+                    }
                     break;
                 default:
                     //code should never run
                     throw new NotSupportedException("Unit not supported!");
-            }
-
-            switch (toForceType)
-            {
-                case ForceType.Pounds:
-                    returnMagnitude = poundMagnitude;
-                    break;
-                case ForceType.Newtons:
-                    returnMagnitude = poundMagnitude * 4.44822162;
-                    break;
-                case ForceType.Kips:
-                    returnMagnitude = poundMagnitude / 1000;
-                    break;
             }
 
             return returnMagnitude;
@@ -134,7 +154,7 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two forces</returns>
         public static ForceUnit operator +(ForceUnit f1, ForceUnit f2)
         {
-            return new ForceUnit(InternalUnitType, (f1._intrinsicValue + f2._intrinsicValue));
+            return new ForceUnit(ForceType.Newtons, f1.Newtons + f2.Newtons);
         }
 
         /// <summary>
@@ -145,7 +165,7 @@ namespace UnitClassLibrary
         /// <returns>force 1 minus force 2</returns>
         public static ForceUnit operator -(ForceUnit f1, ForceUnit f2)
         {
-            return new ForceUnit(InternalUnitType, (f1._intrinsicValue - f2._intrinsicValue));
+            return new ForceUnit(ForceType.Newtons, f1.Newtons - f2.Newtons);
         }
 
         /// <summary>
@@ -156,7 +176,7 @@ namespace UnitClassLibrary
         /// <returns>force increased by a factor of "multiplier"</returns>
         public static ForceUnit operator *(ForceUnit f1, double multiplier)
         {
-            return new ForceUnit(InternalUnitType, (f1._intrinsicValue * multiplier));
+            return new ForceUnit(ForceType.Newtons, f1.Newtons * multiplier);
         }
 
         /// <summary>

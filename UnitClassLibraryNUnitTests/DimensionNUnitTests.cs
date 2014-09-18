@@ -49,9 +49,9 @@ namespace UnitClassLibraryTests
             Dimension additionDimension = inchDimension + architecturalDimension;
 
             // assert
-            Assert.AreEqual(subtractionDimension.Feet,0, .00000001, "Doubles math should get us at least this close");
-            Assert.AreEqual(additionDimension.Millimeters, 720.725, .00000001, "Doubles math should get us at least this close");
-            Assert.AreEqual(additionDimension.Architectural, "2'4 6/16\"");
+            Assert.AreEqual(0, subtractionDimension.Feet, .00000001, "Doubles math should get us at least this close");
+            Assert.AreEqual(720.725, additionDimension.Millimeters, .00000001, "Doubles math should get us at least this close");
+            Assert.AreEqual("2'4 6/16\"", additionDimension.Architectural);
         }
 
         /// <summary>
@@ -71,14 +71,14 @@ namespace UnitClassLibraryTests
             Dimension dimension8 = new Dimension("-1'2\"");
 
             // assert
-            Assert.AreEqual(dimension1.Architectural,"1'2 3/16\"");
-            Assert.AreEqual(dimension2.Architectural,"1'");
-            Assert.AreEqual(dimension3.Architectural,"1'2\"");
-            Assert.AreEqual(dimension4.Architectural,"2 3/16\"");
-            Assert.AreEqual(dimension5.Architectural,"1'2 3/16\"");
-            Assert.AreEqual(dimension6.Architectural,"3/16\"");
-            Assert.AreEqual(dimension7.Architectural,"12'11 3/16\"");
-            Assert.AreEqual(dimension8.Architectural, "-1'2\"");
+            Assert.AreEqual("1'2 3/16\"",dimension1.Architectural);
+            Assert.AreEqual("1'",dimension2.Architectural);
+            Assert.AreEqual("1'2\"",dimension3.Architectural);
+            Assert.AreEqual("2 3/16\"",dimension4.Architectural);
+            Assert.AreEqual("1'2 3/16\"",dimension5.Architectural);
+            Assert.AreEqual("3/16\"",dimension6.Architectural);
+            Assert.AreEqual("12'11 3/16\"",dimension7.Architectural);
+            Assert.AreEqual("-1'2\"",dimension8.Architectural);
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace UnitClassLibraryTests
             string dimToString = dimension.ToString();
 
             // assert
-            Assert.AreEqual(dimToString, "");
+            Assert.AreEqual("",dimToString);
         }
 
         /// <summary>
@@ -167,9 +167,9 @@ namespace UnitClassLibraryTests
             dimensions.Sort();
 
             // assert
-            Assert.AreEqual(dimensions[0],smallDimension);
-            Assert.AreEqual(dimensions[1],mediumDimension);
-            Assert.AreEqual(dimensions[2], largeDimension);
+            Assert.AreEqual(smallDimension,dimensions[0]);
+            Assert.AreEqual(mediumDimension,dimensions[1]);
+            Assert.AreEqual(largeDimension,dimensions[2]);
         }
     }
 }

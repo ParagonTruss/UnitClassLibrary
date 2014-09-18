@@ -28,14 +28,14 @@ namespace UnitClassLibraryTests
             double MilesSquared = SquareInchesArea.MilesSquared;
 
             // assert
-            Assert.AreEqual(MillimetersSquared, 660643.84);
-            Assert.AreEqual(CentimetersSquared,6606.4384);
-            Assert.AreEqual(InchesSquared,1024.0);
-            Assert.AreEqual(FeetSquared,7.11111, 0.00001);
-            Assert.AreEqual(YardsSquared,0.790123, 0.000001);
-            Assert.AreEqual(MetersSquared,0.6606438, 0.00001);
-            Assert.AreEqual(KilometersSquared, .00000066064384, 0.00000000001);
-            Assert.AreEqual(MilesSquared,.000000255076, 0.0000000001);
+            Assert.AreEqual(660643.84, MillimetersSquared);
+            Assert.AreEqual(6606.4384, CentimetersSquared);
+            Assert.AreEqual(1024.0, InchesSquared);
+            Assert.AreEqual(7.11111, FeetSquared, 0.00001);
+            Assert.AreEqual(0.790123, YardsSquared, 0.000001);
+            Assert.AreEqual(0.6606438, MetersSquared, 0.00001);
+            Assert.AreEqual(.00000066064384, KilometersSquared, 0.00000000001);
+            Assert.AreEqual(.000000255076, MilesSquared, 0.0000000001);
         }
 
         [Test()]
@@ -62,14 +62,14 @@ namespace UnitClassLibraryTests
             double MileInches = MilesArea.InchesSquared;
 
             // assert
-            Assert.AreEqual(MilInches,0.15500031, 0.000001);
-            Assert.AreEqual(CenInches,15.500031, 0.000001);
-            Assert.AreEqual(Inches,100);
-            Assert.AreEqual(FeetInches,14400);
-            Assert.AreEqual(YardInches,129600);
-            Assert.AreEqual(MeterInches,155000.31);
-            Assert.AreEqual(KilometerInches,155000310000);
-            Assert.AreEqual(MileInches,401448959990);
+            Assert.AreEqual(0.15500031, MilInches, 0.000001);
+            Assert.AreEqual(15.500031, CenInches, 0.000001);
+            Assert.AreEqual(100,Inches);
+            Assert.AreEqual(14400,FeetInches);
+            Assert.AreEqual(129600,YardInches);
+            Assert.AreEqual(155000.31,MeterInches);
+            Assert.AreEqual(155000310000,KilometerInches);
+            Assert.AreEqual(401448959990,MileInches);
         }
 
         [Test()]
@@ -80,10 +80,10 @@ namespace UnitClassLibraryTests
             Area a3 = new Area(AreaType.CentimetersSquared, 5);
             Area a4 = new Area(AreaType.KilometersSquared, 0.0000005);
 
-            Assert.AreEqual(a1.CompareTo(a2),-1);
-            Assert.AreEqual(a2.CompareTo(a3),1);
-            Assert.AreEqual(a3.CompareTo(a1),-1);
-            Assert.AreEqual(a4.CompareTo(a2),0);
+            Assert.AreEqual(-1,a1.CompareTo(a2));
+            Assert.AreEqual(1,a2.CompareTo(a3));
+            Assert.AreEqual(-1,a3.CompareTo(a1));
+            Assert.AreEqual(0,a4.CompareTo(a2));
         }
 
         [Test()]
@@ -93,9 +93,9 @@ namespace UnitClassLibraryTests
             Area a2 = new Area(AreaType.InchesSquared, 100);
             Area a3 = new Area(AreaType.KilometersSquared, 100);
 
-            Assert.AreEqual(a1.MillimetersSquared,0);
-            Assert.AreEqual(a2.InchesSquared,100);
-            Assert.AreEqual(a3.InchesSquared, 155000310000);
+            Assert.AreEqual(0,a1.MillimetersSquared);
+            Assert.AreEqual(100,a2.InchesSquared);
+            Assert.AreEqual(155000310000,a3.InchesSquared);
         }
 
         [Test()]
