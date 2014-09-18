@@ -10,7 +10,7 @@ namespace UnitClassLibrary.Tests
     public class AngleTests
     {
         [Test()]
-        public void Angle_GetHashCode()
+        public void AngleN_GetHashCode()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -26,16 +26,16 @@ namespace UnitClassLibrary.Tests
 
         // SHOULD BE 275 BUT HAS ROUNDING ERRORS
         [Test()]
-        public void Angle_ToStringOverride()
+        public void AngleN_ToStringOverride()
         {
             Angle a1 = new Angle(AngleType.Degree, 275);
             Angle a2 = new Angle(AngleType.Radian, 2 * Math.PI);
 
-            Assert.AreEqual(a1.ToString(AngleType.Degree),"275°0'-16500\"°");
+            Assert.AreEqual("275°0'-16500\"°", a1.ToString(AngleType.Degree));
         }
 
         [Test()]
-        public void Angle_EqualsTest()
+        public void AngleN_EqualsTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -49,20 +49,20 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_MathOperatorTest()
+        public void AngleN_MathOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
 
             Angle addedAngle = a1 + a2;
-            Assert.AreEqual(addedAngle.Degrees,720);
+            Assert.AreEqual(720,addedAngle.Degrees);
 
             Angle subtractedAngle = a1 - a2;
-            Assert.AreEqual(subtractedAngle.Radians,0);
+            Assert.AreEqual(0,subtractedAngle.Radians);
         }
 
         [Test()]
-        public void Angle_ComparisonOperatorTest()
+        public void AngleN_ComparisonOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -76,28 +76,28 @@ namespace UnitClassLibrary.Tests
         }
 
         [Test()]
-        public void Angle_CompareToTest()
+        public void AngleN_CompareToTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, 720);
 
-            Assert.AreEqual(a1.CompareTo(a2),0);
-            Assert.AreEqual(a1.CompareTo(a2),0);
-            Assert.AreEqual(a1.CompareTo(a3),-1);
-            Assert.AreEqual(a3.CompareTo(a2), 1);
+            Assert.AreEqual(0,a1.CompareTo(a2));
+            Assert.AreEqual(0,a1.CompareTo(a2));
+            Assert.AreEqual(-1,a1.CompareTo(a3));
+            Assert.AreEqual(1,a3.CompareTo(a2));
         }
 
         [Test()]
-        public void Angle_NegationTest()
+        public void AngleN_NegationTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI);
 
-            Assert.AreEqual(a1.Negate().Degrees,-360);
-            Assert.AreEqual(a2.Negate().Radians,Math.PI * -1);
-            Assert.AreEqual(a1.Negate().Radians,Math.PI * -2);
-            Assert.AreEqual(a2.Negate().Degrees, -180);
+            Assert.AreEqual(-360,a1.Negate().Degrees);
+            Assert.AreEqual(Math.PI * -1,a2.Negate().Radians);
+            Assert.AreEqual(Math.PI * -2,a1.Negate().Radians);
+            Assert.AreEqual(-180,a2.Negate().Degrees);
         }
     }
 }

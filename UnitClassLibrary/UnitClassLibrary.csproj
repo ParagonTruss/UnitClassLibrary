@@ -7,8 +7,8 @@
     <ProjectGuid>{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Unit_Class_Library</RootNamespace>
-    <AssemblyName>Unit Class Library</AssemblyName>
+    <RootNamespace>UnitClassLibrary</RootNamespace>
+    <AssemblyName>UnitClassLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\UnitClassLibrary.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -41,19 +42,35 @@
   <ItemGroup>
     <Compile Include="Angle.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="ExtensionMethods\AreaListExtensionMethods.cs" />
     <Compile Include="Dimension.cs" />
     <Compile Include="Enums.cs" />
+    <Compile Include="ForceUnit.cs" />
     <Compile Include="Generators\DimensionGenerator.cs" />
     <Compile Include="Mass.cs" />
-    <Compile Include="MomentOfIntertiaUnit.cs" />
+    <Compile Include="Moment.cs" />
+    <Compile Include="MomentOfInertiaUnit.cs" />
     <Compile Include="Power.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Speed.cs" />
+    <Compile Include="Stress.cs" />
     <Compile Include="Time.cs" />
+    <Compile Include="Torque.cs" />
     <Compile Include="Volume.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

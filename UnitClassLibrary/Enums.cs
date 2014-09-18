@@ -18,7 +18,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit a force is
     /// </summary>
-    public enum ForceType { Pounds, Newtons, Kips }
+    public enum ForceType { Newtons, Pounds, Kips }
 
     /// <summary>
     /// Enum for specifying the type of unit an angle is

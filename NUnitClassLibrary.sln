@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibrary", "Unit Class Library\UnitClassLibrary.csproj", "{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibrary", "UnitClassLibrary\UnitClassLibrary.csproj", "{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibraryNUnitTests", "UnitClassLibraryNUnitTests\UnitClassLibraryNUnitTests.csproj", "{97C718BA-50EE-451E-A22D-662ADBA3BDAB}"
 EndProject
