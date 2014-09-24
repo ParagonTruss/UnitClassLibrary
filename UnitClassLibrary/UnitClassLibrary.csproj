@@ -50,6 +50,9 @@
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
     <Compile Include="Generators\DimensionGenerator.cs" />
+    <Compile Include="IAngle.cs" />
+    <Compile Include="Interfaces\IArea.cs" />
+    <Compile Include="Interfaces\IAngle.cs" />
     <Compile Include="Interfaces\IDistance.cs" />
     <Compile Include="Mass.cs" />
     <Compile Include="Moment.cs" />

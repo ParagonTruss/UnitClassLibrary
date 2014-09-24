@@ -22,7 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : IComparable<Angle>
+    public class Angle : IComparable<Angle>, UnitClassLibrary.IAngle
     {
         #region private fields and constants
 

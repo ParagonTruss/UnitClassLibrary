@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public class Area : IComparable<Area>
+    public class Area : IComparable<Area>, IArea
     {
         #region private fields and constants
 
