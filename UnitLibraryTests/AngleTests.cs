@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
+using NUnit.Framework;
 namespace UnitClassLibrary.Tests
 {
-    [TestClass()]
+    [TestFixture()]
     public class AngleTests
     {
-        [TestMethod()]
+        [Test()]
         public void Angle_GetHashCode()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -25,7 +25,7 @@ namespace UnitClassLibrary.Tests
         }
 
         // SHOULD BE 275 BUT HAS ROUNDING ERRORS
-        [TestMethod()]
+        [Test()]
         public void Angle_ToStringOverride()
         {
             Angle a1 = new Angle(AngleType.Degree, 275);
@@ -34,7 +34,7 @@ namespace UnitClassLibrary.Tests
             a1.ToString(AngleType.Degree).Should().Be("275°0'-16500\"°");
         }
 
-        [TestMethod()]
+        [Test()]
         public void Angle_EqualsTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -48,7 +48,7 @@ namespace UnitClassLibrary.Tests
             result2.Should().BeFalse();
         }
 
-        [TestMethod()]
+        [Test()]
         public void Angle_MathOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -61,7 +61,7 @@ namespace UnitClassLibrary.Tests
             subtractedAngle.Radians.ShouldBeEquivalentTo(0);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Angle_ComparisonOperatorTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -75,7 +75,7 @@ namespace UnitClassLibrary.Tests
             (a1 <= a2).Should().BeTrue();
         }
 
-        [TestMethod()]
+        [Test()]
         public void Angle_CompareToTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -88,7 +88,7 @@ namespace UnitClassLibrary.Tests
             a3.CompareTo(a2).Should().Be(1);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Angle_NegationTest()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);

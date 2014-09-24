@@ -1,21 +1,22 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UnitClassLibrary;
 using System.Collections.Generic;
 using FluentAssertions;
+using NUnit.Framework;
+
 
 namespace UnitClassLibraryTests
 {
     /// <summary>
     /// Test Class for all conversion functions 
     /// </summary>
-    [TestClass()]
+    [TestFixture()]
     public class DimensionTests
     {
         /// <summary>
         /// Tests the architectural string constructor and the regular dimension constructor
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_Constructors()
         {
  
@@ -38,7 +39,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests mathmatical operators we will test the properties at the same time.
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_Math_Operators()
         {
             // arrange
@@ -66,7 +67,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests Architectural string inputs.
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_Architectural_Constructor()
         {
             // arrange
@@ -93,7 +94,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests all equality operators
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_Equality_Operators()
         {
             // arrange
@@ -123,7 +124,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests GetHashCodeOperation
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_GetHashCode()
         {
             // arrange
@@ -142,7 +143,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests toString failure
         /// </summary>
-        [TestMethod()]
+        [Test()]
         [ExpectedException(typeof(NotImplementedException))]
         public void Dimensions_ToString()
         {
@@ -159,7 +160,7 @@ namespace UnitClassLibraryTests
         /// <summary>
         /// Tests CompareTo implementation
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Dimensions_CompareTo()
         {
             // arrange

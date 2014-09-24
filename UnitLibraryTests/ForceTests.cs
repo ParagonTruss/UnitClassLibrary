@@ -1,15 +1,15 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using FluentAssertions;
 using UnitClassLibrary;
 
 
 namespace UnitClassLibraryTests
 {
-    [TestClass()]
+    [TestFixture()]
     public class ForceTests
     {
-        [TestMethod()]
+        [Test()]
         public void Force_ConstructorAndCoversionTests()
         {
             // arrange
@@ -28,7 +28,7 @@ namespace UnitClassLibraryTests
             kip.Should().Be(0.1);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Force_MathOperatorTests()
         {
             ForceUnit pound = new ForceUnit(ForceType.Pounds, 250);

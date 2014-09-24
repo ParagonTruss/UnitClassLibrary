@@ -1,18 +1,18 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitClassLibrary;
 using FluentAssertions;
 using System.Collections.Generic;
 
 namespace UnitClassLibraryTests
 {
-    [TestClass()]
+    [TestFixture()]
     public class AreaTests
     {
         /// <summary>
         /// Conversions to tests.
         /// </summary>
-        [TestMethod()]
+        [Test()]
         public void Area_ConversionToTests()
         {
             // arrange
@@ -39,7 +39,7 @@ namespace UnitClassLibraryTests
             MilesSquared.Should().BeApproximately(.000000255076, 0.0000000001);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Area_ConversionFromTests()
         {
             // arrange
@@ -73,7 +73,7 @@ namespace UnitClassLibraryTests
             MileInches.Should().Be(401448959990);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Area_CompareToTest()
         {
             Area a1 = new Area(AreaType.InchesSquared, 100);
@@ -87,7 +87,7 @@ namespace UnitClassLibraryTests
             a4.CompareTo(a2).Should().Be(0);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Area_ConstructorTests()
         {
             Area a1 = new Area();
@@ -99,7 +99,7 @@ namespace UnitClassLibraryTests
             a3.InchesSquared.Should().Be(155000310000);
         }
 
-        [TestMethod()]
+        [Test()]
         public void Area_EqualsTests()
         {
             Area a1 = new Area();

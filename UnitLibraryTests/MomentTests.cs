@@ -1,13 +1,13 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitClassLibrary;
 
 namespace UnitClassLibraryTests
 {
-    [TestClass]
+    [TestFixture()]
     public class MomentTests
     {
-        [TestMethod]
+        [Test()]
         public void Moment_EqualityTest()
         {
         }

@@ -1,14 +1,14 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using UnitClassLibrary;
 using FluentAssertions;
 
 namespace Unit_Library_Tests
 {
-    [TestClass]
+    [TestFixture]
     public class PowerTests
     {
-        [TestMethod]
+        [Test]
         public void Power_Constructors()
         {
             // Set values
