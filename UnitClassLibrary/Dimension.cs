@@ -5,6 +5,7 @@ using System.Text;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
+using UnitClassLibrary.Interfaces;
 
 
 namespace UnitClassLibrary
@@ -29,7 +30,7 @@ namespace UnitClassLibrary
     /// </example>
     /// </summary>
     [DebuggerDisplay("Millimeters = {Millimeters}")]
-    public class Dimension : IComparable<Dimension>
+    public class Dimension : IComparable<Dimension>, IDistance
     {
         #region private fields and constants
         //internal Dimension type is set to millimeter to cause the least amount of rounding error when performing calculations.
