@@ -146,7 +146,7 @@ namespace UnitClassLibrary
         /// <param name="p1">power one</param>
         /// <param name="p2">power two</param>
         /// <returns>the sum of the two forces</returns>
-        public static Power operator +(Power p1, Power p2)
+        public static Power operator -(Power p1, Power p2)
         {
             return new Power(p1._energy - p2._energy, p1._time - p2._time);
         }
