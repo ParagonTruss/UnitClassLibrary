@@ -56,7 +56,7 @@ namespace UnitClassLibrary
                     break;
                 default:
                     // Should never reach; cases should cover all members of enumerated set
-                    break;
+                    throw new NotSupportedException("Unit not supported!");
             }
         }
 
@@ -108,6 +108,37 @@ namespace UnitClassLibrary
             get { return _energy.Erg / _time.Second; }
         }
 
+        public double GetValue(PowerType Units)
+        {
+            switch (Units)
+            {
+                case PowerType.Watt:
+                    return Watt;
+                case PowerType.Horsepower:
+                    return Horsepower;
+                case PowerType.FootPoundsPerSecond:
+                    return FootPoundsPerSecond;
+                case PowerType.MetricHorsepower:
+                    return MetricHorsepower;
+                case PowerType.ErgsPerSecond:
+                    return ErgsPerSecond;
+            }
+            throw new Exception("Unknown PowerType");
+        }
+
+        #endregion
+
+        #region Overloaded Operators
+        /// <summary>
+        /// adds two powers
+        /// </summary>
+        /// <param name="p1">power one</param>
+        /// <param name="p2">power two</param>
+        /// <returns>the sum of the two forces</returns>
+        public static Power operator +(Power p1, Power p2)
+        {
+            return new Power(PowerType.Watt, p1.Watt + p2.Watt); // TODO: is this the proper way to do this for a composite class?
+        }
         #endregion
     }
 }

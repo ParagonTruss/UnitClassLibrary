@@ -38,6 +38,37 @@ namespace UnitClassLibrary
             _force = passedForce;
         }
 
+        /// <summary>
+        /// Create a stress object from a composite unit; the value is arbitrarily distributed among the component units.
+        /// </summary>
+        /// <param name="passedStressType"></param>
+        /// <param name="passedValue"></param>
+        public Stress(StressType passedStressType, double passedValue)
+        {
+            switch (passedStressType)
+            {
+                case StressType.PoundsPerSquareInch:
+                    _area = new Area(AreaType.InchesSquared, passedValue);
+                    _force = new ForceUnit(ForceType.Pounds, 1);
+                    break;
+                case StressType.PoundsPerSquareMillimeter:
+                    _area = new Area(AreaType.MillimetersSquared, passedValue);
+                    _force = new ForceUnit(ForceType.Pounds, 1);
+                    break;
+                case StressType.NewtonsPerSquareMeter:
+                    _area = new Area(AreaType.MetersSquared, passedValue);
+                    _force = new ForceUnit(ForceType.Newtons, 1);
+                    break;
+                case StressType.NewtonsPerSquareMillimeter:
+                    _area = new Area(AreaType.MillimetersSquared, passedValue);
+                    _force = new ForceUnit(ForceType.Newtons, 1);
+                    break;
+                default:
+                    // Should never reach; cases should cover all members of enumerated set
+                    throw new NotSupportedException("Unit not supported!");
+            }
+        }
+
         #endregion
 
         #region Properties

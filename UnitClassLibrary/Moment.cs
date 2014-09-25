@@ -8,7 +8,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// defines force in a direction
     /// </summary>
-    public class Moment
+    public class Moment : UnitClassLibrary.IMoment
     {
         #region _internalVariables
         /// <summary>

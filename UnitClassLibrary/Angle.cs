@@ -22,13 +22,13 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : IComparable<Angle>, UnitClassLibrary.IAngle
+    public class Angle : IComparable<Angle>, UnitClassLibrary.Interfaces.IAngle
     {
         #region private fields and constants
 
         //Internally we are currently using radians
         private double _intrinsicValue;
-        private static AngleType InternalUnitType = AngleType.Radian;
+        private AngleType InternalUnitType;
 
         #endregion
 
@@ -50,7 +50,7 @@ namespace UnitClassLibrary
         }
         #endregion
 
-        #region helper methods
+        #region Helper Methods
         /// <summary>
         /// converts an Angle's Radians to Degrees
         /// </summary>
@@ -98,34 +98,43 @@ namespace UnitClassLibrary
         /// <returns>the double value of the angle</returns>
         private double retrieveAsExternalUnit(AngleType angleType)
         {
-            switch (angleType)
-            {
-                case AngleType.Radian:
-                    return _intrinsicValue;
-                case AngleType.Degree:
-                    return _intrinsicValue / (Math.PI / 180);
-                default:
-                    //code should never be run
-                    return 2;  // there is no enum for 2 so should crash
-            }
+            return ConvertTo(InternalUnitType, _intrinsicValue, angleType);
         }
 
-        /// <summary>
-        /// stores a double as the input angle type
-        /// </summary>
-        /// <param name="fromAngleType">angle type the double represents</param>
-        /// <param name="passedValue">angle value</param>
-        private void storeAsInternalUnit(AngleType fromAngleType, double passedValue)
+        public static double ConvertTo(AngleType fromAngleType, double passedValue, AngleType toAngleType)
         {
+           double returnAngle = 0;
+
             switch (fromAngleType)
             {
-                case AngleType.Radian:
-                    _intrinsicValue = passedValue;
-                    break;
                 case AngleType.Degree:
-                    _intrinsicValue = passedValue * (Math.PI / 180);
+                    switch (toAngleType)
+                    {
+                        case AngleType.Degree: // Return given degrees
+                            returnAngle = passedValue;
+                            break;
+                        case AngleType.Radian: // Convert degrees to radians
+                            returnAngle = passedValue / (180 / Math.PI);
+                            break;
+                    }
                     break;
+                case AngleType.Radian:
+                    switch (toAngleType)
+                    {
+                        case AngleType.Degree: // Convert radians to degrees
+                            returnAngle = passedValue / (Math.PI / 180);
+                            break;
+                        case AngleType.Radian: // Return given radians
+                            returnAngle = passedValue;
+                            break;
+                    }
+                    break;
+                default:
+                    //code should never run
+                    throw new NotSupportedException("Unit not supported!");
             }
+
+            return returnAngle;
         }
 
         /// <summary>
@@ -147,7 +156,7 @@ namespace UnitClassLibrary
         {
             _intrinsicValue = 0;
         }
-
+         
         /// <summary>
         /// Create an angle object from an angle value.
         /// </summary>
@@ -159,9 +168,11 @@ namespace UnitClassLibrary
             {
                 case AngleType.Radian:
                     _intrinsicValue = passedValue;
+                    InternalUnitType = AngleType.Radian;
                     break;
                 case AngleType.Degree:
-                    _intrinsicValue = passedValue * (Math.PI / 180);
+                    _intrinsicValue = passedValue; // * (Math.PI / 180);
+                    InternalUnitType = AngleType.Degree;
                     break;
             }
 
@@ -174,13 +185,14 @@ namespace UnitClassLibrary
         public Angle(Angle passedAngle)
         {
             this._intrinsicValue = passedAngle._intrinsicValue;
+            this.InternalUnitType = passedAngle.InternalUnitType;
         }
 
         /// <summary>
         /// castes an angle string to angle degrees
         /// </summary>
         /// <param name="passedAngleString">angle string to parse</param>
-        public Angle( string passedAngleString)
+        public Angle(string passedAngleString)
         {
             string[] seperatedStrings = passedAngleString.Split(new char[] { '°', '\'' });
             int degrees;
@@ -199,6 +211,7 @@ namespace UnitClassLibrary
             }
 
             _intrinsicValue = degrees + (minutes / 60f) + (seconds / 3600f);
+            InternalUnitType = AngleType.Degree;
         }
 
         #endregion
@@ -219,7 +232,7 @@ namespace UnitClassLibrary
         {
             //add the two Angles together
             //return a new Angle with the new value
-            return new Angle(InternalUnitType, (d1._intrinsicValue + d2._intrinsicValue));
+            return new Angle(AngleType.Radian, (d1.Radians + d2.Radians));
         }
 
         /// <summary>
@@ -232,7 +245,7 @@ namespace UnitClassLibrary
         {
             //subtract the two Angles
             //return a new Angle with the new value
-            return new Angle(InternalUnitType, (d1._intrinsicValue - d2._intrinsicValue));
+            return new Angle(AngleType.Radian, (d1.Radians - d2.Radians));
         }
 
         /// <summary>
