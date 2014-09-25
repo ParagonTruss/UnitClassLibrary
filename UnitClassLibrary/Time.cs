@@ -9,7 +9,7 @@ namespace UnitClassLibrary
     public class Time
     {
         #region _internalVariables
-        private TimeType InternalUnitType;
+        private TimeType _internalUnitType;
         private double _intrinsicValue;
         #endregion
 
@@ -21,7 +21,7 @@ namespace UnitClassLibrary
 
         public Time(TimeType passedTimeType, double passedValue)
         {
-            InternalUnitType = passedTimeType;
+            _internalUnitType = passedTimeType;
             _intrinsicValue = passedValue;
         }
         #endregion
@@ -49,6 +49,23 @@ namespace UnitClassLibrary
         {
             get;
             set;
+        }
+
+        private double GetValue(TimeType timeType)
+        {
+            throw new NotImplementedException();
+        }
+        #endregion
+
+        #region Overloaded Operators
+        public static Time operator +(Time t1, Time t2)
+        {
+            return new Time(t1._internalUnitType, (t1._intrinsicValue + t2.GetValue(t1._internalUnitType)));
+        }
+
+        public static Time operator -(Time t1, Time t2)
+        {
+            return new Time(t1._internalUnitType, (t1._intrinsicValue - t2.GetValue(t1._internalUnitType)));
         }
         #endregion
     }

@@ -137,7 +137,18 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two forces</returns>
         public static Power operator +(Power p1, Power p2)
         {
-            return new Power(PowerType.Watt, p1.Watt + p2.Watt); // TODO: is this the proper way to do this for a composite class?
+            return new Power( p1._energy + p2._energy, p1._time + p2._time);
+        }
+
+        /// <summary>
+        /// subtracts two powers
+        /// </summary>
+        /// <param name="p1">power one</param>
+        /// <param name="p2">power two</param>
+        /// <returns>the sum of the two forces</returns>
+        public static Power operator +(Power p1, Power p2)
+        {
+            return new Power(p1._energy - p2._energy, p1._time - p2._time);
         }
         #endregion
     }
