@@ -30,6 +30,7 @@ namespace UnitClassLibrary
     /// </example>
     /// </summary>
     [DebuggerDisplay("Millimeters = {Millimeters}")]
+    [Serializable]
     public class Dimension : IComparable<Dimension>, IDistance
     {
         #region private fields and constants
