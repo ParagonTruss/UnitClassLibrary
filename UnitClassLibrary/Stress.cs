@@ -184,7 +184,7 @@ namespace UnitClassLibrary
             {
                 Stress newStress = (Stress)obj;
 
-                return Math.Abs(newStress.PoundsPerSquareMillimeter - this.PoundsPerSquareMillimeter) < Constants.AcceptedEqualityDeviationConstant;
+                return (Math.Abs(newStress.PoundsPerSquareInch - this.PoundsPerSquareInch)) < Constants.AcceptedEqualityDeviationStress.PoundsPerSquareInch;
             }
             catch
             {

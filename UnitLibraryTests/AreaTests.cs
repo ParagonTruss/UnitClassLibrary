@@ -4,7 +4,7 @@ using UnitClassLibrary;
 using FluentAssertions;
 using System.Collections.Generic;
 
-namespace UnitClassLibraryTests
+namespace UnitLibraryTests
 {
     [TestFixture()]
     public class AreaTests
@@ -53,24 +53,24 @@ namespace UnitClassLibraryTests
             Area MilesArea = new Area(AreaType.MilesSquared, 100);
 
             // act
-            double MilInches = MillimetersArea.InchesSquared;
-            double CenInches = CentimetersArea.InchesSquared;
-            double Inches = InchesArea.InchesSquared;
-            double FeetInches = FeetArea.InchesSquared;
-            double YardInches = YardsArea.InchesSquared;
-            double MeterInches = MetersArea.InchesSquared;
-            double KilometerInches = KilometersArea.InchesSquared;
-            double MileInches = MilesArea.InchesSquared;
+            double millimetersSquaredAsInchesSquared = MillimetersArea.InchesSquared;
+            double centimetersSquaredAsInchesSquared = CentimetersArea.InchesSquared;
+            double InchesSquaredAsInchesSquared = InchesArea.InchesSquared;
+            double feetSquaredAsInchesSquared = FeetArea.InchesSquared;
+            double yardsSquaredAsInchesSquared = YardsArea.InchesSquared;
+            double metersAsInchesSquared = MetersArea.InchesSquared;
+            double kilometersAsInchesSquared = KilometersArea.InchesSquared;
+            double milesSquaredAsInchesSquared = MilesArea.InchesSquared;
 
             // assert
-            MilInches.Should().BeApproximately(0.15500031, 0.000001);
-            CenInches.Should().BeApproximately(15.500031, 0.000001);
-            Inches.Should().Be(100);
-            FeetInches.Should().Be(14400);
-            YardInches.Should().Be(129600);
-            MeterInches.Should().Be(155000.31);
-            KilometerInches.Should().Be(155000310000);
-            MileInches.Should().Be(401448959990);
+            millimetersSquaredAsInchesSquared.Should().BeApproximately(0.15500031, 0.000001);
+            centimetersSquaredAsInchesSquared.Should().BeApproximately(15.500031, 0.000001);
+            InchesSquaredAsInchesSquared.Should().BeApproximately(100, 0.000001);
+            feetSquaredAsInchesSquared.Should().BeApproximately(14400, 0.000001);
+            yardsSquaredAsInchesSquared.Should().BeApproximately(129600, 0.000001);
+            metersAsInchesSquared.Should().BeApproximately(155000, 100);
+            kilometersAsInchesSquared.Should().BeApproximately(155000000000, 100000000);
+            milesSquaredAsInchesSquared.Should().BeApproximately(401448960000, 100000000);
         }
 
         [Test()]
@@ -96,7 +96,7 @@ namespace UnitClassLibraryTests
 
             a1.MillimetersSquared.Should().Be(0);
             a2.InchesSquared.Should().Be(100);
-            a3.InchesSquared.Should().Be(155000310000);
+            a3.InchesSquared.Should().Be(155000000000);
         }
 
         [Test()]

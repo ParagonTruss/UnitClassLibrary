@@ -5,7 +5,7 @@ using FluentAssertions;
 using NUnit.Framework;
 
 
-namespace UnitClassLibraryTests
+namespace UnitLibraryTests
 {
     /// <summary>
     /// Test Class for all conversion functions 
@@ -17,7 +17,7 @@ namespace UnitClassLibraryTests
         /// Tests the architectural string constructor and the regular dimension constructor
         /// </summary>
         [Test()]
-        public void Dimensions_Constructors()
+        public void Dimension_Constructors()
         {
  
             // arrange & act
@@ -40,7 +40,7 @@ namespace UnitClassLibraryTests
         /// Tests mathmatical operators we will test the properties at the same time.
         /// </summary>
         [Test()]
-        public void Dimensions_Math_Operators()
+        public void Dimension_Math_Operators()
         {
             // arrange
             Dimension inchDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -51,24 +51,17 @@ namespace UnitClassLibraryTests
             Dimension additionDimension = inchDimension + architecturalDimension;
 
             // assert
-            /* changed it so it rounds the math class when we convert values so we prevent the errors
-            subtractionDimension.Feet.Should().BeApproximately(0, .00000001, "Doubles math should get us at least this close");
-            additionDimension.Millimeters.Should().BeApproximately(720.725, .00000001, "Doubles math should get us at least this close");
-            additionDimension.Architectural.ShouldBeEquivalentTo("2'4 6/16\"");
-             */
-
-            subtractionDimension.Feet.Should().Be(0);
-            double test = additionDimension.Millimeters;
-            Dimension test2 = new Dimension(DimensionType.Millimeter, 720.72499999999991);
-            additionDimension.Millimeters.Should().Be(720.725);
-            additionDimension.Architectural.ShouldBeEquivalentTo("2'4 6/16\"");
+            subtractionDimension.Kilometers.Should().BeApproximately(0, Constants.AcceptedEqualityDeviationDimension.Kilometers);
+            subtractionDimension.Feet.Should().BeApproximately(0, Constants.AcceptedEqualityDeviationDimension.Feet);
+            additionDimension.Millimeters.Should().BeApproximately(720.725, Constants.AcceptedEqualityDeviationDimension.Millimeters);
+            additionDimension.Architectural.Should().Be("2'4 6/16\"");
         }
 
         /// <summary>
         /// Tests Architectural string inputs.
         /// </summary>
         [Test()]
-        public void Dimensions_Architectural_Constructor()
+        public void Dimension_Architectural_Constructor()
         {
             // arrange
             Dimension dimension1 = new Dimension("1'2 3/16\"");
@@ -95,7 +88,7 @@ namespace UnitClassLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimensions_Equality_Operators()
+        public void Dimension_Equality_Operators()
         {
             // arrange
             Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -119,13 +112,24 @@ namespace UnitClassLibraryTests
             (equivalentbiggerDimension != biggerDimension).Should().Be(false);
         }
 
+        [Test()]
+        public void Dimension_EqualsWithinPassedAcceptedDeviation()
+        {
+            // arrange
+            Dimension biggerDimension = new Dimension(DimensionType.Inch, -14.1875);
+            Dimension smallerDimension = new Dimension("1' 2 1/16\"");
+            Dimension equivalentbiggerDimension = new Dimension(DimensionType.Millimeter, -360.3625);
+
+            (equivalentbiggerDimension.EqualsWithinPassedAcceptedDeviation( biggerDimension, 1)).Should().Be(true);
+        }
+
 
 
         /// <summary>
         /// Tests GetHashCodeOperation
         /// </summary>
         [Test()]
-        public void Dimensions_GetHashCode()
+        public void Dimension_GetHashCode()
         {
             // arrange
             Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
@@ -145,7 +149,7 @@ namespace UnitClassLibraryTests
         /// </summary>
         [Test()]
         [ExpectedException(typeof(NotImplementedException))]
-        public void Dimensions_ToString()
+        public void Dimension_ToString()
         {
             // arrange
             Dimension dimension = new Dimension(DimensionType.Millimeter, 14.1875);
@@ -161,25 +165,20 @@ namespace UnitClassLibraryTests
         /// Tests CompareTo implementation
         /// </summary>
         [Test()]
-        public void Dimensions_CompareTo()
+        public void Dimension_CompareTo()
         {
             // arrange
             Dimension smallDimension = new Dimension(DimensionType.Millimeter, 1);
             Dimension mediumDimension = new Dimension(DimensionType.Foot, 1);
             Dimension largeDimension = new Dimension(DimensionType.Kilometer, 1);
 
-            List<Dimension> dimensions = new List<Dimension>();
-            dimensions.Add(smallDimension);
-            dimensions.Add(largeDimension);
-            dimensions.Add(mediumDimension);
+            //Act & Assert
+            smallDimension.CompareTo(mediumDimension).Should().Be(-1);
+            mediumDimension.CompareTo(smallDimension).Should().Be(1);
+            largeDimension.CompareTo(largeDimension).Should().Be(0);
 
-            // act
-            dimensions.Sort();
+            
 
-            // assert
-            dimensions[0].ShouldBeEquivalentTo(smallDimension);
-            dimensions[1].ShouldBeEquivalentTo(mediumDimension);
-            dimensions[2].ShouldBeEquivalentTo(largeDimension);
         }
     }
 }

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
-namespace UnitClassLibrary.Tests
+using UnitClassLibrary;
+
+namespace UnitLibraryTests
 {
     [TestFixture()]
     public class AngleTests
@@ -12,7 +14,7 @@ namespace UnitClassLibrary.Tests
         [Test()]
         public void Angle_GetHashCode()
         {
-            Angle a1 = new Angle(AngleType.Degree, 360);
+            Angle a1 = new Angle(AngleType.Degree, 360.0);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, 359);
 
@@ -31,7 +33,7 @@ namespace UnitClassLibrary.Tests
             Angle a1 = new Angle(AngleType.Degree, 275);
             Angle a2 = new Angle(AngleType.Radian, 2 * Math.PI);
 
-            a1.ToString(AngleType.Degree).Should().Be("275°0'-16500\"°");
+            a1.ToString(AngleType.Degree).Should().Be("275°");
         }
 
         [Test()]
@@ -39,7 +41,7 @@ namespace UnitClassLibrary.Tests
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
-            Angle a3 = new Angle(AngleType.Degree, 359);
+            Angle a3 = new Angle(AngleType.Degree, 358);
 
             bool result1 = a1.Equals(a2);
             bool result2 = a2.Equals(a3);

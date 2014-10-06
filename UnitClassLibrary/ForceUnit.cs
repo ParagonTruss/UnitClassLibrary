@@ -294,7 +294,7 @@ namespace UnitClassLibrary
         /// <returns>whether the passed object is equal to this within the equality deviation constant</returns>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue) < Constants.AcceptedEqualityDeviationConstant;
+            return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) < Constants.AcceptedEqualityDeviationForceUnit.Pounds;
         }
         #endregion
 

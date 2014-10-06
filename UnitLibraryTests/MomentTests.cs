@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using UnitClassLibrary;
 
-namespace UnitClassLibraryTests
+namespace UnitLibraryTests
 {
     [TestFixture()]
     public class MomentTests

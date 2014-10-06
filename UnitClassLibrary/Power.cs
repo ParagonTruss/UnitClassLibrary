@@ -73,7 +73,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Watt
         {
-            get { return _energy.Joule / _time.Second; }
+            get { return _energy.Joule / _time.Seconds; }
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Horsepower
         {
-            get { return 33000 * _energy.FootPound / _time.Minute; }
+            get { return 33000 * _energy.FootPound / _time.Minutes; }
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FootPoundsPerSecond
         {
-            get { return _energy.FootPound / _time.Second; } 
+            get { return _energy.FootPound / _time.Seconds; } 
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetricHorsepower
         {
-            get { return 75 * _energy.KilogramMeter / _time.Second; }
+            get { return 75 * _energy.KilogramMeter / _time.Seconds; }
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ErgsPerSecond
         {
-            get { return _energy.Erg / _time.Second; }
+            get { return _energy.Erg / _time.Seconds; }
         }
 
         public double GetValue(PowerType Units)

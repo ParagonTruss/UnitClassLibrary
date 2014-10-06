@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public class Area : IComparable<Area>, IArea
+    public class Area : IComparable<Area>
     {
         #region private fields and constants
 
@@ -493,7 +493,7 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are equal</returns>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this.InternalUnitType)) < Constants.AcceptedEqualityDeviationConstant;
+            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this.InternalUnitType))) < Constants.AcceptedEqualityDeviationArea.GetValue(InternalUnitType);
         }
 
         #endregion
@@ -511,7 +511,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return _intrinsicValue.CompareTo(other._intrinsicValue);
+                return this.GetValue(this.InternalUnitType).CompareTo(other.GetValue(this.InternalUnitType));
         }
         #endregion
     }

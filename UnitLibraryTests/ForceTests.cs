@@ -4,7 +4,7 @@ using FluentAssertions;
 using UnitClassLibrary;
 
 
-namespace UnitClassLibraryTests
+namespace UnitLibraryTests
 {
     [TestFixture()]
     public class ForceTests

@@ -22,7 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : IComparable<Angle>, UnitClassLibrary.Interfaces.IAngle
+    public class Angle : IComparable<Angle>
     {
         #region private fields and constants
 
@@ -38,7 +38,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Radians
         {
-            get { return retrieveAsExternalUnit(AngleType.Radian); }
+            get { return GetValue(AngleType.Radian); }
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Degrees
         {
-            get { return retrieveAsExternalUnit(AngleType.Degree); }
+            get { return GetValue(AngleType.Degree); }
         }
         #endregion
 
@@ -96,7 +96,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="angleType">the type of angle to convert to</param>
         /// <returns>the double value of the angle</returns>
-        private double retrieveAsExternalUnit(AngleType angleType)
+        public double GetValue(AngleType angleType)
         {
             return ConvertTo(InternalUnitType, _intrinsicValue, angleType);
         }
@@ -225,93 +225,93 @@ namespace UnitClassLibrary
         /// <summary>
         /// adds the two angles together
         /// </summary>
-        /// <param name="d1">first angle</param>
-        /// <param name="d2">second angle</param>
+        /// <param name="a1">first angle</param>
+        /// <param name="a2">second angle</param>
         /// <returns>the sum of the two angles</returns>
-        public static Angle operator +(Angle d1, Angle d2)
+        public static Angle operator +(Angle a1, Angle a2)
         {
             //add the two Angles together
             //return a new Angle with the new value
-            return new Angle(AngleType.Radian, (d1.Radians + d2.Radians));
+            return new Angle(AngleType.Radian, (a1.Radians + a2.Radians));
         }
 
         /// <summary>
         /// subtracts one angle from the other
         /// </summary>
-        /// <param name="d1">the angle to be subtracted from</param>
-        /// <param name="d2">the angle to subtract</param>
+        /// <param name="a1">the angle to be subtracted from</param>
+        /// <param name="a2">the angle to subtract</param>
         /// <returns>the result of the first angle minus the second</returns>
-        public static Angle operator -(Angle d1, Angle d2)
+        public static Angle operator -(Angle a1, Angle a2)
         {
             //subtract the two Angles
             //return a new Angle with the new value
-            return new Angle(AngleType.Radian, (d1.Radians - d2.Radians));
+            return new Angle(AngleType.Radian, (a1.Radians - a2.Radians));
         }
 
         /// <summary>
         /// value equals to check if the two angles are equal
         /// </summary>
-        /// <param name="d1">first angle to check for equality</param>
-        /// <param name="d2">second angle to check for equality</param>
+        /// <param name="a1">first angle to check for equality</param>
+        /// <param name="a2">second angle to check for equality</param>
         /// <returns>whether the two angles are equal</returns>
-        public static bool operator ==(Angle d1, Angle d2)
+        public static bool operator ==(Angle a1, Angle a2)
         {
-            return d1.Equals(d2);
+            return a1.Equals(a2);
         }
 
         /// <summary>
         /// value equals to check if the two angles are not equal
         /// </summary>
-        /// <param name="d1">first angle to check for inequality</param>
-        /// <param name="d2">second angle to check for inequality</param>
+        /// <param name="a1">first angle to check for inequality</param>
+        /// <param name="a2">second angle to check for inequality</param>
         /// <returns>whether the two angles aren't equal</returns>
-        public static bool operator !=(Angle d1, Angle d2)
+        public static bool operator !=(Angle a1, Angle a2)
         {
-            return !d1.Equals(d2);
+            return !a1.Equals(a2);
         }
 
         /// <summary>
         /// checks whether one angle is larger than the other
         /// </summary>
-        /// <param name="d1">angle that is supposed to be larger</param>
-        /// <param name="d2">angle that is supposed to be smaller</param>
+        /// <param name="a1">angle that is supposed to be larger</param>
+        /// <param name="a2">angle that is supposed to be smaller</param>
         /// <returns>whether the first angle is greater than the second</returns>
-        public static bool operator >(Angle d1, Angle d2)
+        public static bool operator >(Angle a1, Angle a2)
         {
-            return d1._intrinsicValue > d2._intrinsicValue;
+            return a1._intrinsicValue > a2._intrinsicValue;
         }
 
         /// <summary>
         /// checks whether one angle is smaller than the other
         /// </summary>
-        /// <param name="d1">angle that is supposed to be smaller</param>
-        /// <param name="d2">angle that is supposed to be larger</param>
+        /// <param name="a1">angle that is supposed to be smaller</param>
+        /// <param name="a2">angle that is supposed to be larger</param>
         /// <returns>whether the first angle is less than the second</returns>
-        public static bool operator <(Angle d1, Angle d2)
+        public static bool operator <(Angle a1, Angle a2)
         {
-            return d1._intrinsicValue < d2._intrinsicValue;
+            return a1._intrinsicValue < a2._intrinsicValue;
         }
 
         /// <summary>
         /// checks whether an angle is larger than or equal to the other
         /// </summary>
-        /// <param name="d1">supposed to be larger or equal angle</param>
-        /// <param name="d2">supposed to be smaller or equal angle</param>
+        /// <param name="a1">supposed to be larger or equal angle</param>
+        /// <param name="a2">supposed to be smaller or equal angle</param>
         /// <returns>whether the angle on the left is greater than or equal to the angle on the right</returns>
-        public static bool operator >=(Angle d1, Angle d2)
+        public static bool operator >=(Angle a1, Angle a2)
         {
-            return d1.Equals(d2) || d1._intrinsicValue > d2._intrinsicValue;
+            return a1.Equals(a2) || a1._intrinsicValue > a2._intrinsicValue;
         }
 
         /// <summary>
         /// checks whether an angle is less than or equal to the other
         /// </summary>
-        /// <param name="d1">supposed to be smaller or equal angle</param>
-        /// <param name="d2">supposed to be larger or equal angle</param>
+        /// <param name="a1">supposed to be smaller or equal angle</param>
+        /// <param name="a2">supposed to be larger or equal angle</param>
         /// <returns>whether the angle on the left is less than or equal to the angle on the right</returns>
-        public static bool operator <=(Angle d1, Angle d2)
+        public static bool operator <=(Angle a1, Angle a2)
         {
-            return d1.Equals(d2) || d1._intrinsicValue < d2._intrinsicValue;
+            return a1.Equals(a2) || a1._intrinsicValue < a2._intrinsicValue;
         }
 
         /// <summary>
@@ -320,7 +320,8 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return _intrinsicValue.GetHashCode();
+            //cannot use InternalUnitType because this would give a different hash depending on how the object was crr
+            return this.GetValue(AngleType.Degree).GetHashCode();
         }
 
         /// <summary>
@@ -342,7 +343,7 @@ namespace UnitClassLibrary
         /// <returns>a boolean representing the equality of the two angles</returns>
         public override bool Equals(object obj)
         {
-            return Math.Abs(_intrinsicValue - ((Angle)(obj))._intrinsicValue) < Constants.AcceptedEqualityDeviationConstant;
+            return Math.Abs(this.GetValue(InternalUnitType) - ((Angle)(obj)).GetValue(InternalUnitType)) < Constants.AcceptedEqualityDeviationAngle.GetValue(InternalUnitType);
         }
 
         /// <summary>
@@ -355,9 +356,9 @@ namespace UnitClassLibrary
             switch (angleType)
             {
                 case AngleType.Radian:
-                    return _intrinsicValue.ToString() + " rad";
+                    return this.GetValue(AngleType.Radian).ToString() + " rad";
                 case AngleType.Degree:
-                    return ConvertDecimalRadiansToDegreesString(_intrinsicValue) + "°";
+                    return this.GetValue(AngleType.Degree) + "°";
                 default:
                     //code should never be run
                     return "We were unable to identify your desired Unit Type";

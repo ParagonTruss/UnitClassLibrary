@@ -5,7 +5,6 @@ using System.Text;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using UnitClassLibrary.Interfaces;
 
 
 namespace UnitClassLibrary
@@ -30,7 +29,7 @@ namespace UnitClassLibrary
     /// </example>
     /// </summary>
     [DebuggerDisplay("Millimeters = {Millimeters}")]
-    public class Dimension : IComparable<Dimension>, IDistance
+    public class Dimension : IComparable<Dimension>
     {
         #region private fields and constants
         private DimensionType InternalUnitType;
@@ -669,88 +668,8 @@ namespace UnitClassLibrary
                     break;
             }
 
-            /*//check to see if a number is within the accepted equaility range
-            double roundedValue = Math.Round(internalDecimalMillimeters, (Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant.Length - 2));
-            if (Math.Abs(roundedValue - internalDecimalMillimeters) < Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant))
-            {
-                internalDecimalMillimeters = roundedValue;
-            }*/
-
-            //Now convert the value from Millimeters to the desired output
-            /*switch (typeConvertingTo)
-            {
-                case DimensionType.ThirtySecond:
-                    returnDouble = (internalDecimalMillimeters / 0.0393701) * 32;
-                    break;
-                case DimensionType.Sixteenth:
-                    returnDouble = (internalDecimalMillimeters / 0.0393701) * 16;
-                    break;
-                case DimensionType.Inch:
-                    returnDouble = internalDecimalMillimeters / 25.4;
-                    break;
-                case DimensionType.Foot:
-                    returnDouble = internalDecimalMillimeters / 304.8;
-                    break;
-                case DimensionType.Yard:
-                    returnDouble = internalDecimalMillimeters / 914.4;
-                    break;
-                case DimensionType.Mile:
-                    returnDouble = internalDecimalMillimeters / 1609344;
-                    break;
-                case DimensionType.Millimeter:
-                    returnDouble = internalDecimalMillimeters;
-                    break;
-                case DimensionType.Centimeter:
-                    returnDouble = internalDecimalMillimeters / 10;
-                    break;
-                case DimensionType.Meter:
-                    returnDouble = internalDecimalMillimeters / 1000;
-                    break;
-                case DimensionType.Kilometer:
-                    returnDouble = internalDecimalMillimeters / 1000000;
-                    break;
-            }*/
-
-            //this rounds the double due to how C# calls the toString function and gets rid of the double's errors
-            //see http://codereview.stackexchange.com/questions/62651/which-method-of-fixing-double-arithmetic-errors-should-i-use
-            string returnDoubleAsString = "" + returnDouble;
-            return double.Parse(returnDoubleAsString);
-        }
-            //attempt to fix double arithmetic errors
-            /*double errorMargins = returnDouble * Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant);
-            double roundedValue = 0;
-            for (int i = 1; i <= returnDoubleAsString.Length; i++)
-            {
-                roundedValue = RoundToSignificantDigits(returnDouble, i);
-                if (Math.Abs(roundedValue - returnDouble) < Double.Parse(Unit_Class_Library.Properties.Resources.AcceptedDeviationConstant))
-                {
-                    returnDouble = roundedValue;
-                    i = returnDoubleAsString.Length;
-                }
-
-            }
-
             return returnDouble;
         }
-
-        //code adapted from http://stackoverflow.com/questions/374316/round-a-double-to-x-significant-figures by P Daddy
-        public static double RoundToSignificantDigits(double d, int digits)
-        {
-            if (d == 0)
-                return 0;
-
-            bool isNegative = false;
-            if (d < 0)
-                isNegative = true;
-    
-            double scale = Math.Pow(10, Math.Floor(Math.Log10(Math.Abs(d))) + 1);
-            double returnValue =  scale * Math.Round(d / scale, digits);
-
-            if (isNegative)
-                returnValue = -returnValue;
-
-            return returnValue;
-        }*/
 
         /// <summary>
         /// Converts any dimension into an architectural string representation
@@ -776,19 +695,19 @@ namespace UnitClassLibrary
         {
             //add the two dimensions together
             //return a new dimension with the new value
-            return new Dimension(d1.InternalUnitType, (d1._intrinsicValue + d2.GetValue(d1.InternalUnitType)));
+            return new Dimension(d1.InternalUnitType, (d1.GetValue(d1.InternalUnitType) + d2.GetValue(d1.InternalUnitType)));
         }
 
         public static Dimension operator -(Dimension d1, Dimension d2)
         {
             //subtract the two dimensions
             //return a new dimension with the new value
-            return new Dimension(d1.InternalUnitType, (d1._intrinsicValue - d2.GetValue(d1.InternalUnitType)));
+            return new Dimension(d1.InternalUnitType, (d1.GetValue(d1.InternalUnitType) - d2.GetValue(d1.InternalUnitType)));
         }
 
         public static double operator /(Dimension d1, Dimension d2)
         {
-            return d1._intrinsicValue / d2.GetValue(d1.InternalUnitType);
+            return d1.GetValue(d1.InternalUnitType) / d2.GetValue(d1.InternalUnitType);
         }
 
         public static Dimension operator *(Dimension d1, Dimension d2)
@@ -859,11 +778,23 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// value comparison, checks whether the two are equal within an accepted equality deviation
+        /// value comparison, checks whether the two are equal within the accepted equality deviation specified in Constants
         /// </summary>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._intrinsicValue - ((Dimension)(obj)).GetValue(this.InternalUnitType)) < Constants.AcceptedEqualityDeviationConstant;
+            return (Math.Abs(this.GetValue(this.InternalUnitType) - ((Dimension)(obj)).GetValue(this.InternalUnitType))) < Constants.AcceptedEqualityDeviationDimension.Inches;
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality deviation
+        /// </summary>
+        public bool EqualsWithinPassedAcceptedDeviation(object obj, double passedAcceptedEqualityDeviationConstant)
+        {
+            return (Math.Abs(
+                (Math.Abs(this.GetValue(this.InternalUnitType))
+                - Math.Abs(((Dimension)(obj)).GetValue(this.InternalUnitType)))
+                ))
+                < passedAcceptedEqualityDeviationConstant;
         }
 
         /// <summary>
@@ -895,7 +826,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return _intrinsicValue.CompareTo(other._intrinsicValue);
+                return this.GetValue(this.InternalUnitType).CompareTo(other.GetValue(InternalUnitType));
         }
         #endregion
     }
