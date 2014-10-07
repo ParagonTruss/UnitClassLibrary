@@ -791,8 +791,8 @@ namespace UnitClassLibrary
         public bool EqualsWithinPassedAcceptedDeviation(object obj, double passedAcceptedEqualityDeviationConstant)
         {
             return (Math.Abs(
-                (Math.Abs(this.GetValue(this.InternalUnitType))
-                - Math.Abs(((Dimension)(obj)).GetValue(this.InternalUnitType)))
+                (this.GetValue(this.InternalUnitType)
+                - ((Dimension)(obj)).GetValue(this.InternalUnitType))
                 ))
                 < passedAcceptedEqualityDeviationConstant;
         }
