@@ -9,7 +9,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// class that defines mass with a base unit of Kilograms
     /// </summary>
-    public class Mass
+    public class Mass : IComparable<Mass>
     {
         #region _internalVariables
         private double _intrinsicValue = 0.0;
@@ -27,14 +27,40 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// constructor that takes passedKilograms and sets Kilograms to it
-        /// </summary>
-        /// <param name="passedKilograms">amount that kilograms should have</param>
-        public Mass(double passedKilograms)
+
+        public Mass()
         {
-            Kilograms = passedKilograms;
+            throw new NotImplementedException();
         }
+
+        public Mass(MassType passedType, double passedValue)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion
+
+        public int CompareTo(Mass other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double Grams { get; set; }
+
+        public double MetricTons { get; set; }
+
+        public double Milligrams { get; set; }
+
+        public double Micrograms { get; set; }
+
+        public double LongTons { get; set; }
+
+        public double ShortTons { get; set; }
+
+        public double Stones { get; set; }
+
+        public double Pounds { get; set; }
+
+        public double Ounces { get; set; }
     }
 }

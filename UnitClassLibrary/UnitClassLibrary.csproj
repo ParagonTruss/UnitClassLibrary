@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Angle.cs" />
     <Compile Include="Constants.cs" />
+    <Compile Include="ElectricCurrent.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />

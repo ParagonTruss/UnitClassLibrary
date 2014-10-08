@@ -171,7 +171,11 @@ namespace UnitClassLibrary
                     InternalUnitType = AngleType.Radian;
                     break;
                 case AngleType.Degree:
-                    _intrinsicValue = passedValue; // * (Math.PI / 180);
+                    while (passedValue > 360)
+                    {
+                        passedValue = passedValue - 360;
+                    }
+                    _intrinsicValue = passedValue;
                     InternalUnitType = AngleType.Degree;
                     break;
             }
@@ -379,7 +383,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return (this._intrinsicValue.CompareTo(other._intrinsicValue));
+                return (this.GetValue(InternalUnitType).CompareTo(other.GetValue(InternalUnitType)));
         }
         #endregion
     }

@@ -84,10 +84,16 @@ namespace UnitLibraryTests
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, 720);
 
+            Angle a4 = new Angle(AngleType.Radian, Math.PI);
+            Angle a5 = new Angle(AngleType.Degree, 178);
+
             a1.CompareTo(a2).Should().Be(0);
             a1.CompareTo(a2).Should().Be(0);
-            a1.CompareTo(a3).Should().Be(-1);
-            a3.CompareTo(a2).Should().Be(1);
+            a1.CompareTo(a3).Should().Be(0);
+            a3.CompareTo(a2).Should().Be(0);
+
+            a4.CompareTo(a3).Should().Be(-1);
+            a4.CompareTo(a5).Should().Be(1);
         }
 
         [Test()]
