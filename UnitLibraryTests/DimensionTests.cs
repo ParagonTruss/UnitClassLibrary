@@ -140,7 +140,7 @@ namespace UnitLibraryTests
             Dimension smallerDimension = new Dimension("1' 2 1/16\"");
             Dimension equivalentbiggerDimension = new Dimension(DimensionType.Millimeter, -360.3625);
 
-            (equivalentbiggerDimension.EqualsWithinPassedAcceptedDeviation( biggerDimension, 1)).Should().Be(true);
+            (equivalentbiggerDimension.EqualsWithinPassedAcceptedDeviation( biggerDimension, new Dimension(DimensionType.Millimeter, 1))).Should().Be(true);
         }
 
 

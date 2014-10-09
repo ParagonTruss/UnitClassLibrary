@@ -10,7 +10,7 @@ namespace UnitClassLibrary
         #region private fields and constants
 
         private double _intrinsicValue;
-        private AreaType InternalUnitType;
+        private AreaType _internalUnitType;
 
         #endregion
 
@@ -24,6 +24,55 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
+        /// Take two dimensions and make them into an area
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        public Area(Dimension d1, Dimension d2)
+        {
+            // We do not have ThirtySecondsSquared or SixteenthsSquared as area units, so convert these to inches
+            if (d1.InternalUnitType == DimensionType.ThirtySecond || d1.InternalUnitType == DimensionType.Sixteenth)
+            {
+                _intrinsicValue = d1.Inches * d2.Inches;
+            }
+            else
+            {
+                _intrinsicValue = d1.GetValue(d1.InternalUnitType) * d2.GetValue(d1.InternalUnitType);
+            }
+
+            // Set the internal unit type to the type of the first passed Dimension squared. Sixteenths and thrity-seconds have been converted into inches and will therefore be in inches squared.
+            switch (d1.InternalUnitType)
+            {
+                case DimensionType.Millimeter:
+                    _internalUnitType = AreaType.MillimetersSquared;
+                    break;
+                case DimensionType.Centimeter:
+                    _internalUnitType = AreaType.CentimetersSquared;
+                    break;
+                case DimensionType.Meter:
+                    _internalUnitType = AreaType.MetersSquared;
+                    break;
+                case DimensionType.Kilometer:
+                    _internalUnitType = AreaType.KilometersSquared;
+                    break;
+                case DimensionType.ThirtySecond: // Has been converted to inches
+                case DimensionType.Sixteenth: // Has been converted to inches
+                case DimensionType.Inch:
+                    _internalUnitType = AreaType.InchesSquared;
+                    break;
+                case DimensionType.Foot:
+                    _internalUnitType = AreaType.FeetSquared;
+                    break;
+                case DimensionType.Yard:
+                    _internalUnitType = AreaType.YardsSquared;
+                    break;
+                case DimensionType.Mile:
+                    _internalUnitType = AreaType.MilesSquared;
+                    break;
+            }
+        }
+
+        /// <summary>
         /// sets the area to the passed double with the passed unit type
         /// </summary>
         /// <param name="areaType">passed unit type</param>
@@ -31,7 +80,7 @@ namespace UnitClassLibrary
         public Area(AreaType areaType, double passedValue)
         {
             _intrinsicValue = passedValue;
-            InternalUnitType = areaType;
+            _internalUnitType = areaType;
         }
         #endregion
 
@@ -133,7 +182,7 @@ namespace UnitClassLibrary
         /// <returns>area in specified unit type</returns>
         private double retrieveAsExternalUnit(AreaType areaType)
         {
-            return ConvertArea(InternalUnitType, _intrinsicValue, areaType);
+            return ConvertArea(_internalUnitType, _intrinsicValue, areaType);
         }
 
         /// <summary>
@@ -405,7 +454,7 @@ namespace UnitClassLibrary
         {
             //add the two Areas together
             //return a new Area with the new value
-            return new Area(a1.InternalUnitType, (a1._intrinsicValue + a2.GetValue(a1.InternalUnitType)));
+            return new Area(a1._internalUnitType, (a1._intrinsicValue + a2._intrinsicValue));
         }
 
         /// <summary>
@@ -418,7 +467,7 @@ namespace UnitClassLibrary
         {
             //subtract the two Areas
             //return a new Area with the new value
-            return new Area(a1.InternalUnitType, (a1._intrinsicValue - a2.GetValue(a1.InternalUnitType)));
+            return new Area(a1._internalUnitType, (a1._intrinsicValue - a2.GetValue(a1._internalUnitType)));
         }
 
         /// <summary>
@@ -451,7 +500,7 @@ namespace UnitClassLibrary
         /// <returns>whether the first area is larger than second area</returns>
         public static bool operator >(Area a1, Area a2)
         {
-            return a1._intrinsicValue > a2.GetValue(a1.InternalUnitType);
+            return a1._intrinsicValue > a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -462,7 +511,7 @@ namespace UnitClassLibrary
         /// <returns>whether the first area is smaller than second area</returns>
         public static bool operator <(Area a1, Area a2)
         {
-            return a1._intrinsicValue < a2.GetValue(a1.InternalUnitType);
+            return a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -493,7 +542,7 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are equal</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this.InternalUnitType))) < Constants.AcceptedEqualityDeviationArea.GetValue(InternalUnitType);
+            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationArea.GetValue(_internalUnitType);
         }
 
         #endregion
@@ -511,7 +560,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return this.GetValue(this.InternalUnitType).CompareTo(other.GetValue(this.InternalUnitType));
+                return this.GetValue(this._internalUnitType).CompareTo(other.GetValue(this._internalUnitType));
         }
         #endregion
     }

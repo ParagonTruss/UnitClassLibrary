@@ -93,10 +93,13 @@ namespace UnitLibraryTests
             Area a1 = new Area();
             Area a2 = new Area(AreaType.InchesSquared, 100);
             Area a3 = new Area(AreaType.KilometersSquared, 100);
+            Area a4 = new Area(new Dimension(DimensionType.Foot, 10), new Dimension(DimensionType.Inch, 12));
+
 
             a1.MillimetersSquared.Should().Be(0);
             a2.InchesSquared.Should().Be(100);
             a3.InchesSquared.Should().Be(155000000000);
+            a4.FeetSquared.Should().Be(10);
         }
 
         [Test()]

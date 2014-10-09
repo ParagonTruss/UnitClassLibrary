@@ -16,7 +16,8 @@ namespace UnitClassLibrary
 
         public Dimension LengthToFourthPower
         {
-            get { return _length * _length * _length * _length; }
+            get { return _length.raiseToPower(4); }
+            
         }
 
         public MomentOfIntertiaUnit(Dimension passedLengthToFourthPower)

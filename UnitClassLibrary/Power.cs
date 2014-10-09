@@ -150,6 +150,74 @@ namespace UnitClassLibrary
         {
             return new Power(p1._energy - p2._energy, p1._time - p2._time);
         }
+
+        /// <summary>
+        /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
+        /// </summary>
+        public static bool operator ==(Power p1, Power p2)
+        {
+            return p1.Equals(p2);
+        }
+
+        /// <summary>
+        /// Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
+        /// </summary>
+        public static bool operator !=(Power p1, Power p2)
+        {
+            return !p1.Equals(p2);
+        }
+
+        /// <summary>
+        /// Compare p1 and p2 in units of p1
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static bool operator >(Power p1, Power p2)
+        {
+            return p1._energy.GetValue(p1._energy.InternalUnitType) / p1._time.GetValue(p1._time.InternalUnitType) >
+                p2._energy.GetValue(p1._energy.InternalUnitType) / p2._time.GetValue(p1._time.InternalUnitType);
+        }
+
+        /// <summary>
+        /// Compare p1 and p2 in units of p1
+        /// </summary>
+        /// <param name="p1"></param>
+        /// <param name="p2"></param>
+        /// <returns></returns>
+        public static bool operator <(Power p1, Power p2)
+        {
+            return p1._energy.GetValue(p1._energy.InternalUnitType) / p1._time.GetValue(p1._time.InternalUnitType) <
+                p2._energy.GetValue(p1._energy.InternalUnitType) / p2._time.GetValue(p1._time.InternalUnitType);
+        }
+
+        public static bool operator <=(Power p1, Power p2)
+        {
+            return p1.Equals(p2) || p1 < p2;
+        }
+
+        public static bool operator >=(Power p1, Power p2)
+        {
+            return p1.Equals(p2) || p1 > p2;
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within the accepted equality deviation specified in Constants
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) < // This power and the passed power (in units of this power)...
+                Constants.AcceptedEqualityDeviationPower._energy.GetValue(this._energy.InternalUnitType) / Constants.AcceptedEqualityDeviationPower._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation power constant in units of this power
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality deviation
+        /// </summary>
+        public bool EqualsWithinPassedAcceptedDeviation(object obj, Power passedAcceptedEqualityDeviationDimension)
+        {
+            return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) < // This power and the passed power (in units of this power)...
+                passedAcceptedEqualityDeviationDimension._energy.GetValue(this._energy.InternalUnitType) / passedAcceptedEqualityDeviationDimension._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation power constant in units of this power
+        }
         #endregion
     }
 }

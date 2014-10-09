@@ -9,6 +9,10 @@ namespace UnitClassLibrary
     public class Time
     {
         #region _internalVariables
+        internal TimeType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
         private TimeType _internalUnitType;
         private double _intrinsicValue;
         private Time mintueTime;
@@ -97,7 +101,7 @@ namespace UnitClassLibrary
             set;
         }
 
-        private double GetValue(TimeType timeType)
+        public double GetValue(TimeType timeType)
         {
             throw new NotImplementedException();
         }
