@@ -720,6 +720,11 @@ namespace UnitClassLibrary
         {
             return new Dimension(d1.InternalUnitType, d1._intrinsicValue * multiplier);
         }
+
+        public static Dimension operator /(Dimension d1, double divisor)
+        {
+            return new Dimension(d1.InternalUnitType, d1._intrinsicValue / divisor);
+        }
         
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
