@@ -28,7 +28,7 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    [DebuggerDisplay("Millimeters = {Millimeters}")]
+    [DebuggerDisplay("Inches = {Inches}")]
 
     public class Dimension : IComparable<Dimension>
     {
