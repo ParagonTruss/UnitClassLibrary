@@ -33,7 +33,11 @@ namespace UnitClassLibrary
     public class Dimension : IComparable<Dimension>
     {
         #region private fields and constants
-        private DimensionType InternalUnitType;
+        internal DimensionType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
+        private DimensionType _internalUnitType;
 
         //dimension value
         private double _intrinsicValue = 0.0;
@@ -55,8 +59,8 @@ namespace UnitClassLibrary
         /// </summary>
         public Dimension(DimensionType passedDimensionType, double passedInput)
         {
-            this._intrinsicValue = passedInput;
-            this.InternalUnitType = passedDimensionType;
+            _intrinsicValue = passedInput;
+            _internalUnitType = passedDimensionType;
         }
 
         /// <summary>
@@ -65,7 +69,7 @@ namespace UnitClassLibrary
         public Dimension(Dimension passedDimension)
         {
             _intrinsicValue = passedDimension._intrinsicValue;
-            InternalUnitType = passedDimension.InternalUnitType;
+            _internalUnitType = passedDimension._internalUnitType;
         }
 
         /// <summary>
@@ -174,12 +178,12 @@ namespace UnitClassLibrary
 
         private void storeArchitecturalStringAsInternalUnit(string passedArchitecturalString)
         {
-            _intrinsicValue = ConvertArchitectualStringtoInternalUnits(InternalUnitType, passedArchitecturalString);
+            _intrinsicValue = ConvertArchitectualStringtoInternalUnits(_internalUnitType, passedArchitecturalString);
         }
 
         private double retrieveAsExternalUnit(DimensionType toDimensionType)
         {
-            return ConvertDimension(InternalUnitType, _intrinsicValue, toDimensionType);
+            return ConvertDimension(_internalUnitType, _intrinsicValue, toDimensionType);
         }
 
         private string retrieveInternalUnitAsArchitecturalString()
@@ -680,7 +684,7 @@ namespace UnitClassLibrary
         public static string ConvertDimensionIntoArchitecturalString(Dimension d)
         {
             //Now convert the value from millimeters to the desired output
-            return ConvertToArchitecturalString(d.InternalUnitType, d._intrinsicValue);
+            return ConvertToArchitecturalString(d._internalUnitType, d._intrinsicValue);
         }
         
         #endregion
@@ -696,29 +700,29 @@ namespace UnitClassLibrary
         {
             //add the two dimensions together
             //return a new dimension with the new value
-            return new Dimension(d1.InternalUnitType, (d1.GetValue(d1.InternalUnitType) + d2.GetValue(d1.InternalUnitType)));
+            return new Dimension(d1._internalUnitType, (d1.GetValue(d1._internalUnitType) + d2.GetValue(d1._internalUnitType)));
         }
 
         public static Dimension operator -(Dimension d1, Dimension d2)
         {
             //subtract the two dimensions
             //return a new dimension with the new value
-            return new Dimension(d1.InternalUnitType, (d1.GetValue(d1.InternalUnitType) - d2.GetValue(d1.InternalUnitType)));
+            return new Dimension(d1._internalUnitType, (d1.GetValue(d1._internalUnitType) - d2.GetValue(d1._internalUnitType)));
         }
 
         public static double operator /(Dimension d1, Dimension d2)
         {
-            return d1.GetValue(d1.InternalUnitType) / d2.GetValue(d1.InternalUnitType);
+            return d1.GetValue(d1._internalUnitType) / d2.GetValue(d1._internalUnitType);
         }
 
-        public static Dimension operator *(Dimension d1, Dimension d2)
+        public static Area operator *(Dimension d1, Dimension d2)
         {
-            return new Dimension(d1.InternalUnitType, d1._intrinsicValue * d2.GetValue(d1.InternalUnitType));
+            return new Area(d1, d2);
         }
 
         public static Dimension operator *(Dimension d1, double multiplier)
         {
-            return new Dimension(d1.InternalUnitType, d1._intrinsicValue * multiplier);
+            return new Dimension(d1._internalUnitType, d1._intrinsicValue * multiplier);
         }
 
         public static Dimension operator /(Dimension d1, double divisor)
@@ -744,12 +748,12 @@ namespace UnitClassLibrary
 
         public static bool operator >(Dimension d1, Dimension d2)
         {
-            return d1._intrinsicValue > d2.GetValue(d1.InternalUnitType);
+            return d1._intrinsicValue > d2.GetValue(d1._internalUnitType);
         }
 
         public static bool operator <(Dimension d1, Dimension d2)
         {
-            return d1._intrinsicValue < d2.GetValue(d1.InternalUnitType);
+            return d1._intrinsicValue < d2.GetValue(d1._internalUnitType);
         }
 
         public static bool operator <=(Dimension d1, Dimension d2)
@@ -788,19 +792,19 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this.GetValue(this.InternalUnitType) - ((Dimension)(obj)).GetValue(this.InternalUnitType))) < Constants.AcceptedEqualityDeviationDimension.Inches;
+            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationDimension.GetValue(this._internalUnitType);
         }
 
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality deviation
         /// </summary>
-        public bool EqualsWithinPassedAcceptedDeviation(object obj, double passedAcceptedEqualityDeviationConstant)
+        public bool EqualsWithinPassedAcceptedDeviation(object obj, Dimension passedAcceptedEqualityDeviationDimension)
         {
             return (Math.Abs(
-                (this.GetValue(this.InternalUnitType)
-                - ((Dimension)(obj)).GetValue(this.InternalUnitType))
+                (this.GetValue(this._internalUnitType)
+                - ((Dimension)(obj)).GetValue(this._internalUnitType))
                 ))
-                < passedAcceptedEqualityDeviationConstant;
+                < passedAcceptedEqualityDeviationDimension.GetValue(_internalUnitType);
         }
 
         /// <summary>
@@ -809,12 +813,17 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public Dimension Negate()
         {
-            return new Dimension(InternalUnitType, _intrinsicValue * -1);
+            return new Dimension(_internalUnitType, _intrinsicValue * -1);
         }
 
         public Dimension AbsoluteValue()
         {
-            return new Dimension(InternalUnitType, Math.Abs(_intrinsicValue));
+            return new Dimension(_internalUnitType, Math.Abs(_intrinsicValue));
+        }
+
+        public Dimension raiseToPower(double power)
+        {
+            return new Dimension(_internalUnitType, Math.Pow(_intrinsicValue, power));
         }
 
         #endregion
@@ -832,7 +841,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return this.GetValue(this.InternalUnitType).CompareTo(other.GetValue(InternalUnitType));
+                return this.GetValue(this._internalUnitType).CompareTo(other.GetValue(_internalUnitType));
         }
         #endregion
     }

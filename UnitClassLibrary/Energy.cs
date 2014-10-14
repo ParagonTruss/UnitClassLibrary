@@ -9,7 +9,11 @@ namespace UnitClassLibrary
     public class Energy
     {
         #region _internalVariables
-        private EnergyType InternalUnitType;
+        internal EnergyType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
+        private EnergyType _internalUnitType;
         private double _intrinsicValue;
         #endregion
 
@@ -21,7 +25,7 @@ namespace UnitClassLibrary
 
         public Energy(EnergyType passedEnergyType, double passedValue)
         {
-            InternalUnitType = passedEnergyType;
+            _internalUnitType = passedEnergyType;
             _intrinsicValue = passedValue;
         }
         #endregion
@@ -51,7 +55,7 @@ namespace UnitClassLibrary
             set;
         }
 
-        private double GetValue(EnergyType energyType)
+        public double GetValue(EnergyType energyType)
         {
             throw new NotImplementedException();
         }

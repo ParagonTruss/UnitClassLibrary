@@ -8,6 +8,13 @@ namespace UnitClassLibrary
 {
     public static class Constants
     {
+        public static Power AcceptedEqualityDeviationPower
+        {
+            get
+            {
+                return new Power(PowerType.Watt, 0.03125);
+            }
+        }
 
         public static Dimension AcceptedEqualityDeviationDimension
         {
