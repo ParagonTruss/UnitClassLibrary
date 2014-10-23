@@ -28,7 +28,8 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    [DebuggerDisplay("Millimeters = {Millimeters}")]
+    
+    [DebuggerDisplay("Inches = {Inches}")]
     public class Dimension : IComparable<Dimension>
     {
         #region private fields and constants
