@@ -29,7 +29,6 @@ namespace UnitClassLibrary
     /// </example>
     /// </summary>
     [DebuggerDisplay("Millimeters = {Millimeters}")]
-
     public class Dimension : IComparable<Dimension>
     {
         #region private fields and constants
@@ -45,6 +44,14 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Zero Constructor
+        /// </summary>
+        public Dimension()
+        {
+            _intrinsicValue = 0;
+        }
 
         /// <summary>
         /// Accepts any valid AutoCAD architectural string value for input.
@@ -72,13 +79,6 @@ namespace UnitClassLibrary
             _internalUnitType = passedDimension._internalUnitType;
         }
 
-        /// <summary>
-        /// Zero Constructor
-        /// </summary>
-        public Dimension()
-        {
-            _intrinsicValue = 0;
-        }
 
         #endregion
 
@@ -772,7 +772,7 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return _intrinsicValue.GetHashCode();
+            return this.GetValue(_internalUnitType).GetHashCode();
         }
 
         /// <summary>

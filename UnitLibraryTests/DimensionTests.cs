@@ -58,7 +58,7 @@ namespace UnitLibraryTests
         }
 
         [Test]
-        public void DimensionConversions_Test()
+        public void DimensionConversions()
         {
 
             Dimension kilometerDimension = new Dimension(DimensionType.Kilometer, 1);
