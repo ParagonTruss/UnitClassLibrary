@@ -542,7 +542,7 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are equal</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationArea.GetValue(_internalUnitType);
+            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) < DeviationConstants.AcceptedEqualityDeviationArea.GetValue(_internalUnitType);
         }
 
         #endregion

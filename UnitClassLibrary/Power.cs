@@ -207,7 +207,7 @@ namespace UnitClassLibrary
         public override bool Equals(object obj)
         {
             return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) < // This power and the passed power (in units of this power)...
-                Constants.AcceptedEqualityDeviationPower._energy.GetValue(this._energy.InternalUnitType) / Constants.AcceptedEqualityDeviationPower._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation power constant in units of this power
+                DeviationConstants.AcceptedEqualityDeviationPower._energy.GetValue(this._energy.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationPower._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation power constant in units of this power
         }
 
         /// <summary>

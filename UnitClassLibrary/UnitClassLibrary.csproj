@@ -43,13 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angle.cs" />
-    <Compile Include="Constants.cs" />
+    <Compile Include="DeviationConstants.cs" />
+    <Compile Include="Dimension\DimensionConstants.cs" />
+    <Compile Include="Dimension\DimensionDeviationConstant.cs" />
+    <Compile Include="Dimension\DimensionInterfaceImplementations.cs" />
+    <Compile Include="Dimension\DimensionOverloads.cs" />
+    <Compile Include="Dimension\DimensionProperties.cs" />
     <Compile Include="ElectricCurrent.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="ExtensionMethods\AreaListExtensionMethods.cs" />
-    <Compile Include="Dimension.cs" />
+    <Compile Include="Dimension\Dimension.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
     <Compile Include="Generators\DimensionGenerator.cs" />
