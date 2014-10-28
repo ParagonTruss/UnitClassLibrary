@@ -51,7 +51,7 @@ namespace UnitClassLibrary
         /// </summary>
         public Dimension(string passedArchitecturalString)
         {
-             storeArchitecturalStringAsInternalUnit(passedArchitecturalString);
+            storeArchitecturalStringAsInternalUnit(passedArchitecturalString);
         }
 
         /// <summary>
@@ -686,7 +686,7 @@ namespace UnitClassLibrary
             //Now convert the value from millimeters to the desired output
             return ConvertToArchitecturalString(d._internalUnitType, d._intrinsicValue);
         }
-        
+
         #endregion
         #endregion
 
@@ -729,12 +729,20 @@ namespace UnitClassLibrary
         {
             return new Dimension(d1.InternalUnitType, d1._intrinsicValue / divisor);
         }
-        
+
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
         public static bool operator ==(Dimension d1, Dimension d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return d1.Equals(d2);
         }
 
@@ -743,6 +751,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator !=(Dimension d1, Dimension d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !d1.Equals(d2);
         }
 
@@ -792,7 +808,19 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationDimension.GetValue(this._internalUnitType);
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                Dimension other = (Dimension)obj;
+                return (Math.Abs(this.GetValue(this._internalUnitType) - other.GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationDimension.GetValue(this._internalUnitType);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

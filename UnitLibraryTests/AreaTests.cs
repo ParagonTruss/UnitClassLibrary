@@ -103,7 +103,7 @@ namespace UnitLibraryTests
         }
 
         [Test()]
-        public void Area_EqualsTests()
+        public void Area_EqualityTests()
         {
             Area a1 = new Area();
             Area a2 = new Area(AreaType.InchesSquared, 100);
@@ -113,6 +113,33 @@ namespace UnitLibraryTests
             a1.Equals(a2).Should().BeFalse();
             a2.Equals(a3).Should().BeTrue();
             a3.Equals(a4).Should().BeFalse();
+
+            //test for null handling capabilities
+            Area nullAngle = null;
+            Area otherNullAngle = null;
+
+            //check ==
+            bool nonNullFirst = (a1 == nullAngle);
+            bool nullFirst = (nullAngle == a1);
+            bool bothNull = (nullAngle == otherNullAngle);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (a1 != nullAngle);
+            bool nullFirstNotEqual = (nullAngle != a1);
+            bool bothNullNotEqual = (nullAngle != otherNullAngle);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should through a nullPointerException)
+            bool nullSecond = a1.Equals(nullAngle);
+
+            nullSecond.Should().BeFalse();
         }
     }
 }

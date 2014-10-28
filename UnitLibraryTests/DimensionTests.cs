@@ -108,7 +108,53 @@ namespace UnitLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimension_Equality_Operators()
+        public void Dimension_EqualityTests()
+        {
+            // arrange
+            Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
+            Dimension smallerDimension = new Dimension("1' 2 1/16\"");
+            Dimension equivalentbiggerDimension = new Dimension(DimensionType.Millimeter, 360.3625);
+
+            (equivalentbiggerDimension == biggerDimension).Should().Be(true);
+            (equivalentbiggerDimension == smallerDimension).Should().Be(false);
+
+            (equivalentbiggerDimension != smallerDimension).Should().Be(true);
+            (equivalentbiggerDimension != biggerDimension).Should().Be(false);
+
+
+            //test for null handling capabilities
+            Dimension nullAngle = null;
+            Dimension otherNullAngle = null;
+
+            //check ==
+            bool nonNullFirst = (biggerDimension == nullAngle);
+            bool nullFirst = (nullAngle == biggerDimension);
+            bool bothNull = (nullAngle == otherNullAngle);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (biggerDimension != nullAngle);
+            bool nullFirstNotEqual = (nullAngle != biggerDimension);
+            bool bothNullNotEqual = (nullAngle != otherNullAngle);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should through a nullPointerException)
+            bool nullSecond = biggerDimension.Equals(nullAngle);
+
+            nullSecond.Should().BeFalse();
+        }
+
+        /// <summary>
+        /// Tests all equality operators
+        /// </summary>
+        [Test()]
+        public void Dimesnion_ComparisonOperatorTest()
         {
             // arrange
             Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -119,18 +165,10 @@ namespace UnitLibraryTests
             (smallerDimension < biggerDimension).Should().Be(true);
             (biggerDimension < smallerDimension).Should().Be(false);
 
-
             (biggerDimension > smallerDimension).Should().Be(true);
             (smallerDimension > biggerDimension).Should().Be(false);
-
-
-            (equivalentbiggerDimension == biggerDimension).Should().Be(true);
-            (equivalentbiggerDimension == smallerDimension).Should().Be(false);
-
-
-            (equivalentbiggerDimension != smallerDimension).Should().Be(true);
-            (equivalentbiggerDimension != biggerDimension).Should().Be(false);
         }
+
 
         [Test()]
         public void Dimension_EqualsWithinPassedAcceptedDeviation()

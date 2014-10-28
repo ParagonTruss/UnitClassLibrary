@@ -271,6 +271,7 @@ namespace UnitClassLibrary
         #endregion
 
         #region Overloaded Operators
+
         /// <summary>
         /// adds two volumes together
         /// </summary>
@@ -305,6 +306,14 @@ namespace UnitClassLibrary
         /// <returns>true if the volumes are equal</returns>
         public static bool operator ==(Volume d1, Volume d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return d1.Equals(d2);
         }
 
@@ -316,6 +325,14 @@ namespace UnitClassLibrary
         /// <returns>true if the volumes are not equal</returns>
         public static bool operator !=(Volume d1, Volume d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !d1.Equals(d2);
         }
 
@@ -369,8 +386,22 @@ namespace UnitClassLibrary
         /// <returns>true if the volumes are equal</returns>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._intrinsicValue - ((Volume)(obj))._intrinsicValue) == 0;
+            if (obj == null)
+            {
+                return false;
+            }
+            
+            try
+            {
+                Volume other = (Volume)obj;
+                return Math.Abs(this._intrinsicValue - other._intrinsicValue) == 0;
+            }
+            catch
+            {
+                return false;
+            }
         }
+        
         #endregion
 
         #region Interface Implementations

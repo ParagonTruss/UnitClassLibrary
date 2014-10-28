@@ -73,7 +73,7 @@ namespace UnitLibraryTests
         }
 
         [Test()]
-        public void Volume_EqualsTests()
+        public void Volume_EqualityTests()
         {
             Volume v1 = new Volume(VolumeType.CubicCentimeters, 100);
             Volume v2 = new Volume(VolumeType.Milliliters, 100);
@@ -82,6 +82,34 @@ namespace UnitLibraryTests
             v1.Equals(v2).Should().BeTrue();
             v1.Equals(v2).Should().BeTrue();
             v2.Equals(v3).Should().BeFalse();
+
+
+            //test for null handling capabilities
+            Volume nullAngle = null;
+            Volume otherNullAngle = null;
+
+            //check ==
+            bool nonNullFirst = (v1 == nullAngle);
+            bool nullFirst = (nullAngle == v1);
+            bool bothNull = (nullAngle == otherNullAngle);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (v1 != nullAngle);
+            bool nullFirstNotEqual = (nullAngle != v1);
+            bool bothNullNotEqual = (nullAngle != otherNullAngle);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should through a nullPointerException)
+            bool nullSecond = v1.Equals(nullAngle);
+
+            nullSecond.Should().BeFalse();
         }
     }
 }

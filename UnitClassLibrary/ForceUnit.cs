@@ -187,6 +187,14 @@ namespace UnitClassLibrary
         /// <returns>true if force 1 equals force 2</returns>
         public static bool operator ==(ForceUnit f1, ForceUnit f2)
         {
+            if ((object)f1 == null)
+            {
+                if ((object)f2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return f1.Equals(f2);
         }
 
@@ -198,6 +206,14 @@ namespace UnitClassLibrary
         /// <returns>true if force 1 does not equal force 2</returns>
         public static bool operator !=(ForceUnit f1, ForceUnit f2)
         {
+            if ((object)f1 == null)
+            {
+                if ((object)f2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !f1.Equals(f2);
         }
 
@@ -294,8 +310,21 @@ namespace UnitClassLibrary
         /// <returns>whether the passed object is equal to this within the equality deviation constant</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) < Constants.AcceptedEqualityDeviationForceUnit.Pounds;
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                ForceUnit other = (ForceUnit)obj;
+                return (Math.Abs(this._intrinsicValue - other._intrinsicValue)) < Constants.AcceptedEqualityDeviationForceUnit.Pounds;
+            }
+            catch
+            {
+                return false;
+            }
         }
+
         #endregion
 
         #region Interface Methods
