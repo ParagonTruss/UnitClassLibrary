@@ -65,11 +65,19 @@ namespace UnitClassLibrary
 
         public static bool operator >(Dimension d1, Dimension d2)
         {
+            if (d1 == d2)
+            {
+                return false;
+            }
             return d1._intrinsicValue > d2.GetValue(d1._internalUnitType);
         }
 
         public static bool operator <(Dimension d1, Dimension d2)
         {
+            if (d1 == d2)
+            {
+                return false;
+            }
             return d1._intrinsicValue < d2.GetValue(d1._internalUnitType);
         }
 
