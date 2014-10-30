@@ -467,23 +467,17 @@ namespace UnitClassLibrary
             return new Speed(s1._dimension - s2._dimension, s1._time - s2._time);
         }
 
-        /************************************************
-         * SHOULD I RETURN A DOUBLE OR A NEW SPEED CLASS? 
-         * 
-         ***********************************************/
         public static double operator /(Speed s1, Speed s2)
         {
-            return (s1._dimension / s2._dimension) / (s1._time / s2._time); //Division needs to be implemented in Time Class
+            throw new NotImplementedException();
+            //return (s1._dimension / s2._dimension) / (s1._time / s2._time); //Division needs to be implemented in Time Class
         }
 
-        public static Speed operator /(Speed s1, double divisor)
-        {
-            return new Speed(s1._dimension / divisor, s1._time / divisor); //Dividing dimension and time objects by a number not yet implemented.
-        } 
 
         public static Speed operator *(Speed s1, double multiplier)
         {
-            return new Speed(s1._dimension * multiplier, s1._time * multiplier); //Multiplication needs to be implemented in Time Class
+            throw new NotImplementedException();
+            //return  new Speed(s1._dimension * multiplier, s1._time * multiplier); //Multiplication needs to be implemented in Time Class
         }
 
         /// <summary>
@@ -537,12 +531,12 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// value comparison, checks whether the two are equal within the accepted equality deviation specified in Constants
+        /// value comparison, checks whether the two are equal within the accepted equality deviation specified in DeviationConstants
         /// </summary>
         public override bool Equals(object obj)
         {
             return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._dimension.GetValue(this._dimension.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) < // This speed and the passed speed (in units of this speed)...
-                Constants.AcceptedEqualityDeviationSpeed._dimension.GetValue(this._dimension.InternalUnitType) / Constants.AcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation speed constant in units of this speed
+                DeviationConstants.AcceptedEqualityDeviationSpeed._dimension.GetValue(this._dimension.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation speed constant in units of this speed
         }
 
         /// <summary>
