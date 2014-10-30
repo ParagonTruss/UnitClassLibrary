@@ -347,7 +347,7 @@ namespace UnitClassLibrary
         /// <returns>a boolean representing the equality of the two angles</returns>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this.GetValue(InternalUnitType) - ((Angle)(obj)).GetValue(InternalUnitType)) < Constants.AcceptedEqualityDeviationAngle.GetValue(InternalUnitType);
+            return Math.Abs(this.GetValue(InternalUnitType) - ((Angle)(obj)).GetValue(InternalUnitType)) < DeviationConstants.AcceptedEqualityDeviationAngle.GetValue(InternalUnitType);
         }
 
         /// <summary>

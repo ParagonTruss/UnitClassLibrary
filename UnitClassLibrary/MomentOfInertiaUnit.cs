@@ -16,7 +16,7 @@ namespace UnitClassLibrary
 
         public Dimension LengthToFourthPower
         {
-            get { return _length.raiseToPower(4); }
+            get { return _length.RaiseToPower(4); }
             
         }
 

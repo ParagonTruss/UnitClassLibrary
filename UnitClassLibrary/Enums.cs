@@ -8,7 +8,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit a dimension is
     /// </summary>
-    public enum DimensionType { Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Inch, Foot, Yard, Mile, ArchitecturalString };
+    public enum DimensionType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile, ArchitecturalString };
 
     /// <summary>
     /// Enum for specifying the type of unit an area is

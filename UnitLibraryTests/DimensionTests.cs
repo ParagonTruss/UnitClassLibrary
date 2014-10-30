@@ -51,14 +51,14 @@ namespace UnitLibraryTests
             Dimension additionDimension = inchDimension + architecturalDimension;
 
             // assert
-            subtractionDimension.Kilometers.Should().BeApproximately(0, Constants.AcceptedEqualityDeviationDimension.Kilometers);
-            subtractionDimension.Feet.Should().BeApproximately(0, Constants.AcceptedEqualityDeviationDimension.Feet);
-            additionDimension.Millimeters.Should().BeApproximately(720.725, Constants.AcceptedEqualityDeviationDimension.Millimeters);
+            subtractionDimension.Kilometers.Should().BeApproximately(0, DeviationConstants.AcceptedEqualityDeviationDimension.Kilometers);
+            subtractionDimension.Feet.Should().BeApproximately(0, DeviationConstants.AcceptedEqualityDeviationDimension.Feet);
+            additionDimension.Millimeters.Should().BeApproximately(720.725, DeviationConstants.AcceptedEqualityDeviationDimension.Millimeters);
             additionDimension.Architectural.Should().Be("2'4 6/16\"");
         }
 
         [Test]
-        public void DimensionConversions_Test()
+        public void DimensionConversions()
         {
 
             Dimension kilometerDimension = new Dimension(DimensionType.Kilometer, 1);
