@@ -33,6 +33,15 @@ namespace UnitLibraryTests
         }
 
         [Test()]
+        public void Speed_CompositeConstructorTest()
+        {
+            Dimension d1 = new Dimension(DimensionType.Mile, 10);
+            Time t1 = new Time(TimeType.Hour, 1);
+
+            Speed s1 = new Speed(d1, t1);
+        }
+
+        [Test()]
         public void Speed_ConstructorTest()
         {
             Speed s1 = new Speed();

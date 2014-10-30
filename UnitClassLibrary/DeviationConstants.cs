@@ -93,5 +93,25 @@ namespace UnitClassLibrary
             }
 
         }
+
+        public static Speed AcceptedEqualityDeviationSpeed
+        {
+            get
+            {
+                return new Speed(SpeedType.MilesPerHour, 1);
+
+            }
+
+        }
+
+        public static Volume AcceptedEqualityDeviationVolume
+        {
+            get
+            {
+                return new Volume(VolumeType.CubicThirtySeconds, 1);
+
+            }
+
+        }
     }
 }
