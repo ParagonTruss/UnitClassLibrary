@@ -6,11 +6,6 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Enum for specifying the type of unit a dimension is
-    /// </summary>
-    public enum DimensionType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile, ArchitecturalString };
-
-    /// <summary>
     /// Enum for specifying the type of unit an area is
     /// </summary>
     public enum AreaType { MillimetersSquared, CentimetersSquared, MetersSquared, KilometersSquared, InchesSquared, FeetSquared, YardsSquared, MilesSquared };

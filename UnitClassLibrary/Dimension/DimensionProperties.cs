@@ -7,8 +7,6 @@ namespace UnitClassLibrary
 {
     public partial struct Dimension
     {
-        #region Public Properties
-
         public double Sixteenths
         {
             get { return _retrieveAsExternalUnit(DimensionType.Sixteenth); }
@@ -96,7 +94,5 @@ namespace UnitClassLibrary
             }
             throw new Exception("Unknown DimensionType");
         }
-
-        #endregion
     }
 }
