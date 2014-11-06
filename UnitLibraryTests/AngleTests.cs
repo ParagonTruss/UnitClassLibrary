@@ -37,7 +37,7 @@ namespace UnitLibraryTests
         }
 
         [Test()]
-        public void Angle_EqualsTest()
+        public void Angle_EqualityTests()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
@@ -48,6 +48,33 @@ namespace UnitLibraryTests
 
             result1.Should().BeTrue();
             result2.Should().BeFalse();
+
+            //test for null handling capabilities
+            Angle nullAngle = null;
+            Angle otherNullAngle = null;
+
+            //check ==
+            bool nonNullFirst = (a1 == nullAngle);
+            bool nullFirst = (nullAngle == a1);
+            bool bothNull = (nullAngle == otherNullAngle);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (a1 != nullAngle);
+            bool nullFirstNotEqual = (nullAngle != a1);
+            bool bothNullNotEqual = (nullAngle != otherNullAngle);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should through a nullPointerException)
+            bool nullSecond = a1.Equals(nullAngle);
+
+            nullSecond.Should().BeFalse();
         }
 
         [Test()]
