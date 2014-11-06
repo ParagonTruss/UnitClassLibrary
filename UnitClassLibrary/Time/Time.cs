@@ -45,6 +45,15 @@ namespace UnitClassLibrary
             _intrinsicValue = passedValue;
         }
 
+        /// <summary>
+        /// sets the Time to the TimeSpan in Second TimeType
+        /// </summary>		
+        public Time(TimeSpan passedTimeSpan)
+        {
+            _internalUnitType = TimeType.Second;
+            _intrinsicValue = passedTimeSpan.Seconds;
+        }
+
         #endregion
 
         #region helper methods
