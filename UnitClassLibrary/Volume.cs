@@ -1113,7 +1113,7 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) < Constants.AcceptedEqualityDeviationVolume.GetValue(this._internalUnitType);
+            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.0001);
         }
 
         /// <summary>
@@ -1125,7 +1125,7 @@ namespace UnitClassLibrary
                 (this.GetValue(this._internalUnitType)
                 - ((Volume)(obj)).GetValue(this._internalUnitType))
                 ))
-                < passedAcceptedEqualityDeviationVolume.GetValue(_internalUnitType);
+                <= passedAcceptedEqualityDeviationVolume.GetValue(_internalUnitType);
         }
         #endregion
 

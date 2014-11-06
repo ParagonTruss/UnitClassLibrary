@@ -39,7 +39,7 @@ namespace UnitLibraryTests
             CubicMeters.Should().Be(0.88);
             CubicInches.Should().BeApproximately(53700.894803364165, 53700.894803364165 * 0.00001);
             CubicFeet.Should().BeApproximately(31.076906714910322, 31.076906714910322 * 0.00001);
-            CubicYards.Should().BeApproximately(10.3589666667, 10.3589666667 * 0.00001);
+            CubicYards.Should().BeApproximately(1.15099654, 1.15099654 * 0.00001);
             CubicMiles.Should().BeApproximately(2.11123228 * Math.Pow(10, -10), 2.11123228 * Math.Pow(10, -10) * 0.00001);
             Gallons.Should().BeApproximately(232.471406075172, 232.471406075172 * 0.00001);
             Quarts.Should().BeApproximately(929.885624300688, 929.885624300688 * 0.00001);

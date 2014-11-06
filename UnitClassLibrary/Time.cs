@@ -118,6 +118,21 @@ namespace UnitClassLibrary
             return new Time(t1._internalUnitType, (t1._intrinsicValue - t2.GetValue(t1._internalUnitType)));
         }
 
+        public static Time operator *(Time t1, double multiplier)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Time operator /(Time t1, double divisor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static double operator /(Time t1, Time t2)
+        {
+            throw new NotImplementedException();
+        }
+
         public static bool operator >(Time t1, Time t2)
         {
             throw new NotImplementedException();

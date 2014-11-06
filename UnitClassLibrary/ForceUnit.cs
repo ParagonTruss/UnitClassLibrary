@@ -7,13 +7,26 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
+    /// Enum for specifying the type of unit a force is
+    /// </summary>
+    public enum ForceType { Newtons, Pounds, Kips }
+
+    /// <summary>
     /// Class that represents force
     /// </summary>
     [DebuggerDisplay("{Pounds}lbs")]
     public class ForceUnit : IComparable<ForceUnit>
     {
         #region _internalVariables
-        private ForceType InternalUnitType;
+        /// <summary>
+        /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
+        /// </summary>
+        internal ForceType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
+        private ForceType _internalUnitType;
+
         private double _intrinsicValue = 0.0;
         #endregion
 
@@ -41,6 +54,20 @@ namespace UnitClassLibrary
         {
             get { return retrieveAsExternalUnit(ForceType.Kips); }
         }
+
+        public double GetValue(ForceType Units)
+        {
+            switch (Units)
+            {
+                case ForceType.Pounds:
+                    return Pounds;
+                case ForceType.Newtons:
+                    return Newtons;
+                case ForceType.Kips:
+                    return Kips;
+            }
+            throw new Exception("Unknown ForceType");
+        }
         #endregion
 
         #region Constructors
@@ -59,7 +86,7 @@ namespace UnitClassLibrary
         /// <param name="passedValue">amount of force in unit passed</param>
         public ForceUnit(ForceType forceType, double passedValue)
         {
-            InternalUnitType = forceType;
+            _internalUnitType = forceType;
             _intrinsicValue = passedValue;
         }
         #endregion
@@ -72,7 +99,7 @@ namespace UnitClassLibrary
         /// <returns></returns>
         private double retrieveAsExternalUnit(ForceType forceType)
         {
-            return ConvertTo(InternalUnitType, _intrinsicValue, forceType);
+            return ConvertTo(_internalUnitType, _intrinsicValue, forceType);
         }
 
         /// <summary>
@@ -278,9 +305,9 @@ namespace UnitClassLibrary
                 case ForceType.Pounds:
                     return _intrinsicValue + " pounds";
                 case ForceType.Newtons:
-                    return ConvertTo(InternalUnitType, _intrinsicValue, ForceType.Newtons) + " newtons";
+                    return ConvertTo(_internalUnitType, _intrinsicValue, ForceType.Newtons) + " newtons";
                 case ForceType.Kips:
-                    return ConvertTo(InternalUnitType, _intrinsicValue, ForceType.Kips) + " kips";
+                    return ConvertTo(_internalUnitType, _intrinsicValue, ForceType.Kips) + " kips";
                 default:
                     // should never be returned
                     return "Could not determine the unit type";
@@ -294,7 +321,7 @@ namespace UnitClassLibrary
         /// <returns>whether the passed object is equal to this within the equality deviation constant</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) < DeviationConstants.AcceptedEqualityDeviationForceUnit.Pounds;
+            return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) <= Math.Abs(this.GetValue(this._internalUnitType) * .00001);
         }
         #endregion
 
