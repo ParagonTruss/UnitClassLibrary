@@ -76,7 +76,7 @@
     <Compile Include="Time\TimeConstants.cs" />
     <Compile Include="Time\TimeConversion.cs" />
     <Compile Include="Time\TimeDeviationConstant.cs" />
-    <Compile Include="Time\TimeInterfaceImplementations.cs" />
+    <Compile Include="Time\TimeIComparableImplementation.cs" />
     <Compile Include="Time\TimeOverloads.cs" />
     <Compile Include="Time\TimeProperties.cs" />
     <Compile Include="Torque.cs" />

@@ -19,7 +19,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return this.GetValue(this._internalUnitType).CompareTo(other.GetValue(_internalUnitType));
+                return _intrinsicValue.CompareTo(other.GetValue(_internalUnitType));
         }
     }
 }
