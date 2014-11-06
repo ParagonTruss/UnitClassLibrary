@@ -8,7 +8,7 @@ namespace UnitLibraryTests
     public class MomentTests
     {
         [Test()]
-        public void Moment_EqualityTest()
+        public void Moment_EqualityTests()
         {
         }
     }
