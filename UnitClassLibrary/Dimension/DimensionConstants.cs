@@ -12,7 +12,7 @@ namespace UnitClassLibrary
             get { return new Dimension(DimensionType.Sixteenth, 1); }
         }
 
-        public Dimension ThirtySecond
+        public static Dimension ThirtySecond
         {
             get { return new Dimension(DimensionType.ThirtySecond, 1); }
         }
