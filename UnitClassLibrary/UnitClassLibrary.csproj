@@ -72,7 +72,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Speed.cs" />
     <Compile Include="Stress.cs" />
-    <Compile Include="Time.cs" />
     <Compile Include="Time\Time.cs" />
     <Compile Include="Time\TimeConstants.cs" />
     <Compile Include="Time\TimeConversion.cs" />

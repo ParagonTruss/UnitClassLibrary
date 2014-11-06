@@ -9,7 +9,7 @@ namespace UnitClassLibrary
     {
         public double 
         {
-        get{return _retrieveasExternalUnit(TimeType);}
+            get{return _retrieveAsExternalUnit(TimeType);}
         }
     }
 }
