@@ -26,15 +26,6 @@ namespace UnitClassLibrary
         #region Constructors
 
         /// <summary>
-        /// Default Constructor
-        /// </summary>		
-        public Time()
-        {
-            _intrinsicValue = 1.0;
-            _internalUnitType = TimeType.Second;
-        }
-
-        /// <summary>
         /// copy constructor - create a new Time with the same _intrinsicValue as the passed Time
         /// </summary>
         public Time(Time passedTime)

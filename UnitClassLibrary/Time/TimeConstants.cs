@@ -55,13 +55,5 @@ namespace UnitClassLibrary
         {
             get { return new Time(TimeType.Century, 1); }
         }
-        public static Time DateTime
-        {
-            get { return new Time(TimeType.DateTime, 1); }
-        }
-        public static Time TimeSpan
-        {
-            get { return new Time(TimeType.TimeSpan, 1); }
-        }
     }
 }

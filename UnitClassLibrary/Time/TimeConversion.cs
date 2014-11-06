@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct TimeConversion
+    public partial struct Time
     {
         public static double ConvertTime(TimeType typeConvertingFrom, double passedValue, TimeType typeConvertingTo)
         {
