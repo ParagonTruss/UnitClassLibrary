@@ -72,6 +72,12 @@
     <Compile Include="Speed.cs" />
     <Compile Include="Stress.cs" />
     <Compile Include="Time.cs" />
+    <Compile Include="Time\Time.cs" />
+    <Compile Include="Time\TimeConstants.cs" />
+    <Compile Include="Time\TimeDeviationConstant.cs" />
+    <Compile Include="Time\TimeInterfaceImplementations.cs" />
+    <Compile Include="Time\TimeOverloads.cs" />
+    <Compile Include="Time\TimeProperties.cs" />
     <Compile Include="Torque.cs" />
     <Compile Include="Volume.cs" />
   </ItemGroup>
