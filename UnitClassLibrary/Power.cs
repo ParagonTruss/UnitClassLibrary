@@ -39,11 +39,11 @@ namespace UnitClassLibrary
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case PowerType.Horsepower:
-                    _energy = new Energy(EnergyType.FootPound, passedValue/33000);
+                    _energy = new Energy(EnergyType.FootPound, passedValue / 33000);
                     _time = new Time(TimeType.Minute, 1);
                     break;
                 case PowerType.MetricHorsepower:
-                    _energy = new Energy(EnergyType.KilogramMeter, passedValue/75);
+                    _energy = new Energy(EnergyType.KilogramMeter, passedValue / 75);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case PowerType.FootPoundsPerSecond:
@@ -89,7 +89,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FootPoundsPerSecond
         {
-            get { return _energy.FootPound / _time.Seconds; } 
+            get { return _energy.FootPound / _time.Seconds; }
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two forces</returns>
         public static Power operator +(Power p1, Power p2)
         {
-            return new Power( p1._energy + p2._energy, p1._time + p2._time);
+            return new Power(p1._energy + p2._energy, p1._time + p2._time);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="p1">power one</param>
         /// <param name="p2">power two</param>
-        /// <returns>the difference of the two forces</returns>
+        /// <returns>the sum of the two forces</returns>
         public static Power operator -(Power p1, Power p2)
         {
             return new Power(p1._energy - p2._energy, p1._time - p2._time);
@@ -156,6 +156,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator ==(Power p1, Power p2)
         {
+            if ((object)p1 == null)
+            {
+                if ((object)p2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return p1.Equals(p2);
         }
 
@@ -164,6 +172,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator !=(Power p1, Power p2)
         {
+            if ((object)p1 == null)
+            {
+                if ((object)p2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !p1.Equals(p2);
         }
 
@@ -206,8 +222,20 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
-                Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation power constant (0.01%) in units of this power
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                Power other = (Power)obj;
+                 return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
+                    Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation power constant (0.01%) in units of this power
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

@@ -27,7 +27,7 @@ namespace UnitClassLibrary
         /// sets the area to 0
         /// </summary>
         public Area()
-        {   
+        {
             _intrinsicValue = 0.0;
         }
 
@@ -116,7 +116,7 @@ namespace UnitClassLibrary
         {
             get { return retrieveAsExternalUnit(AreaType.InchesSquared); }
         }
-        
+
         /// <summary>
         /// uses feet squared as a property and retrieves as an external unit when necessary
         /// </summary>
@@ -221,10 +221,10 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 0.0015500031; // Convert millimeters squared to inches squared
                             break;
                         case AreaType.FeetSquared:
-                            returnDouble = passedValue * 1.07639104 * Math.Pow(10,-5); // Convert millimeters squared to feet squared
+                            returnDouble = passedValue * 1.07639104 * Math.Pow(10, -5); // Convert millimeters squared to feet squared
                             break;
                         case AreaType.YardsSquared:
-                            returnDouble = passedValue * 1.19599005 * Math.Pow(10,-6); // Convert millimeters squared to yards squared
+                            returnDouble = passedValue * 1.19599005 * Math.Pow(10, -6); // Convert millimeters squared to yards squared
                             break;
                         case AreaType.MetersSquared:
                             returnDouble = passedValue * Math.Pow(10, -6); // Convert millimeters squared to meters squared
@@ -418,7 +418,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 2589988110336; // Convert miles squared to millimeters squared
                             break;
                         case AreaType.CentimetersSquared:
-                            returnDouble = passedValue * 2.58998811 * Math.Pow(10,10); // Convert miles squared to centimeters squared
+                            returnDouble = passedValue * 2.58998811 * Math.Pow(10, 10); // Convert miles squared to centimeters squared
                             break;
                         case AreaType.InchesSquared:
                             returnDouble = passedValue * 4014489600; // Convert miles squared to inches squared
@@ -486,6 +486,14 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are equal</returns>
         public static bool operator ==(Area a1, Area a2)
         {
+            if ((object)a1 == null)
+            {
+                if ((object)a2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return a1.Equals(a2);
         }
 
@@ -497,6 +505,14 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are not equal</returns>
         public static bool operator !=(Area a1, Area a2)
         {
+            if ((object)a1 == null)
+            {
+                if ((object)a2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !a1.Equals(a2);
         }
 
@@ -550,7 +566,19 @@ namespace UnitClassLibrary
         /// <returns>true if the areas are equal</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                Area other = (Area)obj;
+                return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion

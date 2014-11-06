@@ -33,6 +33,7 @@ namespace UnitClassLibrary
         #endregion
 
         #region Properties
+
         /// <summary>
         /// returns the Angle in Radians
         /// </summary>
@@ -103,7 +104,7 @@ namespace UnitClassLibrary
 
         public static double ConvertTo(AngleType fromAngleType, double passedValue, AngleType toAngleType)
         {
-           double returnAngle = 0;
+            double returnAngle = 0;
 
             switch (fromAngleType)
             {
@@ -156,7 +157,7 @@ namespace UnitClassLibrary
         {
             _intrinsicValue = 0;
         }
-         
+
         /// <summary>
         /// Create an angle object from an angle value.
         /// </summary>
@@ -260,6 +261,14 @@ namespace UnitClassLibrary
         /// <returns>whether the two angles are equal</returns>
         public static bool operator ==(Angle a1, Angle a2)
         {
+            if ((object)a1 == null)
+            {
+                if ((object)a2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return a1.Equals(a2);
         }
 
@@ -271,6 +280,14 @@ namespace UnitClassLibrary
         /// <returns>whether the two angles aren't equal</returns>
         public static bool operator !=(Angle a1, Angle a2)
         {
+            if ((object)a1 == null)
+            {
+                if ((object)a2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !a1.Equals(a2);
         }
 
@@ -347,7 +364,19 @@ namespace UnitClassLibrary
         /// <returns>a boolean representing the equality of the two angles</returns>
         public override bool Equals(object obj)
         {
-             return Math.Abs(this.GetValue(_internalUnitType) - ((Angle)(obj)).GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                Angle other = (Angle)obj;
+                return Math.Abs(this.GetValue(_internalUnitType) - ((Angle)(obj)).GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -359,6 +388,7 @@ namespace UnitClassLibrary
         {
             switch (angleType)
             {
+
                 case AngleType.Radian:
                     return this.GetValue(AngleType.Radian).ToString() + " rad";
                 case AngleType.Degree:

@@ -116,6 +116,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator ==(Moment s1, Moment s2)
         {
+            if ((object)s1 == null)
+            {
+                if ((object)s2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return s1.Equals(s2);
         }
 
@@ -124,6 +132,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator !=(Moment s1, Moment s2)
         {
+            if ((object)s1 == null)
+            {
+                if ((object)s2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !s1.Equals(s2);
         }
 
@@ -179,10 +195,13 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
+            if (obj == null)
+            {
+                return false;
+            }
             try
             {
                 Moment compare = (Moment)obj;
-
                 return compare._dimension.Equals(this._dimension) && compare._force.Equals(this._force);
             }
             catch (InvalidCastException)

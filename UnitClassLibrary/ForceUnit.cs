@@ -26,7 +26,7 @@ namespace UnitClassLibrary
             get { return _internalUnitType; }
         }
         private ForceType _internalUnitType;
-
+        
         private double _intrinsicValue = 0.0;
         #endregion
 
@@ -101,7 +101,6 @@ namespace UnitClassLibrary
         {
             return ConvertTo(_internalUnitType, _intrinsicValue, forceType);
         }
-
         /// <summary>
         /// converts to and from different force types
         /// </summary>
@@ -214,6 +213,14 @@ namespace UnitClassLibrary
         /// <returns>true if force 1 equals force 2</returns>
         public static bool operator ==(ForceUnit f1, ForceUnit f2)
         {
+            if ((object)f1 == null)
+            {
+                if ((object)f2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return f1.Equals(f2);
         }
 
@@ -225,6 +232,14 @@ namespace UnitClassLibrary
         /// <returns>true if force 1 does not equal force 2</returns>
         public static bool operator !=(ForceUnit f1, ForceUnit f2)
         {
+            if ((object)f1 == null)
+            {
+                if ((object)f2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !f1.Equals(f2);
         }
 
@@ -313,7 +328,6 @@ namespace UnitClassLibrary
                     return "Could not determine the unit type";
             }
         }
-
         /// <summary>
         /// checks to see if this is equal to the passed object
         /// </summary>
@@ -321,7 +335,19 @@ namespace UnitClassLibrary
         /// <returns>whether the passed object is equal to this within the equality deviation constant</returns>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) <= Math.Abs(this.GetValue(this._internalUnitType) * .00001);
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                ForceUnit other = (ForceUnit)obj;
+                return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) <= Math.Abs(this.GetValue(this._internalUnitType) * .00001);
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
 

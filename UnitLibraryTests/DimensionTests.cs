@@ -107,7 +107,49 @@ namespace UnitLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimension_Equality_Operators()
+        public void Dimension_EqualityTests()
+        {
+            // arrange
+            Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
+            Dimension smallerDimension = new Dimension("1' 2 1/16\"");
+            Dimension equivalentbiggerDimension = new Dimension(DimensionType.Millimeter, 360.3625);
+
+            (equivalentbiggerDimension == biggerDimension).Should().Be(true);
+            (equivalentbiggerDimension == smallerDimension).Should().Be(false);
+
+            (equivalentbiggerDimension != smallerDimension).Should().Be(true);
+            (equivalentbiggerDimension != biggerDimension).Should().Be(false);
+
+
+            //check ==
+            bool nonNullFirst = (biggerDimension == null);
+            bool nullFirst = (null == biggerDimension);
+            bool bothNull = (null == null);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (biggerDimension != null);
+            bool nullFirstNotEqual = (null != biggerDimension);
+            bool bothNullNotEqual = (null != null);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should through a nullPointerException)
+            bool nullSecond = biggerDimension.Equals(null);
+
+            nullSecond.Should().BeFalse();
+        }
+
+        /// <summary>
+        /// Tests all equality operators
+        /// </summary>
+        [Test()]
+        public void Dimesnion_ComparisonOperatorTest()
         {
             // arrange
             Dimension biggerDimension = new Dimension(DimensionType.Inch, 14.1875);
@@ -118,26 +160,10 @@ namespace UnitLibraryTests
             (smallerDimension < biggerDimension).Should().Be(true);
             (biggerDimension < smallerDimension).Should().Be(false);
 
-
             (biggerDimension > smallerDimension).Should().Be(true);
             (smallerDimension > biggerDimension).Should().Be(false);
-
-
-            (equivalentbiggerDimension == biggerDimension).Should().Be(true);
-            (equivalentbiggerDimension == smallerDimension).Should().Be(false);
-
-
-            (equivalentbiggerDimension != smallerDimension).Should().Be(true);
-            (equivalentbiggerDimension != biggerDimension).Should().Be(false);
-
-            Dimension lotsOfMiles = new Dimension(DimensionType.Mile, 9000);
-            Dimension lotsOfMilesinCentimeters = new Dimension(DimensionType.Centimeter, lotsOfMiles.Centimeters);
-            (lotsOfMiles == lotsOfMilesinCentimeters).Should().Be(true);
-
-            Dimension oneInch = Dimension.Inch;
-            Dimension oneInchInMeters = new Dimension(DimensionType.Meter, oneInch.Meters);
-            (oneInch == oneInchInMeters).Should().Be(true);
         }
+
 
         [Test()]
         public void Dimension_EqualsWithinPassedAcceptedDeviation()

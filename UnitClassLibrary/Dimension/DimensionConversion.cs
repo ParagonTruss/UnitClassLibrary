@@ -11,7 +11,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="passedArchitecturalString">the input string</param>
         /// <returns>decimal Millimeters</returns>
-        private static Double ConvertArchitectualStringtoUnit(DimensionType convertToType, String passedArchitecturalString)
+        private static double ConvertArchitectualStringtoUnit(DimensionType convertToType, String passedArchitecturalString)
         {
             // for details on where this solution came from, check here: http://stackoverflow.com/questions/22794466/parsing-all-possible-types-of-varying-architectural-dimension-input
             // answer by Trygve Flathen: http://stackoverflow.com/users/2795177/trygve-flathen
