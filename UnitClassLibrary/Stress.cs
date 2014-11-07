@@ -94,6 +94,22 @@ namespace UnitClassLibrary
 
         }
 
+        public double GetValue(StressType Units)
+        {
+            switch (Units)
+            {
+                case StressType.PoundsPerSquareInch:
+                    return PoundsPerSquareInch;
+                case StressType.PoundsPerSquareMillimeter:
+                    return PoundsPerSquareMillimeter;
+                case StressType.NewtonsPerSquareMeter:
+                    return NewtonsPerSquareMeter;
+                case StressType.NewtonsPerSquareMillimeter:
+                    return NewtonsPerSquareMillimeter;
+            }
+            throw new Exception("Unknown StressType");
+        }
+
         #endregion
 
         #region Overloaded Operators
@@ -203,7 +219,9 @@ namespace UnitClassLibrary
             try
             {
                 Stress newStress = (Stress)obj;
-                return (Math.Abs(newStress.PoundsPerSquareInch - this.PoundsPerSquareInch)) < DeviationConstants.AcceptedEqualityDeviationStress.PoundsPerSquareInch;
+
+                return Math.Abs(this._force.GetValue(this._force.InternalUnitType) / this._area.GetValue(this._area.InternalUnitType) - ((Stress)(obj))._force.GetValue(this._force.InternalUnitType) / ((Stress)(obj))._area.GetValue(this._area.InternalUnitType)) <= // This stress and the passed stress (in units of this stress)...
+                Math.Abs(this._force.GetValue(this._force.InternalUnitType) / this._area.GetValue(this._area.InternalUnitType) * .0001); // Is less than the accepted deviation stress constant (0.01%) in units of this stress
             }
             catch
             {

@@ -9,8 +9,16 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
 
-        private double _intrinsicValue;
+        /// <summary>
+        /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
+        /// </summary>
+        internal AreaType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
         private AreaType _internalUnitType;
+
+        private double _intrinsicValue;
 
         #endregion
 
@@ -565,7 +573,7 @@ namespace UnitClassLibrary
             try
             {
                 Area other = (Area)obj;
-                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) < DeviationConstants.AcceptedEqualityDeviationArea.GetValue(_internalUnitType);
+                return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
             }
             catch
             {

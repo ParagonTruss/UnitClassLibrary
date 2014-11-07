@@ -17,14 +17,14 @@ namespace UnitClassLibrary
         {
             //add the two dimensions together
             //return a new dimension with the new value
-            return new Dimension(d1._internalUnitType, (d1.GetValue(d1._internalUnitType) + d2.GetValue(d1._internalUnitType)));
+            return new Dimension(d1._internalUnitType, d1._intrinsicValue + d2.GetValue(d1._internalUnitType));
         }
 
         public static Dimension operator -(Dimension d1, Dimension d2)
         {
             //subtract the two dimensions
             //return a new dimension with the new value
-            return new Dimension(d1._internalUnitType, (d1.GetValue(d1._internalUnitType) - d2.GetValue(d1._internalUnitType)));
+            return new Dimension(d1._internalUnitType, d1._intrinsicValue - d2.GetValue(d1._internalUnitType));
         }
 
         public static double operator /(Dimension d1, Dimension d2)
@@ -117,7 +117,7 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) < DeviationConstants.AcceptedEqualityDeviationDimension.GetValue(this._internalUnitType);
+            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
         }
 
         /// <summary>

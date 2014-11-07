@@ -535,8 +535,20 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._dimension.GetValue(this._dimension.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) < // This speed and the passed speed (in units of this speed)...
-                DeviationConstants.AcceptedEqualityDeviationSpeed._dimension.GetValue(this._dimension.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation speed constant in units of this speed
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                Speed other = (Speed)obj;
+                return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._dimension.GetValue(this._dimension.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
+                    Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -544,7 +556,7 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Speed passedAcceptedEqualityDeviationSpeed)
         {
-            return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._dimension.GetValue(this._dimension.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) < // This speed and the passed speed (in units of this speed)...
+            return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._dimension.GetValue(this._dimension.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
                 passedAcceptedEqualityDeviationSpeed._dimension.GetValue(this._dimension.InternalUnitType) / passedAcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation speed constant in units of this speed
         }
 

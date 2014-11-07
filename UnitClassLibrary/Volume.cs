@@ -12,19 +12,15 @@ namespace UnitClassLibrary
     public class Volume
     {
         #region _internalVariables
-        double _intrinsicValue;
-        private VolumeType InternalUnitType;
+        internal VolumeType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
+        private VolumeType _internalUnitType;
+        private double _intrinsicValue;
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// sets the volume to 0
-        /// </summary>		
-        public Volume()
-        {
-            _intrinsicValue = 0.0;
-            //InternalUnitType = VolumeType.Milliliters;
-        }
 
         /// <summary>
         /// sets the volume to the passed double with the passed unit type
@@ -140,6 +136,40 @@ namespace UnitClassLibrary
         public double FluidOunces
         {
             get { return retrieveAsExternalUnit(VolumeType.FluidOunces); }
+        }
+
+        public double GetValue(VolumeType Units)
+        {
+            switch (Units)
+            {
+                case VolumeType.Milliliters:
+                    return Milliliters;
+                case VolumeType.CubicCentimeters:
+                    return CubicCentimeters;
+                case VolumeType.Liters:
+                    return Liters;
+                case VolumeType.CubicMeters:
+                    return CubicMeters;
+                case VolumeType.CubicInches:
+                    return CubicInches;
+                case VolumeType.CubicFeet:
+                    return CubicFeet;
+                case VolumeType.CubicYards:
+                    return CubicYards;
+                case VolumeType.CubicMiles:
+                    return CubicMiles;
+                case VolumeType.Gallons:
+                    return Gallons;
+                case VolumeType.Quarts:
+                    return Quarts;
+                case VolumeType.Pints:
+                    return Pints;
+                case VolumeType.Cups:
+                    return Cups;
+                case VolumeType.FluidOunces:
+                    return FluidOunces;
+            }
+            throw new Exception("Unknown DimensionType");
         }
         #endregion
 
@@ -282,7 +312,7 @@ namespace UnitClassLibrary
         {
             //add the two Volumes together
             //return a new Volume with the new value
-            return new Volume(v1.InternalUnitType, (v1._intrinsicValue + v2._intrinsicValue));
+            return new Volume(v1._internalUnitType, (v1._intrinsicValue + v2._intrinsicValue));
         }
 
         /// <summary>
@@ -295,7 +325,7 @@ namespace UnitClassLibrary
         {
             //subtract the two Volumes
             //return a new Volume with the new value
-            return new Volume(d1.InternalUnitType, (d1._intrinsicValue - d2._intrinsicValue));
+            return new Volume(d1._internalUnitType, (d1._intrinsicValue - d2._intrinsicValue));
         }
 
         /// <summary>
@@ -390,16 +420,23 @@ namespace UnitClassLibrary
             {
                 return false;
             }
-            
             try
             {
                 Volume other = (Volume)obj;
-                return Math.Abs(this._intrinsicValue - other._intrinsicValue) == 0;
+                return (Math.Abs(this.GetValue(this._internalUnitType) - other.GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.0001);
             }
             catch
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality deviation
+        /// </summary>
+        public bool EqualsWithinPassedAcceptedDeviation(object obj, Volume passedAcceptedEqualityDeviationVolume)
+        {
+            return (Math.Abs((this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType)))) <= passedAcceptedEqualityDeviationVolume.GetValue(_internalUnitType);
         }
         
         #endregion

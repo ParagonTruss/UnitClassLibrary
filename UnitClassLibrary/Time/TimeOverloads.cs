@@ -40,11 +40,17 @@ namespace UnitClassLibrary
             return new Time(t1._internalUnitType, t1._intrinsicValue * multiplier);
         }
 
+        /// <summary>
+        /// Not a perfect equality operator, it's only accurate up to DeviationConstants.AcceptedEqualityDeviationTime 
+        /// </summary>
         public static bool operator ==(Time t1, Time t2)
         {
             return t1.Equals(t2);
         }
 
+        /// <summary>
+        /// Not a perfect inequality operator, it's only accurate up to DeviationConstants.AcceptedEqualityDeviationTime 
+        /// </summary>
         public static bool operator !=(Time t1, Time t2)
         {
             return !t1.Equals(t2);
@@ -106,7 +112,7 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(_intrinsicValue - ((Time)(obj)).GetValue(_internalUnitType))) < TimeDevationConstant.AcceptedEqualityDeviationDimension.GetValue(_internalUnitType);
+            return (Math.Abs(_intrinsicValue - ((Time)(obj)).GetValue(_internalUnitType))) < DeviationConstants.AcceptedEqualityDeviationTime._intrinsicValue;
         }
 
         /// <summary>
@@ -114,11 +120,14 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Time passedAcceptedEqualityDeviationTime)
         {
+            /*
+             * Note the changes to the statement below as compared to the Dimension struct
+             */
             return (Math.Abs(
                 (_intrinsicValue
-                - ((Time)(obj)).GetValue(_internalUnitType))
+                - ((Time)(obj))._intrinsicValue)
                 ))
-                < passedAcceptedEqualityDeviationTime.GetValue(_internalUnitType);
+                < passedAcceptedEqualityDeviationTime._intrinsicValue;
         }
 
         #endregion

@@ -14,57 +14,62 @@ namespace UnitClassLibrary
 
         public double Microseconds
         {
-            get {return _retrieveAsExternalUnit(TimeType.Microsecond);}
+            get { return _retrieveAsExternalUnit(TimeType.Microsecond); }
         }
 
         public double Milliseconds
         {
-            get {return _retrieveAsExternalUnit(TimeType.Millisecond);}
+            get { return _retrieveAsExternalUnit(TimeType.Millisecond); }
         }
 
         public double Seconds
         {
-            get {return _retrieveAsExternalUnit(TimeType.Second);}
+            get { return _retrieveAsExternalUnit(TimeType.Second); }
         }
 
         public double Minutes
         {
-            get {return _retrieveAsExternalUnit(TimeType.Minute);}
+            get { return _retrieveAsExternalUnit(TimeType.Minute); }
         }
 
         public double Hours
         {
-            get {return _retrieveAsExternalUnit(TimeType.Hour);}
+            get { return _retrieveAsExternalUnit(TimeType.Hour); }
         }
 
         public double Days
         {
-            get {return _retrieveAsExternalUnit(TimeType.Day);}
+            get { return _retrieveAsExternalUnit(TimeType.Day); }
         }
 
         public double Weeks
         {
-            get {return _retrieveAsExternalUnit(TimeType.Week);}
+            get { return _retrieveAsExternalUnit(TimeType.Week); }
         }
 
         public double Months
         {
-            get {return _retrieveAsExternalUnit(TimeType.Month);}
+            get { return _retrieveAsExternalUnit(TimeType.Month); }
         }
 
         public double Years
         {
-            get {return _retrieveAsExternalUnit(TimeType.Year);}
+            get { return _retrieveAsExternalUnit(TimeType.Year); }
         }
 
         public double Decades
         {
-            get {return _retrieveAsExternalUnit(TimeType.Decade);}
+            get { return _retrieveAsExternalUnit(TimeType.Decade); }
         }
 
         public double Centuries
         {
             get { return _retrieveAsExternalUnit(TimeType.Century); }
+        }
+
+        public TimeSpan TimeSpan
+        {
+            get { return new TimeSpan((int)_retrieveAsExternalUnit(TimeType.Second)); }
         }
 
         public double GetValue(TimeType Units)

@@ -37,7 +37,7 @@ namespace UnitLibraryTests
         }
 
         /// <summary>
-        /// Tests mathmatical operators we will test the properties at the same time.
+        /// Tests mathmatical operators
         /// </summary>
         [Test()]
         public void Dimension_Math_Operators()
@@ -51,9 +51,8 @@ namespace UnitLibraryTests
             Dimension additionDimension = inchDimension + architecturalDimension;
 
             // assert
-            subtractionDimension.Kilometers.Should().BeApproximately(0, DeviationConstants.AcceptedEqualityDeviationDimension.Kilometers);
-            subtractionDimension.Feet.Should().BeApproximately(0, DeviationConstants.AcceptedEqualityDeviationDimension.Feet);
-            additionDimension.Millimeters.Should().BeApproximately(720.725, DeviationConstants.AcceptedEqualityDeviationDimension.Millimeters);
+            subtractionDimension.Equals(new Dimension(DimensionType.Inch, 0)).Should().BeTrue();
+            additionDimension.Equals(new Dimension(DimensionType.Millimeter, 720.725)).Should().BeTrue();
             additionDimension.Architectural.Should().Be("2'4 6/16\"");
         }
 

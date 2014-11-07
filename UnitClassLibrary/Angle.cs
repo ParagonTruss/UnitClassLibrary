@@ -28,11 +28,12 @@ namespace UnitClassLibrary
 
         //Internally we are currently using radians
         private double _intrinsicValue;
-        private AngleType InternalUnitType;
+        private AngleType _internalUnitType;
 
         #endregion
 
         #region Properties
+
         /// <summary>
         /// returns the Angle in Radians
         /// </summary>
@@ -98,7 +99,7 @@ namespace UnitClassLibrary
         /// <returns>the double value of the angle</returns>
         public double GetValue(AngleType angleType)
         {
-            return ConvertTo(InternalUnitType, _intrinsicValue, angleType);
+            return ConvertTo(_internalUnitType, _intrinsicValue, angleType);
         }
 
         public static double ConvertTo(AngleType fromAngleType, double passedValue, AngleType toAngleType)
@@ -168,7 +169,7 @@ namespace UnitClassLibrary
             {
                 case AngleType.Radian:
                     _intrinsicValue = passedValue;
-                    InternalUnitType = AngleType.Radian;
+                    _internalUnitType = AngleType.Radian;
                     break;
                 case AngleType.Degree:
                     while (passedValue > 360)
@@ -176,7 +177,7 @@ namespace UnitClassLibrary
                         passedValue = passedValue - 360;
                     }
                     _intrinsicValue = passedValue;
-                    InternalUnitType = AngleType.Degree;
+                    _internalUnitType = AngleType.Degree;
                     break;
             }
 
@@ -189,7 +190,7 @@ namespace UnitClassLibrary
         public Angle(Angle passedAngle)
         {
             this._intrinsicValue = passedAngle._intrinsicValue;
-            this.InternalUnitType = passedAngle.InternalUnitType;
+            this._internalUnitType = passedAngle._internalUnitType;
         }
 
         /// <summary>
@@ -215,7 +216,7 @@ namespace UnitClassLibrary
             }
 
             _intrinsicValue = degrees + (minutes / 60f) + (seconds / 3600f);
-            InternalUnitType = AngleType.Degree;
+            _internalUnitType = AngleType.Degree;
         }
 
         #endregion
@@ -370,14 +371,13 @@ namespace UnitClassLibrary
             try
             {
                 Angle other = (Angle)obj;
-                return Math.Abs(this.GetValue(InternalUnitType) - other.GetValue(InternalUnitType)) < DeviationConstants.AcceptedEqualityDeviationAngle.GetValue(InternalUnitType);
+                return Math.Abs(this.GetValue(_internalUnitType) - ((Angle)(obj)).GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
             }
             catch
             {
                 return false;
             }
         }
-
 
         /// <summary>
         /// Returns the a string converted to a desired unitType
@@ -413,7 +413,7 @@ namespace UnitClassLibrary
             if (this.Equals(other))
                 return 0;
             else
-                return (this.GetValue(InternalUnitType).CompareTo(other.GetValue(InternalUnitType)));
+                return (this.GetValue(_internalUnitType).CompareTo(other.GetValue(_internalUnitType)));
         }
         #endregion
     }

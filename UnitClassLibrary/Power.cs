@@ -229,8 +229,8 @@ namespace UnitClassLibrary
             try
             {
                 Power other = (Power)obj;
-                return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) < // This power and the passed power (in units of this power)...
-                    DeviationConstants.AcceptedEqualityDeviationPower._energy.GetValue(this._energy.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationPower._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation power constant in units of this power
+                 return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
+                    Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation power constant (0.01%) in units of this power
             }
             catch
             {
@@ -243,7 +243,7 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Power passedAcceptedEqualityDeviationDimension)
         {
-            return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) < // This power and the passed power (in units of this power)...
+            return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
                 passedAcceptedEqualityDeviationDimension._energy.GetValue(this._energy.InternalUnitType) / passedAcceptedEqualityDeviationDimension._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation power constant in units of this power
         }
         #endregion
