@@ -52,7 +52,7 @@ namespace UnitLibraryTests
         [Test()]
         public void Volume_ConstructorTests()
         {
-            Volume v1 = new Volume();
+            Volume v1 = new Volume(VolumeType.CubicMiles, 0);
             Volume v2 = new Volume(VolumeType.CubicFeet, 100);
             Volume v3 = new Volume(VolumeType.Gallons, 100);
 
