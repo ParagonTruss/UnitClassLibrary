@@ -31,11 +31,6 @@ namespace UnitClassLibrary
     public enum EnergyType { Joule, Erg, FootPound, KilogramMeter }
 
     /// <summary>
-    /// Enum for specifying the type of unit a time is
-    /// </summary>
-    public enum TimeType { Second, Minute, Hour }
-
-    /// <summary>
     /// Enum for specifying the type of unit a stress is
     /// </summary>
     public enum StressType { PoundsPerSquareInch, PoundsPerSquareMillimeter, NewtonsPerSquareMeter, NewtonsPerSquareMillimeter }

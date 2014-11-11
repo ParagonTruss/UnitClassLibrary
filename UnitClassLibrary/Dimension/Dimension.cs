@@ -13,7 +13,7 @@ namespace UnitClassLibrary
     /// Class used for storing dimensions that may need to be accessed in a different measurement system
     /// Will accept anything as input
     /// 
-    /// For an explanation of why this class is immutatble: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
+    /// For an explanation of why this class is immutable: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
     /// 
     /// <example>
     /// decimal inches into AutoCAD notation
