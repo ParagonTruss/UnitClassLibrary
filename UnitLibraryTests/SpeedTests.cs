@@ -48,9 +48,9 @@ namespace UnitLibraryTests
             Speed s2 = new Speed(SpeedType.FeetPerSecond, 100);
             Speed s3 = new Speed(SpeedType.MetersPerSecond, 100);
 
-            s1.MilesPerHour.Should().Be(0);
-            s2.FeetPerSecond.Should().Be(100);
-            s3.MetersPerSecond.Should().Be(100);
+            (new Speed(SpeedType.FeetPerMinute, 0) == s1).Should().BeTrue();
+            (new Speed(SpeedType.FeetPerSecond, 100) == s2).Should().BeTrue();
+            (new Speed(SpeedType.MetersPerSecond, 100) == s3).Should().BeTrue();
         }
 
         [Test()]

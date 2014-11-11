@@ -139,7 +139,7 @@ namespace UnitLibraryTests
             nullFirstNotEqual.Should().BeTrue();
             bothNullNotEqual.Should().BeFalse();
 
-            //check equals (other way should through a nullPointerException)
+            //check equals (other way should throw a nullPointerException)
             bool nullSecond = biggerDimension.Equals(null);
 
             nullSecond.Should().BeFalse();

@@ -52,6 +52,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator ==(Dimension d1, Dimension d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return d1.Equals(d2);
         }
 
@@ -60,6 +68,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator !=(Dimension d1, Dimension d2)
         {
+            if ((object)d1 == null)
+            {
+                if ((object)d2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !d1.Equals(d2);
         }
 
@@ -117,7 +133,18 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            if (obj == null)
+            {
+                return false;
+            }
+            try
+            {
+                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

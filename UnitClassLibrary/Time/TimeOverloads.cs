@@ -45,6 +45,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator ==(Time t1, Time t2)
         {
+            if ((object)t1 == null)
+            {
+                if ((object)t2 == null)
+                {
+                    return true;
+                }
+                return false;
+            }
             return t1.Equals(t2);
         }
 
@@ -53,6 +61,14 @@ namespace UnitClassLibrary
         /// </summary>
         public static bool operator !=(Time t1, Time t2)
         {
+            if ((object)t1 == null)
+            {
+                if ((object)t2 == null)
+                {
+                    return false;
+                }
+                return true;
+            }
             return !t1.Equals(t2);
         }
 
@@ -112,7 +128,7 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            return (Math.Abs(_intrinsicValue - ((Time)(obj)).GetValue(_internalUnitType))) < DeviationConstants.AcceptedEqualityDeviationTime._intrinsicValue;
+            return (Math.Abs(this.GetValue(this._internalUnitType) - ((Time)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.0001);
         }
 
         /// <summary>
@@ -120,14 +136,11 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Time passedAcceptedEqualityDeviationTime)
         {
-            /*
-             * Note the changes to the statement below as compared to the Dimension struct
-             */
             return (Math.Abs(
-                (_intrinsicValue
-                - ((Time)(obj))._intrinsicValue)
+                (this.GetValue(this._internalUnitType)
+                - ((Time)(obj)).GetValue(this._internalUnitType))
                 ))
-                < passedAcceptedEqualityDeviationTime._intrinsicValue;
+                < passedAcceptedEqualityDeviationTime.GetValue(_internalUnitType);
         }
 
         #endregion

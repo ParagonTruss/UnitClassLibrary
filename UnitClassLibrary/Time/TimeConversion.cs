@@ -196,7 +196,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue;
                             break;
                         case TimeType.Hour:
-                            returnDouble = passedValue * 0.0166667;
+                            returnDouble = passedValue / 60;
                             break;
                         case TimeType.Day:
                             returnDouble = passedValue * 0.000694444;

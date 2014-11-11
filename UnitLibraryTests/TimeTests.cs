@@ -33,7 +33,7 @@ namespace UnitLibraryTests
             Time copiedTime = new Time(mintueTime);
 
             // assert
-            hourTime.Hours.Should().Be(mintueTime.Hours);
+            (hourTime == mintueTime).Should().BeTrue();
             copiedTime.ShouldBeEquivalentTo(mintueTime);
         }
 
@@ -52,9 +52,8 @@ namespace UnitLibraryTests
             Time subtractionTime = hourTime - mintueTime;
             Time additionTime = hourTime + mintueTime;
 
-            subtractionTime.Hours.Should().Be(0);
-            subtractionTime.Minutes.Should().Be(0);
-            additionTime.Hours.Should().Be(2);
+            (subtractionTime == new Time()).Should().BeTrue();
+            (additionTime == new Time(TimeType.Hour, 2)).Should().BeTrue();
         }
 
         /// <summary>
@@ -93,7 +92,7 @@ namespace UnitLibraryTests
 
             Time equivalentbiggerTime = new Time(TimeType.Minute, 59.1);
 
-            (equivalentbiggerTime.EqualsWithinPassedAcceptedDeviation(biggerTime, 1)).Should().Be(true);
+            equivalentbiggerTime.EqualsWithinPassedAcceptedDeviation(biggerTime, new Time(TimeType.Minute, 1)).Should().Be(true);
         }
 
 
@@ -161,15 +160,15 @@ namespace UnitLibraryTests
             Time secondTime = new Time(TimeType.Second, 3600);
 
             //Act & Assert
-            secondTime.Hours.Should().Be(1);
-            secondTime.Minutes.Should().Be(60);
-            secondTime.Seconds.Should().Be(3600);
-            secondTime.Milliseconds.Should().Be(3600);
-            secondTime.Days.Should().Be(0.04166667);
-            secondTime.Weeks.Should().Be(0.005952381);
-            secondTime.Months.Should().Be(0.001368955);
-            secondTime.Years.Should().Be(0.0001140796);
-            secondTime.Decades.Should().Be(1.1408e-5);
+            (secondTime == new Time(TimeType.Hour, 1)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Minute, 60)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Second, 3600)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Millisecond, 3600000)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Day, 0.04166667)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Week, 0.005952381)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Month, 0.001368955)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Year, 0.0001140796)).Should().BeTrue();
+            (secondTime == new Time(TimeType.Decade, 1/87658.1)).Should().BeTrue();
         }
     }
 }

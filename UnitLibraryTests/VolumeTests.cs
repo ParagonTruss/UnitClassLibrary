@@ -18,35 +18,21 @@ namespace UnitLibraryTests
             // arrange
             Volume LitersVolume = new Volume(VolumeType.Liters, 880);
 
-            // act
-            double Milliliters = LitersVolume.Milliliters;
-            double CubicCentimeters = LitersVolume.CubicCentimeters;
-            double Liters = LitersVolume.Liters;
-            double CubicMeters = LitersVolume.CubicMeters;
-            double CubicInches = LitersVolume.CubicInches;
-            double CubicFeet = LitersVolume.CubicFeet;
-            double CubicYards = LitersVolume.CubicYards;
-            double CubicMiles = LitersVolume.CubicMiles;
-			double Gallons = LitersVolume.Gallons;
-			double Quarts = LitersVolume.Quarts;
-			double Pints = LitersVolume.Pints;
-			double Cups = LitersVolume.Cups;
-			double FluidOunces = LitersVolume.FluidOunces;
+            // act & assert
+            (new Volume(VolumeType.Milliliters,880000) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicCentimeters ,880000) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Liters,880) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicMeters,0.88) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicInches,53700.894803364165) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicFeet,31.076906714910322) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicYards, 1.15099654) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicMiles, 2.11123228 * Math.Pow(10, -10)) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Gallons, 232.471406075172) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Quarts, 929.885624300688) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Pints, 1859.771248601376) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Cups, 3719.542497202752) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.FluidOunces, 29756.33997762184) == LitersVolume).Should().BeTrue();
 
-            // assert
-            Milliliters.Should().Be(880000);
-            CubicCentimeters.Should().Be(880000);
-            Liters.Should().Be(880);
-            CubicMeters.Should().Be(0.88);
-            CubicInches.Should().BeApproximately(53700.894803364165, 53700.894803364165 * 0.00001);
-            CubicFeet.Should().BeApproximately(31.076906714910322, 31.076906714910322 * 0.00001);
-            CubicYards.Should().BeApproximately(1.15099654, 1.15099654 * 0.00001);
-            CubicMiles.Should().BeApproximately(2.11123228 * Math.Pow(10, -10), 2.11123228 * Math.Pow(10, -10) * 0.00001);
-            Gallons.Should().BeApproximately(232.471406075172, 232.471406075172 * 0.00001);
-            Quarts.Should().BeApproximately(929.885624300688, 929.885624300688 * 0.00001);
-            Pints.Should().BeApproximately(1859.771248601376, 1859.771248601376 * 0.00001);
-            Cups.Should().BeApproximately(3719.542497202752, 3719.542497202752 * 0.00001);
-            FluidOunces.Should().BeApproximately(29756.33997762184, 29756.33997762184 * 0.00001);
         }
 
         [Test()]
