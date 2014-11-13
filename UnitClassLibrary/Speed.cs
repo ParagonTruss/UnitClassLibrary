@@ -543,7 +543,7 @@ namespace UnitClassLibrary
             {
                 Speed other = (Speed)obj;
                 return Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._dimension.GetValue(this._dimension.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
-                    Math.Abs(this._dimension.GetValue(this._dimension.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
+                    DeviationConstants.AcceptedEqualityDeviationSpeed._dimension.GetValue(this._dimension.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation speed constant in units of this speed
             }
             catch
             {

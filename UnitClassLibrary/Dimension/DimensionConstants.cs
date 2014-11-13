@@ -57,5 +57,13 @@ namespace UnitClassLibrary
             get { return new Dimension(DimensionType.Kilometer, 1); }
         }
 
+        public static Dimension AcceptedEqualityDeviation
+        {
+            get
+            {
+                return new Dimension(DimensionType.Inch, 0.03125);
+            }
+        }
+
     }
 }
