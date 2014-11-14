@@ -206,6 +206,17 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
+        /// multiplies a force by a scalar value
+        /// </summary>
+        /// <param name="f1">the force to multiply</param>
+        /// <param name="multiplier">double of a scalar multiplier</param>
+        /// <returns>force increased by a factor of "multiplier"</returns>
+        public static ForceUnit operator *(double multiplier, ForceUnit f1)
+        {
+            return f1 * multiplier;
+        }
+
+        /// <summary>
         /// checks if two forces are equal
         /// </summary>
         /// <param name="f1">force 1</param>
