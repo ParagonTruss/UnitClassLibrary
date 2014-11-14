@@ -573,7 +573,7 @@ namespace UnitClassLibrary
             try
             {
                 Area other = (Area)obj;
-                return (Math.Abs(this._intrinsicValue - ((Area)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) <= DeviationConstants.AcceptedEqualityDeviationArea.GetValue(this._internalUnitType);
             }
             catch
             {

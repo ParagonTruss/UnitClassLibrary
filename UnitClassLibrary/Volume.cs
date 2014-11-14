@@ -1134,7 +1134,8 @@ namespace UnitClassLibrary
             }
             try
             {
-                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+                Volume other = (Volume)obj;
+                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= DeviationConstants.AcceptedEqualityDeviationVolume.GetValue(this._internalUnitType);
             }
             catch
             {

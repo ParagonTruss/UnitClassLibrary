@@ -230,7 +230,7 @@ namespace UnitClassLibrary
             {
                 Power other = (Power)obj;
                  return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
-                    Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation power constant (0.01%) in units of this power
+                    DeviationConstants.AcceptedEqualityDeviationPower._energy.GetValue(this._energy.InternalUnitType) / DeviationConstants.AcceptedEqualityDeviationPower._time.GetValue(this._time.InternalUnitType); // Is less than the accepted deviation power constant in units of this power
             }
             catch
             {
