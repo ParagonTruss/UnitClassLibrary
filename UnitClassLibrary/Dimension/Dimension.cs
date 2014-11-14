@@ -50,6 +50,8 @@ namespace UnitClassLibrary
 
         private double _intrinsicValue;
 
+        private DimensionEqualityStrategy DimensionEqualityStrategy = EqualityFunctionImplementations.PercentageEquality;
+
         #endregion
 
         #region Constructors
@@ -57,10 +59,9 @@ namespace UnitClassLibrary
         /// <summary>
         /// Accepts any valid AutoCAD architectural string value for input.
         /// </summary>
-        public Dimension(string passedArchitecturalString)
+        public Dimension(string passedArchitecturalString, DimensionEqualityStrategy passedStrategy = null)
         {
             //we will always make the internal unit type of a passed String Inches 
-
             _internalUnitType = DimensionType.Inch;
             _intrinsicValue = _architecturalStringAsInches(passedArchitecturalString);
         }
@@ -68,19 +69,29 @@ namespace UnitClassLibrary
         /// <summary>
         /// Accepts standard types for input.
         /// </summary>
-        public Dimension(DimensionType passedDimensionType, double passedInput)
+        public Dimension(DimensionType passedDimensionType, double passedInput, DimensionEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = passedInput;
             _internalUnitType = passedDimensionType;
+            
+            if (passedStrategy != null)
+            {
+                DimensionEqualityStrategy = passedStrategy;
+            } 
         }
 
         /// <summary>
         /// copy constructor - create a new Dimension with the same _intrinsicValue as the passed Dimension
         /// </summary>
-        public Dimension(Dimension passedDimension)
+        public Dimension(Dimension passedDimension, DimensionEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = passedDimension._intrinsicValue;
             _internalUnitType = passedDimension._internalUnitType;
+
+            if (passedStrategy != null)
+            {
+                DimensionEqualityStrategy = passedStrategy;
+            } 
         }
 
         #endregion
