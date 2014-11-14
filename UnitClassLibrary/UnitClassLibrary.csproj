@@ -49,9 +49,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angle.cs" />
+    <Compile Include="AngularDistance.cs" />
     <Compile Include="DeviationConstants.cs" />
     <Compile Include="Dimension\DimensionConstants.cs" />
-    <Compile Include="Dimension\DimensionConversion.cs" />
+	<Compile Include="Dimension\DimensionConversion.cs" />
     <Compile Include="Dimension\DimensionIComparableImplementation.cs" />
     <Compile Include="Dimension\DimensionOverloads.cs" />
     <Compile Include="Dimension\DimensionProperties.cs" />

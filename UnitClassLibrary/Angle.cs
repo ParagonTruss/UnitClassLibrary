@@ -5,6 +5,8 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
+
+
     /// <summary>
     /// Class used for storing Angles that may need to be accessed in a different measurement system
     /// Accepts anything as input
@@ -22,141 +24,14 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : IComparable<Angle>
+    public class Angle : AngularDistance, IComparable<Angle>
     {
-        #region private fields and constants
-
-        //Internally we are currently using radians
-        private double _intrinsicValue;
-        private AngleType _internalUnitType;
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// returns the Angle in Radians
-        /// </summary>
-        public double Radians
-        {
-            get { return GetValue(AngleType.Radian); }
-        }
-
-        /// <summary>
-        /// returns the Angle in Degrees
-        /// </summary>
-        public double Degrees
-        {
-            get { return GetValue(AngleType.Degree); }
-        }
-        #endregion
-
-        #region Helper Methods
-        /// <summary>
-        /// converts an Angle's Radians to Degrees
-        /// </summary>
-        /// <param name="radians">the radians for the Angle</param>
-        /// <returns>the string equivalent of the degrees</returns>
-        private static string ConvertDecimalRadiansToDegreesString(double radians)
-        {
-            //convert out of radians
-            double degreesCumulative = radians / (Math.PI / 180);
-
-            //save off the whole degrees
-            double degrees = Math.Floor(degreesCumulative);
-
-            //only left with minutes and seconds as a remainder of degrees
-            degreesCumulative -= degrees;
-
-            //convert to minutes
-            degreesCumulative *= 60;
-
-            //save off the whole minutes
-            double minutes = Math.Floor(degreesCumulative);
-
-            //only left with seconds as a remainder of minutes
-            degreesCumulative -= degrees;
-
-            //convert to seconds
-            degreesCumulative *= 60;
-
-            //round off to whole seconds
-            double seconds = Math.Round(degreesCumulative);
-
-            //now convert numbers to strings
-            string degreeString = degrees.ToString();
-            string minutesString = minutes.ToString();
-            string secondsString = seconds.ToString();
-
-            //format symbols
-            return string.Format("{0}°{1}'{2}\"", degreeString, minutesString, secondsString);
-        }
-
-        /// <summary>
-        /// returns the angle in double form as radians or degrees
-        /// </summary>
-        /// <param name="angleType">the type of angle to convert to</param>
-        /// <returns>the double value of the angle</returns>
-        public double GetValue(AngleType angleType)
-        {
-            return ConvertTo(_internalUnitType, _intrinsicValue, angleType);
-        }
-
-        public static double ConvertTo(AngleType fromAngleType, double passedValue, AngleType toAngleType)
-        {
-            double returnAngle = 0;
-
-            switch (fromAngleType)
-            {
-                case AngleType.Degree:
-                    switch (toAngleType)
-                    {
-                        case AngleType.Degree: // Return given degrees
-                            returnAngle = passedValue;
-                            break;
-                        case AngleType.Radian: // Convert degrees to radians
-                            returnAngle = passedValue / (180 / Math.PI);
-                            break;
-                    }
-                    break;
-                case AngleType.Radian:
-                    switch (toAngleType)
-                    {
-                        case AngleType.Degree: // Convert radians to degrees
-                            returnAngle = passedValue / (Math.PI / 180);
-                            break;
-                        case AngleType.Radian: // Return given radians
-                            returnAngle = passedValue;
-                            break;
-                    }
-                    break;
-                default:
-                    //code should never run
-                    throw new NotSupportedException("Unit not supported!");
-            }
-
-            return returnAngle;
-        }
-
-        /// <summary>
-        /// creates a negative instance of this angle
-        /// </summary>
-        /// <returns>a negative instance of this angle</returns>
-        public Angle Negate()
-        {
-            return new Angle(AngleType.Radian, this.Radians * -1);
-        }
-        #endregion
-
         #region Constructors
 
         /// <summary>
         /// Empty Constructor
         /// </summary>
-        public Angle()
-        {
-            _intrinsicValue = 0;
-        }
+        public Angle(): base() { }
 
         /// <summary>
         /// Create an angle object from an angle value.
@@ -177,7 +52,7 @@ namespace UnitClassLibrary
                         passedValue = passedValue - 360;
                     }
                     _intrinsicValue = passedValue;
-                    _internalUnitType = AngleType.Degree;
+                    _internalUnitType = AngleType.Degree; 
                     break;
             }
 
@@ -370,6 +245,8 @@ namespace UnitClassLibrary
             }
             try
             {
+                //check 
+
                 Angle other = (Angle)obj;
                 return Math.Abs(this.GetValue(_internalUnitType) - ((Angle)(obj)).GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
             }
