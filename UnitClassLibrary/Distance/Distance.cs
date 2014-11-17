@@ -35,9 +35,9 @@ namespace UnitClassLibrary
     public enum DistanceType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile, ArchitecturalString };
 
     [DebuggerDisplay("Inches = {Inches}")]
-    public partial struct Distance
+    public partial class Distance
     {
-        #region private _fields and Internal Properties
+        #region _fields and Internal Properties
 
         /// <summary>
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
@@ -56,11 +56,26 @@ namespace UnitClassLibrary
         /// <summary>
         /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
-        private DistanceEqualityStrategy _DistanceEqualityStrategy;
+        public DistanceEqualityStrategy EqualityStrategy
+        {
+            get { return _equalityStrategy; }
+            set { _equalityStrategy = value; }
+        }
+        private DistanceEqualityStrategy _equalityStrategy = EqualityStrategyImplementations.DefaultConstantEquality;
 
         #endregion
 
         #region Constructors
+
+        /// <summary>
+        /// Zero Constructor
+        /// </summary>
+        public Distance(DistanceEqualityStrategy passedStrategy = null)
+        {
+            _intrinsicValue = 0;
+            _internalUnitType = DistanceType.Inch;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
+        }
 
         /// <summary>
         /// Accepts any valid AutoCAD architectural string value for input.
@@ -70,7 +85,7 @@ namespace UnitClassLibrary
             //we will always make the internal unit type of a passed String Inches 
             _internalUnitType = DistanceType.Inch;
             _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
-            _DistanceEqualityStrategy = _choosePassedOrDefaultEqualityStrategy(passedStrategy);
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
         /// <summary>
@@ -80,7 +95,7 @@ namespace UnitClassLibrary
         {
             _intrinsicValue = passedInput;
             _internalUnitType = passedDistanceType;
-            _DistanceEqualityStrategy = _choosePassedOrDefaultEqualityStrategy(passedStrategy);
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
         /// <summary>
@@ -90,18 +105,20 @@ namespace UnitClassLibrary
         {
             _intrinsicValue = passedDistance._intrinsicValue;
             _internalUnitType = passedDistance._internalUnitType;
-            _DistanceEqualityStrategy = passedDistance._DistanceEqualityStrategy;
+            _equalityStrategy = passedDistance._equalityStrategy;
         }
+
+
 
         #endregion
 
-        #region helper methods
+        #region helper _methods
 
-        private static DistanceEqualityStrategy _choosePassedOrDefaultEqualityStrategy(DistanceEqualityStrategy passedStrategy)
+        private DistanceEqualityStrategy _chooseDefaultOrPassedStrategy(DistanceEqualityStrategy passedStrategy)
         {
             if (passedStrategy == null)
             {
-                return EqualityFunctionImplementations.PercentageEquality;
+                return _equalityStrategy;
             }
             else
             {

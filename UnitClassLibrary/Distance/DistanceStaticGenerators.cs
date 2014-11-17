@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public static class DistanceGenerator
+    public partial class Distance
     {
         public static Distance MakeDistanceWithInches(double passedValue)
         {

@@ -5,16 +5,16 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="Distance1"></param>
-    /// <param name="Distance2"></param>
-    /// <param name="DeviationConstant"></param>
-    /// <returns></returns>
-    public delegate bool DistanceEqualityStrategy (Distance distance1, Distance distance2, Distance? deviationConstant = null, double? deviationPercentage = null);
 
-    public static partial class DeviationConstants
+    /// <summary>
+    /// delegate that defines the form of 
+    /// </summary>
+    /// <param name="distance1"></param>
+    /// <param name="distance2"></param>
+    /// <returns></returns>
+    public delegate bool DistanceEqualityStrategy (Distance distance1, Distance distance2);
+
+    public static partial class DeviationDefaults
     {
         public static Distance AcceptedEqualityDeviationDistance
         {
@@ -33,43 +33,29 @@ namespace UnitClassLibrary
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    public static class EqualityFunctionImplementations
+    public static class EqualityStrategyImplementations
     {
         /// <summary>
         /// Distances are equal if they differ by less than a percentage of the first Distance
         /// </summary>
-        /// <param name="distance1"></param>
-        /// <param name="distance2"></param>
-        /// <param name="deviationConstant"></param>
+        /// <param name="distance1">first distance being compared</param>
+        /// <param name="distance2">second distance being compared</param>
         /// <returns></returns>
-        public static bool PercentageEquality(Distance distance1, Distance distance2, Distance? deviationConstant = null, double? deviationPercentage = null)
+        public static bool DefaultPercentageEquality(Distance distance1, Distance distance2)
         {
-            if (deviationPercentage == null)
-            {
-                deviationPercentage = DeviationConstants.AcceptedEqualityDeviationDistancePercentage;
-            }
-
-            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= Math.Abs(distance1.GetValue(distance1.InternalUnitType) * deviationPercentage.Value);
+            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= Math.Abs(distance1.GetValue(distance1.InternalUnitType) * DeviationDefaults.AcceptedEqualityDeviationDistancePercentage);
         }
 
         /// <summary>
         /// Distances are equal if there values are within the passed deviation constant. If they are not within the constant
         /// </summary>
-        /// <param name="distance1"></param>
-        /// <param name="distance2"></param>
-        /// <param name="deviationConstant"></param>
+        /// <param name="distance1">first distance being compared</param>
+        /// <param name="distance2">second distance being compared</param>
         /// <returns></returns>
-        public static bool ConstantEquality(Distance distance1, Distance distance2, Distance? deviationConstant = null, double? deviationPercentage = null)
+        public static bool DefaultConstantEquality(Distance distance1, Distance distance2)
         {
-            if (deviationConstant == null)
-            {
-                deviationConstant = DeviationConstants.AcceptedEqualityDeviationDistance;
-            }
 
-            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= deviationConstant.Value.GetValue(distance1.InternalUnitType);
+            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(distance1.InternalUnitType);
         }
     }
 }

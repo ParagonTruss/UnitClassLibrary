@@ -17,7 +17,7 @@ namespace UnitLibraryTests
         /// Tests the architectural string constructor and the regular Distance constructor
         /// </summary>
         [Test()]
-        public void Distance_Constructors()
+        public void Distance_Constructors() 
         {
  
             // arrange & act
@@ -173,7 +173,7 @@ namespace UnitLibraryTests
             Distance smallerDistance = new Distance("1' 2 1/16\"");
             Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, -360.3625);
 
-            (equivalentbiggerDistance.EqualsWithinPassedAcceptedDeviation( biggerDistance, new Distance(DistanceType.Millimeter, 1))).Should().Be(true);
+            (equivalentbiggerDistance.EqualsWithinDeviationConstant( biggerDistance, new Distance(DistanceType.Millimeter, 1))).Should().Be(true);
         }
 
 
@@ -232,6 +232,96 @@ namespace UnitLibraryTests
 
             
 
+        }
+
+        [Test()]
+        public void Distance_Incrementing()
+        {
+
+            //Static constants
+            Distance oneFoot = Distance.Foot;
+
+            //increments
+            oneFoot += oneFoot; //should be two feet
+
+            (oneFoot == new Distance(DistanceType.Foot, 2)).Should().BeTrue();
+
+            oneFoot -= oneFoot; //should be zero feet
+
+            (oneFoot == new Distance(DistanceType.Foot, 0)).Should().BeTrue();
+
+        }
+
+        /// <summary>
+        /// Tests intuitiveness. If this compiles then these "pass"
+        /// </summary>
+        [Test()]
+        public void Distance_Intuitiveness()
+        {
+            //zero constructor
+            Distance zero = new Distance();
+
+            //simple constructor
+            Distance smallDistance = new Distance(DistanceType.Millimeter, 1);
+            Distance mediumDistance = new Distance(DistanceType.Foot, 1);
+            Distance largeDistance = new Distance(DistanceType.Kilometer, 1);
+
+            //copy constructor
+            Distance copy = new Distance(smallDistance);
+
+            //comparisons
+            if (copy > zero)
+            {
+		 
+            }
+            
+            if (zero == new Distance())
+            {
+
+            }
+
+            if (zero >= new Distance())
+            {
+
+            }
+            
+
+            //Math operations
+            Distance distance4 = smallDistance + largeDistance;
+            Distance doubleDistance = mediumDistance ^ 2;
+
+            //absolute value
+            Distance positiveDistance = (new Distance(DistanceType.Inch, -1).AbsoluteValue());
+
+            //Static constants
+            Distance oneFoot = Distance.Foot;
+
+            //increments
+            oneFoot += oneFoot; // 2 feet
+            oneFoot -= oneFoot; // 0 feet
+
+            //we do not implement ++ and -- because that would break our "all units simultaneously" abstraction.
+            // oneFoot++;
+            // oneFoot--;
+
+            //User defined equality strategies
+            DistanceEqualityStrategy userStrategy = (d1, d2) => { return true; };
+
+            oneFoot.EqualsWithinDistanceEqualityStrategy(positiveDistance, userStrategy);
+
+            // ToString override
+            oneFoot.ToString();
+
+            oneFoot.ToString(DistanceType.Inch);
+
+            List<Distance> distances = new List<Distance> { oneFoot, positiveDistance, distance4, zero };
+
+            foreach (var distance in distances)
+            {
+                distance.ToString();
+            }
+
+           
         }
     }
 }
