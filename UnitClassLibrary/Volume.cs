@@ -6,7 +6,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    ///Dimension class for volume
+    ///Distance class for volume
     /// </summary>
     public class Volume
     {

@@ -50,17 +50,18 @@
   <ItemGroup>
     <Compile Include="Angle.cs" />
     <Compile Include="DeviationConstants.cs" />
-    <Compile Include="Dimension\DimensionConstants.cs" />
-    <Compile Include="Dimension\DimensionConversion.cs" />
-    <Compile Include="Dimension\DimensionIComparableImplementation.cs" />
-    <Compile Include="Dimension\DimensionOverloads.cs" />
-    <Compile Include="Dimension\DimensionProperties.cs" />
+    <Compile Include="Distance\DistanceConstants.cs" />
+    <Compile Include="Distance\DistanceConversion.cs" />
+    <Compile Include="Distance\DistanceEquality.cs" />
+    <Compile Include="Distance\DistanceIComparableImplementation.cs" />
+    <Compile Include="Distance\DistanceOverloads.cs" />
+    <Compile Include="Distance\DistanceProperties.cs" />
     <Compile Include="ElectricCurrent.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="ExtensionMethods\AreaListExtensionMethods.cs" />
-    <Compile Include="Dimension\Dimension.cs" />
+    <Compile Include="Distance\Distance.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
     <Compile Include="Generators\DimensionGenerator.cs" />

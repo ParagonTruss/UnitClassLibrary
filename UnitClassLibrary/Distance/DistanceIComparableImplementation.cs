@@ -5,14 +5,14 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Dimension : IComparable<Dimension>
+    public partial struct Distance : IComparable<Distance>
     {
         /// <summary>
-        /// This implements the IComparable interface and allows Dimensions to be sorted and such
+        /// This implements the IComparable interface and allows Distances to be sorted and such
         /// </summary>
-        /// <param name="other">Dimension being compared to</param>
+        /// <param name="other">Distance being compared to</param>
         /// <returns></returns>
-        public int CompareTo(Dimension other)
+        public int CompareTo(Distance other)
         {
             // We use the equals operator to avoid having to rehash the equality
             // deviation

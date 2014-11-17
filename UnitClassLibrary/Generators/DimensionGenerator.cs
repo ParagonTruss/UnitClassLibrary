@@ -5,16 +5,16 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public static class DimensionGenerator
+    public static class DistanceGenerator
     {
-        public static Dimension MakeDimensionWithInches(double passedValue)
+        public static Distance MakeDistanceWithInches(double passedValue)
         {
-            return new Dimension(DimensionType.Inch, passedValue);
+            return new Distance(DistanceType.Inch, passedValue);
         }
 
-        public static Dimension MakeDimensionWithMillimeters(double passedValue)
+        public static Distance MakeDistanceWithMillimeters(double passedValue)
         {
-            return new Dimension(DimensionType.Millimeter, passedValue);
+            return new Distance(DistanceType.Millimeter, passedValue);
         }
     }
 }
