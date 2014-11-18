@@ -218,10 +218,10 @@ namespace UnitClassLibrary
             }
             try
             {
-                Stress newStress = (Stress)obj;
+                Stress other = (Stress)obj;
 
-                return Math.Abs(this._force.GetValue(this._force.InternalUnitType) / this._area.GetValue(this._area.InternalUnitType) - ((Stress)(obj))._force.GetValue(this._force.InternalUnitType) / ((Stress)(obj))._area.GetValue(this._area.InternalUnitType)) <= // This stress and the passed stress (in units of this stress)...
-                Math.Abs(this._force.GetValue(this._force.InternalUnitType) / this._area.GetValue(this._area.InternalUnitType) * .0001); // Is less than the accepted deviation stress constant (0.01%) in units of this stress
+                return Math.Abs(this._force.GetValue(this._force.InternalUnitType) / this._area.GetValue(this._area.InternalUnitType) - other._force.GetValue(this._force.InternalUnitType) / other._area.GetValue(this._area.InternalUnitType)) <= // This stress and the passed stress (in units of this stress)...
+                DeviationDefaults.AcceptedEqualityDeviationStress._force.GetValue(this._force.InternalUnitType) / DeviationDefaults.AcceptedEqualityDeviationStress._area.GetValue(this._area.InternalUnitType); // Is less than the accepted deviation stress constant (0.01%) in units of this stress
             }
             catch
             {
