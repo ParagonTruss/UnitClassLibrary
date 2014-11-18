@@ -9,6 +9,13 @@ using System.Text.RegularExpressions;
 
 namespace UnitClassLibrary
 {
+
+    
+    /// <summary>
+    /// Enum for specifying the type of unit a Distance is
+    /// </summary>
+    public enum DistanceType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile, ArchitecturalString };
+
     /// <summary>
     /// Class used for storing Distances that may need to be accessed in a different measurement system
     /// Will accept anything as input
@@ -28,14 +35,8 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    
-    /// <summary>
-    /// Enum for specifying the type of unit a Distance is
-    /// </summary>
-    public enum DistanceType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile, ArchitecturalString };
-
     [DebuggerDisplay("Inches = {Inches}")]
-    public partial class Distance
+    public partial struct Distance
     {
         #region _fields and Internal Properties
 
@@ -61,8 +62,7 @@ namespace UnitClassLibrary
             get { return _equalityStrategy; }
             set { _equalityStrategy = value; }
         }
-        private DistanceEqualityStrategy _equalityStrategy = EqualityStrategyImplementations.DefaultConstantEquality;
-
+        private DistanceEqualityStrategy _equalityStrategy;
         #endregion
 
         #region Constructors
@@ -114,11 +114,11 @@ namespace UnitClassLibrary
 
         #region helper _methods
 
-        private DistanceEqualityStrategy _chooseDefaultOrPassedStrategy(DistanceEqualityStrategy passedStrategy)
+        private static DistanceEqualityStrategy _chooseDefaultOrPassedStrategy(DistanceEqualityStrategy passedStrategy)
         {
             if (passedStrategy == null)
             {
-                return _equalityStrategy;
+                return EqualityStrategyImplementations.DefaultConstantEquality;
             }
             else
             {

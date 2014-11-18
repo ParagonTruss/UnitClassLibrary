@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Distance
+    public partial struct Distance
     {
         /// <summary>
         /// prints the value and unit type converted to
