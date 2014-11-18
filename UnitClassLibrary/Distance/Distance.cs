@@ -35,7 +35,6 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    [DebuggerDisplay("Inches = {Inches}")]
     public partial struct Distance
     {
         #region _fields and Internal Properties

@@ -25,7 +25,7 @@ namespace UnitClassLibrary
                 (this.GetValue(this._internalUnitType)
                 - ((Distance)(distance)).GetValue(this._internalUnitType))
                 ))
-                < passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
+                <= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
         }
 
         /// <summary>

@@ -195,16 +195,10 @@ namespace UnitClassLibrary
             return PoundsPerSquareMillimeter.GetHashCode();
         }
 
-        /// <summary>
-        /// Makes sure to throw an error telling the user that this is a bad idea
-        /// The Stress class does not know what type of unit it contains, 
-        /// (Because it should be thought of containing all unit types) 
-        /// Call Stress.[unit].Tostring() instead
-        /// </summary>
-        /// <returns>Should never return anything</returns>
+
         public override string ToString()
         {
-            throw new NotImplementedException("The Stress class does not know what type of unit it contains, (Because it should be thought of containing all unit types) Call Stress.[unit].ToString() instead");
+            return this._force + " / " + this._area;
         }
 
         /// <summary>

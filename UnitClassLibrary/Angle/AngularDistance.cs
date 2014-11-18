@@ -5,23 +5,23 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-        /// <summary>
-        /// Class used for storing Angles in which direction and sign matter, 
-        /// 
-        /// <example>
-        /// radians into degrees then returned as string
-        /// 
-        /// double radians = 10.5;
-        /// AngularDistance a = new Angle(AngleType.Radian, radians);
-        ///
-        /// double negativeRadians = -10.5;
-        /// AngularDistance a2 = new AngularDistance(AngleType.Radian, negativeRadians); 
-        ///
-        /// a1 == a2         //false. Would be true in the angle class
-        /// 
-        /// </example>
-        /// 
-        /// </summary>
+    /// <summary>
+    /// Class used for storing Angles in which direction and sign matter, 
+    /// 
+    /// <example>
+    /// radians into degrees then returned as string
+    /// 
+    /// double radians = 10.5;
+    /// AngularDistance a = new Angle(AngleType.Radian, radians);
+    ///
+    /// double negativeRadians = -10.5;
+    /// AngularDistance a2 = new AngularDistance(AngleType.Radian, negativeRadians); 
+    ///
+    /// a1 == a2         //false. Would be true in the angle class
+    /// 
+    /// </example>
+    /// 
+    /// </summary>
     public class AngularDistance : IComparable<AngularDistance>
     {
         #region private fields and constants
@@ -354,7 +354,7 @@ namespace UnitClassLibrary
         /// <returns>Should never return anything</returns>
         public override string ToString()
         {
-            throw new NotImplementedException("The Angle class does not know what type of unit it contains, (Because it should be thought of as containing all unit types) Call Angle.[unit].ToString() instead");
+            return this._intrinsicValue + " " + this._internalUnitType;
         }
 
         /// <summary>

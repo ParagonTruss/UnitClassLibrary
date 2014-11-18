@@ -548,15 +548,13 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Makes sure to throw an error telling the user that this is a bad idea
-        /// The Area class does not know what type of unit it contains, 
-        /// (Because it should be thought of containing all unit types) 
-        /// Call Area.[unit].Tostring() instead
+        /// The value and unit in terms of what the object was created with. 
+        /// If you want it in a different unit use ToString(AreaType)
         /// </summary>
         /// <returns>Should never return anything</returns>
         public override string ToString()
         {
-            throw new NotImplementedException("The Area class does not know what type of unit it contains, (Because it should be thought of as containing all unit types) Call Area.[unit].ToString() instead");
+            return this._intrinsicValue + " " + this._internalUnitType;
         }
 
         /// <summary>

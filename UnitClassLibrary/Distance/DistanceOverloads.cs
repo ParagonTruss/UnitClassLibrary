@@ -7,8 +7,6 @@ namespace UnitClassLibrary
 {
     public partial struct Distance
     {
-        #region Overloaded Operators
-
         // You may notice that we do not overload the increment and decrement operators (++ and --).
         // This would break our abstraction of thinking that all units types are represented by this object 
 
@@ -148,7 +146,5 @@ namespace UnitClassLibrary
                 return false;
             }
         }
-
-        #endregion
     }
 }

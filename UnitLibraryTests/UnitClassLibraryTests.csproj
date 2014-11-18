@@ -64,6 +64,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AngleTests.cs" />
+    <Compile Include="AngularDistanceTests.cs" />
     <Compile Include="AreaTests.cs" />
     <Compile Include="DistanceTests.cs" />
     <Compile Include="ElectricCurrentTests.cs" />
