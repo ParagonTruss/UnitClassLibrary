@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public static partial class DeviationConstants
+    public static partial class DeviationDefaults
     {
         public static Time AcceptedEqualityDeviationTime
         {

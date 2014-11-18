@@ -371,7 +371,7 @@ namespace UnitClassLibrary
             try
             {
                 Angle other = (Angle)obj;
-                return Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType)) <= DeviationConstants.AcceptedEqualityDeviationAngle.GetValue(this._internalUnitType);
+                return Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType)) <= DeviationDefaults.AcceptedEqualityDeviationAngle.GetValue(this._internalUnitType);
             }
             catch
             {

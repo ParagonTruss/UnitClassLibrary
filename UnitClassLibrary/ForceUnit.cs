@@ -353,7 +353,7 @@ namespace UnitClassLibrary
             try
             {
                 ForceUnit other = (ForceUnit)obj;
-                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) <= DeviationConstants.AcceptedEqualityDeviationForceUnit.GetValue(this._internalUnitType);
+                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationForceUnit.GetValue(this._internalUnitType);
             }
             catch
             {

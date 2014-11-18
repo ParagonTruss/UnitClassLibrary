@@ -6,7 +6,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    ///Dimension class for volume
+    ///Distance class for volume
     /// </summary>
     public class Volume
     {
@@ -1135,7 +1135,7 @@ namespace UnitClassLibrary
             try
             {
                 Volume other = (Volume)obj;
-                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= DeviationConstants.AcceptedEqualityDeviationVolume.GetValue(this._internalUnitType);
+                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationVolume.GetValue(this._internalUnitType);
             }
             catch
             {
