@@ -19,24 +19,24 @@ namespace UnitClassLibrary
         /// <summary>
         /// The distance upon which the force acts
         /// </summary>
-        private Dimension _dimension;
+        private Distance _Distance;
         #endregion
 
         #region Properties
         public double PoundsMillimeters
         {
-            get { return _dimension.Millimeters * _force.Pounds; }
+            get { return _Distance.Millimeters * _force.Pounds; }
         }
 
         public double PoundsFeet
         {
-            get { return _dimension.Feet * _force.Pounds; }
+            get { return _Distance.Feet * _force.Pounds; }
         }
 
 
         public double NewtonMeters
         {
-            get { return _dimension.Meters * _force.Newtons; }
+            get { return _Distance.Meters * _force.Newtons; }
         }
         #endregion
 
@@ -47,18 +47,18 @@ namespace UnitClassLibrary
         public Moment()
         {
             _force = new ForceUnit();
-            _dimension = new Dimension();
+            _Distance = new Distance();
         }
 
         /// <summary>
         /// constructor that creates moment based on the direction passed and force
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
-        /// <param name="passedDimension">direction of force applied</param>
-        public Moment(ForceUnit passeForce, Dimension passedDimension)
+        /// <param name="passedDistance">direction of force applied</param>
+        public Moment(ForceUnit passeForce, Distance passedDistance)
         {
             _force = passeForce;
-            _dimension = passedDimension;
+            _Distance = passedDistance;
         }
 
         /// <summary>
@@ -72,15 +72,15 @@ namespace UnitClassLibrary
             {
                 case MomentType.PoundsMillimeters:
                     _force = new ForceUnit(ForceType.Pounds, passedValue);
-                    _dimension = new Dimension(DimensionType.Millimeter, 1);
+                    _Distance = new Distance(DistanceType.Millimeter, 1);
                     break;
                 case MomentType.NewtonMeters:
                     _force = new ForceUnit(ForceType.Newtons, passedValue);
-                    _dimension = new Dimension(DimensionType.Meter, 1);
+                    _Distance = new Distance(DistanceType.Meter, 1);
                     break;
                 case MomentType.PoundsFeet:
                     _force = new ForceUnit(ForceType.Pounds, passedValue);
-                    _dimension = new Dimension(DimensionType.Foot, 1);
+                    _Distance = new Distance(DistanceType.Foot, 1);
                     break;
                 default:
                     // Should never reach; cases should cover all members of enumerated set
@@ -178,16 +178,10 @@ namespace UnitClassLibrary
             return this.PoundsFeet.GetHashCode();
         }
 
-        /// <summary>
-        /// Makes sure to throw an error telling the user that this is a bad idea
-        /// The Moment class does not know what type of unit it contains, 
-        /// (Because it should be thought of containing all unit types) 
-        /// Call Moment.[unit].Tostring() instead
-        /// </summary>
-        /// <returns>Should never return anything</returns>
+
         public override string ToString()
         {
-            throw new NotImplementedException("The Moment class does not know what type of unit it contains, (Because it should be thought of containing all unit types) Call Moment.[unit].ToString() instead");
+            return this._force + "  " + this._Distance; 
         }
 
         /// <summary>
@@ -202,7 +196,7 @@ namespace UnitClassLibrary
             try
             {
                 Moment compare = (Moment)obj;
-                return compare._dimension.Equals(this._dimension) && compare._force.Equals(this._force);
+                return compare._Distance.Equals(this._Distance) && compare._force.Equals(this._force);
             }
             catch (InvalidCastException)
             {

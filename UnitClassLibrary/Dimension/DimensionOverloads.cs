@@ -139,7 +139,8 @@ namespace UnitClassLibrary
             }
             try
             {
-                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Dimension)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+                Dimension other = (Dimension)obj;
+                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) <= Dimension.AcceptedEqualityDeviation.GetValue(this._internalUnitType);
             }
             catch
             {

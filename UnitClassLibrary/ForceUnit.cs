@@ -206,6 +206,17 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
+        /// multiplies a force by a scalar value
+        /// </summary>
+        /// <param name="f1">the force to multiply</param>
+        /// <param name="multiplier">double of a scalar multiplier</param>
+        /// <returns>force increased by a factor of "multiplier"</returns>
+        public static ForceUnit operator *(double multiplier, ForceUnit f1)
+        {
+            return f1 * multiplier;
+        }
+
+        /// <summary>
         /// checks if two forces are equal
         /// </summary>
         /// <param name="f1">force 1</param>
@@ -297,15 +308,13 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Makes sure to throw an error telling the user that this is a bad idea
-        /// The Force class does not know what type of unit it contains, 
-        /// (Because it should be thought of containing all unit types) 
-        /// Call Force.[unit].Tostring() instead
+        /// The value and unit in terms of what the object was created with. 
+        /// If you want it in a different unit use ToString(ForceType)
         /// </summary>
         /// <returns>Should never return anything</returns>
         public override string ToString()
         {
-            throw new NotImplementedException("The Force class does not know what type of unit it contains, (Because it should be thought of as containing all unit types) Call Force.[unit].ToString() instead");
+            return this._intrinsicValue + " " + this._internalUnitType;
         }
 
         /// <summary>
@@ -342,7 +351,7 @@ namespace UnitClassLibrary
             try
             {
                 ForceUnit other = (ForceUnit)obj;
-                return (Math.Abs(this._intrinsicValue - ((ForceUnit)(obj))._intrinsicValue)) <= Math.Abs(this.GetValue(this._internalUnitType) * .00001);
+                return (Math.Abs(this._intrinsicValue - other.GetValue(this._internalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationForceUnit.GetValue(this._internalUnitType);
             }
             catch
             {

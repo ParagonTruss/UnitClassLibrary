@@ -12,17 +12,17 @@ namespace UnitClassLibrary
         Mass _mass;
 
         // r
-        Dimension _length;
+        Distance _length;
 
-        public Dimension LengthToFourthPower
+        public Distance LengthToFourthPower
         {
             get { return _length.RaiseToPower(4); }
             
         }
 
-        public MomentOfIntertiaUnit(Dimension passedLengthToFourthPower)
+        public MomentOfIntertiaUnit(Distance passedLengthToFourthPower)
         {
-            _length = new Dimension(DimensionType.Millimeter, Math.Pow(passedLengthToFourthPower.Millimeters, 0.25));
+            _length = new Distance(DistanceType.Millimeter, Math.Pow(passedLengthToFourthPower.Millimeters, 0.25));
         }
     }
 }

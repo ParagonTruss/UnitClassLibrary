@@ -6,7 +6,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    ///Dimension class for volume
+    ///Distance class for volume
     /// </summary>
     public class Volume
     {
@@ -1112,15 +1112,13 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Makes sure to throw an error telling the user that this is a bad idea
-        /// The Volume class does not know what type of unit it contains, 
-        /// (Because it should be thought of containing all unit types) 
-        /// Call Volume.[unit].ToString() instead
+        /// The value and unit in terms of what the object was created with. 
+        /// If you want it in a different unit use ToString(VolumeType)
         /// </summary>
         /// <returns>Should never return anything</returns>
         public override string ToString()
         {
-            throw new NotImplementedException("The Volume class does not know what type of unit it contains, (Because it should be thought of as containing all unit types) Call Volume.[unit].ToString() instead");
+            return this._intrinsicValue + " " + this._internalUnitType;
         }
 
         /// <summary>
@@ -1134,7 +1132,8 @@ namespace UnitClassLibrary
             }
             try
             {
-                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+                Volume other = (Volume)obj;
+                return (Math.Abs(this.GetValue(this._internalUnitType) - ((Volume)(obj)).GetValue(this._internalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationVolume.GetValue(this._internalUnitType);
             }
             catch
             {
