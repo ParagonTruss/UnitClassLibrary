@@ -1160,7 +1160,7 @@ namespace UnitClassLibrary
         /// This implements the IComparable interface and allows Volumes to be sorted and such
         /// </summary>
         /// <param name="other">volume to check against</param>
-        /// <returns>0 if equal; 1 if this > other; -1 if this < other</returns>
+        /// <returns>0 if equal; 1 if this greater than other; -1 if this less than other </returns>
         public int CompareTo(Volume other)
         {
             if (this.Equals(other))
