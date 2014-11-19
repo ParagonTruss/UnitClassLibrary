@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance
+    public partial class Distance
     {
         /// <summary>
         /// Converts any Unit of distance into another

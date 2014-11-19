@@ -140,7 +140,7 @@ namespace UnitClassLibrary
 
             //subtract the two Angles
             //return a new Angle with the new value
-            return new Angle(AngleType.Radian, (a1.Radians - a2.Radians));
+            return new Angle(AngleType.Degree, degreesDifferenced);
         }
 
 
@@ -164,20 +164,26 @@ namespace UnitClassLibrary
             return this._intrinsicValue + " " + this._internalUnitType;
         }
 
+        public Angle Reverse()
+        {
+            //double newValue = 0.0;
+
+            //if (this.Degrees > 180)
+            //{
+            //    newValue = this.Degrees - 180;
+            //}
+            //else
+            //{
+            //    newValue = 360 - Math.Abs(this.Degrees);
+            //}
+
+            return this - new Angle(AngleType.Degree, 180);
+        }
+
         public Angle Negate()
         {
-            double newValue = 0.0;
-
-            if (this.Degrees > 180)
-            {
-                newValue = this.Degrees - 180;
-            }
-            else
-            {
-                newValue = 360 - Math.Abs(this.Degrees);
-            }
-
-            return new Angle(AngleType.Degree, newValue);
+            
+            return new Angle(AngleType.Degree, this.Degrees - this.Degrees *2);
         }
 
         #endregion

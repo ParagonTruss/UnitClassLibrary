@@ -22,7 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class AngularDistance : IComparable<AngularDistance>
+    public class AngularDistance : IComparable, IComparable<AngularDistance>
     {
         #region private fields and constants
 
@@ -39,7 +39,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Radians
         {
-            get { return GetValue(AngleType.Radian); }
+            get { return ConvertTo(_internalUnitType, _intrinsicValue, AngleType.Radian); }
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Degrees
         {
-            get { return GetValue(AngleType.Degree); }
+            get { return ConvertTo(_internalUnitType, _intrinsicValue, AngleType.Degree); }
         }
         #endregion
 
@@ -418,5 +418,10 @@ namespace UnitClassLibrary
                 return (this.GetValue(_internalUnitType).CompareTo(other.GetValue(_internalUnitType)));
         }
         #endregion
+
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

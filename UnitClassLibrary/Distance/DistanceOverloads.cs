@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance
+    public partial class Distance : IEquatable<Distance>
     {
         // You may notice that we do not overload the increment and decrement operators (++ and --).
         // This would break our abstraction of thinking that all units types are represented by this object 
@@ -129,7 +129,7 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// value comparison, checks whether the two are equal within the accepted equality deviation specified in Constants
+        /// calls the Dimension only Ewuals method
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -139,7 +139,28 @@ namespace UnitClassLibrary
             }
             try
             {
-                return this._equalityStrategy(this, (Distance)obj);
+                return this.Equals((Distance)obj);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Compares using the function specified by strategy
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
+        public bool Equals(Distance other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            try
+            {
+                return this._equalityStrategy(this, other);
             }
             catch
             {

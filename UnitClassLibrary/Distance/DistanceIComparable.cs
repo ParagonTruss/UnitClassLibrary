@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance : IComparable, IComparable<Distance>
+    public partial class Distance : IComparable, IComparable<Distance>
     {
         /// <summary>
         /// This implements the IComparable interface and allows Distances to be sorted and such

@@ -54,7 +54,6 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool DefaultConstantEquality(Distance distance1, Distance distance2)
         {
-
             return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(distance1.InternalUnitType);
         }
     }

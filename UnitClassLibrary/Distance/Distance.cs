@@ -35,7 +35,7 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    public partial struct Distance
+    public partial class Distance
     {
         #region _fields and Internal Properties
 
