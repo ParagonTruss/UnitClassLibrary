@@ -46,11 +46,6 @@ namespace UnitClassLibrary
     public enum SpeedType { ThirtySecondsPerMillisecond, ThirtySecondsPerSecond, ThirtySecondsPerMinute, ThirtySecondsPerHour, SixteenthsPerMillisecond, SixteenthsPerSecond, SixteenthsPerMinute, SixteenthsPerHour, InchesPerMillisecond, InchesPerSecond, InchesPerMinute, InchesPerHour, FeetPerMillisecond, FeetPerSecond, FeetPerMinute, FeetPerHour, YardsPerMillisecond, YardsPerSecond, YardsPerMinute, YardsPerHour, MilesPerMinute, MilesPerHour, MillimetersPerMillisecond, MillimetersPerSecond, MillimetersPerMinute, MillimetersPerHour, CentimetersPerMillisecond, CentimetersPerSecond, CentimetersPerMinute, CentimetersPerHour, MetersPerMillisecond, MetersPerSecond, MetersPerMinute, MetersPerHour, KilometersPerMinute, KilometersPerHour, Knots }
 
     /// <summary>
-    /// Enum for specifying the type of unit a mass is
-    /// </summary>	
-    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces };
-
-    /// <summary>
     /// Enum for specifying the type of unit a volume is
     /// </summary>	
 	public enum VolumeType { Milliliters, CubicCentimeters, Liters, CubicMeters, CubicThirtySeconds, CubicSixteenths, CubicInches, CubicFeet, CubicYards, CubicMiles, Gallons, Quarts, Pints, Cups, FluidOunces };
