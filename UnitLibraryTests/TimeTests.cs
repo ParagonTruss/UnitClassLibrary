@@ -120,7 +120,6 @@ namespace UnitLibraryTests
         /// Tests toString failure
         /// </summary>
         [Test()]
-        [ExpectedException(typeof(NotImplementedException))]
         public void Time_ToString()
         {
             // arrange
@@ -130,7 +129,7 @@ namespace UnitLibraryTests
             string dimToString = Time.ToString();
 
             // assert
-            dimToString.Should().Be("");
+            dimToString.Should().Be("1 Second");
         }
 
         /// <summary>

@@ -49,7 +49,7 @@ namespace UnitClassLibrary
 
                     if (passedValue < 0)
                     {
-                        passedValue = 360 - Math.Abs(passedValue);
+                        passedValue = (Math.PI * 2) - Math.Abs(passedValue);
                     }
 
                     _intrinsicValue = passedValue;

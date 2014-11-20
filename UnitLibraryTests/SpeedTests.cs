@@ -78,14 +78,13 @@ namespace UnitLibraryTests
         }
 
         [Test()]
-        [ExpectedException(typeof(NotImplementedException))]
         public void Speed_ToStringTest()
         {
             Speed s1 = new Speed(SpeedType.Knots, 100);
 
             string SpeedToString = s1.ToString();
 
-            SpeedToString.Should().Be("");
+            SpeedToString.Should().Be("Knots 100");
         }
     }
 }
