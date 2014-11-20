@@ -107,8 +107,6 @@ namespace UnitClassLibrary
             _equalityStrategy = passedDistance._equalityStrategy;
         }
 
-
-
         #endregion
 
         #region helper _methods

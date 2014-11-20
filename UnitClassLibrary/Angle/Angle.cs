@@ -59,7 +59,7 @@ namespace UnitClassLibrary
                     break;
                 case AngleType.Degree:
 
-                    while (passedValue > 359)
+                    while (passedValue >= 360)
                     {
                         passedValue = passedValue - 360;
                     }
@@ -108,7 +108,7 @@ namespace UnitClassLibrary
             //add the two Angles together
             double degreesSummed = a1.Degrees + a2.Degrees;
 
-            while (degreesSummed > 359)
+            while (degreesSummed >= 360)
             {
                 degreesSummed -= 360;
             }
@@ -128,7 +128,7 @@ namespace UnitClassLibrary
             //add the two Angles together
             double degreesDifferenced = a1.Degrees - a2.Degrees;
 
-            while (degreesDifferenced > 359)
+            while (degreesDifferenced >= 360)
             {
                 degreesDifferenced -= 360;
             }
@@ -166,23 +166,11 @@ namespace UnitClassLibrary
 
         public Angle Reverse()
         {
-            //double newValue = 0.0;
-
-            //if (this.Degrees > 180)
-            //{
-            //    newValue = this.Degrees - 180;
-            //}
-            //else
-            //{
-            //    newValue = 360 - Math.Abs(this.Degrees);
-            //}
-
             return this - new Angle(AngleType.Degree, 180);
         }
 
         public Angle Negate()
         {
-            
             return new Angle(AngleType.Degree, this.Degrees - this.Degrees *2);
         }
 
