@@ -129,7 +129,7 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// calls the Dimension only Ewuals method
+        /// calls the Dimension only Equals method
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -137,14 +137,8 @@ namespace UnitClassLibrary
             {
                 return false;
             }
-            try
-            {
-                return this.Equals((Distance)obj);
-            }
-            catch
-            {
-                return false;
-            }
+            
+            return this.Equals((Distance)obj);
         }
 
         /// <summary>
