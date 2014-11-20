@@ -13,6 +13,7 @@ namespace UnitClassLibrary
         /// <returns>passedValue in desired units</returns>
         public static double ConvertDistance(DistanceType typeConvertingFrom, double passedValue, DistanceType typeConvertingTo)
         {
+
             double returnDouble = 0.0;
 
             switch (typeConvertingFrom)
