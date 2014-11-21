@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 
-namespace UnitClassLibrary.GeometricLibrary.ListExtensionMethods
+namespace UnitClassLibrary
 {
+    /// <summary>
+    /// Extension methods for Lists of type Angle
+    /// </summary>
     public static class AngleListExtensionMethods
     {
         /// <summary>
@@ -14,7 +17,14 @@ namespace UnitClassLibrary.GeometricLibrary.ListExtensionMethods
         /// <returns>Total of all Angles in the list</returns>
         public static Angle SumTotal(this List<Angle> passedAngleList)
         {
-            throw new NotImplementedException();
+            Angle sumAngle = new Angle();
+
+            foreach (var angle in passedAngleList)
+            {
+                sumAngle += angle;
+            }
+
+            return sumAngle;
         }
     }
 }

@@ -102,6 +102,13 @@ namespace UnitClassLibrary
             return ConvertTo(_internalUnitType, _intrinsicValue, angleType);
         }
 
+        /// <summary>
+        /// Converts from one double value of an AngleType to another double of a different AngleType
+        /// </summary>
+        /// <param name="fromAngleType">AngleType converting from</param>
+        /// <param name="passedValue">double to be converted</param>
+        /// <param name="toAngleType">AngleType converting to</param>
+        /// <returns></returns>
         public static double ConvertTo(AngleType fromAngleType, double passedValue, AngleType toAngleType)
         {
             double returnAngle = 0;
@@ -139,9 +146,9 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// creates a negative instance of this angle
+        /// creates a negative instance of this AngularDistance
         /// </summary>
-        /// <returns>a negative instance of this angle</returns>
+        /// <returns>a negative instance of this AngularDistance</returns>
         public AngularDistance Negate()
         {
             return new AngularDistance(AngleType.Radian, this.Radians * -1);
@@ -406,7 +413,7 @@ namespace UnitClassLibrary
         #region Interface Implementations
 
         /// <summary>
-        /// This implements the IComparable interface and allows Angles to be sorted and such
+        /// This implements the IComparable(AngularDistance) interface and allows Angles to be sorted and such
         /// </summary>
         /// <param name="other">angle to compare against</param>
         /// <returns>1 if this greater than other; 0 if this == other; -1 if this less than other</returns>
@@ -417,11 +424,26 @@ namespace UnitClassLibrary
             else
                 return (this.GetValue(_internalUnitType).CompareTo(other.GetValue(_internalUnitType)));
         }
-        #endregion
 
+        /// <summary>
+        /// This implements the generic objec IComparable interface
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
-            throw new NotImplementedException();
+            if (obj == null)
+            {
+                throw new ArgumentNullException("obj");
+            }
+
+            if (!(obj is AngularDistance))
+            {
+                throw new ArgumentException("Expected type AngularDistance.", "obj");
+            }
+
+            return this.CompareTo((AngularDistance)obj);
         }
+        #endregion
     }
 }

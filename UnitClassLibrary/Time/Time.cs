@@ -5,6 +5,9 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// The different types of implemented Time units
+    /// </summary>
     public enum TimeType { Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week, Month, Year, Decade, Century };
     public partial struct Time
     {

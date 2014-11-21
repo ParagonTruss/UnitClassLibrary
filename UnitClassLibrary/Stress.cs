@@ -6,7 +6,9 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    [DebuggerDisplay("PoundsPerSquareInch = {PoundsPerSquareInch}")]
+    /// <summary>
+    /// Force applied to an area
+    /// </summary>
     public class Stress :IComparable<Stress>
     {
         #region private fields and constants

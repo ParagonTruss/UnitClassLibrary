@@ -494,7 +494,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// Converts any Distance into an architectural string representation
         /// </summary>
-        /// <param name="typeConvertingFrom">desired output unit type</param>
         /// <returns>converted Distance</returns>
         public static string ConvertDistanceIntoArchitecturalString(Distance passedDistance)
         {

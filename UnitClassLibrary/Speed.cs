@@ -583,10 +583,6 @@ namespace UnitClassLibrary
             }
 
             return -1;
-
-            /*
-            throw new NotImplementedException();
-             * */
         }
     }
 }

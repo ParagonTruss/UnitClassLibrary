@@ -4,8 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+//suppress XML comment warnings in this file
+#pragma warning disable 1591
+
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// Deviations that are acceptable when doing equality checks
+    /// </summary>
     public static partial class DeviationDefaults
     {
         public static Power AcceptedEqualityDeviationPower

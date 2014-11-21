@@ -51,7 +51,7 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// constructor that creates moment based on the direction passed and force
+        /// constructor that creates moment based on the distance passed and force
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
         /// <param name="passedDistance">direction of force applied</param>

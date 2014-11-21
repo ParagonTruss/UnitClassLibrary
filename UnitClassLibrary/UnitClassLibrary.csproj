@@ -78,7 +78,6 @@
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
-    <Compile Include="ExtensionMethods\AreaListExtensionMethods.cs" />
     <Compile Include="Distance\Distance.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Time\TimeIComparableImplementation.cs" />
     <Compile Include="Time\TimeOverloads.cs" />
     <Compile Include="Time\TimeProperties.cs" />
-    <Compile Include="Torque.cs" />
     <Compile Include="Volume.cs" />
   </ItemGroup>
   <ItemGroup>
