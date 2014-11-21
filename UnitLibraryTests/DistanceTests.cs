@@ -228,9 +228,6 @@ namespace UnitLibraryTests
             smallDistance.CompareTo(mediumDistance).Should().Be(-1);
             mediumDistance.CompareTo(smallDistance).Should().Be(1);
             largeDistance.CompareTo(largeDistance).Should().Be(0);
-
-            
-
         }
 
         [Test()]

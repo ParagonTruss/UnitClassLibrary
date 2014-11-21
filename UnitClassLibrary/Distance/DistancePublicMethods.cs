@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance
+    public partial class Distance
     {
         /// <summary>
         /// prints the value and unit type converted to
@@ -15,35 +15,6 @@ namespace UnitClassLibrary
         {
             return this.GetValue(distanceType) + " " + distanceType;
         }
-
-        /// <summary>
-        /// value comparison, checks whether the two are equal within a passed accepted equality deviation
-        /// </summary>
-        public bool EqualsWithinDeviationConstant(Distance distance, Distance passedAcceptedEqualityDeviationDistance)
-        {
-            return (Math.Abs(
-                (this.GetValue(this._internalUnitType)
-                - ((Distance)(distance)).GetValue(this._internalUnitType))
-                ))
-                <= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
-        }
-
-        /// <summary>
-        /// value comparison, checks whether the two are equal within a passed accepted equality percentage
-        /// </summary>
-        public bool EqualsWithinDeviationPercentage(Distance distance, double passedAcceptedEqualityDeviationPercentage)
-        {
-            return (Math.Abs(this.GetValue(this.InternalUnitType) - (distance).GetValue(this.InternalUnitType))) <= this.GetValue(this.InternalUnitType) * passedAcceptedEqualityDeviationPercentage;
-        }
-
-        /// <summary>
-        /// value comparison, checks whether the two are equal within a passed accepted equality percentage
-        /// </summary>
-        public bool EqualsWithinDistanceEqualityStrategy(Distance distance, DistanceEqualityStrategy passedStrategy)
-        {
-            return passedStrategy(this, distance);
-        }
-
 
         /// <summary>
         /// Creates a new Distance that is the negative of this

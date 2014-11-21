@@ -8,7 +8,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance
+    public partial class Distance
     {
         public static Distance Sixteenth
         {

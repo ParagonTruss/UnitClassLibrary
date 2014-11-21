@@ -12,7 +12,7 @@ namespace UnitClassLibrary
     public class Speed : IComparable<Speed>
     {
         #region _internalVariables
-        private Distance _Distance;
+        private Distance _distance;
         private Time _time;
         #endregion
 
@@ -20,13 +20,13 @@ namespace UnitClassLibrary
 
         public Speed()
         {
-            _Distance = new Distance();
+            _distance = new Distance();
             _time = new Time();
         }
 
         public Speed(Distance passedDistance, Time passedTime)
         {
-            _Distance = passedDistance;
+            _distance = passedDistance;
             _time = passedTime;
         }
 
@@ -35,23 +35,23 @@ namespace UnitClassLibrary
             switch(passedSpeedType)
             {
                 case SpeedType.FeetPerSecond:
-                    _Distance = new Distance(DistanceType.Foot, passedValue);
+                    _distance = new Distance(DistanceType.Foot, passedValue);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case SpeedType.KilometersPerHour:
-                    _Distance = new Distance(DistanceType.Kilometer, passedValue);
+                    _distance = new Distance(DistanceType.Kilometer, passedValue);
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 case SpeedType.Knots: //Nautical Miles/Hour
-                    _Distance = new Distance(DistanceType.Kilometer, 1.852 * passedValue); //Trying to accomplish the contruction in nautical miles.
+                    _distance = new Distance(DistanceType.Kilometer, 1.852 * passedValue); //Trying to accomplish the contruction in nautical miles.
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 case SpeedType.MetersPerSecond:
-                    _Distance = new Distance(DistanceType.Meter, passedValue);
+                    _distance = new Distance(DistanceType.Meter, passedValue);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case SpeedType.MilesPerHour:
-                    _Distance = new Distance(DistanceType.Mile, passedValue);
+                    _distance = new Distance(DistanceType.Mile, passedValue);
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 default:
@@ -68,7 +68,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMillisecond
         {
-            get { return _Distance.ThirtySeconds / _time.Milliseconds; }
+            get { return _distance.ThirtySeconds / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerSecond
         {
-            get { return _Distance.ThirtySeconds / _time.Seconds; }
+            get { return _distance.ThirtySeconds / _time.Seconds; }
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMinute
         {
-            get { return _Distance.ThirtySeconds / _time.Minutes; }
+            get { return _distance.ThirtySeconds / _time.Minutes; }
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerHour
         {
-            get { return _Distance.ThirtySeconds / _time.Hours; }
+            get { return _distance.ThirtySeconds / _time.Hours; }
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMillisecond
         {
-            get { return _Distance.Sixteenths / _time.Milliseconds; }
+            get { return _distance.Sixteenths / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerSecond
         {
-            get { return _Distance.Sixteenths / _time.Seconds; }
+            get { return _distance.Sixteenths / _time.Seconds; }
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMinute
         {
-            get { return _Distance.Sixteenths / _time.Minutes; }
+            get { return _distance.Sixteenths / _time.Minutes; }
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerHour
         {
-            get { return _Distance.Sixteenths / _time.Hours; }
+            get { return _distance.Sixteenths / _time.Hours; }
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerMillisecond
         {
-            get { return _Distance.Inches / _time.Milliseconds; }
+            get { return _distance.Inches / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerSecond
         {
-            get { return _Distance.Inches / _time.Seconds; }
+            get { return _distance.Inches / _time.Seconds; }
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerMinute
         {
-            get { return _Distance.Inches / _time.Minutes; }
+            get { return _distance.Inches / _time.Minutes; }
         }
 
         /// <summary>
@@ -156,7 +156,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerHour
         {
-            get { return _Distance.Inches / _time.Hours; }
+            get { return _distance.Inches / _time.Hours; }
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerMillisecond
         {
-            get { return _Distance.Feet / _time.Milliseconds; }
+            get { return _distance.Feet / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerSecond
         {
-            get { return _Distance.Feet / _time.Seconds; }
+            get { return _distance.Feet / _time.Seconds; }
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerMinute
         {
-            get { return _Distance.Feet / _time.Minutes; }
+            get { return _distance.Feet / _time.Minutes; }
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerHour
         {
-            get { return _Distance.Feet / _time.Hours; }
+            get { return _distance.Feet / _time.Hours; }
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerMillisecond
         {
-            get { return _Distance.Yards / _time.Milliseconds; }
+            get { return _distance.Yards / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerSecond
         {
-            get { return _Distance.Yards / _time.Seconds; }
+            get { return _distance.Yards / _time.Seconds; }
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerMinute
         {
-            get { return _Distance.Yards / _time.Minutes; }
+            get { return _distance.Yards / _time.Minutes; }
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerHour
         {
-            get { return _Distance.Yards / _time.Hours; }
+            get { return _distance.Yards / _time.Hours; }
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MilesPerMinute
         {
-            get { return _Distance.Miles / _time.Minutes; }
+            get { return _distance.Miles / _time.Minutes; }
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MilesPerHour 
         {
-            get { return _Distance.Miles / _time.Hours; } 
+            get { return _distance.Miles / _time.Hours; } 
         }
 
         /// <summary>
@@ -244,7 +244,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerMillisecond
         {
-            get { return _Distance.Millimeters / _time.Milliseconds; }
+            get { return _distance.Millimeters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerSecond
         {
-            get { return _Distance.Millimeters / _time.Seconds; }
+            get { return _distance.Millimeters / _time.Seconds; }
         }
 
         /// <summary>
@@ -260,7 +260,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerMinute
         {
-            get { return _Distance.Millimeters / _time.Minutes; }
+            get { return _distance.Millimeters / _time.Minutes; }
         }
 
         /// <summary>
@@ -268,7 +268,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerHour
         {
-            get { return _Distance.Millimeters / _time.Hours; }
+            get { return _distance.Millimeters / _time.Hours; }
         }
 
         /// <summary>
@@ -276,7 +276,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerMillisecond
         {
-            get { return _Distance.Centimeters / _time.Milliseconds; }
+            get { return _distance.Centimeters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerSecond
         {
-            get { return _Distance.Centimeters / _time.Seconds; }
+            get { return _distance.Centimeters / _time.Seconds; }
         }
 
         /// <summary>
@@ -292,7 +292,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerMinute
         {
-            get { return _Distance.Centimeters / _time.Minutes; }
+            get { return _distance.Centimeters / _time.Minutes; }
         }
 
         /// <summary>
@@ -300,7 +300,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerHour
         {
-            get { return _Distance.Centimeters / _time.Hours; }
+            get { return _distance.Centimeters / _time.Hours; }
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerMillisecond
         {
-            get { return _Distance.Meters / _time.Milliseconds; }
+            get { return _distance.Meters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -316,7 +316,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerSecond 
         {
-            get { return _Distance.Meters / _time.Seconds;} 
+            get { return _distance.Meters / _time.Seconds;} 
         }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerMinute
         {
-            get { return _Distance.Meters / _time.Minutes; }
+            get { return _distance.Meters / _time.Minutes; }
         }
 
         /// <summary>
@@ -332,7 +332,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerHour
         {
-            get { return _Distance.Meters / _time.Hours; }
+            get { return _distance.Meters / _time.Hours; }
         }
 
         /// <summary>
@@ -340,7 +340,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double KilometersPerMinute
         {
-            get { return _Distance.Kilometers / _time.Minutes; }
+            get { return _distance.Kilometers / _time.Minutes; }
         }
 
         /// <summary>
@@ -348,7 +348,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double KilometersPerHour 
         {
-            get {return _Distance.Kilometers / _time.Hours;} 
+            get {return _distance.Kilometers / _time.Hours;} 
         }
 
         /// <summary>
@@ -356,7 +356,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Knots 
         {
-            get {return (_Distance.Kilometers * 1.852) / _time.Hours ;} //Nautical Mile = 1.852 Kilometers
+            get {return (_distance.Kilometers * 1.852) / _time.Hours ;} //Nautical Mile = 1.852 Kilometers
         }
 
         public double GetValue(SpeedType Units)
@@ -446,6 +446,15 @@ namespace UnitClassLibrary
 
         #region Overloaded Operators
         /// <summary>
+        /// This override determines how this object is inserted into hashtables.
+        /// </summary>
+        /// <returns>same hashcode as any double would</returns>
+        public override int GetHashCode()
+        {
+            return (_distance.Inches / _time.Seconds).GetHashCode();
+        }
+
+        /// <summary>
         /// adds two speeds
         /// </summary>
         /// <param name="s1">speed one</param>
@@ -453,7 +462,7 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two speeds</returns>
         public static Speed operator +(Speed s1, Speed s2)
         {
-            return new Speed(s1._Distance + s2._Distance, s1._time + s2._time);
+            return new Speed(s1._distance + s2._distance, s1._time + s2._time);
         }
 
         /// <summary>
@@ -464,7 +473,7 @@ namespace UnitClassLibrary
         /// <returns>the difference of the two speeds</returns>
         public static Speed operator -(Speed s1, Speed s2)
         {
-            return new Speed(s1._Distance - s2._Distance, s1._time - s2._time);
+            return new Speed(s1._distance - s2._distance, s1._time - s2._time);
         }
 
         public static double operator /(Speed s1, Speed s2)
@@ -504,8 +513,8 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool operator >(Speed s1, Speed s2)
         {
-            return s1._Distance.GetValue(s1._Distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) >
-                s2._Distance.GetValue(s1._Distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
+            return s1._distance.GetValue(s1._distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) >
+                s2._distance.GetValue(s1._distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
         }
 
         /// <summary>
@@ -516,8 +525,8 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool operator <(Speed s1, Speed s2)
         {
-            return s1._Distance.GetValue(s1._Distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) <
-                s2._Distance.GetValue(s1._Distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
+            return s1._distance.GetValue(s1._distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) <
+                s2._distance.GetValue(s1._distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
         }
 
         public static bool operator <=(Speed s1, Speed s2)
@@ -542,8 +551,8 @@ namespace UnitClassLibrary
             try
             {
                 Speed other = (Speed)obj;
-                return Math.Abs(this._Distance.GetValue(this._Distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._Distance.GetValue(this._Distance.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
-                    Math.Abs(this._Distance.GetValue(this._Distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
+                return Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._distance.GetValue(this._distance.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
+                    Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
             }
             catch
             {
@@ -556,8 +565,8 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Speed passedAcceptedEqualityDeviationSpeed)
         {
-            return Math.Abs(this._Distance.GetValue(this._Distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._Distance.GetValue(this._Distance.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
-                passedAcceptedEqualityDeviationSpeed._Distance.GetValue(this._Distance.InternalUnitType) / passedAcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation speed constant in units of this speed
+            return Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._distance.GetValue(this._distance.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
+                passedAcceptedEqualityDeviationSpeed._distance.GetValue(this._distance.InternalUnitType) / passedAcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation speed constant in units of this speed
         }
 
         #endregion

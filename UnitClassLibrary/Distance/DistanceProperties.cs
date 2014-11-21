@@ -8,7 +8,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Distance
+    public partial class Distance
     {
         public double Sixteenths
         {
@@ -92,8 +92,6 @@ namespace UnitClassLibrary
                     return Yards;
                 case DistanceType.Mile:
                     return Miles;
-                case DistanceType.ArchitecturalString:
-                    throw new Exception("Cannot return a double value from architectural string");
             }
             throw new Exception("Unknown DistanceType");
         }

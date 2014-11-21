@@ -12,6 +12,16 @@ namespace UnitLibraryTests
     public class AngleTests
     {
         [Test()]
+        public void Angle_GetValue()
+        {
+            Angle a1 = new Angle(AngleType.Degree, 1);
+            a1.GetValue(AngleType.Degree).Should().Be(1);
+
+            Angle a2 = new Angle(AngleType.Degree, 0);
+            a2.GetValue(AngleType.Degree).Should().Be(0);
+        }
+
+        [Test()]
         public void Angle_EqualityTests()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
@@ -63,15 +73,34 @@ namespace UnitLibraryTests
         }
 
         [Test()]
-        public void Angle_NegationTest()
+        public void Angle_Negate()
         {
             Angle a1 = new Angle(AngleType.Degree, 360);
             Angle a2 = new Angle(AngleType.Radian, Math.PI);
+            Angle a3 = new Angle(AngleType.Degree, 45);
+            Angle a4 = new Angle(AngleType.Degree, 270);
 
             a1.Negate().Degrees.Should().Be(0);
             a2.Negate().Radians.Should().BeApproximately(Math.PI, .00000001);
             a1.Negate().Radians.Should().BeApproximately(0, .00000001);
             a2.Negate().Degrees.Should().Be(180);
+
+            a3.Negate().Degrees.Should().Be(315);
+        }
+
+        [Test()]
+        public void Angle_Reverse()
+        {
+            Angle a1 = new Angle(AngleType.Degree, 360);
+            Angle a2 = new Angle(AngleType.Radian, Math.PI);
+            Angle a3 = new Angle(AngleType.Degree, 45);
+
+            a1.Reverse().Degrees.Should().Be(180);
+            a2.Reverse().Radians.Should().BeApproximately(0, .00000001);
+            a1.Reverse().Radians.Should().BeApproximately(Math.PI, .00000001);
+            a2.Reverse().Degrees.Should().Be(0);
+
+            a3.Reverse().Degrees.Should().Be(225);
         }
     }
 }
