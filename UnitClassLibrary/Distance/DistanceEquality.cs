@@ -14,6 +14,37 @@ namespace UnitClassLibrary
     /// <returns></returns>
     public delegate bool DistanceEqualityStrategy (Distance distance1, Distance distance2);
 
+    public partial class Distance
+    {
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality deviation
+        /// </summary>
+        public bool EqualsWithinDeviationConstant(Distance distance, Distance passedAcceptedEqualityDeviationDistance)
+        {
+            return (Math.Abs(
+                (this.GetValue(this._internalUnitType)
+                - ((Distance)(distance)).GetValue(this._internalUnitType))
+                ))
+                <= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality percentage
+        /// </summary>
+        public bool EqualsWithinDeviationPercentage(Distance distance, double passedAcceptedEqualityDeviationPercentage)
+        {
+            return (Math.Abs(this.GetValue(this.InternalUnitType) - (distance).GetValue(this.InternalUnitType))) <= this.GetValue(this.InternalUnitType) * passedAcceptedEqualityDeviationPercentage;
+        }
+
+        /// <summary>
+        /// value comparison, checks whether the two are equal within a passed accepted equality percentage
+        /// </summary>
+        public bool EqualsWithinDistanceEqualityStrategy(Distance distance, DistanceEqualityStrategy passedStrategy)
+        {
+            return passedStrategy(this, distance);
+        }
+    }
+
     public static partial class DeviationDefaults
     {
         public static Distance AcceptedEqualityDeviationDistance
