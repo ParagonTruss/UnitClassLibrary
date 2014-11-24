@@ -11,10 +11,7 @@ namespace UnitClassLibrary
 {
 
     
-    /// <summary>
-    /// Enum for specifying the type of unit a Distance is
-    /// </summary>
-    public enum DistanceType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile };
+
 
     /// <summary>
     /// Class used for storing Distances that may need to be accessed in a different measurement system

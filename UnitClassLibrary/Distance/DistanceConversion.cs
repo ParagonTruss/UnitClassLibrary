@@ -9,6 +9,7 @@ namespace UnitClassLibrary
         /// Converts any Unit of distance into another
         /// </summary>
         /// <param name="typeConvertingTo">input unit type</param>
+        /// <param name="passedValue"></param>
         /// <param name="typeConvertingFrom">desired output unit type</param>
         /// <returns>passedValue in desired units</returns>
         public static double ConvertDistance(DistanceType typeConvertingFrom, double passedValue, DistanceType typeConvertingTo)
@@ -375,10 +376,10 @@ namespace UnitClassLibrary
 
         /// <summary>
         /// Converts any possible type of Architectual String into internal units
-        /// <remarks>Throws FormatException on bad input</remarks>
         /// </summary>
-        /// <param name="passedArchitecturalString">the input string</param>
-        /// <returns>decimal Millimeters</returns>
+        /// <param name="convertToType"></param>
+        /// <param name="passedArchitecturalString"></param>
+        /// <returns></returns>
         private static double ConvertArchitectualStringtoUnit(DistanceType convertToType, String passedArchitecturalString)
         {
             // for details on where this solution came from, check here: http://stackoverflow.com/questions/22794466/parsing-all-possible-types-of-varying-architectural-Distance-input

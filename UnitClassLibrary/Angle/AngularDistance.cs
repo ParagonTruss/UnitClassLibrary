@@ -26,8 +26,14 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
 
-        //Internally we are currently using radians
+        /// <summary>
+        /// Should this be protected?
+        /// </summary>
         protected double _intrinsicValue;
+
+        /// <summary>
+        /// Should this be protected?
+        /// </summary>
         protected AngleType _internalUnitType;
 
         #endregion

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+#pragma warning disable 1591
+
 namespace UnitClassLibrary
 {
     /// <summary>
@@ -1088,6 +1090,12 @@ namespace UnitClassLibrary
             return v1.Equals(v2) || v1 > v2;
         }
 
+        /// <summary>
+        /// less than or equal to
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static bool operator <=(Volume v1, Volume v2)
         {
             return v1.Equals(v2) || v1 < v2;

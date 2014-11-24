@@ -13,7 +13,7 @@ namespace UnitClassLibrary
     public class Mass : IComparable<Mass>
     {
         #region _internalVariables
-        private double _intrinsicValue = 0.0;
+        //private double _intrinsicValue = 0.0;
         #endregion
 
         #region Properties

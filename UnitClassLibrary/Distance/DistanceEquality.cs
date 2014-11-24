@@ -45,8 +45,14 @@ namespace UnitClassLibrary
         }
     }
 
+    /// <summary>
+    /// Default deviations allowed when comparing Distance objects.
+    /// </summary>
     public static partial class DeviationDefaults
     {
+        /// <summary>
+        /// When comparing two distances and deviation is allowed to be within a specific constant. This is that default constant
+        /// </summary>
         public static Distance AcceptedEqualityDeviationDistance
         {
             get
@@ -55,6 +61,9 @@ namespace UnitClassLibrary
             }
         }
 
+        /// <summary>
+        /// When comparing two distances and deviation is allowed to be within a percentage of the first Distance. This is that percentage
+        /// </summary>
         public static double AcceptedEqualityDeviationDistancePercentage
         {
             get
@@ -64,6 +73,9 @@ namespace UnitClassLibrary
         }
     }
 
+    /// <summary>
+    /// functions that can be used for a distance object's equals function
+    /// </summary>
     public static class EqualityStrategyImplementations
     {
         /// <summary>

@@ -160,6 +160,11 @@ namespace UnitClassLibrary
             get { return retrieveAsExternalUnit(AreaType.MilesSquared); }
         }
 
+        /// <summary>
+        /// returns the property specified by the AreaType
+        /// </summary>
+        /// <param name="Units"></param>
+        /// <returns></returns>
         public double GetValue(AreaType Units)
         {
             switch (Units)

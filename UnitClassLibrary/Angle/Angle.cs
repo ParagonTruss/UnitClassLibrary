@@ -164,11 +164,19 @@ namespace UnitClassLibrary
             return this._intrinsicValue + " " + this._internalUnitType;
         }
 
+        /// <summary>
+        /// Retuns an Angle object that is 180 degrees from this one
+        /// </summary>
+        /// <returns></returns>
         public Angle Reverse()
         {
             return this - new Angle(AngleType.Degree, 180);
         }
 
+        /// <summary>
+        /// Returns an Angle object that is negated
+        /// </summary>
+        /// <returns></returns>
         public new Angle Negate()
         {
             return new Angle(AngleType.Degree, this.Degrees - this.Degrees *2);

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 //using System.Threading.Tasks;
 
+#pragma warning disable 1591
+
 namespace UnitClassLibrary
 {
     /// <summary>
@@ -482,7 +484,12 @@ namespace UnitClassLibrary
             //return (s1._Distance / s2._Distance) / (s1._time / s2._time); //Division needs to be implemented in Time Class
         }
 
-
+        /// <summary>
+        /// scalar multiplication
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public static Speed operator *(Speed s1, double multiplier)
         {
             throw new NotImplementedException();
@@ -529,11 +536,23 @@ namespace UnitClassLibrary
                 s2._distance.GetValue(s1._distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
         }
 
+        /// <summary>
+        /// lest than or equal to
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
         public static bool operator <=(Speed s1, Speed s2)
         {
             return s1.Equals(s2) || s1 < s2;
         }
 
+        /// <summary>
+        /// greater than or equal to
+        /// </summary>
+        /// <param name="s1"></param>
+        /// <param name="s2"></param>
+        /// <returns></returns>
         public static bool operator >=(Speed s1, Speed s2)
         {
             return s1.Equals(s2) || s1 > s2;
@@ -571,6 +590,11 @@ namespace UnitClassLibrary
 
         #endregion
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(Speed other)
         {
             if(this.Equals(other))
