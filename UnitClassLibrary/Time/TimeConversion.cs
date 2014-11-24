@@ -7,6 +7,13 @@ namespace UnitClassLibrary
 {
     public partial struct Time
     {
+        /// <summary>
+        /// Converts from one TimeType to another
+        /// </summary>
+        /// <param name="typeConvertingFrom"></param>
+        /// <param name="passedValue"></param>
+        /// <param name="typeConvertingTo"></param>
+        /// <returns></returns>
         public static double ConvertTime(TimeType typeConvertingFrom, double passedValue, TimeType typeConvertingTo)
         {
             double returnDouble = 0.0;
