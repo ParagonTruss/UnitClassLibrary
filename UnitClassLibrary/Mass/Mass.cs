@@ -7,7 +7,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Enum for specifying the type of unit a Distance is
+    /// Enum for specifying the type of unit a Mass is
     /// </summary>
     public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces };
 
@@ -56,6 +56,11 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
+        public Mass()
+        {
+            _internalUnitType = MassType.Grams;
+            _intrinsicValue = 0;
+        }
         public Mass(MassType passedMassType, double passedValue)
         {
             _internalUnitType = passedMassType;
@@ -64,6 +69,10 @@ namespace UnitClassLibrary
         #endregion
 
         #region helper _methods
+        private double _retrieveIntrinsicValueAsDesiredExternalUnit(MassType toMassType)
+        {
+            return ConvertMass(_internalUnitType, _intrinsicValue, toMassType);
+        }
         #endregion
     }
 }

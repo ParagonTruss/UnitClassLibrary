@@ -47,7 +47,7 @@ namespace UnitLibraryTests
         public void Mass_ConstructorTest()
         {
             Mass m1 = new Mass();
-            Mass m2 = new Mass(MassType.Gram, 100);
+            Mass m2 = new Mass(MassType.Grams, 100);
             Mass m3 = new Mass(MassType.Ounces, 100);
 
             m1.Kilograms.Should().Be(0);
@@ -58,8 +58,8 @@ namespace UnitLibraryTests
         [Test()]
         public void Mass_CompareToTest()
         {
-            Mass m1 = new Mass(MassType.Milligram, 100);
-            Mass m2 = new Mass(MassType.LongTon, 100);
+            Mass m1 = new Mass(MassType.Milligrams, 100);
+            Mass m2 = new Mass(MassType.LongTons, 100);
             Mass m3 = new Mass(MassType.Pounds, 100);
 
             m1.CompareTo(m2).Should().Be(-1);
@@ -70,9 +70,9 @@ namespace UnitLibraryTests
         [Test()]
         public void Mass_EqualsTest()
         {
-            Mass m1 = new Mass(MassType.MetricTon, 100);
-            Mass m2 = new Mass(MassType.ShortTon, 50);
-            Mass m3 = new Mass(MassType.Stone, 157.473);
+            Mass m1 = new Mass(MassType.MetricTons, 100);
+            Mass m2 = new Mass(MassType.ShortTons, 50);
+            Mass m3 = new Mass(MassType.Stones, 157.473);
 
             m1.Equals(m2).Should().BeFalse();
             m1.Equals(m3).Should().BeTrue();
@@ -83,7 +83,7 @@ namespace UnitLibraryTests
         [ExpectedException(typeof(NotImplementedException))]
         public void Mass_ToStringTest()
         {
-            Mass m1 = new Mass(MassType.Gram, 100);
+            Mass m1 = new Mass(MassType.Grams, 100);
 
             string massToString = m1.ToString();
 

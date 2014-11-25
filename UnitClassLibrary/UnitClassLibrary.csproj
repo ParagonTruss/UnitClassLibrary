@@ -63,6 +63,10 @@
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
     <Compile Include="Distance\DistanceStaticGenerators.cs" />
+    <Compile Include="Mass\MassPublicMethods.cs" />
+    <Compile Include="Mass\MassProperties.cs" />
+    <Compile Include="Mass\MassOverloads.cs" />
+    <Compile Include="Mass\MassIComparable.cs" />
     <Compile Include="Mass\MassEquality.cs" />
     <Compile Include="Mass\MassConversion.cs" />
     <Compile Include="Mass\MassConstants.cs" />

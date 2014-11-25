@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
 namespace UnitClassLibrary
 {
-
     /// <summary>
     /// delegate that defines the form of 
     /// </summary>
-    /// <param name="distance1"></param>
-    /// <param name="distance2"></param>
+    /// <param name="mass1"></param>
+    /// <param name="mass2"></param>
     /// <returns></returns>
     public delegate bool MassEqualityStrategy(Mass mass1, Mass mass2);
 
@@ -19,43 +23,43 @@ namespace UnitClassLibrary
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality deviation
         /// </summary>
-        public bool EqualsWithinDeviationConstant(Mass distance, Mass passedAcceptedEqualityDeviationDistance)
+        public bool EqualsWithinDeviationConstant(Mass mass, Mass passedAcceptedEqualityDeviationMass)
         {
             return (Math.Abs(
                 (this.GetValue(this._internalUnitType)
-                - ((Distance)(distance)).GetValue(this._internalUnitType))
+                - ((Mass)(mass)).GetValue(this._internalUnitType))
                 ))
-                <= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
+                <= passedAcceptedEqualityDeviationMass.GetValue(_internalUnitType);
         }
 
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality percentage
         /// </summary>
-        public bool EqualsWithinDeviationPercentage(Distance distance, double passedAcceptedEqualityDeviationPercentage)
+        public bool EqualsWithinDeviationPercentage(Mass mass, double passedAcceptedEqualityDeviationPercentage)
         {
-            return (Math.Abs(this.GetValue(this.InternalUnitType) - (distance).GetValue(this.InternalUnitType))) <= this.GetValue(this.InternalUnitType) * passedAcceptedEqualityDeviationPercentage;
+            return (Math.Abs(this.GetValue(this.InternalUnitType) - (mass).GetValue(this.InternalUnitType))) <= this.GetValue(this.InternalUnitType) * passedAcceptedEqualityDeviationPercentage;
         }
 
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality percentage
         /// </summary>
-        public bool EqualsWithinDistanceEqualityStrategy(Distance distance, DistanceEqualityStrategy passedStrategy)
+        public bool EqualsWithinMassEqualityStrategy(Mass mass, MassEqualityStrategy passedStrategy)
         {
-            return passedStrategy(this, distance);
+            return passedStrategy(this, mass);
         }
     }
 
     public static partial class DeviationDefaults
     {
-        public static Distance AcceptedEqualityDeviationDistance
+        public static Mass AcceptedEqualityDeviationMass
         {
             get
             {
-                return new Distance(DistanceType.ThirtySecond, 1);
+                return new Mass(MassType.Milligrams, 1);
             }
         }
 
-        public static double AcceptedEqualityDeviationDistancePercentage
+        public static double AcceptedEqualityDeviationMassPercentage
         {
             get
             {
@@ -64,28 +68,28 @@ namespace UnitClassLibrary
         }
     }
 
-    public static class EqualityStrategyImplementations
+    public static class MassEqualityStrategyImplementations
     {
         /// <summary>
-        /// Distances are equal if they differ by less than a percentage of the first Distance
+        /// Masses are equal if they differ by less than a percentage of the first Mass
         /// </summary>
-        /// <param name="distance1">first distance being compared</param>
-        /// <param name="distance2">second distance being compared</param>
+        /// <param name="mass1">first Mass being compared</param>
+        /// <param name="mass2">second Mass being compared</param>
         /// <returns></returns>
-        public static bool DefaultPercentageEquality(Distance distance1, Distance distance2)
+        public static bool DefaultPercentageEquality(Mass mass1, Mass mass2)
         {
-            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= Math.Abs(distance1.GetValue(distance1.InternalUnitType) * DeviationDefaults.AcceptedEqualityDeviationDistancePercentage);
+            return (Math.Abs(mass1.GetValue(mass1.InternalUnitType) - (mass2).GetValue(mass1.InternalUnitType))) <= Math.Abs(mass1.GetValue(mass1.InternalUnitType) * DeviationDefaults.AcceptedEqualityDeviationMassPercentage);
         }
 
         /// <summary>
-        /// Distances are equal if there values are within the passed deviation constant. If they are not within the constant
+        /// Masses are equal if there values are within the passed deviation constant. If they are not within the constant
         /// </summary>
-        /// <param name="distance1">first distance being compared</param>
-        /// <param name="distance2">second distance being compared</param>
+        /// <param name="mass1">first Mass being compared</param>
+        /// <param name="mass2">second Mass being compared</param>
         /// <returns></returns>
-        public static bool DefaultConstantEquality(Distance distance1, Distance distance2)
+        public static bool DefaultConstantEquality(Mass mass1, Mass mass2)
         {
-            return (Math.Abs(distance1.GetValue(distance1.InternalUnitType) - (distance2).GetValue(distance1.InternalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(distance1.InternalUnitType);
+            return (Math.Abs(mass1.GetValue(mass1.InternalUnitType) - (mass2).GetValue(mass1.InternalUnitType))) <= DeviationDefaults.AcceptedEqualityDeviationMass.GetValue(mass1.InternalUnitType);
         }
     }
 }

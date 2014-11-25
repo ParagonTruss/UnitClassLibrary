@@ -14,7 +14,7 @@ namespace UnitClassLibrary
         /// <param name="typeConvertingFrom">desired output unit type</param>
         /// <returns>passedValue in desired units</returns>
         /// { Gram, MetricTon, Milligram, Microgram, LongTon, ShortTon, Stone, Pound, Ounce }
-        public static double ConvertDistance(MassType typeConvertingFrom, double passedValue, MassType typeConvertingTo)
+        public static double ConvertMass(MassType typeConvertingFrom, double passedValue, MassType typeConvertingTo)
         {
             double returnDouble = 0.0;
 
