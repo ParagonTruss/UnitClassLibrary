@@ -24,6 +24,11 @@ namespace UnitClassLibrary
             }
         }
 
+        /// <summary>
+        /// Compares and returns the comparison of a mass and an object
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj == null)

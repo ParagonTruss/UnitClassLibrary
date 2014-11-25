@@ -43,8 +43,14 @@ namespace UnitClassLibrary
         }
     }
 
+    /// <summary>
+    /// Accepted differences between two masses that are still considered equal
+    /// </summary>
     public static partial class DeviationDefaults
     {
+        /// <summary>
+        /// Difference as a constant
+        /// </summary>
         public static Mass AcceptedEqualityDeviationMass
         {
             get
@@ -53,6 +59,9 @@ namespace UnitClassLibrary
             }
         }
 
+        /// <summary>
+        /// Difference as a percentage
+        /// </summary>
         public static double AcceptedEqualityDeviationMassPercentage
         {
             get
@@ -62,6 +71,9 @@ namespace UnitClassLibrary
         }
     }
 
+    /// <summary>
+    /// Class designed to implement equalitystrategies for Masses based on user preference
+    /// </summary>
     public static class MassEqualityStrategyImplementations
     {
         /// <summary>

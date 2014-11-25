@@ -10,8 +10,9 @@ namespace UnitClassLibrary
         /// <summary>
         /// Converts any Unit of mass into another
         /// </summary>
-        /// <param name="typeConvertingTo">input unit type</param>
-        /// <param name="typeConvertingFrom">desired output unit type</param>
+        /// <param name="typeConvertingFrom">input unit type</param>
+        /// <param name="typeConvertingTo">desired output unit type</param>
+        /// <param name="passedValue">Desired amount of mass in typeConvertingTo units</param>
         /// <returns>passedValue in desired units</returns>
         /// { Gram, MetricTon, Milligram, Microgram, LongTon, ShortTon, Stone, Pound, Ounce }
         public static double ConvertMass(MassType typeConvertingFrom, double passedValue, MassType typeConvertingTo)
