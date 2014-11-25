@@ -15,6 +15,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit an angle is
     /// </summary>
+
     public enum AngleType { Radian, Degree }
 
     /// <summary>
@@ -46,11 +47,6 @@ namespace UnitClassLibrary
     /// Enum for specifying the type of unit a speed is
     /// </summary>
     public enum SpeedType { ThirtySecondsPerMillisecond, ThirtySecondsPerSecond, ThirtySecondsPerMinute, ThirtySecondsPerHour, SixteenthsPerMillisecond, SixteenthsPerSecond, SixteenthsPerMinute, SixteenthsPerHour, InchesPerMillisecond, InchesPerSecond, InchesPerMinute, InchesPerHour, FeetPerMillisecond, FeetPerSecond, FeetPerMinute, FeetPerHour, YardsPerMillisecond, YardsPerSecond, YardsPerMinute, YardsPerHour, MilesPerMinute, MilesPerHour, MillimetersPerMillisecond, MillimetersPerSecond, MillimetersPerMinute, MillimetersPerHour, CentimetersPerMillisecond, CentimetersPerSecond, CentimetersPerMinute, CentimetersPerHour, MetersPerMillisecond, MetersPerSecond, MetersPerMinute, MetersPerHour, KilometersPerMinute, KilometersPerHour, Knots }
-
-    /// <summary>
-    /// Enum for specifying the type of unit a mass is
-    /// </summary>	
-    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces };
 
     /// <summary>
     /// Enum for specifying the type of unit a volume is

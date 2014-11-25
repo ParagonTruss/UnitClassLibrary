@@ -114,7 +114,7 @@ namespace UnitLibraryTests
             Distance smallerDistance = new Distance("1' 2 1/16\"");
             Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, 360.3625);
 
-            (equivalentbiggerDistance == biggerDistance).Should().Be(true);
+            (equivalentbiggerDistance.Equals(biggerDistance)).Should().Be(true);
             (equivalentbiggerDistance == smallerDistance).Should().Be(false);
 
             (equivalentbiggerDistance != smallerDistance).Should().Be(true);
