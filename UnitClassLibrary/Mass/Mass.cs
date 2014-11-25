@@ -7,11 +7,6 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Enum for specifying the type of unit a Mass is
-    /// </summary>
-    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces };
-
-    /// <summary>
     /// Class used for storing Masses that may need to be accessed in a different measurement system
     /// Will accept anything as input
     /// 
@@ -47,6 +42,9 @@ namespace UnitClassLibrary
         /// </summary>
         private double _intrinsicValue;
 
+        /// <summary>
+        /// User's preferred equality strategy to compare equality of masses
+        /// </summary>
         public MassEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
@@ -56,12 +54,23 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Empty constructor which sets a default of 0 grams. Optional equalitystrategy variable to specify how to compare Mass' equality
+        /// </summary>
+        /// <param name="passedStrategy"></param>
         public Mass(MassEqualityStrategy passedStrategy = null)
         {
             _internalUnitType = MassType.Grams;
             _intrinsicValue = 0;
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
+
+        /// <summary>
+        /// Constructer that makes a Mass object of specified amount and units. Optional equalitystrategy variable to specify how to compare Mass' equality
+        /// </summary>
+        /// <param name="passedMassType"></param>
+        /// <param name="passedValue"></param>
+        /// <param name="passedStrategy"></param>
         public Mass(MassType passedMassType, double passedValue, MassEqualityStrategy passedStrategy = null)
         {
             _internalUnitType = passedMassType;

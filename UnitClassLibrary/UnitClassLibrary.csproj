@@ -83,6 +83,7 @@
     <Compile Include="Enums.cs" />
     <Compile Include="ForceUnit.cs" />
     <Compile Include="Distance\DistanceStaticGenerators.cs" />
+    <Compile Include="Mass\MassEnums.cs" />
     <Compile Include="Mass\MassPublicMethods.cs" />
     <Compile Include="Mass\MassProperties.cs" />
     <Compile Include="Mass\MassOverloads.cs" />
