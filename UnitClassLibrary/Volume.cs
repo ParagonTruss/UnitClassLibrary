@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
 
 #pragma warning disable 1591
@@ -371,7 +371,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 249953.0752;
                             break;
                         case VolumeType.CubicInches:
-                            returnDouble = passedValue * 61.0237;
+                            returnDouble = passedValue * (1000 / Math.Pow(2.54, 3));
                             break;
                         case VolumeType.CubicFeet:
                             returnDouble = passedValue * 0.0353147;

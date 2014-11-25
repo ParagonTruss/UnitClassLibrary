@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
 
 #pragma warning disable 1591
@@ -15,7 +15,6 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit an angle is
     /// </summary>
-
     public enum AngleType { Radian, Degree }
 
     /// <summary>
