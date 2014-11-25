@@ -56,19 +56,33 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
-        public Mass()
+        public Mass(MassEqualityStrategy passedStrategy = null)
         {
             _internalUnitType = MassType.Grams;
             _intrinsicValue = 0;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
-        public Mass(MassType passedMassType, double passedValue)
+        public Mass(MassType passedMassType, double passedValue, MassEqualityStrategy passedStrategy = null)
         {
             _internalUnitType = passedMassType;
             _intrinsicValue = passedValue;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
         #endregion
 
         #region helper _methods
+        private static MassEqualityStrategy _chooseDefaultOrPassedStrategy(MassEqualityStrategy passedStrategy)
+        {
+            if (passedStrategy == null)
+            {
+                return MassEqualityStrategyImplementations.DefaultConstantEquality;
+            }
+            else
+            {
+                return passedStrategy;
+            }
+        }
+
         private double _retrieveIntrinsicValueAsDesiredExternalUnit(MassType toMassType)
         {
             return ConvertMass(_internalUnitType, _intrinsicValue, toMassType);

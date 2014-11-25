@@ -68,10 +68,10 @@ namespace UnitClassLibrary
                             returnDouble = passedValue / 1000;
                             break;
                         case MassType.Milligrams:
-                            returnDouble = passedValue / 1000000;
+                            returnDouble = passedValue * 1000000;
                             break;
                         case MassType.Micrograms:
-                            returnDouble = passedValue / 1000000000;
+                            returnDouble = passedValue * 1000000000;
                             break;
                         case MassType.LongTons:
                             returnDouble = passedValue * 0.000984206528;

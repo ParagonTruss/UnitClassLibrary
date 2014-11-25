@@ -55,7 +55,7 @@ namespace UnitClassLibrary
         {
             get
             {
-                return new Mass(MassType.Milligrams, 1);
+                return new Mass(MassType.Ounces, 1);
             }
         }
 
