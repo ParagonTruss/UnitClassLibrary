@@ -7,10 +7,6 @@ using System.Diagnostics;
 
 namespace UnitClassLibrary
 {
-
-    
-
-
     /// <summary>
     /// Class used for storing Distances that may need to be accessed in a different measurement system
     /// Will accept anything as input
@@ -45,7 +41,7 @@ namespace UnitClassLibrary
 
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
-        /// </summary>
+        /// </summary> 
         private double _intrinsicValue;
 
         /// <summary>
@@ -54,7 +50,7 @@ namespace UnitClassLibrary
         public DistanceEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
-            set { _equalityStrategy = value; }
+            set { _equalityStrategy = value; } 
         }
         private DistanceEqualityStrategy _equalityStrategy;
         #endregion

@@ -187,7 +187,6 @@ namespace UnitClassLibrary
         /// The value and unit in terms of what the object was created with. 
         /// If you want it in a different unit use ToString(DistanceType)
         /// </summary>
-        /// <returns>Should never return anything</returns>
         public override string ToString()
         {
             return this._intrinsicValue + " " + this._internalUnitType;

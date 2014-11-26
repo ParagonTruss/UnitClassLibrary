@@ -365,7 +365,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 1000; // Convert kilometers to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue / 1000; // Return given kilometers
+                            returnDouble = passedValue; // Return given kilometers
                             break;
                     }
                     break;

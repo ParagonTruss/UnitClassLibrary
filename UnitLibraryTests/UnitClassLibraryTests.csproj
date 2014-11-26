@@ -70,7 +70,6 @@
     <Compile Include="AngularDistanceTests.cs" />
     <Compile Include="AreaTests.cs" />
     <Compile Include="DistanceTests.cs" />
-    <Compile Include="ElectricCurrentTests.cs" />
     <Compile Include="EqualityStrategyTests.cs" />
     <Compile Include="ForceTests.cs" />
     <Compile Include="MassTests.cs" />

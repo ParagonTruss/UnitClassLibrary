@@ -579,6 +579,11 @@ namespace UnitClassLibrary
             }
         }
 
+        public override string ToString()
+        {
+            return this._distance.GetValue(_distance.InternalUnitType) + "/" + this._time.GetValue(_time.InternalUnitType)+ " " + this._distance.InternalUnitType+ "/" + this._time.InternalUnitType;
+        }
+
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality deviation
         /// </summary>
