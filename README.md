@@ -10,7 +10,7 @@ For an overview of how this library works visit the [Overview Page](https://bitb
 Reference the latest executable from this [NuGet package](http://www.nuget.org/packages/UnitClassLibrary/).
 
 ### Contributing
-Thank you! What are we without you, dear contributor? Thank you immensely for contributing. We ask that for the good of the project and the community, you adhere to the following guidelines for contributing.
+Thank you! Where would we be without you, dear contributor? Thank you immensely for contributing. We ask that for the good of the project and the community, you adhere to the following guidelines.
 
 How to get and submit the code: [Obtaining and Submitting Code for Contribution](https://bitbucket.org/Clearspan/unit-class-library/wiki/Obtaining%20and%20Submitting%20Code%20for%20Contribution)
 
