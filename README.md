@@ -16,15 +16,15 @@ How to get and submit the code: [Obtaining and Submitting Code for Contribution]
 
 Make your life easier, use a [Recommended Programming Environment](https://bitbucket.org/Clearspan/unit-class-library/wiki/Recommended%20Programming%20Environment).
 
-Get an overview of the basic types of unit classes: [Unit Class Types](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Class%20Types).
+Get an overview of the basic types of unit classes: [Unit Class Types](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Class%20Types)
 
-Understand the basic anatomy of a unit class: [Unit Class Template](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Class%20Template).
+Understand the basic anatomy of a unit class: [Unit Class Template](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Class%20Template)
 
-Write and run unit tests: [Unit Test Standards](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Test%20Standards).
+Write and run unit tests: [Unit Test Standards](https://bitbucket.org/Clearspan/unit-class-library/wiki/Unit%20Test%20Standards)
 
 Help sustain the project by following [Documentation Procedures](https://bitbucket.org/Clearspan/unit-class-library/wiki/Documentation%20Procedures).
 
-For information regarding what needs to be worked on next visit the [Road Map page](https://bitbucket.org/Clearspan/unit-class-library/wiki/Road%20Map)
+For information regarding what needs to be worked on next visit the [Road Map page](https://bitbucket.org/Clearspan/unit-class-library/wiki/Road%20Map).
 
 ### Bugs
 If you have found a bug or have an issue you would like to discuss about the project add an issue to the [Issues page](https://bitbucket.org/Clearspan/unit-class-library/issues?status=new&status=open).
