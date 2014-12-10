@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
-//using System.Threading.Tasks;
+
+#pragma warning disable 1591
 
 namespace UnitClassLibrary
 {
@@ -129,6 +130,15 @@ namespace UnitClassLibrary
         #endregion
 
         #region Overloaded Operators
+        /// <summary>
+        /// This override determines how this object is inserted into hashtables.
+        /// </summary>
+        /// <returns>same hashcode as any double would</returns>
+        public override int GetHashCode()
+        {
+            return  (_energy.FootPound / _time.Seconds).GetHashCode();
+        }
+
         /// <summary>
         /// adds two powers
         /// </summary>

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
 
 namespace UnitClassLibrary
@@ -8,7 +8,7 @@ namespace UnitClassLibrary
     public partial class Distance : IComparable, IComparable<Distance>
     {
         /// <summary>
-        /// This implements the IComparable interface and allows Distances to be sorted and such
+        /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
         /// </summary>
         /// <param name="other">Distance being compared to</param>
         /// <returns></returns>
@@ -24,6 +24,11 @@ namespace UnitClassLibrary
             }
         }
 
+        /// <summary>
+        /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
+        /// </summary>
+        /// <param name="obj">object being compared to</param>
+        /// <returns></returns>
         public int CompareTo(object obj)
         {
             if (obj == null)

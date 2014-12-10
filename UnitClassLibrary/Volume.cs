@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
+
+#pragma warning disable 1591
 
 namespace UnitClassLibrary
 {
@@ -228,7 +230,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// Uses VolumeConverter to convert to the volume requested from intrinsic Milliliters
         /// </summary>
-        /// <param name="volumeType">unit type to retrieve volume in</param>
         /// <returns>volume in specified unit type</returns>
         private double retrieveAsExternalUnit(VolumeType retrievalVolumeType)
         {
@@ -370,7 +371,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 249953.0752;
                             break;
                         case VolumeType.CubicInches:
-                            returnDouble = passedValue * 61.0237;
+                            returnDouble = passedValue * (1000 / Math.Pow(2.54, 3));
                             break;
                         case VolumeType.CubicFeet:
                             returnDouble = passedValue * 0.0353147;
@@ -1009,8 +1010,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// adds two volumes together
         /// </summary>
-        /// <param name="v1">volume 1</param>
-        /// <param name="v2">volume 2</param>
         /// <returns>sum of two volumes</returns>
         public static Volume operator +(Volume v1, Volume v2)
         {
@@ -1022,8 +1021,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// subtracts a volume from the other
         /// </summary>
-        /// <param name="v1">volume to be subtracted from</param>
-        /// <param name="v2">volume to subtract</param>
         /// <returns>v1 - v2</returns>
         public static Volume operator -(Volume v1, Volume v2)
         {
@@ -1035,8 +1032,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// checks equality of two volumes
         /// </summary>
-        /// <param name="v1">volume 1</param>
-        /// <param name="v2">volume 2</param>
         /// <returns>true if the volumes are equal</returns>
         public static bool operator ==(Volume v1, Volume v2)
         {
@@ -1054,8 +1049,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// checks inequality of two volumes
         /// </summary>
-        /// <param name="v1">volume 1</param>
-        /// <param name="v2">volume 2</param>
         /// <returns>true if the volumes are not equal</returns>
         public static bool operator !=(Volume v1, Volume v2)
         {
@@ -1073,8 +1066,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// checks specific inequality of two volumes
         /// </summary>
-        /// <param name="v1">volume supposed to be larger</param>
-        /// <param name="v2">volume supposed to be smaller</param>
         /// <returns>whether the first volume is larger than second volume</returns>
         public static bool operator >(Volume v1, Volume v2)
         {
@@ -1084,19 +1075,27 @@ namespace UnitClassLibrary
         /// <summary>
         /// checks specific inequality of two volumes
         /// </summary>
-        /// <param name="v1">volume supposed to be smaller</param>
-        /// <param name="v2">volume supposed to be larger</param>
         /// <returns>whether the first volume is smaller than second volume</returns>
         public static bool operator <(Volume v1, Volume v2)
         {
             return v1._intrinsicValue < v2.GetValue(v1._internalUnitType);
         }
 
+        /// <summary>
+        /// checks if volume 1 is greater than or equal to volume 2
+        /// </summary>
+        /// <returns>whether the first volume is smaller than second volume</returns>
         public static bool operator >=(Volume v1, Volume v2)
         {
             return v1.Equals(v2) || v1 > v2;
         }
 
+        /// <summary>
+        /// less than or equal to
+        /// </summary>
+        /// <param name="v1"></param>
+        /// <param name="v2"></param>
+        /// <returns></returns>
         public static bool operator <=(Volume v1, Volume v2)
         {
             return v1.Equals(v2) || v1 < v2;
@@ -1159,7 +1158,7 @@ namespace UnitClassLibrary
         /// This implements the IComparable interface and allows Volumes to be sorted and such
         /// </summary>
         /// <param name="other">volume to check against</param>
-        /// <returns>0 if equal; 1 if this > other; -1 if this < other</returns>
+        /// <returns>0 if equal; 1 if this greater than other; -1 if this less than other </returns>
         public int CompareTo(Volume other)
         {
             if (this.Equals(other))

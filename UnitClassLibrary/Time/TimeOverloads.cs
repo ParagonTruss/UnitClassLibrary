@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
+
+#pragma warning disable 1591
 
 namespace UnitClassLibrary
 {
@@ -10,31 +12,56 @@ namespace UnitClassLibrary
 
         #region Overloaded Operators
 
+        /// <summary>
+        ///  The sum of t1 and t2
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
         public static Time operator +(Time t1, Time t2)
         {
             return new Time(t1._internalUnitType, (t1._intrinsicValue + t2.GetValue(t1._internalUnitType)));
         }
 
+        /// <summary>
+        ///  The difference of t1 and t2
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
         public static Time operator -(Time t1, Time t2)
         {
             return new Time(t1._internalUnitType, (t1._intrinsicValue - t2.GetValue(t1._internalUnitType)));
         }
 
+        /// <summary>
+        /// The ratio of t1 to t2
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="t2"></param>
+        /// <returns></returns>
         public static double operator /(Time t1, Time t2)
         {
             return t1.GetValue(t1._internalUnitType) / t2.GetValue(t1._internalUnitType);
         }
 
+        /// <summary>
+        /// scalar division
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="divisor"></param>
+        /// <returns></returns>
         public static Time operator /(Time t1, double divisor)
         {
             return new Time(t1._internalUnitType, t1._intrinsicValue / divisor);
         }
 
-        public static Time operator *(Time t1, Time t2)
-        {
-            return new Time(t1._internalUnitType, (t1._intrinsicValue * t2.GetValue(t1._internalUnitType)));
-        }
-
+        /// <summary>
+        /// scalar multiplication
+        /// </summary>
+        /// <param name="t1"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public static Time operator *(Time t1, double multiplier)
         {
             return new Time(t1._internalUnitType, t1._intrinsicValue * multiplier);
@@ -74,7 +101,7 @@ namespace UnitClassLibrary
 
         public static bool operator >(Time t1, Time t2)
         {
-            if(t1 == t2)
+            if (t1 == t2)
             {
                 return false;
             }

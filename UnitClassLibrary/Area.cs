@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
 
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// Represents two dimensional distance
+    /// </summary>
     public class Area : IComparable<Area>
     {
         #region private fields and constants
@@ -157,6 +160,11 @@ namespace UnitClassLibrary
             get { return retrieveAsExternalUnit(AreaType.MilesSquared); }
         }
 
+        /// <summary>
+        /// returns the property specified by the AreaType
+        /// </summary>
+        /// <param name="Units"></param>
+        /// <returns></returns>
         public double GetValue(AreaType Units)
         {
             switch (Units)
@@ -586,7 +594,7 @@ namespace UnitClassLibrary
         /// This implements the IComparable interface and allows Areas to be sorted and such
         /// </summary>
         /// <param name="other">area to check against</param>
-        /// <returns>0 if equal; 1 if this > other; -1 if this < other</returns>
+        /// <returns>0 if equal; 1 if this greater than other; -1 if this less than other</returns>
         public int CompareTo(Area other)
         {
             // We use the equals to avoid having to rehash the equality deviation

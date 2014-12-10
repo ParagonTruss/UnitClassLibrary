@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
+
+#pragma warning disable 1591
 
 namespace UnitClassLibrary
 {
@@ -51,7 +53,7 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// constructor that creates moment based on the direction passed and force
+        /// constructor that creates moment based on the distance passed and force
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
         /// <param name="passedDistance">direction of force applied</param>
@@ -211,7 +213,7 @@ namespace UnitClassLibrary
         /// This implements the IComparable interface and allows Moments to be sorted and such
         /// </summary>
         /// <param name="other">other moment to compare</param>
-        /// <returns>0 if equal; 1 if this > other; -1 if this < other</returns>
+        /// <returns>0 if equal; 1 if this greater than other; -1 if this less than other</returns>
         public int CompareTo(Moment other)
         {
             // The comparison depends on the comparison of  

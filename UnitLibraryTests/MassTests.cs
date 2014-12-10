@@ -38,9 +38,9 @@ namespace UnitLibraryTests
             Micrograms.Should().BeApproximately(880000000000, 0.00001);
             LongTons.Should().BeApproximately(0.866102, 0.00001);
             ShortTons.Should().BeApproximately(0.970034, 0.00001);
-            Stones.Should().BeApproximately(138.576, 0.00001);
-            Pounds.Should().BeApproximately(1940.07, 0.00001);
-            Ounces.Should().BeApproximately(31041.1, 0.00001);
+            Stones.Should().BeApproximately(138.576, 0.001);
+            Pounds.Should().BeApproximately(1940.07, 0.01);
+            Ounces.Should().BeApproximately(31041.1, 0.1);
         }
 
         [Test()]
@@ -70,24 +70,55 @@ namespace UnitLibraryTests
         [Test()]
         public void Mass_EqualsTest()
         {
-            Mass m1 = new Mass(MassType.MetricTons, 100);
-            Mass m2 = new Mass(MassType.ShortTons, 50);
-            Mass m3 = new Mass(MassType.Stones, 157.473);
+            
+            // arrange
+            Mass biggerMass = new Mass(MassType.Pounds, 2.21);
+            Mass smallerMass = new Mass(MassType.Grams, 100);
+            Mass equivalentbiggerMass = new Mass(MassType.Kilograms, 1.00244);
 
-            m1.Equals(m2).Should().BeFalse();
-            m1.Equals(m3).Should().BeTrue();
-            m2.Equals(m3).Should().BeFalse();
+            (equivalentbiggerMass.Equals(biggerMass)).Should().Be(true);
+            (equivalentbiggerMass == smallerMass).Should().Be(false);
+
+            (equivalentbiggerMass != smallerMass).Should().Be(true);
+            (equivalentbiggerMass != biggerMass).Should().Be(false);
+
+
+            //check ==
+            bool nonNullFirst = (biggerMass == null);
+            bool nullFirst = (null == biggerMass);
+            bool bothNull = (null == null);
+
+            nonNullFirst.Should().BeFalse();
+            nullFirst.Should().BeFalse();
+            bothNull.Should().BeTrue();
+
+            //check != 
+            bool nonNullFirstNotEqual = (biggerMass != null);
+            bool nullFirstNotEqual = (null != biggerMass);
+            bool bothNullNotEqual = (null != null);
+
+            nonNullFirstNotEqual.Should().BeTrue();
+            nullFirstNotEqual.Should().BeTrue();
+            bothNullNotEqual.Should().BeFalse();
+
+            //check equals (other way should throw a nullPointerException)
+            bool nullSecond = biggerMass.Equals(null);
+
+            nullSecond.Should().BeFalse();
+            
         }
 
         [Test()]
-        [ExpectedException(typeof(NotImplementedException))]
         public void Mass_ToStringTest()
         {
             Mass m1 = new Mass(MassType.Grams, 100);
+            Mass m2 = new Mass(MassType.Kilograms, 80);
 
             string massToString = m1.ToString();
+            string mass2ToString = m2.ToString(MassType.Pounds);
 
-            massToString.Should().Be("");
+            massToString.Should().Be("100 Grams");
+            mass2ToString.Should().Be("176.3696 Pounds");
         }
     }
 }

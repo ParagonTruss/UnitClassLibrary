@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+
+#pragma warning disable 1591
 
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// The different types of implemented Time units
+    /// </summary>
     public enum TimeType { Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week, Month, Year, Decade, Century };
+
+    /// <summary>
+    /// Class that represents a length of time
+    /// </summary>
     public partial struct Time
     {
         #region private _fields and Internal Properties

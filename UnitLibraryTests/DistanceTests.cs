@@ -60,18 +60,18 @@ namespace UnitLibraryTests
         public void DistanceConversions()
         {
 
-            Distance kilometerDistance = new Distance(DistanceType.Kilometer, 1);
+            Distance kilometerDistance = new Distance(DistanceType.Kilometer, 1, EqualityStrategyImplementations.DefaultPercentageEquality);
 
-            kilometerDistance.Millimeters.Should().Be(1000000, "millimeters");
-            kilometerDistance.Centimeters.Should().Be(100000);
-            kilometerDistance.Inches.Should().Be(39370.1);
-            kilometerDistance.ThirtySeconds.Should().Be(1259843.2);
-            kilometerDistance.Sixteenths.Should().Be(629921.6);
-            kilometerDistance.Feet.Should().Be(3280.84);
-            kilometerDistance.Yards.Should().Be(1093.61);
-            kilometerDistance.Miles.Should().Be(0.621371);
-            kilometerDistance.Meters.Should().Be(1000);
-            kilometerDistance.Architectural.Should().Be("3280'10 2/16\""); //need to recheck
+            (kilometerDistance == new Distance(DistanceType.Millimeter, 1000000)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Centimeter, 100000)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Inch, 39370.1)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.ThirtySecond, 1259843.2)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Sixteenth, 629921.6)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Foot, 3280.84)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Yard, 1093.61)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Mile, 0.621371)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Meter, 1000)).Should().BeTrue();
+            kilometerDistance.Architectural.Should().Be("3280'10 1/16\""); //need to recheck
 
 
         }
@@ -114,7 +114,7 @@ namespace UnitLibraryTests
             Distance smallerDistance = new Distance("1' 2 1/16\"");
             Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, 360.3625);
 
-            (equivalentbiggerDistance == biggerDistance).Should().Be(true);
+            (equivalentbiggerDistance.Equals(biggerDistance)).Should().Be(true);
             (equivalentbiggerDistance == smallerDistance).Should().Be(false);
 
             (equivalentbiggerDistance != smallerDistance).Should().Be(true);

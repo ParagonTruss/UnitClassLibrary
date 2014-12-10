@@ -9,6 +9,7 @@ namespace UnitClassLibrary
         /// Converts any Unit of distance into another
         /// </summary>
         /// <param name="typeConvertingTo">input unit type</param>
+        /// <param name="passedValue"></param>
         /// <param name="typeConvertingFrom">desired output unit type</param>
         /// <returns>passedValue in desired units</returns>
         public static double ConvertDistance(DistanceType typeConvertingFrom, double passedValue, DistanceType typeConvertingTo)
@@ -31,25 +32,25 @@ namespace UnitClassLibrary
                             returnDouble = passedValue / 32; // Convert thirtyseconds to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue / 384; // Convert thirtyseconds to feet
+                            returnDouble = passedValue / (32*12); // Convert thirtyseconds to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue / 1152; // Convert thirtyseconds to yards
+                            returnDouble = passedValue / (32*12*3); // Convert thirtyseconds to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue / 2027520; // Convert thirtyseconds to miles
+                            returnDouble = passedValue / (32*12*5280); // Convert thirtyseconds to miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 0.79375; // Convert thirtyseconds to millimeters
+                            returnDouble = passedValue * ((2.54/32)*10); // Convert thirtyseconds to millimeters
                             break;
                         case DistanceType.Centimeter:
-                            returnDouble = passedValue * 0.079375; // Convert thirtyseconds to centimeters
+                            returnDouble = passedValue * (2.54/32); // Convert thirtyseconds to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 0.00079375; // Convert thirtyseconds to meters
+                            returnDouble = passedValue * ((2.54/32)/100); // Convert thirtyseconds to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 7.9375 * Math.Pow(10, -7); // Convert thirtyseconds to kilometers
+                            returnDouble = passedValue * (((2.54/32)/100)/1000); // Convert thirtyseconds to kilometers
                             break;
                     }
                     break;
@@ -66,25 +67,25 @@ namespace UnitClassLibrary
                             returnDouble = passedValue / 16; // Convert sixteenths to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue / 192; // Convert sixteenths to feet
+                            returnDouble = passedValue / (16*12); // Convert sixteenths to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue / 576; // Convert sixteenths to yards
+                            returnDouble = passedValue / (16*12*3); // Convert sixteenths to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue / 1013760; // Convert sixteenths to miles
+                            returnDouble = passedValue / (16*12*5280); // Convert sixteenths to miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 1.5875; // Convert sixteenths to millimeters
+                            returnDouble = passedValue * ((2.54/16)*10); // Convert sixteenths to millimeters
                             break;
                         case DistanceType.Centimeter:
-                            returnDouble = passedValue * 0.15875; // Convert sixteenths to centimeters
+                            returnDouble = passedValue * (2.54/16); // Convert sixteenths to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 0.0015875; // Convert sixteenths to meters
+                            returnDouble = passedValue * ((2.54/16)/100); // Convert sixteenths to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 1.5875 * Math.Pow(10, -6); // Convert sixteenths to kilometers
+                            returnDouble = passedValue * (((2.54/16)/100)/1000); // Convert sixteenths to kilometers
                             break;
                     }
                     break;
@@ -104,22 +105,22 @@ namespace UnitClassLibrary
                             returnDouble = passedValue / 12; // Convert inches to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue / 36; // Convert inches to yards
+                            returnDouble = passedValue / (12*3); // Convert inches to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue / 63360; // Convert inches to miles
+                            returnDouble = passedValue / (12*5280); // Convert inches to miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 25.4; // Convert inches to millimeters
+                            returnDouble = passedValue * (2.54*10); // Convert inches to millimeters
                             break;
                         case DistanceType.Centimeter:
                             returnDouble = passedValue * 2.54; // Convert inches to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 0.0254; // Convert inches to meters
+                            returnDouble = passedValue * (2.54/100); // Convert inches to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 2.54 * Math.Pow(10, -5); // Convert inches to kilometers
+                            returnDouble = passedValue * ((2.54/100)/1000); // Convert inches to kilometers
                             break;
                     }
                     break;
@@ -127,10 +128,10 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 384; // Convert feet to thirtyseconds
+                            returnDouble = passedValue * (12*32); // Convert feet to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 192; // Convert feet to sixteenths
+                            returnDouble = passedValue * (12*16); // Convert feet to sixteenths
                             break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * 12; // Convert feet to inches
@@ -145,16 +146,16 @@ namespace UnitClassLibrary
                             returnDouble = passedValue / 5280; // Convert feet to miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 304.8; // Convert feet to millimeters
+                            returnDouble = passedValue * ((2.54*12)*10); // Convert feet to millimeters
                             break;
                         case DistanceType.Centimeter:
-                            returnDouble = passedValue * 30.48; // Convert feet to centimeters
+                            returnDouble = passedValue * (2.54*12); // Convert feet to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 0.3048; // Convert feet to meters
+                            returnDouble = passedValue * ((2.54*12)/100); // Convert feet to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 0.0003048; // Convert feet to kilometers
+                            returnDouble = passedValue * (((2.54*12)/100)/1000); // Convert feet to kilometers
                             break;
                     }
                     break;
@@ -162,13 +163,13 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 1152; // Convert yards to thirtyseconds
+                            returnDouble = passedValue * ((12*32)*3); // Convert yards to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 576; // Convert yards to sixteenths
+                            returnDouble = passedValue * ((12*16)*3); // Convert yards to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 36; // Convert yards to inches
+                            returnDouble = passedValue * (3*12); // Convert yards to inches
                             break;
                         case DistanceType.Foot:
                             returnDouble = passedValue * 3; // Convert yards to feet
@@ -177,19 +178,19 @@ namespace UnitClassLibrary
                             returnDouble = passedValue; // Return given yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue / 1760; // Convert yards to miles
+                            returnDouble = passedValue / (5280/3); // Convert yards to miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 914.4; // Convert yards to millimeters
+                            returnDouble = passedValue * (((2.54*12)*3)*10); // Convert yards to millimeters
                             break;
                         case DistanceType.Centimeter:
-                            returnDouble = passedValue * 91.44; // Convert yards to centimeters
+                            returnDouble = passedValue * ((2.54*12)*3); // Convert yards to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 0.9144; // Convert yards to meters
+                            returnDouble = passedValue * (((2.54*12)*3)/100); // Convert yards to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 0.0009144; // Convert yards to kilometers
+                            returnDouble = passedValue * ((((2.54*12)*3)/100)/1000); // Convert yards to kilometers
                             break;
                     }
                     break;
@@ -197,34 +198,34 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 2027520; // Convert miles to thirtyseconds
+                            returnDouble = passedValue * ((12*32)*5280); // Convert miles to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 1013760; // Convert miles to sixteenths
+                            returnDouble = passedValue * ((12*16)*5280); // Convert miles to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 63360; // Convert miles to inches
+                            returnDouble = passedValue * (12*5280); // Convert miles to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue * 5208; // Convert miles to feet
+                            returnDouble = passedValue * 5280; // Convert miles to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue * 1760; // Convert miles to yards
+                            returnDouble = passedValue * (5280/3); // Convert miles to yards
                             break;
                         case DistanceType.Mile:
                             returnDouble = passedValue; // Return given miles
                             break;
                         case DistanceType.Millimeter:
-                            returnDouble = passedValue * 1609344; // Convert miles to millimeters
+                            returnDouble = passedValue * (((2.54*12)*5280)*10); // Convert miles to millimeters
                             break;
                         case DistanceType.Centimeter:
-                            returnDouble = passedValue * 160934.4; // Convert miles to centimeters
+                            returnDouble = passedValue * ((2.54*12)*5280); // Convert miles to centimeters
                             break;
                         case DistanceType.Meter:
-                            returnDouble = passedValue * 1609.344; // Convert miles to meters
+                            returnDouble = passedValue * (((2.54*12)*5280)/100); // Convert miles to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue * 1.60934; // Convert miles to kilometers
+                            returnDouble = passedValue * ((((2.54*12)*5280)/100)/1000); // Convert miles to kilometers
                             break;
                     }
                     break;
@@ -232,22 +233,22 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 1.25984576; // Convert millimeters to thirtyseconds
+                            returnDouble = passedValue * (((1/2.54)/10)*32); // Convert millimeters to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 0.62992288; // Convert millimeters to sixteenths
+                            returnDouble = passedValue * (((1/2.54)/10)*16); // Convert millimeters to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 0.0393701; // Convert millimeters to inches
+                            returnDouble = passedValue * ((1/2.54)/10); // Convert millimeters to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue * 0.00328084; // Convert millimeters to feet
+                            returnDouble = passedValue * (((1/2.54)/12)/10); // Convert millimeters to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue * 0.00109361; // Convert millimeters to yards
+                            returnDouble = passedValue * ((((1/2.54)/12)/3)/10); // Convert millimeters to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue * 6.2137 * Math.Pow(10, -7); // Convert millimeters to miles
+                            returnDouble = passedValue * ((((1/2.54)/12)/5280)/10); // Convert millimeters to miles
                             break;
                         case DistanceType.Millimeter:
                             returnDouble = passedValue; // Return given millimeters
@@ -267,22 +268,22 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 12.5984576; // Convert centimeters to thirtyseconds
+                            returnDouble = passedValue * ((1/2.54)*32); // Convert centimeters to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 6.2992288; // Convert centimeters to sixteenths
+                            returnDouble = passedValue * ((1/2.54)*16); // Convert centimeters to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 0.393701; // Convert centimeters to inches
+                            returnDouble = passedValue * (1/2.54); // Convert centimeters to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue * 0.00328084; // Convert centimeters to feet
+                            returnDouble = passedValue * ((1/2.54)/12); // Convert centimeters to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue * 0.0109361; // Convert centimeters to yards
+                            returnDouble = passedValue * (((1/2.54)/12)/3); // Convert centimeters to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue * 6.2137 * Math.Pow(10, -6); // Convert centimeters to miles
+                            returnDouble = passedValue * (((1/2.54)/12)/5280); // Convert centimeters to miles
                             break;
                         case DistanceType.Millimeter:
                             returnDouble = passedValue * 10; // Convert centimeters to millimeters
@@ -302,22 +303,22 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 1259.8432; // Convert meters to thirtyseconds
+                            returnDouble = passedValue * (((1/2.54)*32)*100); // Convert meters to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 629.9216; // Convert meters to sixteenths
+                            returnDouble = passedValue * (((1/2.54)*16)*100); // Convert meters to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 39.3701; // Convert meters to inches
+                            returnDouble = passedValue * ((1/2.54)*100); // Convert meters to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue * 3.28084; // Convert meters to feet
+                            returnDouble = passedValue * (((1/2.54)/12)*100); // Convert meters to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue * 1.09361; // Convert meters to yards
+                            returnDouble = passedValue * ((((1/2.54)/12)/3)*100); // Convert meters to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue * 0.000621371; // Convert meters to miles
+                            returnDouble = passedValue * ((((1/2.54)/12)/5280)*100); // Convert meters to miles
                             break;
                         case DistanceType.Millimeter:
                             returnDouble = passedValue * 1000; // Convert meters to millimeters
@@ -337,22 +338,22 @@ namespace UnitClassLibrary
                     switch (typeConvertingTo)
                     {
                         case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 1259843.2; // Convert kilometers to thirtyseconds
+                            returnDouble = passedValue * ((((1/2.54)*32)*100)*1000); // Convert kilometers to thirtyseconds
                             break;
                         case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 629921.6; // Convert kilometers to sixteenths
+                            returnDouble = passedValue * ((((1/2.54)*16)*100)*1000); // Convert kilometers to sixteenths
                             break;
                         case DistanceType.Inch:
-                            returnDouble = passedValue * 39370.1; // Convert kilometers to inches
+                            returnDouble = passedValue * (((1/2.54)*100)*1000); // Convert kilometers to inches
                             break;
                         case DistanceType.Foot:
-                            returnDouble = passedValue * 3280.84; // Convert kilometers to feet
+                            returnDouble = passedValue * ((((1/2.54)/12)*100)*1000); // Convert kilometers to feet
                             break;
                         case DistanceType.Yard:
-                            returnDouble = passedValue * 1093.61; // Convert kilometers to yards
+                            returnDouble = passedValue * (((((1/2.54)/12)/3)*100)*1000); // Convert kilometers to yards
                             break;
                         case DistanceType.Mile:
-                            returnDouble = passedValue * 0.621371; // Convert kilometers to miles
+                            returnDouble = passedValue * (((((1/2.54)/12)/5280)*100)*1000); // Convert kilometers to miles
                             break;
                         case DistanceType.Millimeter:
                             returnDouble = passedValue * 1000000; // Convert kilometers to millimeters
@@ -364,7 +365,7 @@ namespace UnitClassLibrary
                             returnDouble = passedValue * 1000; // Convert kilometers to meters
                             break;
                         case DistanceType.Kilometer:
-                            returnDouble = passedValue / 1000; // Return given kilometers
+                            returnDouble = passedValue; // Return given kilometers
                             break;
                     }
                     break;
@@ -375,10 +376,10 @@ namespace UnitClassLibrary
 
         /// <summary>
         /// Converts any possible type of Architectual String into internal units
-        /// <remarks>Throws FormatException on bad input</remarks>
         /// </summary>
-        /// <param name="passedArchitecturalString">the input string</param>
-        /// <returns>decimal Millimeters</returns>
+        /// <param name="convertToType"></param>
+        /// <param name="passedArchitecturalString"></param>
+        /// <returns></returns>
         private static double ConvertArchitectualStringtoUnit(DistanceType convertToType, String passedArchitecturalString)
         {
             // for details on where this solution came from, check here: http://stackoverflow.com/questions/22794466/parsing-all-possible-types-of-varying-architectural-Distance-input
@@ -494,7 +495,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// Converts any Distance into an architectural string representation
         /// </summary>
-        /// <param name="typeConvertingFrom">desired output unit type</param>
         /// <returns>converted Distance</returns>
         public static string ConvertDistanceIntoArchitecturalString(Distance passedDistance)
         {

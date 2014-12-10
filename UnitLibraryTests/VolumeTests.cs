@@ -19,12 +19,12 @@ namespace UnitLibraryTests
             Volume LitersVolume = new Volume(VolumeType.Liters, 880);
 
             // act & assert
-            (new Volume(VolumeType.Milliliters,880000) == LitersVolume).Should().BeTrue();
-            (new Volume(VolumeType.CubicCentimeters ,880000) == LitersVolume).Should().BeTrue();
-            (new Volume(VolumeType.Liters,880) == LitersVolume).Should().BeTrue();
-            (new Volume(VolumeType.CubicMeters,0.88) == LitersVolume).Should().BeTrue();
-            (new Volume(VolumeType.CubicInches,53700.894803364165) == LitersVolume).Should().BeTrue();
-            (new Volume(VolumeType.CubicFeet,31.076906714910322) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Milliliters, 880000) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicCentimeters, 880000) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.Liters, 880) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicMeters, 0.88) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicInches, 53700.89480800000456) == LitersVolume).Should().BeTrue();
+            (new Volume(VolumeType.CubicFeet, 31.076906714910322) == LitersVolume).Should().BeTrue();
             (new Volume(VolumeType.CubicYards, 1.15099654) == LitersVolume).Should().BeTrue();
             (new Volume(VolumeType.CubicMiles, 2.11123228 * Math.Pow(10, -10)) == LitersVolume).Should().BeTrue();
             (new Volume(VolumeType.Gallons, 232.471406075172) == LitersVolume).Should().BeTrue();

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+ 
 using System.Text;
 
 namespace UnitClassLibrary
@@ -10,11 +10,23 @@ namespace UnitClassLibrary
         // You may notice that we do not overload the increment and decrement operators (++ and --).
         // This would break our abstraction of thinking that all units types are represented by this object 
 
+        /// <summary>
+        /// The "raise to power" operator
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="power"></param>
+        /// <returns></returns>
         public static Distance operator ^(Distance d1, double power)
         {
             return new Distance(d1._internalUnitType, Math.Pow(d1._intrinsicValue, power));
         }
 
+        /// <summary>
+        /// returns a new Distance with the sum of the two passed distances
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static Distance operator +(Distance d1, Distance d2)
         {
             //add the two Distances together
@@ -22,28 +34,57 @@ namespace UnitClassLibrary
             return new Distance(d1._internalUnitType, d1._intrinsicValue + d2.GetValue(d1._internalUnitType));
         }
 
+        /// <summary>
+        /// returns a new Distance with the difference of the two passed distances
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static Distance operator -(Distance d1, Distance d2)
         {
             //subtract the two Distances
             //return a new Distance with the new value
             return new Distance(d1._internalUnitType, d1._intrinsicValue - d2.GetValue(d1._internalUnitType));
         }
-
+        /// <summary>
+        /// ratio of between distances
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static double operator /(Distance d1, Distance d2)
         {
             return d1.GetValue(d1._internalUnitType) / d2.GetValue(d1._internalUnitType);
         }
 
+        /// <summary>
+        /// multiplication returned as area
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static Area operator *(Distance d1, Distance d2)
         {
             return new Area(d1, d2);
         }
 
+        /// <summary>
+        /// scalar multiplication
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="multiplier"></param>
+        /// <returns></returns>
         public static Distance operator *(Distance d1, double multiplier)
         {
             return new Distance(d1._internalUnitType, d1._intrinsicValue * multiplier);
         }
 
+        /// <summary>
+        /// scalar division
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="divisor"></param>
+        /// <returns></returns>
         public static Distance operator /(Distance d1, double divisor)
         {
             return new Distance(d1.InternalUnitType, d1._intrinsicValue / divisor);
@@ -81,6 +122,12 @@ namespace UnitClassLibrary
             return !d1.Equals(d2);
         }
 
+        /// <summary>
+        /// greater than
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static bool operator >(Distance d1, Distance d2)
         {
             if (d1 == d2)
@@ -90,6 +137,12 @@ namespace UnitClassLibrary
             return d1._intrinsicValue > d2.GetValue(d1._internalUnitType);
         }
 
+        /// <summary>
+        /// less than
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static bool operator <(Distance d1, Distance d2)
         {
             if (d1 == d2)
@@ -99,11 +152,23 @@ namespace UnitClassLibrary
             return d1._intrinsicValue < d2.GetValue(d1._internalUnitType);
         }
 
+        /// <summary>
+        /// Less than or equal to
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static bool operator <=(Distance d1, Distance d2)
         {
             return d1.Equals(d2) || d1 < d2;
         }
 
+        /// <summary>
+        /// Greater than or equal to
+        /// </summary>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <returns></returns>
         public static bool operator >=(Distance d1, Distance d2)
         {
             return d1.Equals(d2) || d1 > d2;
@@ -122,7 +187,6 @@ namespace UnitClassLibrary
         /// The value and unit in terms of what the object was created with. 
         /// If you want it in a different unit use ToString(DistanceType)
         /// </summary>
-        /// <returns>Should never return anything</returns>
         public override string ToString()
         {
             return this._intrinsicValue + " " + this._internalUnitType;
