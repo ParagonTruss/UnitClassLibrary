@@ -10,14 +10,29 @@ namespace UnitClassLibrary
 {
     public partial class Distance
     {
-        public static Distance Sixteenth
+        public static Distance ThirtySecondInch
         {
-            get { return new Distance(DistanceType.Sixteenth, 1); }
+            get { return new Distance(DistanceType.Inch, 1 / 32); }
         }
 
-        public static Distance ThirtySecond
+        public static Distance SixteenthInch
         {
-            get { return new Distance(DistanceType.ThirtySecond, 1); }
+            get { return new Distance(DistanceType.Inch, 1 / 16); }
+        }
+
+        public static Distance EighthInch
+        {
+            get { return new Distance(DistanceType.Inch, 1 / 8); }
+        }
+
+        public static Distance QuarterInch
+        {
+            get { return new Distance(DistanceType.Inch, 1 / 4); }
+        }
+
+        public static Distance HalfInch
+        {
+            get { return new Distance(DistanceType.Inch, 1 / 2); }
         }
 
         public static Distance Inch

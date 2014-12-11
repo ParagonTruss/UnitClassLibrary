@@ -70,7 +70,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMillisecond
         {
-            get { return _distance.ThirtySeconds / _time.Milliseconds; }
+            get { return _distance.ThirtySecondsOfAnInch / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerSecond
         {
-            get { return _distance.ThirtySeconds / _time.Seconds; }
+            get { return _distance.ThirtySecondsOfAnInch / _time.Seconds; }
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMinute
         {
-            get { return _distance.ThirtySeconds / _time.Minutes; }
+            get { return _distance.ThirtySecondsOfAnInch / _time.Minutes; }
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerHour
         {
-            get { return _distance.ThirtySeconds / _time.Hours; }
+            get { return _distance.ThirtySecondsOfAnInch / _time.Hours; }
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMillisecond
         {
-            get { return _distance.Sixteenths / _time.Milliseconds; }
+            get { return _distance.SixteenthsOfAnInch / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerSecond
         {
-            get { return _distance.Sixteenths / _time.Seconds; }
+            get { return _distance.SixteenthsOfAnInch / _time.Seconds; }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMinute
         {
-            get { return _distance.Sixteenths / _time.Minutes; }
+            get { return _distance.SixteenthsOfAnInch / _time.Minutes; }
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerHour
         {
-            get { return _distance.Sixteenths / _time.Hours; }
+            get { return _distance.SixteenthsOfAnInch / _time.Hours; }
         }
 
         /// <summary>

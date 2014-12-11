@@ -65,8 +65,6 @@ namespace UnitLibraryTests
             (kilometerDistance == new Distance(DistanceType.Millimeter, 1000000)).Should().BeTrue();
             (kilometerDistance == new Distance(DistanceType.Centimeter, 100000)).Should().BeTrue();
             (kilometerDistance == new Distance(DistanceType.Inch, 39370.1)).Should().BeTrue();
-            (kilometerDistance == new Distance(DistanceType.ThirtySecond, 1259843.2)).Should().BeTrue();
-            (kilometerDistance == new Distance(DistanceType.Sixteenth, 629921.6)).Should().BeTrue();
             (kilometerDistance == new Distance(DistanceType.Foot, 3280.84)).Should().BeTrue();
             (kilometerDistance == new Distance(DistanceType.Yard, 1093.61)).Should().BeTrue();
             (kilometerDistance == new Distance(DistanceType.Mile, 0.621371)).Should().BeTrue();
