@@ -22,7 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : AngularDistance
+    public partial class Angle : AngularDistance
     {
         #region Constructors
 
