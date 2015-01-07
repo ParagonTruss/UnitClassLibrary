@@ -15,7 +15,7 @@ namespace UnitClassLibrary
     {
         #region private fields and constants
 
-        private ForceUnit _force;
+        private Force _force;
         private Area _area;
 
         #endregion
@@ -28,7 +28,7 @@ namespace UnitClassLibrary
         public Stress()
         {
             _area = new Area();
-            _force = new ForceUnit();
+            _force = new Force();
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="passedArea"></param>
         /// <param name="passedForce"></param>
-        public Stress(ForceUnit passedForce, Area passedArea)
+        public Stress(Force passedForce, Area passedArea)
         {
             _area = passedArea;
             _force = passedForce;
@@ -53,19 +53,19 @@ namespace UnitClassLibrary
             {
                 case StressType.PoundsPerSquareInch:
                     _area = new Area(AreaType.InchesSquared, passedValue);
-                    _force = new ForceUnit(ForceType.Pounds, 1);
+                    _force = new Force(ForceType.Pound, 1);
                     break;
                 case StressType.PoundsPerSquareMillimeter:
                     _area = new Area(AreaType.MillimetersSquared, passedValue);
-                    _force = new ForceUnit(ForceType.Pounds, 1);
+                    _force = new Force(ForceType.Pound, 1);
                     break;
                 case StressType.NewtonsPerSquareMeter:
                     _area = new Area(AreaType.MetersSquared, passedValue);
-                    _force = new ForceUnit(ForceType.Newtons, 1);
+                    _force = new Force(ForceType.Newton, 1);
                     break;
                 case StressType.NewtonsPerSquareMillimeter:
                     _area = new Area(AreaType.MillimetersSquared, passedValue);
-                    _force = new ForceUnit(ForceType.Newtons, 1);
+                    _force = new Force(ForceType.Newton, 1);
                     break;
                 default:
                     // Should never reach; cases should cover all members of enumerated set

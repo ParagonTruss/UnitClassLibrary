@@ -62,11 +62,11 @@ namespace UnitClassLibrary
         {
             switch (Units)
             {
-                case ForceType.Pounds:
+                case ForceType.Pound:
                     return Math.Abs(Pounds);
-                case ForceType.Newtons:
+                case ForceType.Newton:
                     return Math.Abs(Newtons);
-                case ForceType.Kips:
+                case ForceType.Kip:
                     return Math.Abs(Kips);
             }
             throw new Exception("Unknown ForceType");
@@ -82,7 +82,7 @@ namespace UnitClassLibrary
         /// </summary>
         public Moment()
         {
-            _force = new ForceUnit();
+            _force = new Force();
             _Distance = new Distance();
         }
 
@@ -91,7 +91,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
         /// <param name="passedDistance">direction of force applied</param>
-        public Moment(ForceUnit passeForce, Distance passedDistance)
+        public Moment(Force passeForce, Distance passedDistance)
         {
             _force = passeForce;
             _Distance = passedDistance;
@@ -107,15 +107,15 @@ namespace UnitClassLibrary
             switch (passedMomentType)
             {
                 case MomentType.PoundsMillimeters:
-                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _force = new Force(ForceType.Pound, passedValue);
                     _Distance = new Distance(DistanceType.Millimeter, 1);
                     break;
                 case MomentType.NewtonMeters:
-                    _force = new ForceUnit(ForceType.Newtons, passedValue);
+                    _force = new Force(ForceType.Newton, passedValue);
                     _Distance = new Distance(DistanceType.Meter, 1);
                     break;
                 case MomentType.PoundsFeet:
-                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _force = new Force(ForceType.Pound, passedValue);
                     _Distance = new Distance(DistanceType.Foot, 1);
                     break;
                 default:
