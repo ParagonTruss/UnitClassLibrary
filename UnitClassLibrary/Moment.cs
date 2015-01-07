@@ -40,37 +40,6 @@ namespace UnitClassLibrary
         {
             get { return _Distance.Meters * _force.Newtons; }
         }
-
-        public double GetValue(ForceType Units)
-        {
-            switch (Units)
-            {
-                case ForceType.Pound:
-                    return Pounds;
-                case ForceType.Newton:
-                    return Newtons;
-                case ForceType.Kip:
-                    return Kips;
-            }
-            throw new Exception("Unknown ForceType");
-        }
-
-        /// <summary>
-        /// returns force in absolute value
-        /// </summary>
-        public double GetAbsoluteValue(ForceType Units)
-        {
-            switch (Units)
-            {
-                case ForceType.Pound:
-                    return Math.Abs(Pounds);
-                case ForceType.Newton:
-                    return Math.Abs(Newtons);
-                case ForceType.Kip:
-                    return Math.Abs(Kips);
-            }
-            throw new Exception("Unknown ForceType");
-        }
         
         #endregion
 
