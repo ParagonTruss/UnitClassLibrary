@@ -22,11 +22,11 @@ namespace UnitClassLibrary
             }
         }
 
-        public static ForceUnit AcceptedEqualityDeviationForceUnit
+        public static Force AcceptedEqualityDeviationForceUnit
         {
             get
             {
-                return new ForceUnit(ForceType.Pounds, 0.03125);
+                return new Force(ForceType.Pound, 0.03125);
 
 
                 //try

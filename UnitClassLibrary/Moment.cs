@@ -16,7 +16,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Force that is applied in a direction
         /// </summary>
-        private ForceUnit _force;
+        private Force _force;
 
         /// <summary>
         /// The distance upon which the force acts
@@ -40,7 +40,41 @@ namespace UnitClassLibrary
         {
             get { return _Distance.Meters * _force.Newtons; }
         }
+
+        public double GetValue(ForceType Units)
+        {
+            switch (Units)
+            {
+                case ForceType.Pound:
+                    return Pounds;
+                case ForceType.Newton:
+                    return Newtons;
+                case ForceType.Kip:
+                    return Kips;
+            }
+            throw new Exception("Unknown ForceType");
+        }
+
+        /// <summary>
+        /// returns force in absolute value
+        /// </summary>
+        public double GetAbsoluteValue(ForceType Units)
+        {
+            switch (Units)
+            {
+                case ForceType.Pounds:
+                    return Math.Abs(Pounds);
+                case ForceType.Newtons:
+                    return Math.Abs(Newtons);
+                case ForceType.Kips:
+                    return Math.Abs(Kips);
+            }
+            throw new Exception("Unknown ForceType");
+        }
+        
         #endregion
+
+
 
         #region Constructors
         /// <summary>
