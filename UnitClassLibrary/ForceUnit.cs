@@ -70,6 +70,24 @@ namespace UnitClassLibrary
             }
             throw new Exception("Unknown ForceType");
         }
+
+        /// <summary>
+        /// returns force in absolute value
+        /// </summary>
+        public double GetAbsoluteValue(ForceType Units)
+        {
+            switch (Units)
+            {
+                case ForceType.Pounds:
+                    return Math.Abs(Pounds);
+                case ForceType.Newtons:
+                    return Math.Abs(Newtons);
+                case ForceType.Kips:
+                    return Math.Abs(Kips);
+            }
+            throw new Exception("Unknown ForceType");
+        }
+
         #endregion
 
         #region Constructors
