@@ -106,16 +106,6 @@
     <Compile Include="Power.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Speed.cs" />
-    <Compile Include="Stiffness\Stiffness.cs" />
-    <Compile Include="Stiffness\StiffnessConstants.cs" />
-    <Compile Include="Stiffness\StiffnessConversion.cs" />
-    <Compile Include="Stiffness\StiffnessEnums.cs" />
-    <Compile Include="Stiffness\StiffnessEquality.cs" />
-    <Compile Include="Stiffness\StiffnessIComparable.cs" />
-    <Compile Include="Stiffness\StiffnessOverloads.cs" />
-    <Compile Include="Stiffness\StiffnessProperties.cs" />
-    <Compile Include="Stiffness\StiffnessPublicMethods.cs" />
-    <Compile Include="Stiffness\StiffnessStaticGenerators.cs" />
     <Compile Include="Stress.cs" />
     <Compile Include="Time\Time.cs" />
     <Compile Include="Time\TimeConstants.cs" />
