@@ -16,7 +16,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Force that is applied in a direction
         /// </summary>
-        private ForceUnit _force;
+        private Force _force;
 
         /// <summary>
         /// The distance upon which the force acts
@@ -40,7 +40,10 @@ namespace UnitClassLibrary
         {
             get { return _Distance.Meters * _force.Newtons; }
         }
+        
         #endregion
+
+
 
         #region Constructors
         /// <summary>
@@ -48,7 +51,7 @@ namespace UnitClassLibrary
         /// </summary>
         public Moment()
         {
-            _force = new ForceUnit();
+            _force = new Force();
             _Distance = new Distance();
         }
 
@@ -57,7 +60,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
         /// <param name="passedDistance">direction of force applied</param>
-        public Moment(ForceUnit passeForce, Distance passedDistance)
+        public Moment(Force passeForce, Distance passedDistance)
         {
             _force = passeForce;
             _Distance = passedDistance;
@@ -73,15 +76,15 @@ namespace UnitClassLibrary
             switch (passedMomentType)
             {
                 case MomentType.PoundsMillimeters:
-                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _force = new Force(ForceType.Pound, passedValue);
                     _Distance = new Distance(DistanceType.Millimeter, 1);
                     break;
                 case MomentType.NewtonMeters:
-                    _force = new ForceUnit(ForceType.Newtons, passedValue);
+                    _force = new Force(ForceType.Newton, passedValue);
                     _Distance = new Distance(DistanceType.Meter, 1);
                     break;
                 case MomentType.PoundsFeet:
-                    _force = new ForceUnit(ForceType.Pounds, passedValue);
+                    _force = new Force(ForceType.Pound, passedValue);
                     _Distance = new Distance(DistanceType.Foot, 1);
                     break;
                 default:

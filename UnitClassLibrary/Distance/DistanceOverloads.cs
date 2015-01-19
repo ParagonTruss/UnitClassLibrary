@@ -79,6 +79,10 @@ namespace UnitClassLibrary
             return new Distance(d1._internalUnitType, d1._intrinsicValue * multiplier);
         }
 
+
+
+
+
         /// <summary>
         /// scalar division
         /// </summary>

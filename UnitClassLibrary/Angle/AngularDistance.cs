@@ -55,6 +55,8 @@ namespace UnitClassLibrary
         {
             get { return ConvertTo(_internalUnitType, _intrinsicValue, AngleType.Degree); }
         }
+
+        
         #endregion
 
         #region Helper Methods
@@ -312,7 +314,7 @@ namespace UnitClassLibrary
         /// <returns>whether the first angle is greater than the second</returns>
         public static bool operator >(AngularDistance a1, AngularDistance a2)
         {
-            return a1._intrinsicValue > a2._intrinsicValue;
+            return a1._intrinsicValue > a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -323,7 +325,7 @@ namespace UnitClassLibrary
         /// <returns>whether the first angle is less than the second</returns>
         public static bool operator <(AngularDistance a1, AngularDistance a2)
         {
-            return a1._intrinsicValue < a2._intrinsicValue;
+            return a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -334,7 +336,7 @@ namespace UnitClassLibrary
         /// <returns>whether the angle on the left is greater than or equal to the angle on the right</returns>
         public static bool operator >=(AngularDistance a1, AngularDistance a2)
         {
-            return a1.Equals(a2) || a1._intrinsicValue > a2._intrinsicValue;
+            return a1.Equals(a2) || a1._intrinsicValue > a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -345,7 +347,7 @@ namespace UnitClassLibrary
         /// <returns>whether the angle on the left is less than or equal to the angle on the right</returns>
         public static bool operator <=(AngularDistance a1, AngularDistance a2)
         {
-            return a1.Equals(a2) || a1._intrinsicValue < a2._intrinsicValue;
+            return a1.Equals(a2) || a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
         }
 
         /// <summary>
@@ -383,10 +385,10 @@ namespace UnitClassLibrary
             }
             try
             {
-                //check 
+                //TODO: need to implement equality strategy
 
                 AngularDistance other = (AngularDistance)obj;
-                return Math.Abs(this.GetValue(_internalUnitType) - ((AngularDistance)(obj)).GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
+                return Math.Abs(this._intrinsicValue - other.GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
             }
             catch
             {
