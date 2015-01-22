@@ -66,6 +66,16 @@
   <ItemGroup>
     <Compile Include="Angle\Angle.cs" />
     <Compile Include="Angle\AngularDistance.cs" />
+    <Compile Include="Data\Data.cs" />
+    <Compile Include="Data\DataConstants.cs" />
+    <Compile Include="Data\DataConversion.cs" />
+    <Compile Include="Data\DataEnums.cs" />
+    <Compile Include="Data\DataEquality.cs" />
+    <Compile Include="Data\DataIComparable.cs" />
+    <Compile Include="Data\DataOverloads.cs" />
+    <Compile Include="Data\DataProperties.cs" />
+    <Compile Include="Data\DataPublicMethods.cs" />
+    <Compile Include="Data\DataStaticGenerators.cs" />
     <Compile Include="DeviationConstants.cs" />
     <Compile Include="Distance\DistanceConstants.cs" />
     <Compile Include="Distance\DistanceConversion.cs" />
