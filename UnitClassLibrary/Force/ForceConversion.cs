@@ -40,7 +40,7 @@ using System;
 							returnDouble = passedValue; // Return passed in Pound
 							break;
 						case ForceType.Kip:
-							returnDouble = passedValue * (1/1000); // Convert Pound to Kip
+							returnDouble = passedValue * (1.0/1000.0); // Convert Pound to Kip
 							break;
 					}
 					break;
