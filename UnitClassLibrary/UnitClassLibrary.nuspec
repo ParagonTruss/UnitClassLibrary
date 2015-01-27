@@ -10,6 +10,6 @@
     <iconUrl>http://chattanooga.clearspaninc.com/images/unit-class-library.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <licenseurl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseurl>
+    <licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
   </metadata>
 </package>
