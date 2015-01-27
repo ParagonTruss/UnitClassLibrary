@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>UnitClassLibrary</id>
-    <version>1.1.0</version>
-    <title>Unit Class Library</title>
-    <authors>Clearspan Components Inc.</authors>
-    <owners>Clearspan Components Inc.</owners>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
     <projectUrl>https://bitbucket.org/Clearspan/unit-class-library</projectUrl>
-	<iconUrl>http://chattanooga.clearspaninc.com/images/unit-class-library.png</iconUrl>
+    <iconUrl>http://chattanooga.clearspaninc.com/images/unit-class-library.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Library that has information about many different units.</description>
-	<licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
+    <description>$description$</description>
+    <licenseurl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseurl>
   </metadata>
 </package>
