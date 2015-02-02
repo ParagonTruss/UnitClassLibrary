@@ -5,14 +5,14 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Distance : IComparable, IComparable<Distance>
+    public partial class Broken : IComparable, IComparable<Broken>
     {
         /// <summary>
-        /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
+        /// This implements the IComparable (Broken) interface and allows Brokens to be sorted and such
         /// </summary>
-        /// <param name="other">Distance being compared to</param>
+        /// <param name="other">Broken being compared to</param>
         /// <returns></returns>
-        public int CompareTo(Distance other)
+        public int CompareTo(Broken other)
         {
             if (this.Equals(other))
             {
@@ -25,7 +25,7 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
+        /// This implements the IComparable (Broken) interface and allows Brokens to be sorted and such
         /// </summary>
         /// <param name="obj">object being compared to</param>
         /// <returns></returns>
@@ -36,12 +36,12 @@ namespace UnitClassLibrary
                 throw new ArgumentNullException("obj");
             }
 
-            if (!( obj is Distance))
+            if (!( obj is Broken))
             {
-                throw new ArgumentException("Expected type Distance.", "obj");
+                throw new ArgumentException("Expected type Broken.", "obj");
             }
 
-            return this.CompareTo((Distance)obj);
+            return this.CompareTo((Broken)obj);
         }
     }
 }

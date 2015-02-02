@@ -8,7 +8,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Enum for specifying the type of unit a Distance is
+    /// Enum for specifying the type of unit a Broken is
     /// </summary>
-    public enum DistanceType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile };
+    public enum BrokenType { Inch, Millimeter, Centimeter, Meter, Kilometer, ThirtySecond, Sixteenth, Foot, Yard, Mile };
 }

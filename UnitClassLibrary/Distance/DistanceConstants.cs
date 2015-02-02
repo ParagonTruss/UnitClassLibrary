@@ -8,56 +8,56 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Distance
+    public partial class Broken
     {
-        public static Distance Sixteenth
+        public static Broken Sixteenth
         {
-            get { return new Distance(DistanceType.Sixteenth, 1); }
+            get { return new Broken(BrokenType.Sixteenth, 1); }
         }
 
-        public static Distance ThirtySecond
+        public static Broken ThirtySecond
         {
-            get { return new Distance(DistanceType.ThirtySecond, 1); }
+            get { return new Broken(BrokenType.ThirtySecond, 1); }
         }
 
-        public static Distance Inch
+        public static Broken Inch
         {
-            get { return new Distance(DistanceType.Inch, 1); }
+            get { return new Broken(BrokenType.Inch, 1); }
         }
 
-        public static Distance Foot
+        public static Broken Foot
         {
-            get { return new Distance(DistanceType.Foot, 1); }
+            get { return new Broken(BrokenType.Foot, 1); }
         }
 
-        public static Distance Yard
+        public static Broken Yard
         {
-            get { return new Distance(DistanceType.Yard, 1); }
+            get { return new Broken(BrokenType.Yard, 1); }
         }
 
-        public static Distance Mile
+        public static Broken Mile
         {
-            get { return new Distance(DistanceType.Mile, 1); }
+            get { return new Broken(BrokenType.Mile, 1); }
         }
 
-        public static Distance Millimeter
+        public static Broken Millimeter
         {
-            get { return new Distance(DistanceType.Millimeter, 1); }
+            get { return new Broken(BrokenType.Millimeter, 1); }
         }
 
-        public static Distance Centimeter
+        public static Broken Centimeter
         {
-            get { return new Distance(DistanceType.Centimeter, 1); }
+            get { return new Broken(BrokenType.Centimeter, 1); }
         }
 
-        public static Distance Meter
+        public static Broken Meter
         {
-            get { return new Distance(DistanceType.Meter, 1); }
+            get { return new Broken(BrokenType.Meter, 1); }
         }
 
-        public static Distance Kilometer
+        public static Broken Kilometer
         {
-            get { return new Distance(DistanceType.Kilometer, 1); }
+            get { return new Broken(BrokenType.Kilometer, 1); }
         }
     }
 }

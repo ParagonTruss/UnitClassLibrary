@@ -6,7 +6,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Represents two dimensional distance
+    /// Represents two dimensional Broken
     /// </summary>
     public class Area : IComparable<Area>
     {
@@ -35,14 +35,14 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Take two Distances and make them into an area
+        /// Take two Brokens and make them into an area
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
-        public Area(Distance d1, Distance d2)
+        public Area(Broken d1, Broken d2)
         {
             // We do not have ThirtySecondsSquared or SixteenthsSquared as area units, so convert these to inches
-            if (d1.InternalUnitType == DistanceType.ThirtySecond || d1.InternalUnitType == DistanceType.Sixteenth)
+            if (d1.InternalUnitType == BrokenType.ThirtySecond || d1.InternalUnitType == BrokenType.Sixteenth)
             {
                 _intrinsicValue = d1.Inches * d2.Inches;
             }
@@ -51,33 +51,33 @@ namespace UnitClassLibrary
                 _intrinsicValue = d1.GetValue(d1.InternalUnitType) * d2.GetValue(d1.InternalUnitType);
             }
 
-            // Set the internal unit type to the type of the first passed Distance squared. Sixteenths and thrity-seconds have been converted into inches and will therefore be in inches squared.
+            // Set the internal unit type to the type of the first passed Broken squared. Sixteenths and thrity-seconds have been converted into inches and will therefore be in inches squared.
             switch (d1.InternalUnitType)
             {
-                case DistanceType.Millimeter:
+                case BrokenType.Millimeter:
                     _internalUnitType = AreaType.MillimetersSquared;
                     break;
-                case DistanceType.Centimeter:
+                case BrokenType.Centimeter:
                     _internalUnitType = AreaType.CentimetersSquared;
                     break;
-                case DistanceType.Meter:
+                case BrokenType.Meter:
                     _internalUnitType = AreaType.MetersSquared;
                     break;
-                case DistanceType.Kilometer:
+                case BrokenType.Kilometer:
                     _internalUnitType = AreaType.KilometersSquared;
                     break;
-                case DistanceType.ThirtySecond: // Has been converted to inches
-                case DistanceType.Sixteenth: // Has been converted to inches
-                case DistanceType.Inch:
+                case BrokenType.ThirtySecond: // Has been converted to inches
+                case BrokenType.Sixteenth: // Has been converted to inches
+                case BrokenType.Inch:
                     _internalUnitType = AreaType.InchesSquared;
                     break;
-                case DistanceType.Foot:
+                case BrokenType.Foot:
                     _internalUnitType = AreaType.FeetSquared;
                     break;
-                case DistanceType.Yard:
+                case BrokenType.Yard:
                     _internalUnitType = AreaType.YardsSquared;
                     break;
-                case DistanceType.Mile:
+                case BrokenType.Mile:
                     _internalUnitType = AreaType.MilesSquared;
                     break;
             }

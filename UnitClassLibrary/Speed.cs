@@ -14,7 +14,7 @@ namespace UnitClassLibrary
     public class Speed : IComparable<Speed>
     {
         #region _internalVariables
-        private Distance _distance;
+        private Broken _Broken;
         private Time _time;
         #endregion
 
@@ -22,13 +22,13 @@ namespace UnitClassLibrary
 
         public Speed()
         {
-            _distance = new Distance();
+            _Broken = new Broken();
             _time = new Time();
         }
 
-        public Speed(Distance passedDistance, Time passedTime)
+        public Speed(Broken passedBroken, Time passedTime)
         {
-            _distance = passedDistance;
+            _Broken = passedBroken;
             _time = passedTime;
         }
 
@@ -37,23 +37,23 @@ namespace UnitClassLibrary
             switch(passedSpeedType)
             {
                 case SpeedType.FeetPerSecond:
-                    _distance = new Distance(DistanceType.Foot, passedValue);
+                    _Broken = new Broken(BrokenType.Foot, passedValue);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case SpeedType.KilometersPerHour:
-                    _distance = new Distance(DistanceType.Kilometer, passedValue);
+                    _Broken = new Broken(BrokenType.Kilometer, passedValue);
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 case SpeedType.Knots: //Nautical Miles/Hour
-                    _distance = new Distance(DistanceType.Kilometer, 1.852 * passedValue); //Trying to accomplish the contruction in nautical miles.
+                    _Broken = new Broken(BrokenType.Kilometer, 1.852 * passedValue); //Trying to accomplish the contruction in nautical miles.
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 case SpeedType.MetersPerSecond:
-                    _distance = new Distance(DistanceType.Meter, passedValue);
+                    _Broken = new Broken(BrokenType.Meter, passedValue);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case SpeedType.MilesPerHour:
-                    _distance = new Distance(DistanceType.Mile, passedValue);
+                    _Broken = new Broken(BrokenType.Mile, passedValue);
                     _time = new Time(TimeType.Hour, 1);
                     break;
                 default:
@@ -70,7 +70,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMillisecond
         {
-            get { return _distance.ThirtySeconds / _time.Milliseconds; }
+            get { return _Broken.ThirtySeconds / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerSecond
         {
-            get { return _distance.ThirtySeconds / _time.Seconds; }
+            get { return _Broken.ThirtySeconds / _time.Seconds; }
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerMinute
         {
-            get { return _distance.ThirtySeconds / _time.Minutes; }
+            get { return _Broken.ThirtySeconds / _time.Minutes; }
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ThirtySecondsPerHour
         {
-            get { return _distance.ThirtySeconds / _time.Hours; }
+            get { return _Broken.ThirtySeconds / _time.Hours; }
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMillisecond
         {
-            get { return _distance.Sixteenths / _time.Milliseconds; }
+            get { return _Broken.Sixteenths / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerSecond
         {
-            get { return _distance.Sixteenths / _time.Seconds; }
+            get { return _Broken.Sixteenths / _time.Seconds; }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerMinute
         {
-            get { return _distance.Sixteenths / _time.Minutes; }
+            get { return _Broken.Sixteenths / _time.Minutes; }
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double SixteenthsPerHour
         {
-            get { return _distance.Sixteenths / _time.Hours; }
+            get { return _Broken.Sixteenths / _time.Hours; }
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerMillisecond
         {
-            get { return _distance.Inches / _time.Milliseconds; }
+            get { return _Broken.Inches / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerSecond
         {
-            get { return _distance.Inches / _time.Seconds; }
+            get { return _Broken.Inches / _time.Seconds; }
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerMinute
         {
-            get { return _distance.Inches / _time.Minutes; }
+            get { return _Broken.Inches / _time.Minutes; }
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double InchesPerHour
         {
-            get { return _distance.Inches / _time.Hours; }
+            get { return _Broken.Inches / _time.Hours; }
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerMillisecond
         {
-            get { return _distance.Feet / _time.Milliseconds; }
+            get { return _Broken.Feet / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerSecond
         {
-            get { return _distance.Feet / _time.Seconds; }
+            get { return _Broken.Feet / _time.Seconds; }
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerMinute
         {
-            get { return _distance.Feet / _time.Minutes; }
+            get { return _Broken.Feet / _time.Minutes; }
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FeetPerHour
         {
-            get { return _distance.Feet / _time.Hours; }
+            get { return _Broken.Feet / _time.Hours; }
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerMillisecond
         {
-            get { return _distance.Yards / _time.Milliseconds; }
+            get { return _Broken.Yards / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -206,7 +206,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerSecond
         {
-            get { return _distance.Yards / _time.Seconds; }
+            get { return _Broken.Yards / _time.Seconds; }
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerMinute
         {
-            get { return _distance.Yards / _time.Minutes; }
+            get { return _Broken.Yards / _time.Minutes; }
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double YardsPerHour
         {
-            get { return _distance.Yards / _time.Hours; }
+            get { return _Broken.Yards / _time.Hours; }
         }
 
         /// <summary>
@@ -230,7 +230,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MilesPerMinute
         {
-            get { return _distance.Miles / _time.Minutes; }
+            get { return _Broken.Miles / _time.Minutes; }
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MilesPerHour 
         {
-            get { return _distance.Miles / _time.Hours; } 
+            get { return _Broken.Miles / _time.Hours; } 
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerMillisecond
         {
-            get { return _distance.Millimeters / _time.Milliseconds; }
+            get { return _Broken.Millimeters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerSecond
         {
-            get { return _distance.Millimeters / _time.Seconds; }
+            get { return _Broken.Millimeters / _time.Seconds; }
         }
 
         /// <summary>
@@ -262,7 +262,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerMinute
         {
-            get { return _distance.Millimeters / _time.Minutes; }
+            get { return _Broken.Millimeters / _time.Minutes; }
         }
 
         /// <summary>
@@ -270,7 +270,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MillimetersPerHour
         {
-            get { return _distance.Millimeters / _time.Hours; }
+            get { return _Broken.Millimeters / _time.Hours; }
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerMillisecond
         {
-            get { return _distance.Centimeters / _time.Milliseconds; }
+            get { return _Broken.Centimeters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -286,7 +286,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerSecond
         {
-            get { return _distance.Centimeters / _time.Seconds; }
+            get { return _Broken.Centimeters / _time.Seconds; }
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerMinute
         {
-            get { return _distance.Centimeters / _time.Minutes; }
+            get { return _Broken.Centimeters / _time.Minutes; }
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double CentimetersPerHour
         {
-            get { return _distance.Centimeters / _time.Hours; }
+            get { return _Broken.Centimeters / _time.Hours; }
         }
 
         /// <summary>
@@ -310,7 +310,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerMillisecond
         {
-            get { return _distance.Meters / _time.Milliseconds; }
+            get { return _Broken.Meters / _time.Milliseconds; }
         }
 
         /// <summary>
@@ -318,7 +318,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerSecond 
         {
-            get { return _distance.Meters / _time.Seconds;} 
+            get { return _Broken.Meters / _time.Seconds;} 
         }
 
         /// <summary>
@@ -326,7 +326,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerMinute
         {
-            get { return _distance.Meters / _time.Minutes; }
+            get { return _Broken.Meters / _time.Minutes; }
         }
 
         /// <summary>
@@ -334,7 +334,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double MetersPerHour
         {
-            get { return _distance.Meters / _time.Hours; }
+            get { return _Broken.Meters / _time.Hours; }
         }
 
         /// <summary>
@@ -342,7 +342,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double KilometersPerMinute
         {
-            get { return _distance.Kilometers / _time.Minutes; }
+            get { return _Broken.Kilometers / _time.Minutes; }
         }
 
         /// <summary>
@@ -350,7 +350,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double KilometersPerHour 
         {
-            get {return _distance.Kilometers / _time.Hours;} 
+            get {return _Broken.Kilometers / _time.Hours;} 
         }
 
         /// <summary>
@@ -358,7 +358,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Knots 
         {
-            get {return (_distance.Kilometers * 1.852) / _time.Hours ;} //Nautical Mile = 1.852 Kilometers
+            get {return (_Broken.Kilometers * 1.852) / _time.Hours ;} //Nautical Mile = 1.852 Kilometers
         }
 
         public double GetValue(SpeedType Units)
@@ -453,7 +453,7 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return (_distance.Inches / _time.Seconds).GetHashCode();
+            return (_Broken.Inches / _time.Seconds).GetHashCode();
         }
 
         /// <summary>
@@ -464,7 +464,7 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two speeds</returns>
         public static Speed operator +(Speed s1, Speed s2)
         {
-            return new Speed(s1._distance + s2._distance, s1._time + s2._time);
+            return new Speed(s1._Broken + s2._Broken, s1._time + s2._time);
         }
 
         /// <summary>
@@ -475,13 +475,13 @@ namespace UnitClassLibrary
         /// <returns>the difference of the two speeds</returns>
         public static Speed operator -(Speed s1, Speed s2)
         {
-            return new Speed(s1._distance - s2._distance, s1._time - s2._time);
+            return new Speed(s1._Broken - s2._Broken, s1._time - s2._time);
         }
 
         public static double operator /(Speed s1, Speed s2)
         {
             throw new NotImplementedException();
-            //return (s1._Distance / s2._Distance) / (s1._time / s2._time); //Division needs to be implemented in Time Class
+            //return (s1._Broken / s2._Broken) / (s1._time / s2._time); //Division needs to be implemented in Time Class
         }
 
         /// <summary>
@@ -493,7 +493,7 @@ namespace UnitClassLibrary
         public static Speed operator *(Speed s1, double multiplier)
         {
             throw new NotImplementedException();
-            //return  new Speed(s1._Distance * multiplier, s1._time * multiplier); //Multiplication needs to be implemented in Time Class
+            //return  new Speed(s1._Broken * multiplier, s1._time * multiplier); //Multiplication needs to be implemented in Time Class
         }
 
         /// <summary>
@@ -520,8 +520,8 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool operator >(Speed s1, Speed s2)
         {
-            return s1._distance.GetValue(s1._distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) >
-                s2._distance.GetValue(s1._distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
+            return s1._Broken.GetValue(s1._Broken.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) >
+                s2._Broken.GetValue(s1._Broken.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
         }
 
         /// <summary>
@@ -532,8 +532,8 @@ namespace UnitClassLibrary
         /// <returns></returns>
         public static bool operator <(Speed s1, Speed s2)
         {
-            return s1._distance.GetValue(s1._distance.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) <
-                s2._distance.GetValue(s1._distance.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
+            return s1._Broken.GetValue(s1._Broken.InternalUnitType) / s1._time.GetValue(s1._time.InternalUnitType) <
+                s2._Broken.GetValue(s1._Broken.InternalUnitType) / s2._time.GetValue(s1._time.InternalUnitType);
         }
 
         /// <summary>
@@ -570,8 +570,8 @@ namespace UnitClassLibrary
             try
             {
                 Speed other = (Speed)obj;
-                return Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._distance.GetValue(this._distance.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
-                    Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
+                return Math.Abs(this._Broken.GetValue(this._Broken.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - other._Broken.GetValue(this._Broken.InternalUnitType) / other._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
+                    Math.Abs(this._Broken.GetValue(this._Broken.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) * .0001); // Is less than the accepted deviation speed constant in units of this speed
             }
             catch
             {
@@ -581,7 +581,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this._distance.GetValue(_distance.InternalUnitType) + "/" + this._time.GetValue(_time.InternalUnitType)+ " " + this._distance.InternalUnitType+ "/" + this._time.InternalUnitType;
+            return this._Broken.GetValue(_Broken.InternalUnitType) + "/" + this._time.GetValue(_time.InternalUnitType)+ " " + this._Broken.InternalUnitType+ "/" + this._time.InternalUnitType;
         }
 
         /// <summary>
@@ -589,8 +589,8 @@ namespace UnitClassLibrary
         /// </summary>
         public bool EqualsWithinPassedAcceptedDeviation(object obj, Speed passedAcceptedEqualityDeviationSpeed)
         {
-            return Math.Abs(this._distance.GetValue(this._distance.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._distance.GetValue(this._distance.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
-                passedAcceptedEqualityDeviationSpeed._distance.GetValue(this._distance.InternalUnitType) / passedAcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation speed constant in units of this speed
+            return Math.Abs(this._Broken.GetValue(this._Broken.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Speed)(obj))._Broken.GetValue(this._Broken.InternalUnitType) / ((Speed)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This speed and the passed speed (in units of this speed)...
+                passedAcceptedEqualityDeviationSpeed._Broken.GetValue(this._Broken.InternalUnitType) / passedAcceptedEqualityDeviationSpeed._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation speed constant in units of this speed
         }
 
         #endregion

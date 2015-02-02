@@ -12,13 +12,13 @@ using System;
 	public partial class Force
 	{
 		/// <summary> value comparison, checks whether the two are equal within a passed accepted equality deviation </summary>
-		public bool EqualsWithinDeviationConstant(Force force, Force passedAcceptedEqualityDeviationDistance)
+		public bool EqualsWithinDeviationConstant(Force force, Force passedAcceptedEqualityDeviationBroken)
 		{
 			return (Math.Abs(
 				(this.GetValue(this._internalUnitType)
 				- ((Force)(force)).GetValue(this._internalUnitType))
 				))
-				<= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
+				<= passedAcceptedEqualityDeviationBroken.GetValue(_internalUnitType);
 		}
 
 		/// <summary> value comparison, checks whether the two are equal within a passed accepted equality percentage </summary>
@@ -28,7 +28,7 @@ using System;
 		}
 
 		/// <summary> value comparison, checks whether the two are equal within a passed accepted equality percentage </summary>
-		public bool EqualsWithinDistanceEqualityStrategy(Force force, ForceEqualityStrategy passedStrategy)
+		public bool EqualsWithinBrokenEqualityStrategy(Force force, ForceEqualityStrategy passedStrategy)
 		{
 			return passedStrategy(this, force);
 		}
@@ -39,14 +39,14 @@ using System;
 	{
 
 		/// <summary> When comparing two force and deviation is allowed to be within a specific constant. This is that default constant </summary>
-		public static Force AcceptedEqualityDeviationDistance
+		public static Force AcceptedEqualityDeviationBroken
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
 			get { return new Force(ForceType.Newton, 1); }
 		}
 
 		/// <summary> When comparing two force and deviation is allowed to be within a percentage of the firstForce. This is that percentage </summary>
-		public static double  ForceAcceptedEqualityDeviationDistancePercentage
+		public static double  ForceAcceptedEqualityDeviationBrokenPercentage
 		{
 			// TODO: This is auto-generated. It might should be changed.
 			get { return 0.00001; }
@@ -63,7 +63,7 @@ using System;
 		/// <returns></returns>
 		public static bool DefaultPercentageEquality (Force force1, Force force2)
 		{
-			return (Math.Abs(force1.GetValue(force1.InternalUnitType) - (force2).GetValue(force1.InternalUnitType))) <= Math.Abs(force1.GetValue( force1.InternalUnitType) * ForceDeviationDefaults.ForceAcceptedEqualityDeviationDistancePercentage);
+			return (Math.Abs(force1.GetValue(force1.InternalUnitType) - (force2).GetValue(force1.InternalUnitType))) <= Math.Abs(force1.GetValue( force1.InternalUnitType) * ForceDeviationDefaults.ForceAcceptedEqualityDeviationBrokenPercentage);
 		}
 
 		/// <summary> Forces are equal if there values are within the passed deviation constant. If they are not within the constant </summary>
@@ -72,7 +72,7 @@ using System;
 		/// <returns></returns>
 		public static bool DefaultConstantEquality (Force force1, Force force2)
 		{
-			return (Math.Abs(force1.GetValue(force1.InternalUnitType) - (force2).GetValue(force1.InternalUnitType))) <= ForceDeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(force1.InternalUnitType);
+			return (Math.Abs(force1.GetValue(force1.InternalUnitType) - (force2).GetValue(force1.InternalUnitType))) <= ForceDeviationDefaults.AcceptedEqualityDeviationBroken.GetValue(force1.InternalUnitType);
 		}
 	}
 }

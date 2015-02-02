@@ -12,17 +12,17 @@ namespace UnitClassLibrary
     /// radians into degrees then returned as string
     /// 
     /// double radians = 10.5;
-    /// AngularDistance a = new Angle(AngleType.Radian, radians);
+    /// AngularBroken a = new Angle(AngleType.Radian, radians);
     ///
     /// double negativeRadians = -10.5;
-    /// AngularDistance a2 = new AngularDistance(AngleType.Radian, negativeRadians); 
+    /// AngularBroken a2 = new AngularBroken(AngleType.Radian, negativeRadians); 
     ///
     /// a1 == a2         //false. Would be true in the angle class
     /// 
     /// </example>
     /// 
     /// </summary>
-    public class AngularDistance : IComparable, IComparable<AngularDistance>
+    public class AngularBroken : IComparable, IComparable<AngularBroken>
     {
         #region private fields and constants
 
@@ -154,12 +154,12 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// creates a negative instance of this AngularDistance
+        /// creates a negative instance of this AngularBroken
         /// </summary>
-        /// <returns>a negative instance of this AngularDistance</returns>
-        public AngularDistance Negate()
+        /// <returns>a negative instance of this AngularBroken</returns>
+        public AngularBroken Negate()
         {
-            return new AngularDistance(AngleType.Radian, this.Radians * -1);
+            return new AngularBroken(AngleType.Radian, this.Radians * -1);
         }
         #endregion
 
@@ -168,7 +168,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Empty Constructor
         /// </summary>
-        public AngularDistance()
+        public AngularBroken()
         {
             _intrinsicValue = 0;
         }
@@ -178,7 +178,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="angleType">angle unit type</param>
         /// <param name="passedValue">angle value</param>
-        public AngularDistance(AngleType angleType, double passedValue)
+        public AngularBroken(AngleType angleType, double passedValue)
         {
             switch (angleType)
             {
@@ -202,7 +202,7 @@ namespace UnitClassLibrary
         /// Copy Constructor
         /// </summary>
         /// <param name="passedAngle">angle to copy</param>
-        public AngularDistance(AngularDistance passedAngle)
+        public AngularBroken(AngularBroken passedAngle)
         {
             this._intrinsicValue = passedAngle._intrinsicValue;
             this._internalUnitType = passedAngle._internalUnitType;
@@ -212,7 +212,7 @@ namespace UnitClassLibrary
         /// castes an angle string to angle degrees
         /// </summary>
         /// <param name="passedAngleString">angle string to parse</param>
-        public AngularDistance(string passedAngleString)
+        public AngularBroken(string passedAngleString)
         {
             string[] seperatedStrings = passedAngleString.Split(new char[] { '°', '\'' });
             int degrees;
@@ -248,11 +248,11 @@ namespace UnitClassLibrary
         /// <param name="a1">first angle</param>
         /// <param name="a2">second angle</param>
         /// <returns>the sum of the two angles</returns>
-        public static AngularDistance operator +(AngularDistance a1, AngularDistance a2)
+        public static AngularBroken operator +(AngularBroken a1, AngularBroken a2)
         {
             //add the two Angles together
             //return a new Angle with the new value
-            return new AngularDistance(AngleType.Radian, (a1.Radians + a2.Radians));
+            return new AngularBroken(AngleType.Radian, (a1.Radians + a2.Radians));
         }
 
         /// <summary>
@@ -261,11 +261,11 @@ namespace UnitClassLibrary
         /// <param name="a1">the angle to be subtracted from</param>
         /// <param name="a2">the angle to subtract</param>
         /// <returns>the result of the first angle minus the second</returns>
-        public static AngularDistance operator -(AngularDistance a1, AngularDistance a2)
+        public static AngularBroken operator -(AngularBroken a1, AngularBroken a2)
         {
             //subtract the two Angles
             //return a new Angle with the new value
-            return new AngularDistance(AngleType.Radian, (a1.Radians - a2.Radians));
+            return new AngularBroken(AngleType.Radian, (a1.Radians - a2.Radians));
         }
 
         /// <summary>
@@ -274,7 +274,7 @@ namespace UnitClassLibrary
         /// <param name="a1">first angle to check for equality</param>
         /// <param name="a2">second angle to check for equality</param>
         /// <returns>whether the two angles are equal</returns>
-        public static bool operator ==(AngularDistance a1, AngularDistance a2)
+        public static bool operator ==(AngularBroken a1, AngularBroken a2)
         {
             if ((object)a1 == null)
             {
@@ -293,7 +293,7 @@ namespace UnitClassLibrary
         /// <param name="a1">first angle to check for inequality</param>
         /// <param name="a2">second angle to check for inequality</param>
         /// <returns>whether the two angles aren't equal</returns>
-        public static bool operator !=(AngularDistance a1, AngularDistance a2)
+        public static bool operator !=(AngularBroken a1, AngularBroken a2)
         {
             if ((object)a1 == null)
             {
@@ -312,7 +312,7 @@ namespace UnitClassLibrary
         /// <param name="a1">angle that is supposed to be larger</param>
         /// <param name="a2">angle that is supposed to be smaller</param>
         /// <returns>whether the first angle is greater than the second</returns>
-        public static bool operator >(AngularDistance a1, AngularDistance a2)
+        public static bool operator >(AngularBroken a1, AngularBroken a2)
         {
             return a1._intrinsicValue > a2.GetValue(a1._internalUnitType);
         }
@@ -323,7 +323,7 @@ namespace UnitClassLibrary
         /// <param name="a1">angle that is supposed to be smaller</param>
         /// <param name="a2">angle that is supposed to be larger</param>
         /// <returns>whether the first angle is less than the second</returns>
-        public static bool operator <(AngularDistance a1, AngularDistance a2)
+        public static bool operator <(AngularBroken a1, AngularBroken a2)
         {
             return a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
         }
@@ -334,7 +334,7 @@ namespace UnitClassLibrary
         /// <param name="a1">supposed to be larger or equal angle</param>
         /// <param name="a2">supposed to be smaller or equal angle</param>
         /// <returns>whether the angle on the left is greater than or equal to the angle on the right</returns>
-        public static bool operator >=(AngularDistance a1, AngularDistance a2)
+        public static bool operator >=(AngularBroken a1, AngularBroken a2)
         {
             return a1.Equals(a2) || a1._intrinsicValue > a2.GetValue(a1._internalUnitType);
         }
@@ -345,7 +345,7 @@ namespace UnitClassLibrary
         /// <param name="a1">supposed to be smaller or equal angle</param>
         /// <param name="a2">supposed to be larger or equal angle</param>
         /// <returns>whether the angle on the left is less than or equal to the angle on the right</returns>
-        public static bool operator <=(AngularDistance a1, AngularDistance a2)
+        public static bool operator <=(AngularBroken a1, AngularBroken a2)
         {
             return a1.Equals(a2) || a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
         }
@@ -387,7 +387,7 @@ namespace UnitClassLibrary
             {
                 //TODO: need to implement equality strategy
 
-                AngularDistance other = (AngularDistance)obj;
+                AngularBroken other = (AngularBroken)obj;
                 return Math.Abs(this._intrinsicValue - other.GetValue(_internalUnitType)) <= Math.Abs(this.GetValue(this._internalUnitType) * 0.00001);
             }
             catch
@@ -421,11 +421,11 @@ namespace UnitClassLibrary
         #region Interface Implementations
 
         /// <summary>
-        /// This implements the IComparable(AngularDistance) interface and allows Angles to be sorted and such
+        /// This implements the IComparable(AngularBroken) interface and allows Angles to be sorted and such
         /// </summary>
         /// <param name="other">angle to compare against</param>
         /// <returns>1 if this greater than other; 0 if this == other; -1 if this less than other</returns>
-        public int CompareTo(AngularDistance other)
+        public int CompareTo(AngularBroken other)
         {
             if (this.Equals(other))
                 return 0;
@@ -445,12 +445,12 @@ namespace UnitClassLibrary
                 throw new ArgumentNullException("obj");
             }
 
-            if (!(obj is AngularDistance))
+            if (!(obj is AngularBroken))
             {
-                throw new ArgumentException("Expected type AngularDistance.", "obj");
+                throw new ArgumentException("Expected type AngularBroken.", "obj");
             }
 
-            return this.CompareTo((AngularDistance)obj);
+            return this.CompareTo((AngularBroken)obj);
         }
         #endregion
     }

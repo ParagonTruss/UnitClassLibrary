@@ -16,12 +16,12 @@ namespace UnitClassLibrary
         //Mass _mass;
 
         // r
-        Distance _length;
+        Broken _length;
 
         /// <summary>
         /// 
         /// </summary>
-        public Distance LengthToFourthPower
+        public Broken LengthToFourthPower
         {
             get { return _length.RaiseToPower(4); }
             
@@ -31,9 +31,9 @@ namespace UnitClassLibrary
         /// 
         /// </summary>
         /// <param name="passedLengthToFourthPower"></param>
-        public MomentOfIntertiaUnit(Distance passedLengthToFourthPower)
+        public MomentOfIntertiaUnit(Broken passedLengthToFourthPower)
         {
-            _length = new Distance(DistanceType.Millimeter, Math.Pow(passedLengthToFourthPower.Millimeters, 0.25));
+            _length = new Broken(BrokenType.Millimeter, Math.Pow(passedLengthToFourthPower.Millimeters, 0.25));
         }
     }
 }

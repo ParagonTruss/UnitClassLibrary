@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Distance : IEquatable<Distance>
+    public partial class Broken : IEquatable<Broken>
     {
         // You may notice that we do not overload the increment and decrement operators (++ and --).
         // This would break our abstraction of thinking that all units types are represented by this object 
@@ -16,43 +16,43 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="power"></param>
         /// <returns></returns>
-        public static Distance operator ^(Distance d1, double power)
+        public static Broken operator ^(Broken d1, double power)
         {
-            return new Distance(d1._internalUnitType, Math.Pow(d1._intrinsicValue, power));
+            return new Broken(d1._internalUnitType, Math.Pow(d1._intrinsicValue, power));
         }
 
         /// <summary>
-        /// returns a new Distance with the sum of the two passed distances
+        /// returns a new Broken with the sum of the two passed Brokens
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static Distance operator +(Distance d1, Distance d2)
+        public static Broken operator +(Broken d1, Broken d2)
         {
-            //add the two Distances together
-            //return a new Distance with the new value
-            return new Distance(d1._internalUnitType, d1._intrinsicValue + d2.GetValue(d1._internalUnitType));
+            //add the two Brokens together
+            //return a new Broken with the new value
+            return new Broken(d1._internalUnitType, d1._intrinsicValue + d2.GetValue(d1._internalUnitType));
         }
 
         /// <summary>
-        /// returns a new Distance with the difference of the two passed distances
+        /// returns a new Broken with the difference of the two passed Brokens
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static Distance operator -(Distance d1, Distance d2)
+        public static Broken operator -(Broken d1, Broken d2)
         {
-            //subtract the two Distances
-            //return a new Distance with the new value
-            return new Distance(d1._internalUnitType, d1._intrinsicValue - d2.GetValue(d1._internalUnitType));
+            //subtract the two Brokens
+            //return a new Broken with the new value
+            return new Broken(d1._internalUnitType, d1._intrinsicValue - d2.GetValue(d1._internalUnitType));
         }
         /// <summary>
-        /// ratio of between distances
+        /// ratio of between Brokens
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static double operator /(Distance d1, Distance d2)
+        public static double operator /(Broken d1, Broken d2)
         {
             return d1.GetValue(d1._internalUnitType) / d2.GetValue(d1._internalUnitType);
         }
@@ -63,7 +63,7 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static Area operator *(Distance d1, Distance d2)
+        public static Area operator *(Broken d1, Broken d2)
         {
             return new Area(d1, d2);
         }
@@ -74,9 +74,9 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="multiplier"></param>
         /// <returns></returns>
-        public static Distance operator *(Distance d1, double multiplier)
+        public static Broken operator *(Broken d1, double multiplier)
         {
-            return new Distance(d1._internalUnitType, d1._intrinsicValue * multiplier);
+            return new Broken(d1._internalUnitType, d1._intrinsicValue * multiplier);
         }
 
 
@@ -89,15 +89,15 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="divisor"></param>
         /// <returns></returns>
-        public static Distance operator /(Distance d1, double divisor)
+        public static Broken operator /(Broken d1, double divisor)
         {
-            return new Distance(d1.InternalUnitType, d1._intrinsicValue / divisor);
+            return new Broken(d1.InternalUnitType, d1._intrinsicValue / divisor);
         }
 
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator ==(Distance d1, Distance d2)
+        public static bool operator ==(Broken d1, Broken d2)
         {
             if ((object)d1 == null)
             {
@@ -113,7 +113,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator !=(Distance d1, Distance d2)
+        public static bool operator !=(Broken d1, Broken d2)
         {
             if ((object)d1 == null)
             {
@@ -132,7 +132,7 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static bool operator >(Distance d1, Distance d2)
+        public static bool operator >(Broken d1, Broken d2)
         {
             if (d1 == d2)
             {
@@ -147,7 +147,7 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static bool operator <(Distance d1, Distance d2)
+        public static bool operator <(Broken d1, Broken d2)
         {
             if (d1 == d2)
             {
@@ -162,7 +162,7 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static bool operator <=(Distance d1, Distance d2)
+        public static bool operator <=(Broken d1, Broken d2)
         {
             return d1.Equals(d2) || d1 < d2;
         }
@@ -173,7 +173,7 @@ namespace UnitClassLibrary
         /// <param name="d1"></param>
         /// <param name="d2"></param>
         /// <returns></returns>
-        public static bool operator >=(Distance d1, Distance d2)
+        public static bool operator >=(Broken d1, Broken d2)
         {
             return d1.Equals(d2) || d1 > d2;
         }
@@ -189,7 +189,7 @@ namespace UnitClassLibrary
 
         /// <summary>
         /// The value and unit in terms of what the object was created with. 
-        /// If you want it in a different unit use ToString(DistanceType)
+        /// If you want it in a different unit use ToString(BrokenType)
         /// </summary>
         public override string ToString()
         {
@@ -206,7 +206,7 @@ namespace UnitClassLibrary
                 return false;
             }
             
-            return this.Equals((Distance)obj);
+            return this.Equals((Broken)obj);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
-        public bool Equals(Distance other)
+        public bool Equals(Broken other)
         {
             if (other == null)
             {
