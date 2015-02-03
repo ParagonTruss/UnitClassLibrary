@@ -8,7 +8,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Broken class for units of power
+    /// Distance class for units of power
     /// </summary>
     public class Power
     {
@@ -251,10 +251,10 @@ namespace UnitClassLibrary
         /// <summary>
         /// value comparison, checks whether the two are equal within a passed accepted equality deviation
         /// </summary>
-        public bool EqualsWithinPassedAcceptedDeviation(object obj, Power passedAcceptedEqualityDeviationBroken)
+        public bool EqualsWithinPassedAcceptedDeviation(object obj, Power passedAcceptedEqualityDeviationDistance)
         {
             return Math.Abs(this._energy.GetValue(this._energy.InternalUnitType) / this._time.GetValue(this._time.InternalUnitType) - ((Power)(obj))._energy.GetValue(this._energy.InternalUnitType) / ((Power)(obj))._time.GetValue(this._time.InternalUnitType)) <= // This power and the passed power (in units of this power)...
-                passedAcceptedEqualityDeviationBroken._energy.GetValue(this._energy.InternalUnitType) / passedAcceptedEqualityDeviationBroken._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation power constant in units of this power
+                passedAcceptedEqualityDeviationDistance._energy.GetValue(this._energy.InternalUnitType) / passedAcceptedEqualityDeviationDistance._time.GetValue(this._time.InternalUnitType); // Is less than the passed accepted deviation power constant in units of this power
         }
         #endregion
     }

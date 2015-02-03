@@ -22,7 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
-    public class Angle : AngularBroken
+    public class Angle : AngularDistance
     {
         #region Constructors
 

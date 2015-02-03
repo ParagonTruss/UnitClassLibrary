@@ -8,92 +8,92 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Broken
+    public partial class Distance
     {
         public double Sixteenths
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Sixteenth); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Sixteenth); }
         }
 
         public double ThirtySeconds
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.ThirtySecond); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.ThirtySecond); }
         }
 
         public double Inches
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Inch); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch); }
         }
 
         public double Feet
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Foot); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Foot); }
         }
 
         public double Yards
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Yard); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Yard); }
         }
 
         public double Miles
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Mile); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Mile); }
         }
 
         public double Millimeters
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Millimeter); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Millimeter); }
         }
 
         public double Centimeters
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Centimeter); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Centimeter); }
         }
 
         public double Meters
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Meter); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Meter); }
         }
 
         public double Kilometers
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType.Kilometer); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Kilometer); }
         }
 
         /// <summary>
-        /// Returns the Broken as a string in AutoCAD notation with sixteenths of an inch percision
+        /// Returns the Distance as a string in AutoCAD notation with sixteenths of an inch percision
         /// </summary>
         public string Architectural
         {
             get { return _retrieveIntrinsicValueAsArchitecturalString(); }
         }
 
-        public double GetValue(BrokenType Units)
+        public double GetValue(DistanceType Units)
         {
             switch (Units)
             {
-                case BrokenType.Millimeter:
+                case DistanceType.Millimeter:
                     return Millimeters;
-                case BrokenType.Centimeter:
+                case DistanceType.Centimeter:
                     return Centimeters;
-                case BrokenType.Meter:
+                case DistanceType.Meter:
                     return Meters;
-                case BrokenType.Kilometer:
+                case DistanceType.Kilometer:
                     return Kilometers;
-                case BrokenType.ThirtySecond:
+                case DistanceType.ThirtySecond:
                     return ThirtySeconds;
-                case BrokenType.Sixteenth:
+                case DistanceType.Sixteenth:
                     return Sixteenths;
-                case BrokenType.Inch:
+                case DistanceType.Inch:
                     return Inches;
-                case BrokenType.Foot:
+                case DistanceType.Foot:
                     return Feet;
-                case BrokenType.Yard:
+                case DistanceType.Yard:
                     return Yards;
-                case BrokenType.Mile:
+                case DistanceType.Mile:
                     return Miles;
             }
-            throw new Exception("Unknown BrokenType");
+            throw new Exception("Unknown DistanceType");
         }
     }
 }

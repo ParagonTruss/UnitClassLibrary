@@ -19,26 +19,26 @@ namespace UnitClassLibrary
         private Force _force;
 
         /// <summary>
-        /// The Broken upon which the force acts
+        /// The distance upon which the force acts
         /// </summary>
-        private Broken _Broken;
+        private Distance _Distance;
         #endregion
 
         #region Properties
         public double PoundsMillimeters
         {
-            get { return _Broken.Millimeters * _force.Pounds; }
+            get { return _Distance.Millimeters * _force.Pounds; }
         }
 
         public double PoundsFeet
         {
-            get { return _Broken.Feet * _force.Pounds; }
+            get { return _Distance.Feet * _force.Pounds; }
         }
 
 
         public double NewtonMeters
         {
-            get { return _Broken.Meters * _force.Newtons; }
+            get { return _Distance.Meters * _force.Newtons; }
         }
         
         #endregion
@@ -52,18 +52,18 @@ namespace UnitClassLibrary
         public Moment()
         {
             _force = new Force();
-            _Broken = new Broken();
+            _Distance = new Distance();
         }
 
         /// <summary>
-        /// constructor that creates moment based on the Broken passed and force
+        /// constructor that creates moment based on the distance passed and force
         /// </summary>
         /// <param name="passeForce">amount of force applied</param>
-        /// <param name="passedBroken">direction of force applied</param>
-        public Moment(Force passeForce, Broken passedBroken)
+        /// <param name="passedDistance">direction of force applied</param>
+        public Moment(Force passeForce, Distance passedDistance)
         {
             _force = passeForce;
-            _Broken = passedBroken;
+            _Distance = passedDistance;
         }
 
         /// <summary>
@@ -77,15 +77,15 @@ namespace UnitClassLibrary
             {
                 case MomentType.PoundsMillimeters:
                     _force = new Force(ForceType.Pound, passedValue);
-                    _Broken = new Broken(BrokenType.Millimeter, 1);
+                    _Distance = new Distance(DistanceType.Millimeter, 1);
                     break;
                 case MomentType.NewtonMeters:
                     _force = new Force(ForceType.Newton, passedValue);
-                    _Broken = new Broken(BrokenType.Meter, 1);
+                    _Distance = new Distance(DistanceType.Meter, 1);
                     break;
                 case MomentType.PoundsFeet:
                     _force = new Force(ForceType.Pound, passedValue);
-                    _Broken = new Broken(BrokenType.Foot, 1);
+                    _Distance = new Distance(DistanceType.Foot, 1);
                     break;
                 default:
                     // Should never reach; cases should cover all members of enumerated set
@@ -186,7 +186,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this._force + "  " + this._Broken; 
+            return this._force + "  " + this._Distance; 
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace UnitClassLibrary
             try
             {
                 Moment compare = (Moment)obj;
-                return compare._Broken.Equals(this._Broken) && compare._force.Equals(this._force);
+                return compare._Distance.Equals(this._Distance) && compare._force.Equals(this._force);
             }
             catch (InvalidCastException)
             {

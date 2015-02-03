@@ -8,7 +8,7 @@ using System.Diagnostics;
 namespace UnitClassLibrary
 {
     /// <summary>
-    /// Class used for storing Brokens that may need to be accessed in a different measurement system
+    /// Class used for storing Distances that may need to be accessed in a different measurement system
     /// Will accept anything as input
     /// 
     /// For an explanation of why this class is immutable: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
@@ -17,7 +17,7 @@ namespace UnitClassLibrary
     /// decimal inches into AutoCAD notation
     /// 
     /// double inches = 14.1875
-    /// Broken dm = new Broken( inches, BrokenTypes.Inch);
+    /// Distance dm = new Distance( inches, DistanceTypes.Inch);
     /// 
     /// Print(dm.Architectural)
     /// 
@@ -26,18 +26,18 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
-    public partial class Broken
+    public partial class Distance
     {
         #region _fields and Internal Properties
 
         /// <summary>
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
         /// </summary>
-        internal BrokenType InternalUnitType
+        internal DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
         }
-        private BrokenType _internalUnitType;
+        private DistanceType _internalUnitType;
 
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
@@ -45,14 +45,14 @@ namespace UnitClassLibrary
         private double _intrinsicValue;
 
         /// <summary>
-        /// The strategy by which this Broken will be compared to another Broken
+        /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
-        public BrokenEqualityStrategy EqualityStrategy
+        public DistanceEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
             set { _equalityStrategy = value; } 
         }
-        private BrokenEqualityStrategy _equalityStrategy;
+        private DistanceEqualityStrategy _equalityStrategy;
         #endregion
 
         #region Constructors
@@ -60,20 +60,20 @@ namespace UnitClassLibrary
         /// <summary>
         /// Zero Constructor
         /// </summary>
-        public Broken(BrokenEqualityStrategy passedStrategy = null)
+        public Distance(DistanceEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = 0;
-            _internalUnitType = BrokenType.Inch;
+            _internalUnitType = DistanceType.Inch;
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
         /// <summary>
         /// Accepts any valid AutoCAD architectural string value for input.
         /// </summary>
-        public Broken(string passedArchitecturalString, BrokenEqualityStrategy passedStrategy = null)
+        public Distance(string passedArchitecturalString, DistanceEqualityStrategy passedStrategy = null)
         {
             //we will always make the internal unit type of a passed String Inches 
-            _internalUnitType = BrokenType.Inch;
+            _internalUnitType = DistanceType.Inch;
             _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
@@ -81,28 +81,28 @@ namespace UnitClassLibrary
         /// <summary>
         /// Accepts standard types for input.
         /// </summary>
-        public Broken(BrokenType passedBrokenType, double passedInput, BrokenEqualityStrategy passedStrategy = null)
+        public Distance(DistanceType passedDistanceType, double passedInput, DistanceEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = passedInput;
-            _internalUnitType = passedBrokenType;
+            _internalUnitType = passedDistanceType;
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
         /// <summary>
-        /// copy constructor - create a new Broken with the same fields as the passed Broken
+        /// copy constructor - create a new Distance with the same fields as the passed Distance
         /// </summary>
-        public Broken(Broken passedBroken)
+        public Distance(Distance passedDistance)
         {
-            _intrinsicValue = passedBroken._intrinsicValue;
-            _internalUnitType = passedBroken._internalUnitType;
-            _equalityStrategy = passedBroken._equalityStrategy;
+            _intrinsicValue = passedDistance._intrinsicValue;
+            _internalUnitType = passedDistance._internalUnitType;
+            _equalityStrategy = passedDistance._equalityStrategy;
         }
 
         #endregion
 
         #region helper _methods
 
-        private static BrokenEqualityStrategy _chooseDefaultOrPassedStrategy(BrokenEqualityStrategy passedStrategy)
+        private static DistanceEqualityStrategy _chooseDefaultOrPassedStrategy(DistanceEqualityStrategy passedStrategy)
         {
             if (passedStrategy == null)
             {
@@ -116,17 +116,17 @@ namespace UnitClassLibrary
 
         private static double _getArchitecturalStringAsNumberOfInches(string passedArchitecturalString)
         {
-            return ConvertArchitectualStringtoUnit(BrokenType.Inch, passedArchitecturalString);
+            return ConvertArchitectualStringtoUnit(DistanceType.Inch, passedArchitecturalString);
         }
 
-        private double _retrieveIntrinsicValueAsDesiredExternalUnit(BrokenType toBrokenType)
+        private double _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType toDistanceType)
         {
-            return ConvertBroken(_internalUnitType, _intrinsicValue, toBrokenType);
+            return ConvertDistance(_internalUnitType, _intrinsicValue, toDistanceType);
         }
 
         private string _retrieveIntrinsicValueAsArchitecturalString()
         {
-            return ConvertBrokenIntoArchitecturalString(this);
+            return ConvertDistanceIntoArchitecturalString(this);
         }
         #endregion
     }

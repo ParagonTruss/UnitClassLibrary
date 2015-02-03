@@ -34,7 +34,7 @@ namespace UnitLibraryTests
         [Test()]
         public void Speed_CompositeConstructorTest()
         {
-            Broken d1 = new Broken(BrokenType.Mile, 10);
+            Distance d1 = new Distance(DistanceType.Mile, 10);
             Time t1 = new Time(TimeType.Hour, 1);
 
             Speed s1 = new Speed(d1, t1);

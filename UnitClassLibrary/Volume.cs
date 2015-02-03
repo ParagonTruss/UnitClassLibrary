@@ -8,7 +8,7 @@ using System.Text;
 namespace UnitClassLibrary
 {
     /// <summary>
-    ///Broken class for volume
+    ///Distance class for volume
     /// </summary>
     public class Volume
     {

@@ -11,67 +11,67 @@ namespace UnitLibraryTests
     /// Test Class for all conversion functions 
     /// </summary>
     [TestFixture()]
-    public class BrokenTests
+    public class DistanceTests
     {
         /// <summary>
-        /// Tests the architectural string constructor and the regular Broken constructor
+        /// Tests the architectural string constructor and the regular Distance constructor
         /// </summary>
         [Test()]
-        public void Broken_Constructors() 
+        public void Distance_Constructors() 
         {
  
             // arrange & act
 
             //numeric value constructor
-            Broken inchBroken = new Broken(BrokenType.Inch, 14.1875);
+            Distance inchDistance = new Distance(DistanceType.Inch, 14.1875);
             
             //architectural string constructor
-            Broken architecturalBroken = new Broken("1' 2 3/16\"");
+            Distance architecturalDistance = new Distance("1' 2 3/16\"");
 
             //copy constructor
-            Broken copiedBroken = new Broken(architecturalBroken);
+            Distance copiedDistance = new Distance(architecturalDistance);
 
             // assert
-            inchBroken.Millimeters.Should().Be(architecturalBroken.Millimeters);
-            copiedBroken.ShouldBeEquivalentTo(architecturalBroken);
+            inchDistance.Millimeters.Should().Be(architecturalDistance.Millimeters);
+            copiedDistance.ShouldBeEquivalentTo(architecturalDistance);
         }
 
         /// <summary>
         /// Tests mathmatical operators
         /// </summary>
         [Test()]
-        public void Broken_Math_Operators()
+        public void Distance_Math_Operators()
         {
             // arrange
-            Broken inchBroken = new Broken(BrokenType.Inch, 14.1875);
-            Broken architecturalBroken = new Broken("1'2 3/16\"");
+            Distance inchDistance = new Distance(DistanceType.Inch, 14.1875);
+            Distance architecturalDistance = new Distance("1'2 3/16\"");
 
             // act
-            Broken subtractionBroken = inchBroken - architecturalBroken;
-            Broken additionBroken = inchBroken + architecturalBroken;
+            Distance subtractionDistance = inchDistance - architecturalDistance;
+            Distance additionDistance = inchDistance + architecturalDistance;
 
             // assert
-            subtractionBroken.Equals(new Broken(BrokenType.Inch, 0)).Should().BeTrue();
-            additionBroken.Equals(new Broken(BrokenType.Millimeter, 720.725)).Should().BeTrue();
-            additionBroken.Architectural.Should().Be("2'4 6/16\"");
+            subtractionDistance.Equals(new Distance(DistanceType.Inch, 0)).Should().BeTrue();
+            additionDistance.Equals(new Distance(DistanceType.Millimeter, 720.725)).Should().BeTrue();
+            additionDistance.Architectural.Should().Be("2'4 6/16\"");
         }
 
         [Test]
-        public void BrokenConversions()
+        public void DistanceConversions()
         {
 
-            Broken kilometerBroken = new Broken(BrokenType.Kilometer, 1, EqualityStrategyImplementations.DefaultPercentageEquality);
+            Distance kilometerDistance = new Distance(DistanceType.Kilometer, 1, EqualityStrategyImplementations.DefaultPercentageEquality);
 
-            (kilometerBroken == new Broken(BrokenType.Millimeter, 1000000)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Centimeter, 100000)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Inch, 39370.1)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.ThirtySecond, 1259843.2)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Sixteenth, 629921.6)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Foot, 3280.84)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Yard, 1093.61)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Mile, 0.621371)).Should().BeTrue();
-            (kilometerBroken == new Broken(BrokenType.Meter, 1000)).Should().BeTrue();
-            kilometerBroken.Architectural.Should().Be("3280'10 1/16\""); //need to recheck
+            (kilometerDistance == new Distance(DistanceType.Millimeter, 1000000)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Centimeter, 100000)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Inch, 39370.1)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.ThirtySecond, 1259843.2)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Sixteenth, 629921.6)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Foot, 3280.84)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Yard, 1093.61)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Mile, 0.621371)).Should().BeTrue();
+            (kilometerDistance == new Distance(DistanceType.Meter, 1000)).Should().BeTrue();
+            kilometerDistance.Architectural.Should().Be("3280'10 1/16\""); //need to recheck
 
 
         }
@@ -80,50 +80,50 @@ namespace UnitLibraryTests
         /// Tests Architectural string inputs.
         /// </summary>
         [Test()]
-        public void Broken_Architectural_Constructor()
+        public void Distance_Architectural_Constructor()
         {
             // arrange
-            Broken Broken1 = new Broken("1'2 3/16\"");
-            Broken Broken2 = new Broken("1'");
-            Broken Broken3 = new Broken("1'2\"");
-            Broken Broken4 = new Broken("2 3/16\"");
-            Broken Broken5 = new Broken("1'2-3/16\"");
-            Broken Broken6 = new Broken("3/16\"");
-            Broken Broken7 = new Broken("121103");
-            Broken Broken8 = new Broken("-1'2\"");
+            Distance Distance1 = new Distance("1'2 3/16\"");
+            Distance Distance2 = new Distance("1'");
+            Distance Distance3 = new Distance("1'2\"");
+            Distance Distance4 = new Distance("2 3/16\"");
+            Distance Distance5 = new Distance("1'2-3/16\"");
+            Distance Distance6 = new Distance("3/16\"");
+            Distance Distance7 = new Distance("121103");
+            Distance Distance8 = new Distance("-1'2\"");
 
             // assert
-            Broken1.Architectural.ShouldBeEquivalentTo("1'2 3/16\"");
-            Broken2.Architectural.ShouldBeEquivalentTo("1'");
-            Broken3.Architectural.ShouldBeEquivalentTo("1'2\"");
-            Broken4.Architectural.ShouldBeEquivalentTo("2 3/16\"");
-            Broken5.Architectural.ShouldBeEquivalentTo("1'2 3/16\"");
-            Broken6.Architectural.ShouldBeEquivalentTo("3/16\"");
-            Broken7.Architectural.ShouldBeEquivalentTo("12'11 3/16\"");
-            Broken8.Architectural.ShouldBeEquivalentTo("-1'2\"");
+            Distance1.Architectural.ShouldBeEquivalentTo("1'2 3/16\"");
+            Distance2.Architectural.ShouldBeEquivalentTo("1'");
+            Distance3.Architectural.ShouldBeEquivalentTo("1'2\"");
+            Distance4.Architectural.ShouldBeEquivalentTo("2 3/16\"");
+            Distance5.Architectural.ShouldBeEquivalentTo("1'2 3/16\"");
+            Distance6.Architectural.ShouldBeEquivalentTo("3/16\"");
+            Distance7.Architectural.ShouldBeEquivalentTo("12'11 3/16\"");
+            Distance8.Architectural.ShouldBeEquivalentTo("-1'2\"");
         }
 
         /// <summary>
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Broken_EqualityTests()
+        public void Distance_EqualityTests()
         {
             // arrange
-            Broken biggerBroken = new Broken(BrokenType.Inch, 14.1875);
-            Broken smallerBroken = new Broken("1' 2 1/16\"");
-            Broken equivalentbiggerBroken = new Broken(BrokenType.Millimeter, 360.3625);
+            Distance biggerDistance = new Distance(DistanceType.Inch, 14.1875);
+            Distance smallerDistance = new Distance("1' 2 1/16\"");
+            Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, 360.3625);
 
-            (equivalentbiggerBroken.Equals(biggerBroken)).Should().Be(true);
-            (equivalentbiggerBroken == smallerBroken).Should().Be(false);
+            (equivalentbiggerDistance.Equals(biggerDistance)).Should().Be(true);
+            (equivalentbiggerDistance == smallerDistance).Should().Be(false);
 
-            (equivalentbiggerBroken != smallerBroken).Should().Be(true);
-            (equivalentbiggerBroken != biggerBroken).Should().Be(false);
+            (equivalentbiggerDistance != smallerDistance).Should().Be(true);
+            (equivalentbiggerDistance != biggerDistance).Should().Be(false);
 
 
             //check ==
-            bool nonNullFirst = (biggerBroken == null);
-            bool nullFirst = (null == biggerBroken);
+            bool nonNullFirst = (biggerDistance == null);
+            bool nullFirst = (null == biggerDistance);
             bool bothNull = (null == null);
 
             nonNullFirst.Should().BeFalse();
@@ -131,8 +131,8 @@ namespace UnitLibraryTests
             bothNull.Should().BeTrue();
 
             //check != 
-            bool nonNullFirstNotEqual = (biggerBroken != null);
-            bool nullFirstNotEqual = (null != biggerBroken);
+            bool nonNullFirstNotEqual = (biggerDistance != null);
+            bool nullFirstNotEqual = (null != biggerDistance);
             bool bothNullNotEqual = (null != null);
 
             nonNullFirstNotEqual.Should().BeTrue();
@@ -140,7 +140,7 @@ namespace UnitLibraryTests
             bothNullNotEqual.Should().BeFalse();
 
             //check equals (other way should throw a nullPointerException)
-            bool nullSecond = biggerBroken.Equals(null);
+            bool nullSecond = biggerDistance.Equals(null);
 
             nullSecond.Should().BeFalse();
         }
@@ -149,31 +149,31 @@ namespace UnitLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Broken_ComparisonOperatorTest()
+        public void Dimesnion_ComparisonOperatorTest()
         {
             // arrange
-            Broken biggerBroken = new Broken(BrokenType.Inch, 14.1875);
-            Broken smallerBroken = new Broken("1' 2 1/16\"");
-            Broken equivalentbiggerBroken = new Broken(BrokenType.Millimeter, 360.3625);
+            Distance biggerDistance = new Distance(DistanceType.Inch, 14.1875);
+            Distance smallerDistance = new Distance("1' 2 1/16\"");
+            Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, 360.3625);
 
             // assert
-            (smallerBroken < biggerBroken).Should().Be(true);
-            (biggerBroken < smallerBroken).Should().Be(false);
+            (smallerDistance < biggerDistance).Should().Be(true);
+            (biggerDistance < smallerDistance).Should().Be(false);
 
-            (biggerBroken > smallerBroken).Should().Be(true);
-            (smallerBroken > biggerBroken).Should().Be(false);
+            (biggerDistance > smallerDistance).Should().Be(true);
+            (smallerDistance > biggerDistance).Should().Be(false);
         }
 
 
         [Test()]
-        public void Broken_EqualsWithinPassedAcceptedDeviation()
+        public void Distance_EqualsWithinPassedAcceptedDeviation()
         {
             // arrange
-            Broken biggerBroken = new Broken(BrokenType.Inch, -14.1875);
-            Broken smallerBroken = new Broken("1' 2 1/16\"");
-            Broken equivalentbiggerBroken = new Broken(BrokenType.Millimeter, -360.3625);
+            Distance biggerDistance = new Distance(DistanceType.Inch, -14.1875);
+            Distance smallerDistance = new Distance("1' 2 1/16\"");
+            Distance equivalentbiggerDistance = new Distance(DistanceType.Millimeter, -360.3625);
 
-            (equivalentbiggerBroken.EqualsWithinDeviationConstant( biggerBroken, new Broken(BrokenType.Millimeter, 1))).Should().Be(true);
+            (equivalentbiggerDistance.EqualsWithinDeviationConstant( biggerDistance, new Distance(DistanceType.Millimeter, 1))).Should().Be(true);
         }
 
 
@@ -182,32 +182,32 @@ namespace UnitLibraryTests
         /// Tests GetHashCodeOperation
         /// </summary>
         [Test()]
-        public void Broken_GetHashCode()
+        public void Distance_GetHashCode()
         {
             // arrange
-            Broken Broken = new Broken(BrokenType.Millimeter, 14.1875);
+            Distance Distance = new Distance(DistanceType.Millimeter, 14.1875);
             double number = 14.1875;
 
             // act
-            int BrokenHashCode = Broken.GetHashCode();
+            int DistanceHashCode = Distance.GetHashCode();
 
             int hashCode = number.GetHashCode();
 
             // assert
-            hashCode.ShouldBeEquivalentTo(BrokenHashCode);
+            hashCode.ShouldBeEquivalentTo(DistanceHashCode);
         }
 
         /// <summary>
         /// Tests toString failure
         /// </summary>
         [Test()]
-        public void Broken_ToString()
+        public void Distance_ToString()
         {
             // arrange
-            Broken Broken = new Broken(BrokenType.Millimeter, 14.1875);
+            Distance Distance = new Distance(DistanceType.Millimeter, 14.1875);
 
             // act
-            string dimToString = Broken.ToString();
+            string dimToString = Distance.ToString();
 
             // assert
             dimToString.Should().Be("14.1875 Millimeter");
@@ -217,34 +217,34 @@ namespace UnitLibraryTests
         /// Tests CompareTo implementation
         /// </summary>
         [Test()]
-        public void Broken_CompareTo()
+        public void Distance_CompareTo()
         {
             // arrange
-            Broken smallBroken = new Broken(BrokenType.Millimeter, 1);
-            Broken mediumBroken = new Broken(BrokenType.Foot, 1);
-            Broken largeBroken = new Broken(BrokenType.Kilometer, 1);
+            Distance smallDistance = new Distance(DistanceType.Millimeter, 1);
+            Distance mediumDistance = new Distance(DistanceType.Foot, 1);
+            Distance largeDistance = new Distance(DistanceType.Kilometer, 1);
 
             //Act & Assert
-            smallBroken.CompareTo(mediumBroken).Should().Be(-1);
-            mediumBroken.CompareTo(smallBroken).Should().Be(1);
-            largeBroken.CompareTo(largeBroken).Should().Be(0);
+            smallDistance.CompareTo(mediumDistance).Should().Be(-1);
+            mediumDistance.CompareTo(smallDistance).Should().Be(1);
+            largeDistance.CompareTo(largeDistance).Should().Be(0);
         }
 
         [Test()]
-        public void Broken_Incrementing()
+        public void Distance_Incrementing()
         {
 
             //Static constants
-            Broken oneFoot = Broken.Foot;
+            Distance oneFoot = Distance.Foot;
 
             //increments
             oneFoot += oneFoot; //should be two feet
 
-            (oneFoot == new Broken(BrokenType.Foot, 2)).Should().BeTrue();
+            (oneFoot == new Distance(DistanceType.Foot, 2)).Should().BeTrue();
 
             oneFoot -= oneFoot; //should be zero feet
 
-            (oneFoot == new Broken(BrokenType.Foot, 0)).Should().BeTrue();
+            (oneFoot == new Distance(DistanceType.Foot, 0)).Should().BeTrue();
 
         }
 
@@ -252,18 +252,18 @@ namespace UnitLibraryTests
         /// Tests intuitiveness. If this compiles then these "pass"
         /// </summary>
         [Test()]
-        public void Broken_Intuitiveness()
+        public void Distance_Intuitiveness()
         {
             //zero constructor
-            Broken zero = new Broken();
+            Distance zero = new Distance();
 
             //simple constructor
-            Broken smallBroken = new Broken(BrokenType.Millimeter, 1);
-            Broken mediumBroken = new Broken(BrokenType.Foot, 1);
-            Broken largeBroken = new Broken(BrokenType.Kilometer, 1);
+            Distance smallDistance = new Distance(DistanceType.Millimeter, 1);
+            Distance mediumDistance = new Distance(DistanceType.Foot, 1);
+            Distance largeDistance = new Distance(DistanceType.Kilometer, 1);
 
             //copy constructor
-            Broken copy = new Broken(smallBroken);
+            Distance copy = new Distance(smallDistance);
 
             //comparisons
             if (copy > zero)
@@ -271,26 +271,26 @@ namespace UnitLibraryTests
 		 
             }
             
-            if (zero == new Broken())
+            if (zero == new Distance())
             {
 
             }
 
-            if (zero >= new Broken())
+            if (zero >= new Distance())
             {
 
             }
             
 
             //Math operations
-            Broken Broken4 = smallBroken + largeBroken;
-            Broken doubleBroken = mediumBroken ^ 2;
+            Distance distance4 = smallDistance + largeDistance;
+            Distance doubleDistance = mediumDistance ^ 2;
 
             //absolute value
-            Broken positiveBroken = (new Broken(BrokenType.Inch, -1).AbsoluteValue());
+            Distance positiveDistance = (new Distance(DistanceType.Inch, -1).AbsoluteValue());
 
             //Static constants
-            Broken oneFoot = Broken.Foot;
+            Distance oneFoot = Distance.Foot;
 
             //increments
             oneFoot += oneFoot; // 2 feet
@@ -301,21 +301,21 @@ namespace UnitLibraryTests
             // oneFoot--;
 
             //User defined equality strategies
-            BrokenEqualityStrategy userStrategy = (d1, d2) => { return true; };
+            DistanceEqualityStrategy userStrategy = (d1, d2) => { return true; };
 
-            oneFoot.EqualsWithinBrokenEqualityStrategy(positiveBroken, userStrategy);
+            oneFoot.EqualsWithinDistanceEqualityStrategy(positiveDistance, userStrategy);
 
             // ToString override
             oneFoot.ToString();
 
-            oneFoot.ToString(BrokenType.Inch);
+            oneFoot.ToString(DistanceType.Inch);
 
-            List<Broken> Brokens = new List<Broken> { oneFoot, positiveBroken, Broken4, zero };
+            List<Distance> distances = new List<Distance> { oneFoot, positiveDistance, distance4, zero };
 
-            //foreach ( in Brokens)
-            //{
-            //    Broken.ToString();
-            //}
+            foreach (var distance in distances)
+            {
+                distance.ToString();
+            }
 
            
         }

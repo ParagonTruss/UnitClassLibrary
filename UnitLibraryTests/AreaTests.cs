@@ -93,7 +93,7 @@ namespace UnitLibraryTests
             Area a1 = new Area();
             Area a2 = new Area(AreaType.InchesSquared, 100);
             Area a3 = new Area(AreaType.KilometersSquared, 100);
-            Area a4 = new Area(new Broken(BrokenType.Foot, 10), new Broken(BrokenType.Inch, 12));
+            Area a4 = new Area(new Distance(DistanceType.Foot, 10), new Distance(DistanceType.Inch, 12));
 
 
             a1.MillimetersSquared.Should().Be(0);

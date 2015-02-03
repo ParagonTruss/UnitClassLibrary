@@ -5,26 +5,26 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial class Broken
+    public partial class Distance
     {
         /// <summary>
-        /// Generator method that constructs Broken with the assumption that the passed value is in inches
+        /// Generator method that constructs Distance with the assumption that the passed value is in inches
         /// </summary>
         /// <param name="passedValue"></param>
         /// <returns></returns>
-        public static Broken MakeBrokenWithInches(double passedValue)
+        public static Distance MakeDistanceWithInches(double passedValue)
         {
-            return new Broken(BrokenType.Inch, passedValue);
+            return new Distance(DistanceType.Inch, passedValue);
         }
 
         /// <summary>
-        /// Generator method that constructs Broken with the assumption that the passed value is in milliimeters
+        /// Generator method that constructs Distance with the assumption that the passed value is in milliimeters
         /// </summary>
         /// <param name="passedValue"></param>
         /// <returns></returns>
-        public static Broken MakeBrokenWithMillimeters(double passedValue)
+        public static Distance MakeDistanceWithMillimeters(double passedValue)
         {
-            return new Broken(BrokenType.Millimeter, passedValue);
+            return new Distance(DistanceType.Millimeter, passedValue);
         }
     }
 }
