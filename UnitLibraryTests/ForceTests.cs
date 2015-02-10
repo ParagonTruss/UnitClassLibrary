@@ -32,12 +32,12 @@ namespace UnitLibraryTests
         public void Force_AbsoluteValueTests()
         {
             // new units
-            ForceUnit negativeForce = new ForceUnit(ForceType.Pounds, -100);
-            ForceUnit positiveForce = new ForceUnit(ForceType.Pounds, 100);
+            Force negativeForce = new Force(ForceType.Pound, -100);
+            Force positiveForce = new Force(ForceType.Pound, 100);
 
             // get absolute values
-            double negativeAbs = negativeForce.GetAbsoluteValue(ForceType.Pounds);
-            double positiveAbs = positiveForce.GetAbsoluteValue(ForceType.Pounds);
+            double negativeAbs = negativeForce.AbsoluteValue().Pounds;
+            double positiveAbs = positiveForce.AbsoluteValue().Pounds;
 
             // assert
             negativeAbs.Should().Be(100);
