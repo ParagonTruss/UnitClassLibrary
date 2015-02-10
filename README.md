@@ -2,6 +2,8 @@
 
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
+Place bug reports, feature requests, and other issues [on our issue tracker](https://clearspan.atlassian.net/browse/UNITCLASS).
+
 ### Overview
 For an overview of how this library works visit the [Overview Page](https://bitbucket.org/Clearspan/unit-class-library/wiki/Overview).
 

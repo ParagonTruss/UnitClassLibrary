@@ -9,7 +9,7 @@ namespace UnitClassLibrary
     /// Class used for storing Angles that may need to be accessed in a different measurement system
     /// Accepts anything as input
     /// 
-    /// For an explanation of why this class is immutatble: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
+    /// For an explanation of why this class is immutable: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
     /// 
     /// <example>
     /// radians into degrees then returned as string
@@ -18,7 +18,7 @@ namespace UnitClassLibrary
     /// Angle a = new Angle(AngleType.Radian, radians);
     /// 
     /// a.Degrees.ToString()         //for decimal degrees
-    /// a.ToString(AngleType.Degree) //for formated string
+    /// a.ToString(AngleType.Degree) //for formatted string
     /// </example>
     /// 
     /// </summary>

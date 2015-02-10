@@ -9,7 +9,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// The different types of implemented Time units
     /// </summary>
-    public enum TimeType { Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week, Month, Year, Decade, Century };
+    public enum TimeType { Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week, Month, Year, Decade, Century }
 
     /// <summary>
     /// Class that represents a length of time
