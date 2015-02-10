@@ -105,16 +105,9 @@ namespace UnitClassLibrary
         /// <returns>the sum of the two angles</returns>
         public static Angle operator +(Angle a1, Angle a2)
         {
-            //add the two Angles together
-            double degreesSummed = a1.Degrees + a2.Degrees;
-
-            while (degreesSummed >= 360)
-            {
-                degreesSummed -= 360;
-            }
-
+            //add the two Angle together
             //return a new Angle with the new value
-            return new Angle(AngleType.Radian, degreesSummed);
+            return new Angle(a1._internalUnitType, a1._intrinsicValue + a2.GetValue(a1._internalUnitType));
         }
 
         /// <summary>
@@ -125,22 +118,9 @@ namespace UnitClassLibrary
         /// <returns>the result of the first angle minus the second</returns>
         public static Angle operator -(Angle a1, Angle a2)
         {
-            //add the two Angles together
-            double degreesDifferenced = a1.Degrees - a2.Degrees;
-
-            while (degreesDifferenced >= 360)
-            {
-                degreesDifferenced -= 360;
-            }
-
-            if (degreesDifferenced < 0)
-            {
-                degreesDifferenced = 360 - Math.Abs(degreesDifferenced);
-            }
-
-            //subtract the two Angles
+            //subtract the two Angles together
             //return a new Angle with the new value
-            return new Angle(AngleType.Degree, degreesDifferenced);
+            return new Angle(a1._internalUnitType, a1._intrinsicValue - a2.GetValue(a1._internalUnitType));
         }
 
 
