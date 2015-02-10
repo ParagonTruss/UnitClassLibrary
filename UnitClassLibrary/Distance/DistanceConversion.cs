@@ -19,85 +19,9 @@ namespace UnitClassLibrary
 
             switch (typeConvertingFrom)
             {
-                case DistanceType.ThirtySecond:
-                    switch (typeConvertingTo)
-                    {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue; // Return passed in thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue / 2; // Convert thirtyseconds to sixteenths
-                            break;
-                        case DistanceType.Inch:
-                            returnDouble = passedValue / 32; // Convert thirtyseconds to inches
-                            break;
-                        case DistanceType.Foot:
-                            returnDouble = passedValue / (32*12); // Convert thirtyseconds to feet
-                            break;
-                        case DistanceType.Yard:
-                            returnDouble = passedValue / (32*12*3); // Convert thirtyseconds to yards
-                            break;
-                        case DistanceType.Mile:
-                            returnDouble = passedValue / (32*12*5280); // Convert thirtyseconds to miles
-                            break;
-                        case DistanceType.Millimeter:
-                            returnDouble = passedValue * ((2.54/32)*10); // Convert thirtyseconds to millimeters
-                            break;
-                        case DistanceType.Centimeter:
-                            returnDouble = passedValue * (2.54/32); // Convert thirtyseconds to centimeters
-                            break;
-                        case DistanceType.Meter:
-                            returnDouble = passedValue * ((2.54/32)/100); // Convert thirtyseconds to meters
-                            break;
-                        case DistanceType.Kilometer:
-                            returnDouble = passedValue * (((2.54/32)/100)/1000); // Convert thirtyseconds to kilometers
-                            break;
-                    }
-                    break;
-                case DistanceType.Sixteenth:
-                    switch (typeConvertingTo)
-                    {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 2; // Convert sixteenths to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue; // Return passed in sixteenths
-                            break;
-                        case DistanceType.Inch:
-                            returnDouble = passedValue / 16; // Convert sixteenths to inches
-                            break;
-                        case DistanceType.Foot:
-                            returnDouble = passedValue / (16*12); // Convert sixteenths to feet
-                            break;
-                        case DistanceType.Yard:
-                            returnDouble = passedValue / (16*12*3); // Convert sixteenths to yards
-                            break;
-                        case DistanceType.Mile:
-                            returnDouble = passedValue / (16*12*5280); // Convert sixteenths to miles
-                            break;
-                        case DistanceType.Millimeter:
-                            returnDouble = passedValue * ((2.54/16)*10); // Convert sixteenths to millimeters
-                            break;
-                        case DistanceType.Centimeter:
-                            returnDouble = passedValue * (2.54/16); // Convert sixteenths to centimeters
-                            break;
-                        case DistanceType.Meter:
-                            returnDouble = passedValue * ((2.54/16)/100); // Convert sixteenths to meters
-                            break;
-                        case DistanceType.Kilometer:
-                            returnDouble = passedValue * (((2.54/16)/100)/1000); // Convert sixteenths to kilometers
-                            break;
-                    }
-                    break;
                 case DistanceType.Inch:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * 32; // Convert inches to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * 16; // Convert inches to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue; // Return passed in inches
                             break;
@@ -127,12 +51,6 @@ namespace UnitClassLibrary
                 case DistanceType.Foot:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * (12*32); // Convert feet to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * (12*16); // Convert feet to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * 12; // Convert feet to inches
                             break;
@@ -162,12 +80,6 @@ namespace UnitClassLibrary
                 case DistanceType.Yard:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * ((12*32)*3); // Convert yards to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * ((12*16)*3); // Convert yards to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * (3*12); // Convert yards to inches
                             break;
@@ -197,13 +109,7 @@ namespace UnitClassLibrary
                 case DistanceType.Mile:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * ((12*32)*5280); // Convert miles to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * ((12*16)*5280); // Convert miles to sixteenths
-                            break;
-                        case DistanceType.Inch:
+                       case DistanceType.Inch:
                             returnDouble = passedValue * (12*5280); // Convert miles to inches
                             break;
                         case DistanceType.Foot:
@@ -232,12 +138,6 @@ namespace UnitClassLibrary
                 case DistanceType.Millimeter:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * (((1/2.54)/10)*32); // Convert millimeters to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * (((1/2.54)/10)*16); // Convert millimeters to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * ((1/2.54)/10); // Convert millimeters to inches
                             break;
@@ -267,12 +167,6 @@ namespace UnitClassLibrary
                 case DistanceType.Centimeter:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * ((1/2.54)*32); // Convert centimeters to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * ((1/2.54)*16); // Convert centimeters to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * (1/2.54); // Convert centimeters to inches
                             break;
@@ -302,12 +196,6 @@ namespace UnitClassLibrary
                 case DistanceType.Meter:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * (((1/2.54)*32)*100); // Convert meters to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * (((1/2.54)*16)*100); // Convert meters to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * ((1/2.54)*100); // Convert meters to inches
                             break;
@@ -337,12 +225,6 @@ namespace UnitClassLibrary
                 case DistanceType.Kilometer:
                     switch (typeConvertingTo)
                     {
-                        case DistanceType.ThirtySecond:
-                            returnDouble = passedValue * ((((1/2.54)*32)*100)*1000); // Convert kilometers to thirtyseconds
-                            break;
-                        case DistanceType.Sixteenth:
-                            returnDouble = passedValue * ((((1/2.54)*16)*100)*1000); // Convert kilometers to sixteenths
-                            break;
                         case DistanceType.Inch:
                             returnDouble = passedValue * (((1/2.54)*100)*1000); // Convert kilometers to inches
                             break;

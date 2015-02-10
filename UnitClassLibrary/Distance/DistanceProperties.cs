@@ -10,14 +10,29 @@ namespace UnitClassLibrary
 {
     public partial class Distance
     {
-        public double Sixteenths
+        public double ThirtySecondsOfAnInch
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Sixteenth); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch) * 32; }
         }
 
-        public double ThirtySeconds
+        public double SixteenthsOfAnInch
         {
-            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.ThirtySecond); }
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch) * 16; }
+        }
+
+        public double EighthsOfAnInch
+        {
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch) * 8; }
+        }
+
+        public double QuartersOfAnInch
+        {
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch) * 4; }
+        }
+
+        public double HalvesOfAnInch
+        {
+            get { return _retrieveIntrinsicValueAsDesiredExternalUnit(DistanceType.Inch) * 2; }
         }
 
         public double Inches
@@ -80,10 +95,6 @@ namespace UnitClassLibrary
                     return Meters;
                 case DistanceType.Kilometer:
                     return Kilometers;
-                case DistanceType.ThirtySecond:
-                    return ThirtySeconds;
-                case DistanceType.Sixteenth:
-                    return Sixteenths;
                 case DistanceType.Inch:
                     return Inches;
                 case DistanceType.Foot:

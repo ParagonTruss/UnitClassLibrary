@@ -56,7 +56,7 @@ namespace UnitClassLibrary
         {
             get
             {
-                return new Distance(DistanceType.ThirtySecond, 1);
+                return Distance.ThirtySecondInch;
             }
         }
 

@@ -41,15 +41,8 @@ namespace UnitClassLibrary
         /// <param name="d2"></param>
         public Area(Distance d1, Distance d2)
         {
-            // We do not have ThirtySecondsSquared or SixteenthsSquared as area units, so convert these to inches
-            if (d1.InternalUnitType == DistanceType.ThirtySecond || d1.InternalUnitType == DistanceType.Sixteenth)
-            {
-                _intrinsicValue = d1.Inches * d2.Inches;
-            }
-            else
-            {
-                _intrinsicValue = d1.GetValue(d1.InternalUnitType) * d2.GetValue(d1.InternalUnitType);
-            }
+            
+            _intrinsicValue = d1.GetValue(d1.InternalUnitType) * d2.GetValue(d1.InternalUnitType);
 
             // Set the internal unit type to the type of the first passed Distance squared. Sixteenths and thrity-seconds have been converted into inches and will therefore be in inches squared.
             switch (d1.InternalUnitType)
@@ -66,9 +59,7 @@ namespace UnitClassLibrary
                 case DistanceType.Kilometer:
                     _internalUnitType = AreaType.KilometersSquared;
                     break;
-                case DistanceType.ThirtySecond: // Has been converted to inches
-                case DistanceType.Sixteenth: // Has been converted to inches
-                case DistanceType.Inch:
+               case DistanceType.Inch:
                     _internalUnitType = AreaType.InchesSquared;
                     break;
                 case DistanceType.Foot:
