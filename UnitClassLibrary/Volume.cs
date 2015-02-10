@@ -1169,7 +1169,6 @@ namespace UnitClassLibrary
             {
                 return 1;
             }
-            else // this instance should be greater than other
             {
                 return -1;
             }

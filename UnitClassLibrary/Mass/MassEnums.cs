@@ -10,5 +10,5 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit the Mass is
     /// </summary>
-    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces };
+    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces }
 }
