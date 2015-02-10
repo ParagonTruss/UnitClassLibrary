@@ -10,7 +10,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit an area is
     /// </summary>
-    public enum AreaType { MillimetersSquared, CentimetersSquared, MetersSquared, KilometersSquared, InchesSquared, FeetSquared, YardsSquared, MilesSquared };
+    public enum AreaType { MillimetersSquared, CentimetersSquared, MetersSquared, KilometersSquared, InchesSquared, FeetSquared, YardsSquared, MilesSquared }
 
     /// <summary>
     /// Enum for specifying the type of unit an angle is
@@ -50,7 +50,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// Enum for specifying the type of unit a volume is
     /// </summary>	
-	public enum VolumeType { Milliliters, CubicCentimeters, Liters, CubicMeters, CubicThirtySeconds, CubicSixteenths, CubicInches, CubicFeet, CubicYards, CubicMiles, Gallons, Quarts, Pints, Cups, FluidOunces };
+	public enum VolumeType { Milliliters, CubicCentimeters, Liters, CubicMeters, CubicThirtySeconds, CubicSixteenths, CubicInches, CubicFeet, CubicYards, CubicMiles, Gallons, Quarts, Pints, Cups, FluidOunces }
 	
 
 }
