@@ -111,6 +111,7 @@
     <Compile Include="Mass\MassConversion.cs" />
     <Compile Include="Mass\MassConstants.cs" />
     <Compile Include="Mass\Mass.cs" />
+    <Compile Include="Mass\MassStaticGenerators.cs" />
     <Compile Include="Moment.cs" />
     <Compile Include="MomentOfInertiaUnit.cs" />
     <Compile Include="Power.cs" />

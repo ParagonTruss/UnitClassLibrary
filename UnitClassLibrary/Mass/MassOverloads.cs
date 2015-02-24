@@ -1,221 +1,187 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 
-namespace UnitClassLibrary
+ namespace UnitClassLibrary
 {
-    public partial class Mass : IEquatable<Mass>
-    {
-        // You may notice that we do not overload the increment and decrement operators (++ and --).
-        // This would break our abstraction of thinking that all units types are represented by this object 
 
-        /// <summary>
-        /// Operator to raise a mass by a power
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="power"></param>
-        /// <returns></returns>
-        public static Mass operator ^(Mass m1, double power)
-        {
-            return new Mass(m1._internalUnitType, Math.Pow(m1._intrinsicValue, power));
-        }
+	public partial class Mass : IEquatable <Mass>
+	{
 
-        /// <summary>
-        /// Operator to add and return the sum of m1 and m2
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static Mass operator +(Mass m1, Mass m2)
-        {
-            //add the two Masss together
-            //return a new Mass with the new value
-            return new Mass(m1._internalUnitType, m1._intrinsicValue + m2.GetValue(m1._internalUnitType));
-        }
+		/// <summary>Raise to power operator</summary>
+		/// <param name="o1"></param>
+		/// <param name="power"></param>
+		/// <returns></returns>
+		public static Mass operator ^(Mass o1, double power)
+		{
+			return new Mass(o1._internalUnitType, Math.Pow(o1._intrinsicValue, power));
+		}
 
-        /// <summary>
-        /// Operator to subtract and return the difference between m1 and m2
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static Mass operator -(Mass m1, Mass m2)
-        {
-            //subtract the two Masses
-            //return a new Mass with the new value
-            return new Mass(m1._internalUnitType, m1._intrinsicValue - m2.GetValue(m1._internalUnitType));
-        }
-        
-        /// <summary>
-        /// Divide and return the ratio of m1 and m2
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static double operator /(Mass m1, Mass m2)
-        {
-            return m1.GetValue(m1._internalUnitType) / m2.GetValue(m1._internalUnitType);
-        }
+		/// <summary>Returns new unit with sum of two passed units</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static Mass operator +(Mass o1, Mass o2)
+		{
+			return new Mass(o1._internalUnitType, o1._intrinsicValue + o2.GetValue(o1._internalUnitType));
+		}
 
-        /// <summary>
-        /// Multiply and return the product of m1 and a double
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="multiplier"></param>
-        /// <returns></returns>
-        public static Mass operator *(Mass m1, double multiplier)
-        {
-            return new Mass(m1._internalUnitType, m1._intrinsicValue * multiplier);
-        }
+		/// <summary>Returns new unit with difference of two passed units</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static Mass operator -(Mass o1, Mass o2)
+		{
+			return new Mass(o1._internalUnitType, o1._intrinsicValue - o2.GetValue(o1._internalUnitType));
+		}
 
-        /// <summary>
-        /// Divide and return the ratio of m1 and a divisor
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="divisor"></param>
-        /// <returns></returns>
-        public static Mass operator /(Mass m1, double divisor)
-        {
-            return new Mass(m1.InternalUnitType, m1._intrinsicValue / divisor);
-        }
+		/// <summary>ratio between differences</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static double operator/(Mass o1, Mass o2)
+		{
+			return o1.GetValue(o1._internalUnitType) / o2.GetValue(o1._internalUnitType);
+		}
 
-        /// <summary>
-        /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
-        /// </summary>
-        public static bool operator ==(Mass m1, Mass m2)
-        {
-            if ((object)m1 == null)
-            {
-                if ((object)m2 == null)
-                {
-                    return true;
-                }
-                return false;
-            }
-            return m1.Equals(m2);
-        }
+		/// <summary>scalar multiplication</summary>
+		/// <param name="o1"></param>
+		/// <param name="multiplier"></param>
+		/// <returns></returns>
+		public static Mass operator*(Mass o1, double multiplier)
+		{
+			return new Mass(o1._internalUnitType, o1._intrinsicValue * multiplier);
+		}
 
-        /// <summary>
-        /// Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
-        /// </summary>
-        public static bool operator !=(Mass m1, Mass m2)
-        {
-            if ((object)m1 == null)
-            {
-                if ((object)m2 == null)
-                {
-                    return false;
-                }
-                return true;
-            }
-            return !m1.Equals(m2);
-        }
+		/// <summary>scalar multiplication</summary>
+		/// <param name="o1"></param>
+		/// <param name="multiplier"></param>
+		/// <returns></returns>
+		public static Mass operator*(double multiplier, Mass o1)
+		{
+			return o1 * multiplier;
+		}
 
-        /// <summary>
-        /// Operator that returns whether m1 is greater than m2 or not
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static bool operator >(Mass m1, Mass m2)
-        {
-            if (m1 == m2)
-            {
-                return false;
-            }
-            return m1._intrinsicValue > m2.GetValue(m1._internalUnitType);
-        }
-        
-        /// <summary>
-        /// Operator that returns whether m1 is less than m2 or not
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static bool operator <(Mass m1, Mass m2)
-        {
-            if (m1 == m2)
-            {
-                return false;
-            }
-            return m1._intrinsicValue < m2.GetValue(m1._internalUnitType);
-        }
+		/// <summary>scalar division</summary>
+		/// <param name="o1"></param>
+		/// <param name="divisor"></param>
+		/// <returns></returns>
+		public static Mass operator/(Mass o1, double divisor)
+		{
+			return new Mass(o1._internalUnitType, o1._intrinsicValue / divisor);
+		}
 
+		/// <summary>Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant </summary>
+		public static bool operator !=(Mass o1, Mass o2)
+		{
+			if ((object)o1 == null)
+			{
+				if ((object)o2 == null)
+				{
+					return false;
+				}
+				return true;
+			}
+			return !o1.Equals(o2);
+		}
 
-        /// <summary>
-        /// Tests whether m1 is less than or equal to m2
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static bool operator <=(Mass m1, Mass m2)
-        {
-            return m1.Equals(m2) || m1 < m2;
-        }
+		/// <summary>Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant </summary>
+		public static bool operator ==(Mass o1, Mass o2)
+		{
+			if ((object)o1 == null)
+			{
+				if ((object)o2 == null)
+				{
+					return true;
+				}
+				return true;
+			}
+			return o1.Equals(o2);
+		}
 
-        /// <summary>
-        /// Operator that returns whether m1 is greater than or equal to m2
-        /// </summary>
-        /// <param name="m1"></param>
-        /// <param name="m2"></param>
-        /// <returns></returns>
-        public static bool operator >=(Mass m1, Mass m2)
-        {
-            return m1.Equals(m2) || m1 > m2;
-        }
+		/// <summary>greater than</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static bool operator >(Mass o1, Mass o2)
+		{
+			if (o1 == o2)
+			{
+				return false;
+			}
+			return o1._intrinsicValue > o2.GetValue(o1._internalUnitType);
+		}
 
-        /// <summary>
-        /// This override determines how this object is inserted into hashtables.
-        /// </summary>
-        /// <returns>same hashcode as any double would</returns>
-        public override int GetHashCode()
-        {
-            return _intrinsicValue.GetHashCode();
-        }
+		/// <summary>less than</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static bool operator <(Mass o1, Mass o2)
+		{
+			if (o1 == o2)
+			{
+				return false;
+			}
+			return o1._intrinsicValue < o2.GetValue(o1._internalUnitType);
+		}
 
-        /// <summary>
-        /// The value and unit in terms of what the object was created with. 
-        /// If you want it in a different unit use ToString(MassType)
-        /// </summary>
-        /// <returns>Should never return anything</returns>
-        public override string ToString()
-        {
-            return this._intrinsicValue + " " + this._internalUnitType;
-        }
+		/// <summary>less than or equal to</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static bool operator<=(Mass o1, Mass o2)
+		{
+			return o1.Equals(o2) || o1 < o2;
+		}
 
-        /// <summary>
-        /// calls the Dimension only Equals method
-        /// </summary>
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
+		/// <summary>greater than or equal to</summary>
+		/// <param name="o1"></param>
+		/// <param name="o2"></param>
+		/// <returns></returns>
+		public static bool operator>=(Mass o1, Mass o2)
+		{
+			return o1.Equals(o2) || o1 > o2;
+		}
 
-            return this.Equals((Mass)obj);
-        }
+		/// <summary>This override determines how this object is inserted into hashtables.</summary>
+		/// <returns>same hashcode as any double would</returns>
+		public override int GetHashCode()
+		{
+			return _intrinsicValue.GetHashCode();
+		}
 
-        /// <summary>
-        /// Compares using the function specified by strategy
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool Equals(Mass other)
-        {
-            if (other == null)
-            {
-                return false;
-            }
-            try
-            {
-                return this._equalityStrategy(this, other);
-            }
-            catch
-            {
-                return false;
-            }
-        }
-    }
+		/// <summary>The value and unit in terms of what the object was created with. </summary>
+		/// <returns>Should never return anything</returns>
+		public override string ToString()
+		{
+			return this._intrinsicValue + " " + this._internalUnitType;
+		}
+
+		/// <summary>calls the Dimension only Equals method</summary>
+		public override bool Equals(object obj)
+		{
+			if (obj == null)
+			{
+				return false;
+			}
+			return this.Equals((Mass)obj);
+		}
+
+		/// <summary>Compares using the function specified by strategy</summary>
+		/// <param name="other"></param>
+		/// <returns></returns>
+		public bool Equals(Mass other)
+		{
+			if (other == null)
+			{
+				return false;
+			}
+			try
+			{
+				return this._equalityStrategy(this, other);
+			}
+			catch
+			{
+				return false;
+			}
+		}
+	}
 }

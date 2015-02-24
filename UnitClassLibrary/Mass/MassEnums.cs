@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 
-#pragma warning disable 1591
-
-namespace UnitClassLibrary
+ namespace UnitClassLibrary
 {
-    /// <summary>
-    /// Enum for specifying the type of unit the Mass is
-    /// </summary>
-    public enum MassType { MetricTons, Kilograms, Grams, Milligrams, Micrograms, LongTons, ShortTons, Stones, Pounds, Ounces }
+	/// <summary> Enum for specifying the type of unit a Mass is.</summary>
+	public enum MassType { Gram, Kilogram, MetricTon, Milligram, Microgram, LongTon, ShortTon, Stone, Pound, Ounce }
 }

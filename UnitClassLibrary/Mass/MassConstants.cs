@@ -1,54 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System;
 
-//suppress XML comment warnings in this file
-#pragma warning disable 1591
-
-namespace UnitClassLibrary
+ namespace UnitClassLibrary
 {
-    public partial class Mass
-    {
-        public static Mass Gram
-        {
-            get { return new Mass(MassType.Grams, 1); }
-        }
-        public static Mass Kilogram
-        {
-            get { return new Mass(MassType.Kilograms, 1); }
-        }
-        public static Mass MetricTon
-        {
-            get { return new Mass(MassType.MetricTons, 1); }
-        }
-        public static Mass Milligram
-        {
-            get { return new Mass(MassType.Milligrams, 1); }
-        }
-        public static Mass Microgram
-        {
-            get { return new Mass(MassType.Micrograms, 1); }
-        }
-        public static Mass LongTon
-        {
-            get { return new Mass(MassType.LongTons, 1); }
-        }
-        public static Mass ShortTon
-        {
-            get { return new Mass(MassType.ShortTons, 1); }
-        }
-        public static Mass Stone
-        {
-            get { return new Mass(MassType.Stones, 1); }
-        }
-        public static Mass Pound
-        {
-            get { return new Mass(MassType.Pounds, 1); }
-        }
-        public static Mass Ounce
-        {
-            get { return new Mass(MassType.Ounces, 1); }
-        }
-    }
+
+	public partial class Mass
+	{
+
+		public static Mass Gram
+		{
+			get { return new Mass(MassType.Gram, 1); }
+		}
+
+		public static Mass Kilogram
+		{
+			get { return new Mass(MassType.Kilogram, 1); }
+		}
+
+		public static Mass MetricTon
+		{
+			get { return new Mass(MassType.MetricTon, 1); }
+		}
+
+		public static Mass Milligram
+		{
+			get { return new Mass(MassType.Milligram, 1); }
+		}
+
+		public static Mass Microgram
+		{
+			get { return new Mass(MassType.Microgram, 1); }
+		}
+
+		public static Mass LongTon
+		{
+			get { return new Mass(MassType.LongTon, 1); }
+		}
+
+		public static Mass ShortTon
+		{
+			get { return new Mass(MassType.ShortTon, 1); }
+		}
+
+		public static Mass Stone
+		{
+			get { return new Mass(MassType.Stone, 1); }
+		}
+
+		public static Mass Pound
+		{
+			get { return new Mass(MassType.Pound, 1); }
+		}
+
+		public static Mass Ounce
+		{
+			get { return new Mass(MassType.Ounce, 1); }
+		}
+	}
 }
