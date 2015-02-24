@@ -92,7 +92,7 @@ namespace UnitLibraryTests
 
             Time equivalentbiggerTime = new Time(TimeType.Minute, 59.1);
 
-            equivalentbiggerTime.EqualsWithinPassedAcceptedDeviation(biggerTime, new Time(TimeType.Minute, 1)).Should().Be(true);
+            equivalentbiggerTime.EqualsWithinDeviationConstant(biggerTime, new Time(TimeType.Minute, 1)).Should().Be(true);
         }
 
 

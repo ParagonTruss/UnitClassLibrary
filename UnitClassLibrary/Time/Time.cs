@@ -1,76 +1,77 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System;
 
-#pragma warning disable 1591
-
-namespace UnitClassLibrary
+ namespace UnitClassLibrary
 {
-    /// <summary>
-    /// The different types of implemented Time units
-    /// </summary>
-    public enum TimeType { Nanosecond, Microsecond, Millisecond, Second, Minute, Hour, Day, Week, Month, Year, Decade, Century }
 
-    /// <summary>
-    /// Class that represents a length of time
-    /// </summary>
-    public partial struct Time
-    {
-        #region private _fields and Internal Properties
-        
-        /// <summary>
-        /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
-        /// </summary>
-        internal TimeType InternalUnitType
-        {
-            get { return _internalUnitType; }
-        }
-        private TimeType _internalUnitType;
+	public partial class Time
+	{
+		#region _fields and Internal Properties
 
-        private double _intrinsicValue;
-        
-        #endregion
+		internal TimeType InternalUnitType
+		{
+			get { return _internalUnitType; }
+		}
+		private TimeType _internalUnitType;
 
-        #region Constructors
+		private double _intrinsicValue;
 
-        /// <summary>
-        /// copy constructor - create a new Time with the same _intrinsicValue as the passed Time
-        /// </summary>
-        public Time(Time passedTime)
-        {
-            _intrinsicValue = passedTime._intrinsicValue;
-            _internalUnitType = passedTime._internalUnitType;
-        }
+		public TimeEqualityStrategy EqualityStrategy
+		{
+			get { return _equalityStrategy; }
+			set { _equalityStrategy = value; }
+		}
 
-        /// <summary>
-        /// sets the Time to the passed double with the passed unit type
-        /// </summary>
-        /// <param name="timeType">passed unit type</param>
-        /// <param name="passedValue">period of unit type</param>		
-        public Time(TimeType timeType, double passedValue)
-        {
-            _internalUnitType = timeType;
-            _intrinsicValue = passedValue;
-        }
+		private TimeEqualityStrategy _equalityStrategy;
 
-        /// <summary>
-        /// sets the Time to the TimeSpan in Second TimeType
-        /// </summary>		
-        public Time(TimeSpan passedTimeSpan)
-        {
-            _internalUnitType = TimeType.Second;
-            _intrinsicValue = passedTimeSpan.Seconds;
-        }
+		#endregion
 
-        #endregion
+		#region Constructors
 
-        #region helper methods
+		/// <summary> Zero Constructor </summary>
+		 public Time(TimeEqualityStrategy passedStrategy = null)
+		{
+			_intrinsicValue = 0;
+			_internalUnitType = TimeType.Nanosecond;
+			_intrinsicValue = 0;
+		}
 
-        private double _retrieveAsExternalUnit(TimeType toTimeType)
-        {
-            return ConvertTime(_internalUnitType, _intrinsicValue, toTimeType);
-        }
+		/// <summary> Accepts standard types for input. </summary>
+		public Time(TimeType passedTimeType, double passedInput, TimeEqualityStrategy passedStrategy = null)
+		{
+			_intrinsicValue = passedInput;
+			_internalUnitType = passedTimeType;
+			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
+		}
 
-        #endregion
-    }
+		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>
+		public Time(Time passedTime)
+		{
+			_intrinsicValue = passedTime._intrinsicValue;
+			_internalUnitType = passedTime._internalUnitType;
+			_equalityStrategy = passedTime._equalityStrategy;
+		}
+
+		#endregion
+
+		#region helper _methods
+
+		private static TimeEqualityStrategy _chooseDefaultOrPassedStrategy(TimeEqualityStrategy passedStrategy)
+		{
+			if (passedStrategy == null)
+			{
+				return TimeEqualityStrategyImplementations.DefaultConstantEquality;
+			}
+			else
+			{
+				return passedStrategy;
+			}
+		}
+
+		private double _retrieveIntrinsicValueAsDesiredExternalUnit(TimeType toTimeType)
+		{
+			return ConvertTime(_internalUnitType, _intrinsicValue, toTimeType);
+		}
+
+		#endregion
+	}
 }

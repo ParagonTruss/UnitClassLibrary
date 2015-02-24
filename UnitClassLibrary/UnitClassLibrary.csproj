@@ -130,10 +130,13 @@
     <Compile Include="Time\Time.cs" />
     <Compile Include="Time\TimeConstants.cs" />
     <Compile Include="Time\TimeConversion.cs" />
-    <Compile Include="Time\TimeDeviationConstant.cs" />
-    <Compile Include="Time\TimeIComparableImplementation.cs" />
+    <Compile Include="Time\TimeEnums.cs" />
+    <Compile Include="Time\TimeEquality.cs" />
+    <Compile Include="Time\TimeIComparable.cs" />
     <Compile Include="Time\TimeOverloads.cs" />
     <Compile Include="Time\TimeProperties.cs" />
+    <Compile Include="Time\TimePublicMethods.cs" />
+    <Compile Include="Time\TimeStaticGenerators.cs" />
     <Compile Include="Volume.cs" />
   </ItemGroup>
   <ItemGroup>
