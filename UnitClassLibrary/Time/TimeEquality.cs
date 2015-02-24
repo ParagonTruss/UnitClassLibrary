@@ -42,14 +42,14 @@ using System;
 		public static Time AcceptedEqualityDeviationDistance
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
-			get { return new Time(TimeType.Nanosecond, 1); }
+			get { return new Time(TimeType.Second, 1); }
 		}
 
 		/// <summary> When comparing two time and deviation is allowed to be within a percentage of the firstTime. This is that percentage </summary>
 		public static double  TimeAcceptedEqualityDeviationDistancePercentage
 		{
 			// TODO: This is auto-generated. It might should be changed.
-			get { return 0.00001; }
+			get { return 1; }
 		}
 	}
 
