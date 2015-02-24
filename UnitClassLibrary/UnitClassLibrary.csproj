@@ -85,7 +85,16 @@
     <Compile Include="Distance\DistanceOverloads.cs" />
     <Compile Include="Distance\DistanceProperties.cs" />
     <Compile Include="Distance\DistancePublicMethods.cs" />
-    <Compile Include="ElectricCurrent.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrent.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentConstants.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentConversion.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentEnums.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentEquality.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentIComparable.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentOverloads.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentProperties.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentPublicMethods.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentStaticGenerators.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />

@@ -38,11 +38,6 @@ namespace UnitClassLibrary
     public enum StressType { PoundsPerSquareInch, PoundsPerSquareMillimeter, NewtonsPerSquareMeter, NewtonsPerSquareMillimeter }
 
     /// <summary>
-    /// Enum for specifying the type of unit an electric current is
-    /// </summary>
-    public enum ElectricCurrentType { Amperes, MilliAmperes, VoltOhms, WattVolts }
-
-    /// <summary>
     /// Enum for specifying the type of unit a speed is
     /// </summary>
     public enum SpeedType { ThirtySecondsPerMillisecond, ThirtySecondsPerSecond, ThirtySecondsPerMinute, ThirtySecondsPerHour, SixteenthsPerMillisecond, SixteenthsPerSecond, SixteenthsPerMinute, SixteenthsPerHour, InchesPerMillisecond, InchesPerSecond, InchesPerMinute, InchesPerHour, FeetPerMillisecond, FeetPerSecond, FeetPerMinute, FeetPerHour, YardsPerMillisecond, YardsPerSecond, YardsPerMinute, YardsPerHour, MilesPerMinute, MilesPerHour, MillimetersPerMillisecond, MillimetersPerSecond, MillimetersPerMinute, MillimetersPerHour, CentimetersPerMillisecond, CentimetersPerSecond, CentimetersPerMinute, CentimetersPerHour, MetersPerMillisecond, MetersPerSecond, MetersPerMinute, MetersPerHour, KilometersPerMinute, KilometersPerHour, Knots }
