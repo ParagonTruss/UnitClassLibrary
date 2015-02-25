@@ -92,7 +92,7 @@ using System;
 				{
 					return true;
 				}
-				return true;
+				return false;
 			}
 			return o1.Equals(o2);
 		}
