@@ -66,6 +66,16 @@
   <ItemGroup>
     <Compile Include="Angle\Angle.cs" />
     <Compile Include="Angle\AngularDistance.cs" />
+    <Compile Include="Capacitance\Capacitance.cs" />
+    <Compile Include="Capacitance\CapacitanceConstants.cs" />
+    <Compile Include="Capacitance\CapacitanceConversion.cs" />
+    <Compile Include="Capacitance\CapacitanceEnums.cs" />
+    <Compile Include="Capacitance\CapacitanceEquality.cs" />
+    <Compile Include="Capacitance\CapacitanceIComparable.cs" />
+    <Compile Include="Capacitance\CapacitanceOverloads.cs" />
+    <Compile Include="Capacitance\CapacitanceProperties.cs" />
+    <Compile Include="Capacitance\CapacitancePublicMethods.cs" />
+    <Compile Include="Capacitance\CapacitanceStaticGenerators.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataConstants.cs" />
     <Compile Include="Data\DataConversion.cs" />
