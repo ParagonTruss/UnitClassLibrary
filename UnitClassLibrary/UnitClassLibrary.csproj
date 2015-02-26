@@ -86,6 +86,16 @@
     <Compile Include="Distance\DistanceProperties.cs" />
     <Compile Include="Distance\DistancePublicMethods.cs" />
     <Compile Include="ElectricCurrent.cs" />
+    <Compile Include="ElectricPotential\ElectricPotential.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialConstants.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialConversion.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialEnums.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialEquality.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialIComparable.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialOverloads.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialProperties.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialPublicMethods.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialStaticGenerators.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
