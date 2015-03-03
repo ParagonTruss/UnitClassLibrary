@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Time : IComparable<Time>
+    public partial class Time : IComparable<Time>
     {
         /// <summary>
         /// This implements the IComparable interface and allows Times to be sorted and such

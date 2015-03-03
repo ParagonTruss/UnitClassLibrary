@@ -15,7 +15,7 @@ namespace UnitLibraryTests
         public void Mass_ConversionToTests()
         {
             // arrange
-            Mass KilogramsMass = new Mass(MassType.Kilograms, 880);
+            Mass KilogramsMass = new Mass(MassType.Kilogram, 880);
 
             // act
             double MetricTons = KilogramsMass.MetricTons;
@@ -47,8 +47,8 @@ namespace UnitLibraryTests
         public void Mass_ConstructorTest()
         {
             Mass m1 = new Mass();
-            Mass m2 = new Mass(MassType.Grams, 100);
-            Mass m3 = new Mass(MassType.Ounces, 100);
+            Mass m2 = new Mass(MassType.Gram, 100);
+            Mass m3 = new Mass(MassType.Ounce, 100);
 
             m1.Kilograms.Should().Be(0);
             m2.Grams.Should().Be(100);
@@ -58,9 +58,9 @@ namespace UnitLibraryTests
         [Test()]
         public void Mass_CompareToTest()
         {
-            Mass m1 = new Mass(MassType.Milligrams, 100);
-            Mass m2 = new Mass(MassType.LongTons, 100);
-            Mass m3 = new Mass(MassType.Pounds, 100);
+            Mass m1 = new Mass(MassType.Milligram, 100);
+            Mass m2 = new Mass(MassType.LongTon, 100);
+            Mass m3 = new Mass(MassType.Pound, 100);
 
             m1.CompareTo(m2).Should().Be(-1);
             m2.CompareTo(m3).Should().Be(1);
@@ -72,9 +72,9 @@ namespace UnitLibraryTests
         {
             
             // arrange
-            Mass biggerMass = new Mass(MassType.Pounds, 2.21);
-            Mass smallerMass = new Mass(MassType.Grams, 100);
-            Mass equivalentbiggerMass = new Mass(MassType.Kilograms, 1.00244);
+            Mass biggerMass = new Mass(MassType.Pound, 2.21);
+            Mass smallerMass = new Mass(MassType.Gram, 100);
+            Mass equivalentbiggerMass = new Mass(MassType.Kilogram, 1.00244);
 
             (equivalentbiggerMass.Equals(biggerMass)).Should().Be(true);
             (equivalentbiggerMass == smallerMass).Should().Be(false);
@@ -111,14 +111,14 @@ namespace UnitLibraryTests
         [Test()]
         public void Mass_ToStringTest()
         {
-            Mass m1 = new Mass(MassType.Grams, 100);
-            Mass m2 = new Mass(MassType.Kilograms, 80);
+            Mass m1 = new Mass(MassType.Gram, 100);
+            Mass m2 = new Mass(MassType.Kilogram, 80);
 
             string massToString = m1.ToString();
-            string mass2ToString = m2.ToString(MassType.Pounds);
+            string mass2ToString = m2.ToString(MassType.Pound);
 
-            massToString.Should().Be("100 Grams");
-            mass2ToString.Should().Be("176.3696 Pounds");
+            massToString.Should().Be("100 Gram");
+            mass2ToString.Should().Be("176.3696 Pound");
         }
     }
 }

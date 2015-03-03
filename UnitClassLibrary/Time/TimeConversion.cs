@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
- 
+
 using System.Text;
 
 namespace UnitClassLibrary
 {
-    public partial struct Time
+    public partial class Time
     {
         /// <summary>
         /// Converts from one TimeType to another

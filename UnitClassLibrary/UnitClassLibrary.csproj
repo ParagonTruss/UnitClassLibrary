@@ -87,8 +87,8 @@
     <Compile Include="Data\DataStaticGenerators.cs" />
     <Compile Include="DeviationConstants.cs" />
     <Compile Include="Distance\DistanceConstants.cs">
-		<ExcludeFromStyleCop>true</ExcludeFromStyleCop>
-	</Compile>
+      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Distance\DistanceConversion.cs" />
     <Compile Include="Distance\DistanceEnums.cs" />
     <Compile Include="Distance\DistanceEquality.cs" />
@@ -96,7 +96,6 @@
     <Compile Include="Distance\DistanceOverloads.cs" />
     <Compile Include="Distance\DistanceProperties.cs" />
     <Compile Include="Distance\DistancePublicMethods.cs" />
-    <Compile Include="ElectricCurrent.cs" />
     <Compile Include="ElectricPotential\ElectricPotential.cs" />
     <Compile Include="ElectricPotential\ElectricPotentialConstants.cs" />
     <Compile Include="ElectricPotential\ElectricPotentialConversion.cs" />
@@ -107,6 +106,16 @@
     <Compile Include="ElectricPotential\ElectricPotentialProperties.cs" />
     <Compile Include="ElectricPotential\ElectricPotentialPublicMethods.cs" />
     <Compile Include="ElectricPotential\ElectricPotentialStaticGenerators.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrent.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentConstants.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentConversion.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentEnums.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentEquality.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentIComparable.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentOverloads.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentProperties.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentPublicMethods.cs" />
+    <Compile Include="ElectricCurrent\ElectricCurrentStaticGenerators.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
@@ -132,6 +141,7 @@
     <Compile Include="Mass\MassConversion.cs" />
     <Compile Include="Mass\MassConstants.cs" />
     <Compile Include="Mass\Mass.cs" />
+    <Compile Include="Mass\MassStaticGenerators.cs" />
     <Compile Include="Moment.cs" />
     <Compile Include="MomentOfInertiaUnit.cs" />
     <Compile Include="Power.cs" />
@@ -151,10 +161,13 @@
     <Compile Include="Time\Time.cs" />
     <Compile Include="Time\TimeConstants.cs" />
     <Compile Include="Time\TimeConversion.cs" />
-    <Compile Include="Time\TimeDeviationConstant.cs" />
-    <Compile Include="Time\TimeIComparableImplementation.cs" />
+    <Compile Include="Time\TimeEnums.cs" />
+    <Compile Include="Time\TimeEquality.cs" />
+    <Compile Include="Time\TimeIComparable.cs" />
     <Compile Include="Time\TimeOverloads.cs" />
     <Compile Include="Time\TimeProperties.cs" />
+    <Compile Include="Time\TimePublicMethods.cs" />
+    <Compile Include="Time\TimeStaticGenerators.cs" />
     <Compile Include="Volume.cs" />
   </ItemGroup>
   <ItemGroup>
