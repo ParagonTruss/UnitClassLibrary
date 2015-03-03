@@ -8,6 +8,27 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
+    /// <summary>
+    /// This provides common constants that users might want to have predefined
+    /// 
+    /// <example>
+    /// The user would have to do this:
+    /// 
+    /// Distance inch = new Distance(DistanceType.Inch, 1);
+    /// 
+    /// if ( userDistance == inch)
+    /// {
+    ///     do stuff...
+    /// }
+    /// 
+    /// But instead, they can do:
+    /// 
+    /// if ( userDistance == Distance.Inch)
+    /// {
+    ///     do stuff...
+    /// }
+    /// </example>
+    /// </summary>
     public partial class Distance
     {
         public static Distance ThirtySecondInch

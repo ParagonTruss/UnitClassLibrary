@@ -11,9 +11,12 @@ namespace UnitClassLibrary
     /// </summary>
     public static class AngleListExtensionMethods
     {
+
+
         /// <summary>
         /// Adds all of the angles in the list and returns the sum.
         /// </summary>
+        /// <param name="passedAngleList">this</param>
         /// <returns>Total of all Angles in the list</returns>
         public static Angle SumTotal(this List<Angle> passedAngleList)
         {

@@ -145,9 +145,9 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Retuns an Angle object that is 180 degrees from this one
+        /// Finds the angle that points 180 degrees from this one
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Angle 180 degrees from this one</returns>
         public Angle Reverse()
         {
             return this - new Angle(AngleType.Degree, 180);
@@ -156,10 +156,10 @@ namespace UnitClassLibrary
         /// <summary>
         /// Returns an Angle object that is negated
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Angle that is same but from opposite colckwise direction </returns>
         public new Angle Negate()
         {
-            return new Angle(AngleType.Degree, this.Degrees - this.Degrees *2);
+            return new Angle(AngleType.Degree, this.Degrees - (this.Degrees *2));
         }
 
         #endregion

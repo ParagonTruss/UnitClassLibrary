@@ -9,15 +9,14 @@ namespace UnitClassLibrary
 {
     /// <summary>
     /// Class used for storing Distances that may need to be accessed in a different measurement system
-    /// Will accept anything as input
     /// 
     /// For an explanation of why this class is immutable: http://codebetter.com/patricksmacchia/2008/01/13/immutable-types-understand-them-and-use-them/
     /// 
     /// <example>
-    /// decimal inches into AutoCAD notation
+    /// decimal inches into architectural notation
     /// 
     /// double inches = 14.1875
-    /// Distance dm = new Distance( inches, DistanceTypes.Inch);
+    /// Distance dm = new Distance(DistanceTypes.Inch, inches);
     /// 
     /// Print(dm.Architectural)
     /// 
@@ -53,6 +52,7 @@ namespace UnitClassLibrary
             set { _equalityStrategy = value; } 
         }
         private DistanceEqualityStrategy _equalityStrategy;
+
         #endregion
 
         #region Constructors
@@ -60,6 +60,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Zero Constructor
         /// </summary>
+        /// <param name="passedStrategy">Strategy to compare equality by</param>
         public Distance(DistanceEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = 0;
@@ -68,8 +69,10 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Accepts any valid AutoCAD architectural string value for input.
+        /// Accepts any valid architectural string value for input
         /// </summary>
+        /// <param name="passedArchitecturalString"> Architecturally formatted string to create distance from</param>
+        /// <param name="passedStrategy">Strategy to compare equality by</param>
         public Distance(string passedArchitecturalString, DistanceEqualityStrategy passedStrategy = null)
         {
             //we will always make the internal unit type of a passed String Inches 
@@ -79,8 +82,11 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// Accepts standard types for input.
+        /// The standard Unit Constructor that takes the value and the unit type that describes it.
         /// </summary>
+        /// <param name="passedDistanceType">The unit of distance the input is in</param>
+        /// <param name="passedInput">value of the distance</param>
+        /// <param name="passedStrategy">Strategy to compare equality by</param>
         public Distance(DistanceType passedDistanceType, double passedInput, DistanceEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = passedInput;
@@ -89,8 +95,9 @@ namespace UnitClassLibrary
         }
 
         /// <summary>
-        /// copy constructor - create a new Distance with the same fields as the passed Distance
+        /// copy constructor
         /// </summary>
+        /// <param name="passedDistance">Distance objet to copy</param>
         public Distance(Distance passedDistance)
         {
             _intrinsicValue = passedDistance._intrinsicValue;
