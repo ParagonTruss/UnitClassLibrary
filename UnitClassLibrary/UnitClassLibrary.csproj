@@ -65,6 +65,16 @@
   <ItemGroup>
     <Compile Include="Angle\Angle.cs" />
     <Compile Include="Angle\AngularDistance.cs" />
+    <Compile Include="Capacitance\Capacitance.cs" />
+    <Compile Include="Capacitance\CapacitanceConstants.cs" />
+    <Compile Include="Capacitance\CapacitanceConversion.cs" />
+    <Compile Include="Capacitance\CapacitanceEnums.cs" />
+    <Compile Include="Capacitance\CapacitanceEquality.cs" />
+    <Compile Include="Capacitance\CapacitanceIComparable.cs" />
+    <Compile Include="Capacitance\CapacitanceOverloads.cs" />
+    <Compile Include="Capacitance\CapacitanceProperties.cs" />
+    <Compile Include="Capacitance\CapacitancePublicMethods.cs" />
+    <Compile Include="Capacitance\CapacitanceStaticGenerators.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataConstants.cs" />
     <Compile Include="Data\DataConversion.cs" />
@@ -87,6 +97,16 @@
     <Compile Include="Distance\DistanceProperties.cs" />
     <Compile Include="Distance\DistancePublicMethods.cs" />
     <Compile Include="ElectricCurrent.cs" />
+    <Compile Include="ElectricPotential\ElectricPotential.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialConstants.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialConversion.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialEnums.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialEquality.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialIComparable.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialOverloads.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialProperties.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialPublicMethods.cs" />
+    <Compile Include="ElectricPotential\ElectricPotentialStaticGenerators.cs" />
     <Compile Include="Energy.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
