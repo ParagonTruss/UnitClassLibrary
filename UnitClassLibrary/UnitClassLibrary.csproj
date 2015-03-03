@@ -145,7 +145,6 @@
     <Compile Include="Speed.cs" />
     <Compile Include="Stiffness\Stiffness.cs" />
     <Compile Include="Stiffness\StiffnessConstants.cs" />
-    <Compile Include="Stiffness\StiffnessConversion.cs" />
     <Compile Include="Stiffness\StiffnessEnums.cs" />
     <Compile Include="Stiffness\StiffnessEquality.cs" />
     <Compile Include="Stiffness\StiffnessIComparable.cs" />

@@ -7,123 +7,99 @@ using System;
 	{
 		public double NewtonsPerMillimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerMillimeter); }
+			get { return _Force.Newtons / _Distance.Millimeters; }
 		}
 		public double NewtonsPerCentimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerCentimeter); }
+			get { return _Force.Newtons / _Distance.Centimeters; }
 		}
 		public double NewtonsPerMeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerMeter); }
+			get { return _Force.Newtons / _Distance.Meters; }
 		}
 		public double NewtonsPerKilometers
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerKilometer); }
-		}
-		public double NewtonsPerThirtySeconds
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerThirtySecond); }
-		}
-		public double NewtonsPerSixteenths
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerSixteenth); }
+			get { return _Force.Newtons / _Distance.Kilometers; }
 		}
 		public double NewtonsPerInches
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerInch); }
+			get { return _Force.Newtons / _Distance.Inches; }
 		}
 		public double NewtonsPerFeet
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerFoot); }
+			get { return _Force.Newtons / _Distance.Feet; }
 		}
 		public double NewtonsPerYards
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerYard); }
+			get { return _Force.Newtons / _Distance.Yards; }
 		}
 		public double NewtonsPerMiles
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.NewtonsPerMile); }
+			get { return _Force.Newtons / _Distance.Miles; }
 		}
 		public double PoundsPerMillimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerMillimeter); }
+			get { return _Force.Pounds / _Distance.Millimeters; }
 		}
 		public double PoundsPerCentimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerCentimeter); }
+			get { return _Force.Pounds / _Distance.Centimeters; }
 		}
 		public double PoundsPerMeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerMeter); }
+			get { return _Force.Pounds / _Distance.Meters; }
 		}
 		public double PoundsPerKilometers
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerKilometer); }
-		}
-		public double PoundsPerThirtySeconds
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerThirtySecond); }
-		}
-		public double PoundsPerSixteenths
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerSixteenth); }
+			get { return _Force.Pounds / _Distance.Kilometers; }
 		}
 		public double PoundsPerInches
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerInch); }
+			get { return _Force.Pounds / _Distance.Inches; }
 		}
 		public double PoundsPerFeet
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerFoot); }
+			get { return _Force.Pounds / _Distance.Feet; }
 		}
 		public double PoundsPerYards
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerYard); }
+			get { return _Force.Pounds / _Distance.Yards; }
 		}
 		public double PoundsPerMiles
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.PoundsPerMile); }
+			get { return _Force.Pounds / _Distance.Miles; }
 		}
 		public double KipsPerMillimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerMillimeter); }
+			get { return _Force.Kips / _Distance.Millimeters; }
 		}
 		public double KipsPerCentimeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerCentimeter); }
+			get { return _Force.Kips / _Distance.Centimeters; }
 		}
 		public double KipsPerMeters
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerMeter); }
+			get { return _Force.Kips / _Distance.Meters; }
 		}
 		public double KipsPerKilometers
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerKilometer); }
-		}
-		public double KipsPerThirtySeconds
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerThirtySecond); }
-		}
-		public double KipsPerSixteenths
-		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerSixteenth); }
+			get { return _Force.Kips / _Distance.Kilometers; }
 		}
 		public double KipsPerInches
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerInch); }
+			get { return _Force.Kips / _Distance.Inches; }
 		}
 		public double KipsPerFeet
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerFoot); }
+			get { return _Force.Kips / _Distance.Feet; }
 		}
 		public double KipsPerYards
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerYard); }
+			get { return _Force.Kips / _Distance.Yards; }
 		}
 		public double KipsPerMiles
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType.KipsPerMile); }
+			get { return _Force.Kips / _Distance.Miles; }
 		}
 
 		public double GetValue(StiffnessType Units)
@@ -138,10 +114,6 @@ using System;
 					return NewtonsPerMeters;
 				case StiffnessType.NewtonsPerKilometer:
 					return NewtonsPerKilometers;
-				case StiffnessType.NewtonsPerThirtySecond:
-					return NewtonsPerThirtySeconds;
-				case StiffnessType.NewtonsPerSixteenth:
-					return NewtonsPerSixteenths;
 				case StiffnessType.NewtonsPerInch:
 					return NewtonsPerInches;
 				case StiffnessType.NewtonsPerFoot:
@@ -158,10 +130,6 @@ using System;
 					return PoundsPerMeters;
 				case StiffnessType.PoundsPerKilometer:
 					return PoundsPerKilometers;
-				case StiffnessType.PoundsPerThirtySecond:
-					return PoundsPerThirtySeconds;
-				case StiffnessType.PoundsPerSixteenth:
-					return PoundsPerSixteenths;
 				case StiffnessType.PoundsPerInch:
 					return PoundsPerInches;
 				case StiffnessType.PoundsPerFoot:
@@ -178,10 +146,6 @@ using System;
 					return KipsPerMeters;
 				case StiffnessType.KipsPerKilometer:
 					return KipsPerKilometers;
-				case StiffnessType.KipsPerThirtySecond:
-					return KipsPerThirtySeconds;
-				case StiffnessType.KipsPerSixteenth:
-					return KipsPerSixteenths;
 				case StiffnessType.KipsPerInch:
 					return KipsPerInches;
 				case StiffnessType.KipsPerFoot:

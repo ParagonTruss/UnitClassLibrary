@@ -6,6 +6,8 @@ using System;
 	public partial class Stiffness
 	{
 		#region _fields and Internal Properties
+		private Force _Force;
+		private Distance _Distance;
 
 		internal StiffnessType InternalUnitType
 		{
@@ -28,11 +30,17 @@ using System;
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		 public Stiffness(StiffnessEqualityStrategy passedStrategy = null)
+		 public Stiffness()
 		{
-			_intrinsicValue = 0;
-			_internalUnitType = StiffnessType.NewtonsPerMillimeter;
-			_intrinsicValue = 0;
+			_Force = new Force();
+			_Distance = new Distance();
+		}
+
+		/// <summary> constructor that creates moment based on the passed units </summary>
+		public Stiffness(Force passedForce, Distance passedDistance)
+		{
+			_Force = passedForce;
+			_Distance = passedDistance;
 		}
 
 		/// <summary> Accepts standard types for input. </summary>
@@ -65,11 +73,6 @@ using System;
 			{
 				return passedStrategy;
 			}
-		}
-
-		private double _retrieveIntrinsicValueAsDesiredExternalUnit(StiffnessType toStiffnessType)
-		{
-			return ConvertStiffness(_internalUnitType, _intrinsicValue, toStiffnessType);
 		}
 
 		#endregion
