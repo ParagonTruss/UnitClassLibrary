@@ -158,6 +158,16 @@
     <Compile Include="Stiffness\StiffnessPublicMethods.cs" />
     <Compile Include="Stiffness\StiffnessStaticGenerators.cs" />
     <Compile Include="Stress.cs" />
+    <Compile Include="Temperature\Temperature.cs" />
+    <Compile Include="Temperature\TemperatureConstants.cs" />
+    <Compile Include="Temperature\TemperatureConversion.cs" />
+    <Compile Include="Temperature\TemperatureEnums.cs" />
+    <Compile Include="Temperature\TemperatureEquality.cs" />
+    <Compile Include="Temperature\TemperatureIComparable.cs" />
+    <Compile Include="Temperature\TemperatureOverloads.cs" />
+    <Compile Include="Temperature\TemperatureProperties.cs" />
+    <Compile Include="Temperature\TemperaturePublicMethods.cs" />
+    <Compile Include="Temperature\TemperatureStaticGenerators.cs" />
     <Compile Include="Time\Time.cs" />
     <Compile Include="Time\TimeConstants.cs" />
     <Compile Include="Time\TimeConversion.cs" />
