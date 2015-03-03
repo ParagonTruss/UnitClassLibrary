@@ -66,6 +66,15 @@
   <ItemGroup>
     <Compile Include="Angle\Angle.cs" />
     <Compile Include="Angle\AngularDistance.cs" />
+    <Compile Include="DataTransferRate\DataTransferRate.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateConstants.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateEnums.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateEquality.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateIComparable.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateOverloads.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateProperties.cs" />
+    <Compile Include="DataTransferRate\DataTransferRatePublicMethods.cs" />
+    <Compile Include="DataTransferRate\DataTransferRateStaticGenerators.cs" />
     <Compile Include="Data\Data.cs" />
     <Compile Include="Data\DataConstants.cs" />
     <Compile Include="Data\DataConversion.cs" />
