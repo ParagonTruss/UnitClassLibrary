@@ -95,7 +95,16 @@
     <Compile Include="ElectricCurrent\ElectricCurrentProperties.cs" />
     <Compile Include="ElectricCurrent\ElectricCurrentPublicMethods.cs" />
     <Compile Include="ElectricCurrent\ElectricCurrentStaticGenerators.cs" />
-    <Compile Include="Energy.cs" />
+    <Compile Include="Energy\Energy.cs" />
+    <Compile Include="Energy\EnergyConstants.cs" />
+    <Compile Include="Energy\EnergyConversion.cs" />
+    <Compile Include="Energy\EnergyEnums.cs" />
+    <Compile Include="Energy\EnergyEquality.cs" />
+    <Compile Include="Energy\EnergyIComparable.cs" />
+    <Compile Include="Energy\EnergyOverloads.cs" />
+    <Compile Include="Energy\EnergyProperties.cs" />
+    <Compile Include="Energy\EnergyPublicMethods.cs" />
+    <Compile Include="Energy\EnergyStaticGenerators.cs" />
     <Compile Include="ExtensionMethods\AngleListExtensionMethods.cs" />
     <Compile Include="Area.cs" />
     <Compile Include="Distance\Distance.cs" />

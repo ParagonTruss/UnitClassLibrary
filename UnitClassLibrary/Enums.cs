@@ -23,11 +23,6 @@ namespace UnitClassLibrary
     public enum PowerType { Watt, Horsepower, FootPoundsPerSecond, MetricHorsepower, ErgsPerSecond }
 
     /// <summary>
-    /// Enum for specifying the type of unit a energy is
-    /// </summary>
-    public enum EnergyType { Joule, Erg, FootPound, KilogramMeter }
-
-    /// <summary>
     /// Enum for specifying the type of unit a stress is
     /// </summary>
     public enum StressType { PoundsPerSquareInch, PoundsPerSquareMillimeter, NewtonsPerSquareMeter, NewtonsPerSquareMillimeter }
