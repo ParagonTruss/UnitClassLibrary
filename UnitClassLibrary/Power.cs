@@ -40,15 +40,11 @@ namespace UnitClassLibrary
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case PowerType.Horsepower:
-                    _energy = new Energy(EnergyType.FootPound, passedValue / 33000);
+                    _energy = new Energy(EnergyType.Footpound, passedValue / 33000);
                     _time = new Time(TimeType.Minute, 1);
                     break;
-                case PowerType.MetricHorsepower:
-                    _energy = new Energy(EnergyType.KilogramMeter, passedValue / 75);
-                    _time = new Time(TimeType.Second, 1);
-                    break;
                 case PowerType.FootPoundsPerSecond:
-                    _energy = new Energy(EnergyType.FootPound, passedValue);
+                    _energy = new Energy(EnergyType.Footpound, passedValue);
                     _time = new Time(TimeType.Second, 1);
                     break;
                 case PowerType.ErgsPerSecond:
@@ -74,7 +70,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Watt
         {
-            get { return _energy.Joule / _time.Seconds; }
+            get { return _energy.Joules / _time.Seconds; }
         }
 
         /// <summary>
@@ -82,7 +78,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double Horsepower
         {
-            get { return 33000 * _energy.FootPound / _time.Minutes; }
+            get { return 33000 * _energy.Footpounds / _time.Minutes; }
         }
 
         /// <summary>
@@ -90,15 +86,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double FootPoundsPerSecond
         {
-            get { return _energy.FootPound / _time.Seconds; }
-        }
-
-        /// <summary>
-        /// Returns power as metric horsepower
-        /// </summary>
-        public double MetricHorsepower
-        {
-            get { return 75 * _energy.KilogramMeter / _time.Seconds; }
+            get { return _energy.Footpounds / _time.Seconds; }
         }
 
         /// <summary>
@@ -106,7 +94,7 @@ namespace UnitClassLibrary
         /// </summary>
         public double ErgsPerSecond
         {
-            get { return _energy.Erg / _time.Seconds; }
+            get { return _energy.Ergs / _time.Seconds; }
         }
 
         public double GetValue(PowerType Units)
@@ -119,8 +107,6 @@ namespace UnitClassLibrary
                     return Horsepower;
                 case PowerType.FootPoundsPerSecond:
                     return FootPoundsPerSecond;
-                case PowerType.MetricHorsepower:
-                    return MetricHorsepower;
                 case PowerType.ErgsPerSecond:
                     return ErgsPerSecond;
             }
@@ -136,7 +122,7 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return  (_energy.FootPound / _time.Seconds).GetHashCode();
+            return  (_energy.Footpounds / _time.Seconds).GetHashCode();
         }
 
         /// <summary>

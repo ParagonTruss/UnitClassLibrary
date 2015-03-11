@@ -196,19 +196,21 @@ namespace UnitLibraryTests
         }
 
         /// <summary>
-        /// Tests toString failure
+        /// Tests toString
         /// </summary>
         [Test()]
         public void Distance_ToString()
         {
             // arrange
             Distance Distance = new Distance(DistanceType.Millimeter, 14.1875);
+            Distance Distance2 = new Distance(DistanceType.Millimeter, 0);
 
-            // act
-            string dimToString = Distance.ToString();
+            //should come back rounded due to DeviationConstant
+            // act            
 
             // assert
-            dimToString.Should().Be("14.1875 Millimeter");
+            Distance.ToString().Should().Be("14 Millimeter");
+            Distance2.ToString().Should().Be("0 Millimeter");
         }
 
         /// <summary>

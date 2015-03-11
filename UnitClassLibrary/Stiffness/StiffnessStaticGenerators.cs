@@ -38,22 +38,6 @@ using System;
 			return new Stiffness(StiffnessType.NewtonsPerKilometer, passedValue);
 		}
 
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in NewtonsPerThirtySeconds</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithNewtonsPerThirtySeconds(double passedValue)
-		{
-			return new Stiffness(StiffnessType.NewtonsPerThirtySecond, passedValue);
-		}
-
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in NewtonsPerSixteenths</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithNewtonsPerSixteenths(double passedValue)
-		{
-			return new Stiffness(StiffnessType.NewtonsPerSixteenth, passedValue);
-		}
-
 		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in NewtonsPerInches</summary>
 		///<param name="passedValue"></param>
 		///<returns></returns>
@@ -118,22 +102,6 @@ using System;
 			return new Stiffness(StiffnessType.PoundsPerKilometer, passedValue);
 		}
 
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in PoundsPerThirtySeconds</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithPoundsPerThirtySeconds(double passedValue)
-		{
-			return new Stiffness(StiffnessType.PoundsPerThirtySecond, passedValue);
-		}
-
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in PoundsPerSixteenths</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithPoundsPerSixteenths(double passedValue)
-		{
-			return new Stiffness(StiffnessType.PoundsPerSixteenth, passedValue);
-		}
-
 		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in PoundsPerInches</summary>
 		///<param name="passedValue"></param>
 		///<returns></returns>
@@ -196,22 +164,6 @@ using System;
 		public static Stiffness MakeStiffnessWithKipsPerKilometers(double passedValue)
 		{
 			return new Stiffness(StiffnessType.KipsPerKilometer, passedValue);
-		}
-
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in KipsPerThirtySeconds</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithKipsPerThirtySeconds(double passedValue)
-		{
-			return new Stiffness(StiffnessType.KipsPerThirtySecond, passedValue);
-		}
-
-		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in KipsPerSixteenths</summary>
-		///<param name="passedValue"></param>
-		///<returns></returns>
-		public static Stiffness MakeStiffnessWithKipsPerSixteenths(double passedValue)
-		{
-			return new Stiffness(StiffnessType.KipsPerSixteenth, passedValue);
 		}
 
 		///<summary>Generator method that constructs Stiffness with assumption that the passed value is in KipsPerInches</summary>

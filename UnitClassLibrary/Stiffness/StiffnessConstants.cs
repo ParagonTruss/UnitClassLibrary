@@ -26,16 +26,6 @@ using System;
 			get { return new Stiffness(StiffnessType.NewtonsPerKilometer, 1); }
 		}
 
-		public static Stiffness NewtonsPerThirtySecond
-		{
-			get { return new Stiffness(StiffnessType.NewtonsPerThirtySecond, 1); }
-		}
-
-		public static Stiffness NewtonsPerSixteenth
-		{
-			get { return new Stiffness(StiffnessType.NewtonsPerSixteenth, 1); }
-		}
-
 		public static Stiffness NewtonsPerInch
 		{
 			get { return new Stiffness(StiffnessType.NewtonsPerInch, 1); }
@@ -76,16 +66,6 @@ using System;
 			get { return new Stiffness(StiffnessType.PoundsPerKilometer, 1); }
 		}
 
-		public static Stiffness PoundsPerThirtySecond
-		{
-			get { return new Stiffness(StiffnessType.PoundsPerThirtySecond, 1); }
-		}
-
-		public static Stiffness PoundsPerSixteenth
-		{
-			get { return new Stiffness(StiffnessType.PoundsPerSixteenth, 1); }
-		}
-
 		public static Stiffness PoundsPerInch
 		{
 			get { return new Stiffness(StiffnessType.PoundsPerInch, 1); }
@@ -124,16 +104,6 @@ using System;
 		public static Stiffness KipsPerKilometer
 		{
 			get { return new Stiffness(StiffnessType.KipsPerKilometer, 1); }
-		}
-
-		public static Stiffness KipsPerThirtySecond
-		{
-			get { return new Stiffness(StiffnessType.KipsPerThirtySecond, 1); }
-		}
-
-		public static Stiffness KipsPerSixteenth
-		{
-			get { return new Stiffness(StiffnessType.KipsPerSixteenth, 1); }
 		}
 
 		public static Stiffness KipsPerInch
