@@ -193,7 +193,28 @@ namespace UnitClassLibrary
         /// </summary>
         public override string ToString()
         {
-            return this._intrinsicValue + " " + this._internalUnitType;
+            //round the number to an acceptable range given the EqualityStrategy.
+
+            try
+            {
+                int digits = 0;
+                double roundedIntrinsicValue =Math.Round(_intrinsicValue, digits);
+
+                while (this != new Distance(this.InternalUnitType, roundedIntrinsicValue))
+                {
+                    digits++;
+                    roundedIntrinsicValue = Math.Round(_intrinsicValue, digits);
+                }
+
+                return Math.Round(_intrinsicValue, digits) + " " + this._internalUnitType;
+            }
+            catch (OverflowException)
+            {
+
+                return _intrinsicValue + " " + this._internalUnitType;
+            }
+
+
         }
 
         /// <summary>
