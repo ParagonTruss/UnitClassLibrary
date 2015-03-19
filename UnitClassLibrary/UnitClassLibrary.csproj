@@ -64,15 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Angle\Angle.cs" />
-    <Compile Include="Angle\AngleConstants.cs" />
-    <Compile Include="Angle\AngleConversion.cs" />
-    <Compile Include="Angle\AngleEnums.cs" />
-    <Compile Include="Angle\AngleEquality.cs" />
-    <Compile Include="Angle\AngleIComparable.cs" />
-    <Compile Include="Angle\AngleOverloads.cs" />
-    <Compile Include="Angle\AngleProperties.cs" />
-    <Compile Include="Angle\AnglePublicMethods.cs" />
-    <Compile Include="Angle\AngleStaticGenerators.cs" />
+    <Compile Include="Angle\AngularDistance.cs" />
     <Compile Include="Capacitance\Capacitance.cs" />
     <Compile Include="Capacitance\CapacitanceConstants.cs" />
     <Compile Include="Capacitance\CapacitanceConversion.cs" />
