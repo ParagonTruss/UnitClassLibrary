@@ -14,7 +14,7 @@ using System;
 			}
 			else
 			{
-				return _intrinsicValue.CompareTo(other.GetValue(_internalUnitType));
+				return this.BitsPerMicroseconds.CompareTo(other.GetValue(DataTransferRateType.BitsPerMicrosecond));
 			}
 		}
 

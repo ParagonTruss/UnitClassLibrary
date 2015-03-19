@@ -12,43 +12,43 @@ using System;
 		/// <returns></returns>
 		public static DataTransferRate operator ^(DataTransferRate o1, double power)
 		{
-			return new DataTransferRate(o1._internalUnitType, Math.Pow(o1._intrinsicValue, power));
+			return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, Math.Pow(o1.BitsPerMicroseconds, power));
 		}
 
 		/// <summary>Returns new unit with sum of two passed units</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static DataTransferRate operator +(DataTransferRate o1, DataTransferRate o2)
+		public static DataTransferRate operator + (DataTransferRate o1, DataTransferRate o2)
 		{
-			return new DataTransferRate(o1._internalUnitType, o1._intrinsicValue + o2.GetValue(o1._internalUnitType));
+			return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, o1.GetValue(DataTransferRateType.BitsPerMicrosecond) + o2.GetValue(DataTransferRateType.BitsPerMicrosecond));
 		}
 
 		/// <summary>Returns new unit with difference of two passed units</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static DataTransferRate operator -(DataTransferRate o1, DataTransferRate o2)
+		public static DataTransferRate operator - (DataTransferRate o1, DataTransferRate o2)
 		{
-			return new DataTransferRate(o1._internalUnitType, o1._intrinsicValue - o2.GetValue(o1._internalUnitType));
+			return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, o1.GetValue(DataTransferRateType.BitsPerMicrosecond) - o2.GetValue(DataTransferRateType.BitsPerMicrosecond));
 		}
 
 		/// <summary>ratio between differences</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static double operator/(DataTransferRate o1, DataTransferRate o2)
+		public static double operator / (DataTransferRate o1, DataTransferRate o2)
 		{
-			return o1.GetValue(o1._internalUnitType) / o2.GetValue(o1._internalUnitType);
+			return o1.GetValue(DataTransferRateType.BitsPerMicrosecond) / o2.GetValue(DataTransferRateType.BitsPerMicrosecond);
 		}
 
 		/// <summary>scalar multiplication</summary>
 		/// <param name="o1"></param>
 		/// <param name="multiplier"></param>
 		/// <returns></returns>
-		public static DataTransferRate operator*(DataTransferRate o1, double multiplier)
+		public static DataTransferRate operator * (DataTransferRate o1, double multiplier)
 		{
-			return new DataTransferRate(o1._internalUnitType, o1._intrinsicValue * multiplier);
+			return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, o1.BitsPerMicroseconds * multiplier);
 		}
 
 		/// <summary>scalar multiplication</summary>
@@ -66,7 +66,7 @@ using System;
 		/// <returns></returns>
 		public static DataTransferRate operator/(DataTransferRate o1, double divisor)
 		{
-			return new DataTransferRate(o1._internalUnitType, o1._intrinsicValue / divisor);
+			return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, o1.BitsPerMicroseconds / divisor);
 		}
 
 		/// <summary>Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant </summary>
@@ -107,7 +107,7 @@ using System;
 			{
 				return false;
 			}
-			return o1._intrinsicValue > o2.GetValue(o1._internalUnitType);
+			return o1.BitsPerMicroseconds > o2.BitsPerMicroseconds;
 		}
 
 		/// <summary>less than</summary>
@@ -120,7 +120,7 @@ using System;
 			{
 				return false;
 			}
-			return o1._intrinsicValue < o2.GetValue(o1._internalUnitType);
+			return o1.BitsPerMicroseconds < o2.BitsPerMicroseconds;
 		}
 
 		/// <summary>less than or equal to</summary>
@@ -145,14 +145,14 @@ using System;
 		/// <returns>same hashcode as any double would</returns>
 		public override int GetHashCode()
 		{
-			return _intrinsicValue.GetHashCode();
+			return this._data.GetHashCode() * this._time.GetHashCode();
 		}
 
 		/// <summary>The value and unit in terms of what the object was created with. </summary>
 		/// <returns>Should never return anything</returns>
 		public override string ToString()
 		{
-			return this._intrinsicValue + " " + this._internalUnitType;
+			return this._data + " " + this._time;
 		}
 
 		/// <summary>calls the Dimension only Equals method</summary>

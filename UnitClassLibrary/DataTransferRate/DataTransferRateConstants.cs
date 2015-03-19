@@ -6,404 +6,604 @@ using System;
 	public partial class DataTransferRate
 	{
 
-		public static DataTransferRate BitsPerMillimeter
+		public static DataTransferRate BitsPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate BitsPerCentimeter
+		public static DataTransferRate BitsPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate BitsPerMeter
+		public static DataTransferRate BitsPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate BitsPerKilometer
+		public static DataTransferRate BitsPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerSecond, 1); }
 		}
 
-		public static DataTransferRate BitsPerInch
+		public static DataTransferRate BitsPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerMinute, 1); }
 		}
 
-		public static DataTransferRate BitsPerFoot
+		public static DataTransferRate BitsPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerHour, 1); }
 		}
 
-		public static DataTransferRate BitsPerYard
+		public static DataTransferRate BitsPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerDay, 1); }
 		}
 
-		public static DataTransferRate BitsPerMile
+		public static DataTransferRate BitsPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.BitsPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerWeek, 1); }
 		}
 
-		public static DataTransferRate BytesPerMillimeter
+		public static DataTransferRate BitsPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerMonth, 1); }
 		}
 
-		public static DataTransferRate BytesPerCentimeter
+		public static DataTransferRate BitsPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerYear, 1); }
 		}
 
-		public static DataTransferRate BytesPerMeter
+		public static DataTransferRate BitsPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerDecade, 1); }
 		}
 
-		public static DataTransferRate BytesPerKilometer
+		public static DataTransferRate BitsPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerCentury, 1); }
 		}
 
-		public static DataTransferRate BytesPerInch
+		public static DataTransferRate BytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate BytesPerFoot
+		public static DataTransferRate BytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate BytesPerYard
+		public static DataTransferRate BytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate BytesPerMile
+		public static DataTransferRate BytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.BytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerMillimeter
+		public static DataTransferRate BytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerCentimeter
+		public static DataTransferRate BytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerHour, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerMeter
+		public static DataTransferRate BytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerDay, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerKilometer
+		public static DataTransferRate BytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerWeek, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerInch
+		public static DataTransferRate BytesPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerMonth, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerFoot
+		public static DataTransferRate BytesPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerYear, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerYard
+		public static DataTransferRate BytesPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerDecade, 1); }
 		}
 
-		public static DataTransferRate KilobytesPerMile
+		public static DataTransferRate BytesPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BytesPerCentury, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerMillimeter
+		public static DataTransferRate KilobytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerCentimeter
+		public static DataTransferRate KilobytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerMeter
+		public static DataTransferRate KilobytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerKilometer
+		public static DataTransferRate KilobytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerInch
+		public static DataTransferRate KilobytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerFoot
+		public static DataTransferRate KilobytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerHour, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerYard
+		public static DataTransferRate KilobytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerDay, 1); }
 		}
 
-		public static DataTransferRate MegabytesPerMile
+		public static DataTransferRate KilobytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerWeek, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerMillimeter
+		public static DataTransferRate KilobytesPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerMonth, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerCentimeter
+		public static DataTransferRate KilobytesPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerYear, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerMeter
+		public static DataTransferRate KilobytesPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerDecade, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerKilometer
+		public static DataTransferRate KilobytesPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.KilobytesPerCentury, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerInch
+		public static DataTransferRate MegabytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerFoot
+		public static DataTransferRate MegabytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerYard
+		public static DataTransferRate MegabytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate GigabytesPerMile
+		public static DataTransferRate MegabytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerMillimeter
+		public static DataTransferRate MegabytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerCentimeter
+		public static DataTransferRate MegabytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerHour, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerMeter
+		public static DataTransferRate MegabytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerDay, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerKilometer
+		public static DataTransferRate MegabytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerWeek, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerInch
+		public static DataTransferRate MegabytesPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerMonth, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerFoot
+		public static DataTransferRate MegabytesPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerYear, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerYard
+		public static DataTransferRate MegabytesPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerDecade, 1); }
 		}
 
-		public static DataTransferRate TerabytesPerMile
+		public static DataTransferRate MegabytesPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.MegabytesPerCentury, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerMillimeter
+		public static DataTransferRate GigabytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerCentimeter
+		public static DataTransferRate GigabytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerMeter
+		public static DataTransferRate GigabytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerKilometer
+		public static DataTransferRate GigabytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerInch
+		public static DataTransferRate GigabytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerFoot
+		public static DataTransferRate GigabytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerHour, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerYard
+		public static DataTransferRate GigabytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerDay, 1); }
 		}
 
-		public static DataTransferRate PetabytesPerMile
+		public static DataTransferRate GigabytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerWeek, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerMillimeter
+		public static DataTransferRate GigabytesPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerMonth, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerCentimeter
+		public static DataTransferRate GigabytesPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerYear, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerMeter
+		public static DataTransferRate GigabytesPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerDecade, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerKilometer
+		public static DataTransferRate GigabytesPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.GigabytesPerCentury, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerInch
+		public static DataTransferRate TerabytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerFoot
+		public static DataTransferRate TerabytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerYard
+		public static DataTransferRate TerabytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate ExabytesPerMile
+		public static DataTransferRate TerabytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerMillimeter
+		public static DataTransferRate TerabytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerCentimeter
+		public static DataTransferRate TerabytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerHour, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerMeter
+		public static DataTransferRate TerabytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerDay, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerKilometer
+		public static DataTransferRate TerabytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerWeek, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerInch
+		public static DataTransferRate TerabytesPerMonth
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerMonth, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerFoot
+		public static DataTransferRate TerabytesPerYear
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerYear, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerYard
+		public static DataTransferRate TerabytesPerDecade
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerDecade, 1); }
 		}
 
-		public static DataTransferRate ZettabytesPerMile
+		public static DataTransferRate TerabytesPerCentury
 		{
-			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.TerabytesPerCentury, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerMillimeter
+		public static DataTransferRate PetabytesPerNanosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerNanosecond, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerCentimeter
+		public static DataTransferRate PetabytesPerMicrosecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerCentimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMicrosecond, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerMeter
+		public static DataTransferRate PetabytesPerMillisecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMillisecond, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerKilometer
+		public static DataTransferRate PetabytesPerSecond
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerKilometer, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerSecond, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerInch
+		public static DataTransferRate PetabytesPerMinute
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerInch, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMinute, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerFoot
+		public static DataTransferRate PetabytesPerHour
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerFoot, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerHour, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerYard
+		public static DataTransferRate PetabytesPerDay
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerYard, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerDay, 1); }
 		}
 
-		public static DataTransferRate YottabytesPerMile
+		public static DataTransferRate PetabytesPerWeek
 		{
-			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMile, 1); }
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerWeek, 1); }
+		}
+
+		public static DataTransferRate PetabytesPerMonth
+		{
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerMonth, 1); }
+		}
+
+		public static DataTransferRate PetabytesPerYear
+		{
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerYear, 1); }
+		}
+
+		public static DataTransferRate PetabytesPerDecade
+		{
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerDecade, 1); }
+		}
+
+		public static DataTransferRate PetabytesPerCentury
+		{
+			get { return new DataTransferRate(DataTransferRateType.PetabytesPerCentury, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerNanosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerNanosecond, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerMicrosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMicrosecond, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerMillisecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMillisecond, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerSecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerSecond, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerMinute
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMinute, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerHour
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerHour, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerDay
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerDay, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerWeek
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerWeek, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerMonth
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerMonth, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerYear
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerYear, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerDecade
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerDecade, 1); }
+		}
+
+		public static DataTransferRate ExabytesPerCentury
+		{
+			get { return new DataTransferRate(DataTransferRateType.ExabytesPerCentury, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerNanosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerNanosecond, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerMicrosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMicrosecond, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerMillisecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMillisecond, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerSecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerSecond, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerMinute
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMinute, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerHour
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerHour, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerDay
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerDay, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerWeek
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerWeek, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerMonth
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerMonth, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerYear
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerYear, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerDecade
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerDecade, 1); }
+		}
+
+		public static DataTransferRate ZettabytesPerCentury
+		{
+			get { return new DataTransferRate(DataTransferRateType.ZettabytesPerCentury, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerNanosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerNanosecond, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerMicrosecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMicrosecond, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerMillisecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMillisecond, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerSecond
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerSecond, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerMinute
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMinute, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerHour
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerHour, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerDay
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerDay, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerWeek
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerWeek, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerMonth
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerMonth, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerYear
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerYear, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerDecade
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerDecade, 1); }
+		}
+
+		public static DataTransferRate YottabytesPerCentury
+		{
+			get { return new DataTransferRate(DataTransferRateType.YottabytesPerCentury, 1); }
 		}
 	}
 }

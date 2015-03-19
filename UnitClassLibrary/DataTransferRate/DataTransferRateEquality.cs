@@ -42,7 +42,7 @@ using System;
 		public static DataTransferRate AcceptedEqualityDeviationDistance
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
-			get { return new DataTransferRate(DataTransferRateType.BitsPerMillimeter, 1); }
+			get { return new DataTransferRate(DataTransferRateType.BitsPerNanosecond, 1); }
 		}
 
 		/// <summary> When comparing two datatransferrate and deviation is allowed to be within a percentage of the firstDataTransferRate. This is that percentage </summary>
