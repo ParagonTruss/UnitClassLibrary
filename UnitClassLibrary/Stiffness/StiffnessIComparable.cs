@@ -14,7 +14,7 @@ using System;
 			}
 			else
 			{
-				return _intrinsicValue.CompareTo(other.GetValue(_internalUnitType));
+				return this.NewtonsPerCentimeters.CompareTo(other.GetValue(StiffnessType.NewtonsPerCentimeter));
 			}
 		}
 

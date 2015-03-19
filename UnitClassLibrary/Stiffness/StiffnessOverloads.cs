@@ -12,43 +12,43 @@ using System;
 		/// <returns></returns>
 		public static Stiffness operator ^(Stiffness o1, double power)
 		{
-			return new Stiffness(o1._internalUnitType, Math.Pow(o1._intrinsicValue, power));
+			return new Stiffness(StiffnessType.NewtonsPerCentimeter, Math.Pow(o1.NewtonsPerCentimeters, power));
 		}
 
 		/// <summary>Returns new unit with sum of two passed units</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static Stiffness operator +(Stiffness o1, Stiffness o2)
+		public static Stiffness operator + (Stiffness o1, Stiffness o2)
 		{
-			return new Stiffness(o1._internalUnitType, o1._intrinsicValue + o2.GetValue(o1._internalUnitType));
+			return new Stiffness(StiffnessType.NewtonsPerCentimeter, o1.GetValue(StiffnessType.NewtonsPerCentimeter) + o2.GetValue(StiffnessType.NewtonsPerCentimeter));
 		}
 
 		/// <summary>Returns new unit with difference of two passed units</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static Stiffness operator -(Stiffness o1, Stiffness o2)
+		public static Stiffness operator - (Stiffness o1, Stiffness o2)
 		{
-			return new Stiffness(o1._internalUnitType, o1._intrinsicValue - o2.GetValue(o1._internalUnitType));
+			return new Stiffness(StiffnessType.NewtonsPerCentimeter, o1.GetValue(StiffnessType.NewtonsPerCentimeter) - o2.GetValue(StiffnessType.NewtonsPerCentimeter));
 		}
 
 		/// <summary>ratio between differences</summary>
 		/// <param name="o1"></param>
 		/// <param name="o2"></param>
 		/// <returns></returns>
-		public static double operator/(Stiffness o1, Stiffness o2)
+		public static double operator / (Stiffness o1, Stiffness o2)
 		{
-			return o1.GetValue(o1._internalUnitType) / o2.GetValue(o1._internalUnitType);
+			return o1.GetValue(StiffnessType.NewtonsPerCentimeter) / o2.GetValue(StiffnessType.NewtonsPerCentimeter);
 		}
 
 		/// <summary>scalar multiplication</summary>
 		/// <param name="o1"></param>
 		/// <param name="multiplier"></param>
 		/// <returns></returns>
-		public static Stiffness operator*(Stiffness o1, double multiplier)
+		public static Stiffness operator * (Stiffness o1, double multiplier)
 		{
-			return new Stiffness(o1._internalUnitType, o1._intrinsicValue * multiplier);
+			return new Stiffness(StiffnessType.NewtonsPerCentimeter, o1.NewtonsPerCentimeters * multiplier);
 		}
 
 		/// <summary>scalar multiplication</summary>
@@ -66,7 +66,7 @@ using System;
 		/// <returns></returns>
 		public static Stiffness operator/(Stiffness o1, double divisor)
 		{
-			return new Stiffness(o1._internalUnitType, o1._intrinsicValue / divisor);
+			return new Stiffness(StiffnessType.NewtonsPerCentimeter, o1.NewtonsPerCentimeters / divisor);
 		}
 
 		/// <summary>Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant </summary>
@@ -107,7 +107,7 @@ using System;
 			{
 				return false;
 			}
-			return o1._intrinsicValue > o2.GetValue(o1._internalUnitType);
+			return o1.NewtonsPerCentimeters > o2.NewtonsPerCentimeters;
 		}
 
 		/// <summary>less than</summary>
@@ -120,7 +120,7 @@ using System;
 			{
 				return false;
 			}
-			return o1._intrinsicValue < o2.GetValue(o1._internalUnitType);
+			return o1.NewtonsPerCentimeters < o2.NewtonsPerCentimeters;
 		}
 
 		/// <summary>less than or equal to</summary>
@@ -145,14 +145,14 @@ using System;
 		/// <returns>same hashcode as any double would</returns>
 		public override int GetHashCode()
 		{
-			return _intrinsicValue.GetHashCode();
+			return this._force.GetHashCode() * this._distance.GetHashCode();
 		}
 
 		/// <summary>The value and unit in terms of what the object was created with. </summary>
 		/// <returns>Should never return anything</returns>
 		public override string ToString()
 		{
-			return this._intrinsicValue + " " + this._internalUnitType;
+			return this._force + " " + this._distance;
 		}
 
 		/// <summary>calls the Dimension only Equals method</summary>
