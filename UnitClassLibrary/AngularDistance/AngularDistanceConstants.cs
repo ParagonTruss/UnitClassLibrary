@@ -8,12 +8,12 @@ using System;
 
 		public static AngularDistance Radian
 		{
-			get { return new AngularDistance(AngularDistanceType.Radian, 1); }
+			get { return new AngularDistance(AngleType.Radian, 1); }
 		}
 
 		public static AngularDistance Degree
 		{
-			get { return new AngularDistance(AngularDistanceType.Degree, 1); }
+			get { return new AngularDistance(AngleType.Degree, 1); }
 		}
 	}
 }

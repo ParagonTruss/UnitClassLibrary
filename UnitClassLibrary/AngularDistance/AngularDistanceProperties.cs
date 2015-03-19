@@ -7,23 +7,23 @@ using System;
 	{
 		public double Radians
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(AngularDistanceType.Radian); }
+			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(AngleType.Radian); }
 		}
 		public double Degrees
 		{
-			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(AngularDistanceType.Degree); }
+			get { return _retrieveIntrinsicValueAsDesiredExternalUnit(AngleType.Degree); }
 		}
 
-		public double GetValue(AngularDistanceType Units)
+		public double GetValue(AngleType Units)
 		{
 			switch (Units)
 			{
-				case AngularDistanceType.Radian:
+				case AngleType.Radian:
 					return Radians;
-				case AngularDistanceType.Degree:
+				case AngleType.Degree:
 					return Degrees;
 			}
-			throw new Exception("Unknown AngularDistanceType");
+			throw new Exception("Unknown AngleType");
 		}
 	}
 }

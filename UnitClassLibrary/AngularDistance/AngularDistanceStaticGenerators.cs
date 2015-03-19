@@ -11,7 +11,7 @@ using System;
 		///<returns></returns>
 		public static AngularDistance MakeAngularDistanceWithRadians(double passedValue)
 		{
-			return new AngularDistance(AngularDistanceType.Radian, passedValue);
+			return new AngularDistance(AngleType.Radian, passedValue);
 		}
 
 		///<summary>Generator method that constructs AngularDistance with assumption that the passed value is in Degrees</summary>
@@ -19,7 +19,7 @@ using System;
 		///<returns></returns>
 		public static AngularDistance MakeAngularDistanceWithDegrees(double passedValue)
 		{
-			return new AngularDistance(AngularDistanceType.Degree, passedValue);
+			return new AngularDistance(AngleType.Degree, passedValue);
 		}
 	}
 }

@@ -13,11 +13,6 @@ namespace UnitClassLibrary
     public enum AreaType { MillimetersSquared, CentimetersSquared, MetersSquared, KilometersSquared, InchesSquared, FeetSquared, YardsSquared, MilesSquared }
 
     /// <summary>
-    /// Enum for specifying the type of unit an angle is
-    /// </summary>
-    public enum AngleType { Radian, Degree }
-
-    /// <summary>
     /// Enum for specifying the type of unit a power is
     /// </summary>
     public enum PowerType { Watt, Horsepower, FootPoundsPerSecond, MetricHorsepower, ErgsPerSecond }

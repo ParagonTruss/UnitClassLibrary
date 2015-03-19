@@ -42,7 +42,7 @@ using System;
 		public static AngularDistance AcceptedEqualityDeviationDistance
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
-			get { return new AngularDistance(AngularDistanceType.Radian, 1); }
+			get { return new AngularDistance(AngleType.Radian, 1); }
 		}
 
 		/// <summary> When comparing two angulardistance and deviation is allowed to be within a percentage of the firstAngularDistance. This is that percentage </summary>

@@ -34,11 +34,11 @@ namespace UnitClassLibrary
         /// <summary>
         /// Create an angle object from an angle value.
         /// </summary>
-        /// <param name="angleType">angle unit type</param>
+        /// <param name="AngleType">angle unit type</param>
         /// <param name="passedValue">angle value</param>
-        public Angle(AngleType angleType, double passedValue)
+        public Angle(AngleType AngleType, double passedValue)
         {
-            switch (angleType)
+            switch (AngleType)
             {
                 case AngleType.Radian:
 
@@ -83,11 +83,6 @@ namespace UnitClassLibrary
         /// <param name="passedAngle">angle to copy</param>
         public Angle(Angle passedAngle): base(passedAngle){ }
 
-        /// <summary>
-        /// castes an angle string to angle degrees
-        /// </summary>
-        /// <param name="passedAngleString">angle string to parse</param>
-        public Angle(string passedAngleString): base(passedAngleString){}
         
         #endregion
 

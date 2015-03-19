@@ -7,10 +7,10 @@ using System;
 	{
 
 	/// <summary>prints the value and unit type converted to</summary>
-	/// <param name="angulardistanceType"></param>
-	public string ToString(AngularDistanceType angulardistanceType)
+	/// <param name="AngleType"></param>
+	public string ToString(AngleType AngleType)
 	{
-		return this.GetValue(angulardistanceType) + " " + angulardistanceType;
+		return this.GetValue(AngleType) + " " + AngleType;
 	}
 
 	/// <summary>Creates a new object that is the negative of this</summary><returns>new object with value equivalent to result</returns>

@@ -7,11 +7,11 @@ using System;
 	{
 		#region _fields and Internal Properties
 
-		internal AngularDistanceType InternalUnitType
+		internal AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
 		}
-		public AngularDistanceType _internalUnitType;
+		public AngleType _internalUnitType;
 
         public double _intrinsicValue;
 
@@ -31,15 +31,15 @@ using System;
 		 public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = 0;
-			_internalUnitType = AngularDistanceType.Radian;
+			_internalUnitType = AngleType.Radian;
 			_intrinsicValue = 0;
 		}
 
 		/// <summary> Accepts standard types for input. </summary>
-		public AngularDistance(AngularDistanceType passedAngularDistanceType, double passedInput, AngularDistanceEqualityStrategy passedStrategy = null)
+		public AngularDistance(AngleType passedAngleType, double passedInput, AngularDistanceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = passedInput;
-			_internalUnitType = passedAngularDistanceType;
+			_internalUnitType = passedAngleType;
 			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
@@ -67,9 +67,9 @@ using System;
 			}
 		}
 
-		private double _retrieveIntrinsicValueAsDesiredExternalUnit(AngularDistanceType toAngularDistanceType)
+		private double _retrieveIntrinsicValueAsDesiredExternalUnit(AngleType toAngleType)
 		{
-			return ConvertAngularDistance(_internalUnitType, _intrinsicValue, toAngularDistanceType);
+			return ConvertAngularDistance(_internalUnitType, _intrinsicValue, toAngleType);
 		}
 
 		#endregion
