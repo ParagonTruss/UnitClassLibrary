@@ -172,7 +172,15 @@
     <Compile Include="Moment\MomentStaticGenerators.cs" />
     <Compile Include="Power.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Speed.cs" />
+    <Compile Include="Speed\Speed.cs" />
+    <Compile Include="Speed\SpeedConstants.cs" />
+    <Compile Include="Speed\SpeedEnums.cs" />
+    <Compile Include="Speed\SpeedEquality.cs" />
+    <Compile Include="Speed\SpeedIComparable.cs" />
+    <Compile Include="Speed\SpeedOverloads.cs" />
+    <Compile Include="Speed\SpeedProperties.cs" />
+    <Compile Include="Speed\SpeedPublicMethods.cs" />
+    <Compile Include="Speed\SpeedStaticGenerators.cs" />
     <Compile Include="Stiffness\Stiffness.cs" />
     <Compile Include="Stiffness\StiffnessConstants.cs" />
     <Compile Include="Stiffness\StiffnessEnums.cs" />
