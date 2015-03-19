@@ -7,99 +7,99 @@ using System;
 	{
 		public double NewtonsMillimeters
 		{
-			get { return _Force.Newtons * _Distance.Millimeters; }
+			get { return _force.Newtons * _distance.Millimeters; }
 		}
 		public double NewtonsCentimeters
 		{
-			get { return _Force.Newtons * _Distance.Centimeters; }
+			get { return _force.Newtons * _distance.Centimeters; }
 		}
 		public double NewtonsMeters
 		{
-			get { return _Force.Newtons * _Distance.Meters; }
+			get { return _force.Newtons * _distance.Meters; }
 		}
 		public double NewtonsKilometers
 		{
-			get { return _Force.Newtons * _Distance.Kilometers; }
+			get { return _force.Newtons * _distance.Kilometers; }
 		}
 		public double NewtonsInches
 		{
-			get { return _Force.Newtons * _Distance.Inches; }
+			get { return _force.Newtons * _distance.Inches; }
 		}
 		public double NewtonsFeet
 		{
-			get { return _Force.Newtons * _Distance.Feet; }
+			get { return _force.Newtons * _distance.Feet; }
 		}
 		public double NewtonsYards
 		{
-			get { return _Force.Newtons * _Distance.Yards; }
+			get { return _force.Newtons * _distance.Yards; }
 		}
 		public double NewtonsMiles
 		{
-			get { return _Force.Newtons * _Distance.Miles; }
+			get { return _force.Newtons * _distance.Miles; }
 		}
 		public double PoundsMillimeters
 		{
-			get { return _Force.Pounds * _Distance.Millimeters; }
+			get { return _force.Pounds * _distance.Millimeters; }
 		}
 		public double PoundsCentimeters
 		{
-			get { return _Force.Pounds * _Distance.Centimeters; }
+			get { return _force.Pounds * _distance.Centimeters; }
 		}
 		public double PoundsMeters
 		{
-			get { return _Force.Pounds * _Distance.Meters; }
+			get { return _force.Pounds * _distance.Meters; }
 		}
 		public double PoundsKilometers
 		{
-			get { return _Force.Pounds * _Distance.Kilometers; }
+			get { return _force.Pounds * _distance.Kilometers; }
 		}
 		public double PoundsInches
 		{
-			get { return _Force.Pounds * _Distance.Inches; }
+			get { return _force.Pounds * _distance.Inches; }
 		}
 		public double PoundsFeet
 		{
-			get { return _Force.Pounds * _Distance.Feet; }
+			get { return _force.Pounds * _distance.Feet; }
 		}
 		public double PoundsYards
 		{
-			get { return _Force.Pounds * _Distance.Yards; }
+			get { return _force.Pounds * _distance.Yards; }
 		}
 		public double PoundsMiles
 		{
-			get { return _Force.Pounds * _Distance.Miles; }
+			get { return _force.Pounds * _distance.Miles; }
 		}
 		public double KipsMillimeters
 		{
-			get { return _Force.Kips * _Distance.Millimeters; }
+			get { return _force.Kips * _distance.Millimeters; }
 		}
 		public double KipsCentimeters
 		{
-			get { return _Force.Kips * _Distance.Centimeters; }
+			get { return _force.Kips * _distance.Centimeters; }
 		}
 		public double KipsMeters
 		{
-			get { return _Force.Kips * _Distance.Meters; }
+			get { return _force.Kips * _distance.Meters; }
 		}
 		public double KipsKilometers
 		{
-			get { return _Force.Kips * _Distance.Kilometers; }
+			get { return _force.Kips * _distance.Kilometers; }
 		}
 		public double KipsInches
 		{
-			get { return _Force.Kips * _Distance.Inches; }
+			get { return _force.Kips * _distance.Inches; }
 		}
 		public double KipsFeet
 		{
-			get { return _Force.Kips * _Distance.Feet; }
+			get { return _force.Kips * _distance.Feet; }
 		}
 		public double KipsYards
 		{
-			get { return _Force.Kips * _Distance.Yards; }
+			get { return _force.Kips * _distance.Yards; }
 		}
 		public double KipsMiles
 		{
-			get { return _Force.Kips * _Distance.Miles; }
+			get { return _force.Kips * _distance.Miles; }
 		}
 
 		public double GetValue(MomentType Units)
