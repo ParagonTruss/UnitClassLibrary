@@ -157,6 +157,23 @@ namespace UnitClassLibrary
             return new Angle(AngleType.Degree, this.Degrees - (this.Degrees *2));
         }
 
+        public Boolean Equals(Angle b)
+        {
+            var thisType = this._internalUnitType;
+            var thisValue = this._intrinsicValue;
+            var angle_1 = new AngularDistance(thisType, thisValue);
+
+            if (b == null)
+                return false;
+
+            var otherType = b._internalUnitType;
+            var otherValue = b._intrinsicValue;
+            var angle_2 = new AngularDistance(otherType, otherValue);
+
+            return angle_1 == angle_2;
+
+        }
+
         #endregion
     }
 }

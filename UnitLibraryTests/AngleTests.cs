@@ -28,6 +28,8 @@ namespace UnitLibraryTests
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, -360);
 
+            Boolean a = a1 == a2;
+
             a1.Equals(a2).Should().BeTrue();
             a1.Equals(a3).Should().BeTrue();
 
@@ -106,19 +108,15 @@ namespace UnitLibraryTests
         [Test()]
         public void Angle_AdditionSubtraction()
         {
-            Angle a1 = new Angle(AngleType.Degree, 78);
-            Angle a2 = new Angle(AngleType.Radian, Math.PI / 2);
-            Angle a3 = new Angle(AngleType.Degree, 300);
+            AngularDistance a1 = new AngularDistance(AngleType.Degree, 78);
+            AngularDistance a2 = new AngularDistance(AngleType.Radian, Math.PI / 2);
+            AngularDistance a3 = new AngularDistance(AngleType.Degree, 300);
 
-            Angle a4 = a1 + a2;
-            Angle a5 = a1 + a2;
-            Boolean equality = (a4 == a5);
-
-            (a4 == new Angle(AngleType.Degree, 168)).Should().BeTrue();
-            (a1 + a3 == new Angle(AngleType.Degree, 18)).Should().BeTrue();
-            (a1 - a2 == new Angle(AngleType.Degree, 348)).Should().BeTrue();
-            (a2 - a1 == new Angle(AngleType.Degree, 12)).Should().BeTrue();
-            (a3 - a2 == new Angle(AngleType.Degree, 210)).Should().BeTrue();
+            (a1 + a2 == new AngularDistance(AngleType.Degree, 168)).Should().BeTrue();
+            (a1 + a3 == new AngularDistance(AngleType.Degree, 378)).Should().BeTrue();
+            (a1 - a2 == new AngularDistance(AngleType.Degree, -12)).Should().BeTrue();
+            (a2 - a1 == new AngularDistance(AngleType.Degree, 12)).Should().BeTrue();
+            (a3 - a2 == new AngularDistance(AngleType.Degree, 210)).Should().BeTrue();
         }
     }
 }

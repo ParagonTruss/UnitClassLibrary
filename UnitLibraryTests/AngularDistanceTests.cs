@@ -11,20 +11,6 @@ namespace UnitLibraryTests
     [TestFixture()]
     public class AngularDistanceTests
     {
-        [Test()]
-        public void AngularDistance_GetHashCode()
-        {
-            AngularDistance a1 = new AngularDistance(AngleType.Degree, 360.0);
-            AngularDistance a2 = new AngularDistance(AngleType.Radian, Math.PI * 2);
-            AngularDistance a3 = new AngularDistance(AngleType.Degree, 359);
-
-            int hash1 = a1.GetHashCode();
-            int hash2 = a2.GetHashCode();
-            int hash3 = a3.GetHashCode();
-
-            hash1.Should().Be(hash2);
-            hash2.Should().NotBe(hash3);
-        }
 
         [Test()]
         public void AngularDistance_ToStringOverride()
@@ -32,7 +18,9 @@ namespace UnitLibraryTests
             AngularDistance a1 = new AngularDistance(AngleType.Degree, 275);
             AngularDistance a2 = new AngularDistance(AngleType.Radian, 2 * Math.PI);
 
-            a1.ToString(AngleType.Degree).Should().Be("275°");
+            var stringed = a1.ToString(AngleType.Degree);
+
+            stringed.Should().Be("275 Degree");
         }
 
         [Test()]
@@ -114,9 +102,6 @@ namespace UnitLibraryTests
 
             a1.CompareTo(a2).Should().Be(0);
             a1.CompareTo(a2).Should().Be(0);
-            a1.CompareTo(a3).Should().Be(0);
-            a3.CompareTo(a2).Should().Be(0);
-
             a4.CompareTo(a3).Should().Be(-1);
             a4.CompareTo(a5).Should().Be(1);
         }

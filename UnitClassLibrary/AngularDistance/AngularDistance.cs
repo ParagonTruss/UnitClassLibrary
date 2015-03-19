@@ -21,7 +21,7 @@ using System;
 			set { _equalityStrategy = value; }
 		}
 
-		private AngularDistanceEqualityStrategy _equalityStrategy;
+		public AngularDistanceEqualityStrategy _equalityStrategy;
 
 		#endregion
 
