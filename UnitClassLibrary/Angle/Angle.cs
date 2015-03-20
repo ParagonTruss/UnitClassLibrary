@@ -36,7 +36,8 @@ namespace UnitClassLibrary
         /// </summary>
         /// <param name="AngleType">angle unit type</param>
         /// <param name="passedValue">angle value</param>
-        public Angle(AngleType AngleType, double passedValue)
+        public Angle(AngleType AngleType, double passedValue) :
+            base()
         {
             switch (AngleType)
             {

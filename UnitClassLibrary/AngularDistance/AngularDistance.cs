@@ -31,8 +31,8 @@ using System;
 		 public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = 0;
-			_internalUnitType = AngleType.Radian;
-			_intrinsicValue = 0;
+            _internalUnitType = AngleType.Radian;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
 		/// <summary> Accepts standard types for input. </summary>
