@@ -2,8 +2,7 @@
 
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
-Place bug reports, feature requests, and other issues [on our issue tracker](https://clearspan.atlassian.net/browse/UNITCLASS).
-
+If you need help using any of the features or want to talk to someone, jump into our [chat room](https://www.hipchat.com/gxRdV6tby)!
 ### Overview
 For an overview of how this library works visit the [Overview Page](https://bitbucket.org/Clearspan/unit-class-library/wiki/Overview).
 
@@ -30,8 +29,8 @@ Please conform to our [Coding Conventions](https://bitbucket.org/Clearspan/unit-
 
 For information regarding what needs to be worked on next visit the [Road Map](https://bitbucket.org/Clearspan/unit-class-library/wiki/Road%20Map).
 
-### Bugs
-If you have found a bug, or have an issue you would like to discuss about the project add it to the [Issues page](https://bitbucket.org/Clearspan/unit-class-library/issues?status=new&status=open).
+### Feedback
+If you have found a bug, or have an issue you would like to discuss about the project add bug reports, feature requests, and other issues [on our issue tracker](https://clearspan.atlassian.net/browse/UNITCLASS).
 
 ### More Information
 
