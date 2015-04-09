@@ -34,11 +34,12 @@ namespace UnitClassLibrary
         /// <summary>
         /// Create an angle object from an angle value.
         /// </summary>
-        /// <param name="angleType">angle unit type</param>
+        /// <param name="AngleType">angle unit type</param>
         /// <param name="passedValue">angle value</param>
-        public Angle(AngleType angleType, double passedValue)
+        public Angle(AngleType AngleType, double passedValue) :
+            base()
         {
-            switch (angleType)
+            switch (AngleType)
             {
                 case AngleType.Radian:
 
@@ -83,11 +84,6 @@ namespace UnitClassLibrary
         /// <param name="passedAngle">angle to copy</param>
         public Angle(Angle passedAngle): base(passedAngle){ }
 
-        /// <summary>
-        /// castes an angle string to angle degrees
-        /// </summary>
-        /// <param name="passedAngleString">angle string to parse</param>
-        public Angle(string passedAngleString): base(passedAngleString){}
         
         #endregion
 
@@ -160,6 +156,23 @@ namespace UnitClassLibrary
         public new Angle Negate()
         {
             return new Angle(AngleType.Degree, this.Degrees - (this.Degrees *2));
+        }
+
+        public Boolean Equals(Angle b)
+        {
+            var thisType = this._internalUnitType;
+            var thisValue = this._intrinsicValue;
+            var angle_1 = new AngularDistance(thisType, thisValue);
+
+            if (b == null)
+                return false;
+
+            var otherType = b._internalUnitType;
+            var otherValue = b._intrinsicValue;
+            var angle_2 = new AngularDistance(otherType, otherValue);
+
+            return angle_1 == angle_2;
+
         }
 
         #endregion
