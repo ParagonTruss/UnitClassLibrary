@@ -51,13 +51,6 @@ using System;
 			_equalityStrategy = passedElectricCurrent._equalityStrategy;
 		}
 
-        public ElectricCurrent(Distance passedDistance)
-        {
-            _intrinsicValue = 0;
-            _internalUnitType = ElectricCurrentType.Ampere;
-            _intrinsicValue = 0;
-        }
-
 		#endregion
 
 		#region helper _methods
