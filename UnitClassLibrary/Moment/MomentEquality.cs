@@ -15,16 +15,16 @@ using System;
 		public bool EqualsWithinDeviationConstant(Moment moment, Moment passedAcceptedEqualityDeviationDistance)
 		{
 			return (Math.Abs(
-				(this.GetValue(this._internalUnitType)
-				- ((Moment)(moment)).GetValue(this._internalUnitType))
+				(this.GetValue(MomentType.PoundsInch)
+                - ((Moment)(moment)).GetValue(MomentType.PoundsInch))
 				))
-				<= passedAcceptedEqualityDeviationDistance.GetValue(_internalUnitType);
+                <= passedAcceptedEqualityDeviationDistance.GetValue(MomentType.PoundsInch);
 		}
 
 		/// <summary> value comparison, checks whether the two are equal within a passed accepted equality percentage </summary>
 		public bool EqualsWithinDeviationPercentage(Moment moment, Moment passedAcceptedEqualityDeviationPercentage)
 		{
-			return (Math.Abs(this.GetValue(this.InternalUnitType) - (moment).GetValue(this.InternalUnitType))) <= this.GetValue(this.InternalUnitType);
+            return (Math.Abs(this.GetValue(MomentType.PoundsInch) - (moment).GetValue(MomentType.PoundsInch))) <= this.GetValue(MomentType.PoundsInch);
 		}
 
 		/// <summary> value comparison, checks whether the two are equal within a passed accepted equality percentage </summary>
@@ -63,7 +63,7 @@ using System;
 		/// <returns></returns>
 		public static bool DefaultPercentageEquality (Moment moment1, Moment moment2)
 		{
-			return (Math.Abs(moment1.GetValue(moment1.InternalUnitType) - (moment2).GetValue(moment1.InternalUnitType))) <= Math.Abs(moment1.GetValue( moment1.InternalUnitType) * MomentDeviationDefaults.MomentAcceptedEqualityDeviationDistancePercentage);
+            return (Math.Abs(moment1.GetValue(MomentType.PoundsInch) - (moment2).GetValue(MomentType.PoundsInch))) <= Math.Abs(moment1.GetValue(MomentType.PoundsInch) * MomentDeviationDefaults.MomentAcceptedEqualityDeviationDistancePercentage);
 		}
 
 		/// <summary> Moments are equal if there values are within the passed deviation constant. If they are not within the constant </summary>
@@ -72,7 +72,7 @@ using System;
 		/// <returns></returns>
 		public static bool DefaultConstantEquality (Moment moment1, Moment moment2)
 		{
-			return (Math.Abs(moment1.GetValue(moment1.InternalUnitType) - (moment2).GetValue(moment1.InternalUnitType))) <= MomentDeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(moment1.InternalUnitType);
+            return (Math.Abs(moment1.GetValue(MomentType.PoundsInch) - (moment2).GetValue(MomentType.PoundsInch))) <= MomentDeviationDefaults.AcceptedEqualityDeviationDistance.GetValue(MomentType.PoundsInch);
 		}
 	}
 }

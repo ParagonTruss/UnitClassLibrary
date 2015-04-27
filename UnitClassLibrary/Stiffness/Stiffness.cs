@@ -48,99 +48,99 @@ using System;
 			{
 			case StiffnessType.NewtonsPerMillimeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case StiffnessType.NewtonsPerCentimeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case StiffnessType.NewtonsPerMeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case StiffnessType.NewtonsPerKilometer:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case StiffnessType.NewtonsPerInch:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case StiffnessType.NewtonsPerFoot:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case StiffnessType.NewtonsPerYard:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case StiffnessType.NewtonsPerMile:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			case StiffnessType.PoundsPerMillimeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case StiffnessType.PoundsPerCentimeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case StiffnessType.PoundsPerMeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case StiffnessType.PoundsPerKilometer:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case StiffnessType.PoundsPerInch:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case StiffnessType.PoundsPerFoot:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case StiffnessType.PoundsPerYard:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case StiffnessType.PoundsPerMile:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			case StiffnessType.KipsPerMillimeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case StiffnessType.KipsPerCentimeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case StiffnessType.KipsPerMeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case StiffnessType.KipsPerKilometer:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case StiffnessType.KipsPerInch:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case StiffnessType.KipsPerFoot:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case StiffnessType.KipsPerYard:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case StiffnessType.KipsPerMile:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			}
 		}

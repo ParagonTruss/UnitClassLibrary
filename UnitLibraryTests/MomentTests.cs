@@ -8,8 +8,11 @@ namespace UnitLibraryTests
     public class MomentTests
     {
         [Test()]
-        public void Moment_EqualityTests()
+        public void Moment_Constructor()
         {
+            Moment m = new Moment(MomentType.PoundsInch, 17);
+
+            Assert.IsTrue(m.PoundsInches == 17);
         }
     }
 }

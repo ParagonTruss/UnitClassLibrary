@@ -9,12 +9,6 @@ using System;
 		private Force _force;
 		private Distance _distance;
 
-		internal MomentType InternalUnitType
-		{
-			get { return _internalUnitType; }
-		}
-		private MomentType _internalUnitType;
-
 		public MomentEqualityStrategy EqualityStrategy
 		{
 			get { return _equalityStrategy; }
@@ -48,99 +42,99 @@ using System;
 			{
 			case MomentType.NewtonsMillimeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case MomentType.NewtonsCentimeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case MomentType.NewtonsMeter:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case MomentType.NewtonsKilometer:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case MomentType.NewtonsInch:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case MomentType.NewtonsFoot:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case MomentType.NewtonsYard:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case MomentType.NewtonsMile:
 				_force = new Force(ForceType.Newton, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			case MomentType.PoundsMillimeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case MomentType.PoundsCentimeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case MomentType.PoundsMeter:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case MomentType.PoundsKilometer:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case MomentType.PoundsInch:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case MomentType.PoundsFoot:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case MomentType.PoundsYard:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case MomentType.PoundsMile:
 				_force = new Force(ForceType.Pound, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			case MomentType.KipsMillimeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Millimeter, passedValue);
+				_distance = new Distance(DistanceType.Millimeter, 1);
 				break;
 			case MomentType.KipsCentimeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Centimeter, passedValue);
+				_distance = new Distance(DistanceType.Centimeter, 1);
 				break;
 			case MomentType.KipsMeter:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Meter, passedValue);
+				_distance = new Distance(DistanceType.Meter, 1);
 				break;
 			case MomentType.KipsKilometer:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Kilometer, passedValue);
+				_distance = new Distance(DistanceType.Kilometer, 1);
 				break;
 			case MomentType.KipsInch:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Inch, passedValue);
+				_distance = new Distance(DistanceType.Inch, 1);
 				break;
 			case MomentType.KipsFoot:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Foot, passedValue);
+				_distance = new Distance(DistanceType.Foot, 1);
 				break;
 			case MomentType.KipsYard:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Yard, passedValue);
+				_distance = new Distance(DistanceType.Yard, 1);
 				break;
 			case MomentType.KipsMile:
 				_force = new Force(ForceType.Kip, passedValue);
-				_distance = new Distance(DistanceType.Mile, passedValue);
+				_distance = new Distance(DistanceType.Mile, 1);
 				break;
 			}
 		}
