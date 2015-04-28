@@ -22,10 +22,12 @@ using System;
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		 public Moment()
+        public Moment(MomentEqualityStrategy passedEqualityStrategy = null)
 		{
 			_force = new Force();
 			_distance = new Distance();
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedEqualityStrategy);
+
 		}
 
 		/// <summary> constructor that creates moment based on the passed units </summary>

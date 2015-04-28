@@ -28,17 +28,20 @@ using System;
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		 public DataTransferRate()
+		 public DataTransferRate(DataTransferRateEqualityStrategy passedStrategy = null)
 		{
 			_data = new Data();
 			_time = new Time();
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
-		public DataTransferRate(Data passedData, Time passedTime)
+         public DataTransferRate(Data passedData, Time passedTime, DataTransferRateEqualityStrategy passedStrategy = null)
 		{
 			_data = passedData;
 			_time = passedTime;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
+
 		}
 
 		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>

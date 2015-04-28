@@ -28,17 +28,21 @@ using System;
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		 public Stiffness()
+        public Stiffness(StiffnessEqualityStrategy passedStrategy = null)
 		{
 			_force = new Force();
 			_distance = new Distance();
+            _chooseDefaultOrPassedStrategy(passedStrategy);
+
 		}
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
-		public Stiffness(Force passedForce, Distance passedDistance)
+        public Stiffness(Force passedForce, Distance passedDistance, StiffnessEqualityStrategy passedStrategy = null)
 		{
 			_force = passedForce;
 			_distance = passedDistance;
+            _chooseDefaultOrPassedStrategy(passedStrategy);
+
 		}
 
 		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>
