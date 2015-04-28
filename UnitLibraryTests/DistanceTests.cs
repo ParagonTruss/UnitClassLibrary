@@ -147,7 +147,7 @@ namespace UnitLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimesnion_ComparisonOperatorTest()
+        public void Dimension_ComparisonOperatorTest()
         {
             // arrange
             Distance biggerDistance = new Distance(DistanceType.Inch, 14.1875);
@@ -247,6 +247,14 @@ namespace UnitLibraryTests
             (oneFoot == new Distance(DistanceType.Foot, 0)).Should().BeTrue();
 
         }
+
+        [Test()]
+        public void Distance_SelfConversionTest()
+        {
+            Distance testInstance = new Distance(DistanceType.Mile, 1);
+            testInstance.Miles.Should().Be(1);
+        }
+
 
         /// <summary>
         /// Tests intuitiveness. If this compiles then these "pass"
