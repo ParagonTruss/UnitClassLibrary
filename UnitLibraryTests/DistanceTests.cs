@@ -147,7 +147,7 @@ namespace UnitLibraryTests
         /// Tests all equality operators
         /// </summary>
         [Test()]
-        public void Dimesnion_ComparisonOperatorTest()
+        public void Dimension_ComparisonOperatorTest()
         {
             // arrange
             Distance biggerDistance = new Distance(DistanceType.Inch, 14.1875);
