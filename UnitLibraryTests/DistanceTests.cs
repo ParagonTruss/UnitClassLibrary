@@ -248,6 +248,14 @@ namespace UnitLibraryTests
 
         }
 
+        [Test()]
+        public void Distance_SelfConversionTest()
+        {
+            Distance testInstance = new Distance(DistanceType.Mile, 1);
+            testInstance.Miles.Should().Be(1);
+        }
+
+
         /// <summary>
         /// Tests intuitiveness. If this compiles then these "pass"
         /// </summary>
