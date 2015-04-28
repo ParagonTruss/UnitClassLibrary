@@ -29,15 +29,18 @@ using System;
 		}
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
-		public Moment(Force passedForce, Distance passedDistance)
+		public Moment(Force passedForce, Distance passedDistance, MomentEqualityStrategy passedEqualityStrategy = null)
 		{
 			_force = passedForce;
 			_distance = passedDistance;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedEqualityStrategy);
 		}
 
 		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>
-		public Moment(MomentType passedMomentType, double passedValue)
+        public Moment(MomentType passedMomentType, double passedValue, MomentEqualityStrategy passedEqualityStrategy = null)
 		{
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedEqualityStrategy);
+
 			switch (passedMomentType)
 			{
 			case MomentType.NewtonsMillimeter:

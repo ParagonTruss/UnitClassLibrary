@@ -42,7 +42,7 @@ using System;
 		public static Force AcceptedEqualityDeviationDistance
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
-			get { return new Force(ForceType.Newton, 1); }
+			get { return new Force(ForceType.Pound, 1); }
 		}
 
 		/// <summary> When comparing two force and deviation is allowed to be within a percentage of the firstForce. This is that percentage </summary>

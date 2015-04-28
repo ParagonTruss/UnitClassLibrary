@@ -42,7 +42,7 @@ using System;
 		public static Moment AcceptedEqualityDeviationDistance
 		{
 			// TODO: This is auto-generated, based on the first unit passed. It should probably be changed.
-			get { return new Moment(MomentType.NewtonsMillimeter, 1); }
+			get { return new Moment(MomentType.PoundsInch, 1); }
 		}
 
 		/// <summary> When comparing two moment and deviation is allowed to be within a percentage of the firstMoment. This is that percentage </summary>
