@@ -28,55 +28,59 @@ using System;
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		 public Speed()
+        public Speed(SpeedEqualityStrategy passedStrategy = null)
 		{
 			_distance = new Distance();
 			_time = new Time();
+            _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
-		public Speed(Distance passedDistance, Time passedTime)
+        public Speed(Distance passedDistance, Time passedTime, SpeedEqualityStrategy passedStrategy = null)
 		{
 			_distance = passedDistance;
 			_time = passedTime;
+            _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
 		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>
-		public Speed(SpeedType passedSpeedType, double passedValue)
+        public Speed(SpeedType passedSpeedType, double passedValue, SpeedEqualityStrategy passedStrategy = null)
 		{
+            _chooseDefaultOrPassedStrategy(passedStrategy);
+
 			switch (passedSpeedType)
 			{
 			case SpeedType.MillimetersPerNanosecond:
 				_distance = new Distance(DistanceType.Millimeter, passedValue);
-				_time = new Time(TimeType.Nanosecond, passedValue);
+				_time = new Time(TimeType.Nanosecond, 1);
 				break;
 			case SpeedType.MillimetersPerMicrosecond:
 				_distance = new Distance(DistanceType.Centimeter, passedValue);
-				_time = new Time(TimeType.Microsecond, passedValue);
+				_time = new Time(TimeType.Microsecond, 1);
 				break;
 			case SpeedType.MillimetersPerMillisecond:
 				_distance = new Distance(DistanceType.Meter, passedValue);
-				_time = new Time(TimeType.Millisecond, passedValue);
+				_time = new Time(TimeType.Millisecond, 1);
 				break;
 			case SpeedType.MillimetersPerSecond:
 				_distance = new Distance(DistanceType.Kilometer, passedValue);
-				_time = new Time(TimeType.Second, passedValue);
+				_time = new Time(TimeType.Second, 1);
 				break;
 			case SpeedType.MillimetersPerMinute:
 				_distance = new Distance(DistanceType.Inch, passedValue);
-				_time = new Time(TimeType.Minute, passedValue);
+				_time = new Time(TimeType.Minute, 1);
 				break;
 			case SpeedType.MillimetersPerHour:
 				_distance = new Distance(DistanceType.Foot, passedValue);
-				_time = new Time(TimeType.Hour, passedValue);
+				_time = new Time(TimeType.Hour, 1);
 				break;
 			case SpeedType.MillimetersPerDay:
 				_distance = new Distance(DistanceType.Yard, passedValue);
-				_time = new Time(TimeType.Day, passedValue);
+				_time = new Time(TimeType.Day, 1);
 				break;
 			case SpeedType.MillimetersPerWeek:
 				_distance = new Distance(DistanceType.Mile, passedValue);
-				_time = new Time(TimeType.Week, passedValue);
+				_time = new Time(TimeType.Week, 1);
 				break;
 			}
 		}
