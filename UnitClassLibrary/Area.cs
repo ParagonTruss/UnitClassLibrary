@@ -19,9 +19,9 @@ namespace UnitClassLibrary
         {
             get { return _internalUnitType; }
         }
-        private AreaType _internalUnitType;
+        private AreaType _internalUnitType = AreaType.InchesSquared;
 
-        private double _intrinsicValue;
+        private double _intrinsicValue ;
 
         #endregion
 

@@ -31,7 +31,7 @@ using System;
 		 public Force(ForceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = 0;
-			_internalUnitType = ForceType.Newton;
+			_internalUnitType = ForceType.Pound;
 			_intrinsicValue = 0;
 		}
 
