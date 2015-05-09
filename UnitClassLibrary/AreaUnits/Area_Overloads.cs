@@ -5,6 +5,7 @@ using System.Text;
 using UnitClassLibrary.AreaUnits.AreaTypes;
 using UnitClassLibrary.AreaUnits.AreaTypes.Imperial.AcreUnit;
 using UnitClassLibrary.BaseUnit;
+using UnitClassLibrary.Core.BasicUnit;
 
 namespace UnitClassLibrary.AreaUnits
 {

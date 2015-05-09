@@ -1,4 +1,5 @@
 ﻿using UnitClassLibrary.BaseUnit;
+using UnitClassLibrary.Core.BasicUnit;
 using UnitClassLibrary.DistanceUnits.DistanceTypes;
 using UnitClassLibrary.DistanceUnits.DistanceTypes.Imperial.InchUnit;
 

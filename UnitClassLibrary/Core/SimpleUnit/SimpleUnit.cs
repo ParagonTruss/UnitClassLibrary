@@ -1,4 +1,5 @@
 ﻿using System;
+using UnitClassLibrary.Core.BasicUnit;
 
 namespace UnitClassLibrary.BaseUnit
 {

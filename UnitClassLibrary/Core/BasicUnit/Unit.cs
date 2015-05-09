@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace UnitClassLibrary.BaseUnit
+﻿namespace UnitClassLibrary.Core.BasicUnit
 {
     public partial class Unit
     {
@@ -16,7 +14,7 @@ namespace UnitClassLibrary.BaseUnit
 
         private readonly double _intrinsicValue = 0;
 
-                /// <summary>
+        /// <summary>
         /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
         protected readonly EqualityStrategy _equalityStrategy = Unit.EqualsWithinConstantEquality;

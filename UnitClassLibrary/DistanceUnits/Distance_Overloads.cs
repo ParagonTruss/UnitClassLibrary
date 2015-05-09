@@ -1,5 +1,6 @@
 ﻿using System;
 using UnitClassLibrary.BaseUnit;
+using UnitClassLibrary.Core.BasicUnit;
 
 namespace UnitClassLibrary.DistanceUnits
 {

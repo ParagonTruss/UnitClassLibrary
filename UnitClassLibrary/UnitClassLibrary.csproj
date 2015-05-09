@@ -86,6 +86,23 @@
     <Compile Include="Core\BasicUnit\Unit.cs" />
     <Compile Include="Core\SimpleUnit\ISimpleUnitType.cs" />
     <Compile Include="Core\BasicUnit\IUnitType.cs" />
+    <Compile Include="New Attempt\Area.cs" />
+    <Compile Include="New Attempt\Distance.cs" />
+    <Compile Include="New Attempt\GenericUnit.cs" />
+    <Compile Include="New Attempt\GenericUnit_Overloads.cs" />
+    <Compile Include="New Attempt\ISimpleUnit.cs" />
+    <Compile Include="New Attempt\Speed.cs" />
+    <Compile Include="New Attempt\Time.cs" />
+    <Compile Include="New Attempt\UnitTypes\IAreaType.cs" />
+    <Compile Include="New Attempt\UnitTypes\IDistanceType.cs" />
+    <Compile Include="New Attempt\UnitTypes\Inch.cs" />
+    <Compile Include="New Attempt\UnitTypes\InchesSquared.cs" />
+    <Compile Include="New Attempt\UnitTypes\InchPerSecond.cs" />
+    <Compile Include="New Attempt\UnitTypes\ISpeedType.cs" />
+    <Compile Include="New Attempt\UnitTypes\ITimeType.cs" />
+    <Compile Include="New Attempt\UnitTypes\Second.cs" />
+    <Compile Include="New Attempt\UnitTypes\SpeedType.cs" />
+    <Compile Include="New Attempt\GenericUnit_Equality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Core\BasicUnit\Unit_Equality.cs" />
     <Compile Include="Core\SimpleUnit\SimpleUnit.cs" />
@@ -111,6 +128,7 @@
     <Folder Include="DistanceUnits\DistanceTypes\ImperialUnits\FootUnit\" />
     <Folder Include="DistanceUnits\DistanceTypes\ImperialUnits\MileUnit\" />
     <Folder Include="DistanceUnits\DistanceTypes\ImperialUnits\YardUnit\" />
+    <Folder Include="New Attempt\GenericUnit\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets" Condition="Exists('..\packages\StyleCop.MSBuild.4.7.49.1\build\StyleCop.MSBuild.Targets')" />

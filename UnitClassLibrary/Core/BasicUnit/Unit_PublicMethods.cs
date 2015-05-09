@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UnitClassLibrary.BaseUnit
+namespace UnitClassLibrary.Core.BasicUnit
 {
     public partial class Unit
     {
