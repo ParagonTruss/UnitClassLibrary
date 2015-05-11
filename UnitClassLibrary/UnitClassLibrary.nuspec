@@ -11,9 +11,5 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
-  <dependencies>
-    <dependency id="StyleCopSettings" version="[1.0.2]" />
-    <dependency id="StyleCop.MSBuild" version="[4.7.49.1]" />
-  </dependencies>
   </metadata>
 </package>
