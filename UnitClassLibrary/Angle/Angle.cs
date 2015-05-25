@@ -119,6 +119,16 @@ namespace UnitClassLibrary
             return new Angle(a1._internalUnitType, a1._intrinsicValue - a2.GetValue(a1._internalUnitType));
         }
 
+        /// <summary>
+        /// multiples the angle by a double
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="d"></param>
+        /// <returns></returns>
+        public static Angle operator *(Angle a, double d)
+        {
+            return new Angle(a._internalUnitType, a._intrinsicValue * d);
+        }
 
         /// <summary>
         /// This override determines how this object is inserted into hashtables.
