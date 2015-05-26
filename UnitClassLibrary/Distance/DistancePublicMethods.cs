@@ -44,5 +44,19 @@ namespace UnitClassLibrary
             return this ^ power;
         }
 
+        /// <summary>
+        /// determines if a distance is larger than a certain bound in the distance's intrinsic units.
+        /// </summary>
+        /// <param name="bound"></param>
+        /// <returns></returns>
+        public bool DistanceInIntrinsicUnitsIsGreaterThan(double bound)
+        {
+            if (this._intrinsicValue > bound)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }
