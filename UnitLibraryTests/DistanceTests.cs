@@ -327,5 +327,21 @@ namespace UnitLibraryTests
 
            
         }
+
+        [Test()]
+        public void Distance_DistanceInIntrinsicUnitsIsGreaterThan()
+        {
+            Distance d1 = new Distance();// empty constructor
+            Distance d2 = new Distance(DistanceType.Meter, 1000);
+            Distance d3 = new Distance(DistanceType.Meter, 1000.1);
+            Distance d4 = new Distance(DistanceType.Mile, 0) + d3; //converts d3's internal units to miles.
+
+            d1.DistanceInIntrinsicUnitsIsGreaterThan(10).Should().BeFalse();
+            d1.DistanceInIntrinsicUnitsIsGreaterThan(-10).Should().BeTrue();
+            d2.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeFalse();
+            d3.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeTrue();
+            d4.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeFalse();
+        }
     }
 }
+
