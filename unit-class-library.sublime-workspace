@@ -1,0 +1,531 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/geometry/GeometryClassLibraryTest/LineTests.cs",
+			"settings":
+			{
+				"buffer_size": 28717,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/analysis-engine/AnalysisEngineUnitTests/AnalysisEngineUnitTests.csproj",
+			"settings":
+			{
+				"buffer_size": 8089,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/Matrices/Matrix.cs",
+			"settings":
+			{
+				"buffer_size": 51616,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/Solids/Polyhedron.cs",
+			"settings":
+			{
+				"buffer_size": 31126,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/GeometryClassLibrary.csproj",
+			"settings":
+			{
+				"buffer_size": 6564,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/packages.config",
+			"settings":
+			{
+				"buffer_size": 378,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/johnh.EUROPA/Documents/All Code/prefabricated-component-type-library/PrefabricatedComponentTypeTests/RoofTrussGeneratorTests.cs",
+			"settings":
+			{
+				"buffer_size": 242630,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<Project ToolsVersion=\"4.0\" DefaultTargets=\"Build\" xmlns=\"http://schemas.microsoft.com/developer/msbuild/2003\">\n  <Import Project=\"$(MSBuildExtensionsPath)\\$(MSBuildToolsVersion)\\Microsoft.Common.props\" Condition=\"Exists('$(MSBuildExtensionsPath)\\$(MSBuildToolsVersion)\\Microsoft.Common.props')\" />\n  <PropertyGroup>\n    <Configuration Condition=\" '$(Configuration)' == '' \">Debug</Configuration>\n    <Platform Condition=\" '$(Platform)' == '' \">AnyCPU</Platform>\n    <ProjectGuid>{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}</ProjectGuid>\n    <OutputType>Library</OutputType>\n    <AppDesignerFolder>Properties</AppDesignerFolder>\n    <RootNamespace>UnitClassLibrary</RootNamespace>\n    <AssemblyName>UnitClassLibrary</AssemblyName>\n    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>\n    <FileAlignment>512</FileAlignment>\n    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>\n    <TargetFrameworkProfile>Profile136</TargetFrameworkProfile>\n    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>\n    <FileUpgradeFlags>\n    </FileUpgradeFlags>\n    <UpgradeBackupLocation>\n    </UpgradeBackupLocation>\n    <OldToolsVersion>4.0</OldToolsVersion>\n    <PublishUrl>publish\\</PublishUrl>\n    <Install>true</Install>\n    <InstallFrom>Disk</InstallFrom>\n    <UpdateEnabled>false</UpdateEnabled>\n    <UpdateMode>Foreground</UpdateMode>\n    <UpdateInterval>7</UpdateInterval>\n    <UpdateIntervalUnits>Days</UpdateIntervalUnits>\n    <UpdatePeriodically>false</UpdatePeriodically>\n    <UpdateRequired>false</UpdateRequired>\n    <MapFileExtensions>true</MapFileExtensions>\n    <ApplicationRevision>0</ApplicationRevision>\n    <ApplicationVersion>1.1.0.%2a</ApplicationVersion>\n    <IsWebBootstrapper>false</IsWebBootstrapper>\n    <UseApplicationTrust>false</UseApplicationTrust>\n    <BootstrapperEnabled>true</BootstrapperEnabled>\n    <NuGetPackageImportStamp>4898047b</NuGetPackageImportStamp>\n  </PropertyGroup>\n  <PropertyGroup Condition=\" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' \">\n    <DebugSymbols>true</DebugSymbols>\n    <DebugType>full</DebugType>\n    <Optimize>false</Optimize>\n    <OutputPath>bin\\Debug\\</OutputPath>\n    <DefineConstants>DEBUG;TRACE</DefineConstants>\n    <ErrorReport>prompt</ErrorReport>\n    <WarningLevel>4</WarningLevel>\n    <DocumentationFile>bin\\Debug\\UnitClassLibrary.xml</DocumentationFile>\n    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>\n    <RunCodeAnalysis>true</RunCodeAnalysis>\n    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>\n  </PropertyGroup>\n  <PropertyGroup Condition=\" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' \">\n    <DebugType>pdbonly</DebugType>\n    <Optimize>true</Optimize>\n    <OutputPath>bin\\Release\\</OutputPath>\n    <DefineConstants>TRACE</DefineConstants>\n    <ErrorReport>prompt</ErrorReport>\n    <WarningLevel>4</WarningLevel>\n  </PropertyGroup>\n  <ItemGroup>\n    <Reference Include=\"System\" />\n    <Reference Include=\"System.Core\" />\n    <Reference Include=\"System.Xml\" />\n  </ItemGroup>\n  <ItemGroup>\n    <Compile Include=\"Angle\\Angle.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistance.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceConstants.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceConversion.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceEnums.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceEquality.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceIComparable.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceOverloads.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceProperties.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistancePublicMethods.cs\" />\n    <Compile Include=\"AngularDistance\\AngularDistanceStaticGenerators.cs\" />\n    <Compile Include=\"Capacitance\\Capacitance.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceConstants.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceConversion.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceEnums.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceEquality.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceIComparable.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceOverloads.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceProperties.cs\" />\n    <Compile Include=\"Capacitance\\CapacitancePublicMethods.cs\" />\n    <Compile Include=\"Capacitance\\CapacitanceStaticGenerators.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRate.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateConstants.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateEnums.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateEquality.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateIComparable.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateOverloads.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateProperties.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRatePublicMethods.cs\" />\n    <Compile Include=\"DataTransferRate\\DataTransferRateStaticGenerators.cs\" />\n    <Compile Include=\"Data\\Data.cs\" />\n    <Compile Include=\"Data\\DataConstants.cs\" />\n    <Compile Include=\"Data\\DataConversion.cs\" />\n    <Compile Include=\"Data\\DataEnums.cs\" />\n    <Compile Include=\"Data\\DataEquality.cs\" />\n    <Compile Include=\"Data\\DataIComparable.cs\" />\n    <Compile Include=\"Data\\DataOverloads.cs\" />\n    <Compile Include=\"Data\\DataProperties.cs\" />\n    <Compile Include=\"Data\\DataPublicMethods.cs\" />\n    <Compile Include=\"Data\\DataStaticGenerators.cs\" />\n    <Compile Include=\"DeviationConstants.cs\" />\n    <Compile Include=\"Distance\\DistanceConstants.cs\">\n      <ExcludeFromStyleCop>true</ExcludeFromStyleCop>\n    </Compile>\n    <Compile Include=\"Distance\\DistanceConversion.cs\" />\n    <Compile Include=\"Distance\\DistanceEnums.cs\" />\n    <Compile Include=\"Distance\\DistanceEquality.cs\" />\n    <Compile Include=\"Distance\\DistanceIComparable.cs\" />\n    <Compile Include=\"Distance\\DistanceOverloads.cs\" />\n    <Compile Include=\"Distance\\DistanceProperties.cs\" />\n    <Compile Include=\"Distance\\DistancePublicMethods.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotential.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialConstants.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialConversion.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialEnums.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialEquality.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialIComparable.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialOverloads.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialProperties.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialPublicMethods.cs\" />\n    <Compile Include=\"ElectricPotential\\ElectricPotentialStaticGenerators.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrent.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentConstants.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentConversion.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentEnums.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentEquality.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentIComparable.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentOverloads.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentProperties.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentPublicMethods.cs\" />\n    <Compile Include=\"ElectricCurrent\\ElectricCurrentStaticGenerators.cs\" />\n    <Compile Include=\"Energy\\Energy.cs\" />\n    <Compile Include=\"Energy\\EnergyConstants.cs\" />\n    <Compile Include=\"Energy\\EnergyConversion.cs\" />\n    <Compile Include=\"Energy\\EnergyEnums.cs\" />\n    <Compile Include=\"Energy\\EnergyEquality.cs\" />\n    <Compile Include=\"Energy\\EnergyIComparable.cs\" />\n    <Compile Include=\"Energy\\EnergyOverloads.cs\" />\n    <Compile Include=\"Energy\\EnergyProperties.cs\" />\n    <Compile Include=\"Energy\\EnergyPublicMethods.cs\" />\n    <Compile Include=\"Energy\\EnergyStaticGenerators.cs\" />\n    <Compile Include=\"ExtensionMethods\\AngleListExtensionMethods.cs\" />\n    <Compile Include=\"Area.cs\" />\n    <Compile Include=\"Distance\\Distance.cs\" />\n    <Compile Include=\"Enums.cs\" />\n    <Compile Include=\"Distance\\DistanceStaticGenerators.cs\" />\n    <Compile Include=\"Force\\Force.cs\" />\n    <Compile Include=\"Force\\ForceConstants.cs\" />\n    <Compile Include=\"Force\\ForceConversion.cs\" />\n    <Compile Include=\"Force\\ForceEnums.cs\" />\n    <Compile Include=\"Force\\ForceEquality.cs\" />\n    <Compile Include=\"Force\\ForceIComparable.cs\" />\n    <Compile Include=\"Force\\ForceOverloads.cs\" />\n    <Compile Include=\"Force\\ForceProperties.cs\" />\n    <Compile Include=\"Force\\ForcePublicMethods.cs\" />\n    <Compile Include=\"Force\\ForceStaticGenerators.cs\" />\n    <Compile Include=\"Mass\\MassEnums.cs\" />\n    <Compile Include=\"Mass\\MassPublicMethods.cs\" />\n    <Compile Include=\"Mass\\MassProperties.cs\" />\n    <Compile Include=\"Mass\\MassOverloads.cs\" />\n    <Compile Include=\"Mass\\MassIComparable.cs\" />\n    <Compile Include=\"Mass\\MassEquality.cs\" />\n    <Compile Include=\"Mass\\MassConversion.cs\" />\n    <Compile Include=\"Mass\\MassConstants.cs\" />\n    <Compile Include=\"Mass\\Mass.cs\" />\n    <Compile Include=\"Mass\\MassStaticGenerators.cs\" />\n    <Compile Include=\"MomentOfInertiaUnit.cs\" />\n    <Compile Include=\"Moment\\Moment.cs\" />\n    <Compile Include=\"Moment\\MomentConstants.cs\" />\n    <Compile Include=\"Moment\\MomentEnums.cs\" />\n    <Compile Include=\"Moment\\MomentEquality.cs\" />\n    <Compile Include=\"Moment\\MomentIComparable.cs\" />\n    <Compile Include=\"Moment\\MomentOverloads.cs\" />\n    <Compile Include=\"Moment\\MomentProperties.cs\" />\n    <Compile Include=\"Moment\\MomentPublicMethods.cs\" />\n    <Compile Include=\"Moment\\MomentStaticGenerators.cs\" />\n    <Compile Include=\"Power.cs\" />\n    <Compile Include=\"Properties\\AssemblyInfo.cs\" />\n    <Compile Include=\"Speed\\Speed.cs\" />\n    <Compile Include=\"Speed\\SpeedConstants.cs\" />\n    <Compile Include=\"Speed\\SpeedEnums.cs\" />\n    <Compile Include=\"Speed\\SpeedEquality.cs\" />\n    <Compile Include=\"Speed\\SpeedIComparable.cs\" />\n    <Compile Include=\"Speed\\SpeedOverloads.cs\" />\n    <Compile Include=\"Speed\\SpeedProperties.cs\" />\n    <Compile Include=\"Speed\\SpeedPublicMethods.cs\" />\n    <Compile Include=\"Speed\\SpeedStaticGenerators.cs\" />\n    <Compile Include=\"Stiffness\\Stiffness.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessConstants.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessEnums.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessEquality.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessIComparable.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessOverloads.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessProperties.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessPublicMethods.cs\" />\n    <Compile Include=\"Stiffness\\StiffnessStaticGenerators.cs\" />\n    <Compile Include=\"Stress.cs\" />\n    <Compile Include=\"Temperature\\Temperature.cs\" />\n    <Compile Include=\"Temperature\\TemperatureConstants.cs\" />\n    <Compile Include=\"Temperature\\TemperatureConversion.cs\" />\n    <Compile Include=\"Temperature\\TemperatureEnums.cs\" />\n    <Compile Include=\"Temperature\\TemperatureEquality.cs\" />\n    <Compile Include=\"Temperature\\TemperatureIComparable.cs\" />\n    <Compile Include=\"Temperature\\TemperatureOverloads.cs\" />\n    <Compile Include=\"Temperature\\TemperatureProperties.cs\" />\n    <Compile Include=\"Temperature\\TemperaturePublicMethods.cs\" />\n    <Compile Include=\"Temperature\\TemperatureStaticGenerators.cs\" />\n    <Compile Include=\"Time\\Time.cs\" />\n    <Compile Include=\"Time\\TimeConstants.cs\" />\n    <Compile Include=\"Time\\TimeConversion.cs\" />\n    <Compile Include=\"Time\\TimeEnums.cs\" />\n    <Compile Include=\"Time\\TimeEquality.cs\" />\n    <Compile Include=\"Time\\TimeIComparable.cs\" />\n    <Compile Include=\"Time\\TimeOverloads.cs\" />\n    <Compile Include=\"Time\\TimeProperties.cs\" />\n    <Compile Include=\"Time\\TimePublicMethods.cs\" />\n    <Compile Include=\"Time\\TimeStaticGenerators.cs\" />\n    <Compile Include=\"Volume.cs\" />\n  </ItemGroup>\n  <ItemGroup>\n    <BootstrapperPackage Include=\"Microsoft.Net.Client.3.5\">\n      <Visible>False</Visible>\n      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>\n      <Install>false</Install>\n    </BootstrapperPackage>\n    <BootstrapperPackage Include=\"Microsoft.Net.Framework.3.5.SP1\">\n      <Visible>False</Visible>\n      <ProductName>.NET Framework 3.5 SP1</ProductName>\n      <Install>false</Install>\n    </BootstrapperPackage>\n  </ItemGroup>\n  <ItemGroup>\n    <None Include=\"packages.config\" />\n  </ItemGroup>\n  <Import Project=\"$(MSBuildExtensionsPath32)\\Microsoft\\Portable\\$(TargetFrameworkVersion)\\Microsoft.Portable.CSharp.targets\" />\n  <Import Project=\"..\\packages\\StyleCop.MSBuild.4.7.49.1\\build\\StyleCop.MSBuild.Targets\" Condition=\"Exists('..\\packages\\StyleCop.MSBuild.4.7.49.1\\build\\StyleCop.MSBuild.Targets')\" />\n  <Target Name=\"EnsureNuGetPackageBuildImports\" BeforeTargets=\"PrepareForBuild\">\n    <PropertyGroup>\n      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>\n    </PropertyGroup>\n    <Error Condition=\"!Exists('..\\packages\\StyleCop.MSBuild.4.7.49.1\\build\\StyleCop.MSBuild.Targets')\" Text=\"$([System.String]::Format('$(ErrorText)', '..\\packages\\StyleCop.MSBuild.4.7.49.1\\build\\StyleCop.MSBuild.Targets'))\" />\n  </Target>\n  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. \n       Other similar extension points exist, see Microsoft.Common.targets.\n  <Target Name=\"BeforeBuild\">\n  </Target>\n  <Target Name=\"AfterBuild\">\n  </Target>\n  -->\n</Project>",
+			"file": "UnitClassLibrary/UnitClassLibrary.csproj",
+			"file_size": 14222,
+			"file_write_time": 130730644702689791,
+			"settings":
+			{
+				"buffer_size": 13867,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "UnitClassLibrary/Enums.cs",
+			"settings":
+			{
+				"buffer_size": 1947,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 258.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pack",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"Package Control: Install Package OmniSharp",
+			"install OmniSharp",
+			"import OmniSharp"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library",
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library/UnitClassLibrary",
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library/UnitClassLibrary/Distance"
+	],
+	"file_history":
+	[
+		"/C/Users/johnh.EUROPA/Documents/All Code/prefabricated-component-type-library/PrefabricatedComponentTypeLibrary/Generators/RoofTrussGenerator.cs",
+		"/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibraryTest/GeometryClassLibraryTest.csproj",
+		"/C/Users/johnh.EUROPA/Downloads/GeometryClassLibrary.1.2.5575.26321.nupkg",
+		"/C/Users/johnh.EUROPA/Documents/All Code/analysis-engine/AnalysisEngineUnitTests/AnalysisSetTests.cs",
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library/unit-class-library.sublime-project",
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library/UnitClassLibrary/Distance/Distance.cs",
+		"/C/Users/johnh.EUROPA/Documents/All Code/unit-class-library/unit-class-library.userprefs",
+		"/Users/jth/Documents/All Code/unit-class-library/UnitClassLibrary/Distance/Distance.cs"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/johnh.EUROPA/Documents/geometry/GeometryClassLibraryTest/LineTests.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 28717,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22444,
+								22444
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 9996.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/analysis-engine/AnalysisEngineUnitTests/AnalysisEngineUnitTests.csproj",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8089,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6413,
+								6413
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 6927.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/Matrices/Matrix.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 51616,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12408,
+								12408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 31848.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/Solids/Polyhedron.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 31126,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								27774,
+								27774
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 16488.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/GeometryClassLibrary.csproj",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2541,
+								2541
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 720.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/geometry-class-library/GeometryClassLibrary/packages.config",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 378,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								366,
+								366
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/Users/johnh.EUROPA/Documents/All Code/prefabricated-component-type-library/PrefabricatedComponentTypeTests/RoofTrussGeneratorTests.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 242630,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								40935,
+								40935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 6,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 14356.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "UnitClassLibrary/UnitClassLibrary.csproj",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13867,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3155,
+								3155
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1440.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "UnitClassLibrary/Enums.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								799,
+								799
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 144.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 154.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.variable_get":
+	{
+		"height": 100.0
+	},
+	"pinned_build_system": "",
+	"project": "unit-class-library.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 288.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
