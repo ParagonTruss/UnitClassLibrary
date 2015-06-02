@@ -4,7 +4,23 @@
     {
         public double GetConversionFactor()
         {
-             return 2.54;
+             return 1;
+        }
+
+        new public string ToString(bool isPlural = false)
+        {
+            return ToStringPlural();
+
+        }
+
+        public string ToStringPlural()
+        {
+            return "Inches";
+        }
+
+        public string ToStringSingular()
+        {
+            return "Inch";
         }
     }
 

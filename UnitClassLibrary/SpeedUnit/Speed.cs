@@ -14,7 +14,7 @@ namespace UnitClassLibrary.SpeedUnit
         }
 
         public Speed(Distance distance, Time time)
-            : this(new SpeedType(distance, time), distance.GetValue(distance.GetInternalUnitType()) / time.GetValue(time.GetInternalUnitType()))
+            : base(new List<GenericUnit.GenericUnit>() { distance }, new List<GenericUnit.GenericUnit>(){ time})
         {
         }
 

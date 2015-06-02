@@ -4,7 +4,7 @@
     {
         public double GetConversionFactor()
         {
-             return 2.54;
+             return 12;
         }
     }
 

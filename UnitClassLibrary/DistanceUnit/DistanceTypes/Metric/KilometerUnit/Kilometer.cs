@@ -6,7 +6,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
     {
         public double GetConversionFactor()
         {
-             return 2.54;
+             return 39370.0787401575D;
         }
     }
 

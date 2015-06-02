@@ -6,7 +6,25 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
     {
         public double GetConversionFactor()
         {
-             return 2.54;
+            return 0.0393700787401575D;
+        }
+
+        public override string ToString()
+        {
+
+            return ToStringPlural();
+
+
+        }
+
+        public string ToStringPlural()
+        {
+            return "Millimeters";
+        }
+
+        public string ToStringSingular()
+        {
+            return "Millimeter";
         }
     }
 

@@ -74,6 +74,7 @@
     <Compile Include="DistanceUnit\DistanceTypes\Metric\MeterUnit\Meter.cs" />
     <Compile Include="DistanceUnit\DistanceTypes\Metric\MillimeterUnit\Millimeter.cs" />
     <Compile Include="DistanceUnit\DistanceTypes\Imperial\MileUnit\Mile.cs" />
+    <Compile Include="DistanceUnit\Distance_Architectural.cs" />
     <Compile Include="GenericUnit\GenericUnit.cs" />
     <Compile Include="GenericUnit\GenericUnit_InternalUnitType.cs" />
     <Compile Include="GenericUnit\GenericUnit_Overloads.cs" />

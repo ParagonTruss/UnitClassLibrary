@@ -13,7 +13,7 @@ namespace UnitClassLibrary.GenericUnit
 
         }
 
-        private static List<IUnitType> _getUnitTypes(List<KeyValuePair<double, IUnitType>> list)
+        protected static List<IUnitType> _getUnitTypes(List<KeyValuePair<double, IUnitType>> list)
         {
             var returnList = new List<IUnitType>();
 
@@ -25,7 +25,7 @@ namespace UnitClassLibrary.GenericUnit
             return returnList;
         }
 
-        private class UnitType : IUnitType
+        protected class UnitType : IUnitType
         {
             private List<IUnitType> numerators = new List<IUnitType>();
             private List<IUnitType> denomenators = new List<IUnitType>();
@@ -52,6 +52,35 @@ namespace UnitClassLibrary.GenericUnit
                 }
 
                 return numeratorFactor / denomenatorFactor;
+            }
+
+            public override string ToString()
+            {
+                string s = "";
+
+                for (int index = 0; index < this.numerators.Count - 1; index++)
+                {
+                    var numerator = this.numerators[index];
+                    s += numerator + " * ";
+                }
+
+                s += numerators[this.numerators.Count - 1].ToString();
+
+                if (denomenators.Count > 0)
+                {
+                    s += " / (";
+
+                    foreach (var denomenator in this.denomenators)
+                    {
+                        s += denomenator + " * ";
+                    }
+
+                    s += ") ";
+
+                }
+
+
+                return s;
             }
         }
     }

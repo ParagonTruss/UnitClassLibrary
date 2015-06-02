@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
@@ -34,7 +35,8 @@ namespace UnitClassLibrary.GenericUnit
             get { return _equalityStrategy; }
             set { _equalityStrategy = value; }
         }
-        private EqualityStrategy _equalityStrategy;
+
+        protected EqualityStrategy _equalityStrategy;
 
 
 
@@ -47,36 +49,38 @@ namespace UnitClassLibrary.GenericUnit
             this.denomenators = denomenators;
         }
 
+        protected GenericUnit(List<GenericUnit> numerators, List<GenericUnit> denomenators = null)
+        {
+            foreach (var unit in numerators)
+            {
+                this.numerators.Add(new KeyValuePair<double, IUnitType>(unit._IntrinsicValue, unit.GetInternalUnitType()));    
+            }
+
+            if (denomenators != null)
+            {
+                foreach (var unit in denomenators)
+                {
+                    this.denomenators.Add(new KeyValuePair<double, IUnitType>(unit._IntrinsicValue, unit.GetInternalUnitType()));
+                }
+            }
+            
+            
+        }
+
         public GenericUnit(GenericUnit toCopy)
         {
             this.numerators = toCopy.numerators;
             this.denomenators = toCopy.denomenators;
         }
 
-
+        public static double ConvertUnit(IUnitType convertFromType, double value, IUnitType convertToType)
+        {
+            return value * (convertFromType.GetConversionFactor() / convertToType.GetConversionFactor());
+        }
 
         public double GetValue(IUnitType typeConvertingTo)
         {
-            return _IntrinsicValue * (_getCompositeConversionFactor() / typeConvertingTo.GetConversionFactor());
-        }
-
-
-        private double _getCompositeConversionFactor()
-        {
-            var numeratorFactor = 1.0;
-            var denomenatorFactor = 1.0;
-
-            foreach (var pair in numerators)
-            {
-                numeratorFactor *= pair.Value.GetConversionFactor();
-            }
-
-            foreach (var pair in denomenators)
-            {
-                denomenatorFactor *= pair.Value.GetConversionFactor();
-            }
-
-            return numeratorFactor / denomenatorFactor;
+            return ConvertUnit(this.GetInternalUnitType(), _IntrinsicValue, typeConvertingTo) ;
         }
 
         /// <summary>

@@ -208,61 +208,64 @@ namespace UnitClassLibrary.GenericUnit
                 return _IntrinsicValue.GetHashCode();
             }
 
-            ///// <summary>
-            ///// The value and GenericUnit in terms of what the object was created with. 
-            ///// If you want it in a different GenericUnit use ToString(DistanceType)
-            ///// </summary>
-            //public override string ToString()
-            //{
-            //    //round the number to an acceptable range given the EqualityStrategy.
+            /// <summary>
+            /// The value and GenericUnit in terms of what the object was created with. 
+            /// If you want it in a different GenericUnit use ToString(DistanceType)
+            /// </summary>
+            public override string ToString()
+            {
+                //round the number to an acceptable range given the EqualityStrategy.
 
-            //    try
-            //    {
-            //        int digits = 0;
-            //        double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
+                try
+                {
+                    int digits = 0;
+                    double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
-            //        while (this != new GenericUnit(this.GetInternalUnitType(), roundedIntrinsicValue))
-            //        {
-            //            digits++;
-            //            roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
-            //        }
+                    while (this != new GenericUnit(
+                        new List<KeyValuePair<double, IUnitType>>(){new KeyValuePair<double, IUnitType>(roundedIntrinsicValue, this.GetInternalUnitType())},
+                        new List<KeyValuePair<double, IUnitType>>()))
+                    {
+                        digits++;
+                        roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
+                    }
 
-            //        return Math.Round(_IntrinsicValue, digits) + " " + GetInternalUnitType();
-            //    }
-            //    catch (OverflowException)
-            //    {
+                    return Math.Round(_IntrinsicValue, digits) + " " + GetInternalUnitType();
+                }
+                catch (OverflowException)
+                {
 
-            //        return _IntrinsicValue + " " + GetInternalUnitType();
-            //    }
-            //}
+                    return _IntrinsicValue + " " + GetInternalUnitType();
+                }
+            }
 
-            //public override bool Equals(object obj)
-            //{
-            //    if (obj == null)
-            //    {
-            //        return false;
-            //    }
+            public override bool Equals(object obj)
+            {
+                if (obj == null)
+                {
+                    return false;
+                }
 
-            //    return this.Equals((GenericUnit)obj);
-            //}
+                return this.Equals((GenericUnit)obj);
+            }
 
-            ///// <summary>
-            ///// Compares using the function specified by strategy
-            ///// </summary>
-            //public bool Equals(GenericUnit other)
-            //{
-            //    if (other == null)
-            //    {
-            //        return false;
-            //    }
-            //    try
-            //    {
-            //        return _equalityStrategy(this, other);
-            //    }
-            //    catch
-            //    {
-            //        return false;
-            //    }
-            //}
+            /// <summary>
+            /// Compares using the function specified by strategy
+            /// </summary>
+            public bool Equals(GenericUnit other)
+            {
+                if (other == null)
+                {
+                    return false;
+                }
+                try
+                {
+                    //return _equalityStrategy(this, other);
+                    return GenericUnit.EqualsWithinDeviationPercentageStrategy(this, other);
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
     }
