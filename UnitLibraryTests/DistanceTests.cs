@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary.DistanceUnit;
+using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit;
@@ -21,7 +22,7 @@ namespace UnitLibraryTests
     /// Test Class for all conversion functions 
     /// </summary>
     [TestFixture()]
-    public class GenericUnitTests
+    public class TimeTests
     {
         [Test()]
         public void Generic_Tests()
@@ -199,11 +200,13 @@ namespace UnitLibraryTests
         public void Distance_EqualsWithinPassedAcceptedDeviation()
         {
             // arrange
-            Distance biggerDistance = new Distance(new Inch(), -14.1875);
-            Distance smallerDistance = new Distance("1' 2 1/16\"");
-            Distance equivalentbiggerDistance = new Distance(new Millimeter(), -360.3625);
+            Distance distance = new Distance(new Inch(), 5);
+            Distance equivalentDistance = new Distance(new Inch(), 5.03125);
+            Distance notequivalentDistance = new Distance(new Inch(), 5.03126);
 
-            (equivalentbiggerDistance.EqualsWithinDeviationConstant(biggerDistance, new Distance(new Millimeter(), 1))).Should().Be(true);
+
+            (equivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationConstant)).Should().Be(true);
+            (notequivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationConstant)).Should().Be(false);
         }
 
 
@@ -341,7 +344,7 @@ namespace UnitLibraryTests
             // oneFoot--;
 
             //User defined equality strategies
-            EqualityStrategy userStrategy = (d1, d2) => { return true; };
+            EqualityStrategy<IDistanceType> userStrategy = (d1, d2) => { return true; };
 
             oneFoot.EqualsWithinEqualityStrategy(positiveDistance, userStrategy);
 

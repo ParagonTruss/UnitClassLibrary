@@ -4,14 +4,14 @@ using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.TimeUnit
 {
-    public class Time:GenericUnit.GenericUnit
+    public class Time:GenericUnit<ITimeType>
     {
         public Time(ITimeType TimeType, double passedDouble)
             : base(new List<Unit>() { new Unit(passedDouble, TimeType) }, new List<Unit>())
         {
         }
 
-        private Time(GenericUnit.GenericUnit toCopy)
+        private Time(GenericUnit<ITimeType> toCopy)
             : base(toCopy)
         {
         }

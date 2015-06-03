@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public partial class GenericUnit
+    public partial class GenericUnit<T>
     {
 
 

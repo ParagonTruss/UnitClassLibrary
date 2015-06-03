@@ -4,14 +4,6 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary.TimeUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Imperial.FootUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Imperial.InchUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Imperial.MileUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Imperial.YardUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Metric.CentimeterUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Metric.KilometerUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Metric.MeterUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes.Metric.MillimeterUnit;
 using UnitClassLibrary.GenericUnit;
 
 
