@@ -67,22 +67,26 @@ namespace UnitClassLibrary.GenericUnit
         /// </summary>
         public bool EqualsWithinDeviationConstant(GenericUnit unit1, GenericUnit unit2)
         {
-            var difference = _absoluteValueOfDifference(unit1, unit2);
+            //var difference = _absoluteValueOfDifference(unit1, unit2);
 
-            // see if the difference is less than or equal to the tolerance, if it is, then they are close enough to be considered equal
-            var dimensionsAreEqual = difference <= unit1.DeviationConstant;
+            //// see if the difference is less than or equal to the tolerance, if it is, then they are close enough to be considered equal
+            //var dimensionsAreEqual = difference <= unit1._deviationConstant;
 
-            return dimensionsAreEqual;
+            //return dimensionsAreEqual;
+
+            throw new NotImplementedException();
         }
 
         public static bool EqualsWithinDeviationConstantStrategy(GenericUnit unit1, GenericUnit unit2)
         {
-            var difference = _absoluteValueOfDifference(unit1, unit2);
+            //var difference = _absoluteValueOfDifference(unit1, unit2);
 
-            // see if the difference is less than or equal to the tolerance, if it is, then they are close enough to be considered equal
-            var dimensionsAreEqual = difference <= unit1.DeviationConstant;
+            //// see if the difference is less than or equal to the tolerance, if it is, then they are close enough to be considered equal
+            //var dimensionsAreEqual = difference.GetValue() <= unit1._deviationConstant;
 
-            return dimensionsAreEqual;
+            //return dimensionsAreEqual;
+
+            throw new NotImplementedException();
         }
 
         private static GenericUnit _absoluteValueOfDifference(GenericUnit unit1, GenericUnit unit2)

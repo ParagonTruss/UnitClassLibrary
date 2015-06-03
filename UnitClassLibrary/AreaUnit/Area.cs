@@ -6,7 +6,7 @@ namespace UnitClassLibrary.AreaUnit
 {
     public class Area:GenericUnit.GenericUnit
     {
-        public Area(IAreaType AreaType, double passedDouble):base(new List<KeyValuePair<double, IUnitType>>(){new KeyValuePair<double, IUnitType>(passedDouble,AreaType)}, new List<KeyValuePair<double, IUnitType>>() )
+        public Area(IAreaType AreaType, double passedDouble):base(new List<Unit>(){new Unit(passedDouble,AreaType)}, new List<Unit>() )
         {
         }
 

@@ -7,7 +7,7 @@ namespace UnitClassLibrary.TimeUnit
     public class Time:GenericUnit.GenericUnit
     {
         public Time(ITimeType TimeType, double passedDouble)
-            : base(new List<KeyValuePair<double, IUnitType>>() { new KeyValuePair<double, IUnitType>(passedDouble, TimeType) }, new List<KeyValuePair<double, IUnitType>>())
+            : base(new List<Unit>() { new Unit(passedDouble, TimeType) }, new List<Unit>())
         {
         }
 

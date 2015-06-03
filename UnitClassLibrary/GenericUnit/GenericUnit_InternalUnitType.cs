@@ -13,13 +13,13 @@ namespace UnitClassLibrary.GenericUnit
 
         }
 
-        protected static List<IUnitType> _getUnitTypes(List<KeyValuePair<double, IUnitType>> list)
+        protected static List<IUnitType> _getUnitTypes(List<Unit> list)
         {
             var returnList = new List<IUnitType>();
 
             foreach (var pair in list)
             {
-                returnList.Add(pair.Value);
+                returnList.Add(pair.UnitType);
             }
 
             return returnList;

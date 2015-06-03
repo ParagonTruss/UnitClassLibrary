@@ -9,7 +9,7 @@ namespace UnitClassLibrary.SpeedUnit
     public class Speed : GenericUnit.GenericUnit
     {
         public Speed(ISpeedType SpeedType, double passedDouble)
-            : base(new List<KeyValuePair<double, IUnitType>>() { new KeyValuePair<double, IUnitType>(passedDouble, SpeedType) }, new List<KeyValuePair<double, IUnitType>>())
+            : base(new List<Unit>() { new Unit(passedDouble, SpeedType) }, new List<Unit>())
         {
         }
 

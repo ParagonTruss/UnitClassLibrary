@@ -12,11 +12,11 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
             public static GenericUnit operator ^(GenericUnit d1, double power)
             {
-                var newNumerators =new List<KeyValuePair<double, IUnitType>>((d1.numerators));
+                var newNumerators =new List<Unit>((d1.numerators));
 
                 //multiply the first value by itself
 
-                newNumerators[0] = new KeyValuePair<double, IUnitType>(newNumerators[0].Key * newNumerators[0].Key, newNumerators[0].Value);
+                newNumerators[0] = new Unit(newNumerators[0].Key * newNumerators[0].Key, newNumerators[0].Value);
                 return new GenericUnit(newNumerators, d1.denomenators);
             }
 
@@ -29,23 +29,23 @@ namespace UnitClassLibrary.GenericUnit
             {
                 var sum = d1._IntrinsicValue + d2._IntrinsicValue;
 
-                var newNumerators = new List<KeyValuePair<double, IUnitType>>((d1.numerators));
-                var newDenomenators = new List<KeyValuePair<double, IUnitType>>((d2.denomenators));
+                var newNumerators = new List<Unit>((d1.numerators));
+                var newDenomenators = new List<Unit>((d2.denomenators));
 
-                newNumerators[0] = (new KeyValuePair<double, IUnitType>(sum, newNumerators[0].Value));
+                newNumerators[0] = (new Unit(sum, newNumerators[0].Value));
 
                 for (int i = 1; i < newNumerators.Count; i++)
                 {
                     if (newNumerators[i].Key < 0)
                     {
-                        newNumerators[i] = (new KeyValuePair<double, IUnitType>(1, newNumerators[i].Value));
+                        newNumerators[i] = (new Unit(1, newNumerators[i].Value));
                     }
                 }
 
                 for (int i = 0; i < newDenomenators.Count; i++)
                 {
 
-                        newDenomenators[i] = (new KeyValuePair<double, IUnitType>(1, newDenomenators[i].Value));
+                        newDenomenators[i] = (new Unit(1, newDenomenators[i].Value));
                 }
 
                 return new GenericUnit(newNumerators, newDenomenators);
@@ -58,23 +58,23 @@ namespace UnitClassLibrary.GenericUnit
             {
                 var sum = d1._IntrinsicValue - d2._IntrinsicValue;
 
-                var newNumerators = new List<KeyValuePair<double, IUnitType>>((d1.numerators));
-                var newDenomenators = new List<KeyValuePair<double, IUnitType>>((d1.denomenators));
+                var newNumerators = new List<Unit>((d1.numerators));
+                var newDenomenators = new List<Unit>((d1.denomenators));
 
-                newNumerators[0] = (new KeyValuePair<double, IUnitType>(sum, newNumerators[0].Value));
+                newNumerators[0] = (new Unit(sum, newNumerators[0].Value));
 
                 for (int i = 1; i < newNumerators.Count; i++)
                 {
                     if (newNumerators[i].Key < 0)
                     {
-                        newNumerators[i] = (new KeyValuePair<double, IUnitType>(1, newNumerators[i].Value));
+                        newNumerators[i] = (new Unit(1, newNumerators[i].Value));
                     }
                 }
 
                 for (int i = 0; i < newDenomenators.Count; i++)
                 {
 
-                    newDenomenators[i] = (new KeyValuePair<double, IUnitType>(1, newDenomenators[i].Value));
+                    newDenomenators[i] = (new Unit(1, newDenomenators[i].Value));
                 }
 
                 return new GenericUnit(newNumerators, newDenomenators);
@@ -85,9 +85,9 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
             public static GenericUnit operator *(GenericUnit d1, double multiplier)
             {
-                var newNumerators = new List<KeyValuePair<double, IUnitType>>((d1.numerators));
+                var newNumerators = new List<Unit>((d1.numerators));
 
-                newNumerators[0] = new KeyValuePair<double, IUnitType>(newNumerators[0].Key * multiplier, newNumerators[0].Value);
+                newNumerators[0] = new Unit(newNumerators[0].Key * multiplier, newNumerators[0].Value);
 
                 return new GenericUnit(newNumerators,d1.denomenators);
             }
@@ -105,9 +105,9 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
             public static GenericUnit operator /(GenericUnit d1, double divisor)
             {
-                var newNumerators = new List<KeyValuePair<double, IUnitType>>((d1.numerators));
+                var newNumerators = new List<Unit>((d1.numerators));
 
-                newNumerators[0] = new KeyValuePair<double, IUnitType>(newNumerators[0].Key / divisor, newNumerators[0].Value);
+                newNumerators[0] = new Unit(newNumerators[0].Key / divisor, newNumerators[0].Value);
 
                 return new GenericUnit(newNumerators, d1.denomenators);
             }
@@ -209,6 +209,43 @@ namespace UnitClassLibrary.GenericUnit
             }
 
             /// <summary>
+            /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
+            /// </summary>
+            /// <param name="other">Distance being compared to</param>
+            /// <returns></returns>
+            public int CompareTo(GenericUnit other)
+            {
+                if (this.Equals(other))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return _IntrinsicValue.CompareTo(other.GetValue(GetInternalUnitType()));
+                }
+            }
+
+            /// <summary>
+            /// This implements the IComparable (Distance) interface and allows Distances to be sorted and such
+            /// </summary>
+            /// <param name="obj">object being compared to</param>
+            /// <returns></returns>
+            public int CompareTo(object obj)
+            {
+                if (obj == null)
+                {
+                    throw new ArgumentNullException("obj");
+                }
+
+                if (!(obj is GenericUnit))
+                {
+                    throw new ArgumentException("Expected type GenericUnit.", "obj");
+                }
+
+                return this.CompareTo((GenericUnit)obj);
+            }
+
+            /// <summary>
             /// The value and GenericUnit in terms of what the object was created with. 
             /// If you want it in a different GenericUnit use ToString(DistanceType)
             /// </summary>
@@ -222,8 +259,8 @@ namespace UnitClassLibrary.GenericUnit
                     double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
                     while (this != new GenericUnit(
-                        new List<KeyValuePair<double, IUnitType>>(){new KeyValuePair<double, IUnitType>(roundedIntrinsicValue, this.GetInternalUnitType())},
-                        new List<KeyValuePair<double, IUnitType>>()))
+                        new List<Unit>(){new Unit(roundedIntrinsicValue, this.GetInternalUnitType())},
+                        new List<Unit>()))
                     {
                         digits++;
                         roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);

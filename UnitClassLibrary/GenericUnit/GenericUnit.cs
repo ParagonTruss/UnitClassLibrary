@@ -3,11 +3,24 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
+    public struct Unit
+    {
+        public Unit(double value, IUnitType unitType)
+        {
+            Value = value;
+            UnitType = unitType;
+        }
+
+        public double Value;
+        public IUnitType UnitType;
+
+    }
+
 
     public partial class GenericUnit
     {
-        protected List<KeyValuePair<double, IUnitType>> numerators;
-        protected List<KeyValuePair<double, IUnitType>> denomenators;
+        protected List<Unit> numerators;
+        protected List<Unit> denomenators;
 
         protected double _IntrinsicValue
         {
@@ -18,12 +31,12 @@ namespace UnitClassLibrary.GenericUnit
 
                 foreach (var pair in numerators)
                 {
-                    numerator *= pair.Key;
+                    numerator *= pair.Value;
                 }
 
                 foreach (var pair in denomenators)
                 {
-                    denomenator *= pair.Key;
+                    denomenator *= pair.Value;
                 }
 
                 return numerator / denomenator;
@@ -40,10 +53,10 @@ namespace UnitClassLibrary.GenericUnit
 
 
 
-        public GenericUnit DeviationConstant { get; protected set; }
+        public Unit _deviationConstant { get; protected set; }
 
 
-        public GenericUnit(List<KeyValuePair<double, IUnitType>> numerators, List<KeyValuePair<double, IUnitType>> denomenators)
+        public GenericUnit(List<Unit> numerators, List<Unit> denomenators)
         {
             this.numerators = numerators;
             this.denomenators = denomenators;
@@ -53,18 +66,18 @@ namespace UnitClassLibrary.GenericUnit
         {
             foreach (var unit in numerators)
             {
-                this.numerators.Add(new KeyValuePair<double, IUnitType>(unit._IntrinsicValue, unit.GetInternalUnitType()));    
+                this.numerators.Add(new Unit(unit._IntrinsicValue, unit.GetInternalUnitType()));
             }
 
             if (denomenators != null)
             {
                 foreach (var unit in denomenators)
                 {
-                    this.denomenators.Add(new KeyValuePair<double, IUnitType>(unit._IntrinsicValue, unit.GetInternalUnitType()));
+                    this.denomenators.Add(new Unit(unit._IntrinsicValue, unit.GetInternalUnitType()));
                 }
             }
-            
-            
+
+
         }
 
         public GenericUnit(GenericUnit toCopy)
@@ -80,7 +93,7 @@ namespace UnitClassLibrary.GenericUnit
 
         public double GetValue(IUnitType typeConvertingTo)
         {
-            return ConvertUnit(this.GetInternalUnitType(), _IntrinsicValue, typeConvertingTo) ;
+            return ConvertUnit(this.GetInternalUnitType(), _IntrinsicValue, typeConvertingTo);
         }
 
         /// <summary>
@@ -88,10 +101,10 @@ namespace UnitClassLibrary.GenericUnit
         /// </summary>
         public GenericUnit Negate()
         {
-            var newNumerators = new List<KeyValuePair<double, IUnitType>>((numerators));
+            var newNumerators = new List<Unit>((numerators));
 
             //we just negate the first numerator
-            newNumerators[0] = (new KeyValuePair<double, IUnitType>(newNumerators[0].Key * -1, newNumerators[0].Value));
+            newNumerators[0] = (new Unit(newNumerators[0].Value * -1, newNumerators[0].UnitType));
 
             return new GenericUnit(newNumerators, denomenators);
         }
@@ -100,22 +113,22 @@ namespace UnitClassLibrary.GenericUnit
         {
             //while slightly unnecessary, we make everything positive. not just a single value
 
-            var newNumerators = new List<KeyValuePair<double, IUnitType>>((numerators));
-            var newDenomenators = new List<KeyValuePair<double, IUnitType>>((denomenators));
+            var newNumerators = new List<Unit>((numerators));
+            var newDenomenators = new List<Unit>((denomenators));
 
             for (int i = 0; i < newNumerators.Count; i++)
             {
-                if (newNumerators[i].Key < 0)
+                if (newNumerators[i].Value < 0)
                 {
-                    newNumerators[i] = (new KeyValuePair<double, IUnitType>(newNumerators[i].Key * -1, newNumerators[i].Value));
+                    newNumerators[i] = (new Unit(newNumerators[i].Value * -1, newNumerators[i].UnitType));
                 }
             }
 
             for (int i = 0; i < newDenomenators.Count; i++)
             {
-                if (newDenomenators[i].Key < 0)
+                if (newDenomenators[i].Value < 0)
                 {
-                    newDenomenators[i] = (new KeyValuePair<double, IUnitType>(newDenomenators[i].Key * -1, newDenomenators[i].Value));
+                    newDenomenators[i] = (new Unit(newDenomenators[i].Value * -1, newDenomenators[i].UnitType));
                 }
             }
 
