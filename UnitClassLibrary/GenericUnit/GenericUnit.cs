@@ -3,166 +3,151 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public struct Unit
+
+    public class BasicUnit
     {
-        public Unit(GenericUnit<IUnitType> genericUnit)
+        public BasicUnit(double value, double conversionFactor)
         {
-            Value = genericUnit.GetValue(genericUnit.GetInternalUnitType());
-            UnitType = genericUnit.GetInternalUnitType();
+            IntrinsicValue = value;
+            ConversionFactor = conversionFactor;
         }
 
-        public Unit(double value, IUnitType unitType)
-        {
-            Value = value;
-            UnitType = unitType;
-        }
-
-        public double Value ;
-        public IUnitType UnitType;
+        public double IntrinsicValue;
+        public double ConversionFactor;
 
     }
 
+    
 
-    public partial class GenericUnit<T> where T: IUnitType 
+    public partial class GenericUnit<T> where T: IUnitType
     {
-        protected List<Unit> numerators = new List<Unit>();
-        protected List<Unit> denomenators = new List<Unit>();
 
-        protected double _IntrinsicValue
+        #region _fields and Properties
+
+        private List<BasicUnit> _numerators = new List<BasicUnit>();
+        private List<BasicUnit> _denomenators = new List<BasicUnit>();
+
+        private EqualityStrategy<T> _EqualityStrategy = EqualityStrategies.EqualsWithinDeviationPercentageStrategy;
+
+        protected double _DeviationPercentage;
+        protected GenericUnit<T> _DeviationConstant;
+
+        public GenericUnit<T> DeviationAsConstant
+        {
+            get { return _DeviationConstant; }
+            protected set
+            {
+                this._DeviationConstant = value;
+            }
+        }
+
+        public double DeviationAsPercentage
+        {
+            get
+            {
+                if (_DeviationPercentage == 0.0)
+                {
+                    return 1.0;
+                }
+                else
+                {
+                    return _DeviationPercentage;
+                }
+            }
+            protected set { _DeviationPercentage = value; }
+        }
+
+        protected internal double _IntrinsicValue
         {
             get
             {
                 var numerator = 1.0;
                 var denomenator = 1.0;
 
-                foreach (var pair in numerators)
+                foreach (var pair in _numerators)
                 {
-                    numerator *= pair.Value;
+                    numerator *= pair.IntrinsicValue;
                 }
 
-                foreach (var pair in denomenators)
+                foreach (var pair in _denomenators)
                 {
-                    denomenator *= pair.Value;
+                    denomenator *= pair.IntrinsicValue;
                 }
 
                 return numerator / denomenator;
             }
         }
 
-        protected EqualityStrategy<T> _equalityStrategy;
-
-        public Unit DeviationConstant
+        public double ConversionFactor
         {
             get
             {
-                if (_deviationConstant.Value == 0.0 && _deviationConstant.UnitType == null)
+                var numerator = 1.0;
+                var denomenator = 1.0;
+
+                foreach (var unit in _numerators)
                 {
-                    return new Unit(1, GetInternalUnitType());
+                    numerator *= unit.ConversionFactor;
                 }
-                else
+
+                foreach (var unit in _denomenators)
                 {
-                    return _deviationConstant;
+                    denomenator *= unit.ConversionFactor;
                 }
+
+                return numerator / denomenator;
             }
+
+        }
+        #endregion
+
+        #region Constructors
+
+        public GenericUnit(List<GenericUnit<T>> numerators, List<GenericUnit<T>> denomenators = null, EqualityStrategy<T> passedEqualityStrategy = null) :
+            this(_convertToBasicUnitList(numerators), _convertToBasicUnitList(denomenators), passedEqualityStrategy)
+        {
+            
+            
         }
 
-        protected Unit _deviationConstant;
-
-
-        public GenericUnit(List<GenericUnit<T>> numerators, List<GenericUnit<T>> denomenators)
+        private static List<BasicUnit> _convertToBasicUnitList(List<GenericUnit<T>> genericUnits)
         {
             //make list of genericUnits into basic units
-            var newNumerators = new List<Unit>();
+            var newBasicUnits = new List<BasicUnit>();
 
-            foreach (var genericUnit in numerators)
+            foreach (var genericUnit in genericUnits)
             {
-                newNumerators.Add(new Unit(genericUnit._IntrinsicValue, genericUnit.GetInternalUnitType()));
+                newBasicUnits.Add(new BasicUnit(genericUnit._IntrinsicValue, genericUnit.ConversionFactor));
             }
 
-            //make list of genericUnits into basic units
-            var newDenomenators = new List<Unit>();
+            return newBasicUnits;
+        }
 
-            foreach (var genericUnit in denomenators)
+
+
+        protected GenericUnit(List<BasicUnit> numerators, List<BasicUnit> denomenators = null,  EqualityStrategy<T> passedEqualityStrategy = null)
+        {
+            _numerators = numerators;
+            if (denomenators  != null)
             {
-                newDenomenators.Add(new Unit(genericUnit._IntrinsicValue, genericUnit.GetInternalUnitType()));
+                this._denomenators = denomenators;
             }
-
-            this.numerators =  newNumerators;
-            this.denomenators = newDenomenators;
+            this._EqualityStrategy = passedEqualityStrategy;
         }
 
-        protected GenericUnit(List<Unit> numerators, List<Unit> denomenators = null)
-        {
-            foreach (var unit in numerators)
-            {
-                this.numerators.Add(new Unit(unit.Value, unit.UnitType));
-            }
-
-            if (denomenators != null)
-            {
-                foreach (var unit in denomenators)
-                {
-                    this.denomenators.Add(new Unit(unit.Value, unit.UnitType));
-                }
-            }
-
-
-        }
-
-        public GenericUnit(GenericUnit<T> toCopy)
-        {
-            this.numerators = toCopy.numerators;
-            this.denomenators = toCopy.denomenators;
-        }
-
-        public static double ConvertUnit(IUnitType convertFromType, double value, IUnitType convertToType)
-        {
-            return value * (convertFromType.GetConversionFactor() / convertToType.GetConversionFactor());
-        }
-
-        public double GetValue(IUnitType typeConvertingTo)
-        {
-            return ConvertUnit(this.GetInternalUnitType(), _IntrinsicValue, typeConvertingTo);
-        }
+        
 
         /// <summary>
-        /// Creates a new GenericUnit<T> that is the negative of this one
+        /// Copy Constructor
         /// </summary>
-        public GenericUnit<T> Negate()
+        public GenericUnit(GenericUnit<T> toCopy)
         {
-            var newNumerators = new List<Unit>((numerators));
-
-            //we just negate the first numerator
-            newNumerators[0] = (new Unit(newNumerators[0].Value * -1, newNumerators[0].UnitType));
-
-            return new GenericUnit<T>(newNumerators, denomenators);
+            this._numerators = toCopy._numerators;
+            this._denomenators = toCopy._denomenators;
+            this._DeviationPercentage = toCopy._DeviationPercentage;
+            this._EqualityStrategy = toCopy._EqualityStrategy;
         }
 
-        public GenericUnit<T> AbsoluteValue()
-        {
-            //while slightly unnecessary, we make everything positive. not just a single value
-
-            var newNumerators = new List<Unit>((numerators));
-            var newDenomenators = new List<Unit>((denomenators));
-
-            for (int i = 0; i < newNumerators.Count; i++)
-            {
-                if (newNumerators[i].Value < 0)
-                {
-                    newNumerators[i] = (new Unit(newNumerators[i].Value * -1, newNumerators[i].UnitType));
-                }
-            }
-
-            for (int i = 0; i < newDenomenators.Count; i++)
-            {
-                if (newDenomenators[i].Value < 0)
-                {
-                    newDenomenators[i] = (new Unit(newDenomenators[i].Value * -1, newDenomenators[i].UnitType));
-                }
-            }
-
-
-            return new GenericUnit<T>(newNumerators, newDenomenators);
-        }
+        #endregion
     }
 }

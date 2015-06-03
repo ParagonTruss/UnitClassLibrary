@@ -6,7 +6,6 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public interface ISpeedType:IUnitType
     {
-        IDistanceType GetDistanceType();
-        ITimeType GetTimeType();
+
     }
 }

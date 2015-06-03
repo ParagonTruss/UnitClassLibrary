@@ -16,7 +16,7 @@ namespace UnitClassLibrary.DistanceUnit
         {
             get
             {
-                return ConvertDistanceIntoArchitecturalString(this);
+                return ConvertToArchitecturalString(this);
             }
         }
 
@@ -57,7 +57,7 @@ namespace UnitClassLibrary.DistanceUnit
             //combine the results
             double result = sign * (feet * 12 + inch + sixt / 16.0 + numer / Convert.ToDouble(denom));
 
-            return ConvertUnit(new Inch(), result, convertToType);
+            return new Distance(new Inch(), result).GetValue(convertToType);
         }
 
 
@@ -65,10 +65,10 @@ namespace UnitClassLibrary.DistanceUnit
         /// <summary>
         /// Returns a string formatted in a standard AutoCAD format
         /// </summary>
-        private static string ConvertToArchitecturalString(IDistanceType typeConvertingFrom, double passedValue, int precision = 16)
+        private static string ConvertToArchitecturalString(Distance distance, int precision = 16)
         {
             //Convert into inches before proceeding
-            double workingValue = ConvertUnit(typeConvertingFrom, passedValue, new Inch());
+            double workingValue = distance.GetValue(new Inch());
 
             //detect need for sign
             string sign = "";
@@ -136,30 +136,6 @@ namespace UnitClassLibrary.DistanceUnit
 
             //add and return all of the strings together, the only addition is a space that will be trimmed if there is no fraction
             return (sign + feetString + feetSymbol + inchesString + " " + fractionString).Trim() + inchesSymbol;
-        }
-
-
-
-        /// <summary>
-        /// Converts any Distance into an architectural string representation
-        /// </summary>
-        /// <returns>converted Distance</returns>
-        public static string ConvertDistanceIntoArchitecturalString(Distance passedDistance)
-        {
-            //Now convert the value from millimeters to the desired output
-            return ConvertToArchitecturalString(passedDistance.GetInternalDistanceType(), passedDistance._IntrinsicValue);
-        }
-
-        protected class DistanceUnit:UnitType, IDistanceType
-        {
-            public DistanceUnit(List<IUnitType> numerators, List<IUnitType> denomenators) : base(numerators, denomenators)
-            {
-            }
-        }
-
-        private IDistanceType GetInternalDistanceType()
-        {
-            return new DistanceUnit(_getUnitTypes(this.numerators), _getUnitTypes(this.denomenators));
         }
     }
 }

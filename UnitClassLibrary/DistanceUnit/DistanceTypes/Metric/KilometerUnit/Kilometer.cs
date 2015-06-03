@@ -4,9 +4,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
     public class Kilometer : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-             return 39370.0787401575D;
+            get { return 39370.0787401575D; }
         }
     }
 

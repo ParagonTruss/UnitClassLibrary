@@ -9,25 +9,15 @@ namespace UnitClassLibrary.SpeedUnit
     public class Speed : GenericUnit<ISpeedType>
     {
         public Speed(ISpeedType SpeedType, double passedDouble)
-            : base(new List<Unit>() { new Unit(passedDouble, SpeedType) }, new List<Unit>())
+            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, SpeedType.ConversionFactor) }, new List<BasicUnit>())
         {
         }
 
         public Speed(Distance distance, Time time)
-            : base(new List<Unit>() { _makeIntoUnit(distance) }, new List<Unit>() { _makeIntoUnit(time) })
+            : base(new List<BasicUnit>() { new BasicUnit(distance.GetValue(distance.ConversionFactor), distance.ConversionFactor) }, new List<BasicUnit>() { new BasicUnit(time.GetValue(time.ConversionFactor), time.ConversionFactor) })
         {
         }
-
-        private static Unit _makeIntoUnit(Time time)
-        {
-            return new Unit(time.GetValue(time.GetInternalUnitType()), time.GetInternalUnitType());
-        }
-
-        private static Unit _makeIntoUnit(Distance distance)
-        {
-            return new Unit(distance.GetValue(distance.GetInternalUnitType()), distance.GetInternalUnitType());
-        }
-
+        
         private Speed(GenericUnit<ISpeedType> toCopy)
             : base(toCopy)
         {

@@ -2,9 +2,9 @@
 {
     public class Centimeter : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return 0.393700787401575D;
+            get { return 0.393700787401575D; }
         }
     }
 

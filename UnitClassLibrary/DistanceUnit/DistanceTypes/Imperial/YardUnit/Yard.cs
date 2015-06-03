@@ -2,9 +2,9 @@
 {
     public class Yard : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-             return 36;
+            get { return 36; }
         }
     }
 

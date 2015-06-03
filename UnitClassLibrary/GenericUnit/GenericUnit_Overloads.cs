@@ -12,12 +12,12 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
         public static GenericUnit<T> operator ^(GenericUnit<T> d1, double power)
             {
-                var newNumerators =new List<Unit>((d1.numerators));
+                var newNumerators =new List<BasicUnit>((d1._numerators));
 
                 //multiply the first value by itself
 
-                newNumerators[0] = new Unit(newNumerators[0].Value * newNumerators[0].Value, newNumerators[0].UnitType);
-                return new GenericUnit<T>(newNumerators, d1.denomenators);
+                newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue * newNumerators[0].IntrinsicValue, newNumerators[0].ConversionFactor);
+                return new GenericUnit<T>(newNumerators, d1._denomenators);
             }
 
             
@@ -29,24 +29,24 @@ namespace UnitClassLibrary.GenericUnit
             {
                 var sum = d1._IntrinsicValue + d2._IntrinsicValue;
 
-                var newNumerators = new List<Unit>((d1.numerators));
-                var newDenomenators = new List<Unit>((d2.denomenators));
+                var newNumerators = new List<BasicUnit>((d1._numerators));
+                var newDenomenators = new List<BasicUnit>((d2._denomenators));
 
-                newNumerators[0] = (new Unit(sum, newNumerators[0].UnitType));
+                newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
 
                 for (int i = 1; i < newNumerators.Count; i++)
                 {
-                    if (newNumerators[i].Value < 0)
+                    if (newNumerators[i].IntrinsicValue < 0)
                     {
-                        newNumerators[i] = (new Unit(1, newNumerators[i].UnitType));
+                        newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
                     }
                 }
 
                 for (int i = 0; i < newDenomenators.Count; i++)
                 {
 
-                        newDenomenators[i] = (new Unit(1, newDenomenators[i].UnitType));
-                        newDenomenators[i] = (new Unit(1, newDenomenators[i].UnitType));
+                        newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
+                        newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
                 }
 
                 return new GenericUnit<T>(newNumerators, newDenomenators);
@@ -59,23 +59,23 @@ namespace UnitClassLibrary.GenericUnit
             {
                 var sum = d1._IntrinsicValue - d2._IntrinsicValue;
 
-                var newNumerators = new List<Unit>((d1.numerators));
-                var newDenomenators = new List<Unit>((d1.denomenators));
+                var newNumerators = new List<BasicUnit>((d1._numerators));
+                var newDenomenators = new List<BasicUnit>((d1._denomenators));
 
-                newNumerators[0] = (new Unit(sum, newNumerators[0].UnitType));
+                newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
 
                 for (int i = 1; i < newNumerators.Count; i++)
                 {
-                    if (newNumerators[i].Value < 0)
+                    if (newNumerators[i].IntrinsicValue < 0)
                     {
-                        newNumerators[i] = (new Unit(1, newNumerators[i].UnitType));
+                        newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
                     }
                 }
 
                 for (int i = 0; i < newDenomenators.Count; i++)
                 {
 
-                    newDenomenators[i] = (new Unit(1, newDenomenators[i].UnitType));
+                    newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
                 }
 
                 return new GenericUnit<T>(newNumerators, newDenomenators);
@@ -86,11 +86,11 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
         public static GenericUnit<T> operator *(GenericUnit<T> d1, double multiplier)
             {
-                var newNumerators = new List<Unit>((d1.numerators));
+                var newNumerators = new List<BasicUnit>((d1._numerators));
 
-                newNumerators[0] = new Unit(newNumerators[0].Value * multiplier, newNumerators[0].UnitType);
+                newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue * multiplier, newNumerators[0].ConversionFactor);
 
-                return new GenericUnit<T>(newNumerators, d1.denomenators);
+                return new GenericUnit<T>(newNumerators, d1._denomenators);
             }
 
             /// <summary>
@@ -106,11 +106,11 @@ namespace UnitClassLibrary.GenericUnit
             /// </summary>
         public static GenericUnit<T> operator /(GenericUnit<T> d1, double divisor)
             {
-                var newNumerators = new List<Unit>((d1.numerators));
+                var newNumerators = new List<BasicUnit>((d1._numerators));
 
-                newNumerators[0] = new Unit(newNumerators[0].Value / divisor, newNumerators[0].UnitType);
+                newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue / divisor, newNumerators[0].ConversionFactor);
 
-                return new GenericUnit<T>(newNumerators, d1.denomenators);
+                return new GenericUnit<T>(newNumerators, d1._denomenators);
             }
 
             /// <summary>
@@ -170,7 +170,7 @@ namespace UnitClassLibrary.GenericUnit
                 {
                     return false;
                 }
-                return d1._IntrinsicValue > d2.GetValue(d1.GetInternalUnitType());
+                return d1._IntrinsicValue > d2.GetValue(d1.ConversionFactor);
             }
 
             /// <summary>
@@ -182,7 +182,7 @@ namespace UnitClassLibrary.GenericUnit
                 {
                     return false;
                 }
-                return d1._IntrinsicValue < d2.GetValue(d1.GetInternalUnitType());
+                return d1._IntrinsicValue < d2.GetValue(d1.ConversionFactor);
             }
 
             /// <summary>
@@ -222,7 +222,7 @@ namespace UnitClassLibrary.GenericUnit
                 }
                 else
                 {
-                    return _IntrinsicValue.CompareTo(other.GetValue(GetInternalUnitType()));
+                    return _IntrinsicValue.CompareTo(other.GetValue(ConversionFactor));
                 }
             }
 
@@ -260,19 +260,19 @@ namespace UnitClassLibrary.GenericUnit
                     double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
                     while (this != new GenericUnit<T>(
-                        new List<Unit>(){new Unit(roundedIntrinsicValue, this.GetInternalUnitType())},
-                        new List<Unit>()))
+                        new List<BasicUnit>(){new BasicUnit(roundedIntrinsicValue, this.ConversionFactor)},
+                        new List<BasicUnit>()))
                     {
                         digits++;
                         roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
                     }
 
-                    return Math.Round(_IntrinsicValue, digits) + " " + GetInternalUnitType();
+                    return Math.Round(_IntrinsicValue, digits) + "ConversionFactor " + ConversionFactor;
                 }
                 catch (OverflowException)
                 {
 
-                    return _IntrinsicValue + " " + GetInternalUnitType();
+                    return _IntrinsicValue +  "ConversionFactor " + ConversionFactor;
                 }
             }
 
@@ -297,8 +297,7 @@ namespace UnitClassLibrary.GenericUnit
                 }
                 try
                 {
-                    //return _equalityStrategy(this, other);
-                    return GenericUnit<T>.EqualsWithinDeviationPercentageStrategy(this, other);
+                    return _EqualityStrategy(this, other);
                 }
                 catch
                 {

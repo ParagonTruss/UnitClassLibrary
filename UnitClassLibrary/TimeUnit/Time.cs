@@ -6,9 +6,10 @@ namespace UnitClassLibrary.TimeUnit
 {
     public class Time:GenericUnit<ITimeType>
     {
-        public Time(ITimeType TimeType, double passedDouble)
-            : base(new List<Unit>() { new Unit(passedDouble, TimeType) }, new List<Unit>())
+        public Time(ITimeType TimeType, double passedDouble, Time acceptableDeviationConstant)
+            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, TimeType.ConversionFactor) })
         {
+            base._DeviationConstant = acceptableDeviationConstant;
         }
 
         private Time(GenericUnit<ITimeType> toCopy)

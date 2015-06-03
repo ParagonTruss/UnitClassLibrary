@@ -75,11 +75,13 @@
     <Compile Include="DistanceUnit\DistanceTypes\Metric\MillimeterUnit\Millimeter.cs" />
     <Compile Include="DistanceUnit\DistanceTypes\Imperial\MileUnit\Mile.cs" />
     <Compile Include="DistanceUnit\Distance_Architectural.cs" />
+    <Compile Include="GenericUnit\EqualityStrategies.cs" />
     <Compile Include="GenericUnit\GenericUnit.cs" />
-    <Compile Include="GenericUnit\GenericUnit_InternalUnitType.cs" />
+    <Compile Include="GenericUnit\GenericUnit_Methods.cs" />
     <Compile Include="GenericUnit\GenericUnit_Overloads.cs" />
     <Compile Include="GenericUnit\IUnitType.cs" />
     <Compile Include="SpeedUnit\Speed.cs" />
+    <Compile Include="TimeUnit\TimeTypes\Minute.cs" />
     <Compile Include="TimeUnit\Time.cs" />
     <Compile Include="AreaUnit\AreaTypes\IAreaType.cs" />
     <Compile Include="DistanceUnit\DistanceTypes\IDistanceType.cs" />
@@ -89,7 +91,6 @@
     <Compile Include="SpeedUnit\SpeedTypes\ISpeedType.cs" />
     <Compile Include="TimeUnit\TimeTypes\ITimeType.cs" />
     <Compile Include="TimeUnit\TimeTypes\Second.cs" />
-    <Compile Include="SpeedUnit\SpeedTypes\SpeedType.cs" />
     <Compile Include="GenericUnit\GenericUnit_Equality.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

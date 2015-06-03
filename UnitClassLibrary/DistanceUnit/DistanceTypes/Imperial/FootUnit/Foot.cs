@@ -2,9 +2,9 @@
 {
     public class Foot : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-             return 12;
+            get { return 12; }
         }
     }
 

@@ -4,9 +4,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
 {
     public class Meter : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return 39.3700787401575D;
+            get { return 39.3700787401575D; }
         }
     }
 

@@ -5,9 +5,10 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit
     public class InchesSquared:IAreaType
     {
 
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return new Inch().GetConversionFactor() *2;
+            
+            get{return new Inch().ConversionFactor *2; }
         }
     }
 }

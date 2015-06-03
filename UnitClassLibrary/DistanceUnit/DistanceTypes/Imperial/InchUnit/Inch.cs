@@ -2,9 +2,9 @@
 {
     public class Inch : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-             return 1;
+            get { return 1; }
         }
 
         new public string ToString(bool isPlural = false)

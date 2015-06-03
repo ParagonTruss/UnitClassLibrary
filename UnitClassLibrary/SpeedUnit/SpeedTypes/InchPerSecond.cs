@@ -8,9 +8,9 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
     {
 
 
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return new Inch().GetConversionFactor()/new Second().GetConversionFactor();
+            get { return new Inch().ConversionFactor/new Second().ConversionFactor; }
         }
 
         public IDistanceType GetDistanceType()

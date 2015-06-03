@@ -2,9 +2,13 @@
 {
     public class Mile : IDistanceType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return 63360;
+            get
+            {
+                return 63360;
+                
+            }
         }
     }
 

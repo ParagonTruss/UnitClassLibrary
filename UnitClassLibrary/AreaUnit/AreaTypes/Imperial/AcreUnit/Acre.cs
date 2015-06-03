@@ -2,9 +2,9 @@
 {
     public class Acre:IAreaType
     {
-        public double GetConversionFactor()
+        public double ConversionFactor
         {
-            return 1; 
+            get { return 1; }
         }
     }
 }

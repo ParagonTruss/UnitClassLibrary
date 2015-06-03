@@ -10,26 +10,32 @@ namespace UnitClassLibrary.DistanceUnit
     {
         public Distance():this(new Inch(), 0){}
 
-        public Distance(IDistanceType distanceType, double passedDouble):base(new List<Unit>(){new Unit(passedDouble,distanceType)}, new List<Unit>() )
+        public Distance(IDistanceType distanceType, double passedDouble)
+            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, distanceType.ConversionFactor) }, new List<BasicUnit>())
         {
-            _deviationConstant = new Unit(1.0/32.0, new Inch());
+
+                //_DeviationConstant = new Distance(new Inch(), 1);
+        }
+
+        public Distance(IDistanceType distanceType, double passedDouble, GenericUnit<IDistanceType> acceptedDeviationAsConstant)
+            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, distanceType.ConversionFactor) }, new List<BasicUnit>())
+        {
+                //_DeviationConstant = acceptedDeviationAsConstant;
+
         }
 
         public Distance(string architectural):this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural))
         {
-            _deviationConstant = new Unit(1.0 / 32.0, new Inch());
         }
 
         private Distance(GenericUnit<IDistanceType> toCopy)
             : base(toCopy)
         {
-            _deviationConstant = new Unit(1.0 / 32.0, new Inch());
         }
 
         public Distance(Distance toCopy)
             : base(toCopy)
         {
-            _deviationConstant = new Unit(1.0 / 32.0, new Inch());
         }
 
         new public Distance Negate()
@@ -66,14 +72,5 @@ namespace UnitClassLibrary.DistanceUnit
         {
             return distance * power;
         }
-
-
-        public void ToString(Inch inch)
-        {
-            throw new NotImplementedException();
-        }
-
-        
-
     }
 }

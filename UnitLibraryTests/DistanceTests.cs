@@ -22,30 +22,8 @@ namespace UnitLibraryTests
     /// Test Class for all conversion functions 
     /// </summary>
     [TestFixture()]
-    public class TimeTests
+    public class DistanceTests
     {
-        [Test()]
-        public void Generic_Tests()
-        {
-            //Speed d = new Speed(new Distance(new Inch(), 2), new Time(new Second(), 4));
-            //Speed d2 = new Speed(new InchPerSecond(), 3);
-
-            //var x = d2.GetValue(new InchPerSecond());
-
-            //Speed negative = d2.Negate();
-
-            //var y = negative.GetValue(new InchPerSecond());
-
-            //Speed d = new Speed( new Distance(new Inch(), 2), new Time(new Second(), 4));
-            //Speed d2 = new Speed( new InchPerSecond(), 3);
-
-            //var x = d2.GetValue(new InchPerSecond());
-
-            //Speed negative = d2.Negate();
-
-            //var y = negative.GetValue(new InchPerSecond());
-        }
-
         /// <summary>
         /// Tests the architectural string constructor and the regular Distance constructor
         /// </summary>
@@ -205,8 +183,8 @@ namespace UnitLibraryTests
             Distance notequivalentDistance = new Distance(new Inch(), 5.03126);
 
 
-            (equivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationConstant)).Should().Be(true);
-            (notequivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationConstant)).Should().Be(false);
+            (equivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationAsConstant)).Should().Be(true);
+            (notequivalentDistance.EqualsWithinDeviationConstant(distance, distance.DeviationAsConstant)).Should().Be(false);
         }
 
 
@@ -350,8 +328,6 @@ namespace UnitLibraryTests
 
             // ToString override
             oneFoot.ToString();
-
-            oneFoot.ToString(new Inch());
 
             List<Distance> distances = new List<Distance> { oneFoot, positiveDistance, distance4, zero };
 
