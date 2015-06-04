@@ -24,7 +24,7 @@ namespace UnitClassLibrary.GenericUnit
 
 
 
-        public double GetValue(IUnitType typeConvertingTo)
+        public double GetValue(T typeConvertingTo)
         {
             return GetValue(typeConvertingTo.ConversionFactor);
         }
