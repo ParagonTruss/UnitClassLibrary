@@ -37,7 +37,7 @@ namespace UnitLibraryTests
         }
 
         /// <summary>
-        /// Tests mathmatical operators
+        /// Tests mathematical operators
         /// </summary>
         [Test()]
         public void Distance_Math_Operators()
@@ -54,6 +54,15 @@ namespace UnitLibraryTests
             subtractionDistance.Equals(new Distance(DistanceType.Inch, 0)).Should().BeTrue();
             additionDistance.Equals(new Distance(DistanceType.Millimeter, 720.725)).Should().BeTrue();
             additionDistance.Architectural.Should().Be("2'4 6/16\"");
+        }
+
+        [Test()]
+        public void Distance_Division()
+        {
+            Distance inch = new Distance(DistanceType.Inch, 1);
+            Distance centimeter = new Distance(DistanceType.Centimeter, 1);
+
+            (inch / centimeter).Should().Be(2.54);
         }
 
         [Test]
@@ -327,5 +336,21 @@ namespace UnitLibraryTests
 
            
         }
+
+        [Test()]
+        public void Distance_DistanceInIntrinsicUnitsIsGreaterThan()
+        {
+            Distance d1 = new Distance();// empty constructor
+            Distance d2 = new Distance(DistanceType.Meter, 1000);
+            Distance d3 = new Distance(DistanceType.Meter, 1000.1);
+            Distance d4 = new Distance(DistanceType.Mile, 0) + d3; //converts d3's internal units to miles.
+
+            d1.DistanceInIntrinsicUnitsIsGreaterThan(10).Should().BeFalse();
+            d1.DistanceInIntrinsicUnitsIsGreaterThan(-10).Should().BeTrue();
+            d2.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeFalse();
+            d3.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeTrue();
+            d4.DistanceInIntrinsicUnitsIsGreaterThan(1000).Should().BeFalse();
+        }
     }
 }
+
