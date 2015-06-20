@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
- 
 using System.Text;
 using System.Diagnostics;
-
+using System.Xml.Serialization;
 
 namespace UnitClassLibrary
 {
@@ -46,6 +45,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
+        [XmlIgnore]
         public DistanceEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
