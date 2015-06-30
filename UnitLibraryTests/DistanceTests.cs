@@ -3,6 +3,7 @@ using UnitClassLibrary;
 using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
+using Newtonsoft.Json;
 
 
 namespace UnitLibraryTests
@@ -34,6 +35,19 @@ namespace UnitLibraryTests
             // assert
             inchDistance.Millimeters.Should().Be(architecturalDistance.Millimeters);
             copiedDistance.ShouldBeEquivalentTo(architecturalDistance);
+        }
+
+        [Test()]
+        public void Distance_JSON()
+        {
+
+            Distance distance = new Distance(DistanceType.Yard, 12);
+
+            var json = JsonConvert.SerializeObject(distance);
+            Distance deserializedDistance = JsonConvert.DeserializeObject<Distance>(json);
+
+            bool areEqual = (distance == deserializedDistance);
+            areEqual.Should().BeTrue();
         }
 
         /// <summary>
