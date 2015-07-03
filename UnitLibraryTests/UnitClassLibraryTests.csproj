@@ -31,6 +31,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'charlesPersonal|AnyCPU'">
+    <OutputPath>bin\charlesPersonal\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'mySolution|AnyCPU'">
+    <OutputPath>bin\mySolution\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'AnalysisEngineTests|AnyCPU'">
+    <OutputPath>bin\AnalysisEngineTests\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=3.4.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
