@@ -84,6 +84,12 @@ namespace UnitClassLibrary
         /// <param name="passedAngle">angle to copy</param>
         public Angle(Angle passedAngle): base(passedAngle){ }
 
+        /// <summary>
+        /// Turns an angular distance into the corresponding angle
+        /// </summary>
+        /// <param name="angularDistance"></param>
+        public Angle(AngularDistance angularDistance)
+            : this(angularDistance.InternalUnitType, angularDistance.GetValue(angularDistance.InternalUnitType)) {}
         
         #endregion
 
