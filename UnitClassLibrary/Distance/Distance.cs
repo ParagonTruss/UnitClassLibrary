@@ -84,7 +84,14 @@ namespace UnitClassLibrary
         {
             //we will always make the internal unit type of a passed String Inches 
             _internalUnitType = DistanceType.Inch;
-            _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            if (passedArchitecturalString == "")
+            {
+                _intrinsicValue = 0;
+            }
+            else
+            {
+                _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            }
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
