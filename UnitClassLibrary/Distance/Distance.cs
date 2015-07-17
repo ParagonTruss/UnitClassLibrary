@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
- 
 using System.Text;
 using System.Diagnostics;
-
 using Newtonsoft.Json;
-
+using System.Xml.Serialization;
 
 namespace UnitClassLibrary
 {
@@ -51,6 +49,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
+        [XmlIgnore]
         public DistanceEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
@@ -61,6 +60,13 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Parameterless constructor for XML Serialization
+        /// </summary>
+        public Distance()
+        {
+
+        }
 
         /// <summary>
         /// Zero Constructor
@@ -82,7 +88,14 @@ namespace UnitClassLibrary
         {
             //we will always make the internal unit type of a passed String Inches 
             _internalUnitType = DistanceType.Inch;
-            _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            if (passedArchitecturalString == "")
+            {
+                _intrinsicValue = 0;
+            }
+            else
+            {
+                _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            }
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 

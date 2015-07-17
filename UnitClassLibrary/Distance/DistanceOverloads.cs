@@ -222,11 +222,10 @@ namespace UnitClassLibrary
         /// </summary>
         public override bool Equals(object obj)
         {
-            if (obj == null)
+            if (obj == null || obj is Distance == false)
             {
                 return false;
             }
-            
             return this.Equals((Distance)obj);
         }
 
