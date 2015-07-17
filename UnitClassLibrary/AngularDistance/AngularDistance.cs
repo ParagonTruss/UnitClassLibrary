@@ -73,5 +73,10 @@ using System;
 		}
 
 		#endregion
+
+        public static AngularDistance operator %(AngularDistance angle1, AngularDistance angle2)
+        {
+            return new AngularDistance(angle1._internalUnitType, angle1.GetValue(angle1._internalUnitType) % angle2.GetValue(angle1._internalUnitType));
+        }
 	}
 }

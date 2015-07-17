@@ -82,7 +82,7 @@ namespace UnitClassLibrary
         /// Copy Constructor
         /// </summary>
         /// <param name="passedAngle">angle to copy</param>
-        public Angle(Angle passedAngle): base(passedAngle){ }
+        public Angle(AngularDistance passedAngle): base(passedAngle){ }
 
         
         #endregion
