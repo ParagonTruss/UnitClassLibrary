@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
- 
 using System.Text;
 using System.Diagnostics;
-
+using Newtonsoft.Json;
+using System.Xml.Serialization;
 
 namespace UnitClassLibrary
 {
@@ -25,6 +25,7 @@ namespace UnitClassLibrary
     /// 
     /// </example>
     /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class Distance
     {
         #region _fields and Internal Properties
@@ -36,16 +37,19 @@ namespace UnitClassLibrary
         {
             get { return _internalUnitType; }
         }
+        [JsonProperty]
         private DistanceType _internalUnitType;
 
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
         /// </summary> 
+        [JsonProperty]
         private double _intrinsicValue;
 
         /// <summary>
         /// The strategy by which this Distance will be compared to another Distance
         /// </summary>
+        [XmlIgnore]
         public DistanceEqualityStrategy EqualityStrategy
         {
             get { return _equalityStrategy; }
@@ -56,6 +60,13 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
+        /// <summary>
+        /// Parameterless constructor for XML Serialization
+        /// </summary>
+        public Distance()
+        {
+
+        }
 
         /// <summary>
         /// Zero Constructor
@@ -77,7 +88,14 @@ namespace UnitClassLibrary
         {
             //we will always make the internal unit type of a passed String Inches 
             _internalUnitType = DistanceType.Inch;
-            _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            if (passedArchitecturalString == "")
+            {
+                _intrinsicValue = 0;
+            }
+            else
+            {
+                _intrinsicValue = _getArchitecturalStringAsNumberOfInches(passedArchitecturalString);
+            }
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
         }
 
@@ -87,6 +105,7 @@ namespace UnitClassLibrary
         /// <param name="passedDistanceType">The unit of distance the input is in</param>
         /// <param name="passedInput">value of the distance</param>
         /// <param name="passedStrategy">Strategy to compare equality by</param>
+        [JsonConstructor]
         public Distance(DistanceType passedDistanceType, double passedInput, DistanceEqualityStrategy passedStrategy = null)
         {
             _intrinsicValue = passedInput;
