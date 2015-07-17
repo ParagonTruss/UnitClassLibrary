@@ -60,13 +60,6 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
-        /// <summary>
-        /// Parameterless constructor for XML Serialization
-        /// </summary>
-        public Distance()
-        {
-
-        }
 
         /// <summary>
         /// Zero Constructor
