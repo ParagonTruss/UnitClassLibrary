@@ -33,11 +33,11 @@ namespace UnitClassLibrary
         /// <summary>
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
         /// </summary>
+        [JsonProperty]
         internal DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
         }
-        [JsonProperty]
         private DistanceType _internalUnitType;
 
         /// <summary>
@@ -99,11 +99,11 @@ namespace UnitClassLibrary
         /// <param name="passedInput">value of the distance</param>
         /// <param name="passedStrategy">Strategy to compare equality by</param>
         [JsonConstructor]
-        public Distance(DistanceType passedDistanceType, double passedInput, DistanceEqualityStrategy passedStrategy = null)
+        public Distance(DistanceType internalUnitType, double intrinsicValue, DistanceEqualityStrategy equalityStrategy = null)
         {
-            _intrinsicValue = passedInput;
-            _internalUnitType = passedDistanceType;
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
+            _intrinsicValue = intrinsicValue;
+            _internalUnitType = internalUnitType;
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(equalityStrategy);
         }
 
         /// <summary>
