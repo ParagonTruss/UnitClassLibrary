@@ -191,6 +191,48 @@ namespace UnitClassLibrary
 
         }
 
+        public static Angle ArcSin(double r)
+        {
+            if (r > 1.0)
+            {
+                r = Math.Floor(r);
+                if (r != 1.0)
+                {
+                    throw new ArgumentOutOfRangeException("The arcsin function does not take values greater than 1.0");
+                }
+            }
+            else if (r < -1.0)
+            {
+                r = Math.Ceiling(r);
+                if (r != -1.0)
+                {
+                    throw new ArgumentOutOfRangeException("The arcsin function does not take values less than -1.0");
+                }
+            }
+            return new Angle(AngleType.Radian, Math.Asin(r));
+        }
+
+        public static Angle ArcCos(double r)
+        {
+            if (r > 1.0)
+            {
+                r = Math.Floor(r);
+                if (r != 1.0)
+                {
+                    throw new ArgumentOutOfRangeException("The arccos function does not take values greater than 1.0");
+                }
+            }
+            else if (r < -1.0)
+            {
+                r = Math.Ceiling(r);
+                if (r != -1.0)
+                {
+                    throw new ArgumentOutOfRangeException("The arccos function does not take values less than -1.0");
+                }
+            }
+            return new Angle(AngleType.Radian, Math.Acos(r));
+        }
+
         #endregion
     }
 }

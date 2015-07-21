@@ -80,7 +80,10 @@ namespace UnitClassLibrary
         }
 
 
-
+        public static Distance operator *(double multiplier, Distance d1)
+        {
+            return new Distance(d1._internalUnitType, d1._intrinsicValue * multiplier);
+        }
 
 
         /// <summary>
