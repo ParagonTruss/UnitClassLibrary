@@ -5,10 +5,10 @@ using Newtonsoft.Json;
 {
     [JsonObject(MemberSerialization.OptIn)]
 	public partial class AngularDistance
-	{
-		#region _fields and Internal Properties
+    {
+        #region _fields and Internal Properties
 
-		internal AngleType InternalUnitType
+        internal AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
 		}

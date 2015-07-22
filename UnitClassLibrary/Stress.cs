@@ -52,20 +52,20 @@ namespace UnitClassLibrary
             switch (passedStressType)
             {
                 case StressType.PoundsPerSquareInch:
-                    _area = new Area(AreaType.InchesSquared, passedValue);
-                    _force = new Force(ForceType.Pound, 1);
+                    _area = new Area(AreaType.InchesSquared, 1);
+                    _force = new Force(ForceType.Pound, passedValue);
                     break;
                 case StressType.PoundsPerSquareMillimeter:
-                    _area = new Area(AreaType.MillimetersSquared, passedValue);
-                    _force = new Force(ForceType.Pound, 1);
+                    _area = new Area(AreaType.MillimetersSquared, 1);
+                    _force = new Force(ForceType.Pound, passedValue);
                     break;
                 case StressType.NewtonsPerSquareMeter:
-                    _area = new Area(AreaType.MetersSquared, passedValue);
-                    _force = new Force(ForceType.Newton, 1);
+                    _area = new Area(AreaType.MetersSquared, 1);
+                    _force = new Force(ForceType.Newton, passedValue);
                     break;
                 case StressType.NewtonsPerSquareMillimeter:
-                    _area = new Area(AreaType.MillimetersSquared, passedValue);
-                    _force = new Force(ForceType.Newton, 1);
+                    _area = new Area(AreaType.MillimetersSquared, 1);
+                    _force = new Force(ForceType.Newton, passedValue);
                     break;
                 default:
                     // Should never reach; cases should cover all members of enumerated set
