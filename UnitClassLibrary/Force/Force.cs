@@ -38,6 +38,10 @@ using System;
 		/// <summary> Accepts standard types for input. </summary>
 		public Force(ForceType passedForceType, double passedInput, ForceEqualityStrategy passedStrategy = null)
 		{
+            if (Double.IsNaN(passedInput))
+            {
+                throw new Exception("Unit value is Not a Number!");
+            }
 			_intrinsicValue = passedInput;
 			_internalUnitType = passedForceType;
 			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);

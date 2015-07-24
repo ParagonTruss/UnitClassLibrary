@@ -202,7 +202,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this._force + " / " + this._area;
+            return this.PoundsPerSquareInch + "Pounds per Square Inch";
         }
 
         /// <summary>

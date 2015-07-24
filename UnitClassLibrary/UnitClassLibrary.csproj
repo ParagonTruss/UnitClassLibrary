@@ -181,7 +181,7 @@
     <Compile Include="Mass\MassConstants.cs" />
     <Compile Include="Mass\Mass.cs" />
     <Compile Include="Mass\MassStaticGenerators.cs" />
-    <Compile Include="MomentOfInertiaUnit.cs" />
+    <Compile Include="MomentOfInertia.cs" />
     <Compile Include="Moment\Moment.cs" />
     <Compile Include="Moment\MomentConstants.cs" />
     <Compile Include="Moment\MomentEnums.cs" />

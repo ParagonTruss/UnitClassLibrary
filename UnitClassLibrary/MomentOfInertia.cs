@@ -10,7 +10,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class MomentOfIntertiaUnit
+    public class MomentOfInertia
     {
         // m
         //Mass _mass;
@@ -31,7 +31,7 @@ namespace UnitClassLibrary
         /// 
         /// </summary>
         /// <param name="passedLengthToFourthPower"></param>
-        public MomentOfIntertiaUnit(Distance passedLengthToFourthPower)
+        public MomentOfInertia(Distance passedLengthToFourthPower)
         {
             _length = new Distance(DistanceType.Millimeter, Math.Pow(passedLengthToFourthPower.Millimeters, 0.25));
         }
