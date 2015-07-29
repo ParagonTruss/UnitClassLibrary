@@ -216,12 +216,10 @@ namespace UnitClassLibrary
 
                 return _intrinsicValue + " " + this._internalUnitType;
             }
-
-
         }
 
         /// <summary>
-        /// calls the Dimension only Equals method
+        /// calls the Distance only Equals method
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -229,7 +227,16 @@ namespace UnitClassLibrary
             {
                 return false;
             }
-            return this.Equals((Distance)obj);
+            try
+            {
+                Distance otherDistance = (Distance)obj;
+
+                return this.Equals((Distance)obj);
+            }
+            catch (InvalidCastException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
