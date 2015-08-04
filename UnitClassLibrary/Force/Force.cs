@@ -7,15 +7,14 @@ namespace UnitClassLibrary
     [JsonObject(MemberSerialization.OptIn)]
 	public partial class Force
 	{
-		#region _fields and Internal Properties
+        #region _fields and Internal Properties
 
-        
-		internal ForceType InternalUnitType
-		{
-			get { return _internalUnitType; }
-		}
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
+        internal ForceType InternalUnitType
+        {
+            get { return _internalUnitType; }
+        }
         private ForceType _internalUnitType;
 
         [JsonProperty]

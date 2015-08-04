@@ -9,13 +9,12 @@ namespace UnitClassLibrary
     {
         #region _fields and Internal Properties
 
+        [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         internal AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
 		}
-
-        [JsonProperty]
-        [JsonConverter(typeof(StringEnumConverter))]
         public AngleType _internalUnitType;
 
         [JsonProperty]
