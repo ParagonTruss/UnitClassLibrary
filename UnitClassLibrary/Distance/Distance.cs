@@ -34,13 +34,12 @@ namespace UnitClassLibrary
         /// <summary>
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
         /// </summary>
+        [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         internal DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
         }
-
-        [JsonProperty]
-        [JsonConverter(typeof(StringEnumConverter))]
         private DistanceType _internalUnitType;
 
         /// <summary>
