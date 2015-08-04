@@ -1,7 +1,8 @@
 using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
     [JsonObject(MemberSerialization.OptIn)]
 	public partial class Force
@@ -14,7 +15,8 @@ using Newtonsoft.Json;
 			get { return _internalUnitType; }
 		}
         [JsonProperty]
-		private ForceType _internalUnitType;
+        [JsonConverter(typeof(StringEnumConverter))]
+        private ForceType _internalUnitType;
 
         [JsonProperty]
 		private double _intrinsicValue;

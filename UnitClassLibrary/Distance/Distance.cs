@@ -4,6 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace UnitClassLibrary
 {
@@ -33,11 +34,13 @@ namespace UnitClassLibrary
         /// <summary>
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
         /// </summary>
-        [JsonProperty]
         internal DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
         }
+
+        [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         private DistanceType _internalUnitType;
 
         /// <summary>
