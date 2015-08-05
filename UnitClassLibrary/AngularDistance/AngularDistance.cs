@@ -1,19 +1,21 @@
 using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
     [JsonObject(MemberSerialization.OptIn)]
 	public partial class AngularDistance
     {
         #region _fields and Internal Properties
 
+        [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         internal AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
 		}
-        [JsonProperty]
-		public AngleType _internalUnitType;
+        public AngleType _internalUnitType;
 
         [JsonProperty]
         public double _intrinsicValue;
