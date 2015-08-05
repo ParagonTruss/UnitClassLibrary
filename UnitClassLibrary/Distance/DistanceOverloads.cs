@@ -187,7 +187,7 @@ namespace UnitClassLibrary
         /// <returns>same hashcode as any double would</returns>
         public override int GetHashCode()
         {
-            return _intrinsicValue.GetHashCode();
+            return this.GetValue(DistanceType.Inch).GetHashCode();
         }
 
         /// <summary>
