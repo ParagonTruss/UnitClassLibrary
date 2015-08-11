@@ -3,8 +3,8 @@ using System;
  namespace UnitClassLibrary
 {
 
-	public partial class Moment : IEquatable <Moment>
-	{
+	public partial class Moment : IEquatable <Moment>, IAbsoluteValue<Moment>
+    {
 
 		/// <summary>Raise to power operator</summary>
 		/// <param name="o1"></param>

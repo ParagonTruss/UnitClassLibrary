@@ -127,6 +127,15 @@ namespace UnitClassLibrary
             return new Stress(StressType.PoundsPerSquareInch, s.PoundsPerSquareInch*d);
         }
 
+        public static Stress operator *(Stress s, double d)
+        {
+            return d * s;
+        }
+
+        public static Stress operator /(Stress s, double d)
+        {
+            return new Stress(StressType.PoundsPerSquareInch, s.PoundsPerSquareInch / d);
+        }
         public static Stress operator +(Stress s1, Stress s2)
         {
             //add the two Stresses together
@@ -207,7 +216,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this.PoundsPerSquareInch + "Pounds per Square Inch";
+            return this.PoundsPerSquareInch + " Pounds per Square Inch";
         }
 
         /// <summary>
