@@ -17,7 +17,7 @@ namespace UnitClassLibrary
         }
         private ForceType _internalUnitType;
 
-        [JsonProperty]
+        [JsonProperty(PropertyName="intrinsicValue")]
 		private double _intrinsicValue;
 
 		public ForceEqualityStrategy EqualityStrategy

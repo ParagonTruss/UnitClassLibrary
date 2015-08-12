@@ -17,7 +17,7 @@ namespace UnitClassLibrary
 		}
         public AngleType _internalUnitType;
 
-        [JsonProperty]
+        [JsonProperty(PropertyName="intrinsicValue")]
         public double _intrinsicValue;
 
 		public AngularDistanceEqualityStrategy EqualityStrategy

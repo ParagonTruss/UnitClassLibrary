@@ -45,7 +45,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
         /// </summary> 
-        [JsonProperty]
+        [JsonProperty(PropertyName="intrinsicValue")]
         private double _intrinsicValue;
 
         /// <summary>
