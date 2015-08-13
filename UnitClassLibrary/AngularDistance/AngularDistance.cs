@@ -42,10 +42,10 @@ namespace UnitClassLibrary
 
 		/// <summary> Accepts standard types for input. </summary>
         [JsonConstructor]
-		public AngularDistance(AngleType passedAngleType, double passedInput, AngularDistanceEqualityStrategy passedStrategy = null)
+		public AngularDistance(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy passedStrategy = null)
 		{
-			_intrinsicValue = passedInput;
-			_internalUnitType = passedAngleType;
+            _intrinsicValue = intrinsicValue;
+            _internalUnitType = internalUnitType;
 			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 
