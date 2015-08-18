@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
- 
 using System.Text;
+using Newtonsoft.Json;
 
 namespace UnitClassLibrary
 {
@@ -22,6 +22,7 @@ namespace UnitClassLibrary
     /// </example>
     /// 
     /// </summary>
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class Angle : AngularDistance
     {
         #region Constructors
@@ -34,43 +35,44 @@ namespace UnitClassLibrary
         /// <summary>
         /// Create an angle object from an angle value.
         /// </summary>
-        /// <param name="AngleType">angle unit type</param>
-        /// <param name="passedValue">angle value</param>
-        public Angle(AngleType AngleType, double passedValue) :
+        /// <param name="internalUnitType">angle unit type</param>
+        /// <param name="intrinsicValue">angle value</param>
+        [JsonConstructor]
+        public Angle(AngleType internalUnitType, double intrinsicValue) :
             base()
         {
-            switch (AngleType)
+            switch (internalUnitType)
             {
                 case AngleType.Radian:
 
-                    while (passedValue >= Math.PI *2)
+                    while (intrinsicValue >= Math.PI *2)
                     {
-                        passedValue -= Math.PI * 2;
+                        intrinsicValue -= Math.PI * 2;
                     }
 
-                    if (passedValue < 0)
+                    if (intrinsicValue < 0)
                     {
-                        passedValue = (Math.PI * 2) - Math.Abs(passedValue);
+                        intrinsicValue = (Math.PI * 2) - Math.Abs(intrinsicValue);
                     }
 
-                    _intrinsicValue = passedValue;
+                    _intrinsicValue = intrinsicValue;
 
                     _internalUnitType = AngleType.Radian;
 
                     break;
                 case AngleType.Degree:
 
-                    while (passedValue >= 360)
+                    while (intrinsicValue >= 360)
                     {
-                        passedValue = passedValue - 360;
+                        intrinsicValue = intrinsicValue - 360;
                     }
 
-                    if (passedValue < 0)
+                    if (intrinsicValue < 0)
                     {
-                        passedValue = 360 - Math.Abs(passedValue);
+                        intrinsicValue = 360 - Math.Abs(intrinsicValue);
                     }
 
-                    _intrinsicValue = passedValue;
+                    _intrinsicValue = intrinsicValue;
 
                     _internalUnitType = AngleType.Degree; 
 

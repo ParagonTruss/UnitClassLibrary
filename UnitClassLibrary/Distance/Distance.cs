@@ -4,6 +4,7 @@ using System.Text;
 using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
+using Newtonsoft.Json.Converters;
 
 namespace UnitClassLibrary
 {
@@ -34,6 +35,7 @@ namespace UnitClassLibrary
         /// This property must be internal to allow for our Just-In-Time conversions to work with the GetValue() method
         /// </summary>
         [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         internal DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
@@ -43,7 +45,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
         /// </summary> 
-        [JsonProperty]
+        [JsonProperty(PropertyName="intrinsicValue")]
         private double _intrinsicValue;
 
         /// <summary>

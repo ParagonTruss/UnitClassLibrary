@@ -1,21 +1,23 @@
 using System;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
     [JsonObject(MemberSerialization.OptIn)]
 	public partial class AngularDistance
     {
         #region _fields and Internal Properties
 
+        [JsonProperty]
+        [JsonConverter(typeof(StringEnumConverter))]
         internal AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
 		}
-        [JsonProperty]
-		public AngleType _internalUnitType;
+        public AngleType _internalUnitType;
 
-        [JsonProperty]
+        [JsonProperty(PropertyName="intrinsicValue")]
         public double _intrinsicValue;
 
 		public AngularDistanceEqualityStrategy EqualityStrategy
@@ -40,10 +42,10 @@ using Newtonsoft.Json;
 
 		/// <summary> Accepts standard types for input. </summary>
         [JsonConstructor]
-		public AngularDistance(AngleType passedAngleType, double passedInput, AngularDistanceEqualityStrategy passedStrategy = null)
+		public AngularDistance(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy passedStrategy = null)
 		{
-			_intrinsicValue = passedInput;
-			_internalUnitType = passedAngleType;
+            _intrinsicValue = intrinsicValue;
+            _internalUnitType = internalUnitType;
 			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
 		}
 

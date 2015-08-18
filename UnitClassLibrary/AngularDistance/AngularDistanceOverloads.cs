@@ -7,8 +7,8 @@ namespace UnitClassLibrary
 {
     public partial class AngularDistance : IEquatable<AngularDistance>
     {
-        // You may notice that we do not overload the increment and decrement operators (++ and --).
-        // This would break our abstraction of thinking that all units types are represented by this object 
+        // You might notice that we do not overload the increment and decrement operators (++ and --).
+        // Doing so would break our abstraction about dealing with every unit type 
 
         /// <summary>
         /// The "raise to power" operator
@@ -47,7 +47,7 @@ namespace UnitClassLibrary
             return new AngularDistance(d1._internalUnitType, d1._intrinsicValue - d2.GetValue(d1._internalUnitType));
         }
         /// <summary>
-        /// ratio of between AngularDistances
+        /// ratio of AngularDistances
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>

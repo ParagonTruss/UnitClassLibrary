@@ -5,12 +5,26 @@ using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace UnitLibraryTests
 {
     [TestFixture()]
     public class AngularDistanceTests
     {
+        [Test()]
+        public void AngularDistance_JSON()
+        {
+            AngularDistance angularDistance = new AngularDistance(AngleType.Degree, 575);
+
+            var jsonSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+            var json = JsonConvert.SerializeObject(angularDistance, jsonSettings);
+            AngularDistance deserializedAngularDistance = JsonConvert.DeserializeObject<AngularDistance>(json, jsonSettings);
+
+            bool areEqual = (angularDistance == deserializedAngularDistance);
+            areEqual.Should().BeTrue();
+        }
 
         [Test()]
         public void AngularDistance_ToStringOverride()

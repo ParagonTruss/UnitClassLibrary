@@ -5,12 +5,27 @@ using System.Text;
 using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace UnitLibraryTests
 {
     [TestFixture()]
     public class AngleTests
     {
+        [Test()]
+        public void Angle_JSON()
+        {
+            Angle angle = new Angle(AngleType.Degree, 717);
+
+            var jsonSettings = new JsonSerializerSettings { ContractResolver = new CamelCasePropertyNamesContractResolver() };
+            var json = JsonConvert.SerializeObject(angle, jsonSettings);
+            Angle deserializedAngle = JsonConvert.DeserializeObject<Angle>(json, jsonSettings);
+
+            bool areEqual = (angle == deserializedAngle);
+            areEqual.Should().BeTrue();
+        }
+
         [Test()]
         public void Angle_GetValue()
         {

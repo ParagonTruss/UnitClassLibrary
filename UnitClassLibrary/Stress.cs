@@ -122,6 +122,20 @@ namespace UnitClassLibrary
          * This is because the user of this library does not know what is being internally stored and those operations will not return useful information. 
          */
 
+        public static Stress operator *(double d, Stress s)
+        {
+            return new Stress(StressType.PoundsPerSquareInch, s.PoundsPerSquareInch*d);
+        }
+
+        public static Stress operator *(Stress s, double d)
+        {
+            return d * s;
+        }
+
+        public static Stress operator /(Stress s, double d)
+        {
+            return new Stress(StressType.PoundsPerSquareInch, s.PoundsPerSquareInch / d);
+        }
         public static Stress operator +(Stress s1, Stress s2)
         {
             //add the two Stresses together
@@ -202,7 +216,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this.PoundsPerSquareInch + "Pounds per Square Inch";
+            return this.PoundsPerSquareInch + " Pounds per Square Inch";
         }
 
         /// <summary>
