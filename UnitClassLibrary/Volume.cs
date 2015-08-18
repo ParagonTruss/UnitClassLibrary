@@ -10,7 +10,7 @@ namespace UnitClassLibrary
     /// <summary>
     ///Distance class for volume
     /// </summary>
-    public class Volume
+    public class Volume : IComparable
     {
         #region _internalVariables
 
@@ -1174,5 +1174,11 @@ namespace UnitClassLibrary
             }
         }
         #endregion
+
+        public int CompareTo(object obj)
+        {
+            Volume vol = obj as Volume;
+            return (this.GetValue(this._internalUnitType).CompareTo(vol.GetValue(this._internalUnitType)));
+        }
     }
 }
