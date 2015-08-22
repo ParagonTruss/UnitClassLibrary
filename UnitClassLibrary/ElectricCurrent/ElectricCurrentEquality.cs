@@ -1,6 +1,6 @@
 using System;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
 
 	/// <summary>delegate that defines the form of</summary>

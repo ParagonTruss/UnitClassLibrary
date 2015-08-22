@@ -1,6 +1,6 @@
 using System;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
 
 	public partial class Capacitance : IComparable, IComparable<Capacitance >

@@ -1,6 +1,6 @@
 using System;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
 
 	public partial class Mass : IComparable, IComparable<Mass >

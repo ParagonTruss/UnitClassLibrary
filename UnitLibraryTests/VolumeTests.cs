@@ -1,8 +1,7 @@
 ﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary;
-using FluentAssertions;
-using System.Diagnostics;
 
 namespace UnitLibraryTests
 {

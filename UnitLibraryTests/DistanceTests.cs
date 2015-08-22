@@ -1,10 +1,8 @@
-﻿using System;
-using UnitClassLibrary;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
 using Newtonsoft.Json;
-
+using NUnit.Framework;
+using UnitClassLibrary;
 
 namespace UnitLibraryTests
 {

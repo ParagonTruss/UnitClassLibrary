@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
- 
-using System.Text;
-
-namespace UnitClassLibrary
+﻿namespace UnitClassLibrary
 {
     public partial class Distance
     {

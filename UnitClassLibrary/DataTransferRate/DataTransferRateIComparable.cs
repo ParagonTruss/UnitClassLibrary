@@ -1,6 +1,6 @@
 using System;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
 
 	public partial class DataTransferRate : IComparable, IComparable<DataTransferRate >

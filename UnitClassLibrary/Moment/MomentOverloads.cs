@@ -1,6 +1,6 @@
 using System;
 
- namespace UnitClassLibrary
+namespace UnitClassLibrary
 {
 
 	public partial class Moment : IEquatable <Moment>, IAbsoluteValue<Moment>

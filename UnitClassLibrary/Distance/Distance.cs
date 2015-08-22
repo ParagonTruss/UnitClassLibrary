@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Diagnostics;
+﻿using System.Xml.Serialization;
 using Newtonsoft.Json;
-using System.Xml.Serialization;
 using Newtonsoft.Json.Converters;
 
 namespace UnitClassLibrary

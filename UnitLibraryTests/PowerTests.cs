@@ -1,7 +1,4 @@
-﻿using System;
-using NUnit.Framework;
-using UnitClassLibrary;
-using FluentAssertions;
+﻿using NUnit.Framework;
 
 namespace Unit_Library_Tests
 {
