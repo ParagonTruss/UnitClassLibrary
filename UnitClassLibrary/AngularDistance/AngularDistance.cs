@@ -10,14 +10,20 @@ namespace UnitClassLibrary
 
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
-        internal AngleType InternalUnitType
+        public AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
+            private set { _internalUnitType = value; }
 		}
-        public AngleType _internalUnitType;
+        protected AngleType _internalUnitType;
 
-        [JsonProperty(PropertyName="intrinsicValue")]
-        public double _intrinsicValue;
+        [JsonProperty]
+        public double IntrinsicValue
+        {
+            get { return _intrinsicValue; }
+            private set { _intrinsicValue = value; }
+        }
+        protected double _intrinsicValue;
 
 		public AngularDistanceEqualityStrategy EqualityStrategy
 		{

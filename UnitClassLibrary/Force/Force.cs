@@ -11,14 +11,20 @@ namespace UnitClassLibrary
 
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
-        internal ForceType InternalUnitType
+        public ForceType InternalUnitType
         {
             get { return _internalUnitType; }
+            private set { _internalUnitType = value; }
         }
         private ForceType _internalUnitType;
 
-        [JsonProperty(PropertyName="intrinsicValue")]
-		private double _intrinsicValue;
+        [JsonProperty]
+        public double IntrinsicValue
+        {
+            get { return _intrinsicValue; }
+            private set { _intrinsicValue = value; }
+        }
+        private double _intrinsicValue;
 
 		public ForceEqualityStrategy EqualityStrategy
 		{
