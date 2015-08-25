@@ -46,7 +46,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\UnitClassLibrary.xml</DocumentationFile>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
     <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -120,6 +120,7 @@
       <ExcludeFromStyleCop>true</ExcludeFromStyleCop>
     </Compile>
     <Compile Include="Distance\DistanceConversion.cs" />
+    <Compile Include="Distance\DistanceEntityFramework.cs" />
     <Compile Include="Distance\DistanceEnums.cs" />
     <Compile Include="Distance\DistanceEquality.cs" />
     <Compile Include="Distance\DistanceIComparable.cs" />

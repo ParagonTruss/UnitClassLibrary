@@ -5,6 +5,8 @@ using System.Diagnostics;
 using Newtonsoft.Json;
 using System.Xml.Serialization;
 using Newtonsoft.Json.Converters;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UnitClassLibrary
 {
@@ -36,17 +38,23 @@ namespace UnitClassLibrary
         /// </summary>
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
-        internal DistanceType InternalUnitType
+        public DistanceType InternalUnitType
         {
             get { return _internalUnitType; }
+            private set { _internalUnitType = value; }
         }
         private DistanceType _internalUnitType;
 
         /// <summary>
         /// The actual value of the stored unit. the 5 in "5 kilometers"
         /// </summary> 
-        [JsonProperty(PropertyName="intrinsicValue")]
+        [JsonProperty(PropertyName = "intrinsicValue")]
         private double _intrinsicValue;
+        public double IntrinsicValue 
+        { 
+            get { return _intrinsicValue; }
+            private set { _intrinsicValue = value; }
+        }
 
         /// <summary>
         /// The strategy by which this Distance will be compared to another Distance

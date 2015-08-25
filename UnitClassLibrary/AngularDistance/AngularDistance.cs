@@ -1,8 +1,6 @@
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace UnitClassLibrary
 {
@@ -11,21 +9,22 @@ namespace UnitClassLibrary
     {
         #region _fields and Internal Properties
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int DatabaseId { get; set; }
-
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
-        [EnumDataType(typeof(AngleType))]
-        internal AngleType InternalUnitType
+        public AngleType InternalUnitType
 		{
 			get { return _internalUnitType; }
+            private set { _internalUnitType = value; }
 		}
         protected AngleType _internalUnitType;
 
-        [JsonProperty(PropertyName="intrinsicValue")]
-        public double _intrinsicValue;
+        [JsonProperty]
+        public double IntrinsicValue
+        {
+            get { return _intrinsicValue; }
+            private set { _intrinsicValue = value; }
+        }
+        protected double _intrinsicValue;
 
 		public AngularDistanceEqualityStrategy EqualityStrategy
 		{
@@ -40,7 +39,7 @@ namespace UnitClassLibrary
 		#region Constructors
 
 		/// <summary> Zero Constructor </summary>
-		public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
+		 public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = 0;
             _internalUnitType = AngleType.Radian;
