@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    public class ForceEntityFramework
+    public partial class Force
     {
         public int DatabaseId { get; set; }
     }

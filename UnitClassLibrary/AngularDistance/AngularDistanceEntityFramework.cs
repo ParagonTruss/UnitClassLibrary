@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
-    class AngularDistanceEntityFramework
+    public partial class AngularDistance
     {
         public int DatabaseId { get; set; }
     }

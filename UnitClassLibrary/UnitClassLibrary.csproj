@@ -79,6 +79,7 @@
     <Compile Include="AngularDistance\AngularDistance.cs" />
     <Compile Include="AngularDistance\AngularDistanceConstants.cs" />
     <Compile Include="AngularDistance\AngularDistanceConversion.cs" />
+    <Compile Include="AngularDistance\AngularDistanceEntityFramework.cs" />
     <Compile Include="AngularDistance\AngularDistanceEnums.cs" />
     <Compile Include="AngularDistance\AngularDistanceEquality.cs" />
     <Compile Include="AngularDistance\AngularDistanceIComparable.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Force\Force.cs" />
     <Compile Include="Force\ForceConstants.cs" />
     <Compile Include="Force\ForceConversion.cs" />
+    <Compile Include="Force\ForceEntityFramework.cs" />
     <Compile Include="Force\ForceEnums.cs" />
     <Compile Include="Force\ForceEquality.cs" />
     <Compile Include="Force\ForceIComparable.cs" />
