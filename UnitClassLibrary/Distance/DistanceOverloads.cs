@@ -239,8 +239,6 @@ namespace UnitClassLibrary
         /// <summary>
         /// Compares using the function specified by strategy
         /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public bool Equals(Distance other)
         {
             if (other == null)
