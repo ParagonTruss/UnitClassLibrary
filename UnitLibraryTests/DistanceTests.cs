@@ -205,7 +205,7 @@ namespace UnitLibraryTests
         {
             // arrange
             Distance Distance = new Distance(DistanceType.Millimeter, 14.1875);
-            double number = 14.1875;
+            double number = 14.1875/25.4;
 
             // act
             int DistanceHashCode = Distance.GetHashCode();
