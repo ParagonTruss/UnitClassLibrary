@@ -33,12 +33,17 @@ namespace UnitClassLibrary
 
 		public AngularDistanceEqualityStrategy _equalityStrategy;
 
-		#endregion
+        #endregion
 
-		#region Constructors
+        #region Constructors
+
+        public AngularDistance()
+        {
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(null);
+        }
 
 		/// <summary> Zero Constructor </summary>
-		 public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
+		public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
 		{
 			_intrinsicValue = 0;
             _internalUnitType = AngleType.Radian;
