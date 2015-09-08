@@ -65,6 +65,11 @@ namespace UnitClassLibrary
             return new AngularDistance(d1._internalUnitType, d1._intrinsicValue * multiplier);
         }
 
+        public static AngularDistance operator *( double multiplier, AngularDistance d1)
+        {
+            return d1 * multiplier;
+        }
+
         public static AngularDistance operator %(AngularDistance d1, AngularDistance d2)
         {
             var result = d1.GetValue(d1._internalUnitType) % d2.GetValue(d1._internalUnitType);
