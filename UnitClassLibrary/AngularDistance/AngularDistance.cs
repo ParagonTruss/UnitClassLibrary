@@ -37,7 +37,7 @@ namespace UnitClassLibrary
 
         #region Constructors
 
-        public AngularDistance()
+        private AngularDistance()
         {
             _equalityStrategy = _chooseDefaultOrPassedStrategy(null);
         }
