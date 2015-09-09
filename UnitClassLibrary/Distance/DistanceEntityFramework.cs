@@ -7,6 +7,6 @@ namespace UnitClassLibrary
 {
     public partial class Distance
     {
-        public int DatabaseId { get; set; }
+        public int? DatabaseId { get; set; }
     }
 }
