@@ -42,7 +42,6 @@ namespace UnitClassLibrary
         /// </summary>
         protected AngularDistance() { }
 
-
 		/// <summary> Accepts standard types for input. </summary>
         [JsonConstructor]
 		public AngularDistance(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy passedStrategy = null)
