@@ -65,20 +65,10 @@ namespace UnitClassLibrary
 
         #region Constructors
 
-        private Distance()
-        {
-        }
-
         /// <summary>
-        /// Zero Constructor
+        /// Null Constructor
         /// </summary>
-        /// <param name="passedStrategy">Strategy to compare equality by</param>
-        public Distance(DistanceEqualityStrategy passedStrategy = null)
-        {
-            _intrinsicValue = 0;
-            _internalUnitType = DistanceType.Inch;
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
-        }
+        private Distance() { }
 
         /// <summary>
         /// Accepts any valid architectural string value for input

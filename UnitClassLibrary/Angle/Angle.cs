@@ -30,7 +30,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Null Constructor
         /// </summary>
-        private Angle(): base() { }
+        private Angle() { }
 
         /// <summary>
         /// Create an angle object from an angle value.
@@ -38,8 +38,7 @@ namespace UnitClassLibrary
         /// <param name="internalUnitType">angle unit type</param>
         /// <param name="intrinsicValue">angle value</param>
         [JsonConstructor]
-        public Angle(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy strategy = null) :
-            base()
+        public Angle(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy strategy = null)
         {
             switch (internalUnitType)
             {
