@@ -29,7 +29,7 @@ namespace UnitClassLibrary
         public Stiffness(StiffnessEqualityStrategy passedStrategy = null)
 		{
 			_force = new Force();
-			_distance = new Distance();
+			_distance = Distance.Zero;
             _chooseDefaultOrPassedStrategy(passedStrategy);
 
 		}

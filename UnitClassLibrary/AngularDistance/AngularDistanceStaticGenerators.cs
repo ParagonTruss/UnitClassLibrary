@@ -3,6 +3,8 @@ namespace UnitClassLibrary
 
 	public partial class AngularDistance
 	{
+        public readonly static AngularDistance Zero = 0 * Degree;
+
 
 		///<summary>Generator method that constructs AngularDistance with assumption that the passed value is in Radians</summary>
 		///<param name="passedValue"></param>

@@ -65,11 +65,8 @@ namespace UnitClassLibrary
 
         #region Constructors
 
-        public Distance()
+        private Distance()
         {
-            _intrinsicValue = 0;
-            _internalUnitType = DistanceType.Inch;
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(null);
         }
 
         /// <summary>

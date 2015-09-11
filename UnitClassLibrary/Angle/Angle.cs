@@ -23,12 +23,14 @@ namespace UnitClassLibrary
     [JsonObject(MemberSerialization.OptIn)]
     public partial class Angle : AngularDistance
     {
+        public new static readonly Angle Zero = new Angle(AngularDistance.Zero);
+
         #region Constructors
 
         /// <summary>
-        /// Empty Constructor
+        /// Null Constructor
         /// </summary>
-        public Angle(): base() { }
+        private Angle(): base() { }
 
         /// <summary>
         /// Create an angle object from an angle value.
@@ -36,46 +38,33 @@ namespace UnitClassLibrary
         /// <param name="internalUnitType">angle unit type</param>
         /// <param name="intrinsicValue">angle value</param>
         [JsonConstructor]
-        public Angle(AngleType internalUnitType, double intrinsicValue) :
+        public Angle(AngleType internalUnitType, double intrinsicValue, AngularDistanceEqualityStrategy strategy = null) :
             base()
         {
             switch (internalUnitType)
             {
                 case AngleType.Radian:
 
-                    while (intrinsicValue >= Math.PI *2)
+                    _intrinsicValue = intrinsicValue % (2*Math.PI);
+                    if (_intrinsicValue < 0)
                     {
-                        intrinsicValue -= Math.PI * 2;
+                        _intrinsicValue += 2 * Math.PI; 
                     }
-
-                    if (intrinsicValue < 0)
-                    {
-                        intrinsicValue = (Math.PI * 2) - Math.Abs(intrinsicValue);
-                    }
-
-                    _intrinsicValue = intrinsicValue;
-
                     _internalUnitType = AngleType.Radian;
 
                     break;
                 case AngleType.Degree:
-
-                    while (intrinsicValue >= 360)
+                   
+                    _intrinsicValue = intrinsicValue % 360;
+                    if (_intrinsicValue < 0)
                     {
-                        intrinsicValue = intrinsicValue - 360;
+                        _intrinsicValue += 360;
                     }
-
-                    if (intrinsicValue < 0)
-                    {
-                        intrinsicValue = 360 - Math.Abs(intrinsicValue);
-                    }
-
-                    _intrinsicValue = intrinsicValue;
-
                     _internalUnitType = AngleType.Degree; 
 
                     break;
             }
+            _equalityStrategy = _DefaultOrPassedStrategy(strategy);
         }
 
         /// <summary>
@@ -162,33 +151,21 @@ namespace UnitClassLibrary
         /// <returns>Angle 180 degrees from this one</returns>
         public Angle Reverse()
         {
-            return this - new Angle(AngleType.Degree, 180);
+            return new Angle(this - 180 * Degree);
         }
 
         /// <summary>
         /// Returns an Angle object that is negated
         /// </summary>
-        /// <returns>Angle that is same but from opposite colckwise direction </returns>
+        /// <returns>Angle that is same but from opposite clockwise direction </returns>
         public new Angle Negate()
         {
-            return new Angle(AngleType.Degree, this.Degrees - (this.Degrees *2));
+            return new Angle(base.Negate());
         }
 
-        public Boolean Equals(Angle b)
+        public bool Equals(Angle b)
         {
-            var thisType = this._internalUnitType;
-            var thisValue = this._intrinsicValue;
-            var angle_1 = new AngularDistance(thisType, thisValue);
-
-            if (b == null)
-                return false;
-
-            var otherType = b._internalUnitType;
-            var otherValue = b._intrinsicValue;
-            var angle_2 = new AngularDistance(otherType, otherValue);
-
-            return angle_1 == angle_2;
-
+            return base.Equals(b);
         }
 
         public static Angle ArcSin(double r)

@@ -28,7 +28,7 @@ namespace UnitClassLibrary
 		/// <summary> Zero Constructor </summary>
         public Speed(SpeedEqualityStrategy passedStrategy = null)
 		{
-			_distance = new Distance();
+			_distance = Distance.Zero;
 			_time = new Time();
             _chooseDefaultOrPassedStrategy(passedStrategy);
 		}

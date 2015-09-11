@@ -2,6 +2,9 @@
 {
     public partial class Distance
     {
+
+        public readonly static Distance Zero = 0 * Inch;
+
         /// <summary>
         /// Generator method that constructs Distance with the assumption that the passed value is in inches
         /// </summary>

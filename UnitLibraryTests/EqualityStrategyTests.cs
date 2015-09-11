@@ -12,7 +12,7 @@ namespace UnitLibraryTests
         public void Equality_Default()
         {
             //normal case
-            Distance d1 = new Distance();
+            Distance d1 = Distance.Zero;
             Distance d2 = new Distance(DistanceType.Inch, 1);
             Distance d3 = new Distance(DistanceType.Inch, 1.01);
 
@@ -38,9 +38,9 @@ namespace UnitLibraryTests
             //settings are always determined by the focus object.
             //so using d1 instead would mean that the only dimension object that can be equivalent is another exact zero object
 
-            Distance d1 = new Distance();
+            Distance d1 = Distance.Zero;
             Distance d2 = Distance.ThirtySecondInch;
-            Distance d3 = new Distance();
+            Distance d3 = Distance.Zero;
 
             d2.EqualsWithinDeviationPercentage(d1, 1).Should().BeTrue();
 
@@ -54,7 +54,7 @@ namespace UnitLibraryTests
         {
             //settings are always determined by the focus object. But in this case it doesn't matter
 
-            Distance d1 = new Distance();
+            Distance d1 = Distance.Zero;
             Distance d2 = Distance.ThirtySecondInch;
 
             d2.EqualsWithinDeviationConstant(d1, Distance.ThirtySecondInch).Should().BeTrue();
@@ -66,7 +66,7 @@ namespace UnitLibraryTests
         public void Equality_UserDefinedStrategy()
         {
 
-            Distance d1 = new Distance();
+            Distance d1 = Distance.Zero;
             Distance d2 = Distance.ThirtySecondInch;
 
             DistanceEqualityStrategy userStrategy = delegate(Distance distance1, Distance distance2)

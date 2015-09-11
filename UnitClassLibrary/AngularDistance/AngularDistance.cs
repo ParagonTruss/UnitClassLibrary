@@ -37,18 +37,11 @@ namespace UnitClassLibrary
 
         #region Constructors
 
-        public AngularDistance()
-        {
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(null);
-        }
+        /// <summary>
+        /// Null Constructor
+        /// </summary>
+        protected AngularDistance() { }
 
-		/// <summary> Zero Constructor </summary>
-		public AngularDistance(AngularDistanceEqualityStrategy passedStrategy = null)
-		{
-			_intrinsicValue = 0;
-            _internalUnitType = AngleType.Radian;
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
-		}
 
 		/// <summary> Accepts standard types for input. </summary>
         [JsonConstructor]
@@ -56,8 +49,8 @@ namespace UnitClassLibrary
 		{
             _intrinsicValue = intrinsicValue;
             _internalUnitType = internalUnitType;
-			_equalityStrategy = _chooseDefaultOrPassedStrategy(passedStrategy);
-		}
+            _equalityStrategy = _DefaultOrPassedStrategy(passedStrategy);
+        }
 
 		/// <summary> Copy constructor (new unit with same fields as the passed) </summary>
 		public AngularDistance(AngularDistance passedAngularDistance)
@@ -71,7 +64,7 @@ namespace UnitClassLibrary
 
 		#region helper _methods
 
-		private static AngularDistanceEqualityStrategy _chooseDefaultOrPassedStrategy(AngularDistanceEqualityStrategy passedStrategy)
+		protected static AngularDistanceEqualityStrategy _DefaultOrPassedStrategy(AngularDistanceEqualityStrategy passedStrategy)
 		{
 			if (passedStrategy == null)
 			{

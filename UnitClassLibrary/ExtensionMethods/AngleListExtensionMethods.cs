@@ -18,7 +18,7 @@ namespace UnitClassLibrary
         /// <returns>Total of all Angles in the list</returns>
         public static Angle SumTotal(this List<Angle> passedAngleList)
         {
-            Angle sumAngle = new Angle();
+            Angle sumAngle = Angle.Zero;
 
             foreach (var angle in passedAngleList)
             {

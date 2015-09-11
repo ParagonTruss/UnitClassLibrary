@@ -23,7 +23,7 @@ namespace UnitClassLibrary
         public Moment(MomentEqualityStrategy passedEqualityStrategy = null)
 		{
 			_force = new Force();
-			_distance = new Distance();
+			_distance = Distance.Zero;
             _equalityStrategy = _chooseDefaultOrPassedStrategy(passedEqualityStrategy);
 
 		}

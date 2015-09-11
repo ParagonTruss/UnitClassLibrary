@@ -284,7 +284,7 @@ namespace UnitLibraryTests
         public void Distance_Intuitiveness()
         {
             //zero constructor
-            Distance zero = new Distance();
+            Distance zero = Distance.Zero;
 
             //simple constructor
             Distance smallDistance = new Distance(DistanceType.Millimeter, 1);
@@ -300,12 +300,12 @@ namespace UnitLibraryTests
 		 
             }
             
-            if (zero == new Distance())
+            if (zero == Distance.Zero)
             {
 
             }
 
-            if (zero >= new Distance())
+            if (zero >= Distance.Zero)
             {
 
             }
@@ -352,7 +352,7 @@ namespace UnitLibraryTests
         [Test()]
         public void Distance_DistanceInIntrinsicUnitsIsGreaterThan()
         {
-            Distance d1 = new Distance();// empty constructor
+            Distance d1 = Distance.Zero;// empty constructor
             Distance d2 = new Distance(DistanceType.Meter, 1000);
             Distance d3 = new Distance(DistanceType.Meter, 1000.1);
             Distance d4 = new Distance(DistanceType.Mile, 0) + d3; //converts d3's internal units to miles.
