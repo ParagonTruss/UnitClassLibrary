@@ -1,7 +1,8 @@
 ﻿namespace UnitClassLibrary
 {
-    public interface IAbsoluteValue<T>
+    public interface Unit<T>
     {
         T AbsoluteValue();
+        T ValueZero();
     }
 }

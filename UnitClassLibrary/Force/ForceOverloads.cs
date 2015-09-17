@@ -3,7 +3,7 @@ using System;
 namespace UnitClassLibrary
 {
 
-	public partial class Force : IEquatable <Force>, IAbsoluteValue<Force>
+	public partial class Force : IEquatable <Force>, Unit<Force>
     {
 
 		/// <summary>Raise to power operator</summary>
@@ -183,5 +183,10 @@ namespace UnitClassLibrary
 				return false;
 			}
 		}
-	}
+
+        public Force ValueZero()
+        {
+            return Force.Zero;
+        }
+    }
 }

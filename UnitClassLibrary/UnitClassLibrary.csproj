@@ -175,7 +175,7 @@
     <Compile Include="Force\ForceProperties.cs" />
     <Compile Include="Force\ForcePublicMethods.cs" />
     <Compile Include="Force\ForceStaticGenerators.cs" />
-    <Compile Include="IAbsoluteValue.cs" />
+    <Compile Include="IUnit.cs" />
     <Compile Include="Mass\MassEnums.cs" />
     <Compile Include="Mass\MassPublicMethods.cs" />
     <Compile Include="Mass\MassProperties.cs" />

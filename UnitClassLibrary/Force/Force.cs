@@ -9,6 +9,8 @@ namespace UnitClassLibrary
 	{
         #region _fields and Internal Properties
 
+        public static readonly Force Zero = 0 * Pound;
+
         [JsonProperty]
         [JsonConverter(typeof(StringEnumConverter))]
         public ForceType InternalUnitType

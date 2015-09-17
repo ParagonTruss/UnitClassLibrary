@@ -3,7 +3,10 @@ namespace UnitClassLibrary
 
 	public partial class Moment
 	{
-		#region _fields and Internal Properties
+        #region _fields and Internal Properties
+
+        public static readonly Moment Zero = 0 * NewtonsCentimeter;
+
 		private Force _force;
 		private Distance _distance;
 
@@ -15,18 +18,14 @@ namespace UnitClassLibrary
 
 		private MomentEqualityStrategy _equalityStrategy;
 
-		#endregion
+        #endregion
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary> Zero Constructor </summary>
-        public Moment(MomentEqualityStrategy passedEqualityStrategy = null)
-		{
-			_force = new Force();
-			_distance = Distance.Zero;
-            _equalityStrategy = _chooseDefaultOrPassedStrategy(passedEqualityStrategy);
-
-		}
+        /// <summary>
+        /// Null Constructor
+        /// </summary>
+        internal Moment() { }
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
 		public Moment(Force passedForce, Distance passedDistance, MomentEqualityStrategy passedEqualityStrategy = null)

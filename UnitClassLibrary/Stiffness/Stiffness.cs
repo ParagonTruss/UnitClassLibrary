@@ -28,7 +28,7 @@ namespace UnitClassLibrary
 		/// <summary> Zero Constructor </summary>
         public Stiffness(StiffnessEqualityStrategy passedStrategy = null)
 		{
-			_force = new Force();
+			_force = Force.Zero;
 			_distance = Distance.Zero;
             _chooseDefaultOrPassedStrategy(passedStrategy);
 

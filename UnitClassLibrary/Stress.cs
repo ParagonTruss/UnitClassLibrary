@@ -24,7 +24,7 @@ namespace UnitClassLibrary
         public Stress()
         {
             _area = new Area();
-            _force = new Force();
+            _force = Force.Zero;
         }
 
         /// <summary>

@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary
 {
-    public partial class Distance : IEquatable<Distance>, IAbsoluteValue<Distance>
+    public partial class Distance : IEquatable<Distance>, Unit<Distance>
     {
         // You may notice that we do not overload the increment and decrement operators (++ and --).
         // This would break our abstraction of thinking that all units types are represented by this object 
@@ -253,6 +253,11 @@ namespace UnitClassLibrary
             {
                 return false;
             }
+        }
+
+        public Distance ValueZero()
+        {
+            return Distance.Zero;
         }
     }
 }

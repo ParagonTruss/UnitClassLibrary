@@ -3,7 +3,7 @@ using System;
 namespace UnitClassLibrary
 {
 
-	public partial class Moment : IEquatable <Moment>, IAbsoluteValue<Moment>
+	public partial class Moment : Unit<Moment>, IEquatable<Moment>
     {
 
 		/// <summary>Raise to power operator</summary>
@@ -183,5 +183,10 @@ namespace UnitClassLibrary
 				return false;
 			}
 		}
-	}
+
+        public Moment ValueZero()
+        {
+            return Moment.Zero;
+        }
+    }
 }
