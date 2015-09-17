@@ -106,13 +106,13 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnitClassLibrary\UnitClassLibrary.csproj">
-      <Project>{4d89e91c-bf44-49d8-acf4-be105c3428fe}</Project>
-      <Name>UnitClassLibrary</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\UnitClassLibrary\UnitClassLibrary.csproj">
+      <Project>{656fbe2b-6efe-411d-8922-58f370ca10f3}</Project>
+      <Name>UnitClassLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
