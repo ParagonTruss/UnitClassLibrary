@@ -68,7 +68,10 @@ namespace UnitClassLibrary
         /// <summary>
         /// Null Constructor
         /// </summary>
-        private Distance() { }
+        private Distance()
+        {
+            _equalityStrategy = _chooseDefaultOrPassedStrategy(null);
+        }
 
         /// <summary>
         /// Accepts any valid architectural string value for input
