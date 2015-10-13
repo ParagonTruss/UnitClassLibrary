@@ -7,6 +7,8 @@ namespace UnitClassLibrary
     /// </summary>
     public class Area : IComparable<Area>
     {
+        public static readonly Area Zero = new Area(AreaType.InchesSquared, 0);
+
         #region private fields and constants
 
         /// <summary>
@@ -147,6 +149,7 @@ namespace UnitClassLibrary
         {
             get { return retrieveAsExternalUnit(AreaType.MilesSquared); }
         }
+
 
         /// <summary>
         /// returns the property specified by the AreaType
