@@ -9,6 +9,7 @@ namespace UnitClassLibrary
     {
         public static readonly Area Zero = new Area(AreaType.InchesSquared, 0);
 
+        public static readonly Area SquareInch = new Area(AreaType.InchesSquared, 1);
         #region private fields and constants
 
         /// <summary>
@@ -447,9 +448,15 @@ namespace UnitClassLibrary
 
         #region Overloaded Operators
 
-        /* You may notice that we do not overload the increment and decrement operators nor do we overload multiplication and division.
-         * This is because the user of this library does not know what is being internally stored and those operations will not return useful information. 
-         */
+        public static Area operator *(double d, Area a)
+        {
+            return new Area(a._internalUnitType, a._intrinsicValue * d);
+        }
+
+        public static Area operator *(Area a, double d)
+        {
+            return d * a;
+        }
 
         /// <summary>
         /// adds two areas together
@@ -548,12 +555,30 @@ namespace UnitClassLibrary
 
         /// <summary>
         /// The value and unit in terms of what the object was created with. 
-        /// If you want it in a different unit use ToString(AreaType)
+        /// If you want it in a different unit use ToString(AngularDistanceType)
         /// </summary>
-        /// <returns>Should never return anything</returns>
         public override string ToString()
         {
-            return this._intrinsicValue + " " + this._internalUnitType;
+            //round the number to an acceptable range given the EqualityStrategy.
+
+            try
+            {
+                int digits = 0;
+                double roundedIntrinsicValue = Math.Round(_intrinsicValue, digits);
+
+                while (this != new Area(this.InternalUnitType, roundedIntrinsicValue))
+                {
+                    digits++;
+                    roundedIntrinsicValue = Math.Round(_intrinsicValue, digits);
+                }
+
+                return Math.Round(_intrinsicValue, digits) + " " + this._internalUnitType;
+            }
+            catch (OverflowException)
+            {
+
+                return _intrinsicValue + " " + this._internalUnitType;
+            }
         }
 
         /// <summary>

@@ -198,7 +198,7 @@ namespace UnitClassLibrary
             try
             {
                 int digits = 0;
-                double roundedIntrinsicValue =Math.Round(_intrinsicValue, digits);
+                double roundedIntrinsicValue = Math.Round(_intrinsicValue, digits);
 
                 while (this != new Distance(this.InternalUnitType, roundedIntrinsicValue))
                 {
