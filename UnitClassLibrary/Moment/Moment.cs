@@ -1,3 +1,5 @@
+using Newtonsoft.Json;
+
 namespace UnitClassLibrary
 {
 
@@ -10,7 +12,8 @@ namespace UnitClassLibrary
 		private Force _force;
 		private Distance _distance;
 
-		public MomentEqualityStrategy EqualityStrategy
+        [JsonIgnore]
+        public MomentEqualityStrategy EqualityStrategy
 		{
 			get { return _equalityStrategy; }
 			set { _equalityStrategy = value; }
