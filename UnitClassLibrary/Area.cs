@@ -574,7 +574,7 @@ namespace UnitClassLibrary
 
                 return Math.Round(_intrinsicValue, digits) + " " + this._internalUnitType;
             }
-            catch (OverflowException)
+            catch (ArgumentOutOfRangeException)
             {
 
                 return _intrinsicValue + " " + this._internalUnitType;
