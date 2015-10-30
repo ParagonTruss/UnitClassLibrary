@@ -458,6 +458,11 @@ namespace UnitClassLibrary
             return d * a;
         }
 
+        public static double operator /(Area a1, Area a2)
+        {
+            return a1._intrinsicValue / a2.GetValue(a1.InternalUnitType);
+        }
+
         /// <summary>
         /// adds two areas together
         /// </summary>
@@ -542,6 +547,16 @@ namespace UnitClassLibrary
         public static bool operator <(Area a1, Area a2)
         {
             return a1._intrinsicValue < a2.GetValue(a1._internalUnitType);
+        }
+
+        public static bool operator >=(Area a1, Area a2)
+        {
+            return a1 > a2 || a1 == a2;
+        }
+
+        public static bool operator <=(Area a1, Area a2)
+        {
+            return a1 < a2 || a1 == a2;
         }
 
         /// <summary>
