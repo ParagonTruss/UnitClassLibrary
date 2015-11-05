@@ -28,7 +28,7 @@ namespace UnitClassLibrary
         /// <summary>
         /// Null Constructor
         /// </summary>
-        internal Moment() { }
+        public Moment() { }
 
 		/// <summary> constructor that creates moment based on the passed units </summary>
 		public Moment(Force passedForce, Distance passedDistance, MomentEqualityStrategy passedEqualityStrategy = null)

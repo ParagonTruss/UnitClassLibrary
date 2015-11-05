@@ -36,17 +36,12 @@ namespace UnitClassLibrary
 
 		private ForceEqualityStrategy _equalityStrategy;
 
-		#endregion
+        #endregion
 
-		#region Constructors
+        #region Constructors
 
-		/// <summary> Zero Constructor </summary>
-		 public Force(ForceEqualityStrategy passedStrategy = null)
-		{
-			_intrinsicValue = 0;
-			_internalUnitType = ForceType.Pound;
-			_intrinsicValue = 0;
-		}
+        /// <summary> Null Constructor </summary>
+        public Force() { }
 
 		/// <summary> Accepts standard types for input. </summary>
         [JsonConstructor]
