@@ -114,7 +114,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\UnitClassLibrary\UnitClassLibrary.csproj">
-      <Project>{656fbe2b-6efe-411d-8922-58f370ca10f3}</Project>
+      <Project>{4d89e91c-bf44-49d8-acf4-be105c3428fe}</Project>
       <Name>UnitClassLibrary</Name>
     </ProjectReference>
   </ItemGroup>
