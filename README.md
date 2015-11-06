@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/ParagonTruss/UnitClassLibrary.svg?branch=master)](https://travis-ci.org/ParagonTruss/UnitClassLibrary)
 
+#**Just a Heads Up! **
+>This library is going through some pretty drastic changes under the covers. (Take a look at this [branch](https://github.com/ParagonTruss/UnitClassLibrary/tree/UNITCLASS-17-implement-new-unit-structur/UnitClassLibrary).) We think you are going to really like the new features and the new simplicity of the codebase. So if you are evaluating this library for the first time, judge it based on the new code rather than what is currently in master.
+
+
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
 If you need help using any of the features or want to talk to someone, jump into our [chat room](https://www.hipchat.com/gxRdV6tby)!
