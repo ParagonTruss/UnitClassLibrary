@@ -135,13 +135,14 @@ publish/
 # NuGet Packages
 *.nupkg
 # The packages folder can be ignored because of Package Restore
-**/packages/FluentAssertions.3.1.229/*
-!**/packages/FluentAssertions.3.1.229/lib
-**/packages/FluentAssertions.3.1.229/lib/*
-!**/packages/FluentAssertions.3.1.229/lib/net45
-**/packages/FluentAssertions.3.1.229/lib/net45/*
-!**/packages/FluentAssertions.3.1.229/lib/net45/FluentAssertions.dll
-!**/packages/FluentAssertions.3.1.229/lib/net45/FluentAssertions.Core.dll
+
+
+
+# Windows Azure Build Output
+*ckages folder can be ignored because of Package Restore
+**/packages/*
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
 
 # Windows Azure Build Output
 csx/
