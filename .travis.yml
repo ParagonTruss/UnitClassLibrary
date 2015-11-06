@@ -2,5 +2,5 @@ language: csharp
 solution: UnitClassLibrary.sln
 install:
   - nuget restore UnitClassLibrary.sln
-  script:
+script:
   - xbuild UnitClassLibrary.sln
