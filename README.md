@@ -1,6 +1,6 @@
 # Welcome!
 
-https://travis-ci.org/ParagonTruss/UnitClassLibrary.svg?branch=master
+[![Build Status](https://travis-ci.org/ParagonTruss/UnitClassLibrary.svg?branch=master)](https://travis-ci.org/ParagonTruss/UnitClassLibrary)
 
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
