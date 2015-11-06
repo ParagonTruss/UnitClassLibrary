@@ -40,8 +40,6 @@ namespace UnitLibraryTests
             Angle a2 = new Angle(AngleType.Radian, Math.PI * 2);
             Angle a3 = new Angle(AngleType.Degree, -360);
 
-            Boolean a = a1 == a2;
-
             a1.Equals(a2).Should().BeTrue();
             a1.Equals(a3).Should().BeTrue();
 
