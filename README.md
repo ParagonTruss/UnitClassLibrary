@@ -1,7 +1,10 @@
 # Welcome!
 
-Travis CI:
+Travis CI Status:
 [![Build Status](https://travis-ci.org/ParagonTruss/UnitClassLibrary.svg?branch=master)](https://travis-ci.org/ParagonTruss/UnitClassLibrary)
+
+MyGet Package Build Status:
+[![Build Status](https://travis-ci.org/ParagonTruss/UnitClassLibrary.svg?branch=v1.3.0-CI00008)](https://travis-ci.org/ParagonTruss/UnitClassLibrary)
 
 #**Just a Heads Up! **
 >This library is going through some pretty drastic changes under the covers. (Take a look at this [branch](https://github.com/ParagonTruss/UnitClassLibrary/tree/UNITCLASS-17-implement-new-unit-structur/UnitClassLibrary).) We think you are going to really like the new features and the new simplicity of the codebase. So if you are evaluating this library for the first time, judge it based on the new code rather than what is currently in master.
