@@ -40,7 +40,7 @@ Please conform to our [Coding Conventions](https://bitbucket.org/Clearspan/unit-
 For information regarding what needs to be worked on next visit the [Road Map](https://bitbucket.org/Clearspan/unit-class-library/wiki/Road%20Map).
 
 ### Feedback
-If you have found a bug, or have an issue you would like to discuss about the project add bug reports, feature requests, and other issues [on our issue tracker](https://clearspan.atlassian.net/browse/UNITCLASS).
+If you have found a bug, or have an issue you would like to discuss about the project add bug reports, feature requests, and other issues [on our issue tracker](https://github.com/ParagonTruss/UnitClassLibrary/issues).
 
 ### More Information
 
