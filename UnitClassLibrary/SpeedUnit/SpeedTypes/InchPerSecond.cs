@@ -5,7 +5,7 @@ using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
-    public class InchPerSecond : ISpeedType
+    public class InchPerSecond : ISpeedUnit
     {
         public string AsStringPlural
         {
@@ -28,7 +28,7 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             get { return new Inch().ConversionFactor/new Second().ConversionFactor; }
         }
 
-        public IDistanceType GetDistanceType()
+        public IDistanceUnit GetDistanceType()
         {
             return new Inch();
         }

@@ -1,58 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnitClassLibrary.DistanceUnit.DistanceTypes;
 
 namespace UnitClassLibrary.GenericUnit
-{
-
-    public class BasicUnit
+{ 
+    public partial class GenericUnit
     {
-        public BasicUnit(double value, double conversionFactor)
-        {
-            IntrinsicValue = value;
-            ConversionFactor = conversionFactor;
-        }
-
-        public double IntrinsicValue;
-        public double ConversionFactor;
-
-    }
-
-    
-
-    public partial class GenericUnit<T> where T: IUnitType
-    {
-
         #region _fields and Properties
 
-        private List<BasicUnit> _numerators = new List<BasicUnit>();
-        private List<BasicUnit> _denomenators = new List<BasicUnit>();
+        private List<IUnit> _numerators = new List<IUnit>();
+        private List<IUnit> _denominators = new List<IUnit>();
 
-        private EqualityStrategy<T> _EqualityStrategy = EqualityStrategies.EqualsWithinDeviationPercentageStrategy;
-
-        public double PercentageError { get { return ErrorMargin / _IntrinsicValue; } }
-
-        public double ErrorMargin;
-
-        protected internal double _IntrinsicValue
-        {
-            get
-            {
-                var numerator = 1.0;
-                var denomenator = 1.0;
-
-                foreach (var pair in _numerators)
-                {
-                    numerator *= pair.IntrinsicValue;
-                }
-
-                foreach (var pair in _denomenators)
-                {
-                    denomenator *= pair.IntrinsicValue;
-                }
-
-                return numerator / denomenator;
-            }
-        }
+        public DoubleWithErrorMargin Value;
+        public double IntrinsicValue { get { return Value.IntrinsicValue; } }
+        public double ErrorMargin { get { return Value.ErrorMargin; } }
 
         public double ConversionFactor
         {
@@ -66,7 +28,7 @@ namespace UnitClassLibrary.GenericUnit
                     numerator *= unit.ConversionFactor;
                 }
 
-                foreach (var unit in _denomenators)
+                foreach (var unit in _denominators)
                 {
                     denomenator *= unit.ConversionFactor;
                 }
@@ -75,42 +37,34 @@ namespace UnitClassLibrary.GenericUnit
             }
 
         }
-
-        public GenericUnit<T> DeviationAsConstant { get { return PercentageError * this; } }
         #endregion
 
         #region Constructors
 
-        public GenericUnit(List<GenericUnit<T>> numerators, List<GenericUnit<T>> denomenators = null) :
-            this(_convertToBasicUnitList(numerators), _convertToBasicUnitList(denomenators))
+        public GenericUnit(double intrinsicValue, double errorMargin, List<IUnit> numerators, List<IUnit> denominators)
+            : this(new DoubleWithErrorMargin(intrinsicValue, errorMargin), numerators, denominators) { }
+
+        public GenericUnit(DoubleWithErrorMargin value, List<IUnit> numerators, List<IUnit> denominators)
         {
-            
-            
+            this._numerators = numerators;
+            this._denominators = denominators;
+            this.Value = value;
         }
 
-        private static List<BasicUnit> _convertToBasicUnitList(List<GenericUnit<T>> genericUnits)
+        protected GenericUnit(List<BasicUnit> numerators, List<BasicUnit> denominators = null)
         {
-            //make list of genericUnits into basic units
-            var newBasicUnits = new List<BasicUnit>();
-
-            foreach (var genericUnit in genericUnits)
+            this._numerators = numerators.Select(u => u.Unit).ToList();
+            var intrinsicValue = numerators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
+            if (denominators != null)
             {
-                newBasicUnits.Add(new BasicUnit(genericUnit._IntrinsicValue, genericUnit.ConversionFactor));
+                this._denominators = denominators.Select(u => u.Unit).ToList();
+                intrinsicValue /= denominators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
             }
-
-            return newBasicUnits;
-        }
-
-
-
-        protected GenericUnit(List<BasicUnit> numerators, List<BasicUnit> denomenators = null,  EqualityStrategy<T> passedEqualityStrategy = null)
-        {
-            _numerators = numerators;
-            if (denomenators  != null)
-            {
-                this._denomenators = denomenators;
-            }
-            this._EqualityStrategy = passedEqualityStrategy;
+            var list = numerators.ToList();
+            list.AddRange(denominators);
+            var percentError = list.Sum(u => u.Value.PercentageError);
+            var errorMargin = percentError * intrinsicValue;
+            this.Value = new DoubleWithErrorMargin(intrinsicValue, errorMargin);      
         }
 
         
@@ -118,11 +72,11 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Copy Constructor
         /// </summary>
-        public GenericUnit(GenericUnit<T> toCopy)
+        public GenericUnit(GenericUnit toCopy)
         {
+            this.Value = toCopy.Value;
             this._numerators = toCopy._numerators;
-            this._denomenators = toCopy._denomenators;
-            this._EqualityStrategy = toCopy._EqualityStrategy;
+            this._denominators = toCopy._denominators;
         }
 
         #endregion

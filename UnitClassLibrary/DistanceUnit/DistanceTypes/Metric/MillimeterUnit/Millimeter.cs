@@ -3,7 +3,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
-    public class Millimeter : IDistanceType
+    public class Millimeter : IDistanceUnit
     {
         public string AsStringPlural
         {

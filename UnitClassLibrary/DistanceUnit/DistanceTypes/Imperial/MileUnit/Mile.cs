@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 {
-    public class Mile : IDistanceType
+    public class Mile : IDistanceUnit
     {
         public string AsStringPlural
         {

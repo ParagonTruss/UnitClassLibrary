@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
-    public class Centimeter : IDistanceType
+    public class Centimeter : IDistanceUnit
     {
         public string AsStringPlural
         {

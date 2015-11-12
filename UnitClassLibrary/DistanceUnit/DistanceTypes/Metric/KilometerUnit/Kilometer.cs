@@ -3,7 +3,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
-    public class Kilometer : IDistanceType
+    public class Kilometer : IDistanceUnit
     {
         public string AsStringPlural
         {

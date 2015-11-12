@@ -3,20 +3,19 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public delegate bool EqualityStrategy<T>(GenericUnit<T> Unit1, GenericUnit<T> Unit2) where T: IUnitType;
+    public delegate bool EqualityStrategy(GenericUnit Unit1, GenericUnit Unit2);
 
-
-    public partial class GenericUnit<T>
+    public partial class GenericUnit
     {
-        public bool EqualsWithinEqualityStrategy(GenericUnit<T> unit, EqualityStrategy<T> userStrategy)
+        public bool EqualsWithinEqualityStrategy(GenericUnit unit, EqualityStrategy userStrategy)
         {
-            return userStrategy(this, unit) ;
+            return userStrategy(this, unit);
         }
 
         /// <summary>
         /// Distances are equal if they differ by less than a percentage of the first Distance
         /// </summary>
-        public bool EqualsWithinDeviationPercentage(GenericUnit<T> unit1, GenericUnit<T> unit2, double percentage = 0.0001)
+        public bool EqualsWithinDeviationPercentage(GenericUnit unit1, GenericUnit unit2, double percentage = 0.0001)
         {
             // find the value of dimension1 in terms of its own _internalUnitType
             double dimension1Value = unit1.GetValue(unit1.ConversionFactor);
@@ -44,14 +43,14 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Distances are equal if there values are within the passed deviation constant. If they are not within the constant
         /// </summary>
-        public bool EqualsWithinDeviationConstant(GenericUnit<T> unit, GenericUnit<T> deviation)
+        public bool EqualsWithinDeviationConstant(GenericUnit unit, GenericUnit deviation)
         {
-            return EqualityStrategies.EqualsWithinDeviationConstant<T>(this, unit, deviation);
+            return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, deviation);
         }
 
-        public bool EqualsWithinDeviationConstant(GenericUnit<T> unit, BasicUnit deviation)
+        public bool EqualsWithinDeviationConstant(GenericUnit unit, BasicUnit deviation)
         {
-            return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, new GenericUnit<T>(new List<BasicUnit>(){deviation}));
+            return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, new GenericUnit(new List<BasicUnit>(){deviation}));
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public partial class GenericUnit<T>
+    public partial class GenericUnit
     {
-        public static double ConvertUnit(IUnitType convertFromType, double value, IUnitType convertToType)
+        public static double ConvertUnit(IUnit convertFromType, double value, IUnit convertToType)
         {
             return ConvertUnit(convertFromType.ConversionFactor, value, convertToType.ConversionFactor);
         }
@@ -30,19 +30,19 @@ namespace UnitClassLibrary.GenericUnit
         }
 
         /// <summary>
-        /// Creates a new GenericUnit<T> that is the negative of this one
+        /// Creates a new GenericUnit that is the negative of this one
         /// </summary>
-        public GenericUnit<T> Negate()
+        public GenericUnit Negate()
         {
             var newNumerators = new List<BasicUnit>((_numerators));
 
             //we just negate the first numerator
             newNumerators[0] = (new BasicUnit(newNumerators[0].IntrinsicValue * -1, newNumerators[0].ConversionFactor));
 
-            return new GenericUnit<T>(newNumerators, _denomenators);
+            return new GenericUnit(newNumerators, _denomenators);
         }
 
-        public GenericUnit<T> AbsoluteValue()
+        public GenericUnit AbsoluteValue()
         {
             //while slightly unnecessary, we make everything positive. not just a single value
 
@@ -66,7 +66,7 @@ namespace UnitClassLibrary.GenericUnit
             }
 
 
-            return new GenericUnit<T>(newNumerators, newDenomenators);
+            return new GenericUnit(newNumerators, newDenomenators);
         }
     }
 }

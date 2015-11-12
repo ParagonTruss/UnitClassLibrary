@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
 {
-    public class Acre : IAreaType
+    public class Acre : IAreaUnit
     {
         public string AsStringPlural
         {

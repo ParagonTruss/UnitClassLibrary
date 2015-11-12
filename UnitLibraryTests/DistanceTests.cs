@@ -251,11 +251,11 @@ namespace UnitLibraryTests
             Distance oneFoot = 1.FromFeetToDistance();
 
             //increments
-            oneFoot += oneFoot; //should be two feet
+            Distance twoFeet = oneFoot + oneFoot; //should be two feet
 
-            (oneFoot == new Distance(new Foot(), 2)).Should().BeTrue();
+            (twoFeet == new Distance(new Foot(), 2)).Should().BeTrue();
 
-            oneFoot -= oneFoot; //should be zero feet
+            Distance zeroFeet = oneFoot - oneFoot; //should be zero feet
 
             (oneFoot == new Distance(new Foot(), 0)).Should().BeTrue();
 
@@ -276,7 +276,7 @@ namespace UnitLibraryTests
         public void Distance_Intuitiveness()
         {
             //zero constructor
-            Distance zero = new Distance();
+            Distance zero = Distance.Zero;
 
             //simple constructor
             Distance smallDistance = new Distance(new Millimeter(), 1);
@@ -292,12 +292,12 @@ namespace UnitLibraryTests
 
             }
 
-            if (zero == new Distance())
+            if (zero == Distance.Zero)
             {
 
             }
 
-            if (zero >= new Distance())
+            if (zero >= Distance.Zero)
             {
 
             }
@@ -322,7 +322,7 @@ namespace UnitLibraryTests
             // oneFoot--;
 
             //User defined equality strategies
-            EqualityStrategy<IDistanceType> userStrategy = (d1, d2) => { return true; };
+            EqualityStrategy<IDistanceUnit> userStrategy = (d1, d2) => { return true; };
 
             oneFoot.EqualsWithinEqualityStrategy(positiveDistance, userStrategy);
 

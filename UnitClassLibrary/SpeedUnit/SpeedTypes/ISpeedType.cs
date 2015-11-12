@@ -4,7 +4,7 @@ using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
-    public interface ISpeedType:IUnitType
+    public interface ISpeedUnit : IUnit
     {
 
     }

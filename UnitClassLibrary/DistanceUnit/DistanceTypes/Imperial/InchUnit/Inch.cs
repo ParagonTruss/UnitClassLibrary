@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
-    public class Inch : IDistanceType
+    public class Inch : IDistanceUnit
     {
         public string AsStringPlural
         {

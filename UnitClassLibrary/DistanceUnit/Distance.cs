@@ -6,39 +6,23 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
-    public partial class Distance : GenericUnit<IDistanceType>
+    public partial class Distance : BasicUnit<IDistanceUnit>
     {
+        public static readonly Distance Zero = new Distance(new Inch(), 0, 0.03125);
+
         #region Constructors
 
-        public Distance() : this(new Inch(), 0) { }
+        //public Distance() : this(new Inch(), 0) { }
 
-        public Distance(IDistanceType distanceType, double passedDouble)
-            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, distanceType.ConversionFactor) }, new List<BasicUnit>())
-        {
+        public Distance(IDistanceUnit distanceUnit, double value) : base(distanceUnit, value) { }
 
-                //_DeviationConstant = new Distance(new Inch(), 1);
-        }
+        public Distance(IDistanceUnit distanceUnit, double value, double errorMargin)
+            : base(distanceUnit, value, errorMargin) { }
 
-        public Distance(IDistanceType distanceType, double passedDouble, GenericUnit<IDistanceType> acceptedDeviationAsConstant)
-            : base(new List<BasicUnit>() { new BasicUnit(passedDouble, distanceType.ConversionFactor) }, new List<BasicUnit>())
-        {
-                //_DeviationConstant = acceptedDeviationAsConstant;
+        public Distance(string architectural)
+            : this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural), 0.03125) { }
 
-        }
-
-        public Distance(string architectural) : this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural))
-        {
-        }
-
-        private Distance(GenericUnit<IDistanceType> toCopy)
-            : base(toCopy)
-        {
-        }
-
-        public Distance(Distance toCopy)
-            : base(toCopy)
-        {
-        }
+        public Distance(BasicUnit<IDistanceUnit> toCopy) : base(toCopy) { }
         #endregion
 
         new public Distance Negate()
@@ -53,7 +37,7 @@ namespace UnitClassLibrary.DistanceUnit
 
         public override string ToString()
         {
-            if (this._IntrinsicValue == 1.0)
+            if (this.IntrinsicValue == 1.0)
             {
                 return "";
             }
@@ -61,30 +45,30 @@ namespace UnitClassLibrary.DistanceUnit
         }
 
         #region Operator Overloads
-        public static Distance operator ^(Distance distance, double power)
-        {
-            return new Distance( ((GenericUnit<IDistanceType>) distance) ^ power);
-        }
+        //public static Distance operator ^(Distance distance, double power)
+        //{
+        //    return new Distance( ((BasicUnit) distance) ^ power);
+        //}
 
         public static Distance operator +(Distance distance1, Distance distance2)
         {
-            return new Distance((((GenericUnit<IDistanceType>)distance1) + ((GenericUnit<IDistanceType>)distance2)));
+            return new Distance(distance1.Add(distance2));
         }
 
-        public static Distance operator -(Distance distance1, Distance distance2)
-        {
-            return new Distance((((GenericUnit<IDistanceType>)distance1) - ((GenericUnit<IDistanceType>)distance2)));
-        }
+        //public static Distance operator -(Distance distance1, Distance distance2)
+        //{
+        //    return new Distance((((GenericUnit<IDistanceUnit>)distance1) - ((GenericUnit<IDistanceUnit>)distance2)));
+        //}
 
-        public static Distance operator *(Distance distance, double factor)
-        {
-            return new Distance(((GenericUnit<IDistanceType>)distance) * factor);
-        }
+        //public static Distance operator *(Distance distance, double factor)
+        //{
+        //    return new Distance(((GenericUnit<IDistanceUnit>)distance) * factor);
+        //}
 
-        public static Distance operator *(double factor, Distance distance)
-        {
-            return distance * factor;
-        }
+        //public static Distance operator *(double factor, Distance distance)
+        //{
+        //    return distance * factor;
+        //}
         #endregion
     }
 }

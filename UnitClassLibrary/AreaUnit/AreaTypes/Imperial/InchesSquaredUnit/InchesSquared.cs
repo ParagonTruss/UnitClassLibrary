@@ -3,7 +3,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit
 {
-    public class SquareInch : IAreaType
+    public class SquareInch : IAreaUnit
     {
         public string AsStringPlural
         {

@@ -7,12 +7,12 @@ namespace UnitClassLibrary.GenericUnit
 {
     public static class EqualityStrategies
     {
-        public static bool EqualsWithinDeviationPercentageStrategy<T>(GenericUnit<T> unit1, GenericUnit<T> unit2) where T : IUnitType
+        public static bool EqualsWithinDeviationPercentageStrategy<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
         {
             return EqualsWithinDeviationPercentage(unit1, unit2, unit1.PercentageError);
         }
 
-        public static bool EqualsWithinDeviationPercentage<T>(GenericUnit<T> unit1, GenericUnit<T> unit2, double percentage ) where T : IUnitType
+        public static bool EqualsWithinDeviationPercentage<T>(GenericUnit unit1, GenericUnit unit2, double percentage ) where T : IUnit
         {
             // find the value of dimension1 in terms of its own _internalUnitType
             double dimension1Value = unit1.GetValue(unit1.ConversionFactor);
@@ -35,13 +35,13 @@ namespace UnitClassLibrary.GenericUnit
             return dimensionsAreEqual;
         }
 
-        public static bool EqualsWithinDeviationConstantStrategy<T>(GenericUnit<T> unit1, GenericUnit<T> unit2) where T : IUnitType
+        public static bool EqualsWithinDeviationConstantStrategy<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
         {
             return EqualsWithinDeviationConstant(unit1, unit2, unit1.DeviationAsConstant);
         }
 
 
-        public static bool EqualsWithinDeviationConstant<T>(GenericUnit<T> unit1, GenericUnit<T> unit2, GenericUnit<T> deviation) where T : IUnitType
+        public static bool EqualsWithinDeviationConstant<T>(GenericUnit unit1, GenericUnit unit2, GenericUnit deviation) where T : IUnit
         {
             var difference = _absoluteValueOfDifference(unit1, unit2);
 
@@ -51,7 +51,7 @@ namespace UnitClassLibrary.GenericUnit
             return dimensionsAreEqual;
         }
 
-        private static GenericUnit<T> _absoluteValueOfDifference<T>(GenericUnit<T> unit1, GenericUnit<T> unit2) where T : IUnitType
+        private static GenericUnit _absoluteValueOfDifference<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
         {
             // find the difference in the two values
             var difference = unit1 - unit2;

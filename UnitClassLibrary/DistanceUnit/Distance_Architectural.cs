@@ -26,7 +26,7 @@ namespace UnitClassLibrary.DistanceUnit
         /// <param name="convertToType"></param>
         /// <param name="passedArchitecturalString"></param>
         /// <returns></returns>
-        private static double ConvertArchitectualStringtoUnit(IDistanceType convertToType, String passedArchitecturalString)
+        private static double ConvertArchitectualStringtoUnit(IDistanceUnit convertToType, String passedArchitecturalString)
         {
             // for details on where this solution came from, check here: http://stackoverflow.com/questions/22794466/parsing-all-possible-types-of-varying-architectural-Distance-input
             // answer by Trygve Flathen: http://stackoverflow.com/users/2795177/trygve-flathen

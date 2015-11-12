@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
-    public class Foot : IDistanceType
+    public class Foot : IDistanceUnit
     {
         public string AsStringPlural
         {

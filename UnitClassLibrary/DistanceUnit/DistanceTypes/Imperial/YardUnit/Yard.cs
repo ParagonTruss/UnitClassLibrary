@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 {
-    public class Yard : IDistanceType
+    public class Yard : IDistanceUnit
     {
         public string AsStringPlural
         {

@@ -3,98 +3,94 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public partial class GenericUnit<T>
+    public partial class GenericUnit
     {  
-        /// <summary>
-        /// The "raise to power" operator
-        /// </summary>
-        public static GenericUnit<T> operator ^(GenericUnit<T> d1, double power)
-        {
-            var newNumerators =new List<BasicUnit>((d1._numerators));
+        ///// <summary>
+        ///// The "raise to power" operator
+        ///// </summary>
+        //public static GenericUnit operator ^(GenericUnit d1, double power)
+        //{
+        //    var newNumerators =new List<BasicUnit>((d1._numerators));
 
-            //multiply the first value by itself
+        //    //multiply the first value by itself
 
-            newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue * newNumerators[0].IntrinsicValue, newNumerators[0].ConversionFactor);
-            return new GenericUnit<T>(newNumerators, d1._denomenators);
-        }
+        //    newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue * newNumerators[0].IntrinsicValue, newNumerators[0].ConversionFactor);
+        //    return new GenericUnit(newNumerators, d1._denomenators);
+        //}
 
             
 
-            /// <summary>
-            /// returns a new GenericUnit with the sum of the two passed distances
-            /// </summary>
-        public static GenericUnit<T> operator +(GenericUnit<T> d1, GenericUnit<T> d2)
-        {
-            var sum = d1._IntrinsicValue + d2._IntrinsicValue;
+        //    /// <summary>
+        //    /// returns a new GenericUnit with the sum of the two passed distances
+        //    /// </summary>
+        //public static GenericUnit operator +(GenericUnit d1, GenericUnit d2)
+        //{
+        //    var sum = d1._IntrinsicValue + d2._IntrinsicValue;
 
-            var newNumerators = new List<BasicUnit>((d1._numerators));
-            var newDenomenators = new List<BasicUnit>((d2._denomenators));
+        //    var newNumerators = new List<BasicUnit>((d1._numerators));
+        //    var newDenomenators = new List<BasicUnit>((d2._denomenators));
 
-            newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
+        //    newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
 
-            for (int i = 1; i < newNumerators.Count; i++)
-            {
-                if (newNumerators[i].IntrinsicValue < 0)
-                {
-                    newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
-                }
-            }
+        //    for (int i = 1; i < newNumerators.Count; i++)
+        //    {
+        //        if (newNumerators[i].IntrinsicValue < 0)
+        //        {
+        //            newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
+        //        }
+        //    }
 
-            for (int i = 0; i < newDenomenators.Count; i++)
-            {
+        //    for (int i = 0; i < newDenomenators.Count; i++)
+        //    {
 
-                    newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
-                    newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
-            }
+        //            newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
+        //            newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
+        //    }
 
-            return new GenericUnit<T>(newNumerators, newDenomenators);
-        }
+        //    return new GenericUnit(newNumerators, newDenomenators);
+        //}
+
+        ///// <summary>
+        ///// returns a new GenericUnit with the difference of the two passed distances
+        ///// </summary>
+        //public static GenericUnit operator -(GenericUnit d1, GenericUnit d2)
+        //{
+        //    var sum = d1._IntrinsicValue - d2._IntrinsicValue;
+
+        //    var newNumerators = new List<BasicUnit>((d1._numerators));
+        //    var newDenomenators = new List<BasicUnit>((d1._denomenators));
+
+        //    newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
+
+        //    for (int i = 1; i < newNumerators.Count; i++)
+        //    {
+        //        if (newNumerators[i].IntrinsicValue < 0)
+        //        {
+        //            newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
+        //        }
+        //    }
+
+        //    for (int i = 0; i < newDenomenators.Count; i++)
+        //    {
+
+        //        newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
+        //    }
+
+        //    return new GenericUnit(newNumerators, newDenomenators);
+        //}
 
         /// <summary>
-        /// returns a new GenericUnit with the difference of the two passed distances
+        /// scalar multiplication
         /// </summary>
-        public static GenericUnit<T> operator -(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static GenericUnit operator *(GenericUnit unit, double multiplier)
         {
-            var sum = d1._IntrinsicValue - d2._IntrinsicValue;
-
-            var newNumerators = new List<BasicUnit>((d1._numerators));
-            var newDenomenators = new List<BasicUnit>((d1._denomenators));
-
-            newNumerators[0] = (new BasicUnit(sum, newNumerators[0].ConversionFactor));
-
-            for (int i = 1; i < newNumerators.Count; i++)
-            {
-                if (newNumerators[i].IntrinsicValue < 0)
-                {
-                    newNumerators[i] = (new BasicUnit(1, newNumerators[i].ConversionFactor));
-                }
-            }
-
-            for (int i = 0; i < newDenomenators.Count; i++)
-            {
-
-                newDenomenators[i] = (new BasicUnit(1, newDenomenators[i].ConversionFactor));
-            }
-
-            return new GenericUnit<T>(newNumerators, newDenomenators);
+            return new GenericUnit(unit.Value * multiplier, unit._numerators, unit._denominators);
         }
 
         /// <summary>
         /// scalar multiplication
         /// </summary>
-        public static GenericUnit<T> operator *(GenericUnit<T> d1, double multiplier)
-        {
-            var newNumerators = new List<BasicUnit>((d1._numerators));
-
-            newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue * multiplier, newNumerators[0].ConversionFactor);
-
-            return new GenericUnit<T>(newNumerators, d1._denomenators);
-        }
-
-        /// <summary>
-        /// scalar multiplication
-        /// </summary>
-        public static GenericUnit<T> operator *(double multiplier, GenericUnit<T> d1)
+        public static GenericUnit operator *(double multiplier, GenericUnit d1)
         {
             return d1 * multiplier;
         }
@@ -102,19 +98,19 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// scalar division
         /// </summary>
-        public static GenericUnit<T> operator /(GenericUnit<T> d1, double divisor)
+        public static GenericUnit operator /(GenericUnit d1, double divisor)
         {
             var newNumerators = new List<BasicUnit>((d1._numerators));
 
             newNumerators[0] = new BasicUnit(newNumerators[0].IntrinsicValue / divisor, newNumerators[0].ConversionFactor);
 
-            return new GenericUnit<T>(newNumerators, d1._denomenators);
+            return new GenericUnit(newNumerators, d1._denomenators);
         }
 
         /// <summary>
         /// scalar division
         /// </summary>
-        public static GenericUnit<T> operator /(double divisor, GenericUnit<T> d1)
+        public static GenericUnit operator /(double divisor, GenericUnit d1)
         {
             return d1 / divisor;
         }
@@ -122,7 +118,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// ratio of between distances
         /// </summary>
-        public static double operator /(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static double operator /(GenericUnit d1, GenericUnit d2)
         {
             throw new NotImplementedException();
         }
@@ -130,7 +126,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator ==(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator ==(GenericUnit d1, GenericUnit d2)
         {
             if ((object)d1 == null)
             {
@@ -146,7 +142,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator !=(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator !=(GenericUnit d1, GenericUnit d2)
         {
             if ((object)d1 == null)
             {
@@ -162,7 +158,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// greater than
         /// </summary>
-        public static bool operator >(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator >(GenericUnit d1, GenericUnit d2)
         {
             if (d1 == d2)
             {
@@ -174,7 +170,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// less than
         /// </summary>
-        public static bool operator <(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator <(GenericUnit d1, GenericUnit d2)
         {
             if (d1 == d2)
             {
@@ -186,7 +182,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Less than or equal to
         /// </summary>
-        public static bool operator <=(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator <=(GenericUnit d1, GenericUnit d2)
         {
             return d1.Equals(d2) || d1 < d2;
         }
@@ -194,7 +190,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Greater than or equal to
         /// </summary>
-        public static bool operator >=(GenericUnit<T> d1, GenericUnit<T> d2)
+        public static bool operator >=(GenericUnit d1, GenericUnit d2)
         {
             return d1.Equals(d2) || d1 > d2;
         }
@@ -212,7 +208,7 @@ namespace UnitClassLibrary.GenericUnit
         /// </summary>
         /// <param name="other">Distance being compared to</param>
         /// <returns></returns>
-        public int CompareTo(GenericUnit<T> other)
+        public int CompareTo(GenericUnit other)
         {
             if (this.Equals(other))
             {
@@ -236,12 +232,12 @@ namespace UnitClassLibrary.GenericUnit
                 throw new ArgumentNullException("obj");
             }
 
-            if (!(obj is GenericUnit<T>))
+            if (!(obj is GenericUnit))
             {
                 throw new ArgumentException("Expected type GenericUnit.", "obj");
             }
 
-            return this.CompareTo((GenericUnit<T>)obj);
+            return this.CompareTo((GenericUnit)obj);
         }
 
         /// <summary>
@@ -257,7 +253,7 @@ namespace UnitClassLibrary.GenericUnit
                 int digits = 0;
                 double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
-                while (this != new GenericUnit<T>(
+                while (this != new GenericUnit(
                     new List<BasicUnit>(){new BasicUnit(roundedIntrinsicValue, this.ConversionFactor)},
                     new List<BasicUnit>()))
                 {
@@ -284,7 +280,7 @@ namespace UnitClassLibrary.GenericUnit
                 return false;
             }
 
-            GenericUnit<T> other = obj as GenericUnit<T>;
+            GenericUnit other = obj as GenericUnit;
             double e = this.ErrorMargin + other.ErrorMargin;
             double difference = Math.Abs(this._IntrinsicValue - other._IntrinsicValue);
             return difference <= e;
