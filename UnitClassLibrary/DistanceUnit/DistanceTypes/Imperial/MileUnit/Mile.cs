@@ -1,13 +1,30 @@
-﻿namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
+﻿using System;
+
+namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 {
     public class Mile : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Miles";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Mile";
+            }
+        }
+
         public double ConversionFactor
         {
             get
             {
-                return 63360;
-                
+                return 63360;            
             }
         }
     }

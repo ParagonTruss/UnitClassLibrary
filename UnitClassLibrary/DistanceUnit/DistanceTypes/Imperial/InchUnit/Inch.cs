@@ -1,7 +1,25 @@
-﻿namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
+﻿using System;
+
+namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
     public class Inch : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Inches";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Inch";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 1; }

@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes
 {
-    public interface IDistanceType:IUnitType
+    public interface IDistanceType : IUnitType
     {
          
     }

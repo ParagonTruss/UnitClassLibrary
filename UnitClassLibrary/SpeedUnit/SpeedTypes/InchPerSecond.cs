@@ -1,12 +1,27 @@
-﻿using UnitClassLibrary.DistanceUnit.DistanceTypes;
+﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
-    public class InchPerSecond:ISpeedType
+    public class InchPerSecond : ISpeedType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Inches per Second";
+            }
+        }
 
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Inch per Second";
+            }
+        }
 
         public double ConversionFactor
         {

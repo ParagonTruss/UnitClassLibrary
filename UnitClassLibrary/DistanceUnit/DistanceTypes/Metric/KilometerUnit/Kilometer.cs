@@ -1,9 +1,26 @@
-﻿using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
+﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
     public class Kilometer : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Kilometers";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Kilometer";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 39370.0787401575D; }

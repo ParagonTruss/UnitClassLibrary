@@ -8,7 +8,9 @@ namespace UnitClassLibrary.DistanceUnit
 {
     public partial class Distance : GenericUnit<IDistanceType>
     {
-        public Distance():this(new Inch(), 0){}
+        #region Constructors
+
+        public Distance() : this(new Inch(), 0) { }
 
         public Distance(IDistanceType distanceType, double passedDouble)
             : base(new List<BasicUnit>() { new BasicUnit(passedDouble, distanceType.ConversionFactor) }, new List<BasicUnit>())
@@ -24,7 +26,7 @@ namespace UnitClassLibrary.DistanceUnit
 
         }
 
-        public Distance(string architectural):this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural))
+        public Distance(string architectural) : this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural))
         {
         }
 
@@ -37,6 +39,7 @@ namespace UnitClassLibrary.DistanceUnit
             : base(toCopy)
         {
         }
+        #endregion
 
         new public Distance Negate()
         {
@@ -48,6 +51,16 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(base.AbsoluteValue());
         }
 
+        public override string ToString()
+        {
+            if (this._IntrinsicValue == 1.0)
+            {
+                return "";
+            }
+            return "";
+        }
+
+        #region Operator Overloads
         public static Distance operator ^(Distance distance, double power)
         {
             return new Distance( ((GenericUnit<IDistanceType>) distance) ^ power);
@@ -68,9 +81,10 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(((GenericUnit<IDistanceType>)distance) * factor);
         }
 
-        public static Distance operator *(double power, Distance distance)
+        public static Distance operator *(double factor, Distance distance)
         {
-            return distance * power;
+            return distance * factor;
         }
+        #endregion
     }
 }

@@ -9,7 +9,7 @@ namespace UnitClassLibrary.GenericUnit
     {
         public static bool EqualsWithinDeviationPercentageStrategy<T>(GenericUnit<T> unit1, GenericUnit<T> unit2) where T : IUnitType
         {
-            return EqualsWithinDeviationPercentage(unit1,unit2, unit1.DeviationAsPercentage);
+            return EqualsWithinDeviationPercentage(unit1, unit2, unit1.PercentageError);
         }
 
         public static bool EqualsWithinDeviationPercentage<T>(GenericUnit<T> unit1, GenericUnit<T> unit2, double percentage ) where T : IUnitType

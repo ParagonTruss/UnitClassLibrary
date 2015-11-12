@@ -1,9 +1,26 @@
-﻿using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
+﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
 {
     public class Meter : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Meters";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Meter";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 39.3700787401575D; }

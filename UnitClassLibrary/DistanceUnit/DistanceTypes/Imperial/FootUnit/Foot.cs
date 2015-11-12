@@ -1,7 +1,25 @@
-﻿namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
+﻿using System;
+
+namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
     public class Foot : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Feet";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Foot";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 12; }

@@ -29,33 +29,9 @@ namespace UnitClassLibrary.GenericUnit
 
         private EqualityStrategy<T> _EqualityStrategy = EqualityStrategies.EqualsWithinDeviationPercentageStrategy;
 
-        protected double _DeviationPercentage;
-        protected GenericUnit<T> _DeviationConstant;
+        public double PercentageError { get { return ErrorMargin / _IntrinsicValue; } }
 
-        public GenericUnit<T> DeviationAsConstant
-        {
-            get { return _DeviationConstant; }
-            protected set
-            {
-                this._DeviationConstant = value;
-            }
-        }
-
-        public double DeviationAsPercentage
-        {
-            get
-            {
-                if (_DeviationPercentage == 0.0)
-                {
-                    return 1.0;
-                }
-                else
-                {
-                    return _DeviationPercentage;
-                }
-            }
-            protected set { _DeviationPercentage = value; }
-        }
+        public double ErrorMargin;
 
         protected internal double _IntrinsicValue
         {
@@ -99,12 +75,14 @@ namespace UnitClassLibrary.GenericUnit
             }
 
         }
+
+        public GenericUnit<T> DeviationAsConstant { get { return PercentageError * this; } }
         #endregion
 
         #region Constructors
 
-        public GenericUnit(List<GenericUnit<T>> numerators, List<GenericUnit<T>> denomenators = null, EqualityStrategy<T> passedEqualityStrategy = null) :
-            this(_convertToBasicUnitList(numerators), _convertToBasicUnitList(denomenators), passedEqualityStrategy)
+        public GenericUnit(List<GenericUnit<T>> numerators, List<GenericUnit<T>> denomenators = null) :
+            this(_convertToBasicUnitList(numerators), _convertToBasicUnitList(denomenators))
         {
             
             
@@ -144,7 +122,6 @@ namespace UnitClassLibrary.GenericUnit
         {
             this._numerators = toCopy._numerators;
             this._denomenators = toCopy._denomenators;
-            this._DeviationPercentage = toCopy._DeviationPercentage;
             this._EqualityStrategy = toCopy._EqualityStrategy;
         }
 

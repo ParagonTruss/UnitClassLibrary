@@ -1,7 +1,25 @@
-﻿namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
+﻿using System;
+
+namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
     public class Centimeter : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Centimeters";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Centimeter";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 0.393700787401575D; }

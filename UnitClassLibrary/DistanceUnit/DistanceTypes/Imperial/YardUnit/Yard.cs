@@ -1,7 +1,25 @@
-﻿namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
+﻿using System;
+
+namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 {
     public class Yard : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Yards";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Yard";
+            }
+        }
+
         public double ConversionFactor
         {
             get { return 36; }

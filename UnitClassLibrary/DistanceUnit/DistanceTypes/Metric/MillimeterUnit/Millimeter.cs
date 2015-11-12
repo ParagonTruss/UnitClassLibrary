@@ -1,9 +1,26 @@
-﻿using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
+﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : IDistanceType
     {
+        public string AsStringPlural
+        {
+            get
+            {
+                return "Millimeters";
+            }
+        }
+
+        public string AsStringSingular
+        {
+            get
+            {
+                return "Millimeter";
+            }
+        }
+
         public double ConversionFactor
                         
             {
