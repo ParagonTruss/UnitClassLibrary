@@ -62,8 +62,8 @@ namespace UnitLibraryTests
             Distance additionDistance = inchDistance + architecturalDistance;
 
             // assert
-            subtractionDistance.Equals(new Distance(new Inch(), 0)).Should().BeTrue();
-            additionDistance.Equals(new Distance(new Millimeter(), 720.725)).Should().BeTrue();
+            (subtractionDistance == (new Distance(new Inch(), 0))).Should().BeTrue();
+            (additionDistance == (new Distance(new Millimeter(), 720.725))).Should().BeTrue();
             additionDistance.Architectural.Should().Be("2'4 6/16\"");
         }
 
@@ -300,15 +300,15 @@ namespace UnitLibraryTests
 
             //}
 
-            if (zero == Distance.Zero)
+            if (zero1 == Distance.Zero)
             {
 
             }
 
-            //if (zero >= Distance.Zero)
-            //{
+            if (zero1 >= Distance.Zero)
+            {
 
-            //}
+            }
 
 
             //Math operations
@@ -337,7 +337,7 @@ namespace UnitLibraryTests
             // ToString override
             oneFoot.ToString();
 
-            List<Distance> distances = new List<Distance> { oneFoot, positiveDistance, distance4, zero };
+            List<Distance> distances = new List<Distance> { oneFoot, positiveDistance, distance4, zero1 };
 
             foreach (var distance in distances)
             {

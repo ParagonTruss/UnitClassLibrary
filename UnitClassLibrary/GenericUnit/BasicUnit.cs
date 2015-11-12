@@ -228,27 +228,27 @@ namespace UnitClassLibrary.GenericUnit
         }
         public static bool operator <(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement < unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement < unit2.InThisUnit(unit1.Unit);
         }
         public static bool operator >(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement > unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement > unit2.InThisUnit(unit1.Unit);
         }
         public static bool operator <=(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement <= unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement <= unit2.InThisUnit(unit1.Unit);
         }
         public static bool operator >=(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement >= unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement >= unit2.InThisUnit(unit1.Unit);
         }
         public static bool operator ==(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement == unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement == unit2.InThisUnit(unit1.Unit);
         }
         public static bool operator !=(BasicUnit<T> unit1, BasicUnit<T> unit2)
         {
-            return unit1.Measurement != unit2.InThisUnit(unit2.Unit);
+            return unit1.Measurement != unit2.InThisUnit(unit1.Unit);
         }
         #endregion
     }
