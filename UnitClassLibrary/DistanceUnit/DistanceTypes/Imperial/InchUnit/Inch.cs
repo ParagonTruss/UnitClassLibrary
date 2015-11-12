@@ -56,7 +56,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 
         public static double AsInches(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Inch());
+            return passedDistance.ConversionFromThisTo(new Inch());
         }
     }
 }

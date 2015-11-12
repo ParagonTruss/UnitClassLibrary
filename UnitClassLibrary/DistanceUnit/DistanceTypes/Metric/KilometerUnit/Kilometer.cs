@@ -41,7 +41,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 
         public static double AsKilometers(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Inch());
+            return passedDistance.ConversionFromThisTo(new Inch());
         }
     }
 }

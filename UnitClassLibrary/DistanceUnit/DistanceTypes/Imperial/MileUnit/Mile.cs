@@ -43,7 +43,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 
         public static double AsMiles(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Mile());
+            return passedDistance.ConversionFromThisTo(new Mile());
         }
     }
 }

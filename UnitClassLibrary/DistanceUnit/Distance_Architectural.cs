@@ -57,7 +57,7 @@ namespace UnitClassLibrary.DistanceUnit
             //combine the results
             double result = sign * (feet * 12 + inch + sixt / 16.0 + numer / Convert.ToDouble(denom));
 
-            return new Distance(new Inch(), result).GetValue(convertToType);
+            return new Distance(new Inch(), result).ConversionFromThisTo(convertToType);
         }
 
 
@@ -68,7 +68,7 @@ namespace UnitClassLibrary.DistanceUnit
         private static string ConvertToArchitecturalString(Distance distance, int precision = 16)
         {
             //Convert into inches before proceeding
-            double workingValue = distance.GetValue(new Inch());
+            double workingValue = distance.ConversionFromThisTo(new Inch());
 
             //detect need for sign
             string sign = "";

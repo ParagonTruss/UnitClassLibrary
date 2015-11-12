@@ -40,7 +40,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 
         public static double AsYards(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Yard());
+            return passedDistance.ConversionFromThisTo(new Yard());
         }
     }
 }

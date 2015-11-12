@@ -15,7 +15,8 @@ namespace UnitClassLibrary.GenericUnit
         public DoubleWithErrorMargin Value;
         public double IntrinsicValue { get { return Value.IntrinsicValue; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
-
+        public double PercentageError { get { return Value.PercentageError; } }
+        public GenericUnit DeviationAsConstant { get { return PercentageError * this; } }
         public double ConversionFactor
         {
             get

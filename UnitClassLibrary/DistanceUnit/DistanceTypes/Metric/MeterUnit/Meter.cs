@@ -41,7 +41,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
 
         public static double AsMeters(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Inch());
+            return passedDistance.ConversionFromThisTo(new Inch());
         }
     }
 }

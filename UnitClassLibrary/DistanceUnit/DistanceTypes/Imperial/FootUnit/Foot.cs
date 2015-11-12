@@ -40,7 +40,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 
         public static double AsFeet(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Foot());
+            return passedDistance.ConversionFromThisTo(new Foot());
         }
     }
 }

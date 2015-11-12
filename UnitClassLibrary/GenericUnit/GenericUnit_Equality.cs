@@ -40,17 +40,17 @@ namespace UnitClassLibrary.GenericUnit
 
         
 
-        /// <summary>
-        /// Distances are equal if there values are within the passed deviation constant. If they are not within the constant
-        /// </summary>
-        public bool EqualsWithinDeviationConstant(GenericUnit unit, GenericUnit deviation)
-        {
-            return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, deviation);
-        }
+        ///// <summary>
+        ///// Distances are equal if there values are within the passed deviation constant. If they are not within the constant
+        ///// </summary>
+        //public bool EqualsWithinDeviationConstant(GenericUnit unit, GenericUnit deviation)
+        //{
+        //    return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, deviation);
+        //}
 
-        public bool EqualsWithinDeviationConstant(GenericUnit unit, BasicUnit deviation)
-        {
-            return EqualityStrategies.EqualsWithinDeviationConstant(this, unit, new GenericUnit(new List<BasicUnit>(){deviation}));
-        }
+        //public bool EqualsWithinDeviationConstant(GenericUnit unit, BasicUnit deviation)
+        //{
+        //    return EqualityStrategies.EqualsWithinDeviationConstant<>(this, unit, new GenericUnit(new List<BasicUnit>(){deviation}));
+        //}
     }
 }

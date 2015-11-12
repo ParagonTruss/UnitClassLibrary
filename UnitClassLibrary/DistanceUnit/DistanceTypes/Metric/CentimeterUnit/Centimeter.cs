@@ -40,7 +40,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 
         public static double AsCentimeters(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Centimeter());
+            return passedDistance.ConversionFromThisTo(new Centimeter());
         }
     }
 }

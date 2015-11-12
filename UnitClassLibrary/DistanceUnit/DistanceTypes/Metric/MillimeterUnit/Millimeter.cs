@@ -63,7 +63,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 
         public static double AsMillimeters(this Distance passedDistance)
         {
-            return passedDistance.GetValue(new Inch());
+            return passedDistance.ConversionFromThisTo(new Inch());
         }
     }
 }

@@ -19,54 +19,27 @@ namespace UnitClassLibrary.GenericUnit
 
         public double GetValue(double toConversionFactor)
         {
-            return ConvertUnit(this.ConversionFactor, _IntrinsicValue, toConversionFactor);
+            return ConvertUnit(this.ConversionFactor, IntrinsicValue, toConversionFactor);
         }
 
 
 
-        public double GetValue(T typeConvertingTo)
-        {
-            return GetValue(typeConvertingTo.ConversionFactor);
-        }
+        //public double GetValue(IUnit typeConvertingTo)
+        //{
+        //    return GetValue(typeConvertingTo.ConversionFactor);
+        //}
 
         /// <summary>
         /// Creates a new GenericUnit that is the negative of this one
         /// </summary>
         public GenericUnit Negate()
         {
-            var newNumerators = new List<BasicUnit>((_numerators));
-
-            //we just negate the first numerator
-            newNumerators[0] = (new BasicUnit(newNumerators[0].IntrinsicValue * -1, newNumerators[0].ConversionFactor));
-
-            return new GenericUnit(newNumerators, _denomenators);
+            return new GenericUnit(Value.Negate(), _numerators, _denominators);
         }
 
         public GenericUnit AbsoluteValue()
         {
-            //while slightly unnecessary, we make everything positive. not just a single value
-
-            var newNumerators = new List<BasicUnit>((_numerators));
-            var newDenomenators = new List<BasicUnit>((_denomenators));
-
-            for (int i = 0; i < newNumerators.Count; i++)
-            {
-                if (newNumerators[i].IntrinsicValue < 0)
-                {
-                    newNumerators[i] = (new BasicUnit(newNumerators[i].IntrinsicValue * -1, newNumerators[i].ConversionFactor));
-                }
-            }
-
-            for (int i = 0; i < newDenomenators.Count; i++)
-            {
-                if (newDenomenators[i].IntrinsicValue < 0)
-                {
-                    newDenomenators[i] = (new BasicUnit(newDenomenators[i].IntrinsicValue * -1, newDenomenators[i].ConversionFactor));
-                }
-            }
-
-
-            return new GenericUnit(newNumerators, newDenomenators);
+            return new GenericUnit(Value.AbsoluteValue(), _numerators, _denominators);
         }
     }
 }

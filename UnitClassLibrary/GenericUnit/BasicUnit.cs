@@ -14,6 +14,17 @@ namespace UnitClassLibrary.GenericUnit
             this.IntrinsicValue = intrinsicValue;
             this.ErrorMargin = errorMargin;
         }
+
+        public DoubleWithErrorMargin Negate()
+        {
+            return this.Multiply(-1.0);
+        }
+
+        public DoubleWithErrorMargin AbsoluteValue()
+        {
+            return new DoubleWithErrorMargin(Math.Abs(IntrinsicValue), ErrorMargin);
+        }
+
         public DoubleWithErrorMargin Add(DoubleWithErrorMargin value)
         {
             return new DoubleWithErrorMargin(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
@@ -38,7 +49,7 @@ namespace UnitClassLibrary.GenericUnit
 
         public double IntrinsicValue { get { return Value.IntrinsicValue; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
-
+        public double ConversionFactor { get { return Unit.ConversionFactor; } }
         protected BasicUnit() { }
 
         protected BasicUnit(IUnit unit, double intrinsicValue, double errorMargin)
@@ -57,6 +68,15 @@ namespace UnitClassLibrary.GenericUnit
         {
             this.Unit = unit;
             this.Value = value;
+        }
+
+        public double ConversionFromThisTo(IUnit unit)
+        {
+            return this.ConversionFactor / unit.ConversionFactor;
+        }
+        public double GetValue(IUnit unit)
+        {
+            return this.IntrinsicValue * ConversionFromThisTo(unit);
         }
     }
 
@@ -84,11 +104,6 @@ namespace UnitClassLibrary.GenericUnit
 
         #region Public Methods
 
-        public double GetValue(IUnit unit)
-        {
-            return this.ConversionFactor / unit.ConversionFactor;
-        }
-
         public BasicUnit<T> Negate()
         {
             return new BasicUnit<T>(this.Unit, -1.0 * this.IntrinsicValue, this.ErrorMargin);
@@ -101,19 +116,30 @@ namespace UnitClassLibrary.GenericUnit
 
         public BasicUnit<T> Add(BasicUnit<T> unit)
         {
-            return new BasicUnit<T>(this.Unit, this.IntrinsicValue + unit.GetValue(this.Unit), this.ErrorMargin + unit.GetValue(this.Unit));
+            return new BasicUnit<T>(this.Unit, this.Value.Add(unit.Value.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
         public BasicUnit<T> Subtract(BasicUnit<T> unit)
         {
-            return new BasicUnit<T>(this.Unit, this.IntrinsicValue - unit.GetValue(this.Unit), this.ErrorMargin + unit.GetValue(this.Unit));
+            return new BasicUnit<T>(this.Unit, this.Value.Subtract(unit.Value.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
         public BasicUnit<T> Multiply(double scalar)
         {
-            return new BasicUnit<T>(this.Unit, scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
+            return new BasicUnit<T>(this.Unit, this.Value.Multiply(scalar));
         }
         public BasicUnit<T> Divide(double divisor)
         {
-            return new BasicUnit<T>(this.Unit, this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
+            return new BasicUnit<T>(this.Unit, this.Value.Divide(divisor));
+        }
+        public int CompareTo(BasicUnit<T> other)
+        {
+            if (this.Equals(other))
+            {
+                return 0;
+            }
+            else
+            {
+                return IntrinsicValue.CompareTo(other.GetValue(other.Unit));
+            }
         }
         #endregion
 
