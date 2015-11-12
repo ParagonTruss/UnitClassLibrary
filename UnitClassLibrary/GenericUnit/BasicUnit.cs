@@ -10,12 +10,13 @@ namespace UnitClassLibrary.GenericUnit
         {
             return new Measurement(d, 0);
         }
-        public readonly double IntrinsicValue;
+        
+        public readonly double Value;
         public readonly double ErrorMargin;
-        public double PercentageError { get { return ErrorMargin / IntrinsicValue; } }
+        public double PercentageError { get { return ErrorMargin / Value; } }
         public Measurement(double intrinsicValue, double errorMargin)
         {
-            this.IntrinsicValue = intrinsicValue;
+            this.Value = intrinsicValue;
             this.ErrorMargin = Math.Abs(errorMargin);
         }
 
@@ -26,78 +27,118 @@ namespace UnitClassLibrary.GenericUnit
 
         public Measurement AbsoluteValue()
         {
-            return new Measurement(Math.Abs(IntrinsicValue), ErrorMargin);
+            return new Measurement(Math.Abs(Value), ErrorMargin);
         }
 
         public Measurement Add(Measurement value)
         {
-            return new Measurement(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return new Measurement(this.Value + value.Value, this.ErrorMargin + value.ErrorMargin);
         }
         public Measurement Subtract(Measurement value)
         {
-            return new Measurement(this.IntrinsicValue - value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return new Measurement(this.Value - value.Value, this.ErrorMargin + value.ErrorMargin);
         }
         public Measurement Multiply(double scalar)
         {
-            return new Measurement(scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
+            return new Measurement(scalar * this.Value, scalar * this.ErrorMargin);
         }
         public Measurement Divide(double divisor)
         {
-            return new Measurement(this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
+            return new Measurement(this.Value / divisor, this.ErrorMargin / divisor);
+        }
+        public bool LessThan(Measurement m)
+        {
+            return this.Value < m.Value;
+        }
+        public bool GreaterThan(Measurement m)
+        {
+            return this.Value > m.Value;
+        }
+        public bool Equals(Measurement m)
+        {
+            return Math.Abs(this.Value - m.Value) <= (this.ErrorMargin + m.ErrorMargin);
         }
 
-        public static Measurement operator +(Measurement value)
+        public static Measurement operator +(Measurement m1, Measurement m2)
         {
-            return new Measurement(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return m1.Add(m2);
         }
-        public Measurement Subtract(Measurement value)
+        public static Measurement operator -(Measurement m1, Measurement m2)
         {
-            return new Measurement(this.IntrinsicValue - value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return m1.Subtract(m2);
         }
-        public Measurement Multiply(double scalar)
+        public static Measurement operator *(Measurement m, double scalar)
         {
-            return new Measurement(scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
+            return m.Multiply(scalar);
         }
-        public Measurement Divide(double divisor)
+        public static Measurement operator *(double scalar, Measurement m)
         {
-            return new Measurement(this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
+            return m.Multiply(scalar);
+        }
+        public static Measurement operator /(Measurement m, double divisor)
+        {
+            return m.Divide(divisor);
+        }
+        public static bool operator <(Measurement m1, Measurement m2)
+        {
+            return m1.LessThan(m2);
+        }
+        public static bool operator >(Measurement m1, Measurement m2)
+        {
+            return m1.GreaterThan(m2);
+        }
+        public static bool operator ==(Measurement m1, Measurement m2)
+        {
+            return m1.Equals(m2);
+        }
+        public static bool operator !=(Measurement m1, Measurement m2)
+        {
+            return !m1.Equals(m2);
+        }
+        public static bool operator <=(Measurement m1, Measurement m2)
+        {
+            return m1 < m2 || m1 == m2;
+        }
+        public static bool operator >=(Measurement m1, Measurement m2)
+        {
+            return m1 > m2 || m1 == m2;
         }
     }
     public class BasicUnit
     {
         public IUnit Unit;
-        public Measurement Value;
+        public Measurement Measurement;
 
-        public double IntrinsicValue { get { return Value.IntrinsicValue; } }
-        public double ErrorMargin { get { return Value.ErrorMargin; } }
+        public double IntrinsicValue { get { return Measurement.Value; } }
+        public double ErrorMargin { get { return Measurement.ErrorMargin; } }
         public double ConversionFactor { get { return Unit.ConversionFactor; } }
         protected BasicUnit() { }
 
         protected BasicUnit(IUnit unit, double intrinsicValue, double errorMargin)
         {
             this.Unit = unit;
-            this.Value = new Measurement(intrinsicValue, errorMargin);
+            this.Measurement = new Measurement(intrinsicValue, errorMargin);
         }
 
         public BasicUnit(BasicUnit toCopy)
         {
             this.Unit = toCopy.Unit;
-            this.Value = toCopy.Value;
+            this.Measurement = toCopy.Measurement;
         }
 
         public BasicUnit(IUnit unit, Measurement value)
         {
             this.Unit = unit;
-            this.Value = value;
+            this.Measurement = value;
         }
 
         public double ConversionFromThisTo(IUnit unit)
         {
             return this.ConversionFactor / unit.ConversionFactor;
         }
-        public Measurement GetValue(IUnit unit)
+        public Measurement InThisUnit(IUnit unit)
         {
-            return this.Value * ConversionFromThisTo(unit);
+            return this.Measurement * ConversionFromThisTo(unit);
         }
     }
 
@@ -137,19 +178,19 @@ namespace UnitClassLibrary.GenericUnit
 
         public BasicUnit<T> Add(BasicUnit<T> unit)
         {
-            return new BasicUnit<T>(this.Unit, this.Value.Add(unit.Value.Multiply(unit.ConversionFromThisTo(this.Unit))));
+            return new BasicUnit<T>(this.Unit, this.Measurement.Add(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
         public BasicUnit<T> Subtract(BasicUnit<T> unit)
         {
-            return new BasicUnit<T>(this.Unit, this.Value.Subtract(unit.Value.Multiply(unit.ConversionFromThisTo(this.Unit))));
+            return new BasicUnit<T>(this.Unit, this.Measurement.Subtract(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
         public BasicUnit<T> Multiply(double scalar)
         {
-            return new BasicUnit<T>(this.Unit, this.Value.Multiply(scalar));
+            return new BasicUnit<T>(this.Unit, this.Measurement.Multiply(scalar));
         }
         public BasicUnit<T> Divide(double divisor)
         {
-            return new BasicUnit<T>(this.Unit, this.Value.Divide(divisor));
+            return new BasicUnit<T>(this.Unit, this.Measurement.Divide(divisor));
         }
         public int CompareTo(BasicUnit<T> other)
         {
@@ -159,7 +200,7 @@ namespace UnitClassLibrary.GenericUnit
             }
             else
             {
-                return IntrinsicValue.CompareTo(other.GetValue(other.Unit));
+                return IntrinsicValue.CompareTo(other.InThisUnit(other.Unit).Value);
             }
         }
         #endregion
@@ -184,6 +225,30 @@ namespace UnitClassLibrary.GenericUnit
         public static BasicUnit<T> operator /(BasicUnit<T> unit, double divisor)
         {
             return unit.Divide(divisor);
+        }
+        public static bool operator <(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement < unit2.InThisUnit(unit2.Unit);
+        }
+        public static bool operator >(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement > unit2.InThisUnit(unit2.Unit);
+        }
+        public static bool operator <=(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement <= unit2.InThisUnit(unit2.Unit);
+        }
+        public static bool operator >=(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement >= unit2.InThisUnit(unit2.Unit);
+        }
+        public static bool operator ==(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement == unit2.InThisUnit(unit2.Unit);
+        }
+        public static bool operator !=(BasicUnit<T> unit1, BasicUnit<T> unit2)
+        {
+            return unit1.Measurement != unit2.InThisUnit(unit2.Unit);
         }
         #endregion
     }

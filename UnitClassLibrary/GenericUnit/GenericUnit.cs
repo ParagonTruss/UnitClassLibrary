@@ -13,7 +13,7 @@ namespace UnitClassLibrary.GenericUnit
         private List<IUnit> _denominators = new List<IUnit>();
 
         public Measurement Value;
-        public double IntrinsicValue { get { return Value.IntrinsicValue; } }
+        public double IntrinsicValue { get { return Value.Value; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
         public double PercentageError { get { return Value.PercentageError; } }
         public GenericUnit DeviationAsConstant { get { return PercentageError * this; } }
@@ -63,7 +63,7 @@ namespace UnitClassLibrary.GenericUnit
             }
             var list = numerators.ToList();
             list.AddRange(denominators);
-            var percentError = list.Sum(u => u.Value.PercentageError);
+            var percentError = list.Sum(u => u.Measurement.PercentageError);
             var errorMargin = percentError * intrinsicValue;
             this.Value = new Measurement(intrinsicValue, errorMargin);      
         }

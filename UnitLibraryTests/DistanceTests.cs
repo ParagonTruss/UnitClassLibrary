@@ -14,7 +14,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 using UnitClassLibrary.GenericUnit;
-
+using UnitClassLibrary.AngleUnit;
 
 namespace UnitLibraryTests
 {
@@ -276,8 +276,16 @@ namespace UnitLibraryTests
         public void Distance_Intuitiveness()
         {
             //zero constructor
-            Distance zero = Distance.Zero;
+            Distance zero1 = Distance.Zero;
+            Distance zero2 = Distance.Zero;
+            Angle zero = Angle.Zero;
 
+            // This doesn't compile, yay for type safety:
+            // bool b1 = zero1 == zero;
+
+            // Checking between the same type does compile:
+            bool b2 = zero1 == zero2;
+            
             //simple constructor
             Distance smallDistance = new Distance(new Millimeter(), 1);
             Distance mediumDistance = new Distance(new Foot(), 1);

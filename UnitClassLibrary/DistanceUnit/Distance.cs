@@ -8,7 +8,7 @@ namespace UnitClassLibrary.DistanceUnit
 {
     public partial class Distance : BasicUnit<IDistanceUnit>
     {
-        public static readonly Distance Zero = new Distance(new Inch(), 0, 0.03125);
+        public static readonly Distance Zero = new Distance(new Inch(), 0, 0);
 
         #region Constructors
 
