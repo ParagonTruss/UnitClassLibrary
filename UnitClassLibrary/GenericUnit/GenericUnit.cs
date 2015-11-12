@@ -12,7 +12,7 @@ namespace UnitClassLibrary.GenericUnit
         private List<IUnit> _numerators = new List<IUnit>();
         private List<IUnit> _denominators = new List<IUnit>();
 
-        public DoubleWithErrorMargin Value;
+        public Measurement Value;
         public double IntrinsicValue { get { return Value.IntrinsicValue; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
         public double PercentageError { get { return Value.PercentageError; } }
@@ -43,9 +43,9 @@ namespace UnitClassLibrary.GenericUnit
         #region Constructors
 
         public GenericUnit(double intrinsicValue, double errorMargin, List<IUnit> numerators, List<IUnit> denominators)
-            : this(new DoubleWithErrorMargin(intrinsicValue, errorMargin), numerators, denominators) { }
+            : this(new Measurement(intrinsicValue, errorMargin), numerators, denominators) { }
 
-        public GenericUnit(DoubleWithErrorMargin value, List<IUnit> numerators, List<IUnit> denominators)
+        public GenericUnit(Measurement value, List<IUnit> numerators, List<IUnit> denominators)
         {
             this._numerators = numerators;
             this._denominators = denominators;
@@ -65,7 +65,7 @@ namespace UnitClassLibrary.GenericUnit
             list.AddRange(denominators);
             var percentError = list.Sum(u => u.Value.PercentageError);
             var errorMargin = percentError * intrinsicValue;
-            this.Value = new DoubleWithErrorMargin(intrinsicValue, errorMargin);      
+            this.Value = new Measurement(intrinsicValue, errorMargin);      
         }
 
         

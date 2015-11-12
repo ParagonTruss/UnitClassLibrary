@@ -63,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AngleUnit\Angle.cs" />
+    <Compile Include="AngleUnit\AngleTypes\IAngleUnit.cs" />
     <Compile Include="AreaFlowUnit\AreaFlow.cs" />
     <Compile Include="AreaUnit\AreaTypes\Imperial\AcreUnit\Acre.cs" />
     <Compile Include="AreaUnit\Area.cs" />

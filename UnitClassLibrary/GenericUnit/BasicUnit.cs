@@ -4,48 +4,69 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public struct DoubleWithErrorMargin
+    public struct Measurement
     {
+        public static implicit operator Measurement(double d)
+        {
+            return new Measurement(d, 0);
+        }
         public readonly double IntrinsicValue;
         public readonly double ErrorMargin;
         public double PercentageError { get { return ErrorMargin / IntrinsicValue; } }
-        public DoubleWithErrorMargin(double intrinsicValue, double errorMargin)
+        public Measurement(double intrinsicValue, double errorMargin)
         {
             this.IntrinsicValue = intrinsicValue;
-            this.ErrorMargin = errorMargin;
+            this.ErrorMargin = Math.Abs(errorMargin);
         }
 
-        public DoubleWithErrorMargin Negate()
+        public Measurement Negate()
         {
             return this.Multiply(-1.0);
         }
 
-        public DoubleWithErrorMargin AbsoluteValue()
+        public Measurement AbsoluteValue()
         {
-            return new DoubleWithErrorMargin(Math.Abs(IntrinsicValue), ErrorMargin);
+            return new Measurement(Math.Abs(IntrinsicValue), ErrorMargin);
         }
 
-        public DoubleWithErrorMargin Add(DoubleWithErrorMargin value)
+        public Measurement Add(Measurement value)
         {
-            return new DoubleWithErrorMargin(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return new Measurement(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
         }
-        public DoubleWithErrorMargin Subtract(DoubleWithErrorMargin value)
+        public Measurement Subtract(Measurement value)
         {
-            return new DoubleWithErrorMargin(this.IntrinsicValue - value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+            return new Measurement(this.IntrinsicValue - value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
         }
-        public DoubleWithErrorMargin Multiply(double scalar)
+        public Measurement Multiply(double scalar)
         {
-            return new DoubleWithErrorMargin(scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
+            return new Measurement(scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
         }
-        public DoubleWithErrorMargin Divide(double divisor)
+        public Measurement Divide(double divisor)
         {
-            return new DoubleWithErrorMargin(this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
+            return new Measurement(this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
+        }
+
+        public static Measurement operator +(Measurement value)
+        {
+            return new Measurement(this.IntrinsicValue + value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+        }
+        public Measurement Subtract(Measurement value)
+        {
+            return new Measurement(this.IntrinsicValue - value.IntrinsicValue, this.ErrorMargin + value.ErrorMargin);
+        }
+        public Measurement Multiply(double scalar)
+        {
+            return new Measurement(scalar * this.IntrinsicValue, scalar * this.ErrorMargin);
+        }
+        public Measurement Divide(double divisor)
+        {
+            return new Measurement(this.IntrinsicValue / divisor, this.ErrorMargin / divisor);
         }
     }
     public class BasicUnit
     {
         public IUnit Unit;
-        public DoubleWithErrorMargin Value;
+        public Measurement Value;
 
         public double IntrinsicValue { get { return Value.IntrinsicValue; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
@@ -55,7 +76,7 @@ namespace UnitClassLibrary.GenericUnit
         protected BasicUnit(IUnit unit, double intrinsicValue, double errorMargin)
         {
             this.Unit = unit;
-            this.Value = new DoubleWithErrorMargin(intrinsicValue, errorMargin);
+            this.Value = new Measurement(intrinsicValue, errorMargin);
         }
 
         public BasicUnit(BasicUnit toCopy)
@@ -64,7 +85,7 @@ namespace UnitClassLibrary.GenericUnit
             this.Value = toCopy.Value;
         }
 
-        public BasicUnit(IUnit unit, DoubleWithErrorMargin value)
+        public BasicUnit(IUnit unit, Measurement value)
         {
             this.Unit = unit;
             this.Value = value;
@@ -74,9 +95,9 @@ namespace UnitClassLibrary.GenericUnit
         {
             return this.ConversionFactor / unit.ConversionFactor;
         }
-        public double GetValue(IUnit unit)
+        public Measurement GetValue(IUnit unit)
         {
-            return this.IntrinsicValue * ConversionFromThisTo(unit);
+            return this.Value * ConversionFromThisTo(unit);
         }
     }
 
@@ -94,7 +115,7 @@ namespace UnitClassLibrary.GenericUnit
         }
 
         public BasicUnit(IUnit unit, double value, double errorMargin) : base(unit, value, errorMargin) { }
-        public BasicUnit(IUnit unit, DoubleWithErrorMargin value) : base(unit, value) { }
+        public BasicUnit(IUnit unit, Measurement value) : base(unit, value) { }
         public BasicUnit(BasicUnit toCopy) : base(toCopy) { }
         #endregion
         
