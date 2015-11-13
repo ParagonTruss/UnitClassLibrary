@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
-    public interface ITimeType : IUnit
+    public interface ITimeType : IFundamentalUnit
     {
          
     }

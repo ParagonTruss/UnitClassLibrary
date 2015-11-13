@@ -9,14 +9,14 @@ namespace UnitClassLibrary.TimeUnit
         public Time(ITimeType TimeType, double passedDouble, double errorMargin)
             : base(TimeType,passedDouble,errorMargin) { }
 
-        private Time(FundamentalUnit<ITimeType> toCopy)
+        private Time(StronglyTypedUnit<ITimeType> toCopy)
             : base(toCopy)
         {
         }
 
         new public Time Negate()
         {
-            return new Time(base.Negate());
+            return new Time((this as StronglyTypedUnit<ITimeType>).Negate());
         }
     }
 }

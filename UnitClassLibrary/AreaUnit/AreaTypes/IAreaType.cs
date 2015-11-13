@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.AreaUnit.AreaTypes
 {
-    public interface IAreaUnit : IUnit
+    public interface IAreaUnit : IFundamentalUnit
     {
     }
 }

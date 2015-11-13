@@ -7,7 +7,7 @@ namespace UnitClassLibrary.GenericUnit
 {
     public partial class DerivedUnit
     {
-        public static double ConvertUnit(IUnit convertFromType, double value, IUnit convertToType)
+        public static double ConvertUnit(IFundamentalUnit convertFromType, double value, IFundamentalUnit convertToType)
         {
             return ConvertUnit(convertFromType.ConversionFactor, value, convertToType.ConversionFactor);
         }

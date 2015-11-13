@@ -25,19 +25,19 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             }
         }
 
-        public List<IUnit> Denominators
+        public List<IFundamentalUnit> Denominators
         {
             get
             {
-                return new List<IUnit>() { new Second() };
+                return new List<IFundamentalUnit>() { new Second() };
             }
         }
 
-        public List<IUnit> Numerators
+        public List<IFundamentalUnit> Numerators
         {
             get
             {
-                return new List<IUnit>() { new Inch() };
+                return new List<IFundamentalUnit>() { new Inch() };
             }
         }
 

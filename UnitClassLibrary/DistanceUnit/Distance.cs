@@ -24,7 +24,7 @@ namespace UnitClassLibrary.DistanceUnit
             : this(new Inch(), _convertArchitectualStringToValueInInches(architectural), 0.03125)
         { }
 
-        public Distance(FundamentalUnit<IDistanceUnit> toCopy) : base(toCopy) { }
+        public Distance(StronglyTypedUnit<IDistanceUnit> toCopy) : base(toCopy) { }
         #endregion
 
         new public Distance Negate()

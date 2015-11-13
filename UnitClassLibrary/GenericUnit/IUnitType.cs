@@ -4,18 +4,19 @@ namespace UnitClassLibrary.GenericUnit
 {
     public interface IUnit
     {
-        double ConversionFactor { get; }
-        double DefaultErrorMargin { get; }
-
         string AsStringSingular { get; }
         string AsStringPlural { get; }
     }
 
-    public interface IDerivedUnit
+    public interface IFundamentalUnit : IUnit
+    { 
+        double ConversionFactor { get; }
+        double DefaultErrorMargin { get; }
+    }
+
+    public interface IDerivedUnit : IUnit
     {
-        List<IUnit> Numerators { get; }
-        List<IUnit> Denominators { get; }
-        string AsStringSingular { get; }
-        string AsStringPlural { get; }
+        List<IFundamentalUnit> Numerators { get; }
+        List<IFundamentalUnit> Denominators { get; }
     }
 }

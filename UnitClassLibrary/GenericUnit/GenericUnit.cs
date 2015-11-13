@@ -25,8 +25,8 @@ namespace UnitClassLibrary.GenericUnit
     {
         #region _fields and Properties
 
-        private List<IUnit> _numerators = new List<IUnit>();
-        private List<IUnit> _denominators = new List<IUnit>();
+        private List<IFundamentalUnit> _numerators = new List<IFundamentalUnit>();
+        private List<IFundamentalUnit> _denominators = new List<IFundamentalUnit>();
 
         public Measurement Value;
         public double IntrinsicValue { get { return Value.Value; } }
@@ -58,31 +58,31 @@ namespace UnitClassLibrary.GenericUnit
 
         #region Constructors
 
-        public DerivedUnit(double intrinsicValue, double errorMargin, List<IUnit> numerators, List<IUnit> denominators)
+        public DerivedUnit(double intrinsicValue, double errorMargin, List<IFundamentalUnit> numerators, List<IFundamentalUnit> denominators)
             : this(new Measurement(intrinsicValue, errorMargin), numerators, denominators) { }
 
-        public DerivedUnit(Measurement value, List<IUnit> numerators, List<IUnit> denominators)
+        public DerivedUnit(Measurement value, List<IFundamentalUnit> numerators, List<IFundamentalUnit> denominators)
         {
             this._numerators = numerators;
             this._denominators = denominators;
             this.Value = value;
         }
 
-        protected DerivedUnit(List<BasicUnit> numerators, List<BasicUnit> denominators = null)
-        {
-            this._numerators = numerators.Select(u => u.Unit).ToList();
-            var intrinsicValue = numerators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
-            if (denominators != null)
-            {
-                this._denominators = denominators.Select(u => u.Unit).ToList();
-                intrinsicValue /= denominators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
-            }
-            var list = numerators.ToList();
-            list.AddRange(denominators);
-            var percentError = list.Sum(u => u.Measurement.PercentageError);
-            var errorMargin = percentError * intrinsicValue;
-            this.Value = new Measurement(intrinsicValue, errorMargin);      
-        }
+        //protected DerivedUnit(List<> numerators, List<BasicUnit> denominators = null)
+        //{
+        //    this._numerators = numerators.Select(u => u.Unit).ToList();
+        //    var intrinsicValue = numerators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
+        //    if (denominators != null)
+        //    {
+        //        this._denominators = denominators.Select(u => u.Unit).ToList();
+        //        intrinsicValue /= denominators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
+        //    }
+        //    var list = numerators.ToList();
+        //    list.AddRange(denominators);
+        //    var percentError = list.Sum(u => u.Measurement.PercentageError);
+        //    var errorMargin = percentError * intrinsicValue;
+        //    this.Value = new Measurement(intrinsicValue, errorMargin);      
+        //}
 
         
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 
 namespace UnitClassLibrary.GenericUnit
@@ -100,76 +101,112 @@ namespace UnitClassLibrary.GenericUnit
             return m1 > m2 || m1 == m2;
         }
     }
-    public class BasicUnit
+
+    public abstract class GenericUnit
+    {
+
+    }
+
+    public class StronglyTypedUnit<T> where T : IUnit
     {
         public IUnit Unit;
         public Measurement Measurement;
 
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
-        public double ConversionFactor { get { return Unit.ConversionFactor; } }
-        protected BasicUnit() { }
-
-        protected BasicUnit(IUnit unit, double intrinsicValue, double errorMargin)
+        public double ConversionFactor
         {
-            this.Unit = unit;
-            this.Measurement = new Measurement(intrinsicValue, errorMargin);
+            get
+            {
+                if (Unit is IFundamentalUnit)
+                {
+                    return (Unit as IFundamentalUnit).ConversionFactor;
+                }
+                if (Unit is IDerivedUnit)
+                {
+                    var unit = (Unit as IDerivedUnit);
+                    var n = unit.Numerators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+                    var d = unit.Denominators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+
+                    return n / d;
+                }
+                throw new Exception();
+            }
+        }
+        protected StronglyTypedUnit() { }
+
+        protected StronglyTypedUnit(IUnit unit, double intrinsicValue, double errorMargin = 0) 
+         : this(unit,new Measurement(intrinsicValue, errorMargin))
+        {
+        }
+        protected StronglyTypedUnit(IUnit unit, Measurement measurement)
+        {
+            this.Measurement = measurement;
         }
 
-        public BasicUnit(BasicUnit toCopy)
+        public StronglyTypedUnit(StronglyTypedUnit<T> toCopy)
         {
             this.Unit = toCopy.Unit;
             this.Measurement = toCopy.Measurement;
         }
 
-        public BasicUnit(IUnit unit, Measurement value)
+        public StronglyTypedUnit(IFundamentalUnit unit, Measurement value)
         {
             this.Unit = unit;
             this.Measurement = value;
         }
-
         public double ConversionFromThisTo(IUnit unit)
+        {
+            if (unit is IFundamentalUnit)
+            {
+                return this.ConversionFromThisTo(unit as IFundamentalUnit);
+            }
+            if (unit is IDerivedUnit)
+            {
+                return this.ConversionFromThisTo(unit as IDerivedUnit);
+            }
+            throw new Exception();
+        }
+        public double ConversionFromThisTo(IFundamentalUnit unit)
         {
             return this.ConversionFactor / unit.ConversionFactor;
         }
+        public double ConversionFromThisTo(IDerivedUnit unit)
+        {
+            throw new NotImplementedException();
+        }
         public Measurement InThisUnit(IUnit unit)
+        {
+            if (unit is IFundamentalUnit)
+            {
+                return this.InThisUnit(unit as IFundamentalUnit);
+            }
+            if (unit is IDerivedUnit)
+            {
+                return this.InThisUnit(unit as IDerivedUnit);
+            }
+            throw new Exception();
+        }
+        public Measurement InThisUnit(IFundamentalUnit unit)
         {
             return this.Measurement * ConversionFromThisTo(unit);
         }
-    }
-
-    public class FundamentalUnit<T> : BasicUnit where T : IUnit
-    {
-        #region Constructors
-        protected FundamentalUnit() { }
-
-        public FundamentalUnit(IUnit unit, double value) : this(unit, value, _defaultErrorMargin(unit, value)) { }
-
-        private static double _defaultErrorMargin(IUnit unit, double value)
+        public Measurement InThisUnit(IDerivedUnit unit)
         {
-            //Stub for now;
-            return 0.03125;
+            return this.Measurement * ConversionFromThisTo(unit);
         }
-
-        public FundamentalUnit(IUnit unit, double value, double errorMargin) : base(unit, value, errorMargin) { }
-        public FundamentalUnit(IUnit unit, Measurement value) : base(unit, value) { }
-        public FundamentalUnit(BasicUnit toCopy) : base(toCopy) { }
-        #endregion
-        
-        #region Fields & Properties
-        public double ConversionFactor { get { return Unit.ConversionFactor; } }
-        #endregion
+     
 
         #region Public Methods
 
-        public FundamentalUnit<T> Negate()
+        public StronglyTypedUnit<T> Negate()
         {
-            return new FundamentalUnit<T>(this.Unit, -1.0 * this.IntrinsicValue, this.ErrorMargin);
+            return new StronglyTypedUnit<T>(this.Unit, -1.0 * this.IntrinsicValue, this.ErrorMargin);
         }
 
-        public FundamentalUnit<T> AbsoluteValue()
+        public StronglyTypedUnit<T> AbsoluteValue()
         {
-            return new FundamentalUnit<T>(this.Unit, Math.Abs(this.IntrinsicValue), this.ErrorMargin);
+            return new StronglyTypedUnit<T>(this.Unit, Math.Abs(this.IntrinsicValue), this.ErrorMargin);
         }
 
         public override string ToString()
@@ -191,23 +228,23 @@ namespace UnitClassLibrary.GenericUnit
             return String.Format("{0} {1}", roundedIntrinsicValue, this.Unit.AsStringPlural);
         }
 
-        public FundamentalUnit<T> Add(FundamentalUnit<T> unit)
+        public StronglyTypedUnit<T> Add(StronglyTypedUnit<T> unit)
         {
-            return new FundamentalUnit<T>(this.Unit, this.Measurement.Add(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
+            return new StronglyTypedUnit<T>(this.Unit, this.Measurement.Add(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
-        public FundamentalUnit<T> Subtract(FundamentalUnit<T> unit)
+        public StronglyTypedUnit<T> Subtract(StronglyTypedUnit<T> unit)
         {
-            return new FundamentalUnit<T>(this.Unit, this.Measurement.Subtract(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
+            return new StronglyTypedUnit<T>(this.Unit, this.Measurement.Subtract(unit.Measurement.Multiply(unit.ConversionFromThisTo(this.Unit))));
         }
-        public FundamentalUnit<T> Multiply(double scalar)
+        public StronglyTypedUnit<T> Multiply(double scalar)
         {
-            return new FundamentalUnit<T>(this.Unit, this.Measurement.Multiply(scalar));
+            return new StronglyTypedUnit<T>(this.Unit, this.Measurement.Multiply(scalar));
         }
-        public FundamentalUnit<T> Divide(double divisor)
+        public StronglyTypedUnit<T> Divide(double divisor)
         {
-            return new FundamentalUnit<T>(this.Unit, this.Measurement.Divide(divisor));
+            return new StronglyTypedUnit<T>(this.Unit, this.Measurement.Divide(divisor));
         }
-        public int CompareTo(FundamentalUnit<T> other)
+        public int CompareTo(StronglyTypedUnit<T> other)
         {
             if (this.Equals(other))
             {
@@ -221,50 +258,71 @@ namespace UnitClassLibrary.GenericUnit
         #endregion
 
         #region Operator Overloads
-        public static FundamentalUnit<T> operator +(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static StronglyTypedUnit<T> operator +(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Add(unit2);
         }
-        public static FundamentalUnit<T> operator -(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static StronglyTypedUnit<T> operator -(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Subtract(unit2);
         }
-        public static FundamentalUnit<T> operator *(double scalar, FundamentalUnit<T> unit)
+        public static StronglyTypedUnit<T> operator *(double scalar, StronglyTypedUnit<T> unit)
         {
             return unit.Multiply(scalar);
         }
-        public static FundamentalUnit<T> operator *(FundamentalUnit<T> unit, double scalar)
+        public static StronglyTypedUnit<T> operator *(StronglyTypedUnit<T> unit, double scalar)
         {
             return unit.Multiply(scalar);
         }
-        public static FundamentalUnit<T> operator /(FundamentalUnit<T> unit, double divisor)
+        public static StronglyTypedUnit<T> operator /(StronglyTypedUnit<T> unit, double divisor)
         {
             return unit.Divide(divisor);
         }
-        public static bool operator <(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator <(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement < unit2.InThisUnit(unit1.Unit);
         }
-        public static bool operator >(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator >(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement > unit2.InThisUnit(unit1.Unit);
         }
-        public static bool operator <=(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator <=(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement <= unit2.InThisUnit(unit1.Unit);
         }
-        public static bool operator >=(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator >=(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement >= unit2.InThisUnit(unit1.Unit);
         }
-        public static bool operator ==(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator ==(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement == unit2.InThisUnit(unit1.Unit);
         }
-        public static bool operator !=(FundamentalUnit<T> unit1, FundamentalUnit<T> unit2)
+        public static bool operator !=(StronglyTypedUnit<T> unit1, StronglyTypedUnit<T> unit2)
         {
             return unit1.Measurement != unit2.InThisUnit(unit1.Unit);
         }
         #endregion
+    }
+
+    public class FundamentalUnit<T> : StronglyTypedUnit<T> where T : IFundamentalUnit
+    {
+        public new IFundamentalUnit Unit;
+        #region Constructors
+        protected FundamentalUnit() { }
+
+        public FundamentalUnit(IFundamentalUnit unit, double value)
+            : this(unit, value, unit.DefaultErrorMargin) { } 
+
+        public FundamentalUnit(IFundamentalUnit unit, double value, double errorMargin) : base(unit, value, errorMargin) { }
+        public FundamentalUnit(IFundamentalUnit unit, Measurement value) : base(unit, value) { }
+        public FundamentalUnit(StronglyTypedUnit<T> toCopy) : base(toCopy) { }
+        #endregion
+        
+        #region Fields & Properties
+      
+        #endregion
+
+       
     }
 }
