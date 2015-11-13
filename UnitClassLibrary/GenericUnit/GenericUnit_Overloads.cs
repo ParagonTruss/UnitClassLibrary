@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public partial class GenericUnit
+    public partial class DerivedUnit
     {
         /// <summary>
         /// The "raise to power" operator
         /// </summary>
-        public static GenericUnit operator ^(GenericUnit d1, int power)
+        public static DerivedUnit operator ^(DerivedUnit d1, int power)
         {
             throw new NotImplementedException();
         }
@@ -18,7 +18,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// returns a new GenericUnit with the sum of the two passed distances
         /// </summary>
-        public static GenericUnit operator +(GenericUnit d1, GenericUnit d2)
+        public static DerivedUnit operator +(DerivedUnit d1, DerivedUnit d2)
         {
             throw new NotImplementedException();
         }
@@ -26,7 +26,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// returns a new GenericUnit with the difference of the two passed distances
         /// </summary>
-        public static GenericUnit operator -(GenericUnit d1, GenericUnit d2)
+        public static DerivedUnit operator -(DerivedUnit d1, DerivedUnit d2)
         {
             throw new NotImplementedException();
         }
@@ -34,15 +34,15 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// scalar multiplication
         /// </summary>
-        public static GenericUnit operator *(GenericUnit unit, double multiplier)
+        public static DerivedUnit operator *(DerivedUnit unit, double multiplier)
         {
-            return new GenericUnit(unit.Value.Multiply(multiplier), unit._numerators, unit._denominators);
+            return new DerivedUnit(unit.Value.Multiply(multiplier), unit._numerators, unit._denominators);
         }
 
         /// <summary>
         /// scalar multiplication
         /// </summary>
-        public static GenericUnit operator *(double multiplier, GenericUnit d1)
+        public static DerivedUnit operator *(double multiplier, DerivedUnit d1)
         {
             return d1 * multiplier;
         }
@@ -50,15 +50,15 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// scalar division
         /// </summary>
-        public static GenericUnit operator /(GenericUnit unit, double divisor)
+        public static DerivedUnit operator /(DerivedUnit unit, double divisor)
         {
-            return new GenericUnit(unit.Value.Divide(divisor), unit._numerators, unit._denominators);
+            return new DerivedUnit(unit.Value.Divide(divisor), unit._numerators, unit._denominators);
         }
 
         /// <summary>
         /// scalar division
         /// </summary>
-        public static GenericUnit operator /(double divisor, GenericUnit d1)
+        public static DerivedUnit operator /(double divisor, DerivedUnit d1)
         {
             return d1 / divisor;
         }
@@ -66,7 +66,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// ratio of between distances
         /// </summary>
-        public static double operator /(GenericUnit d1, GenericUnit d2)
+        public static double operator /(DerivedUnit d1, DerivedUnit d2)
         {
             throw new NotImplementedException();
         }
@@ -74,7 +74,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Not a perfect equality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator ==(GenericUnit d1, GenericUnit d2)
+        public static bool operator ==(DerivedUnit d1, DerivedUnit d2)
         {
             if ((object)d1 == null)
             {
@@ -90,7 +90,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Not a perfect inequality operator, is only accurate up to Constants.AcceptedEqualityDeviationConstant 
         /// </summary>
-        public static bool operator !=(GenericUnit d1, GenericUnit d2)
+        public static bool operator !=(DerivedUnit d1, DerivedUnit d2)
         {
             if ((object)d1 == null)
             {
@@ -106,7 +106,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// greater than
         /// </summary>
-        public static bool operator >(GenericUnit d1, GenericUnit d2)
+        public static bool operator >(DerivedUnit d1, DerivedUnit d2)
         {
             if (d1 == d2)
             {
@@ -118,7 +118,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// less than
         /// </summary>
-        public static bool operator <(GenericUnit d1, GenericUnit d2)
+        public static bool operator <(DerivedUnit d1, DerivedUnit d2)
         {
             if (d1 == d2)
             {
@@ -130,7 +130,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Less than or equal to
         /// </summary>
-        public static bool operator <=(GenericUnit d1, GenericUnit d2)
+        public static bool operator <=(DerivedUnit d1, DerivedUnit d2)
         {
             return d1.Equals(d2) || d1 < d2;
         }
@@ -138,7 +138,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Greater than or equal to
         /// </summary>
-        public static bool operator >=(GenericUnit d1, GenericUnit d2)
+        public static bool operator >=(DerivedUnit d1, DerivedUnit d2)
         {
             return d1.Equals(d2) || d1 > d2;
         }
@@ -170,12 +170,12 @@ namespace UnitClassLibrary.GenericUnit
                 throw new ArgumentNullException("obj");
             }
 
-            if (!(obj is GenericUnit))
+            if (!(obj is DerivedUnit))
             {
                 throw new ArgumentException("Expected type GenericUnit.", "obj");
             }
 
-            return this.CompareTo((GenericUnit)obj);
+            return this.CompareTo((DerivedUnit)obj);
         }
 
         /// <summary>
@@ -191,7 +191,7 @@ namespace UnitClassLibrary.GenericUnit
                 int digits = 0;
                 double roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
 
-                while (this != new GenericUnit(roundedIntrinsicValue,ErrorMargin,_numerators,_denominators))
+                while (this != new DerivedUnit(roundedIntrinsicValue,ErrorMargin,_numerators,_denominators))
                 {
                     digits++;
                     roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
@@ -216,7 +216,7 @@ namespace UnitClassLibrary.GenericUnit
                 return false;
             }
 
-            GenericUnit other = obj as GenericUnit;
+            DerivedUnit other = obj as DerivedUnit;
             double e = this.ErrorMargin + other.ErrorMargin;
             double difference = Math.Abs(this.IntrinsicValue - other.IntrinsicValue);
             return difference <= e;

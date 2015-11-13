@@ -23,25 +23,22 @@ namespace UnitClassLibrary.DistanceUnit
         /// <summary>
         /// Converts any possible type of Architectual String into internal units
         /// </summary>
-        /// <param name="convertToType"></param>
-        /// <param name="passedArchitecturalString"></param>
-        /// <returns></returns>
-        private static double ConvertArchitectualStringtoUnit(IDistanceUnit convertToType, String passedArchitecturalString)
+        private static double _convertArchitectualStringToValueInInches(string architecturalString)
         {
             // for details on where this solution came from, check here: http://stackoverflow.com/questions/22794466/parsing-all-possible-types-of-varying-architectural-Distance-input
             // answer by Trygve Flathen: http://stackoverflow.com/users/2795177/trygve-flathen
 
             //trim the input
-            passedArchitecturalString = passedArchitecturalString.Trim();
+            architecturalString = architecturalString.Trim();
 
             //define the regular expression (witchcraft)
             String expression = "^\\s*(?<minus>-)?\\s*(((?<feet>\\d+)(?<inch>\\d{2})(?<sixt>\\d{2}))|((?<feet>[\\d.]+)')?[\\s-]*((?<inch>\\d+)?[\\s-]*((?<numer>\\d+)/(?<denom>\\d+))?\")?)\\s*$";
 
             //find out what strings match 
-            Match match = new Regex(expression).Match(passedArchitecturalString);
+            Match match = new Regex(expression).Match(architecturalString);
 
             //test for failure cases
-            if (!match.Success || passedArchitecturalString == "" || passedArchitecturalString == "\"")
+            if (!match.Success || architecturalString == "" || architecturalString == "\"")
             {
                 throw new FormatException("Input was not a valid architectural string");
             }
@@ -57,7 +54,7 @@ namespace UnitClassLibrary.DistanceUnit
             //combine the results
             double result = sign * (feet * 12 + inch + sixt / 16.0 + numer / Convert.ToDouble(denom));
 
-            return new Distance(new Inch(), result).ConversionFromThisTo(convertToType);
+            return result;
         }
 
 
@@ -68,7 +65,7 @@ namespace UnitClassLibrary.DistanceUnit
         private static string ConvertToArchitecturalString(Distance distance, int precision = 16)
         {
             //Convert into inches before proceeding
-            double workingValue = distance.ConversionFromThisTo(new Inch());
+            double workingValue = distance.InThisUnit(new Inch()).Value;
 
             //detect need for sign
             string sign = "";

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public delegate bool EqualityStrategy(GenericUnit Unit1, GenericUnit Unit2);
+    public delegate bool EqualityStrategy(DerivedUnit Unit1, DerivedUnit Unit2);
 
-    public partial class GenericUnit
+    public partial class DerivedUnit
     {
-        public bool EqualsWithinEqualityStrategy(GenericUnit unit, EqualityStrategy userStrategy)
+        public bool EqualsWithinEqualityStrategy(DerivedUnit unit, EqualityStrategy userStrategy)
         {
             return userStrategy(this, unit);
         }
@@ -15,7 +15,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Distances are equal if they differ by less than a percentage of the first Distance
         /// </summary>
-        public bool EqualsWithinDeviationPercentage(GenericUnit unit1, GenericUnit unit2, double percentage = 0.0001)
+        public bool EqualsWithinDeviationPercentage(DerivedUnit unit1, DerivedUnit unit2, double percentage = 0.0001)
         {
             // find the value of dimension1 in terms of its own _internalUnitType
             double dimension1Value = unit1.GetValue(unit1.ConversionFactor);

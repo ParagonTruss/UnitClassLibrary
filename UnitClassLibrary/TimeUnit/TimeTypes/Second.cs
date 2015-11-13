@@ -27,5 +27,13 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
                 return 1;
             }
         }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return 0.01;
+            }
+        }
     }
 }

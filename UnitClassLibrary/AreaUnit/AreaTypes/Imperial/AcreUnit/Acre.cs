@@ -25,5 +25,12 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
             get { return 1; }
         }
 
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return 0;
+            }
+        }
     }
 }

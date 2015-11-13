@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public partial class GenericUnit
+    public partial class DerivedUnit
     {
         public static double ConvertUnit(IUnit convertFromType, double value, IUnit convertToType)
         {
@@ -32,14 +32,14 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Creates a new GenericUnit that is the negative of this one
         /// </summary>
-        public GenericUnit Negate()
+        public DerivedUnit Negate()
         {
-            return new GenericUnit(Value.Negate(), _numerators, _denominators);
+            return new DerivedUnit(Value.Negate(), _numerators, _denominators);
         }
 
-        public GenericUnit AbsoluteValue()
+        public DerivedUnit AbsoluteValue()
         {
-            return new GenericUnit(Value.AbsoluteValue(), _numerators, _denominators);
+            return new DerivedUnit(Value.AbsoluteValue(), _numerators, _denominators);
         }
     }
 }

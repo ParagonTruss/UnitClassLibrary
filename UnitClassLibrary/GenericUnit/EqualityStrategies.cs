@@ -7,12 +7,12 @@ namespace UnitClassLibrary.GenericUnit
 {
     public static class EqualityStrategies
     {
-        public static bool EqualsWithinDeviationPercentageStrategy<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
+        public static bool EqualsWithinDeviationPercentageStrategy<T>(DerivedUnit unit1, DerivedUnit unit2) where T : IUnit
         {
             return EqualsWithinDeviationPercentage<T>(unit1, unit2, unit1.PercentageError);
         }
 
-        public static bool EqualsWithinDeviationPercentage<T>(GenericUnit unit1, GenericUnit unit2, double percentage ) where T : IUnit
+        public static bool EqualsWithinDeviationPercentage<T>(DerivedUnit unit1, DerivedUnit unit2, double percentage ) where T : IUnit
         {
             // find the value of dimension1 in terms of its own _internalUnitType
             double dimension1Value = unit1.GetValue(unit1.ConversionFactor);
@@ -35,13 +35,13 @@ namespace UnitClassLibrary.GenericUnit
             return dimensionsAreEqual;
         }
 
-        public static bool EqualsWithinDeviationConstantStrategy<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
+        public static bool EqualsWithinDeviationConstantStrategy<T>(DerivedUnit unit1, DerivedUnit unit2) where T : IUnit
         {
             return EqualsWithinDeviationConstant<T>(unit1, unit2, unit1.DeviationAsConstant);
         }
 
 
-        public static bool EqualsWithinDeviationConstant<T>(GenericUnit unit1, GenericUnit unit2, GenericUnit deviation) where T : IUnit
+        public static bool EqualsWithinDeviationConstant<T>(DerivedUnit unit1, DerivedUnit unit2, DerivedUnit deviation) where T : IUnit
         {
             var difference = _absoluteValueOfDifference<T>(unit1, unit2);
 
@@ -51,7 +51,7 @@ namespace UnitClassLibrary.GenericUnit
             return dimensionsAreEqual;
         }
 
-        private static GenericUnit _absoluteValueOfDifference<T>(GenericUnit unit1, GenericUnit unit2) where T : IUnit
+        private static DerivedUnit _absoluteValueOfDifference<T>(DerivedUnit unit1, DerivedUnit unit2) where T : IUnit
         {
             throw new NotImplementedException();
            // return (unit1 - unit2).AbsoluteValue();

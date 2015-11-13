@@ -30,6 +30,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
                 }
             }
 
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Inch().DefaultErrorMargin / ConversionFactor;
+            }
+        }
+
         public override string ToString()
         {
 

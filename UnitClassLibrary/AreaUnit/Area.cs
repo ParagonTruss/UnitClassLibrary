@@ -4,7 +4,7 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AreaUnit
 {
-    public class Area : BasicUnit<IAreaUnit>
+    public class Area : FundamentalUnit<IAreaUnit>
     {
         public Area(IAreaUnit AreaType, double passedDouble)
             : base(AreaType,passedDouble)

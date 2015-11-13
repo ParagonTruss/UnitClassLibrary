@@ -1,4 +1,5 @@
 ﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
@@ -23,6 +24,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
         public double ConversionFactor
         {
             get { return 12; }
+        }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Inch().DefaultErrorMargin / ConversionFactor;
+            }
         }
     }
 

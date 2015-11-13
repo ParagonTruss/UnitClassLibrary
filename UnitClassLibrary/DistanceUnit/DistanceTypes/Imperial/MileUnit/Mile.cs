@@ -1,4 +1,5 @@
 ﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 {
@@ -25,6 +26,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
             get
             {
                 return 63360;            
+            }
+        }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Inch().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

@@ -2,10 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
+using UnitClassLibrary.SpeedUnit.SpeedTypes;
 
 namespace UnitClassLibrary.GenericUnit
 { 
-    public partial class GenericUnit
+    public class DerivedUnit<T> : DerivedUnit where T : IDerivedUnit
+    {
+  
+       
+        public DerivedUnit(DerivedUnit<ISpeedUnit> toCopy)
+            : base(toCopy) { }
+
+        public DerivedUnit(IDerivedUnit derivedUnit, double value, double errorMargin = 0)
+            : base(value, errorMargin, derivedUnit.Numerators, derivedUnit.Denominators)
+        { }
+
+        public DerivedUnit(IDerivedUnit derivedUnit, Measurement value)
+            : base(value, derivedUnit.Numerators, derivedUnit.Denominators)
+        { }
+    }
+    public partial class DerivedUnit
     {
         #region _fields and Properties
 
@@ -16,7 +32,7 @@ namespace UnitClassLibrary.GenericUnit
         public double IntrinsicValue { get { return Value.Value; } }
         public double ErrorMargin { get { return Value.ErrorMargin; } }
         public double PercentageError { get { return Value.PercentageError; } }
-        public GenericUnit DeviationAsConstant { get { return PercentageError * this; } }
+        public DerivedUnit DeviationAsConstant { get { return PercentageError * this; } }
         public double ConversionFactor
         {
             get
@@ -42,17 +58,17 @@ namespace UnitClassLibrary.GenericUnit
 
         #region Constructors
 
-        public GenericUnit(double intrinsicValue, double errorMargin, List<IUnit> numerators, List<IUnit> denominators)
+        public DerivedUnit(double intrinsicValue, double errorMargin, List<IUnit> numerators, List<IUnit> denominators)
             : this(new Measurement(intrinsicValue, errorMargin), numerators, denominators) { }
 
-        public GenericUnit(Measurement value, List<IUnit> numerators, List<IUnit> denominators)
+        public DerivedUnit(Measurement value, List<IUnit> numerators, List<IUnit> denominators)
         {
             this._numerators = numerators;
             this._denominators = denominators;
             this.Value = value;
         }
 
-        protected GenericUnit(List<BasicUnit> numerators, List<BasicUnit> denominators = null)
+        protected DerivedUnit(List<BasicUnit> numerators, List<BasicUnit> denominators = null)
         {
             this._numerators = numerators.Select(u => u.Unit).ToList();
             var intrinsicValue = numerators.Select(u => u.IntrinsicValue).Aggregate((u, v) => u * v);
@@ -73,7 +89,7 @@ namespace UnitClassLibrary.GenericUnit
         /// <summary>
         /// Copy Constructor
         /// </summary>
-        public GenericUnit(GenericUnit toCopy)
+        public DerivedUnit(DerivedUnit toCopy)
         {
             this.Value = toCopy.Value;
             this._numerators = toCopy._numerators;

@@ -28,5 +28,13 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit
                 return 1.0;
             }
         }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return 0;
+            }
+        }
     }
 }

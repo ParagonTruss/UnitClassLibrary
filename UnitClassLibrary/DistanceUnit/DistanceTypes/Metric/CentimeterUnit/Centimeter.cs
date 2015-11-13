@@ -1,4 +1,5 @@
 ﻿using System;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
@@ -23,6 +24,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
         public double ConversionFactor
         {
             get { return 0.393700787401575D; }
+        }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Inch().DefaultErrorMargin / ConversionFactor;
+            }
         }
     }
 

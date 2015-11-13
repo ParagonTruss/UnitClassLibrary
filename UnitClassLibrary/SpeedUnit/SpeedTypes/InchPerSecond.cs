@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
+using UnitClassLibrary.GenericUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.SpeedUnit.SpeedTypes
@@ -23,9 +25,20 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             }
         }
 
-        public double ConversionFactor
+        public List<IUnit> Denominators
         {
-            get { return new Inch().ConversionFactor/new Second().ConversionFactor; }
+            get
+            {
+                return new List<IUnit>() { new Second() };
+            }
+        }
+
+        public List<IUnit> Numerators
+        {
+            get
+            {
+                return new List<IUnit>() { new Inch() };
+            }
         }
 
         public IDistanceUnit GetDistanceType()

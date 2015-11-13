@@ -123,11 +123,11 @@ namespace UnitLibraryTests
             Distance smallerDistance = new Distance("1' 2 1/16\"");
             Distance equivalentbiggerDistance = new Distance(new Millimeter(), 360.3625);
 
-            (equivalentbiggerDistance.Equals(biggerDistance)).Should().Be(true);
-            (equivalentbiggerDistance == smallerDistance).Should().Be(false);
+            (equivalentbiggerDistance == biggerDistance).Should().BeTrue();
+            (equivalentbiggerDistance == smallerDistance).Should().BeFalse();
 
-            (equivalentbiggerDistance != smallerDistance).Should().Be(true);
-            (equivalentbiggerDistance != biggerDistance).Should().Be(false);
+            (equivalentbiggerDistance != smallerDistance).Should().BeTrue();
+            (equivalentbiggerDistance != biggerDistance).Should().BeFalse();
 
 
             //check ==
@@ -217,13 +217,14 @@ namespace UnitLibraryTests
             // arrange
             Distance Distance = new Distance(new Millimeter(), 14.1875);
             Distance Distance2 = new Distance(new Millimeter(), 0);
-
-            //should come back rounded due to DeviationConstant
+            Distance Distance3 = new Distance(new Millimeter(), 1.0);
+            //should come back rounded due 
             // act            
 
             // assert
-            Distance.ToString().Should().Be("14.188 Millimeters");
+            Distance.ToString().Should().Be("14.2 Millimeters");
             Distance2.ToString().Should().Be("0 Millimeters");
+            Distance3.ToString().Should().Be("1 Millimeter");
         }
 
         /// <summary>
@@ -257,7 +258,7 @@ namespace UnitLibraryTests
 
             Distance zeroFeet = oneFoot - oneFoot; //should be zero feet
 
-            (oneFoot == new Distance(new Foot(), 0)).Should().BeTrue();
+            (zeroFeet == new Distance(new Foot(), 0)).Should().BeTrue();
 
         }
 

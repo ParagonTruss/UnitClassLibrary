@@ -25,6 +25,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
         {
             get { return 39370.0787401575D; }
         }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Inch().DefaultErrorMargin / ConversionFactor;
+            }
+        }
     }
 
     public static class KilometerExtensions

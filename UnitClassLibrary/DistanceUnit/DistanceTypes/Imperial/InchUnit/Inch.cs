@@ -25,6 +25,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
             get { return 1; }
         }
 
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return 0.03125;
+            }
+        }
+
         new public string ToString(bool isPlural = false)
         {
             return ToStringPlural();

@@ -27,5 +27,13 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
                 return 0.0166666666666667D;
             }
         }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Second().DefaultErrorMargin / ConversionFactor;
+            }
+        }
     }
 }

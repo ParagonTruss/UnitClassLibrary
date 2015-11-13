@@ -6,7 +6,7 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
-    public partial class Distance : BasicUnit<IDistanceUnit>
+    public partial class Distance : FundamentalUnit<IDistanceUnit>
     {
         public static readonly Distance Zero = new Distance(new Inch(), 0, 0);
 
@@ -21,10 +21,10 @@ namespace UnitClassLibrary.DistanceUnit
         { }
 
         public Distance(string architectural)
-            : this(new Inch(), ConvertArchitectualStringtoUnit(new Inch(), architectural), 0.03125)
+            : this(new Inch(), _convertArchitectualStringToValueInInches(architectural), 0.03125)
         { }
 
-        public Distance(BasicUnit<IDistanceUnit> toCopy) : base(toCopy) { }
+        public Distance(FundamentalUnit<IDistanceUnit> toCopy) : base(toCopy) { }
         #endregion
 
         new public Distance Negate()
@@ -37,14 +37,14 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(base.AbsoluteValue());
         }
 
-        public override string ToString()
-        {
-            if (this.IntrinsicValue == 1.0)
-            {
-                return "";
-            }
-            return "";
-        }
+        //public override string ToString()
+        //{
+        //    if (this.IntrinsicValue == 1.0)
+        //    {
+        //        return "";
+        //    }
+        //    return "";
+        //}
 
         #region Operator Overloads
         //public static Distance operator ^(Distance distance, double power)

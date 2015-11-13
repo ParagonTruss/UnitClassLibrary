@@ -31,5 +31,13 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
                 return 57.2957795131D;
             }
         }
+
+        public double DefaultErrorMargin
+        {
+            get
+            {
+                return new Degree().DefaultErrorMargin / this.ConversionFactor;
+            }
+        }
     }
 }

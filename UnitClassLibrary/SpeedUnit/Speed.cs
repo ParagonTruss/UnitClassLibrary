@@ -6,21 +6,24 @@ using UnitClassLibrary.TimeUnit;
 
 namespace UnitClassLibrary.SpeedUnit
 {
-    public class Speed : BasicUnit<ISpeedUnit>
+    public class Speed : DerivedUnit<ISpeedUnit>
     {
-        public Speed(ISpeedUnit SpeedType, double intrinsicValue)
-            : base(SpeedType, intrinsicValue) { }
+        private DerivedUnit derivedUnit;
+
+        public Speed(ISpeedUnit SpeedType, double intrinsicValue, double errorMargin = 0)
+            : base(SpeedType, intrinsicValue, errorMargin) { }
 
         //public Speed(Distance distance, Time time)
-        //    : base(BasicUnit(distance.GetValue(distance.ConversionFactor), distance.ConversionFactor) }, new List<BasicUnit>() { new BasicUnit(time.GetValue(time.ConversionFactor), time.ConversionFactor) })
+        //    : base(distance.Measurement/time.Measurement,)
         //{
         //}
 
-        public Speed(BasicUnit<ISpeedUnit> toCopy) : base(toCopy) { }
+        public Speed(DerivedUnit<ISpeedUnit> toCopy) : base(toCopy) { }
+
 
         new public Speed Negate()
         {
-            return new Speed(base.Negate());
+            return (Speed)((DerivedUnit)this).Negate();
         }
     }
 }

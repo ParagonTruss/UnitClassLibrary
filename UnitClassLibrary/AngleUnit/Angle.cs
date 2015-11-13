@@ -7,7 +7,7 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AngleUnit
 {
-    public class Angle : BasicUnit<IAngleUnit>
+    public class Angle : FundamentalUnit<IAngleUnit>
     {
         public static readonly Angle Zero = new Angle(new Degree(), 0, 0);
         public Angle(IAngleUnit unit, double value, double errorMargin) : base(unit,value,errorMargin)
