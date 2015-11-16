@@ -3,9 +3,9 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
-    public class Millimeter : IDistanceUnit
+    public class Millimeter : IDistanceType
     {
-        public string AsStringPlural
+        override public string AsStringPlural
         {
             get
             {
@@ -13,7 +13,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
             }
         }
 
-        public string AsStringSingular
+        override public string AsStringSingular
         {
             get
             {
@@ -21,7 +21,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
             }
         }
 
-        public double ConversionFactor
+        override public double ConversionFactor
                         
             {
                 get
@@ -30,11 +30,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
                 }
             }
 
-        public double DefaultErrorMargin
+        override public double DefaultErrorMargin_
         {
             get
             {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
+                return new Inch().DefaultErrorMargin_ / ConversionFactor;
             }
         }
 

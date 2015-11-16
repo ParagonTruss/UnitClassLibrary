@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.AreaUnit.AreaTypes
 {
-    public interface IAreaUnit : IFundamentalUnit
+    public abstract class IAreaUnit : AbstractDerivedUnitType
     {
     }
 }

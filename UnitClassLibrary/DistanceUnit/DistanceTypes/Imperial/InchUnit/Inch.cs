@@ -2,9 +2,9 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
-    public class Inch : IDistanceUnit
+    public class Inch : IDistanceType
     {
-        public string AsStringPlural
+        override public string AsStringPlural
         {
             get
             {
@@ -12,7 +12,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
             }
         }
 
-        public string AsStringSingular
+        override public string AsStringSingular
         {
             get
             {
@@ -20,33 +20,17 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
             }
         }
 
-        public double ConversionFactor
+        override public double ConversionFactor
         {
             get { return 1; }
         }
 
-        public double DefaultErrorMargin
+        override public double DefaultErrorMargin_
         {
             get
             {
                 return 0.03125;
             }
-        }
-
-        new public string ToString(bool isPlural = false)
-        {
-            return ToStringPlural();
-
-        }
-
-        public string ToStringPlural()
-        {
-            return "Inches";
-        }
-
-        public string ToStringSingular()
-        {
-            return "Inch";
         }
     }
 

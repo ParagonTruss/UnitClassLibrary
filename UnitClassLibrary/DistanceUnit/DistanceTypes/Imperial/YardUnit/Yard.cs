@@ -3,9 +3,9 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 {
-    public class Yard : IDistanceUnit
+    public class Yard : IDistanceType
     {
-        public string AsStringPlural
+        override public string AsStringPlural
         {
             get
             {
@@ -13,7 +13,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
             }
         }
 
-        public string AsStringSingular
+        override public string AsStringSingular
         {
             get
             {
@@ -21,16 +21,16 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
             }
         }
 
-        public double ConversionFactor
+        override public double ConversionFactor
         {
             get { return 36; }
         }
 
-        public double DefaultErrorMargin
+        override public double DefaultErrorMargin_
         {
             get
             {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
+                return new Inch().DefaultErrorMargin_ / ConversionFactor;
             }
         }
     }

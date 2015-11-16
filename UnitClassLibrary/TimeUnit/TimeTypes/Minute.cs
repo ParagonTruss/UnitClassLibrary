@@ -4,7 +4,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Minute : ITimeType
     {
-        public string AsStringPlural
+        override public string AsStringPlural
         {
             get
             {
@@ -12,7 +12,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
             }
         }
 
-        public string AsStringSingular
+        override public string AsStringSingular
         {
             get
             {
@@ -20,7 +20,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
             }
         }
 
-        public double ConversionFactor
+        override public double ConversionFactor
         {
             get
             {
@@ -28,11 +28,11 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
             }
         }
 
-        public double DefaultErrorMargin
+        override public double DefaultErrorMargin_
         {
             get
             {
-                return new Second().DefaultErrorMargin / ConversionFactor;
+                return new Second().DefaultErrorMargin_ / ConversionFactor;
             }
         }
     }

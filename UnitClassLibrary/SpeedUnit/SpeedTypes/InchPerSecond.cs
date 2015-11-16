@@ -25,23 +25,15 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             }
         }
 
-        public List<IFundamentalUnit> Denominators
+        public override UnitDimensions Dimensions
         {
             get
             {
-                return new List<IFundamentalUnit>() { new Second() };
+                return new UnitDimensions(1.0, new Inch(), new Second());
             }
         }
 
-        public List<IFundamentalUnit> Numerators
-        {
-            get
-            {
-                return new List<IFundamentalUnit>() { new Inch() };
-            }
-        }
-
-        public IDistanceUnit GetDistanceType()
+        public IDistanceType GetDistanceType()
         {
             return new Inch();
         }

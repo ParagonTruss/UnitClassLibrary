@@ -15,6 +15,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 using UnitClassLibrary.GenericUnit;
 using UnitClassLibrary.AngleUnit;
+using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitLibraryTests
 {
@@ -217,12 +218,12 @@ namespace UnitLibraryTests
             // arrange
             Distance Distance = new Distance(new Millimeter(), 14.1875);
             Distance Distance2 = new Distance(new Millimeter(), 0);
-            Distance Distance3 = new Distance(new Millimeter(), 1.0);
+            Distance Distance3 = new Distance(new Millimeter(), 1.13);
             //should come back rounded due 
             // act            
 
             // assert
-            Distance.ToString().Should().Be("14.2 Millimeters");
+            Distance.ToString().Should().Be("14 Millimeters");
             Distance2.ToString().Should().Be("0 Millimeters");
             Distance3.ToString().Should().Be("1 Millimeter");
         }
@@ -247,7 +248,14 @@ namespace UnitLibraryTests
         [Test()]
         public void Distance_Incrementing()
         {
-
+            Unit<IDistanceType> d1 = new Unit<IDistanceType>(new Inch(), 2);
+            Unit<IDistanceType> d2 = new Unit<IDistanceType>(new Millimeter(), 2);
+            //StronglyTypedUnit<ITimeUnit> t1 = new StronglyTypedUnit<ITimeUnit>(new Inch(), 2);
+            Unit<ITimeType> t1 = new Unit<ITimeType>(new Second(), 2);
+            Unit<IUnitType> u1= new Unit<IUnitType>(new Inch(), 2);
+            Unit<IUnitType> u2 = new Unit<IUnitType>(new Second(), 2);
+           var result = u1 + u2;
+            //var result2 = t1 + u1;
             //Static constants
             Distance oneFoot = 1.FromFeetToDistance();
 
@@ -331,7 +339,7 @@ namespace UnitLibraryTests
             // oneFoot--;
 
             //User defined equality strategies
-            //EqualityStrategy<IDistanceUnit> userStrategy = (d1, d2) => { return true; };
+            //EqualityStrategy<IDistanceType> userStrategy = (d1, d2) => { return true; };
 
             //oneFoot.EqualsWithinEqualityStrategy(positiveDistance, userStrategy);
 

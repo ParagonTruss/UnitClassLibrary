@@ -2,8 +2,8 @@
 
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes
 {
-    public interface IDistanceUnit : IFundamentalUnit
+    public abstract class IDistanceType : FundamentalUnitType
     {
-         
+
     }
 }

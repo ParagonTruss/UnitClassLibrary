@@ -2,7 +2,7 @@
 
 namespace UnitClassLibrary.AngleUnit.AngleTypes
 {
-    public interface IAngleUnit : IFundamentalUnit
+    public abstract class IAngleUnit : FundamentalUnitType
     {
     }
 }

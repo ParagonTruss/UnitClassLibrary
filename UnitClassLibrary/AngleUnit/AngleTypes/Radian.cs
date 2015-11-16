@@ -7,7 +7,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
 {
     public class Radian : IAngleUnit
     {
-        public string AsStringPlural
+        override public string AsStringPlural
         {
             get
             {
@@ -15,7 +15,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public string AsStringSingular
+        override public string AsStringSingular
         {
             get
             {
@@ -23,7 +23,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public double ConversionFactor
+        override public double ConversionFactor
         {
             get
             {
@@ -32,11 +32,11 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public double DefaultErrorMargin
+        override public double DefaultErrorMargin_
         {
             get
             {
-                return new Degree().DefaultErrorMargin / this.ConversionFactor;
+                return new Degree().DefaultErrorMargin_ / this.ConversionFactor;
             }
         }
     }

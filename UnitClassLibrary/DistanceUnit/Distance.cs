@@ -6,25 +6,26 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
-    public partial class Distance : FundamentalUnit<IDistanceUnit>
+    public partial class Distance : Unit<IDistanceType>
     {
-        public static readonly Distance Zero = new Distance(new Inch(), 0, 0);
+        public static readonly Distance Zero = new Distance(new Inch(), new Measurement());
 
         #region Constructors
 
-        public Distance() : this(new Inch(), 0) { }
+        public Distance(IDistanceType distanceUnit, double value) : base(distanceUnit, value) { }
 
-        public Distance(IDistanceUnit distanceUnit, double value) : base(distanceUnit, value) { }
+        public Distance(IDistanceType distanceUnit, Measurement measurement)
+            : base(distanceUnit, measurement) { }
 
-        public Distance(IDistanceUnit distanceUnit, double value, double errorMargin)
-            : base(distanceUnit, value, errorMargin)
-        { }
 
         public Distance(string architectural)
-            : this(new Inch(), _convertArchitectualStringToValueInInches(architectural), 0.03125)
+            : this(new Inch(), _convertArchitectualStringToValueInInches(architectural))
         { }
 
-        public Distance(StronglyTypedUnit<IDistanceUnit> toCopy) : base(toCopy) { }
+        public Distance(Unit<IDistanceType> unit) : base(unit.UnitType, unit.Measurement)
+        {
+
+        }
         #endregion
 
         new public Distance Negate()
@@ -34,27 +35,16 @@ namespace UnitClassLibrary.DistanceUnit
 
         new public Distance AbsoluteValue()
         {
-            return new Distance(base.AbsoluteValue());
+            return new Distance(base.Negate());
         }
 
-        //public override string ToString()
-        //{
-        //    if (this.IntrinsicValue == 1.0)
-        //    {
-        //        return "";
-        //    }
-        //    return "";
-        //}
+        
 
         #region Operator Overloads
-        //public static Distance operator ^(Distance distance, double power)
-        //{
-        //    return new Distance((();
-        //}
 
         public static Distance operator +(Distance distance1, Distance distance2)
         {
-            return new Distance(distance1.Add(distance2));
+            return new Distance((distance1.Add(distance2)));
         }
 
         public static Distance operator -(Distance distance1, Distance distance2)
@@ -62,14 +52,19 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(distance1.Subtract(distance2));
         }
 
-        public static Distance operator *(Distance distance, double factor)
+        public static Distance operator *(Distance distance, Measurement scalar)
         {
-            return new Distance(distance.Multiply(factor));
+            return new Distance(distance.Multiply(scalar));
         }
 
-        public static Distance operator *(double factor, Distance distance)
+        public static Distance operator *(Measurement scalar, Distance distance)
         {
-            return distance * factor;
+            return distance * scalar;
+        }
+
+        public static Distance operator /(Distance distance, Measurement divisor)
+        {
+            return new Distance(distance.Divide(divisor));
         }
         #endregion
     }

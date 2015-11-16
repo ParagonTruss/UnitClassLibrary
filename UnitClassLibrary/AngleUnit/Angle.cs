@@ -7,26 +7,43 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AngleUnit
 {
-    public class Angle : FundamentalUnit<IAngleUnit>
+    public class Angle : Unit<IAngleUnit>
     {
-        public static readonly Angle Zero = new Angle(new Degree(), 0, 0);
-        public Angle(IAngleUnit unit, double value, double errorMargin) : base(unit,value,errorMargin)
+        public static readonly Angle Zero = new Angle(new Degree(), new Measurement());
+        public Angle(IAngleUnit unit, Measurement measurement) : base(unit, measurement)
         {
             
         }
 
+        public Measurement Sine()
+        {
+            var m = this.ValueInThisUnit(new Radian());
+
+            return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
+        }
+
         public Measurement Cosine()
         {
-            var m = this.InThisUnit(new Radian());
+            var m = this.ValueInThisUnit(new Radian());
 
             return new Measurement(Math.Cos(m.Value), Math.Sin(m.Value) * m.ErrorMargin);
         }
 
-        public Measurement Sine()
+        public Measurement Tangent()
         {
-            var m = this.InThisUnit(new Radian());
+            var m = this.ValueInThisUnit(new Radian());
 
-            return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
+            return new Measurement(Math.Tan(m.Value), m.ErrorMargin / Math.Pow(Math.Cos(m.Value), 2));
+        }
+
+        public static Angle ArcCos(Measurement m)
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Angle ArcSin(Measurement m)
+        {
+            throw new NotImplementedException();
         }
     }
 }

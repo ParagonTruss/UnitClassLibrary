@@ -7,7 +7,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
 {
     class Degree : IAngleUnit
     {
-        public string AsStringPlural
+        public override string AsStringPlural
         {
             get
             {
@@ -15,7 +15,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public string AsStringSingular
+        public override string AsStringSingular
         {
             get
             {
@@ -23,7 +23,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public double ConversionFactor
+        public override double ConversionFactor
         {
             get
             {
@@ -31,7 +31,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
             }
         }
 
-        public double DefaultErrorMargin
+        public override double DefaultErrorMargin_
         {
             get
             {

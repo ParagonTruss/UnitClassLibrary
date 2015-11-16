@@ -1,36 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
+using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
 {
     public class Acre : IAreaUnit
     {
-        public string AsStringPlural
+        public override UnitDimensions Dimensions
         {
             get
             {
-                return "Acres";
+                return new UnitDimensions(43560, new List<FundamentalUnitType>() { new Foot(), new Foot() });
             }
         }
 
-        public string AsStringSingular
-        {
-            get
-            {
-                return "Acre";
-            }
-        }
-
-        public double ConversionFactor
-        {
-            get { return 1; }
-        }
-
-        public double DefaultErrorMargin
-        {
-            get
-            {
-                return 0;
-            }
-        }
+        public string AsStringPlural { get { return "Acres"; } }
+        public string AsStringSingular { get { return "Acre"; } }      
     }
 }
