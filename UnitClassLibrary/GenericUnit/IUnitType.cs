@@ -74,15 +74,23 @@ namespace UnitClassLibrary.GenericUnit
             this._dimensions = dimensions;
         }
 
-        public DerivedUnitType Multiply(DerivedUnitType unitType)
+        public static DerivedUnitType Multiply(IUnitType type1, IUnitType type2)
         {
-            return new DerivedUnitType(this.Dimensions.Multiply(unitType.Dimensions));
+            return new DerivedUnitType(type1.Dimensions.Multiply(type2.Dimensions));    
+        }
 
-            
+        public static DerivedUnitType Divide(IUnitType type1, IUnitType type2)
+        {
+            return new DerivedUnitType(type1.Dimensions.Divide(type2.Dimensions));
+        }
+
+        internal static DerivedUnitType Power(IUnitType unitType, int power)
+        {
+            return new DerivedUnitType(unitType.Dimensions.ToThe(power));
         }
     }
 
-    public class UnitDimensions
+    public sealed class UnitDimensions
     {
         private double _scale;
         private List<FundamentalUnitType> _numerators;
@@ -116,9 +124,15 @@ namespace UnitClassLibrary.GenericUnit
             return result;            
         }
 
-        public virtual string AsStringPlural()
-        {  throw new NotImplementedException(); } 
+        public string AsStringPlural()
+        {  throw new NotImplementedException(); }
 
+        public UnitDimensions()
+        {
+            this._scale = 1.0;
+            this._numerators = new List<FundamentalUnitType>();
+            this._denominators = new List<FundamentalUnitType>();          
+        }
 
         public UnitDimensions(double scale, FundamentalUnitType numerator, FundamentalUnitType denominator = null)
         {
@@ -179,6 +193,37 @@ namespace UnitClassLibrary.GenericUnit
 
             var dim = new UnitDimensions(this._scale * dimensions._scale, numerators, denominators);
             return dim;
+        }
+
+        public UnitDimensions Divide(UnitDimensions dimensions)
+        {
+            var numerators = this._numerators.ToList();
+            numerators.AddRange(dimensions._denominators);
+
+            var denominators = this._denominators.ToList();
+            denominators.AddRange(dimensions._numerators);
+
+            var dim = new UnitDimensions(this._scale / dimensions._scale, numerators, denominators);
+            return dim;
+        }
+
+        internal UnitDimensions ToThe(int power)
+        {
+            var result = new UnitDimensions();
+            for (int i = 0; i < Math.Abs(power); i++)
+            {
+                result.Multiply(this);
+            }
+            if (power < 0)
+            {
+                result = result.Invert();
+            }
+            return result;
+        }
+
+        private UnitDimensions Invert()
+        {
+            return new UnitDimensions(1 / _scale, _denominators, _numerators);
         }
     }
 } 

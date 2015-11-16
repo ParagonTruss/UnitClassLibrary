@@ -71,28 +71,22 @@ namespace UnitClassLibrary.GenericUnit
 
         public Unit<DerivedUnitType> Multiply(Unit<IUnitType> unit)
         {
-            var type = (this.UnitType as DerivedUnitType).Multiply(unit.UnitType as DerivedUnitType);
+            var type = DerivedUnitType.Multiply(this.UnitType, unit.UnitType);
 
             return new Unit<DerivedUnitType>(type, this.Measurement*unit.Measurement);
         }
 
         public Unit<DerivedUnitType> Divide(Unit<IUnitType> unit)
         {
-            return null;
-            //var numerators = this.UnitType.Numerators.ToList();
-            //numerators.AddRange(unit.UnitType.Denominators);
+            var type = DerivedUnitType.Divide(this.UnitType, unit.UnitType);
 
-            //var denominators = this.UnitType.Denominators.ToList();
-            //denominators.AddRange(unit.UnitType.Numerators);
-
-            //IUnitType type = new DerivedUnitType(numerators, denominators);
-
-            //return new Unit<DerivedUnitType>(type, this.Measurement / unit.Measurement);
+            return new Unit<DerivedUnitType>(type, this.Measurement / unit.Measurement);
         }
 
         public Unit<DerivedUnitType> ToThe(int power)
         {
-            throw new NotImplementedException();
+            var type = DerivedUnitType.Power(this.UnitType, power);
+            return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
             //var numerators = new List<FundamentalUnitType>();
             //var denominators = new List<FundamentalUnitType>();
             //if (power > 0)
@@ -111,7 +105,7 @@ namespace UnitClassLibrary.GenericUnit
             //        denominators.AddRange(this.UnitType.Numerators);
             //    }
             //}
-            
+
             //IUnitType type = new DerivedUnitType(numerators, denominators);
 
             //return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
