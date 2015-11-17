@@ -9,7 +9,7 @@ namespace UnitClassLibrary.TimeUnit
          public Time(TimeType timeType, double value = 1.0)
             : base(timeType, value) { }
 
-        public Time(Unit<TimeType> time) : base(time.UnitType, time.Measurement) { }
+        public Time(Unit<TimeType> time) : base(time) { }
 
         new public Time Negate()
         {

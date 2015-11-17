@@ -82,6 +82,11 @@ namespace UnitClassLibrary.GenericUnit
             }
         }
 
+        internal static bool HaveSameDimensions(object dimensions)
+        {
+            throw new NotImplementedException();
+        }
+
         public UnitDimensions(List<AbstractDerivedUnitType> numerators, List<AbstractDerivedUnitType> denominators = null, double scale = 1.0)
         {
             this._scale = scale;
@@ -134,7 +139,6 @@ namespace UnitClassLibrary.GenericUnit
         private int[] _countUnits(List<FundamentalUnitType> units)
         {
             int angleCount = 0, distanceCount = 0, forceCount = 0,  tempCount = 0, timeCount = 0;
-            int[] result = new int[] { angleCount, distanceCount, forceCount,  tempCount, timeCount };
             foreach(var unit in units)
             {
                 if (unit is AngleType)
@@ -158,10 +162,11 @@ namespace UnitClassLibrary.GenericUnit
                     timeCount++;
                 }
             }
+            int[] result = new int[] { angleCount, distanceCount, forceCount, tempCount, timeCount };
             return result;
         }
 
-        internal UnitDimensions Multiply(UnitDimensions dimensions)
+        public UnitDimensions Multiply(UnitDimensions dimensions)
         {
             var numerators = this._numerators.ToList();
             numerators.AddRange(dimensions._numerators);

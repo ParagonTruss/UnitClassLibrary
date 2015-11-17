@@ -13,6 +13,9 @@ namespace UnitClassLibrary.GenericUnit
         abstract public IUnitType UnitType { get; }
         abstract public Measurement Measurement { get; }
 
+        public double ConversionFactor { get { return UnitType.ConversionFactor; } }
+        public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
+
         public Measurement ValueInThisUnit(IUnitType type)
         {
             return this.Measurement * this.UnitType.ConversionFactor / type.ConversionFactor;
@@ -52,30 +55,38 @@ namespace UnitClassLibrary.GenericUnit
     /// <typeparam name="T"></typeparam>
     public class Unit<T> : Unit where T : IUnitType
     {
-        private readonly IUnitType _unitType;
+        private readonly T _unitType;
         private readonly Measurement _measurement;
         override public IUnitType UnitType { get { return _unitType; } }
         override public Measurement Measurement { get{ return _measurement; } }
 
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
-        public double ConversionFactor { get { return UnitType.ConversionFactor; } }
 
         protected Unit() { }
-        public Unit(IUnitType unitType, double value = 1.0)
+        public Unit(T unitType, double value = 1.0)
         {
             this._unitType = unitType;
             this._measurement = new Measurement(value, unitType.DefaultErrorMargin(value));
         }
-        public Unit(IUnitType unit, Measurement measurement)
+        public Unit(T unit, Measurement measurement)
         {
             this._unitType = unit;
             this._measurement = measurement;
         }
-
-        public Unit(Unit<IUnitType> toCopy)
+        public Unit(T type, Unit unitToConvert)
         {
-            this._unitType = toCopy.UnitType;
+            if (!UnitDimensions.HaveSameDimensions(type.Dimensions, unitToConvert.Dimensions))
+            {
+                throw new Exception("Units do not have the same Dimensions");
+            }
+            this._unitType = type;
+            this._measurement = unitToConvert.ValueInThisUnit(type);
+        }
+
+        public Unit(Unit toCopy)
+        {
+            this._unitType = (T)toCopy.UnitType;
             this._measurement = toCopy.Measurement;
         }
       
@@ -94,12 +105,12 @@ namespace UnitClassLibrary.GenericUnit
 
         public Unit<T> Negate()
         {
-            return new Unit<T>(UnitType, Measurement.Negate());
+            return new Unit<T>((T)UnitType, Measurement.Negate());
         }
 
         public Unit<T> AbsoluteValue()
         {
-            return new Unit<T>(UnitType, Measurement.AbsoluteValue());
+            return new Unit<T>((T)UnitType, Measurement.AbsoluteValue());
         }
 
         override public Unit Multiply(Unit unit)
@@ -144,19 +155,19 @@ namespace UnitClassLibrary.GenericUnit
 
         public Unit<T> Add(Unit<T> unit)
         {
-            return new Unit<T>(this.UnitType, this.Measurement + unit.ValueInThisUnit(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement + unit.ValueInThisUnit(this.UnitType));
         }
         public Unit<T> Subtract(Unit<T> unit)
         {
-            return new Unit<T>(this.UnitType, this.Measurement - unit.ValueInThisUnit(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement - unit.ValueInThisUnit(this.UnitType));
         }
         public Unit<T> Multiply(Measurement scalar)
         {
-            return new Unit<T>(this.UnitType, this.Measurement * scalar);
+            return new Unit<T>((T)this.UnitType, this.Measurement * scalar);
         }
         public Unit<T> Divide(Measurement divisor)
         {
-            return new Unit<T>(this.UnitType, this.Measurement / divisor);
+            return new Unit<T>((T)this.UnitType, this.Measurement / divisor);
         }
 
         

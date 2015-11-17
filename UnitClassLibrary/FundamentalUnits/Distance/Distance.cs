@@ -22,7 +22,7 @@ namespace UnitClassLibrary.DistanceUnit
             : this(new Inch(), _convertArchitectualStringToValueInInches(architectural))
         { }
 
-        public Distance(Unit<DistanceType> unit) : base(unit.UnitType, unit.Measurement)
+        public Distance(Unit<DistanceType> unit) : base(unit)
         {
 
         }

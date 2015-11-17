@@ -18,7 +18,7 @@ namespace UnitClassLibrary.SpeedUnit
         public Speed(SpeedType speedType, Measurement measurement)
             : base(speedType, measurement) { }
 
-        public Speed(Unit<SpeedType> copy) : base(copy.UnitType, copy.Measurement) { }
+        public Speed(Unit<SpeedType> copy) : base(copy) { }
         //public Speed(DerivedUnitType type, Measurement measurement)
         //{
         //    var nums = type.Dimensions.Numerators;

@@ -10,6 +10,10 @@ namespace UnitClassLibrary.AreaUnit
             : base(AreaType,passedDouble)
         {
         }
+        public Area(AreaType type, Unit unitToConvert) : base(type, unitToConvert)
+        {
+
+        }
 
         //private Area(GenericUnit toCopy)
         //    : base(toCopy)

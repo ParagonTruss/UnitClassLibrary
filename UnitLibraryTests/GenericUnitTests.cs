@@ -18,6 +18,9 @@ using UnitClassLibrary.SpeedUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.AreaUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
+using UnitClassLibrary.AngleUnit;
+using UnitClassLibrary.AngleUnit.AngleTypes;
 
 namespace UnitLibraryTests
 {
@@ -97,10 +100,33 @@ namespace UnitLibraryTests
             Distance fiveMeters = new Distance(new Meter(), 5);
             Distance twoMiles = new Distance(new Mile(), 2);
 
-            Unit area =  twoMiles * fiveMeters;
+            Unit area =  twoMiles * fiveMeters;        
             Area acreage = new Area(new Acre(), 3.977);
 
             (area == acreage).Should().BeTrue();
+
+            bool exceptionThrown = false;
+            try
+            {
+                Area areaAsInchesSquared = new Area(new SquareInch(), area);
+            }
+            catch
+            {
+                exceptionThrown = true;
+            }
+            (exceptionThrown).Should().BeFalse();
+
+            Unit notAnArea = area * new Angle(new Radian(), 2);
+            bool exceptionThrown2 = false;
+            try
+            {
+                Area areaAsInchesSquared = new Area(new SquareInch(), notAnArea);
+            }
+            catch
+            {
+                exceptionThrown2 = true;
+            }
+            (exceptionThrown2).Should().BeTrue();
         }
 
         [Test]
