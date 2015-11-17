@@ -10,40 +10,73 @@ namespace UnitClassLibrary.GenericUnit
 {
     public abstract class Unit
     {
-        public abstract IUnitType UnitType { get; }
-        public abstract Measurement Measurement { get; }
-        public UnitDimensions Dimensions { get; }
+        abstract public IUnitType UnitType { get; }
+        abstract public Measurement Measurement { get; }
+
+        public Measurement ValueInThisUnit(IUnitType type)
+        {
+            return this.Measurement * this.UnitType.ConversionFactor / type.ConversionFactor;
+        }
+
+        abstract public Unit Invert();
+        abstract public Unit Multiply(Unit unit);
+        public Unit Divide(Unit unit)
+        {
+            return this.Multiply(unit.Invert());
+        }
+        public static Unit operator *(Unit unit1, Unit unit2)
+        {
+            return unit1.Multiply(unit2);
+        }
+        public static Unit operator /(Unit unit1, Unit unit2)
+        {
+            return unit1.Divide(unit2);
+        }
+        protected static bool _AreEqual(Unit unit1, Unit unit2)
+        {
+            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
+        }
+        public static bool operator ==(Unit unit1, Unit unit2)
+        {
+            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions, unit2.UnitType.Dimensions) && _AreEqual(unit1, unit2);
+        }
+        public static bool operator !=(Unit unit1, Unit unit2)
+        {
+            return !(unit1 == unit2);
+        }
     }
     // This is the class the does the heavy lifting.
     /// <summary>
     /// A generic implementation of all your favorite units.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Unit<T> where T : IUnitType
+    public class Unit<T> : Unit where T : IUnitType
     {
-        public IUnitType UnitType { get; protected set; }
-        public Measurement Measurement { get; private set; }
+        private readonly IUnitType _unitType;
+        private readonly Measurement _measurement;
+        override public IUnitType UnitType { get { return _unitType; } }
+        override public Measurement Measurement { get{ return _measurement; } }
 
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
         public double ConversionFactor { get { return UnitType.ConversionFactor; } }
 
         protected Unit() { }
-        public Unit(IUnitType unitType, double value)
+        public Unit(IUnitType unitType, double value = 1.0)
         {
-            this.UnitType = unitType;
-            this.Measurement = new Measurement(value, unitType.DefaultErrorMargin(value));
+            this._unitType = unitType;
+            this._measurement = new Measurement(value, unitType.DefaultErrorMargin(value));
         }
         public Unit(IUnitType unit, Measurement measurement)
         {
-            this.UnitType = unit;
-            this.Measurement = measurement;
+            this._unitType = unit;
+            this._measurement = measurement;
         }
 
         public Unit(Unit<IUnitType> toCopy)
         {
-            this.UnitType = toCopy.UnitType;
-            this.Measurement = toCopy.Measurement;
+            this._unitType = toCopy.UnitType;
+            this._measurement = toCopy.Measurement;
         }
       
 
@@ -69,18 +102,16 @@ namespace UnitClassLibrary.GenericUnit
             return new Unit<T>(UnitType, Measurement.AbsoluteValue());
         }
 
-        public Unit<DerivedUnitType> Multiply(Unit<IUnitType> unit)
+        override public Unit Multiply(Unit unit)
         {
             var type = DerivedUnitType.Multiply(this.UnitType, unit.UnitType);
 
             return new Unit<DerivedUnitType>(type, this.Measurement*unit.Measurement);
         }
 
-        public Unit<DerivedUnitType> Divide(Unit<IUnitType> unit)
+        override public Unit Invert()
         {
-            var type = DerivedUnitType.Divide(this.UnitType, unit.UnitType);
-
-            return new Unit<DerivedUnitType>(type, this.Measurement / unit.Measurement);
+            throw new NotImplementedException();
         }
 
         public Unit<DerivedUnitType> ToThe(int power)
@@ -160,7 +191,7 @@ namespace UnitClassLibrary.GenericUnit
             try
             {
                 Unit<T> unit = (Unit<T>)other;
-                return Unit<T>._areEqual(this, unit);
+                return Unit<T>._AreEqual(this, unit);
             }
             catch
             {
@@ -168,11 +199,6 @@ namespace UnitClassLibrary.GenericUnit
 
                 return false;
             }
-        }
-
-        private static bool _areEqual(Unit<T> unit1, Unit<T> unit2)
-        {
-            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
         }
 
         public int CompareTo(Unit<T> other)
@@ -250,6 +276,7 @@ namespace UnitClassLibrary.GenericUnit
         {
             return !(unit1 == unit2);
         }
+
         #endregion
     }
 

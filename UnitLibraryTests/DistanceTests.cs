@@ -248,10 +248,10 @@ namespace UnitLibraryTests
         [Test()]
         public void Distance_Incrementing()
         {
-            Unit<IDistanceType> d1 = new Unit<IDistanceType>(new Inch(), 2);
-            Unit<IDistanceType> d2 = new Unit<IDistanceType>(new Millimeter(), 2);
+            Unit<DistanceType> d1 = new Unit<DistanceType>(new Inch(), 2);
+            Unit<DistanceType> d2 = new Unit<DistanceType>(new Millimeter(), 2);
             //StronglyTypedUnit<ITimeUnit> t1 = new StronglyTypedUnit<ITimeUnit>(new Inch(), 2);
-            Unit<ITimeType> t1 = new Unit<ITimeType>(new Second(), 2);
+            Unit<TimeType> t1 = new Unit<TimeType>(new Second(), 2);
             Unit<IUnitType> u1= new Unit<IUnitType>(new Inch(), 2);
             Unit<IUnitType> u2 = new Unit<IUnitType>(new Second(), 2);
            var result = u1 + u2;

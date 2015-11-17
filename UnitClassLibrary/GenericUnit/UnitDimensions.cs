@@ -1,21 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnitClassLibrary.AngleUnit.AngleTypes;
+using UnitClassLibrary.DistanceUnit.DistanceTypes;
+using UnitClassLibrary.ForceUnit;
+using UnitClassLibrary.TemperatureUnit;
+using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.GenericUnit
 {
     public sealed class UnitDimensions
     {
         private double _scale;
-        private List<FundamentalUnitType> _numerators;
-        private List<FundamentalUnitType> _denominators;
+        private List<FundamentalUnitType> _numerators = new List<FundamentalUnitType>();
+        private List<FundamentalUnitType> _denominators = new List<FundamentalUnitType>();
 
+        public double Scale { get { return _scale; } }
+        public List<FundamentalUnitType> Numerators { get { return _numerators; } }
+        public List<FundamentalUnitType> Denominators { get { return _denominators; } }
         public double ConversionFactor
         {
             get
             {
-                double result = _numerators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
-                result /= _denominators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+                double result = _scale;
+                if (_numerators.Count != 0)
+                {
+                    result *= _numerators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+                }
+                if (_denominators.Count != 0)
+                {
+                    result /= _denominators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+                }
                 return result;
             }
         }
@@ -33,7 +48,8 @@ namespace UnitClassLibrary.GenericUnit
 
         public string AsStringSingular()
         {
-            string result = _numerators.Select(u => u.AsStringSingular).Aggregate((s, t) => s + "-" + t);
+            string result = _scale.ToString() + " ";
+            result += _numerators.Select(u => u.AsStringSingular).Aggregate((s, t) => s + "-" + t);
             result += " over " + _denominators.Select(u => u.AsStringSingular).Aggregate((s, t) => s + "-" + t);
             return result;
         }
@@ -44,29 +60,26 @@ namespace UnitClassLibrary.GenericUnit
         public UnitDimensions()
         {
             this._scale = 1.0;
-            this._numerators = new List<FundamentalUnitType>();
-            this._denominators = new List<FundamentalUnitType>();
         }
 
         public UnitDimensions(double scale, FundamentalUnitType numerator, FundamentalUnitType denominator = null)
         {
             this._scale = scale;
-            this._numerators = new List<FundamentalUnitType>() { numerator };
-            if (denominator == null)
+            this._numerators.Add(numerator);
+            if (denominator != null)
             {
-                this._denominators = new List<FundamentalUnitType>();
-            }
-            else
-            {
-                this._denominators = new List<FundamentalUnitType>() { denominator };
+                this._denominators.Add(denominator);
             }
         }
 
         public UnitDimensions(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
         {
             this._scale = scale;
-            this._numerators = numerators.ToList();
-            this._denominators = denominators.ToList();
+            this._numerators.AddRange(numerators);
+            if (denominators != null)
+            {
+                this._denominators.AddRange(denominators);
+            }
         }
 
         public UnitDimensions(List<AbstractDerivedUnitType> numerators, List<AbstractDerivedUnitType> denominators = null, double scale = 1.0)
@@ -94,7 +107,58 @@ namespace UnitClassLibrary.GenericUnit
 
         public static bool HaveSameDimensions(UnitDimensions dim1, UnitDimensions dim2)
         {
-            throw new NotImplementedException();
+            int[] count1 = dim1._countUnits();
+            int[] count2 = dim2._countUnits();
+            for (int i = 0; i < count1.Length; i++)
+            {
+                if (count1[i] != count2[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private int[] _countUnits()
+        {
+            int[] num = _countUnits(_numerators);
+            int[] denom = _countUnits(_denominators);
+            int[] result = new int[num.Length];
+            for (int i = 0; i < num.Length; i++)
+            {
+                result[i] = num[i] - denom[i];
+            }
+            return result;
+        }
+
+        private int[] _countUnits(List<FundamentalUnitType> units)
+        {
+            int angleCount = 0, distanceCount = 0, forceCount = 0,  tempCount = 0, timeCount = 0;
+            int[] result = new int[] { angleCount, distanceCount, forceCount,  tempCount, timeCount };
+            foreach(var unit in units)
+            {
+                if (unit is AngleType)
+                {
+                   angleCount++;
+                }
+                else if (unit is ForceType)
+                {
+                    forceCount++;
+                }
+                else if (unit is DistanceType)
+                {
+                    distanceCount++;
+                }
+                else if (unit is TemperatureType)
+                {
+                    tempCount++;
+                }
+                else if (unit is TimeType)
+                {
+                    timeCount++;
+                }
+            }
+            return result;
         }
 
         internal UnitDimensions Multiply(UnitDimensions dimensions)

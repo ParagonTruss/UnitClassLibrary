@@ -15,6 +15,9 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.SpeedUnit.SpeedTypes;
 using UnitClassLibrary.SpeedUnit;
+using UnitClassLibrary.DistanceUnit;
+using UnitClassLibrary.AreaUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
 
 namespace UnitLibraryTests
 {
@@ -77,20 +80,27 @@ namespace UnitLibraryTests
         [Test()]
         public void MultiDimensionalUnit()
         {
-            // these don't compile : 
+            Distance distance = new Distance(new Inch(), 4);
+            Time time = new Time(new Second(), 33);
+            Unit result = distance / time;
+            Speed speed1 = new Speed(new InchPerSecond(), 4.0/33.0);
+            Speed speed2 = speed1;
 
-            // arrange
-            //Time inchTime = new Time(new Inch(), 14.1875);
-            //Time architecturalTime = new Time("1'2 3/16\"");
+            (speed1 == result).Should().BeTrue();
+            (speed1 == speed2).Should().BeTrue();
 
-            //// act
-            //Time subtractionTime = inchTime - architecturalTime;
-            //Time additionTime = inchTime + architecturalTime;
+        }
 
-            //// assert
-            //subtractionTime.Equals(new Time(new Inch(), 0)).Should().BeTrue();
-            //additionTime.Equals(new Time(new Millimeter(), 720.725)).Should().BeTrue();
-            //additionTime.Architectural.Should().Be("2'4 6/16\"");
+        [Test()]
+        public void DerivedUnits_Multiplication()
+        {
+            Distance fiveMeters = new Distance(new Meter(), 5);
+            Distance twoMiles = new Distance(new Mile(), 2);
+
+            Unit area = twoMiles * fiveMeters;
+            Area acreage = new Area(new Acre(), 3.977);
+
+            (area == acreage).Should().BeTrue();
         }
 
         [Test]
