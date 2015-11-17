@@ -97,7 +97,7 @@ namespace UnitLibraryTests
             Distance fiveMeters = new Distance(new Meter(), 5);
             Distance twoMiles = new Distance(new Mile(), 2);
 
-            Unit area = twoMiles * fiveMeters;
+            Unit area =  twoMiles * fiveMeters;
             Area acreage = new Area(new Acre(), 3.977);
 
             (area == acreage).Should().BeTrue();
