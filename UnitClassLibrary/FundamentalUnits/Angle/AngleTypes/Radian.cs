@@ -7,15 +7,12 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
 {
     public class Radian : AngleType
     {
-        override public string AsStringPlural
+        override public string AsStringPlural()
         {
-            get
-            {
-                return "Radians";
-            }
+            return "Radians";
         }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
             get
             {

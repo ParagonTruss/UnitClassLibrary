@@ -7,13 +7,12 @@ namespace UnitClassLibrary.GenericUnit
     public interface IUnitType
     {
         double ConversionFactor { get; }
-    
-        string AsStringSingular { get; }
-        string AsStringPlural { get; }
-
         UnitDimensions Dimensions { get; }
 
         double DefaultErrorMargin(double intrinsicValue);
+
+        string AsStringSingular();
+        string AsStringPlural();      
     }
    
     public abstract class FundamentalUnitType : IUnitType
@@ -21,10 +20,14 @@ namespace UnitClassLibrary.GenericUnit
         public abstract double DefaultErrorMargin_ { get; }
         public abstract double ConversionFactor { get; }
 
-        abstract public string AsStringSingular { get; }
-        abstract public string AsStringPlural { get; }
+        abstract public string Type { get; }
+        abstract public string AsStringSingular();
+        public virtual string AsStringPlural()
+        {
+            return AsStringSingular() + "s";
+        }
 
-      public UnitDimensions Dimensions { get { return new UnitDimensions(1.0, this); } }
+        public UnitDimensions Dimensions { get { return new UnitDimensions(1.0, this); } }
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
@@ -49,15 +52,20 @@ namespace UnitClassLibrary.GenericUnit
             }
         }
      
-      public virtual string AsStringSingular
-        { get { return Dimensions.AsStringSingular(); } }
+        public virtual string AsStringSingular()
+        { return Dimensions.AsStringSingular(); } 
 
-        public virtual string AsStringPlural
-        { get { return Dimensions.AsStringPlural(); } }
+        public virtual string AsStringPlural()
+        { return Dimensions.AsStringPlural(); } 
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
             return Dimensions.DefaultErrorMargin(intrinsicValue);
+        }
+
+        public override string ToString()
+        {
+            return this.Dimensions.ToString();
         }
     }
 
@@ -68,12 +76,16 @@ namespace UnitClassLibrary.GenericUnit
 
         public DerivedUnitType(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
             : this(new UnitDimensions(scale, numerators, denominators)) { }
-
+        public DerivedUnitType(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null) 
+        {
+            this._dimensions = new UnitDimensions(scale, numerators, denominators);
+        }
         public DerivedUnitType(UnitDimensions dimensions)
         {
             this._dimensions = dimensions;
         }
 
+        #region Static Methods
         public static DerivedUnitType Multiply(IUnitType type1, IUnitType type2)
         {
             return new DerivedUnitType(type1.Dimensions.Multiply(type2.Dimensions));    
@@ -84,11 +96,12 @@ namespace UnitClassLibrary.GenericUnit
             return new DerivedUnitType(type1.Dimensions.Divide(type2.Dimensions));
         }
 
-        internal static DerivedUnitType Power(IUnitType unitType, int power)
+        public static DerivedUnitType Power(IUnitType unitType, int power)
         {
             return new DerivedUnitType(unitType.Dimensions.ToThe(power));
         }
+        #endregion
     }
 
-   
+
 } 

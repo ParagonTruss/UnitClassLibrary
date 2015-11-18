@@ -27,6 +27,7 @@ namespace UnitClassLibrary.GenericUnit
         {
             return this.Multiply(unit.Invert());
         }
+
         public static Unit operator *(Unit unit1, Unit unit2)
         {
             return unit1.Multiply(unit2);
@@ -84,7 +85,7 @@ namespace UnitClassLibrary.GenericUnit
             this._measurement = unitToConvert.ValueInThisUnit(type);
         }
 
-        public Unit(Unit toCopy)
+        public Unit(Unit<T> toCopy)
         {
             this._unitType = (T)toCopy.UnitType;
             this._measurement = toCopy.Measurement;
@@ -122,44 +123,32 @@ namespace UnitClassLibrary.GenericUnit
 
         override public Unit Invert()
         {
-            throw new NotImplementedException();
+            return new Unit<DerivedUnitType>(new DerivedUnitType(Dimensions.Invert()), 1.0 / Measurement);
         }
 
         public Unit<DerivedUnitType> ToThe(int power)
         {
             var type = DerivedUnitType.Power(this.UnitType, power);
             return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
-            //var numerators = new List<FundamentalUnitType>();
-            //var denominators = new List<FundamentalUnitType>();
-            //if (power > 0)
-            //{
-            //    for (int i = 0; i < power; i++)
-            //    {
-            //        numerators.AddRange(this.UnitType.Numerators);
-            //        denominators.AddRange(this.UnitType.Denominators);
-            //    }
-            //}
-            //else if (power < 0)
-            //{
-            //    for (int i = 0; i < -1*power; i++)
-            //    {
-            //        numerators.AddRange(this.UnitType.Denominators);
-            //        denominators.AddRange(this.UnitType.Numerators);
-            //    }
-            //}
-
-            //IUnitType type = new DerivedUnitType(numerators, denominators);
-
-            //return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
         }
 
         public Unit<T> Add(Unit<T> unit)
         {
             return new Unit<T>((T)this.UnitType, this.Measurement + unit.ValueInThisUnit(this.UnitType));
         }
+        public Unit<T> Add(Unit unit)
+        {
+            Unit<T> conversion = new Unit<T>((T)this.UnitType, unit);
+            return new Unit<T>((T)this.UnitType, this.Measurement + conversion.Measurement);
+        }
         public Unit<T> Subtract(Unit<T> unit)
         {
             return new Unit<T>((T)this.UnitType, this.Measurement - unit.ValueInThisUnit(this.UnitType));
+        }
+        public Unit<T> Subtract(Unit unit)
+        {
+            Unit<T> conversion = new Unit<T>((T)this.UnitType, unit);
+            return new Unit<T>((T)this.UnitType, this.Measurement - conversion.Measurement);
         }
         public Unit<T> Multiply(Measurement scalar)
         {
@@ -176,6 +165,10 @@ namespace UnitClassLibrary.GenericUnit
         #region Overrides
         public override string ToString()
         {
+            if (UnitType is DerivedUnitType)
+            {
+                return IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnit() + "s";
+            }
             if (this.Measurement == 1)
             {
                 return String.Format("{0} {1}", 1, this.UnitType.AsStringSingular);
@@ -239,7 +232,23 @@ namespace UnitClassLibrary.GenericUnit
         {
             return unit1.Add(unit2);
         }
+        public static Unit<T> operator +(Unit unit1, Unit<T> unit2)
+        {
+            return unit2.Add(unit1);
+        }
+        public static Unit<T> operator +(Unit<T> unit1, Unit unit2)
+        {
+            return unit1.Add(unit2);
+        }
         public static Unit<T> operator -(Unit<T> unit1, Unit<T> unit2)
+        {
+            return unit1.Subtract(unit2);
+        }
+        public static Unit<T> operator -(Unit unit1, Unit<T> unit2)
+        {
+            return unit2.Negate().Add(unit1);
+        }
+        public static Unit<T> operator -(Unit<T> unit1, Unit unit2)
         {
             return unit1.Subtract(unit2);
         }

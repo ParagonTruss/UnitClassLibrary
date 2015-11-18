@@ -88,7 +88,6 @@
     <Compile Include="FundamentalUnits\Distance\Distance_Architectural.cs" />
     <Compile Include="FundamentalUnits\Force\Force.cs" />
     <Compile Include="FundamentalUnits\Force\ForceType.cs" />
-    <Compile Include="FundamentalUnits\Force\FundamentalUnit.cs" />
     <Compile Include="FundamentalUnits\Force\MetricTonne.cs" />
     <Compile Include="FundamentalUnits\Force\Newton.cs" />
     <Compile Include="FundamentalUnits\Force\Pound.cs" />

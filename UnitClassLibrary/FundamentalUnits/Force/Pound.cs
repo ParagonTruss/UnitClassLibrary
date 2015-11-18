@@ -6,22 +6,12 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.ForceUnit
 {
-    public class Pound : FundamentalUnitType
+    public class Pound : ForceType
     {
-        public override string AsStringPlural
-        {
-            get
-            {
-                return "Pounds";
-            }
-        }
 
-        public override string AsStringSingular
-        {
-            get
-            {
-                return "Pound";
-            }
+        public override string AsStringSingular()
+        {     
+            return "Pound";
         }
 
         public override double ConversionFactor

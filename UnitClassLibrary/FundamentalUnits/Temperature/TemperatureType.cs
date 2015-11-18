@@ -8,5 +8,9 @@ namespace UnitClassLibrary.TemperatureUnit
 {
     abstract public class TemperatureType : FundamentalUnitType
     {
+        public override string Type
+        {
+           get { return typeof(TemperatureType).ToString(); }
+        }
     }
 }

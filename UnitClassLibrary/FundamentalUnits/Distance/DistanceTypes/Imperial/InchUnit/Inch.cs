@@ -4,20 +4,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
     public class Inch : DistanceType
     {
-        override public string AsStringPlural
+        override public string AsStringPlural()
         {
-            get
-            {
-                return "Inches";
-            }
+            return "Inches";
         }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Inch";
-            }
+            return "Inch";
         }
 
         override public double ConversionFactor

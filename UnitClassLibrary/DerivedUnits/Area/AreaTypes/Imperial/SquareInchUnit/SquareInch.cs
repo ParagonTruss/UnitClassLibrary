@@ -8,8 +8,8 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit
     public class SquareInch : AreaType
     {
         
-        public override string AsStringPlural { get { return "Square Inches"; } }
-        public override string AsStringSingular { get { return "Square Inch"; } }
+        public override string AsStringPlural(){ return "Square Inches"; } 
+        public override string AsStringSingular() { return "Square Inch"; }
 
         public override UnitDimensions Dimensions
         {

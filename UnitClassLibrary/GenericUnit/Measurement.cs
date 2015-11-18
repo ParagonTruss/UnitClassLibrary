@@ -89,6 +89,7 @@ namespace UnitClassLibrary.GenericUnit
             return Math.Abs(this.Value - m.Value) <= (this.ErrorMargin + m.ErrorMargin);
         }
 
+        #region Operator Overloads
         public static Measurement operator +(Measurement m1, Measurement m2)
         {
             return m1.Add(m2);
@@ -137,5 +138,13 @@ namespace UnitClassLibrary.GenericUnit
         {
             return m1 > m2 || m1 == m2;
         }
+        #endregion
+
+        #region Overrides
+        public override string ToString()
+        {
+            return String.Format("{0} {1} {2}", this.Value, "\u00B1", this.ErrorMargin);
+        }
+        #endregion
     }
 }

@@ -102,7 +102,7 @@ namespace UnitLibraryTests
 
             Unit area =  twoMiles * fiveMeters;        
             Area acreage = new Area(new Acre(), 3.977);
-
+            Unit addition = area + acreage;
             (area == acreage).Should().BeTrue();
 
             bool exceptionThrown = false;
@@ -130,10 +130,13 @@ namespace UnitLibraryTests
         }
 
         [Test]
-        public void CompositeUnit()
+        public void DerivedUnit_Constructors()
         {
-            // These don't compile :
+            DerivedUnitType type = new DerivedUnitType(1.0, new List<IUnitType>() { new InchPerSecond(), new Minute() });
+            Unit unit = new Unit<DerivedUnitType>(type, 34);
 
+            string str = type.AsStringSingular;
+            Assert.Pass();
             //Time kilometerTime = new Time(new Kilometer(), 1);
 
             //(kilometerTime == new Time(new Millimeter(), 1000000)).Should().BeTrue();

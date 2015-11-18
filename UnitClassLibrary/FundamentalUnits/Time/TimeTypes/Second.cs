@@ -4,20 +4,10 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Second : TimeType
     {
-        override public string AsStringPlural
-        {
-            get
-            {
-                return "Seconds";
-            }
-        }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Second";
-            }
+            return "Second";
         }
 
         override public double ConversionFactor

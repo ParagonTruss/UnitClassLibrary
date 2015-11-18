@@ -9,20 +9,14 @@ namespace UnitClassLibrary.FundamentalUnits.Temperature
 {
     public class Kelvin : TemperatureType
     {
-        public override string AsStringPlural
+        public override string AsStringPlural()
         {
-            get
-            {
-                return "Kelvin";
-            }
+            return "Kelvin";
         }
 
-        public override string AsStringSingular
+        public override string AsStringSingular()
         {
-            get
-            {
-                return "Kelvin";
-            }
+            return "Kelvin";
         }
 
         public override double ConversionFactor

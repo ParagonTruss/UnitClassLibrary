@@ -5,20 +5,10 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : DistanceType
     {
-        override public string AsStringPlural
-        {
-            get
-            {
-                return "Millimeters";
-            }
-        }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Millimeter";
-            }
+            return "Millimeter";
         }
 
         override public double ConversionFactor
@@ -36,24 +26,6 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
             {
                 return new Inch().DefaultErrorMargin_ / ConversionFactor;
             }
-        }
-
-        public override string ToString()
-        {
-
-            return ToStringPlural();
-
-
-        }
-
-        public string ToStringPlural()
-        {
-            return "Millimeters";
-        }
-
-        public string ToStringSingular()
-        {
-            return "Millimeter";
         }
     }
 

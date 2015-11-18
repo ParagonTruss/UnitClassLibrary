@@ -4,27 +4,17 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Minute : TimeType
     {
-        override public string AsStringPlural
-        {
-            get
-            {
-                return "Minutes";
-            }
-        }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Minute";
-            }
+            return "Minute";
         }
 
         override public double ConversionFactor
         {
             get
             {
-                return 0.0166666666666667D;
+                return 60;
             }
         }
 

@@ -6,22 +6,12 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.ForceUnit
 {
-    public class Newton : FundamentalUnitType
+    public class Newton : ForceType
     {
-        public override string AsStringPlural
-        {
-            get
-            {
-                return "Newtons";
-            }
-        }
 
-        public override string AsStringSingular
+        public override string AsStringSingular()
         {
-            get
-            {
-                return "Newton";
-            }
+            return "Newton";
         }
 
         public override double ConversionFactor

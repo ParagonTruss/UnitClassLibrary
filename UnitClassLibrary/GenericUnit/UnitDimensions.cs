@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnitClassLibrary.AngleUnit;
 using UnitClassLibrary.AngleUnit.AngleTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.ForceUnit;
@@ -11,6 +12,14 @@ namespace UnitClassLibrary.GenericUnit
 {
     public sealed class UnitDimensions
     {
+        public static readonly string[] FundamentalTypes =
+            new string[] {
+            typeof(AngleType).ToString(),
+            typeof(DistanceType).ToString(),
+            typeof(ForceType).ToString(),
+            typeof(TemperatureType).ToString(),
+            typeof(TimeType).ToString() };
+
         private double _scale;
         private List<FundamentalUnitType> _numerators = new List<FundamentalUnitType>();
         private List<FundamentalUnitType> _denominators = new List<FundamentalUnitType>();
@@ -37,7 +46,7 @@ namespace UnitClassLibrary.GenericUnit
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
-            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin_);
+            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin_)/ intrinsicValue;
             percentageError += _denominators.Sum(u => u.DefaultErrorMargin_);
             if (percentageError < 0.001)
             {
@@ -48,15 +57,38 @@ namespace UnitClassLibrary.GenericUnit
 
         public string AsStringSingular()
         {
-            string result = _scale.ToString() + " ";
-            result += _numerators.Select(u => u.AsStringSingular).Aggregate((s, t) => s + "-" + t);
-            result += " over " + _denominators.Select(u => u.AsStringSingular).Aggregate((s, t) => s + "-" + t);
+            string result = _scale.ToString() + "-" + JustTheUnit();
+            return result;         
+        }
+
+        internal string JustTheUnit()
+        {
+            string result = "";
+            if (_numerators.Count != 0)
+            {
+                result += _numerators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+            }
+            if (_denominators.Count != 0)
+            {
+                result += " over " + _denominators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+            }
             return result;
         }
 
         public string AsStringPlural()
-        { throw new NotImplementedException(); }
+        { return AsStringSingular() + "s"; }
 
+        public override string ToString()
+        {
+            if (_scale == 1)
+            {
+                return AsStringSingular();
+            }
+            else
+            {
+                return AsStringPlural();
+            }
+        }
         public UnitDimensions()
         {
             this._scale = 1.0;
@@ -82,12 +114,7 @@ namespace UnitClassLibrary.GenericUnit
             }
         }
 
-        internal static bool HaveSameDimensions(object dimensions)
-        {
-            throw new NotImplementedException();
-        }
-
-        public UnitDimensions(List<AbstractDerivedUnitType> numerators, List<AbstractDerivedUnitType> denominators = null, double scale = 1.0)
+        public UnitDimensions(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null)
         {
             this._scale = scale;
             this._numerators = new List<FundamentalUnitType>();
@@ -97,17 +124,48 @@ namespace UnitClassLibrary.GenericUnit
                 this._numerators.AddRange(unitType.Dimensions._numerators);
                 this._denominators.AddRange(unitType.Dimensions._denominators);
             }
-            foreach (var unitType in denominators)
+            if (denominators != null)
             {
-                this._numerators.AddRange(unitType.Dimensions._denominators);
-                this._denominators.AddRange(unitType.Dimensions._numerators);
+                foreach (var unitType in denominators)
+                {
+                    this._numerators.AddRange(unitType.Dimensions._denominators);
+                    this._denominators.AddRange(unitType.Dimensions._numerators);
+                }
             }
             _cancelUnits();
         }
 
         private void _cancelUnits()
         {
-            //ToDo:
+            var fundamentalTypes = FundamentalTypes;
+            var numCount = _countUnits(_numerators);
+            var denomCount = _countUnits(_denominators);
+          
+            for (int i = 0; i < fundamentalTypes.Length; i++)
+            {
+                var n = Math.Min(numCount[i], denomCount[i]);
+                if (n != 0)
+                {
+                    var nums = _numerators.Where(u => u.Type == fundamentalTypes[i]).Take(n);
+                    var num = nums.Select(u => u.ConversionFactor).Aggregate((u,v) => u* v);
+                    var denoms = _denominators.Where(u => u.Type == fundamentalTypes[i]).Take(n);
+                    var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
+
+                    this._scale *= num / denom;
+                    foreach(var item in nums)
+                    {
+                        this._numerators.Remove(item);
+                    }
+                    foreach (var item in denoms)
+                    {
+                        this._denominators.Remove(item);
+                    }
+                }
+              
+                
+            }
+            
+         
         }
 
         public static bool HaveSameDimensions(UnitDimensions dim1, UnitDimensions dim2)
@@ -138,32 +196,13 @@ namespace UnitClassLibrary.GenericUnit
 
         private int[] _countUnits(List<FundamentalUnitType> units)
         {
-            int angleCount = 0, distanceCount = 0, forceCount = 0,  tempCount = 0, timeCount = 0;
-            foreach(var unit in units)
+            int[] results = new int[FundamentalTypes.Length];
+            for (int i = 0; i < FundamentalTypes.Length; i++)
             {
-                if (unit is AngleType)
-                {
-                   angleCount++;
-                }
-                else if (unit is ForceType)
-                {
-                    forceCount++;
-                }
-                else if (unit is DistanceType)
-                {
-                    distanceCount++;
-                }
-                else if (unit is TemperatureType)
-                {
-                    tempCount++;
-                }
-                else if (unit is TimeType)
-                {
-                    timeCount++;
-                }
+                results[i] = units.Count(u => u.Type == FundamentalTypes[i]);
             }
-            int[] result = new int[] { angleCount, distanceCount, forceCount, tempCount, timeCount };
-            return result;
+            
+            return results;
         }
 
         public UnitDimensions Multiply(UnitDimensions dimensions)
@@ -204,7 +243,7 @@ namespace UnitClassLibrary.GenericUnit
             return result;
         }
 
-        private UnitDimensions Invert()
+        public UnitDimensions Invert()
         {
             return new UnitDimensions(1 / _scale, _denominators, _numerators);
         }

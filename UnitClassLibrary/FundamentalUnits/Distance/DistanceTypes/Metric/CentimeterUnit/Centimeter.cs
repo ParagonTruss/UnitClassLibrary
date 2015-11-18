@@ -5,20 +5,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
     public class Centimeter : DistanceType
     {
-        override public string AsStringPlural
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Centimeters";
-            }
-        }
-
-        override public string AsStringSingular
-        {
-            get
-            {
-                return "Centimeter";
-            }
+            return "Centimeter";
         }
 
         override public double ConversionFactor

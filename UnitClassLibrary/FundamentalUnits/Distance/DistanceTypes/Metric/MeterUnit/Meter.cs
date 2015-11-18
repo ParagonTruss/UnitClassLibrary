@@ -5,20 +5,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
 {
     public class Meter : DistanceType
     {
-        override public string AsStringPlural
+        public override string AsStringSingular()
         {
-            get
-            {
-                return "Meters";
-            }
-        }
-
-        override public string AsStringSingular
-        {
-            get
-            {
-                return "Meter";
-            }
+            return "Meter";
         }
 
         override public double ConversionFactor

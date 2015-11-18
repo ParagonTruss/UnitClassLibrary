@@ -5,20 +5,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
     public class Foot : DistanceType
     {
-        override public string AsStringPlural
+        override public string AsStringPlural()
         {
-            get
-            {
-                return "Feet";
-            }
+            return "Feet";
         }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Foot";
-            }
+            return "Foot";
         }
 
         override public double ConversionFactor
