@@ -9,20 +9,14 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public class InchPerSecond : SpeedType
     {
-        public string AsStringPlural
+        public string AsStringPlural()
         {
-            get
-            {
-                return "Inches per Second";
-            }
+            return "Inches per Second";
         }
 
-        public string AsStringSingular
+        public string AsStringSingular()
         {
-            get
-            {
-                return "Inch per Second";
-            }
+            return "Inch per Second";
         }
 
         public override UnitDimensions Dimensions

@@ -5,20 +5,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 {
     public class Yard : DistanceType
     {
-        override public string AsStringPlural
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Yards";
-            }
-        }
-
-        override public string AsStringSingular
-        {
-            get
-            {
-                return "Yard";
-            }
+            return "Yard";
         }
 
         override public double ConversionFactor

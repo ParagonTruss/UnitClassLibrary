@@ -21,8 +21,8 @@ namespace UnitClassLibrary.GenericUnit
             typeof(TimeType).ToString() };
 
         private double _scale;
-        private List<FundamentalUnitType> _numerators = new List<FundamentalUnitType>();
-        private List<FundamentalUnitType> _denominators = new List<FundamentalUnitType>();
+        private List<FundamentalUnitType> _numerators;
+        private List<FundamentalUnitType> _denominators;
 
         public double Scale { get { return _scale; } }
         public List<FundamentalUnitType> Numerators { get { return _numerators; } }
@@ -57,11 +57,11 @@ namespace UnitClassLibrary.GenericUnit
 
         public string AsStringSingular()
         {
-            string result = _scale.ToString() + "-" + JustTheUnit();
+            string result = _scale.ToString() + "-" + JustTheUnitAsString();
             return result;         
         }
 
-        internal string JustTheUnit()
+        internal string JustTheUnitAsString()
         {
             string result = "";
             if (_numerators.Count != 0)
@@ -89,14 +89,18 @@ namespace UnitClassLibrary.GenericUnit
                 return AsStringPlural();
             }
         }
-        public UnitDimensions()
+        public UnitDimensions(bool b = true)
         {
             this._scale = 1.0;
+            _numerators = new List<FundamentalUnitType>();
+            _denominators = new List<FundamentalUnitType>();
         }
 
         public UnitDimensions(double scale, FundamentalUnitType numerator, FundamentalUnitType denominator = null)
         {
             this._scale = scale;
+            _numerators = new List<FundamentalUnitType>();
+            _denominators = new List<FundamentalUnitType>();
             this._numerators.Add(numerator);
             if (denominator != null)
             {
@@ -107,6 +111,8 @@ namespace UnitClassLibrary.GenericUnit
         public UnitDimensions(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
         {
             this._scale = scale;
+            _numerators = new List<FundamentalUnitType>();
+            _denominators = new List<FundamentalUnitType>();
             this._numerators.AddRange(numerators);
             if (denominators != null)
             {

@@ -15,7 +15,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
             }
         }
 
-        public string AsStringPlural { get { return "Acres"; } }
-        public string AsStringSingular { get { return "Acre"; } }      
+        public string AsStringPlural(){ return "Acres"; } 
+        public string AsStringSingular() { return "Acre"; }      
     }
 }

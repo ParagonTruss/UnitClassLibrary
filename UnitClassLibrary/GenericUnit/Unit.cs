@@ -167,11 +167,11 @@ namespace UnitClassLibrary.GenericUnit
         {
             if (UnitType is DerivedUnitType)
             {
-                return IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnit() + "s";
+                return IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnitAsString() + "s";
             }
             if (this.Measurement == 1)
             {
-                return String.Format("{0} {1}", 1, this.UnitType.AsStringSingular);
+                return String.Format("{0} {1}", 1, this.UnitType.AsStringSingular());
             }
 
             int digits = 0;
@@ -183,7 +183,7 @@ namespace UnitClassLibrary.GenericUnit
                 roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
             }
 
-            return String.Format("{0} {1}", roundedIntrinsicValue, this.UnitType.AsStringPlural);
+            return String.Format("{0} {1}", roundedIntrinsicValue, this.UnitType.AsStringPlural());
         }
 
         public override bool Equals(object other)

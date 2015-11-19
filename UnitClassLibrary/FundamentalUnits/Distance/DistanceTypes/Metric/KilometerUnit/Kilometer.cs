@@ -5,20 +5,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
     public class Kilometer : DistanceType
     {
-        override public string AsStringPlural
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Kilometers";
-            }
-        }
-
-        override public string AsStringSingular
-        {
-            get
-            {
-                return "Kilometer";
-            }
+            return "Kilometer";
         }
 
         override public double ConversionFactor

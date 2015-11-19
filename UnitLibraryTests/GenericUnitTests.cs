@@ -135,7 +135,7 @@ namespace UnitLibraryTests
             DerivedUnitType type = new DerivedUnitType(1.0, new List<IUnitType>() { new InchPerSecond(), new Minute() });
             Unit unit = new Unit<DerivedUnitType>(type, 34);
 
-            string str = type.AsStringSingular;
+            string str = type.AsStringSingular();
             Assert.Pass();
             //Time kilometerTime = new Time(new Kilometer(), 1);
 
@@ -150,6 +150,17 @@ namespace UnitLibraryTests
         }
 
 
+        [Test()]
+        public void DerivedUnits_PerformanceTest()
+        {
+            Time oneSecond = new Time(new Minute(), 1);
+            Unit result = oneSecond;
 
+            for (int i = 0; i < 10000; i++)
+            {
+                result *= oneSecond;
+            }
+            (result.ConversionFactor).Should().Be(Math.Pow(60, 10001));
+        }
     }
 }

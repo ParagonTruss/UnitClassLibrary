@@ -14,10 +14,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
 
         override public string AsStringSingular()
         {
-            get
-            {
-                return "Radian";
-            }
+            return "Radian";
         }
 
         override public double ConversionFactor

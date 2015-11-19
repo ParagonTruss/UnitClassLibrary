@@ -5,20 +5,10 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 {
     public class Mile : DistanceType
     {
-        override public string AsStringPlural
-        {
-            get
-            {
-                return "Miles";
-            }
-        }
 
-        override public string AsStringSingular
+        override public string AsStringSingular()
         {
-            get
-            {
-                return "Mile";
-            }
+            return "Mile";
         }
 
         override public double ConversionFactor
