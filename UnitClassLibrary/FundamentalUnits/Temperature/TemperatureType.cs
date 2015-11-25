@@ -10,7 +10,7 @@ namespace UnitClassLibrary.TemperatureUnit
     {
         public override string Type
         {
-           get { return typeof(TemperatureType).ToString(); }
+           get { return nameof(TemperatureType); }
         }
     }
 }

@@ -6,7 +6,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
     {
         public override string Type
         {
-            get { return typeof(TimeType).ToString(); }
+            get { return nameof(TimeType); }
         }
     }
 }

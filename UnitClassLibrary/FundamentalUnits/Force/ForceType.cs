@@ -10,7 +10,7 @@ namespace UnitClassLibrary.ForceUnit
     {
         public override string Type
         {
-           get { return typeof(ForceType).ToString(); }
+           get { return nameof(ForceType); }
         }
     }
 }

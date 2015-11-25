@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.GenericUnit
 {
@@ -27,7 +28,12 @@ namespace UnitClassLibrary.GenericUnit
             return AsStringSingular() + "s";
         }
 
-        public UnitDimensions Dimensions { get { return new UnitDimensions(1.0, this); } }
+        public UnitDimensions Dimensions { get { return _unitDimensions(); } }
+
+        private UnitDimensions _unitDimensions()
+        {
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { this });
+        }
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
@@ -72,8 +78,13 @@ namespace UnitClassLibrary.GenericUnit
     public class DerivedUnitType : AbstractDerivedUnitType
     {
         private readonly UnitDimensions _dimensions;
+
         public override UnitDimensions Dimensions { get { return _dimensions; } }
 
+        public DerivedUnitType()
+        {
+            this._dimensions = new UnitDimensions();
+        }
         public DerivedUnitType(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
             : this(new UnitDimensions(scale, numerators, denominators)) { }
         public DerivedUnitType(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null) 
@@ -83,6 +94,11 @@ namespace UnitClassLibrary.GenericUnit
         public DerivedUnitType(UnitDimensions dimensions)
         {
             this._dimensions = dimensions;
+        }
+
+        public DerivedUnitType(double scale, IUnitType numerator, IUnitType denominator)
+        {
+            this._dimensions = new UnitDimensions(scale, numerator, denominator);
         }
 
         #region Static Methods

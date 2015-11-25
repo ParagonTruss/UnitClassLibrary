@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
     public partial class Distance : Unit<DistanceType>
     {
-        public static readonly Distance Zero = new Distance(new Inch(), new Measurement());
-
         #region Constructors
 
         public Distance(DistanceType distanceUnit, double value) : base(distanceUnit, value) { }
@@ -38,7 +37,13 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(base.Negate());
         }
 
-        
+        #region Static Properties
+        public static readonly Distance Zero = new Distance(new Inch(), new Measurement());
+
+        public static readonly Distance Inch = new Distance(new Inch(), new Measurement(1));
+
+        public static readonly Distance Millimeter = new Distance(new Millimeter(), new Measurement(1));
+        #endregion
 
         #region Operator Overloads
 

@@ -6,7 +6,15 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.ForceUnit
 {
-    class Force : Unit<ForceType>
+    public class Force : Unit<ForceType>
     {
+
+        #region Static Properties
+        public static readonly Force Zero = new Force(new Pound(), new Measurement());
+
+        public static readonly Force Pound = new Force(new Pound(), new Measurement(1));
+
+        public static readonly Force Newton = new Force(new Newton(), new Measurement(1));
+        #endregion
     }
 }

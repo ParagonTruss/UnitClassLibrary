@@ -154,13 +154,27 @@ namespace UnitLibraryTests
         public void DerivedUnits_PerformanceTest()
         {
             Time oneSecond = new Time(new Minute(), 1);
-            Unit result = oneSecond;
+            Unit result1 = new Unit<DerivedUnitType>(new DerivedUnitType(),1.0);
 
             for (int i = 0; i < 10000; i++)
             {
-                result *= oneSecond;
+                result1 *= oneSecond;
             }
-            (result.ConversionFactor).Should().Be(Math.Pow(60, 10001));
+            (result1.ConversionFactor).Should().Be(Math.Pow(60, 10000));
+
+            Unit frequency = new Unit<DerivedUnitType>(new DerivedUnitType(1.0, null, new Second()), 1);
+            Unit result2 = new Unit<DerivedUnitType>(new DerivedUnitType(), 1.0);
+
+            for (int i = 0; i < 10000; i++)
+            {
+                result2 *= frequency;
+            }
+            (result2.ConversionFactor).Should().Be(1);
+
+            var result3 = result1 * result2;
+
+            (result3.Measurement == Math.Pow(60, 10000)).Should().BeTrue();
+
         }
     }
 }

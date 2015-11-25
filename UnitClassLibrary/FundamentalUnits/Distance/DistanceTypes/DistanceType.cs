@@ -6,7 +6,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
     {
         public override string Type
         {
-           get { return typeof(DistanceType).ToString(); }
+           get { return nameof(DistanceType); }
         }
     }
 }

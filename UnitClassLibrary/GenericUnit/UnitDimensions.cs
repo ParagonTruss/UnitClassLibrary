@@ -14,11 +14,11 @@ namespace UnitClassLibrary.GenericUnit
     {
         public static readonly string[] FundamentalTypes =
             new string[] {
-            typeof(AngleType).ToString(),
-            typeof(DistanceType).ToString(),
-            typeof(ForceType).ToString(),
-            typeof(TemperatureType).ToString(),
-            typeof(TimeType).ToString() };
+            nameof(AngleType),
+            nameof(DistanceType),
+            nameof(ForceType),
+            nameof(TemperatureType),
+            nameof(TimeType) };
 
         private double _scale;
         private List<FundamentalUnitType> _numerators;
@@ -96,16 +96,22 @@ namespace UnitClassLibrary.GenericUnit
             _denominators = new List<FundamentalUnitType>();
         }
 
-        public UnitDimensions(double scale, FundamentalUnitType numerator, FundamentalUnitType denominator = null)
+        public UnitDimensions(double scale, IUnitType numerator = null, IUnitType denominator = null)
         {
             this._scale = scale;
             _numerators = new List<FundamentalUnitType>();
             _denominators = new List<FundamentalUnitType>();
-            this._numerators.Add(numerator);
+            if (numerator != null)
+            {
+                _numerators.AddRange(numerator.Dimensions.Numerators);
+                _denominators.AddRange(numerator.Dimensions.Denominators);
+            }
             if (denominator != null)
             {
-                this._denominators.Add(denominator);
+                _denominators.AddRange(denominator.Dimensions.Numerators);
+                _numerators.AddRange(denominator.Dimensions.Denominators);
             }
+            _cancelUnits();
         }
 
         public UnitDimensions(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
@@ -118,6 +124,7 @@ namespace UnitClassLibrary.GenericUnit
             {
                 this._denominators.AddRange(denominators);
             }
+            _cancelUnits();
         }
 
         public UnitDimensions(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null)
@@ -158,11 +165,11 @@ namespace UnitClassLibrary.GenericUnit
                     var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
 
                     this._scale *= num / denom;
-                    foreach(var item in nums)
+                    foreach(var item in nums.ToList())
                     {
                         this._numerators.Remove(item);
                     }
-                    foreach (var item in denoms)
+                    foreach (var item in denoms.ToList())
                     {
                         this._denominators.Remove(item);
                     }
@@ -202,10 +209,12 @@ namespace UnitClassLibrary.GenericUnit
 
         private int[] _countUnits(List<FundamentalUnitType> units)
         {
-            int[] results = new int[FundamentalTypes.Length];
-            for (int i = 0; i < FundamentalTypes.Length; i++)
+            var fundamentals = FundamentalTypes;
+            int n = fundamentals.Length;
+            int[] results = new int[n];
+            for (int i = 0; i < n; i++)
             {
-                results[i] = units.Count(u => u.Type == FundamentalTypes[i]);
+                results[i] = units.Count(u => u.Type == fundamentals[i]);
             }
             
             return results;

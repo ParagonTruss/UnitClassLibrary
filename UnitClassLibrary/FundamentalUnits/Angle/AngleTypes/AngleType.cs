@@ -6,7 +6,7 @@ namespace UnitClassLibrary.AngleUnit.AngleTypes
     {
         public override string Type
         {
-            get { return typeof(AngleType).ToString(); }
+            get { return nameof(AngleType); }
         }
     }
 }

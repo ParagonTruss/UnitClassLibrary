@@ -4,8 +4,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : DistanceType
-    {
-
+    {     
         override public string AsStringSingular()
         {
             return "Millimeter";
