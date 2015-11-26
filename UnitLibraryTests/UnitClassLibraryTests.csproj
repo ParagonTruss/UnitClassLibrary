@@ -95,12 +95,12 @@
     <Compile Include="AngleTests.cs" />
     <Compile Include="AngularDistanceTests.cs" />
     <Compile Include="AreaTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DistanceTests.cs" />
     <Compile Include="EqualityStrategyTests.cs" />
     <Compile Include="ForceTests.cs" />
     <Compile Include="MassTests.cs" />
     <Compile Include="MomentTests.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PowerTests.cs" />
     <Compile Include="SpeedTests.cs" />
     <Compile Include="TimeTests.cs" />
