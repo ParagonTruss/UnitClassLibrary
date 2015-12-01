@@ -5,7 +5,7 @@ using System.Text;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public struct Measurement
+    public struct Measurement : IEquatable<Measurement>
     {
         public static implicit operator Measurement(double d)
         {

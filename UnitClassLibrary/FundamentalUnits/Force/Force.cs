@@ -8,7 +8,10 @@ namespace UnitClassLibrary.ForceUnit
 {
     public class Force : Unit<ForceType>
     {
-
+        public Force(ForceType type, Measurement value) : base(type,value)
+        {
+            
+        }
         #region Static Properties
         public static readonly Force Zero = new Force(new Pound(), new Measurement());
 
