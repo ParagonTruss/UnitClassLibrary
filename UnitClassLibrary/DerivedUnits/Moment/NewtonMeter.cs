@@ -8,7 +8,7 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DerivedUnits
 {
-    class NewtonMeter : MomentType
+    public class NewtonMeter : MomentType
     {
         public override UnitDimensions Dimensions
         {
@@ -16,6 +16,11 @@ namespace UnitClassLibrary.DerivedUnits
             {
                 return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Meter() });
             }
+        }
+
+        public override string AsStringSingular()
+        {
+            return "Newton-Meter";
         }
     }
 }

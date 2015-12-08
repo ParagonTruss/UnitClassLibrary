@@ -57,12 +57,9 @@ namespace UnitClassLibrary.GenericUnit
                 return Dimensions.ConversionFactor;
             }
         }
-     
-        public virtual string AsStringSingular()
-        { return Dimensions.AsStringSingular(); } 
 
-        public virtual string AsStringPlural()
-        { return Dimensions.AsStringPlural(); } 
+        public abstract string AsStringSingular();
+        public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
@@ -116,6 +113,12 @@ namespace UnitClassLibrary.GenericUnit
         {
             return new DerivedUnitType(unitType.Dimensions.ToThe(power));
         }
+
+        public override string AsStringSingular()
+        { return Dimensions.AsStringSingular(); }
+
+        public override string AsStringPlural()
+        { return Dimensions.AsStringPlural(); }
         #endregion
     }
 

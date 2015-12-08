@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnitClassLibrary.AngleUnit;
 using UnitClassLibrary.AngleUnit.AngleTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
@@ -154,9 +155,17 @@ namespace UnitClassLibrary.GenericUnit
         {
             return new Unit<T>((T)this.UnitType, this.Measurement * scalar);
         }
+        public Measurement Divide(Unit<T> divisor)
+        {
+            return this.Measurement / (divisor.ValueInThisUnit(this.UnitType));
+        }
         public Unit<T> Divide(Measurement divisor)
         {
             return new Unit<T>((T)this.UnitType, this.Measurement / divisor);
+        }
+        public Unit<T> Mod(Unit<T> unit)
+        {
+            return new Unit<T>((T)this.UnitType, this.Measurement.Mod(unit.ValueInThisUnit(this.UnitType)));
         }
 
         
@@ -260,9 +269,17 @@ namespace UnitClassLibrary.GenericUnit
         {
             return unit.Multiply(scalar);
         }
+        public static Measurement operator /(Unit<T> unit, Unit<T> divisor)
+        {
+            return unit.Divide(divisor);
+        }
         public static Unit<T> operator /(Unit<T> unit, Measurement divisor)
         {
             return unit.Divide(divisor);
+        }
+        public static Unit<T> operator %(Unit<T> unit, Unit<T> modulus)
+        {
+            return unit.Mod(modulus);
         }
         public static bool operator <(Unit<T> unit1, Unit<T> unit2)
         {
@@ -295,6 +312,17 @@ namespace UnitClassLibrary.GenericUnit
         public static bool operator !=(Unit<T> unit1, Unit<T> unit2)
         {
             return !(unit1 == unit2);
+        }
+
+        public Angle ModOutTwoPi()
+        {
+            var measurement  = ValueInThisUnit(new Degree());
+            var value = measurement.Value % 360;
+            if (value < 0)
+            {
+                value *= -1;
+            }
+            return new Angle(new Degree(), new Measurement(value, measurement.ErrorMargin));
         }
 
         #endregion

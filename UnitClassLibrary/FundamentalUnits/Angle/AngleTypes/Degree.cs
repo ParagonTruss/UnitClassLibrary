@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnitClassLibrary.AngleUnit.AngleTypes
+namespace UnitClassLibrary.AngleUnit
 {
-    class Degree : AngleType
+    public class Degree : AngleType
     {
         public override string AsStringPlural()
         {

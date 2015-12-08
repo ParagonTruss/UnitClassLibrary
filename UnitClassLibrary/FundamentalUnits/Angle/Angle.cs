@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.AngleUnit.AngleTypes;
 using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AngleUnit
@@ -14,24 +13,29 @@ namespace UnitClassLibrary.AngleUnit
         {
             
         }
+        public Angle(Unit<AngleType> angle) : base(angle) { }
 
-        public Measurement Sine()
+        public Angle Negate()
         {
-            var m = this.ValueInThisUnit(new Radian());
+            return (Angle)base.Negate();
+        }
+        public static Measurement Sine(Angle angle)
+        {
+            var m = angle.ValueInThisUnit(new Radian());
 
             return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
         }
 
-        public Measurement Cosine()
+        public static Measurement Cosine(Angle angle)
         {
-            var m = this.ValueInThisUnit(new Radian());
+            var m = angle.ValueInThisUnit(new Radian());
 
             return new Measurement(Math.Cos(m.Value), Math.Sin(m.Value) * m.ErrorMargin);
         }
 
-        public Measurement Tangent()
+        public static Measurement Tangent(Angle angle)
         {
-            var m = this.ValueInThisUnit(new Radian());
+            var m = angle.ValueInThisUnit(new Radian());
 
             return new Measurement(Math.Tan(m.Value), m.ErrorMargin / Math.Pow(Math.Cos(m.Value), 2));
         }
@@ -45,5 +49,51 @@ namespace UnitClassLibrary.AngleUnit
         {
             throw new NotImplementedException();
         }
+
+        public Angle Reverse()
+        {
+            throw new NotImplementedException();
+        }
+
+        public static Angle operator +(Angle angle1, Angle angle2)
+        {
+            return new Angle((angle1.Add(angle2)));
+        }
+
+        public static Angle operator -(Angle angle1, Angle angle2)
+        {
+            return new Angle(angle1.Subtract(angle2));
+        }
+
+        public static Angle operator *(Angle angle, Measurement scalar)
+        {
+            return new Angle(angle.Multiply(scalar));
+        }
+
+        public static Angle operator *(Measurement scalar, Angle angle)
+        {
+            return angle * scalar;
+        }
+
+        public static Angle operator /(Angle angle, Measurement divisor)
+        {
+            return new Angle(angle.Divide(divisor));
+        }
+        public static Angle operator %(Angle angle1, Angle angle2)
+        {
+            var value1 = angle1.Measurement;
+            var value2 = angle2.ValueInThisUnit(angle1.UnitType).Value;
+
+            var result = value1 % value2;
+
+            return new Angle((AngleType)angle1.UnitType, result);
+        }
+
+        public Measurement Degrees { get { return ValueInThisUnit(new Degree()); } }
+        public Measurement Radians { get { return ValueInThisUnit(new Radian()); } }
+
+        public static Angle Radian { get { return new Angle(new Radian(), 1); } }
+
+        public static Angle Degree { get { return new Angle(new Degree(), 1); } }
     }
 }

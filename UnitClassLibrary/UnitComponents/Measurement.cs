@@ -28,6 +28,12 @@ namespace UnitClassLibrary.GenericUnit
             this.ErrorMargin = Math.Abs(errorMargin);
         }
 
+        public Measurement SquareRoot()
+        {
+            var sqrt = Math.Sqrt(this.Value);
+            return new Measurement(sqrt, this.ErrorMargin / (2 * sqrt));
+        }
+
         public Measurement Negate()
         {
             return this.Multiply(-1.0);
@@ -76,6 +82,10 @@ namespace UnitClassLibrary.GenericUnit
         {
             return new Measurement(this.Value / m.Value, this.Value * m.ErrorMargin / (m.Value * m.Value) + this.ErrorMargin / m.Value);
         }
+        public Measurement Mod(Measurement m)
+        {
+            return new Measurement(this.Value % m.Value, this.ErrorMargin + m.ErrorMargin * Math.Floor(this.Value / m.Value));
+        }
         public bool LessThan(Measurement m)
         {
             return this.Value < m.Value;
@@ -105,6 +115,10 @@ namespace UnitClassLibrary.GenericUnit
         public static Measurement operator /(Measurement m1, Measurement m2)
         {
             return m1.Divide(m2);
+        }
+        public static Measurement operator %(Measurement m1, Measurement m2)
+        {
+            return m1.Mod(m2);
         }
         public static Measurement operator ^(Measurement m, int n)
         {
@@ -143,7 +157,8 @@ namespace UnitClassLibrary.GenericUnit
         #region Overrides
         public override string ToString()
         {
-            return String.Format("{0} {1} {2}", this.Value, "\u00B1", this.ErrorMargin);
+            // valus plus/minus error
+            return String.Format("{0} {1} {2}", this.Value, "±", this.ErrorMargin);
         }
         #endregion
     }

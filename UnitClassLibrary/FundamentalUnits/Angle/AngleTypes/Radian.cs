@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnitClassLibrary.AngleUnit.AngleTypes
+namespace UnitClassLibrary.AngleUnit
 {
     public class Radian : AngleType
     {

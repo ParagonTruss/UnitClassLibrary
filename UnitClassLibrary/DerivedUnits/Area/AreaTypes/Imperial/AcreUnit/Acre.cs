@@ -15,7 +15,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
             }
         }
 
-        public string AsStringPlural(){ return "Acres"; } 
-        public string AsStringSingular() { return "Acre"; }      
+        override public string AsStringPlural() { return "Acres"; } 
+        override public string AsStringSingular() { return "Acre"; }      
     }
 }

@@ -2,29 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
-using UnitClassLibrary.ForceUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
 using UnitClassLibrary.GenericUnit;
 
-namespace UnitClassLibrary.DerivedUnits
+namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
 {
-    public class PoundInch : MomentType
+    public class SquareFoot : AreaType
     {
         public override UnitDimensions Dimensions
         {
             get
             {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Pound(), new Inch() });
+                return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() });
             }
         }
 
         public override string AsStringSingular()
         {
-            return "Pound-Inch";
+            return "Square Foot";
         }
         public override string AsStringPlural()
         {
-            return "Pound-Inches";
+            return "Square Feet";
         }
     }
 }

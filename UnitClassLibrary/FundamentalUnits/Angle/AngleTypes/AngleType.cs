@@ -1,6 +1,6 @@
 ﻿using UnitClassLibrary.GenericUnit;
 
-namespace UnitClassLibrary.AngleUnit.AngleTypes
+namespace UnitClassLibrary.AngleUnit
 {
     public abstract class AngleType : FundamentalUnitType
     {

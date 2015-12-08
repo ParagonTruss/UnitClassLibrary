@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DerivedUnits\Area\AreaTypes\Imperial\SquareFoot.cs" />
     <Compile Include="DerivedUnits\Mass\Kilogram.cs" />
     <Compile Include="DerivedUnits\Mass\Mass.cs" />
     <Compile Include="DerivedUnits\Mass\MassUnit.cs" />
@@ -71,6 +72,9 @@
     <Compile Include="DerivedUnits\Moment\MomentType.cs" />
     <Compile Include="DerivedUnits\Moment\NewtonMeter.cs" />
     <Compile Include="DerivedUnits\Moment\PoundInch.cs" />
+    <Compile Include="DerivedUnits\Volume\Volume.cs" />
+    <Compile Include="DerivedUnits\Volume\VolumeTypes\CubicInch.cs" />
+    <Compile Include="DerivedUnits\Volume\VolumeTypes\VolumeType.cs" />
     <Compile Include="FundamentalUnits\Angle\Angle.cs" />
     <Compile Include="FundamentalUnits\Angle\AngleTypes\Degree.cs" />
     <Compile Include="FundamentalUnits\Angle\AngleTypes\AngleType.cs" />
@@ -93,10 +97,10 @@
     <Compile Include="FundamentalUnits\Force\Pound.cs" />
     <Compile Include="FundamentalUnits\Force\Ton.cs" />
     <Compile Include="FundamentalUnits\Temperature\Kelvin.cs" />
-    <Compile Include="GenericUnit\Unit.cs" />
-    <Compile Include="GenericUnit\IUnitType.cs" />
-    <Compile Include="GenericUnit\Measurement.cs" />
-    <Compile Include="GenericUnit\UnitDimensions.cs" />
+    <Compile Include="UnitComponents\Unit.cs" />
+    <Compile Include="UnitComponents\IUnitType.cs" />
+    <Compile Include="UnitComponents\Measurement.cs" />
+    <Compile Include="UnitComponents\UnitDimensions.cs" />
     <Compile Include="DerivedUnits\Speed\Speed.cs" />
     <Compile Include="FundamentalUnits\Temperature\Temperature.cs" />
     <Compile Include="FundamentalUnits\Temperature\TemperatureType.cs" />

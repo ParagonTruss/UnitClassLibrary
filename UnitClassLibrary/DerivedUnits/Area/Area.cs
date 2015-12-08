@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using UnitClassLibrary.AreaUnit.AreaTypes;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
 using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AreaUnit
 {
     public class Area : Unit<AreaType>
     {
-        public Area(AreaType AreaType, double passedDouble)
-            : base(AreaType,passedDouble)
+        public static readonly Area Zero = new Area(new SquareInch(),new Measurement());
+
+
+        public Area(AreaType AreaType, Measurement measurement)
+            : base(AreaType,measurement)
         {
         }
         public Area(AreaType type, Unit unitToConvert) : base(type, unitToConvert)

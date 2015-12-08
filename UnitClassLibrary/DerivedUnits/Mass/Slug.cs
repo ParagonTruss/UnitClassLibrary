@@ -6,7 +6,7 @@ using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.DerivedUnits.Mass
 {
-    class Slug : MassType
+    public class Slug : MassType
     {
         public override UnitDimensions Dimensions
         {
@@ -14,6 +14,11 @@ namespace UnitClassLibrary.DerivedUnits.Mass
             {
                 throw new NotImplementedException();
             }
+        }
+
+        public override string AsStringSingular()
+        {
+            return "Slug";
         }
     }
 }

@@ -9,12 +9,12 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public class InchPerSecond : SpeedType
     {
-        public string AsStringPlural()
+        override public string AsStringPlural()
         {
             return "Inches per Second";
         }
 
-        public string AsStringSingular()
+        override public string AsStringSingular()
         {
             return "Inch per Second";
         }

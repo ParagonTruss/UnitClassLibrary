@@ -89,13 +89,13 @@ namespace UnitClassLibrary.GenericUnit
                 return AsStringPlural();
             }
         }
-        public UnitDimensions(bool b = true)
+        public UnitDimensions()
         {
             this._scale = 1.0;
             _numerators = new List<FundamentalUnitType>();
             _denominators = new List<FundamentalUnitType>();
         }
-
+     
         public UnitDimensions(double scale, IUnitType numerator = null, IUnitType denominator = null)
         {
             this._scale = scale;
@@ -147,6 +147,8 @@ namespace UnitClassLibrary.GenericUnit
             }
             _cancelUnits();
         }
+
+        public UnitDimensions(List<FundamentalUnitType> numerators) : this(1.0, numerators) { }
 
         private void _cancelUnits()
         {
@@ -218,6 +220,11 @@ namespace UnitClassLibrary.GenericUnit
             }
             
             return results;
+        }
+
+        public UnitDimensions Squared()
+        {
+            return this.Multiply(this);
         }
 
         public UnitDimensions Multiply(UnitDimensions dimensions)
