@@ -18,5 +18,10 @@ namespace UnitClassLibrary.DerivedUnits.Mass
                 return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Second(), new Second() }, new List<FundamentalUnitType>() { new Meter() });
             }
         }
+
+        public override string AsStringSingular()
+        {
+            return "Kilogram";
+        }
     }
 }

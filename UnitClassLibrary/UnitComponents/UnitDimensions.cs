@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnitClassLibrary.AngleUnit;
-using UnitClassLibrary.AngleUnit.AngleTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.ForceUnit;
 using UnitClassLibrary.TemperatureUnit;

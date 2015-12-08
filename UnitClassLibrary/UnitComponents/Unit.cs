@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnitClassLibrary.AngleUnit;
-using UnitClassLibrary.AngleUnit.AngleTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
@@ -16,6 +15,20 @@ namespace UnitClassLibrary.GenericUnit
 
         public double ConversionFactor { get { return UnitType.ConversionFactor; } }
         public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
+
+        public Angle ModOutTwoPi
+        {
+            get
+            {
+                var measurement = ValueInThisUnit(new Degree());
+                var value = measurement.Value % 360;
+                if (value < 0)
+                {
+                    value *= -1;
+                }
+                return new Angle(new Degree(), new Measurement(value, measurement.ErrorMargin));
+            }
+        }
 
         public Measurement ValueInThisUnit(IUnitType type)
         {
@@ -314,16 +327,7 @@ namespace UnitClassLibrary.GenericUnit
             return !(unit1 == unit2);
         }
 
-        public Angle ModOutTwoPi()
-        {
-            var measurement  = ValueInThisUnit(new Degree());
-            var value = measurement.Value % 360;
-            if (value < 0)
-            {
-                value *= -1;
-            }
-            return new Angle(new Degree(), new Measurement(value, measurement.ErrorMargin));
-        }
+        
 
         #endregion
     }

@@ -158,7 +158,7 @@ namespace UnitClassLibrary.GenericUnit
         public override string ToString()
         {
             // valus plus/minus error
-            return String.Format("{0} {1} {2}", this.Value, "±", this.ErrorMargin);
+            return $"{this.Value} ± {this.ErrorMargin}";
         }
         #endregion
     }
