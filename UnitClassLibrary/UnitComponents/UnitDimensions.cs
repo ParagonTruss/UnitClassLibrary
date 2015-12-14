@@ -88,12 +88,12 @@ namespace UnitClassLibrary.GenericUnit
                 return AsStringPlural();
             }
         }
-        public UnitDimensions()
-        {
-            this._scale = 1.0;
-            _numerators = new List<FundamentalUnitType>();
-            _denominators = new List<FundamentalUnitType>();
-        }
+        //public UnitDimensions()
+        //{
+        //    this._scale = 1.0;
+        //    _numerators = new List<FundamentalUnitType>();
+        //    _denominators = new List<FundamentalUnitType>();
+        //}
      
         public UnitDimensions(double scale, IUnitType numerator = null, IUnitType denominator = null)
         {

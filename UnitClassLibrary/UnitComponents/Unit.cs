@@ -16,20 +16,6 @@ namespace UnitClassLibrary.GenericUnit
         public double ConversionFactor { get { return UnitType.ConversionFactor; } }
         public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
 
-        public Angle ModOutTwoPi
-        {
-            get
-            {
-                var measurement = ValueInThisUnit(new Degree());
-                var value = measurement.Value % 360;
-                if (value < 0)
-                {
-                    value *= -1;
-                }
-                return new Angle(new Degree(), new Measurement(value, measurement.ErrorMargin));
-            }
-        }
-
         public Measurement ValueInThisUnit(IUnitType type)
         {
             return this.Measurement * this.UnitType.ConversionFactor / type.ConversionFactor;
@@ -332,5 +318,14 @@ namespace UnitClassLibrary.GenericUnit
         #endregion
     }
 
+    public class UnitLess : Unit<DimensionLess>
+    {
+        public static implicit operator UnitLess(Measurement m)
+        {
+            return new UnitLess(m);
+        }
+        public UnitLess(double d) : base(DimensionLess.Instance, d) { }
+        public UnitLess(Measurement m) : base(DimensionLess.Instance, m) { }
+    }
    
 }

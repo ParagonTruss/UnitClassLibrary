@@ -122,5 +122,27 @@ namespace UnitClassLibrary.GenericUnit
         #endregion
     }
 
+    public class DimensionLess : AbstractDerivedUnitType
+    {
+        private static DimensionLess _instance = new DimensionLess();
+        public static DimensionLess Instance { get { return _instance; } }
+        private DimensionLess()
+        {
+
+        }
+        public override UnitDimensions Dimensions
+        {
+            get
+            {
+                return new UnitDimensions(1.0);
+            }
+        }
+
+        public override string AsStringSingular()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
 } 
