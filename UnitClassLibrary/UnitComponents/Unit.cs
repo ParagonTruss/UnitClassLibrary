@@ -54,7 +54,7 @@ namespace UnitClassLibrary.GenericUnit
     /// A generic implementation of all your favorite units.
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class Unit<T> : Unit where T : IUnitType
+    public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>> where T : IUnitType
     {
         private readonly T _unitType;
         private readonly Measurement _measurement;
@@ -207,7 +207,6 @@ namespace UnitClassLibrary.GenericUnit
             }
             catch
             {
-                Unit unit = (Unit)other;
 
                 return false;
             }
@@ -232,6 +231,15 @@ namespace UnitClassLibrary.GenericUnit
         public override int GetHashCode()
         {
             return IntrinsicValue.GetHashCode();
+        }
+
+        public bool Equals(Unit<T> other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+            return _AreEqual(this, other);
         }
         #endregion
 
@@ -320,6 +328,10 @@ namespace UnitClassLibrary.GenericUnit
 
     public class UnitLess : Unit<DimensionLess>
     {
+        public static implicit operator UnitLess(double d)
+        {
+            return new UnitLess(d);
+        }
         public static implicit operator UnitLess(Measurement m)
         {
             return new UnitLess(m);

@@ -252,7 +252,7 @@ namespace UnitClassLibrary.GenericUnit
 
         internal UnitDimensions ToThe(int power)
         {
-            var result = new UnitDimensions();
+            var result = new UnitDimensions(1.0);
             for (int i = 0; i < Math.Abs(power); i++)
             {
                 result.Multiply(this);

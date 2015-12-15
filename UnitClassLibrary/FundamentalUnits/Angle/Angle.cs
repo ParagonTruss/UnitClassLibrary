@@ -8,7 +8,13 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Angle : Unit<AngleType>
     {
+
+        public Angle ModOutTwoPi { get { return this % new Angle(new Degree(), new Measurement(360, 1)); } }
+
         public static readonly Angle Zero = new Angle(new Degree(), new Measurement());
+        public static readonly Angle RightAngle = new Angle(new Degree(), 90);
+        public static readonly Angle StraightAngle = new Angle(new Degree(), 180);
+
         public Angle(AngleType unit, Measurement measurement) : base(unit, measurement)
         {
             
@@ -42,12 +48,40 @@ namespace UnitClassLibrary.AngleUnit
 
         public static Angle ArcCos(Measurement m)
         {
-            throw new NotImplementedException();
+            var errorMargin = m.ErrorMargin * Math.Pow(1 - m.Value * m.Value, -0.5);
+            double value;
+            if (1.0 < m.Value && m.Value < 1.1)
+            {
+                value = 0;
+            }
+            else if (-1.0 > m.Value && m.Value > -1.1)
+            {
+                value = 0;
+            }
+            else
+            {
+                value = Math.Acos(m.Value);
+            }
+            return new Angle(new Radian(), new Measurement(value, errorMargin));
         }
 
         public static Angle ArcSin(Measurement m)
         {
-            throw new NotImplementedException();
+            var errorMargin = m.ErrorMargin * Math.Pow(1 - m.Value * m.Value, -0.5);
+            double value;
+            if (1.0 < m.Value && m.Value < 1.1)
+            {
+                value = 90;
+            }
+            else if (-1.0 > m.Value && m.Value > -1.1)
+            {
+                value = -90;
+            }
+            else
+            {
+                value = Math.Asin(m.Value);
+            }
+            return new Angle(new Degree(),new Measurement(value, errorMargin));
         }
 
         public Angle Reverse()

@@ -11,7 +11,7 @@ namespace UnitClassLibrary.GenericUnit
         {
             return new Measurement(d);
         }
-
+        public static Measurement Zero { get { return new Measurement(0.0);} }
         public readonly double Value;
         public readonly double ErrorMargin;
         public double PercentageError { get { return ErrorMargin / Value; } }
@@ -31,7 +31,12 @@ namespace UnitClassLibrary.GenericUnit
         public Measurement SquareRoot()
         {
             var sqrt = Math.Sqrt(this.Value);
-            return new Measurement(sqrt, this.ErrorMargin / (2 * sqrt));
+            var error = this.ErrorMargin / (2 * sqrt);
+            if (Double.IsNaN(error))
+            {
+                error = sqrt * 0.001;
+            }
+            return new Measurement(sqrt, error);
         }
 
         public Measurement Negate()

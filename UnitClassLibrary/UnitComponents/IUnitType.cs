@@ -80,7 +80,7 @@ namespace UnitClassLibrary.GenericUnit
 
         public DerivedUnitType()
         {
-            this._dimensions = new UnitDimensions();
+            this._dimensions = new UnitDimensions(1.0);
         }
         public DerivedUnitType(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
             : this(new UnitDimensions(scale, numerators, denominators)) { }
@@ -130,6 +130,7 @@ namespace UnitClassLibrary.GenericUnit
         {
 
         }
+
         public override UnitDimensions Dimensions
         {
             get
