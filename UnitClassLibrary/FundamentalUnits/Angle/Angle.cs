@@ -21,9 +21,9 @@ namespace UnitClassLibrary.AngleUnit
         }
         public Angle(Unit<AngleType> angle) : base(angle) { }
 
-        public Angle Negate()
+        public new Angle Negate()
         {
-            return (Angle)base.Negate();
+            return new Angle(base.Negate());
         }
         public static Measurement Sine(Angle angle)
         {
@@ -48,7 +48,6 @@ namespace UnitClassLibrary.AngleUnit
 
         public static Angle ArcCos(Measurement m)
         {
-            var errorMargin = m.ErrorMargin * Math.Pow(1 - m.Value * m.Value, -0.5);
             double value;
             if (1.0 < m.Value && m.Value < 1.1)
             {
@@ -56,13 +55,28 @@ namespace UnitClassLibrary.AngleUnit
             }
             else if (-1.0 > m.Value && m.Value > -1.1)
             {
-                value = 0;
+                value = Math.PI;
             }
             else
             {
                 value = Math.Acos(m.Value);
             }
-            return new Angle(new Radian(), new Measurement(value, errorMargin));
+            double error;
+            var d1 = Math.Acos(m.Value + m.ErrorMargin);
+            var d2 = Math.Acos(m.Value - m.ErrorMargin);
+            if (Double.IsNaN(d1))
+            {
+                error = d2 - value;
+            }
+            else if (Double.IsNaN(d2))
+            {
+                error = value - d1;
+            }
+            else
+            {
+                error = Math.Max(d2 - value, value - d1);
+            }
+            return new Angle(new Radian(), new Measurement(value, error));
         }
 
         public static Angle ArcSin(Measurement m)

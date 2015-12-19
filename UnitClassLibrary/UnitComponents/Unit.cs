@@ -8,54 +8,12 @@ using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public abstract class Unit
-    {
-        abstract public IUnitType UnitType { get; }
-        abstract public Measurement Measurement { get; }
-
-        public double ConversionFactor { get { return UnitType.ConversionFactor; } }
-        public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
-
-        public Measurement ValueInThisUnit(IUnitType type)
-        {
-            return this.Measurement * this.UnitType.ConversionFactor / type.ConversionFactor;
-        }
-
-        abstract public Unit Invert();
-        abstract public Unit Multiply(Unit unit);
-        public Unit Divide(Unit unit)
-        {
-            return this.Multiply(unit.Invert());
-        }
-
-        public static Unit operator *(Unit unit1, Unit unit2)
-        {
-            return unit1.Multiply(unit2);
-        }
-        public static Unit operator /(Unit unit1, Unit unit2)
-        {
-            return unit1.Divide(unit2);
-        }
-        protected static bool _AreEqual(Unit unit1, Unit unit2)
-        {
-            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
-        }
-        public static bool operator ==(Unit unit1, Unit unit2)
-        {
-            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions, unit2.UnitType.Dimensions) && _AreEqual(unit1, unit2);
-        }
-        public static bool operator !=(Unit unit1, Unit unit2)
-        {
-            return !(unit1 == unit2);
-        }
-    }
-    // This is the class the does the heavy lifting.
+    // This is the class that does the heavy lifting.
     /// <summary>
     /// A generic implementation of all your favorite units.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>> where T : IUnitType
-    {
+    { 
         private readonly T _unitType;
         private readonly Measurement _measurement;
         override public IUnitType UnitType { get { return _unitType; } }
@@ -287,6 +245,10 @@ namespace UnitClassLibrary.GenericUnit
         public static Unit<T> operator %(Unit<T> unit, Unit<T> modulus)
         {
             return unit.Mod(modulus);
+        }
+        public static Unit<DerivedUnitType> operator ^(Unit<T> unit, int power)
+        {
+            return unit.ToThe(power);
         }
         public static bool operator <(Unit<T> unit1, Unit<T> unit2)
         {

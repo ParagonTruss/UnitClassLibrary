@@ -73,6 +73,7 @@
     <Compile Include="DerivedUnits\Moment\NewtonMeter.cs" />
     <Compile Include="DerivedUnits\Moment\PoundInch.cs" />
     <Compile Include="DerivedUnits\Volume\Volume.cs" />
+    <Compile Include="DerivedUnits\Volume\VolumeTypes\CubicFoot.cs" />
     <Compile Include="DerivedUnits\Volume\VolumeTypes\CubicInch.cs" />
     <Compile Include="DerivedUnits\Volume\VolumeTypes\VolumeType.cs" />
     <Compile Include="FundamentalUnits\Angle\Angle.cs" />

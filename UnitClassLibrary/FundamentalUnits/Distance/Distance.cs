@@ -47,6 +47,7 @@ namespace UnitClassLibrary.DistanceUnit
         public static readonly Distance Millimeter = new Distance(new Millimeter(), new Measurement(1));
 
         public Measurement Inches { get { return ValueInThisUnit(new Inch()); } }
+        public Measurement Feet { get { return ValueInThisUnit(new Foot()); } }
         public Measurement Centimeters { get { return ValueInThisUnit(new Centimeter()); } }
 
         #endregion

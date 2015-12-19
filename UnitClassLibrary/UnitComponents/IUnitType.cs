@@ -37,12 +37,12 @@ namespace UnitClassLibrary.GenericUnit
 
         public double DefaultErrorMargin(double intrinsicValue)
         {
-            var onePartInAThousand = intrinsicValue * 0.001;
-            if (onePartInAThousand < DefaultErrorMargin_)
+            var onePartInAMillion = intrinsicValue * 0.000001;
+            if (onePartInAMillion < DefaultErrorMargin_)
             {
                 return DefaultErrorMargin_;
             }
-            return onePartInAThousand;
+            return onePartInAMillion;
         }
     }
 

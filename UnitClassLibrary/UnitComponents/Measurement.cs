@@ -5,36 +5,58 @@ using System.Text;
 
 namespace UnitClassLibrary.GenericUnit
 {
-    public struct Measurement : IEquatable<Measurement>
+    public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>
     {
+        #region global public variables
+        /// <summary>
+        /// set to 1 millionth.
+        /// </summary>
+        public static double DefaultErrorMargin { get; set; } = 0.000001;
+        public static bool ErrorPropagationEnabled { get; set; } = true;
+        
+        #endregion
+
         public static implicit operator Measurement(double d)
         {
             return new Measurement(d);
         }
+
+        #region Properties
         public static Measurement Zero { get { return new Measurement(0.0);} }
         public readonly double Value;
         public readonly double ErrorMargin;
         public double PercentageError { get { return ErrorMargin / Value; } }
+        #endregion
 
-        public Measurement(double intrinsicValue)
+        #region Constructors
+        public Measurement(double intrinsicValue, double? errorMargin = null)
         {
+            if (errorMargin == null)
+            {
+                errorMargin = DefaultErrorMargin;
+            }
             this.Value = intrinsicValue;
-            this.ErrorMargin = 0;
+            this.ErrorMargin = Math.Abs((double)errorMargin);
+            _checkMeasurement();
         }
 
-        public Measurement(double intrinsicValue, double errorMargin)
+        private void _checkMeasurement()
         {
-            this.Value = intrinsicValue;
-            this.ErrorMargin = Math.Abs(errorMargin);
+            if (Double.IsNaN(Value) || Double.IsNaN(ErrorMargin) || (Value > 1 && PercentageError > 0.50))
+            {
+                throw new Exception();
+            }
         }
+        #endregion
 
+        #region Public methods
         public Measurement SquareRoot()
         {
             var sqrt = Math.Sqrt(this.Value);
             var error = this.ErrorMargin / (2 * sqrt);
             if (Double.IsNaN(error))
             {
-                error = sqrt * 0.001;
+                error = Math.Sqrt(this.Value + this.ErrorMargin) - sqrt;
             }
             return new Measurement(sqrt, error);
         }
@@ -103,6 +125,7 @@ namespace UnitClassLibrary.GenericUnit
         {
             return Math.Abs(this.Value - m.Value) <= (this.ErrorMargin + m.ErrorMargin);
         }
+        #endregion
 
         #region Operator Overloads
         public static Measurement operator +(Measurement m1, Measurement m2)
@@ -164,6 +187,19 @@ namespace UnitClassLibrary.GenericUnit
         {
             // valus plus/minus error
             return $"{this.Value} ± {this.ErrorMargin}";
+        }
+
+        public int CompareTo(Measurement other)
+        {
+            if (this > other)
+            {
+                return 1;
+            }
+            if (other > this)
+            {
+                return -1;
+            }
+            return 0;
         }
         #endregion
     }
