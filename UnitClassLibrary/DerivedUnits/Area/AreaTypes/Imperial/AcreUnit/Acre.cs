@@ -7,12 +7,9 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
 {
     public class Acre : AreaType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(43560, new List<FundamentalUnitType>() { new Foot(), new Foot() });
-            }
+            return new UnitDimensions(43560, new List<FundamentalUnitType>() { new Foot(), new Foot() });
         }
 
         override public string AsStringPlural() { return "Acres"; } 

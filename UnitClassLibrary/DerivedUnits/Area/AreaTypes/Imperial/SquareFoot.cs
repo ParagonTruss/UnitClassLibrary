@@ -10,12 +10,11 @@ namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
 {
     public class SquareFoot : AreaType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() });
-            }
+            
+            return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() });
+          
         }
 
         public override string AsStringSingular()

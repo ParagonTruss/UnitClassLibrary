@@ -9,12 +9,9 @@ namespace UnitClassLibrary
 {
     public class CubicInch : VolumeType
     {
-        public override UnitDimensions Dimensions
-        {
-            get
-            {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Inch(), new Inch(), new Inch() });
-            }
+        public override UnitDimensions Dimensions()
+        {         
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Inch(), new Inch(), new Inch() });
         }
 
         public override string AsStringSingular()

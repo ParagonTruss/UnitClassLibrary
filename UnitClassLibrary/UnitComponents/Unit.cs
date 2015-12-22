@@ -42,7 +42,7 @@ namespace UnitClassLibrary
         }
         public Unit(T type, Unit unitToConvert)
         {
-            if (!UnitDimensions.HaveSameDimensions(type.Dimensions, unitToConvert.Dimensions))
+            if (!UnitDimensions.HaveSameDimensions(type.Dimensions(), unitToConvert.Dimensions))
             {
                 throw new Exception("Units do not have the same Dimensions");
             }
@@ -158,7 +158,7 @@ namespace UnitClassLibrary
             try
             {
                 Unit<T> unit = (Unit<T>)other;
-                return Unit<T>._AreEqual(this, unit);
+                return Unit<T>._ValuesAreEqual(this, unit);
             }
             catch
             {
@@ -194,7 +194,7 @@ namespace UnitClassLibrary
             {
                 return false;
             }
-            return _AreEqual(this, other);
+            return _ValuesAreEqual(this, other);
         }
         #endregion
 

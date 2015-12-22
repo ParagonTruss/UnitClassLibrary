@@ -10,12 +10,9 @@ namespace UnitClassLibrary.DerivedUnits
 {
     public class PoundInch : MomentType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Pound(), new Inch() });
-            }
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Pound(), new Inch() });
         }
 
         public override string AsStringSingular()

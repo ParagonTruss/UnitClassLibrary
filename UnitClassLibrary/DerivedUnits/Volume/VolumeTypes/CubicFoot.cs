@@ -9,12 +9,9 @@ namespace UnitClassLibrary.DerivedUnits.Volume.VolumeTypes
 {
     public class CubicFoot : VolumeType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Foot(), new Foot(), new Foot() });
-            }
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Foot(), new Foot(), new Foot() });
         }
 
         public override string AsStringSingular()

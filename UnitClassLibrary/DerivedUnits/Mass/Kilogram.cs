@@ -11,12 +11,9 @@ namespace UnitClassLibrary.DerivedUnits.Mass
 {
     public class Kilogram : MassType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Second(), new Second() }, new List<FundamentalUnitType>() { new Meter() });
-            }
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Second(), new Second() }, new List<FundamentalUnitType>() { new Meter() });
         }
 
         public override string AsStringSingular()

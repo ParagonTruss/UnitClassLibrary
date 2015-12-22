@@ -19,12 +19,9 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             return "Inch per Second";
         }
 
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(1.0, new Inch(), new Second());
-            }
+           return new UnitDimensions(1.0, new Inch(), new Second());          
         }
 
         public DistanceType GetDistanceType()

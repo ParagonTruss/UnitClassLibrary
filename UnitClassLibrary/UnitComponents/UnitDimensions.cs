@@ -102,13 +102,13 @@ namespace UnitClassLibrary
             _denominators = new List<FundamentalUnitType>();
             if (numerator != null)
             {
-                _numerators.AddRange(numerator.Dimensions.Numerators);
-                _denominators.AddRange(numerator.Dimensions.Denominators);
+                _numerators.AddRange(numerator.Dimensions().Numerators);
+                _denominators.AddRange(numerator.Dimensions().Denominators);
             }
             if (denominator != null)
             {
-                _denominators.AddRange(denominator.Dimensions.Numerators);
-                _numerators.AddRange(denominator.Dimensions.Denominators);
+                _denominators.AddRange(denominator.Dimensions().Numerators);
+                _numerators.AddRange(denominator.Dimensions().Denominators);
             }
             _cancelUnits();
         }
@@ -133,15 +133,15 @@ namespace UnitClassLibrary
             this._denominators = new List<FundamentalUnitType>();
             foreach (var unitType in numerators)
             {
-                this._numerators.AddRange(unitType.Dimensions._numerators);
-                this._denominators.AddRange(unitType.Dimensions._denominators);
+                this._numerators.AddRange(unitType.Dimensions()._numerators);
+                this._denominators.AddRange(unitType.Dimensions()._denominators);
             }
             if (denominators != null)
             {
                 foreach (var unitType in denominators)
                 {
-                    this._numerators.AddRange(unitType.Dimensions._denominators);
-                    this._denominators.AddRange(unitType.Dimensions._numerators);
+                    this._numerators.AddRange(unitType.Dimensions()._denominators);
+                    this._denominators.AddRange(unitType.Dimensions()._numerators);
                 }
             }
             _cancelUnits();

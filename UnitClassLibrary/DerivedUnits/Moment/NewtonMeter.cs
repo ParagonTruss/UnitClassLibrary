@@ -10,12 +10,9 @@ namespace UnitClassLibrary.DerivedUnits
 {
     public class NewtonMeter : MomentType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Meter() });
-            }
+            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Meter() });
         }
 
         public override string AsStringSingular()

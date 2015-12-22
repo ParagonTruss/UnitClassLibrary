@@ -8,12 +8,9 @@ namespace UnitClassLibrary.DerivedUnits.Mass
 {
     public class Slug : MassType
     {
-        public override UnitDimensions Dimensions
+        public override UnitDimensions Dimensions()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            throw new NotImplementedException();
         }
 
         public override string AsStringSingular()

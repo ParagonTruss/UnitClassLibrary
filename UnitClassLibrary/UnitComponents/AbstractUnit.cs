@@ -11,7 +11,7 @@ namespace UnitClassLibrary
         abstract public Measurement Measurement { get; }
 
         public double ConversionFactor { get { return UnitType.ConversionFactor; } }
-        public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
+        public UnitDimensions Dimensions { get { return UnitType.Dimensions(); } }
 
         public double ConversionFromThisTo(IUnitType unit)
         {
@@ -39,17 +39,22 @@ namespace UnitClassLibrary
         {
             return unit1.Divide(unit2);
         }
-        protected static bool _AreEqual(Unit unit1, Unit unit2)
-        {          
-            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);         
-        }
         public static bool operator ==(Unit unit1, Unit unit2)
         {
-            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions, unit2.UnitType.Dimensions) && _AreEqual(unit1, unit2);
+            return _HaveTheSameDimensions(unit1, unit2) && _ValuesAreEqual(unit1, unit2);
         }
         public static bool operator !=(Unit unit1, Unit unit2)
         {
             return !(unit1 == unit2);
+        }
+
+        protected static bool _HaveTheSameDimensions(Unit unit1, Unit unit2)
+        {
+            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions(), unit2.UnitType.Dimensions());
+        }
+        protected static bool _ValuesAreEqual(Unit unit1, Unit unit2)
+        {
+            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
         }
     }
 }
