@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
-namespace UnitClassLibrary.GenericUnit
+namespace UnitClassLibrary
 {
     public interface IUnitType
     {
         double ConversionFactor { get; }
         UnitDimensions Dimensions { get; }
 
-        double DefaultErrorMargin(double intrinsicValue);
+        double InitialErrorMargin(double initialValue);
 
         string AsStringSingular();
         string AsStringPlural();      
@@ -18,7 +18,7 @@ namespace UnitClassLibrary.GenericUnit
    
     public abstract class FundamentalUnitType : IUnitType
     {
-        public abstract double DefaultErrorMargin_ { get; }
+        public abstract double DefaultErrorMargin { get; }
         public abstract double ConversionFactor { get; }
 
         abstract public string Type { get; }
@@ -35,14 +35,15 @@ namespace UnitClassLibrary.GenericUnit
             return new UnitDimensions(1.0, new List<FundamentalUnitType>() { this });
         }
 
-        public double DefaultErrorMargin(double intrinsicValue)
+        public double InitialErrorMargin(double intrinsicValue)
         {
-            var onePartInAMillion = intrinsicValue * 0.000001;
-            if (onePartInAMillion < DefaultErrorMargin_)
-            {
-                return DefaultErrorMargin_;
-            }
-            return onePartInAMillion;
+            return DefaultErrorMargin;
+            //var onePartInAMillion = intrinsicValue * 0.000001;
+            //if (onePartInAMillion < DefaultErrorMargin)
+            //{
+            //    return DefaultErrorMargin;
+            //}
+            //return onePartInAMillion;
         }
     }
 
@@ -61,9 +62,9 @@ namespace UnitClassLibrary.GenericUnit
         public abstract string AsStringSingular();
         public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
 
-        public double DefaultErrorMargin(double intrinsicValue)
+        public double InitialErrorMargin(double intrinsicValue)
         {
-            return Dimensions.DefaultErrorMargin(intrinsicValue);
+            return Dimensions.InitialErrorMargin(intrinsicValue);
         }
 
         public override string ToString()

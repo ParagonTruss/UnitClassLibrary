@@ -5,7 +5,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
-using UnitClassLibrary.GenericUnit;
+
 
 namespace UnitClassLibrary.DistanceUnit
 {

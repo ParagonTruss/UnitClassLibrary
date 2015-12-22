@@ -13,7 +13,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
-using UnitClassLibrary.GenericUnit;
+
 using UnitClassLibrary.AngleUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 

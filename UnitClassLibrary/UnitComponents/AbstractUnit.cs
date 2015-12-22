@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.GenericUnit;
 
-namespace UnitClassLibrary.UnitComponents
+namespace UnitClassLibrary
 {
     public abstract class Unit
     {
@@ -14,9 +13,15 @@ namespace UnitClassLibrary.UnitComponents
         public double ConversionFactor { get { return UnitType.ConversionFactor; } }
         public UnitDimensions Dimensions { get { return UnitType.Dimensions; } }
 
-        public Measurement ValueInThisUnit(IUnitType type)
+        public double ConversionFromThisTo(IUnitType unit)
         {
-            return this.Measurement * this.UnitType.ConversionFactor / type.ConversionFactor;
+            return this.ConversionFactor / unit.ConversionFactor;
+        }
+
+        public Measurement ValueInThisUnit(IUnitType unit)
+        {
+            var result = this.Measurement * ConversionFromThisTo(unit);
+            return result;
         }
 
         abstract public Unit Invert();
@@ -35,15 +40,8 @@ namespace UnitClassLibrary.UnitComponents
             return unit1.Divide(unit2);
         }
         protected static bool _AreEqual(Unit unit1, Unit unit2)
-        {
-            if (Measurement.ErrorPropagationEnabled)
-            {
-                return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+        {          
+            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);         
         }
         public static bool operator ==(Unit unit1, Unit unit2)
         {

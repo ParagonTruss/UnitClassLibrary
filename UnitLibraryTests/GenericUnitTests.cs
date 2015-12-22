@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using FluentAssertions;
 using NUnit.Framework;
 using UnitClassLibrary.TimeUnit;
-using UnitClassLibrary.GenericUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
@@ -20,7 +19,6 @@ using UnitClassLibrary.AreaUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
 using UnitClassLibrary.AngleUnit;
-using UnitClassLibrary.AngleUnit.AngleTypes;
 
 namespace UnitLibraryTests
 {

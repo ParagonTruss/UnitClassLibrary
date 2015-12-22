@@ -20,11 +20,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
             get { return 12; }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Inch().DefaultErrorMargin_ / ConversionFactor;
+                return new Inch().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.GenericUnit;
+
 
 namespace UnitClassLibrary.ForceUnit
 {
@@ -22,7 +22,7 @@ namespace UnitClassLibrary.ForceUnit
             }
         }
 
-        public override double DefaultErrorMargin_
+        public override double DefaultErrorMargin
         {
             get
             {

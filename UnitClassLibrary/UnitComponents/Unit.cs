@@ -6,9 +6,8 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
-namespace UnitClassLibrary.GenericUnit
+namespace UnitClassLibrary
 {
-    // This is the class that does the heavy lifting.
     /// <summary>
     /// A generic implementation of all your favorite units.
     /// </summary>
@@ -25,13 +24,21 @@ namespace UnitClassLibrary.GenericUnit
         protected Unit() { }
         public Unit(T unitType, double value = 1.0)
         {
-            this._unitType = unitType;
-            this._measurement = new Measurement(value, unitType.DefaultErrorMargin(value));
+            this._unitType = unitType;         
+            this._measurement = new Measurement(value, unitType.InitialErrorMargin(value));         
         }
         public Unit(T unit, Measurement measurement)
         {
             this._unitType = unit;
-            this._measurement = measurement;
+            if (Measurement.ErrorPropagationIsEnabled)
+            {
+                this._measurement = measurement;
+            }
+            else
+            {
+                var value = measurement.Value;
+                this._measurement = new Measurement(value, unit.InitialErrorMargin(value));
+            }       
         }
         public Unit(T type, Unit unitToConvert)
         {
@@ -51,16 +58,6 @@ namespace UnitClassLibrary.GenericUnit
       
 
         #region Public Methods
-
-        public double ConversionFromThisTo(IUnitType unit)
-        {
-            return this.ConversionFactor / unit.ConversionFactor;
-        }
-
-        public Measurement ValueInThisUnit(IUnitType unit)
-        {
-            return this.Measurement * ConversionFromThisTo(unit);
-        }
 
         public Unit<T> Negate()
         {

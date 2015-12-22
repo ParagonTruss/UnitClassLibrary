@@ -15,11 +15,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
             get { return 39.3700787401575D; }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Inch().DefaultErrorMargin_ / ConversionFactor;
+                return new Inch().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

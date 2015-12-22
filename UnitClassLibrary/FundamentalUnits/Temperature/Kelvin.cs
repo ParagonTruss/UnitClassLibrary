@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.GenericUnit;
+
 using UnitClassLibrary.TemperatureUnit;
 
 namespace UnitClassLibrary.FundamentalUnits.Temperature
@@ -27,7 +27,7 @@ namespace UnitClassLibrary.FundamentalUnits.Temperature
             }
         }
 
-        public override double DefaultErrorMargin_
+        public override double DefaultErrorMargin
         {
             get
             {

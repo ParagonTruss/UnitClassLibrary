@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
-using UnitClassLibrary.GenericUnit;
+
 
 namespace UnitClassLibrary.DistanceUnit
 {

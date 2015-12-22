@@ -4,20 +4,22 @@ using UnitClassLibrary.AreaUnit.AreaTypes;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
-using UnitClassLibrary.GenericUnit;
 
 namespace UnitClassLibrary.AreaUnit
 {
     public class Area : Unit<AreaType>
     {
-        public static readonly Area Zero = new Area(new SquareInch(),new Measurement());
+        public static readonly Area Zero = new Area(new SquareInch(), 0);
 
-        public Area(Unit unit) : this (new SquareInch(),unit)
+        public Area(Unit unit) : this(new SquareInch(), unit)
         {
         }
 
-        public Area(AreaType AreaType, Measurement measurement)
-            : base(AreaType,measurement)
+        public Area(AreaType AreaType, double measurement)
+            : base(AreaType, measurement)
+        {
+        }
+        public Area(AreaType unit, Measurement measurement) : base(unit, measurement)
         {
         }
         public Area(AreaType type, Unit unitToConvert) : base(type, unitToConvert)

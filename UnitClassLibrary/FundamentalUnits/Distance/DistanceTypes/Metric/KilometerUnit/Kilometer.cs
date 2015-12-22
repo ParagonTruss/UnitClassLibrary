@@ -15,11 +15,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
             get { return 39370.0787401575D; }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Inch().DefaultErrorMargin_ / ConversionFactor;
+                return new Inch().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

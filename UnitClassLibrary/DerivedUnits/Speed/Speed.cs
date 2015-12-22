@@ -2,7 +2,7 @@
 using System.Linq;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
-using UnitClassLibrary.GenericUnit;
+
 using UnitClassLibrary.SpeedUnit.SpeedTypes;
 using UnitClassLibrary.TimeUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;

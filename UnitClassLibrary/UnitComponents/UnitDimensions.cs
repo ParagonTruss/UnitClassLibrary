@@ -7,7 +7,7 @@ using UnitClassLibrary.ForceUnit;
 using UnitClassLibrary.TemperatureUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
-namespace UnitClassLibrary.GenericUnit
+namespace UnitClassLibrary
 {
     public sealed class UnitDimensions
     {
@@ -43,10 +43,10 @@ namespace UnitClassLibrary.GenericUnit
             }
         }
 
-        public double DefaultErrorMargin(double intrinsicValue)
+        public double InitialErrorMargin(double intrinsicValue)
         {
-            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin_)/ intrinsicValue;
-            percentageError += _denominators.Sum(u => u.DefaultErrorMargin_);
+            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin)/ intrinsicValue;
+            percentageError += _denominators.Sum(u => u.DefaultErrorMargin);
             if (percentageError < 0.001)
             {
                 percentageError = 0.001;

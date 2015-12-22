@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.ForceUnit;
-using UnitClassLibrary.GenericUnit;
+
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.DerivedUnits.Mass

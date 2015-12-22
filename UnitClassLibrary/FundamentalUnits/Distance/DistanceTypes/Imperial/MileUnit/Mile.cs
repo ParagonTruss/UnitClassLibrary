@@ -19,11 +19,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
             }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Inch().DefaultErrorMargin_ / ConversionFactor;
+                return new Inch().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

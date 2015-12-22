@@ -76,6 +76,7 @@
     <Compile Include="DerivedUnits\Volume\VolumeTypes\CubicFoot.cs" />
     <Compile Include="DerivedUnits\Volume\VolumeTypes\CubicInch.cs" />
     <Compile Include="DerivedUnits\Volume\VolumeTypes\VolumeType.cs" />
+    <Compile Include="FundamentalUnits\AngleUnitFactory.cs" />
     <Compile Include="FundamentalUnits\Angle\Angle.cs" />
     <Compile Include="FundamentalUnits\Angle\AngleTypes\Degree.cs" />
     <Compile Include="FundamentalUnits\Angle\AngleTypes\AngleType.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="FundamentalUnits\Force\Pound.cs" />
     <Compile Include="FundamentalUnits\Force\Ton.cs" />
     <Compile Include="FundamentalUnits\Temperature\Kelvin.cs" />
+    <Compile Include="UnitComponents\AbstractUnit.cs" />
     <Compile Include="UnitComponents\Unit.cs" />
     <Compile Include="UnitComponents\IUnitType.cs" />
     <Compile Include="UnitComponents\Measurement.cs" />

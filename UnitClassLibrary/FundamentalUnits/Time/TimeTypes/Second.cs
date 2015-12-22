@@ -18,7 +18,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
             }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {

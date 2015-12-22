@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnitClassLibrary.GenericUnit
+namespace UnitClassLibrary
 {
     public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>
     {
         #region global public variables
         /// <summary>
-        /// set to 1 millionth.
+        /// set to 1 billionth.
         /// </summary>
-        public static double DefaultErrorMargin { get; set; } = 0.000001;
-        public static bool ErrorPropagationEnabled { get; set; } = true;
+        public static double DefaultErrorMargin { get; set; } = 0.00000001;
+        public static bool ErrorPropagationIsEnabled { get; set; } = false;
         
+       
         #endregion
 
         public static implicit operator Measurement(double d)
@@ -23,12 +24,14 @@ namespace UnitClassLibrary.GenericUnit
 
         #region Properties
         public static Measurement Zero { get { return new Measurement(0.0);} }
+
         public readonly double Value;
         public readonly double ErrorMargin;
         public double PercentageError { get { return ErrorMargin / Value; } }
         #endregion
 
         #region Constructors
+
         public Measurement(double intrinsicValue, double? errorMargin = null)
         {
             if (errorMargin == null)
@@ -42,28 +45,41 @@ namespace UnitClassLibrary.GenericUnit
 
         private void _checkMeasurement()
         {
-            if (Double.IsNaN(Value) || Double.IsNaN(ErrorMargin) || (Value > 1 && PercentageError > 0.50))
+            if (ErrorPropagationIsEnabled)
             {
-                throw new Exception();
+                if (Double.IsNaN(Value) || Double.IsNaN(ErrorMargin) || (Value > 1 && PercentageError > 0.50))
+                {
+                    throw new Exception();
+                }
             }
         }
         #endregion
 
         #region Public methods
+
+        public static Measurement Exactly(double d)
+        {
+            return new Measurement(d, 0);
+        }
+
         public Measurement SquareRoot()
         {
             var sqrt = Math.Sqrt(this.Value);
-            var error = this.ErrorMargin / (2 * sqrt);
-            if (Double.IsNaN(error))
+            if (Measurement.ErrorPropagationIsEnabled)
             {
-                error = Math.Sqrt(this.Value + this.ErrorMargin) - sqrt;
+                var error = this.ErrorMargin / (2 * sqrt);
+                if (Double.IsNaN(error))
+                {
+                    error = Math.Sqrt(this.Value + this.ErrorMargin) - sqrt;
+                }
+                return new Measurement(sqrt, error);
             }
-            return new Measurement(sqrt, error);
+            return new Measurement(sqrt, this.ErrorMargin);
         }
 
         public Measurement Negate()
         {
-            return this.Multiply(-1.0);
+            return new Measurement(this.Value*-1.0,this.ErrorMargin);
         }
 
         public Measurement AbsoluteValue()
@@ -73,7 +89,13 @@ namespace UnitClassLibrary.GenericUnit
 
         public Measurement ToThe(Measurement m)
         {
-            return new Measurement(Math.Pow(this.Value, m.Value), m.Value * Math.Pow(this.Value, m.Value - 1) * this.ErrorMargin + Math.Log(this.Value) * Math.Pow(this.Value, m.Value) * m.ErrorMargin);
+            double value = Math.Pow(this.Value, m.Value);
+            if (ErrorPropagationIsEnabled)
+            {
+                double error = m.Value * Math.Pow(this.Value, m.Value - 1) * this.ErrorMargin + Math.Log(this.Value) * Math.Pow(this.Value, m.Value) * m.ErrorMargin;
+                return new Measurement(value, error);
+            }
+            return new Measurement(value, Math.Max(this.ErrorMargin, m.ErrorMargin));
         }
 
         public Measurement ToThe(int n)
@@ -93,25 +115,29 @@ namespace UnitClassLibrary.GenericUnit
             }
         }
 
-        public Measurement Add(Measurement value)
+        public Measurement Add(Measurement m)
         {
-            return new Measurement(this.Value + value.Value, this.ErrorMargin + value.ErrorMargin);
+            return new Measurement(this.Value + m.Value, this.ErrorMargin + m.ErrorMargin);
         }
-        public Measurement Subtract(Measurement value)
+        public Measurement Subtract(Measurement m)
         {
-            return new Measurement(this.Value - value.Value, this.ErrorMargin + value.ErrorMargin);
+            if (ErrorPropagationIsEnabled)
+            {
+                return new Measurement(this.Value - m.Value, this.ErrorMargin + m.ErrorMargin);
+            }
+            return new Measurement(this.Value - m.Value, Math.Max(this.ErrorMargin, m.ErrorMargin));
         }
         public Measurement Multiply(Measurement m)
         {
-            return new Measurement(this.Value * m.Value, this.Value * m.ErrorMargin + m.Value * this.ErrorMargin);
+            return new Measurement(this.Value * m.Value, Math.Abs(this.Value * m.ErrorMargin) + Math.Abs(m.Value * this.ErrorMargin));
         }
         public Measurement Divide(Measurement m)
         {
-            return new Measurement(this.Value / m.Value, this.Value * m.ErrorMargin / (m.Value * m.Value) + this.ErrorMargin / m.Value);
+            return new Measurement(this.Value / m.Value, Math.Abs(this.Value * m.ErrorMargin / (m.Value * m.Value)) + Math.Abs(this.ErrorMargin / m.Value));
         }
         public Measurement Mod(Measurement m)
         {
-            return new Measurement(this.Value % m.Value, this.ErrorMargin + m.ErrorMargin * Math.Floor(this.Value / m.Value));
+            return new Measurement(this.Value % m.Value, this.ErrorMargin + m.ErrorMargin * Math.Floor(Math.Abs(this.Value) / m.Value));
         }
         public bool LessThan(Measurement m)
         {

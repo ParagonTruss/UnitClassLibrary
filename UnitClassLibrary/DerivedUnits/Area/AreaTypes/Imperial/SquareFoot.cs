@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnitClassLibrary.AreaUnit.AreaTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
-using UnitClassLibrary.GenericUnit;
+
 
 namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
 {

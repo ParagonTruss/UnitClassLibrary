@@ -7,6 +7,8 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Radian : AngleType
     {
+        public static readonly Radian s = new Radian();
+
         override public string AsStringPlural()
         {
             return "Radians";
@@ -26,11 +28,11 @@ namespace UnitClassLibrary.AngleUnit
             }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Degree().DefaultErrorMargin_ / this.ConversionFactor;
+                return new Degree().DefaultErrorMargin / this.ConversionFactor;
             }
         }
     }

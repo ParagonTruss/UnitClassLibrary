@@ -19,7 +19,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
             get { return 1; }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.ForceUnit;
-using UnitClassLibrary.GenericUnit;
+
 
 namespace UnitClassLibrary.DerivedUnits
 {

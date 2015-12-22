@@ -18,11 +18,11 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
             }
         }
 
-        override public double DefaultErrorMargin_
+        override public double DefaultErrorMargin
         {
             get
             {
-                return new Second().DefaultErrorMargin_ / ConversionFactor;
+                return new Second().DefaultErrorMargin / ConversionFactor;
             }
         }
     }

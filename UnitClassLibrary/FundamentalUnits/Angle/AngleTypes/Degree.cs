@@ -25,7 +25,7 @@ namespace UnitClassLibrary.AngleUnit
             }
         }
 
-        public override double DefaultErrorMargin_
+        public override double DefaultErrorMargin
         {
             get
             {
