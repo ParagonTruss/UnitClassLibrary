@@ -1,0 +1,6 @@
+language: csharp
+solution: UnitClassLibrary.sln
+install:
+  - nuget restore UnitClassLibrary.sln
+script:
+  - xbuild UnitClassLibrary.sln
