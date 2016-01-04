@@ -15,6 +15,7 @@ namespace UnitClassLibrary
     { 
         private readonly T _unitType;
         private readonly Measurement _measurement;
+
         override public IUnitType UnitType { get { return _unitType; } }
         override public Measurement Measurement { get{ return _measurement; } }
 
@@ -47,7 +48,7 @@ namespace UnitClassLibrary
                 throw new Exception("Units do not have the same Dimensions");
             }
             this._unitType = type;
-            this._measurement = unitToConvert.ValueInThisUnit(type);
+            this._measurement = unitToConvert.ValueIn(type);
         }
 
         public Unit(Unit<T> toCopy)
@@ -55,10 +56,26 @@ namespace UnitClassLibrary
             this._unitType = (T)toCopy.UnitType;
             this._measurement = toCopy.Measurement;
         }
-      
+
+        /// <summary>
+        /// Constructor sets error exactly to whatever you set it as.
+        /// </summary>
+        private Unit(T type, double value, double error)
+        {
+            this._unitType = type;
+            this._measurement = new Measurement(value, error);
+        }
+
 
         #region Public Methods
-
+        public static Unit<T> ExactUnit(T type, double value, double errorMargin)
+        {
+            return new Unit<T>(type, value, errorMargin);
+        }
+        public static Unit<T> Exactly(double value, T type)
+        {
+            return ExactUnit(type, value, 0.0);
+        }
         public Unit<T> Negate()
         {
             return new Unit<T>((T)UnitType, Measurement.Negate());
@@ -89,7 +106,7 @@ namespace UnitClassLibrary
 
         public Unit<T> Add(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement + unit.ValueInThisUnit(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement + unit.ValueIn(this.UnitType));
         }
         public Unit<T> Add(Unit unit)
         {
@@ -98,7 +115,7 @@ namespace UnitClassLibrary
         }
         public Unit<T> Subtract(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement - unit.ValueInThisUnit(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement - unit.ValueIn(this.UnitType));
         }
         public Unit<T> Subtract(Unit unit)
         {
@@ -111,7 +128,7 @@ namespace UnitClassLibrary
         }
         public Measurement Divide(Unit<T> divisor)
         {
-            return this.Measurement / (divisor.ValueInThisUnit(this.UnitType));
+            return this.Measurement / (divisor.ValueIn(this.UnitType));
         }
         public Unit<T> Divide(Measurement divisor)
         {
@@ -119,7 +136,7 @@ namespace UnitClassLibrary
         }
         public Unit<T> Mod(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement.Mod(unit.ValueInThisUnit(this.UnitType)));
+            return new Unit<T>((T)this.UnitType, this.Measurement.Mod(unit.ValueIn(this.UnitType)));
         }
 
         
@@ -168,19 +185,16 @@ namespace UnitClassLibrary
         }
 
         public int CompareTo(Unit<T> other)
-        {
+        {     
             if (this == other)
             {
                 return 0;
             }
-            else if (this < other)
-            {
-                return -1;
-            }
-            else
+            if (this > other)
             {
                 return 1;
-            }
+            }   
+            return -1;
         }
 
         public override int GetHashCode()
@@ -249,19 +263,19 @@ namespace UnitClassLibrary
         }
         public static bool operator <(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement < unit2.ValueInThisUnit(unit1.UnitType);
+            return unit1.Measurement < unit2.ValueIn(unit1.UnitType);
         }
         public static bool operator >(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement > unit2.ValueInThisUnit(unit1.UnitType);
+            return unit1.Measurement > unit2.ValueIn(unit1.UnitType);
         }
         public static bool operator <=(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement <= unit2.ValueInThisUnit(unit1.UnitType);
+            return unit1.Measurement <= unit2.ValueIn(unit1.UnitType);
         }
         public static bool operator >=(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement >= unit2.ValueInThisUnit(unit1.UnitType);
+            return unit1.Measurement >= unit2.ValueIn(unit1.UnitType);
         }
         public static bool operator ==(Unit<T> unit1, Unit<T> unit2)
         {

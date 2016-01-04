@@ -34,20 +34,20 @@ namespace UnitLibraryTests
             //Speed d = new Speed(new Time(new Inch(), 2), new Time(new Second(), 4));
             Speed d2 = new Speed(new InchPerSecond(), 3);
 
-            var x = d2.ValueInThisUnit(new InchPerSecond());
+            var x = d2.ValueIn(new InchPerSecond());
 
             Speed negative = d2.Negate();
 
-            var y = negative.ValueInThisUnit(new InchPerSecond());
+            var y = negative.ValueIn(new InchPerSecond());
 
            // Speed d = new Speed(new Time(new Inch(), 2), new Time(new Second(), 4));
             Speed d3= new Speed(new InchPerSecond(), 3);
 
-            var x2 = d2.ValueInThisUnit(new InchPerSecond());
+            var x2 = d2.ValueIn(new InchPerSecond());
 
             Speed negative2 = d2.Negate();
 
-            var y2 = negative.ValueInThisUnit(new InchPerSecond());
+            var y2 = negative.ValueIn(new InchPerSecond());
         }
 
         /// <summary>

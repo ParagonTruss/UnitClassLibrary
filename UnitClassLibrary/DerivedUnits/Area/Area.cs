@@ -29,7 +29,7 @@ namespace UnitClassLibrary.AreaUnit
 
         public Distance SquareRoot()
         {
-            var value = this.ValueInThisUnit(new SquareInch()).SquareRoot();
+            var value = this.ValueIn(new SquareInch()).SquareRoot();
             return new Distance(new Inch(), value);
         }
 

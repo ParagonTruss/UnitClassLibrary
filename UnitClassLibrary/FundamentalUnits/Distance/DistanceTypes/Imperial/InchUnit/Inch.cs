@@ -23,8 +23,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
         {
             get
             {
-                return 0.015625;
-                //return 0.03125;
+                // one sixty fourth of an inch:
+                //return 0.015625;
+
+                // one thirty second of an inch:
+                return 0.03125;
             }
         }
     }

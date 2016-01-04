@@ -5,28 +5,32 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
-
+using Newtonsoft.Json;
 
 namespace UnitClassLibrary.DistanceUnit
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public partial class Distance : Unit<DistanceType>
     {
         #region Constructors
-
+        
         public Distance(DistanceType distanceUnit, double value) : base(distanceUnit, value) { }
 
+        [JsonConstructor]
         public Distance(DistanceType distanceUnit, Measurement measurement)
             : base(distanceUnit, measurement) { }
 
+        public Distance(Measurement measurement, DistanceType distanceType)
+            : base(distanceType, measurement) { }
 
         public Distance(string architectural)
-            : this(new Inch(), _convertArchitectualStringToValueInInches(architectural))
-        { }
+            : this(new Inch(), _convertArchitectualStringToValueInInches(architectural)) { }
 
-        public Distance(Unit<DistanceType> unit) : base(unit)
-        {
+        public Distance(Unit<DistanceType> unit)
+            : base(unit) { }
 
-        }
+        public Distance(Unit unit, DistanceType type)
+            : base(type, unit) { }
         #endregion
 
         new public Distance Negate()
@@ -40,15 +44,23 @@ namespace UnitClassLibrary.DistanceUnit
         }
 
         #region Static Properties
-        public static readonly Distance Zero = new Distance(new Inch(), new Measurement());
+        public static Distance ZeroDistance { get { return new Distance(Exactly(0, Inches)); } }
 
-        public static readonly Distance Inch = new Distance(new Inch(), new Measurement(1));
-        public static readonly Distance Foot = new Distance(new Foot(), new Measurement(1));
-        public static readonly Distance Millimeter = new Distance(new Millimeter(), new Measurement(1));
+        // Only marginally usefull.
+        // Names are too similar to the methods below, and we want people to use those ones.
+        //public static readonly Distance Inch = new Distance(new Inch(), new Measurement(1));
+        //public static readonly Distance Foot = new Distance(new Foot(), new Measurement(1));
+        //public static readonly Distance Millimeter = new Distance(new Millimeter(), new Measurement(1));
 
-        public Measurement Inches { get { return ValueInThisUnit(new Inch()); } }
-        public Measurement Feet { get { return ValueInThisUnit(new Foot()); } }
-        public Measurement Centimeters { get { return ValueInThisUnit(new Centimeter()); } }
+        public static DistanceType Inches { get { return new Inch(); } }
+        public static DistanceType Feet { get { return new Foot(); } }
+        public static DistanceType Millimeters { get { return new Millimeter(); } }
+        public static DistanceType Centimeters { get { return new Centimeter(); } }
+
+        public Measurement InInches { get { return ValueIn(Inches); } }
+        public Measurement InFeet { get { return ValueIn(Feet); } }
+        public Measurement InMillimeters { get { return ValueIn(Millimeters); } }
+        public Measurement InCentimeters { get { return ValueIn(Centimeters); } }
 
         #endregion
         #region Operator Overloads

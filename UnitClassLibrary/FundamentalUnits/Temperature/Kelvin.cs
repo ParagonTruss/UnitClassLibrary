@@ -5,7 +5,7 @@ using System.Text;
 
 using UnitClassLibrary.TemperatureUnit;
 
-namespace UnitClassLibrary.FundamentalUnits.Temperature
+namespace UnitClassLibrary.AngleUnit.Temperature
 {
     public class Kelvin : TemperatureType
     {

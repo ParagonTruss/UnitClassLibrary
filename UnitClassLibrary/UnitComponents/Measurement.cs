@@ -5,14 +5,18 @@ using System.Text;
 
 namespace UnitClassLibrary
 {
+    public enum ErrorMarginSetting { StaticTolerances, ErrorPropagation }
+
     public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>
     {
         #region global public variables
+        
         /// <summary>
         /// set to 1 billionth.
         /// </summary>
         public static double DefaultErrorMargin { get; set; } = 0.00000001;
-        public static bool ErrorPropagationIsEnabled { get; set; } = false;
+        public static ErrorMarginSetting ErrorMarginSetting { get; set; } = ErrorMarginSetting.StaticTolerances;
+        public static bool ErrorPropagationIsEnabled { get { return ErrorMarginSetting == ErrorMarginSetting.ErrorPropagation; } }
         
        
         #endregion
@@ -57,24 +61,16 @@ namespace UnitClassLibrary
 
         #region Public methods
 
-        public static Measurement Exactly(double d)
-        {
-            return new Measurement(d, 0);
-        }
-
         public Measurement SquareRoot()
         {
             var sqrt = Math.Sqrt(this.Value);
-            if (Measurement.ErrorPropagationIsEnabled)
+          
+            var error = this.ErrorMargin / (2 * sqrt);
+            if (Double.IsNaN(error))
             {
-                var error = this.ErrorMargin / (2 * sqrt);
-                if (Double.IsNaN(error))
-                {
-                    error = Math.Sqrt(this.Value + this.ErrorMargin) - sqrt;
-                }
-                return new Measurement(sqrt, error);
+                error = Math.Sqrt(this.Value + this.ErrorMargin) - sqrt;
             }
-            return new Measurement(sqrt, this.ErrorMargin);
+            return new Measurement(sqrt, error);          
         }
 
         public Measurement Negate()
@@ -89,13 +85,10 @@ namespace UnitClassLibrary
 
         public Measurement ToThe(Measurement m)
         {
-            double value = Math.Pow(this.Value, m.Value);
-            if (ErrorPropagationIsEnabled)
-            {
-                double error = m.Value * Math.Pow(this.Value, m.Value - 1) * this.ErrorMargin + Math.Log(this.Value) * Math.Pow(this.Value, m.Value) * m.ErrorMargin;
-                return new Measurement(value, error);
-            }
-            return new Measurement(value, Math.Max(this.ErrorMargin, m.ErrorMargin));
+            double value = Math.Pow(this.Value, m.Value);       
+            double error = m.Value * Math.Pow(this.Value, m.Value - 1) * this.ErrorMargin
+                + Math.Log(this.Value) * Math.Pow(this.Value, m.Value) * m.ErrorMargin;
+            return new Measurement(value, error);
         }
 
         public Measurement ToThe(int n)
@@ -121,11 +114,7 @@ namespace UnitClassLibrary
         }
         public Measurement Subtract(Measurement m)
         {
-            if (ErrorPropagationIsEnabled)
-            {
-                return new Measurement(this.Value - m.Value, this.ErrorMargin + m.ErrorMargin);
-            }
-            return new Measurement(this.Value - m.Value, Math.Max(this.ErrorMargin, m.ErrorMargin));
+            return new Measurement(this.Value - m.Value, this.ErrorMargin + m.ErrorMargin);
         }
         public Measurement Multiply(Measurement m)
         {
@@ -137,7 +126,20 @@ namespace UnitClassLibrary
         }
         public Measurement Mod(Measurement m)
         {
-            return new Measurement(this.Value % m.Value, this.ErrorMargin + m.ErrorMargin * Math.Floor(Math.Abs(this.Value) / m.Value));
+            
+            double mValue = Math.Abs(m.Value);
+            double value = this.Value % mValue;
+            double errorMargin = this.ErrorMargin + m.ErrorMargin * Math.Floor(Math.Abs(this.Value) / mValue);
+            Measurement temp = new Measurement(value, errorMargin);
+            if (value == Measurement.Zero || temp == mValue) 
+            {
+                return new Measurement(0, errorMargin);          
+            }             
+            if (value < 0.0)
+            {
+                value += m.Value;
+            }
+            return new Measurement(value, errorMargin);
         }
         public bool LessThan(Measurement m)
         {

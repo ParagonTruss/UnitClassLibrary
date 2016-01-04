@@ -285,9 +285,9 @@ namespace UnitLibraryTests
         public void Distance_Intuitiveness()
         {
             //zero constructor
-            Distance zero1 = Distance.Zero;
-            Distance zero2 = Distance.Zero;
-            Angle zero = Angle.Zero;
+            Distance zero1 = Distance.ZeroDistance;
+            Distance zero2 = Distance.ZeroDistance;
+            Angle zero = Angle.ZeroAngle;
 
             // This doesn't compile, yay for type safety:
             // bool b1 = zero1 == zero;
@@ -309,12 +309,12 @@ namespace UnitLibraryTests
 
             //}
 
-            if (zero1 == Distance.Zero)
+            if (zero1 == Distance.ZeroDistance)
             {
 
             }
 
-            if (zero1 >= Distance.Zero)
+            if (zero1 >= Distance.ZeroDistance)
             {
 
             }

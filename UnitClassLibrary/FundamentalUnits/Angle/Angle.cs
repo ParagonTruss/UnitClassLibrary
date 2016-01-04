@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.FundamentalUnits;
-using static UnitClassLibrary.FundamentalUnits.AngleTypeFactory;
+using UnitClassLibrary.AngleUnit;
+using static UnitClassLibrary.AngleUnit.AngleTypeFactory;
 using static UnitClassLibrary.Measurement;
 
 namespace UnitClassLibrary.AngleUnit
 {
     public class Angle : Unit<AngleType>
     {
-        public Angle AsLessThanAFullCircle { get { return this % FullCircle; } }
+        public Angle ProperAngle { get { return this % FullCircle; } }
 
-        public static Angle Zero { get { return new Angle(Exactly(0), Degrees); } }
-        public static Angle RightAngle { get { return new Angle(Exactly(90), Degrees); } }
-        public static Angle StraightAngle { get { return new Angle(Exactly(180), Degrees); } }
-        public static Angle FullCircle { get { return new Angle(Exactly(360), Degrees); } }
+        public static Angle ZeroAngle { get { return Exactly(0, Degrees); } }
+        public static Angle RightAngle { get { return Exactly(90, Degrees); } }
+        public static Angle StraightAngle { get { return Exactly(180, Degrees); } }
+        public static Angle FullCircle { get { return Exactly(360, Degrees); } }
 
         public Angle(AngleType type, Measurement measurement)
             : base(type, measurement) { }
@@ -25,27 +25,46 @@ namespace UnitClassLibrary.AngleUnit
 
         public Angle(Unit<AngleType> angle) : base(angle) { }
 
+        public static Angle AngleWithExactError(double value, double errorMargin, AngleType type)
+        {
+            return new Angle(ExactUnit(type, value, errorMargin));
+        }
+
+        public static Angle Exactly(double value, AngleType type)
+        {
+            return AngleWithExactError(value, 0.0, type);
+        }
+
+        public Angle Supplement()
+        {
+            return (Angle.StraightAngle - this.ProperAngle);
+        }
+        public Angle Complement()
+        {
+            return (Angle.RightAngle - this.ProperAngle);
+        }
+
         public new Angle Negate()
         {
             return new Angle(base.Negate());
         }
         public static Measurement Sine(Angle angle)
         {
-            var m = angle.ValueInThisUnit(new Radian());
+            var m = angle.ValueIn(new Radian());
 
             return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
         }
 
         public static Measurement Cosine(Angle angle)
         {
-            var m = angle.ValueInThisUnit(new Radian());
+            var m = angle.ValueIn(new Radian());
 
             return new Measurement(Math.Cos(m.Value), Math.Sin(m.Value) * m.ErrorMargin);
         }
 
         public static Measurement Tangent(Angle angle)
         {
-            var m = angle.ValueInThisUnit(new Radian());
+            var m = angle.ValueIn(Radians);
 
             return new Measurement(Math.Tan(m.Value), m.ErrorMargin / Math.Pow(Math.Cos(m.Value), 2));
         }
@@ -102,10 +121,10 @@ namespace UnitClassLibrary.AngleUnit
             return new Angle(new Degree(),new Measurement(value, errorMargin));
         }
 
-        public Angle Reverse()
-        {
-            throw new NotImplementedException();
-        }
+        //public Angle Reverse()
+        //{
+        //    throw new NotImplementedException();
+        //}
 
         public static Angle operator +(Angle angle1, Angle angle2)
         {
@@ -133,25 +152,16 @@ namespace UnitClassLibrary.AngleUnit
         }
         public static Angle operator %(Angle angle1, Angle angle2)
         {
-            var value1 = angle1.Measurement;
-            var value2 = angle2.ValueInThisUnit(angle1.UnitType).Value;
-
-            var result = value1 % value2;
-
-            if (result < 0)
-            {
-                result += value2;
-            }
-
-            return new Angle((AngleType)angle1.UnitType, result);
+            return new Angle(angle1.Mod(angle2));
         }
 
-        public Measurement InDegrees { get { return ValueInThisUnit(new Degree()); } }
-        public Measurement InRadians { get { return ValueInThisUnit(new Radian()); } }
+        public Measurement InDegrees { get { return ValueIn(new Degree()); } }
+        public Measurement InRadians { get { return ValueIn(new Radian()); } }
 
-        public static Angle Radian { get { return new Angle(1, Radians); } }
-
-        public static Angle Degree { get { return new Angle(1, Degrees); } }
+        // Only marginally usefull.
+        // Names are too similar to the methods below, and we want people to use those ones.
+        //public static Angle Radian { get { return new Angle(1, Radians); } }
+        //public static Angle Degree { get { return new Angle(1, Degrees); } }
 
         public static AngleType Radians { get { return new Radian(); } }
         public static AngleType Degrees { get { return new Degree(); } }

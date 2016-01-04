@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UnitClassLibrary.AngleUnit;
 
-namespace UnitClassLibrary.FundamentalUnits
+namespace UnitClassLibrary.AngleUnit
 {
     public static class AngleTypeFactory
     {

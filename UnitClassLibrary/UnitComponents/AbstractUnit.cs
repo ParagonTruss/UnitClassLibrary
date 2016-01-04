@@ -18,7 +18,7 @@ namespace UnitClassLibrary
             return this.ConversionFactor / unit.ConversionFactor;
         }
 
-        public Measurement ValueInThisUnit(IUnitType unit)
+        public Measurement ValueIn(IUnitType unit)
         {
             var result = this.Measurement * ConversionFromThisTo(unit);
             return result;
@@ -54,7 +54,7 @@ namespace UnitClassLibrary
         }
         protected static bool _ValuesAreEqual(Unit unit1, Unit unit2)
         {
-            return unit1.Measurement == unit2.ValueInThisUnit(unit1.UnitType);
+            return unit1.Measurement == unit2.ValueIn(unit1.UnitType);
         }
     }
 }
