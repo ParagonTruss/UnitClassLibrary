@@ -7,7 +7,7 @@ namespace UnitClassLibrary
 {
     public enum ErrorMarginSetting { StaticTolerances, ErrorPropagation }
 
-    public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>
+    public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>, IFormattable
     {
         #region global public variables
         
@@ -211,6 +211,13 @@ namespace UnitClassLibrary
         #endregion
 
         #region Overrides
+        /// <summary>
+        /// IFormattable implementation
+        /// </summary>
+        public string ToString(string format, IFormatProvider formatProvider)
+        {
+            return this.ToString();
+        }
         public override string ToString()
         {
             // valus plus/minus error
@@ -229,6 +236,8 @@ namespace UnitClassLibrary
             }
             return 0;
         }
+
+      
         #endregion
     }
 }
