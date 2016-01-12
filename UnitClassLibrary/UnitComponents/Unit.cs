@@ -12,7 +12,8 @@ namespace UnitClassLibrary
     /// A generic implementation of all your favorite units.
     /// </summary>
     public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>> where T : IUnitType
-    { 
+    {
+        #region Properties
         private readonly T _unitType;
         private readonly Measurement _measurement;
 
@@ -22,6 +23,10 @@ namespace UnitClassLibrary
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
 
+        public static Unit<T> Zero { get { return Exactly(0,default(T)); } }
+        #endregion
+
+        #region Constructors
         protected Unit() { }
         public Unit(T unitType, double value = 1.0)
         {
@@ -48,7 +53,7 @@ namespace UnitClassLibrary
                 throw new Exception("Units do not have the same Dimensions");
             }
             this._unitType = type;
-            this._measurement = unitToConvert.ValueIn(type);
+            this._measurement = unitToConvert.MeasurementIn(type);
         }
 
         public Unit(Unit<T> toCopy)
@@ -65,7 +70,7 @@ namespace UnitClassLibrary
             this._unitType = type;
             this._measurement = new Measurement(value, error);
         }
-
+        #endregion
 
         #region Public Methods
         public static Unit<T> ExactUnit(T type, double value, double errorMargin)
@@ -106,7 +111,7 @@ namespace UnitClassLibrary
 
         public Unit<T> Add(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement + unit.ValueIn(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement + unit.MeasurementIn(this.UnitType));
         }
         public Unit<T> Add(Unit unit)
         {
@@ -115,28 +120,39 @@ namespace UnitClassLibrary
         }
         public Unit<T> Subtract(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement - unit.ValueIn(this.UnitType));
+            return new Unit<T>((T)this.UnitType, this.Measurement - unit.MeasurementIn(this.UnitType));
         }
         public Unit<T> Subtract(Unit unit)
         {
             Unit<T> conversion = new Unit<T>((T)this.UnitType, unit);
             return new Unit<T>((T)this.UnitType, this.Measurement - conversion.Measurement);
         }
-        public Unit<T> Multiply(Measurement scalar)
+        override public Unit Multiply(Measurement scalar)
+        {
+            return this._Multiply(scalar);
+        }
+
+        protected Unit<T> _Multiply(Measurement scalar)
         {
             return new Unit<T>((T)this.UnitType, this.Measurement * scalar);
         }
         public Measurement Divide(Unit<T> divisor)
         {
-            return this.Measurement / (divisor.ValueIn(this.UnitType));
+            return this.Measurement / (divisor.MeasurementIn(this.UnitType));
         }
-        public Unit<T> Divide(Measurement divisor)
+
+        override public Unit Divide(Measurement divisor)
+        {
+            return this._Divide(divisor);
+        }
+
+        protected Unit<T> _Divide(Measurement divisor)
         {
             return new Unit<T>((T)this.UnitType, this.Measurement / divisor);
         }
         public Unit<T> Mod(Unit<T> unit)
         {
-            return new Unit<T>((T)this.UnitType, this.Measurement.Mod(unit.ValueIn(this.UnitType)));
+            return new Unit<T>((T)this.UnitType, this.Measurement.Mod(unit.MeasurementIn(this.UnitType)));
         }
 
         
@@ -239,11 +255,11 @@ namespace UnitClassLibrary
         }
         public static Unit<T> operator *(Measurement scalar, Unit<T> unit)
         {
-            return unit.Multiply(scalar);
+            return unit._Multiply(scalar);
         }
         public static Unit<T> operator *(Unit<T> unit, Measurement scalar)
         {
-            return unit.Multiply(scalar);
+            return unit._Multiply(scalar);
         }
         public static Measurement operator /(Unit<T> unit, Unit<T> divisor)
         {
@@ -251,7 +267,7 @@ namespace UnitClassLibrary
         }
         public static Unit<T> operator /(Unit<T> unit, Measurement divisor)
         {
-            return unit.Divide(divisor);
+            return unit._Divide(divisor);
         }
         public static Unit<T> operator %(Unit<T> unit, Unit<T> modulus)
         {
@@ -263,19 +279,19 @@ namespace UnitClassLibrary
         }
         public static bool operator <(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement < unit2.ValueIn(unit1.UnitType);
+            return unit1.Measurement < unit2.MeasurementIn(unit1.UnitType);
         }
         public static bool operator >(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement > unit2.ValueIn(unit1.UnitType);
+            return unit1.Measurement > unit2.MeasurementIn(unit1.UnitType);
         }
         public static bool operator <=(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement <= unit2.ValueIn(unit1.UnitType);
+            return unit1.Measurement <= unit2.MeasurementIn(unit1.UnitType);
         }
         public static bool operator >=(Unit<T> unit1, Unit<T> unit2)
         {
-            return unit1.Measurement >= unit2.ValueIn(unit1.UnitType);
+            return unit1.Measurement >= unit2.MeasurementIn(unit1.UnitType);
         }
         public static bool operator ==(Unit<T> unit1, Unit<T> unit2)
         {

@@ -23,7 +23,8 @@ namespace UnitClassLibrary.AngleUnit.Temperature
         {
             get
             {
-                return 1.0;
+                // right now Fahrenheit is set as the primary unit, so everything works
+                throw new NotImplementedException();
             }
         }
 

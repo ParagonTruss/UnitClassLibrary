@@ -17,17 +17,19 @@ namespace UnitClassLibrary
         public static double DefaultErrorMargin { get; set; } = 0.00000001;
         public static ErrorMarginSetting ErrorMarginSetting { get; set; } = ErrorMarginSetting.StaticTolerances;
         public static bool ErrorPropagationIsEnabled { get { return ErrorMarginSetting == ErrorMarginSetting.ErrorPropagation; } }
-        
-       
+
+
         #endregion
 
+        #region Implicit Cast
         public static implicit operator Measurement(double d)
         {
             return new Measurement(d);
         }
+        #endregion
 
         #region Properties
-        public static Measurement Zero { get { return new Measurement(0.0);} }
+        public static Measurement Zero { get { return new Measurement(0.0, 0.0);} }
 
         public readonly double Value;
         public readonly double ErrorMargin;
@@ -159,6 +161,11 @@ namespace UnitClassLibrary
         public static Measurement operator +(Measurement m1, Measurement m2)
         {
             return m1.Add(m2);
+        }
+
+        public static Measurement operator -(Measurement m)
+        {
+            return m.Negate();
         }
         public static Measurement operator -(Measurement m1, Measurement m2)
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
 
-namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit
+namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InSquareInchesUnit
 {
     public class SquareInch : AreaType
     {

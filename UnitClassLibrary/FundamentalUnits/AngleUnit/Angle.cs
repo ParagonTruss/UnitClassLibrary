@@ -44,27 +44,31 @@ namespace UnitClassLibrary.AngleUnit
             return (Angle.RightAngle - this.ProperAngle);
         }
 
+        public new Angle AbsoluteValue()
+        {
+            return new Angle(base.AbsoluteValue());
+        }
         public new Angle Negate()
         {
             return new Angle(base.Negate());
         }
         public static Measurement Sine(Angle angle)
         {
-            var m = angle.ValueIn(new Radian());
+            var m = angle.MeasurementIn(new Radian());
 
             return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
         }
 
         public static Measurement Cosine(Angle angle)
         {
-            var m = angle.ValueIn(new Radian());
+            var m = angle.MeasurementIn(new Radian());
 
             return new Measurement(Math.Cos(m.Value), Math.Sin(m.Value) * m.ErrorMargin);
         }
 
         public static Measurement Tangent(Angle angle)
         {
-            var m = angle.ValueIn(Radians);
+            var m = angle.MeasurementIn(Radians);
 
             return new Measurement(Math.Tan(m.Value), m.ErrorMargin / Math.Pow(Math.Cos(m.Value), 2));
         }
@@ -138,7 +142,7 @@ namespace UnitClassLibrary.AngleUnit
 
         public static Angle operator *(Angle angle, Measurement scalar)
         {
-            return new Angle(angle.Multiply(scalar));
+            return new Angle(angle._Multiply(scalar));
         }
 
         public static Angle operator *(Measurement scalar, Angle angle)
@@ -148,15 +152,15 @@ namespace UnitClassLibrary.AngleUnit
 
         public static Angle operator /(Angle angle, Measurement divisor)
         {
-            return new Angle(angle.Divide(divisor));
+            return new Angle(angle._Divide(divisor));
         }
         public static Angle operator %(Angle angle1, Angle angle2)
         {
             return new Angle(angle1.Mod(angle2));
         }
 
-        public Measurement InDegrees { get { return ValueIn(new Degree()); } }
-        public Measurement InRadians { get { return ValueIn(new Radian()); } }
+        public Measurement InDegrees { get { return MeasurementIn(new Degree()); } }
+        public Measurement InRadians { get { return MeasurementIn(new Radian()); } }
 
         // Only marginally usefull.
         // Names are too similar to the methods below, and we want people to use those ones.

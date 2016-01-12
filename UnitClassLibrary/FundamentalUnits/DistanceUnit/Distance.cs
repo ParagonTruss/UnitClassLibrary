@@ -6,6 +6,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 using Newtonsoft.Json;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
@@ -56,18 +57,22 @@ namespace UnitClassLibrary.DistanceUnit
         public static DistanceType Feet { get { return new Foot(); } }
         public static DistanceType Millimeters { get { return new Millimeter(); } }
         public static DistanceType Centimeters { get { return new Centimeter(); } }
+        public static DistanceType Kilometers { get { return new Kilometer(); } }
 
-        public Measurement InInches { get { return ValueIn(Inches); } }
-        public Measurement InFeet { get { return ValueIn(Feet); } }
-        public Measurement InMillimeters { get { return ValueIn(Millimeters); } }
-        public Measurement InCentimeters { get { return ValueIn(Centimeters); } }
-
+        public Measurement InInches { get { return MeasurementIn(Inches); } }
+        public Measurement InFeet { get { return MeasurementIn(Feet); } }
+        public Measurement InMillimeters { get { return MeasurementIn(Millimeters); } }
+        public Measurement InCentimeters { get { return MeasurementIn(Centimeters); } }
+       
+        public static Distance QuarterInch { get { return new Distance(Exactly(0.25, Inches)); } }
+        public static Distance SixteenthInch { get { return new Distance(Exactly(0.0375, Inches));} }
+       
         #endregion
         #region Operator Overloads
 
         public static Distance operator +(Distance distance1, Distance distance2)
         {
-            return new Distance((distance1.Add(distance2)));
+            return new Distance(distance1.Add(distance2));
         }
 
         public static Distance operator -(Distance distance1, Distance distance2)
@@ -77,7 +82,7 @@ namespace UnitClassLibrary.DistanceUnit
 
         public static Distance operator *(Distance distance, Measurement scalar)
         {
-            return new Distance(distance.Multiply(scalar));
+            return new Distance(distance._Multiply(scalar));
         }
 
         public static Distance operator *(Measurement scalar, Distance distance)
@@ -87,7 +92,7 @@ namespace UnitClassLibrary.DistanceUnit
 
         public static Distance operator /(Distance distance, Measurement divisor)
         {
-            return new Distance(distance.Divide(divisor));
+            return new Distance(distance._Divide(divisor));
         }
         #endregion
     }

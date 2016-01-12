@@ -17,7 +17,7 @@ using UnitClassLibrary.SpeedUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.AreaUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InSquareInchesUnit;
 using UnitClassLibrary.AngleUnit;
 
 namespace UnitLibraryTests
@@ -34,20 +34,20 @@ namespace UnitLibraryTests
             //Speed d = new Speed(new Time(new Inch(), 2), new Time(new Second(), 4));
             Speed d2 = new Speed(new InchPerSecond(), 3);
 
-            var x = d2.ValueIn(new InchPerSecond());
+            var x = d2.MeasurementIn(new InchPerSecond());
 
             Speed negative = d2.Negate();
 
-            var y = negative.ValueIn(new InchPerSecond());
+            var y = negative.MeasurementIn(new InchPerSecond());
 
            // Speed d = new Speed(new Time(new Inch(), 2), new Time(new Second(), 4));
             Speed d3= new Speed(new InchPerSecond(), 3);
 
-            var x2 = d2.ValueIn(new InchPerSecond());
+            var x2 = d2.MeasurementIn(new InchPerSecond());
 
             Speed negative2 = d2.Negate();
 
-            var y2 = negative.ValueIn(new InchPerSecond());
+            var y2 = negative.MeasurementIn(new InchPerSecond());
         }
 
         /// <summary>

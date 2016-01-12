@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnitClassLibrary.AreaUnit.AreaTypes;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InchesSquaredUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InSquareInchesUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 
@@ -12,6 +12,10 @@ namespace UnitClassLibrary.AreaUnit
         public static readonly Area Zero = new Area(new SquareInch(), 0);
 
         public Area(Unit unit) : this(new SquareInch(), unit)
+        {
+        }
+
+        public Area(Measurement measurement, AreaType areaType) : base(areaType, measurement)
         {
         }
 
@@ -26,10 +30,12 @@ namespace UnitClassLibrary.AreaUnit
         {
 
         }
+        public static AreaType SquareInches { get { return new SquareInch(); } }
+        public Measurement InSquareInches { get { return MeasurementIn(new SquareInch()); } }
 
         public Distance SquareRoot()
         {
-            var value = this.ValueIn(new SquareInch()).SquareRoot();
+            var value = this.MeasurementIn(new SquareInch()).SquareRoot();
             return new Distance(new Inch(), value);
         }
 

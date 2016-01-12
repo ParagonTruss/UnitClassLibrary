@@ -18,26 +18,55 @@ namespace UnitClassLibrary
             return this.ConversionFactor / unit.ConversionFactor;
         }
 
-        public Measurement ValueIn(IUnitType unit)
+        public bool IsPositive()
         {
-            var result = this.Measurement * ConversionFromThisTo(unit);
+            return Measurement.Value > 0;
+        }
+        public Measurement MeasurementIn(IUnitType unitType)
+        {
+            var result = this.Measurement * ConversionFromThisTo(unitType);
             return result;
+        }
+
+        public double ValueIn(IUnitType unitType)
+        {
+            return this.Measurement.Value*ConversionFromThisTo(unitType);
         }
 
         abstract public Unit Invert();
         abstract public Unit Multiply(Unit unit);
+        //abstract public Unit<T> Multiply<T>(Measurement scalar) where T : IUnitType;
+        //abstract public Unit<T> Divide<T>(Measurement divisor) where T : IUnitType;
+
+        abstract public Unit Multiply(Measurement scalar);
+        abstract public Unit Divide(Measurement divisor);
+
+
         public Unit Divide(Unit unit)
         {
             return this.Multiply(unit.Invert());
         }
 
+
         public static Unit operator *(Unit unit1, Unit unit2)
         {
             return unit1.Multiply(unit2);
         }
+        public static Unit operator *(Unit unit, Measurement m)
+        {
+            return unit.Multiply(m);
+        }
+        public static Unit operator *(Measurement m, Unit unit)
+        {
+            return unit*m;
+        }
         public static Unit operator /(Unit unit1, Unit unit2)
         {
             return unit1.Divide(unit2);
+        }
+        public static Unit operator /(Unit unit, Measurement divisor)
+        {
+            return unit.Divide(divisor);
         }
         public static bool operator ==(Unit unit1, Unit unit2)
         {
@@ -54,7 +83,7 @@ namespace UnitClassLibrary
         }
         protected static bool _ValuesAreEqual(Unit unit1, Unit unit2)
         {
-            return unit1.Measurement == unit2.ValueIn(unit1.UnitType);
+            return unit1.Measurement == unit2.MeasurementIn(unit1.UnitType);
         }
     }
 }

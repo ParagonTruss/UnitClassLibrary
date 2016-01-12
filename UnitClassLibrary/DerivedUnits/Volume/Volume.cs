@@ -16,5 +16,7 @@ namespace UnitClassLibrary
 
         public Volume(VolumeType unitType, Measurement value) : base(unitType, value)
         { }
+
+        public Measurement InCubicInches { get { return this.MeasurementIn(new CubicInch()); } }
     }
 }

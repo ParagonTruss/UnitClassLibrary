@@ -65,7 +65,7 @@ namespace UnitClassLibrary.DistanceUnit
         private static string ConvertToArchitecturalString(Distance distance, int precision = 16)
         {
             //Convert into inches before proceeding
-            double workingValue = distance.ValueIn(new Inch()).Value;
+            double workingValue = distance.MeasurementIn(new Inch()).Value;
 
             //detect need for sign
             string sign = "";

@@ -63,7 +63,7 @@ namespace UnitLibraryTests
             Distance additionDistance = inchDistance + architecturalDistance;
 
             // assert
-            (subtractionDistance == (new Distance(new Inch(), 0))).Should().BeTrue();
+            (subtractionDistance == (Distance.ZeroDistance)).Should().BeTrue();
             (additionDistance == (new Distance(new Millimeter(), 720.725))).Should().BeTrue();
             additionDistance.Architectural.Should().Be("2'4 6/16\"");
         }
