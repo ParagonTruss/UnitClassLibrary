@@ -11,7 +11,7 @@ namespace UnitClassLibrary
     /// <summary>
     /// A generic implementation of all your favorite units.
     /// </summary>
-    public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>> where T : IUnitType
+    public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>>, IComparable where T : IUnitType
     {
         #region Properties
         private readonly T _unitType;
@@ -200,6 +200,14 @@ namespace UnitClassLibrary
             }
         }
 
+        public int CompareTo(object other)
+        {
+            if (other is Unit<T>)
+            {
+                return CompareTo((Unit<T>) other);
+            }
+            throw new Exception("These units are not comparable");
+        }
         public int CompareTo(Unit<T> other)
         {     
             if (this == other)

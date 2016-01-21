@@ -5,8 +5,13 @@ using System.Text;
 
 namespace UnitClassLibrary.DistanceUnit
 {
-    public partial class Distance : IComparable<Distance>
+    public partial class Distance : IComparable<Distance>, IComparable
     {
+        public int CompareTo(object obj)
+        {           
+            return base.CompareTo(obj);         
+        }
+
         public int CompareTo(Distance other)
         {
             return base.CompareTo(other);
