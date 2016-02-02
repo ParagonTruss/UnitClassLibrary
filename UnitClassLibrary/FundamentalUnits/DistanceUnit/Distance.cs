@@ -13,6 +13,7 @@ namespace UnitClassLibrary.DistanceUnit
     [JsonObject(MemberSerialization.OptIn)]
     public partial class Distance : Unit<DistanceType>
     {
+        
         #region Constructors
         
         public Distance(DistanceType distanceUnit, double value) : base(distanceUnit, value) { }

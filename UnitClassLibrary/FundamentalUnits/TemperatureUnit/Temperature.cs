@@ -22,11 +22,11 @@ namespace UnitClassLibrary
                 }
                 if (UnitType is Celsius)
                 {
-                    return default(Measurement);
+                    return this.Measurement*1.8 + 32;
                 }
                 if (UnitType is Kelvin)
                 {
-                    return default(Measurement);
+                    return (this.Measurement-273.15)*1.8 + 32;
                 }
                 throw new NotImplementedException();
             }
@@ -38,7 +38,7 @@ namespace UnitClassLibrary
             {
                 if (UnitType is Fahrenheit)
                 {
-                    return default(Measurement); 
+                    return (5.0/9.0)*(this.Measurement - 32.0);
                 }
                 if (UnitType is Celsius)
                 {
@@ -46,7 +46,7 @@ namespace UnitClassLibrary
                 }
                 if (UnitType is Kelvin)
                 {
-                    return default(Measurement);
+                    return this.Measurement - 273.15;
                 }
                 throw new NotImplementedException();
             }
@@ -58,11 +58,11 @@ namespace UnitClassLibrary
             {
                 if (UnitType is Fahrenheit)
                 {
-                    return default(Measurement);
+                    return (5.0/9.0)*(this.Measurement-32)+273.15;
                 }
                 if (UnitType is Celsius)
                 {
-                    return default(Measurement);
+                    return this.Measurement + 273.15;
                 }
                 if (UnitType is Kelvin)
                 {
