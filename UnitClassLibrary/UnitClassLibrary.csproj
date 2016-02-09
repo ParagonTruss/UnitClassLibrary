@@ -103,6 +103,7 @@
     <Compile Include="FundamentalUnits\TemperatureUnit\Celsius.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Fahrenheit.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Kelvin.cs" />
+    <Compile Include="IUnitTypeExtensions.cs" />
     <Compile Include="UnitComponents\AbstractUnit.cs" />
     <Compile Include="UnitComponents\Unit.cs" />
     <Compile Include="UnitComponents\IUnitType.cs" />
@@ -145,7 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.1\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>

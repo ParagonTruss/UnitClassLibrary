@@ -7,7 +7,7 @@ namespace UnitClassLibrary
 {
     public static class IUnitTypeExtensions
     {
-        public static double ConversionFromThisTo<T, U>(this T unitType1, U unitType2)
+        public static double ConversionTo<T, U>(this T unitType1, U unitType2)
             where T : IUnitType
             where U : IUnitType
         {
