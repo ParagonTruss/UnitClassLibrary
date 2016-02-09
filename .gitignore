@@ -186,3 +186,6 @@ UpgradeLog*.htm
 # Microsoft Fakes
 FakesAssemblies/
 UnitClassLibrary/StyleCopViolations.xml
+
+# MonoDevelop user pereferences
+*.userprefs
