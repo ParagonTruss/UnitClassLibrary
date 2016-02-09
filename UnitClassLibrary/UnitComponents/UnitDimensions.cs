@@ -152,34 +152,26 @@ namespace UnitClassLibrary
         private void _cancelUnits()
         {
             var fundamentalTypes = FundamentalTypes;
-            var numCount = _countUnits(_numerators);
-            var denomCount = _countUnits(_denominators);
+            var sortedNum = _sortUnits(_numerators);
+            var sortedDenom = _sortUnits(_denominators);
           
             for (int i = 0; i < fundamentalTypes.Length; i++)
             {
-                var n = Math.Min(numCount[i], denomCount[i]);
+                var n = Math.Min(sortedNum[i].Count(), sortedDenom[i].Count());
                 if (n != 0)
                 {
-                    var nums = _numerators.Where(u => u.Type == fundamentalTypes[i]).Take(n);
+                    var nums = sortedNum[i].Take(n);
                     var num = nums.Select(u => u.ConversionFactor).Aggregate((u,v) => u* v);
-                    var denoms = _denominators.Where(u => u.Type == fundamentalTypes[i]).Take(n);
+                    var denoms = sortedDenom[i].Take(n);
                     var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
 
                     this._scale *= num / denom;
-                    foreach(var item in nums.ToList())
-                    {
-                        this._numerators.Remove(item);
-                    }
-                    foreach (var item in denoms.ToList())
-                    {
-                        this._denominators.Remove(item);
-                    }
+                    sortedNum[i] = sortedNum[i].Skip(n);
+                    sortedDenom[i] = sortedDenom[i].Skip(n);
                 }
-              
-                
             }
-            
-         
+            this._numerators = sortedNum.SelectMany(list => list).ToList();
+            this._denominators = sortedDenom.SelectMany(list => list).ToList();
         }
 
         public static bool HaveSameDimensions(UnitDimensions dim1, UnitDimensions dim2)
@@ -208,17 +200,45 @@ namespace UnitClassLibrary
             return result;
         }
 
-        private int[] _countUnits(List<FundamentalUnitType> units)
-        {
-            var fundamentals = FundamentalTypes;
-            int n = fundamentals.Length;
-            int[] results = new int[n];
-            for (int i = 0; i < n; i++)
+        private static int[] _countUnits(List<FundamentalUnitType> units)
+        {           
+            int[] results = new int[FundamentalTypes.Length];
+
+            for (int i = 0; i < units.Count; i++)
             {
-                results[i] = units.Count(u => u.Type == fundamentals[i]);
+                results[_indexOf(units[i])]++;
             }
             
             return results;
+        }
+
+        private IEnumerable<FundamentalUnitType>[] _sortUnits(List<FundamentalUnitType> units)
+        {
+            var results = new List<FundamentalUnitType>[FundamentalTypes.Length];
+
+            for (int j = 0; j < FundamentalTypes.Length; j++)
+            {
+                results[j] = new List<FundamentalUnitType>();
+            }
+
+            for (int i = 0; i < units.Count; i++)
+            {
+                results[_indexOf(units[i])].Add(units[i]);
+            }
+
+            return results;
+        }
+
+        private static int _indexOf(FundamentalUnitType unit)
+        {
+            for (int i = 0; i < FundamentalTypes.Length; i++)
+            {
+                if (unit.Type == FundamentalTypes[i])
+                {
+                    return i;
+                }
+            }
+            throw new NotSupportedException();
         }
 
         public UnitDimensions Squared()
