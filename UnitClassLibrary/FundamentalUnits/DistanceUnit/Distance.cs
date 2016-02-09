@@ -11,7 +11,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 namespace UnitClassLibrary.DistanceUnit
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public partial class Distance : Unit<DistanceType>
+    public sealed partial class Distance : Unit<DistanceType>
     {
         
         #region Constructors
@@ -46,7 +46,8 @@ namespace UnitClassLibrary.DistanceUnit
         }
 
         #region Static Properties
-        public static Distance ZeroDistance { get { return new Distance(Exactly(0, Inches)); } }
+        private static readonly Distance _zeroDistance = new Distance(Exactly(0, Inches));
+        public static Distance ZeroDistance { get { return _zeroDistance; } }
 
         // Only marginally usefull.
         // Names are too similar to the methods below, and we want people to use those ones.

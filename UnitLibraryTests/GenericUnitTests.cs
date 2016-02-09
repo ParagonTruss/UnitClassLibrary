@@ -17,7 +17,7 @@ using UnitClassLibrary.SpeedUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.AreaUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InSquareInchesUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit;
 using UnitClassLibrary.AngleUnit;
 
 namespace UnitLibraryTests

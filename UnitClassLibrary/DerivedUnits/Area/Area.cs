@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnitClassLibrary.AreaUnit.AreaTypes;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.InSquareInchesUnit;
+using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 

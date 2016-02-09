@@ -6,7 +6,7 @@ using System.Text;
 
 namespace UnitClassLibrary.ForceUnit
 {
-    public partial class Force : Unit<ForceType>
+    public sealed partial class Force : Unit<ForceType>
     {
         public Force(ForceType type, Measurement value) : base(type,value)
         {

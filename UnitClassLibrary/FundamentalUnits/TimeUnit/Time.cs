@@ -4,7 +4,7 @@ using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.TimeUnit
 {
-    public class Time : Unit<TimeType> 
+    public sealed class Time : Unit<TimeType> 
     {
          public Time(TimeType timeType, double value = 1.0)
             : base(timeType, value) { }

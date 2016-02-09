@@ -8,7 +8,7 @@ using static UnitClassLibrary.Measurement;
 
 namespace UnitClassLibrary.AngleUnit
 {
-    public class Angle : Unit<AngleType>
+    public sealed class Angle : Unit<AngleType>
     {
         public Angle ProperAngle { get { return this % FullCircle; } }
 

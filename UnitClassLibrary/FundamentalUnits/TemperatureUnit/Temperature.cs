@@ -5,7 +5,7 @@ using UnitClassLibrary.TemperatureUnit;
 
 namespace UnitClassLibrary
 {
-    public class Temperature : Unit<TemperatureType>
+    public sealed class Temperature : Unit<TemperatureType>
     {
         public Temperature(double value, TemperatureType type) : base(type, value)
         {
