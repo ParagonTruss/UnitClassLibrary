@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace UnitClassLibrary
 {
     public enum ErrorMarginSetting { StaticTolerances, ErrorPropagation }
 
+    [JsonObject(MemberSerialization.OptIn)]
     public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>, IFormattable
     {
         #region global public variables
@@ -31,13 +33,18 @@ namespace UnitClassLibrary
         #region Properties
         public static Measurement Zero { get { return new Measurement(0.0, 0.0);} }
 
+        [JsonProperty]
         public readonly double Value;
+
+        [JsonProperty]
         public readonly double ErrorMargin;
+
         public double PercentageError { get { return ErrorMargin / Value; } }
         #endregion
 
         #region Constructors
 
+        [JsonConstructor]
         public Measurement(double intrinsicValue, double? errorMargin = null)
         {
             if (errorMargin == null)
