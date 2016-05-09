@@ -235,7 +235,7 @@ namespace UnitClassLibrary
         public override string ToString()
         {
             // valus plus/minus error
-            return $"{this.Value} ± {this.ErrorMargin}";
+            return "{this.Value} ± {this.ErrorMargin}";
         }
 
         public int CompareTo(Measurement other)
