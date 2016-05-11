@@ -73,6 +73,24 @@ namespace UnitClassLibrary
         #endregion
 
         #region Public Methods
+
+        public static U Min<U>(U unit1, U unit2) where U : Unit<T>
+        {
+            if (unit1 < unit2)
+            {
+                return unit1;
+            }
+            return unit2;
+        }
+        public static U Max<U>(U unit1, U unit2) where U : Unit<T>
+        {
+            if (unit1 > unit2)
+            {
+                return unit1;
+            }
+            return unit2;
+        }
+
         public static Unit<T> ExactUnit(T type, double value, double errorMargin)
         {
             return new Unit<T>(type, value, errorMargin);
