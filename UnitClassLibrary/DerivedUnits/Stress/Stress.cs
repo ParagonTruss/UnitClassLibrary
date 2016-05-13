@@ -7,7 +7,16 @@ namespace UnitClassLibrary.DerivedUnits.Stress
 {
     public class Stress : Unit<StressType>
     {
-       
+        public static Stress ZeroStress
+        {
+            get { return new Stress(Exactly(0, PSI)); }
+        }
+
+        #region Constructors
+        public Stress(double value, StressType type) : base(type, value)
+        {
+
+        }
         public Stress(StressType type, double value) :  base(type, value)
         {
                 
@@ -20,13 +29,11 @@ namespace UnitClassLibrary.DerivedUnits.Stress
         public Stress(StressType unit, Measurement measurement) : base(unit, measurement)
         {
         }
+        #endregion
 
         public Measurement InPoundsPerSquareInch { get {return MeasurementIn(new PoundPerSquareInch());} }
 
-        public static Stress ZeroStress
-        {
-            get { return new Stress(new PoundPerSquareInch(), 0); }
-        }
+        public static PoundPerSquareInch PSI { get { return new PoundPerSquareInch(); } }
 
         #region Operator Overloads
 
