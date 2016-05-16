@@ -13,5 +13,11 @@ namespace UnitClassLibrary
         {
             return unitType1.ConversionFactor/unitType2.ConversionFactor;
         }
+
+        public static Unit<T> AsUnit<T>(this T unitType, Measurement m) 
+            where T : IUnitType
+        {
+            return new Unit<T>(unitType, m);
+        }
     }
 }

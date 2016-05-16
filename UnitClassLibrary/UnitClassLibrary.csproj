@@ -103,6 +103,7 @@
     <Compile Include="FundamentalUnits\TemperatureUnit\Fahrenheit.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Kelvin.cs" />
     <Compile Include="IUnitTypeExtensions.cs" />
+    <Compile Include="MeasurementExtensions.cs" />
     <Compile Include="UnitComponents\AbstractUnit.cs" />
     <Compile Include="UnitComponents\Unit.cs" />
     <Compile Include="UnitComponents\IUnitType.cs" />
