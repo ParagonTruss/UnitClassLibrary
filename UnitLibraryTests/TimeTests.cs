@@ -17,9 +17,9 @@ namespace UnitLibraryTests
     {
 
 
-        /// <summary>
-        /// Tests the architectural string constructor and the regular Time constructor
-        /// </summary>
+        //// <summary>
+        //// Tests the architectural string constructor and the regular Time constructor
+        //// </summary>
         //[Test()]
         //public void Time_Constructors()
         //{
