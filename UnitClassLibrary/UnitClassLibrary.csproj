@@ -58,6 +58,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'personal|AnyCPU'">
+    <OutputPath>bin\personal\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="DerivedUnits\Area\AreaTypes\Imperial\SquareFoot.cs" />
     <Compile Include="DerivedUnits\Mass\Kilogram.cs" />

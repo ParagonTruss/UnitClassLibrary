@@ -32,21 +32,21 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
         }
     }
 
-    public static class InchExtensions
-    {
-        public static Distance FromInchesToDistance(this double passedDouble)
-        {
-            return new Distance(new Inch(), passedDouble);
-        }
+    //public static class InchExtensions
+    //{
+    //    public static Distance FromInchesToDistance(this double passedDouble)
+    //    {
+    //        return new Distance(new Inch(), passedDouble);
+    //    }
 
-        public static Distance FromInchesToDistance(this int passedint)
-        {
-            return new Distance(new Inch(), passedint);
-        }
+    //    public static Distance FromInchesToDistance(this int passedint)
+    //    {
+    //        return new Distance(new Inch(), passedint);
+    //    }
 
-        public static double AsInches(this Distance passedDistance)
-        {
-            return passedDistance.ConversionFromThisTo(new Inch());
-        }
-    }
+    //    public static double AsInches(this Distance passedDistance)
+    //    {
+    //        return passedDistance.ConversionFromThisTo(new Inch());
+    //    }
+    //}
 }

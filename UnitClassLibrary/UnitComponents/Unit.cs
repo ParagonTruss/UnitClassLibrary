@@ -183,15 +183,12 @@ namespace UnitClassLibrary
             {
                 return IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnitAsString() + "s";
             }
-            if (this.Measurement == 1)
-            {
-                return String.Format("{0} {1}", 1, this.UnitType.AsStringSingular());
-            }
 
             int digits = 0;
             double roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
 
-            while (this.Measurement != new Measurement(roundedIntrinsicValue, 0))
+            while (digits < 16 && 
+                this.Measurement != new Measurement(roundedIntrinsicValue, 0))
             {
                 digits++;
                 roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);

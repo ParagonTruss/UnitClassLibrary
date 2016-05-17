@@ -25,7 +25,7 @@ namespace UnitClassLibrary.DerivedUnits
         }
 
         public Measurement InPoundInches { get {return MeasurementIn(new PoundInch());} }
-        public static Moment ZeroMoment { get { return (Moment)Exactly(0, new PoundInch()); } }
+        public static Moment ZeroMoment { get { return new Moment(Exactly(0, new PoundInch())); } }
 
         #region Operator Overloads
 

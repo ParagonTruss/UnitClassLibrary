@@ -7,8 +7,7 @@ using Newtonsoft.Json;
 namespace UnitClassLibrary
 {
     public enum ErrorMarginSetting { StaticTolerances, ErrorPropagation }
-
-    [JsonObject(MemberSerialization.OptIn)]
+    
     public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>, IFormattable
     {
         #region global public variables
@@ -32,12 +31,10 @@ namespace UnitClassLibrary
 
         #region Properties
         public static Measurement Zero { get { return new Measurement(0.0, 0.0);} }
+        
+        public double Value { get; }
 
-        [JsonProperty]
-        public readonly double Value;
-
-        [JsonProperty]
-        public readonly double ErrorMargin;
+        public double ErrorMargin { get; }
 
         public double PercentageError { get { return ErrorMargin / Value; } }
         #endregion

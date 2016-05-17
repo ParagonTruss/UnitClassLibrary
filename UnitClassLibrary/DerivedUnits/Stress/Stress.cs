@@ -31,7 +31,7 @@ namespace UnitClassLibrary.DerivedUnits.Stress
         }
         #endregion
 
-        public Measurement InPoundsPerSquareInch { get {return MeasurementIn(new PoundPerSquareInch());} }
+        public Measurement InPSI { get {return MeasurementIn(new PoundPerSquareInch());} }
 
         public static PoundPerSquareInch PSI { get { return new PoundPerSquareInch(); } }
 
