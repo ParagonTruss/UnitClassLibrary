@@ -8,5 +8,10 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
         {
            get { return nameof(DistanceType); }
         }
+
+        public static Distance operator *(Measurement m, DistanceType type)
+        {
+            return new Distance(m, type);
+        }
     }
 }
