@@ -42,7 +42,7 @@ namespace UnitClassLibrary
         #region Constructors
 
         [JsonConstructor]
-        public Measurement(double intrinsicValue, double? errorMargin = null)
+        public Measurement(double intrinsicValue, double? errorMargin = null) : this()
         {
             if (errorMargin == null)
             {
