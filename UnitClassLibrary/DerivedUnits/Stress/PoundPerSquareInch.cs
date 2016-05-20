@@ -5,7 +5,7 @@ using System.Text;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit;
 using UnitClassLibrary.ForceUnit;
 
-namespace UnitClassLibrary.DerivedUnits.Stress
+namespace UnitClassLibrary.DerivedUnits.StressUnit
 {
     public class PoundPerSquareInch : StressType
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnitClassLibrary.DerivedUnits.Stress
+namespace UnitClassLibrary.DerivedUnits.StressUnit
 {
     public class Stress : Unit<StressType>
     {
