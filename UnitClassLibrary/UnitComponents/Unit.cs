@@ -264,6 +264,10 @@ namespace UnitClassLibrary
         {
             return unit1.Add(unit2);
         }
+        public static Unit<T> operator -(Unit<T> unit)
+        {
+            return unit.Negate();
+        }
         public static Unit<T> operator -(Unit<T> unit1, Unit<T> unit2)
         {
             return unit1.Subtract(unit2);
