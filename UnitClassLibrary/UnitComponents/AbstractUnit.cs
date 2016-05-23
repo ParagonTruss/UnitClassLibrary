@@ -22,6 +22,12 @@ namespace UnitClassLibrary
         {
             return Measurement.Value > 0;
         }
+
+        public bool IsNegative()
+        {
+            return Measurement.Value < 0;
+        }
+
         public Measurement MeasurementIn(IUnitType unitType)
         {
             var result = this.Measurement * ConversionFromThisTo(unitType);
