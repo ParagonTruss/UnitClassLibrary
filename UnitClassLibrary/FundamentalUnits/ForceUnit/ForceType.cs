@@ -12,5 +12,20 @@ namespace UnitClassLibrary.ForceUnit
         {
            get { return nameof(ForceType); }
         }
+
+        public static Force operator *(Measurement m, ForceType type)
+        {
+            return new Force(m, type);
+        }
+
+        public static Force operator *(double d, ForceType type)
+        {
+            return new Force(d, type);
+        }
+
+        public static Force operator *(int m, ForceType type)
+        {
+            return new Force(m, type);
+        }
     }
 }

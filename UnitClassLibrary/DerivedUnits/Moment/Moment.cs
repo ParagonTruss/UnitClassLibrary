@@ -8,7 +8,6 @@ namespace UnitClassLibrary.DerivedUnits
 {
     public class Moment : Unit<MomentType>
     {
-        private readonly Unit<MomentType> _moment;
 
         public Moment(Measurement m, MomentType type) : base(type, m)
         {
@@ -17,7 +16,6 @@ namespace UnitClassLibrary.DerivedUnits
 
         public Moment(Unit<MomentType> moment) : base(moment)
         {
-            _moment = moment;
         }
 
         public Moment(MomentType unit, Measurement measurement) : base(unit, measurement)
@@ -27,6 +25,9 @@ namespace UnitClassLibrary.DerivedUnits
         public Measurement InPoundInches { get {return MeasurementIn(new PoundInch());} }
         public static Moment ZeroMoment { get { return new Moment(Exactly(0, new PoundInch())); } }
 
+        public static MomentType PoundInches { get { return new PoundInch(); } }
+
+        
         #region Operator Overloads
 
         public static Moment operator +(Moment moment1, Moment moment2)

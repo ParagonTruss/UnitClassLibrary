@@ -13,20 +13,16 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
         }
 
         #region Constructors
-        public Stress(double value, StressType type) : base(type, value)
+        public Stress(Measurement value, StressType type) : base(type, value)
         {
 
         }
-        public Stress(StressType type, double value) :  base(type, value)
+        public Stress(StressType type, Measurement value) :  base(type, value)
         {
                 
         }
 
         public Stress(Unit<StressType> stress) : base(stress)
-        {
-        }
-
-        public Stress(StressType unit, Measurement measurement) : base(unit, measurement)
         {
         }
         #endregion
