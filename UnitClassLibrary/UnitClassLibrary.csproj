@@ -126,6 +126,7 @@
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\TimeType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Second.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitListExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

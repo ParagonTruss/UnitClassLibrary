@@ -113,15 +113,15 @@ namespace UnitClassLibrary
             _cancelUnits();
         }
 
-        public UnitDimensions(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
+        public UnitDimensions(double scale, List<FundamentalUnitType> numerator, List<FundamentalUnitType> denominator = null)
         {
             this._scale = scale;
             _numerators = new List<FundamentalUnitType>();
             _denominators = new List<FundamentalUnitType>();
-            this._numerators.AddRange(numerators);
-            if (denominators != null)
+            this._numerators.AddRange(numerator);
+            if (denominator != null)
             {
-                this._denominators.AddRange(denominators);
+                this._denominators.AddRange(denominator);
             }
             _cancelUnits();
         }
