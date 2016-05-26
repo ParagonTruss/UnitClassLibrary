@@ -23,7 +23,8 @@ namespace UnitClassLibrary
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
 
-        public static Unit<T> Zero { get { return Exactly(0, default(T)); } }
+        public static Unit<T> Zero { get { return Exactly(0, Activator.CreateInstance<T>()); } }
+       // private Type Ge
         #endregion
 
         #region Constructors
