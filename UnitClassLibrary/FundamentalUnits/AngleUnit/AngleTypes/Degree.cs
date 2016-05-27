@@ -7,11 +7,6 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Degree : AngleType
     {
-        public override string AsStringPlural()
-        {
-            return "Degrees";
-        }
-
         public override string AsStringSingular()
         {
             return "Degree";

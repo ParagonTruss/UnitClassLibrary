@@ -6,8 +6,22 @@ using System.Text;
 
 namespace UnitClassLibrary.DerivedUnits
 {
-    abstract public class MomentType : AbstractDerivedUnitType
+    public class MomentType : AbstractDerivedUnitType
     {
+        private PoundInch _defaultMomentType = new PoundInch();
+        public override string AsStringSingular()
+        {
+            return _defaultMomentType.AsStringSingular();
+        }
+        public override string AsStringPlural()
+        {
+            return _defaultMomentType.AsStringPlural();
+        }
+        public override UnitDimensions Dimensions()
+        {
+            return _defaultMomentType.Dimensions();
+        }
+
         public static Moment operator *(Measurement m, MomentType type)
         {
             return new Moment(m, type);
