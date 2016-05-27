@@ -8,7 +8,7 @@ namespace UnitClassLibrary.ForceUnit
 {
     public class ForceType : FundamentalUnitType
     {
-        private Pound _defaultForceType = new Pound();
+        private static Pound _defaultForceType = new Pound();
         public override double ConversionFactor
         {
             get

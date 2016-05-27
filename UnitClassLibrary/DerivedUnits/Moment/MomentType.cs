@@ -8,7 +8,7 @@ namespace UnitClassLibrary.DerivedUnits
 {
     public class MomentType : AbstractDerivedUnitType
     {
-        private PoundInch _defaultMomentType = new PoundInch();
+        private static PoundInch _defaultMomentType = new PoundInch();
         public override string AsStringSingular()
         {
             return _defaultMomentType.AsStringSingular();

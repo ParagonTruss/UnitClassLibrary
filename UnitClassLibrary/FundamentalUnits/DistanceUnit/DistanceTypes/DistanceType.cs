@@ -5,7 +5,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
 {
     public class DistanceType : FundamentalUnitType
     {
-        private Inch _defaultDistanceType = new Inch(); 
+        private static Inch _defaultDistanceType = new Inch(); 
         public override double ConversionFactor
         {
             get
