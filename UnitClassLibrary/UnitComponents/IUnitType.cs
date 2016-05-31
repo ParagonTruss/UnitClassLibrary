@@ -59,7 +59,7 @@ namespace UnitClassLibrary
         public abstract string AsStringSingular();
         public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
 
-        public double InitialErrorMargin(double intrinsicValue)
+        public virtual double InitialErrorMargin(double intrinsicValue)
         {
             return Dimensions().InitialErrorMargin(intrinsicValue);
         }

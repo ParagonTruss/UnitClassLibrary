@@ -21,7 +21,10 @@ namespace UnitClassLibrary.DerivedUnits
         {
             return _defaultMomentType.Dimensions();
         }
-
+        public override double InitialErrorMargin(double intrinsicValue)
+        {
+            return 0.01;
+        }
         public static Moment operator *(Measurement m, MomentType type)
         {
             return new Moment(m, type);

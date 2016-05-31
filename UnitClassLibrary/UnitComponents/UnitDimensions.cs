@@ -45,7 +45,7 @@ namespace UnitClassLibrary
 
         public double InitialErrorMargin(double intrinsicValue)
         {
-            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin)/ intrinsicValue;
+            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin) / intrinsicValue;
             percentageError += _denominators.Sum(u => u.DefaultErrorMargin);
             if (percentageError < 0.001)
             {
