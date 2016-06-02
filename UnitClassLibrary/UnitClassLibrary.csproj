@@ -93,7 +93,6 @@
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Metric\MillimeterUnit\Millimeter.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Imperial\MileUnit\Mile.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\Distance_Architectural.cs" />
-    <Compile Include="FundamentalUnits\DistanceUnit\Distance_EntityFrameworks.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\Distance_IComparable.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\Force.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\ForceType.cs" />
