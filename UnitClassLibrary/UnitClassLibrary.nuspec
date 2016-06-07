@@ -6,10 +6,10 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <projectUrl>https://bitbucket.org/Clearspan/unit-class-library</projectUrl>
-    <iconUrl>http://chattanooga.clearspaninc.com/images/unit-class-library.png</iconUrl>
+    <projectUrl>https://github.com/ParagonTruss/UnitClassLibrary</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
+	<copyright>Copyright © 2016 Paracon Component Systems, LLC</copyright>
     <licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
   </metadata>
 </package>
