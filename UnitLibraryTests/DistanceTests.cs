@@ -44,8 +44,7 @@ namespace UnitLibraryTests
             Distance copiedDistance = new Distance(architecturalDistance);
 
             // assert
-            inchDistance.AsMillimeters().Should().Be(architecturalDistance.AsMillimeters());
-            copiedDistance.ShouldBeEquivalentTo(architecturalDistance);
+             copiedDistance.ShouldBeEquivalentTo(architecturalDistance);
         }
 
         /// <summary>
@@ -225,7 +224,7 @@ namespace UnitLibraryTests
             // assert
             Distance.ToString().Should().Be("14 Millimeters");
             Distance2.ToString().Should().Be("0 Millimeters");
-            Distance3.ToString().Should().Be("1 Millimeter");
+            Distance3.ToString().Should().Be("1 Millimeters");
         }
 
         /// <summary>
