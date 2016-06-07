@@ -13,10 +13,10 @@ namespace UnitClassLibrary.DerivedUnits
         {
             return _defaultMomentType.AsStringSingular();
         }
-        public override string AsStringPlural()
-        {
-            return _defaultMomentType.AsStringPlural();
-        }
+        //public override string AsStringPlural()
+        //{
+        //    return _defaultMomentType.AsStringPlural();
+        //}
         public override UnitDimensions Dimensions()
         {
             return _defaultMomentType.Dimensions();

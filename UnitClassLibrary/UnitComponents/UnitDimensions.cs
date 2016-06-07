@@ -157,7 +157,7 @@ namespace UnitClassLibrary
           
             for (int i = 0; i < fundamentalTypes.Length; i++)
             {
-                var n = Math.Min(sortedNum[i].Count(), sortedDenom[i].Count());
+                var n = Math.Min(sortedNum[i].Count, sortedDenom[i].Count);
                 if (n != 0)
                 {
                     var nums = sortedNum[i].Take(n);
@@ -166,8 +166,8 @@ namespace UnitClassLibrary
                     var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
 
                     this._scale *= num / denom;
-                    sortedNum[i] = sortedNum[i].Skip(n);
-                    sortedDenom[i] = sortedDenom[i].Skip(n);
+                    sortedNum[i] = sortedNum[i].Skip(n).ToList();
+                    sortedDenom[i] = sortedDenom[i].Skip(n).ToList();
                 }
             }
             this._numerators = sortedNum.SelectMany(list => list).ToList();
@@ -212,7 +212,7 @@ namespace UnitClassLibrary
             return results;
         }
 
-        private IEnumerable<FundamentalUnitType>[] _sortUnits(List<FundamentalUnitType> units)
+        private List<FundamentalUnitType>[] _sortUnits(List<FundamentalUnitType> units)
         {
             var results = new List<FundamentalUnitType>[FundamentalTypes.Length];
 

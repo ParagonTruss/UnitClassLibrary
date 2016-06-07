@@ -31,10 +31,10 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
         {
             return _defaultDistanceType.AsStringSingular();
         }
-        public override string AsStringPlural()
-        {
-            return _defaultDistanceType.AsStringPlural();
-        }
+        //public override string AsStringPlural()
+        //{
+        //    return _defaultDistanceType.AsStringPlural();
+        //}
 
         public static Distance operator *(Measurement m, DistanceType type)
         {

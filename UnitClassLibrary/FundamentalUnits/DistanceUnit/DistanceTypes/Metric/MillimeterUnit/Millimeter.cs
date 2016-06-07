@@ -27,22 +27,4 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
             }
         }
     }
-
-    public static class MillimeterExtensions
-    {
-        public static Distance FromMillimetersToDistance(this double passedDouble)
-        {
-            return new Distance(new Millimeter(), passedDouble);
-        }
-
-        public static Distance FromMillimetersToDistance(this int passedint)
-        {
-            return new Distance(new Millimeter(), passedint);
-        }
-
-        public static double AsMillimeters(this Distance passedDistance)
-        {
-            return passedDistance.ConversionFromThisTo(new Inch());
-        }
-    }
 }
