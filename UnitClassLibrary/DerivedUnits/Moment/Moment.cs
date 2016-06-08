@@ -22,12 +22,15 @@ namespace UnitClassLibrary.DerivedUnits
         {
         }
 
-        public Measurement InPoundInches { get {return MeasurementIn(new PoundInch());} }
         public static Moment ZeroMoment { get { return new Moment(Exactly(0, new PoundInch())); } }
 
+        // naming is a little off. should be InchPounds.
+        public Measurement InPoundInches { get {return MeasurementIn(new PoundInch());} }
         public static MomentType PoundInches { get { return new PoundInch(); } }
 
-        
+        public Measurement InFootPounds { get { return MeasurementIn(new FootPound()); } }
+        public static MomentType FootPounds { get { return new FootPound(); } }
+
         #region Operator Overloads
 
         public static Moment operator +(Moment moment1, Moment moment2)

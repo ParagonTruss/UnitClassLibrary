@@ -70,6 +70,7 @@
     <Compile Include="DerivedUnits\Moment\Moment.cs" />
     <Compile Include="DerivedUnits\Moment\MomentType.cs" />
     <Compile Include="DerivedUnits\Moment\NewtonMeter.cs" />
+    <Compile Include="DerivedUnits\Moment\FootPound.cs" />
     <Compile Include="DerivedUnits\Moment\PoundInch.cs" />
     <Compile Include="DerivedUnits\Stress\PoundPerSquareInch.cs" />
     <Compile Include="DerivedUnits\Stress\Stress.cs" />
@@ -111,7 +112,7 @@
     <Compile Include="UnitComponents\IUnitType.cs" />
     <Compile Include="UnitComponents\Measurement.cs" />
     <Compile Include="UnitComponents\UnitDimensions.cs" />
-    <Compile Include="DerivedUnits\Speed\Speed.cs" />
+    <Compile Include="DerivedUnits\Moment\Speed\Speed.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Temperature.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\TemperatureType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Minute.cs" />
@@ -120,8 +121,8 @@
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\DistanceType.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Imperial\InchUnit\Inch.cs" />
     <Compile Include="DerivedUnits\Area\AreaTypes\Imperial\SquareInchUnit\SquareInch.cs" />
-    <Compile Include="DerivedUnits\Speed\SpeedTypes\InchPerSecond.cs" />
-    <Compile Include="DerivedUnits\Speed\SpeedTypes\SpeedType.cs" />
+    <Compile Include="DerivedUnits\Moment\Speed\SpeedTypes\InchPerSecond.cs" />
+    <Compile Include="DerivedUnits\Moment\Speed\SpeedTypes\SpeedType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\TimeType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Second.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
