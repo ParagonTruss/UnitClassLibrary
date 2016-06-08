@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
-MinimumVisualStudioVersion = 10.0.40219.1
+# Visual Studio 2015
+VisualStudioVersion = 14.0.25123.00
+MinimumVisualStudioVersion = 14.0.25123.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibraryTests", "UnitLibraryTests\UnitClassLibraryTests.csproj", "{068B36A8-619B-4E04-A05D-291823C80DD7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitClassLibrary", "UnitClassLibrary\UnitClassLibrary.csproj", "{4D89E91C-BF44-49D8-ACF4-BE105C3428FE}"
