@@ -94,6 +94,7 @@
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Metric\MillimeterUnit\Millimeter.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Imperial\MileUnit\Mile.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\Distance_Architectural.cs" />
+    <Compile Include="FundamentalUnits\DistanceUnit\Distance_EntityFrameworks.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\Distance_IComparable.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\Force.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\ForceType.cs" />
@@ -112,7 +113,7 @@
     <Compile Include="UnitComponents\IUnitType.cs" />
     <Compile Include="UnitComponents\Measurement.cs" />
     <Compile Include="UnitComponents\UnitDimensions.cs" />
-    <Compile Include="DerivedUnits\Moment\Speed\Speed.cs" />
+    <Compile Include="DerivedUnits\Speed\Speed.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Temperature.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\TemperatureType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Minute.cs" />
@@ -121,8 +122,8 @@
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\DistanceType.cs" />
     <Compile Include="FundamentalUnits\DistanceUnit\DistanceTypes\Imperial\InchUnit\Inch.cs" />
     <Compile Include="DerivedUnits\Area\AreaTypes\Imperial\SquareInchUnit\SquareInch.cs" />
-    <Compile Include="DerivedUnits\Moment\Speed\SpeedTypes\InchPerSecond.cs" />
-    <Compile Include="DerivedUnits\Moment\Speed\SpeedTypes\SpeedType.cs" />
+    <Compile Include="DerivedUnits\Speed\SpeedTypes\InchPerSecond.cs" />
+    <Compile Include="DerivedUnits\Speed\SpeedTypes\SpeedType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\TimeType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Second.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
