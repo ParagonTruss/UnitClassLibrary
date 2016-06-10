@@ -21,11 +21,19 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnitClassLibrary.AngleUnit;
 
 namespace UnitClassLibrary
 {
     abstract public class AngleType : FundamentalUnitType
     {
         public override string Type { get { return nameof(AngleType); } }
+
+        public static Angle operator *(double scalar, AngleType type)
+        {
+            return new Angle(scalar, type);
+        }
+
+
     }
 }

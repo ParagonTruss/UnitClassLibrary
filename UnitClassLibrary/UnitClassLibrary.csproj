@@ -106,8 +106,8 @@
     <Compile Include="FundamentalUnits\TemperatureUnit\Celsius.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Fahrenheit.cs" />
     <Compile Include="FundamentalUnits\TemperatureUnit\Kelvin.cs" />
-    <Compile Include="IUnitTypeExtensions.cs" />
-    <Compile Include="MeasurementExtensions.cs" />
+    <Compile Include="Extensions\IUnitTypeExtensions.cs" />
+    <Compile Include="Extensions\MeasurementExtensions.cs" />
     <Compile Include="UnitComponents\AbstractUnit.cs" />
     <Compile Include="UnitComponents\Unit.cs" />
     <Compile Include="UnitComponents\IUnitType.cs" />
@@ -127,7 +127,7 @@
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\TimeType.cs" />
     <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Second.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitListExtensions.cs" />
+    <Compile Include="Extensions\UnitListExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
