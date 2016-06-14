@@ -26,8 +26,6 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Radian : AngleType
     {
-        public static readonly Radian s = new Radian();
-
         override public string AsStringPlural()
         {
             return "Radians";

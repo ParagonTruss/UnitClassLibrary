@@ -63,6 +63,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DerivedUnits\Area\AreaTypes\Imperial\SquareFoot.cs" />
+    <Compile Include="DerivedUnits\ForcePerDistanceUnit\ForcePerDistance.cs" />
+    <Compile Include="DerivedUnits\ForcePerDistanceUnit\KilonewtonPerMeter.cs" />
+    <Compile Include="DerivedUnits\ForcePerDistanceUnit\NewtonPerMeter.cs" />
+    <Compile Include="DerivedUnits\ForcePerDistanceUnit\PoundPerFoot.cs" />
+    <Compile Include="DerivedUnits\ForcePerDistanceUnit\PoundPerInch.cs" />
     <Compile Include="DerivedUnits\Mass\Kilogram.cs" />
     <Compile Include="DerivedUnits\Mass\Mass.cs" />
     <Compile Include="DerivedUnits\Mass\MassUnit.cs" />
@@ -99,6 +104,7 @@
     <Compile Include="FundamentalUnits\ForceUnit\Force.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\ForceType.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\Force_IComparable.cs" />
+    <Compile Include="FundamentalUnits\ForceUnit\Kilonewton.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\MetricTonne.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\Newton.cs" />
     <Compile Include="FundamentalUnits\ForceUnit\Pound.cs" />

@@ -24,7 +24,7 @@ using System.Text;
 
 namespace UnitClassLibrary.ForceUnit
 {
-    class Ton
+    public class Ton
     {
     }
 }

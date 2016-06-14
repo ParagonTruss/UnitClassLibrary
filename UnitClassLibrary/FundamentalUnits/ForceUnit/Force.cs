@@ -48,7 +48,7 @@ namespace UnitClassLibrary.ForceUnit
         #endregion
         #region Public Methods
 #endregion
-        #region Operator Overloads
+        #region Arithmetic Operators
 
         public static Force operator +(Force force1, Force force2)
         {
