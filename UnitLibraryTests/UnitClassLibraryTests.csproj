@@ -53,6 +53,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DerivedUnitTests.cs" />
     <Compile Include="GenericUnitTests.cs" />
     <Compile Include="TimeTests.cs" />
     <Compile Include="DistanceTests.cs" />
