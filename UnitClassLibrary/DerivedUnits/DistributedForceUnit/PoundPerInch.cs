@@ -21,21 +21,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
-using UnitClassLibrary.ForceUnit;
 
-namespace UnitClassLibrary.DerivedUnits.ForcePerDistanceUnit
+namespace UnitClassLibrary.DistributedForceUnit
 {
-    public class KilonewtonPerMeter : ForcePerDistanceType
+    public class PoundPerInch : DistributedForceType
     {
         public override string AsStringSingular()
         {
-            return "Kilonewtons per Meter";
+            return "Pound per Inch";
+        }
+        public override string AsStringPlural()
+        {
+            return "Pounds per Inch";
         }
 
         public override UnitDimensions Dimensions()
         {
-            return new UnitDimensions(1.0, new Kilonewton(), new Meter());
+            throw new NotImplementedException();
         }
     }
 }

@@ -21,23 +21,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
+using UnitClassLibrary.ForceUnit;
 
-namespace UnitClassLibrary.DerivedUnits.ForcePerDistanceUnit
+namespace UnitClassLibrary.DistributedForceUnit
 {
-    public class PoundPerInch : ForcePerDistanceType
+    public class PoundPerFoot : DistributedForceType
     {
         public override string AsStringSingular()
         {
-            return "Pound per Inch";
+            return "Pound per foot";
         }
         public override string AsStringPlural()
         {
-            return "Pounds per Inch";
+            return "Pounds per foot";
         }
 
         public override UnitDimensions Dimensions()
         {
-            throw new NotImplementedException();
+            return new UnitDimensions(1.0, new Pound(), new Foot());
         }
     }
 }

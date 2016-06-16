@@ -22,14 +22,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace UnitClassLibrary.DerivedUnits.ForcePerDistanceUnit
+namespace UnitClassLibrary.DistributedForceUnit
 {
-    public class DistributedForce : Unit<ForcePerDistanceType>
+    public class DistributedForce : Unit<DistributedForceType>
     {
-        public Measurement InPoundsPerInch { get { return ValueIn(new PoundPerInch()); } }
+        public DistributedForce(Measurement value, DistributedForceType type)
+            : base(type, value) { }
 
-        public DistributedForce(Unit<ForcePerDistanceType> unit)
+        public DistributedForce(Unit<DistributedForceType> unit)
             : base(unit) { }
+
+        public DistributedForce(Unit unit)
+            : base(PoundsPerInch, unit) { }
 
         public static DistributedForce Zero { get { return new DistributedForce(Exactly(0, new PoundPerInch())); } }
         #region Arithmetic Operators
@@ -59,5 +63,17 @@ namespace UnitClassLibrary.DerivedUnits.ForcePerDistanceUnit
             return new DistributedForce(DistributedForce._Divide(divisor));
         }
         #endregion
+
+        public Measurement InPoundsPerInch { get { return ValueIn(new PoundPerInch()); } }
+        public static DistributedForceType PoundsPerInch { get { return new PoundPerInch(); } }
+
+        public Measurement InPoundsPerFoot { get { return ValueIn(new PoundPerFoot()); } }
+        public static DistributedForceType PoundsPerFoot { get { return new PoundPerFoot(); } }
+
+        public Measurement InNewtonsPerMeter { get { return ValueIn(new NewtonPerMeter()); } }
+        public static DistributedForceType NewtonsPerMeter { get { return new NewtonPerMeter(); } }
+        
+        public Measurement InKilonewtonsPerMeter { get { return ValueIn(new KilonewtonPerMeter()); } }
+        public static DistributedForceType KilonewtonsPerMeter { get { return new KilonewtonPerMeter(); } }
     }
 }
