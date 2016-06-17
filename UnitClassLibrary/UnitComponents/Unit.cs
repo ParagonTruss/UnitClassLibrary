@@ -207,7 +207,7 @@ namespace UnitClassLibrary
             int digits = 0;
             double roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
 
-            while (digits < 16 && 
+            while (digits < 15 && 
                 this.Measurement != new Measurement(roundedIntrinsicValue, 0))
             {
                 digits++;
