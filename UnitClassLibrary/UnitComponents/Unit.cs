@@ -217,6 +217,12 @@ namespace UnitClassLibrary
             return String.Format("{0} {1}", roundedIntrinsicValue, this.UnitType.AsStringPlural());
         }
 
+        public string ToString<TFormatAsType>(TFormatAsType type)
+            where TFormatAsType : T
+        {
+            return new Unit<T>(type, this.MeasurementIn(type)).ToString();
+        }
+
         public override bool Equals(object other)
         {
             if (other == null)
