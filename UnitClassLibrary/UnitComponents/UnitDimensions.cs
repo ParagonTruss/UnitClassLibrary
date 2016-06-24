@@ -18,6 +18,7 @@
 */
 
 using System;
+using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
 using UnitClassLibrary.AngleUnit;
@@ -38,18 +39,17 @@ namespace UnitClassLibrary
             nameof(TemperatureType),
             nameof(TimeType) };
 
-        private double _scale;
         private List<FundamentalUnitType> _numerators;
         private List<FundamentalUnitType> _denominators;
 
-        public double Scale { get { return _scale; } }
-        public List<FundamentalUnitType> Numerators { get { return _numerators; } }
-        public List<FundamentalUnitType> Denominators { get { return _denominators; } }
+        public double Scale { get; private set; }
+        public IList<FundamentalUnitType> Numerators { get { return new ReadOnlyCollection<FundamentalUnitType>( _numerators); } }
+        public IList<FundamentalUnitType> Denominators { get { return new ReadOnlyCollection<FundamentalUnitType>(_denominators); } }
         public double ConversionFactor
         {
             get
             {
-                double result = _scale;
+                double result = Scale;
                 if (_numerators.Count != 0)
                 {
                     result *= _numerators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
@@ -75,7 +75,7 @@ namespace UnitClassLibrary
 
         public string AsStringSingular()
         {
-            string result = _scale.ToString() + "-" + JustTheUnitAsString();
+            string result = Scale.ToString() + "-" + JustTheUnitAsString();
             return result;         
         }
 
@@ -98,7 +98,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            if (_scale == 1)
+            if (Scale == 1)
             {
                 return AsStringSingular();
             }
@@ -109,14 +109,14 @@ namespace UnitClassLibrary
         }
         //public UnitDimensions()
         //{
-        //    this._scale = 1.0;
+        //    this.Scale = 1.0;
         //    _numerators = new List<FundamentalUnitType>();
         //    _denominators = new List<FundamentalUnitType>();
         //}
      
         public UnitDimensions(double scale, IUnitType numerator = null, IUnitType denominator = null)
         {
-            this._scale = scale;
+            this.Scale = scale;
             _numerators = new List<FundamentalUnitType>();
             _denominators = new List<FundamentalUnitType>();
             if (numerator != null)
@@ -129,12 +129,11 @@ namespace UnitClassLibrary
                 _denominators.AddRange(denominator.Dimensions().Numerators);
                 _numerators.AddRange(denominator.Dimensions().Denominators);
             }
-            _cancelUnits();
         }
 
         public UnitDimensions(double scale, List<FundamentalUnitType> numerator, List<FundamentalUnitType> denominator = null)
         {
-            this._scale = scale;
+            this.Scale = scale;
             _numerators = new List<FundamentalUnitType>();
             _denominators = new List<FundamentalUnitType>();
             this._numerators.AddRange(numerator);
@@ -142,12 +141,11 @@ namespace UnitClassLibrary
             {
                 this._denominators.AddRange(denominator);
             }
-            _cancelUnits();
         }
 
         public UnitDimensions(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null)
         {
-            this._scale = scale;
+            this.Scale = scale;
             this._numerators = new List<FundamentalUnitType>();
             this._denominators = new List<FundamentalUnitType>();
             foreach (var unitType in numerators)
@@ -163,7 +161,6 @@ namespace UnitClassLibrary
                     this._denominators.AddRange(unitType.Dimensions()._numerators);
                 }
             }
-            _cancelUnits();
         }
 
         public UnitDimensions(List<FundamentalUnitType> numerators) : this(1.0, numerators) { }
@@ -184,7 +181,7 @@ namespace UnitClassLibrary
                     var denoms = sortedDenom[i].Take(n);
                     var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
 
-                    this._scale *= num / denom;
+                    this.Scale *= num / denom;
                     sortedNum[i] = sortedNum[i].Skip(n).ToList();
                     sortedDenom[i] = sortedDenom[i].Skip(n).ToList();
                 }
@@ -273,7 +270,8 @@ namespace UnitClassLibrary
             var denominators = this._denominators.ToList();
             denominators.AddRange(dimensions._denominators);
 
-            var dim = new UnitDimensions(this._scale * dimensions._scale, numerators, denominators);
+            var dim = new UnitDimensions(this.Scale * dimensions.Scale, numerators, denominators);
+            dim._cancelUnits();
             return dim;
         }
 
@@ -285,7 +283,8 @@ namespace UnitClassLibrary
             var denominators = this._denominators.ToList();
             denominators.AddRange(dimensions._numerators);
 
-            var dim = new UnitDimensions(this._scale / dimensions._scale, numerators, denominators);
+            var dim = new UnitDimensions(this.Scale / dimensions.Scale, numerators, denominators);
+            dim._cancelUnits();
             return dim;
         }
 
@@ -305,7 +304,7 @@ namespace UnitClassLibrary
 
         public UnitDimensions Invert()
         {
-            return new UnitDimensions(1 / _scale, _denominators, _numerators);
+            return new UnitDimensions(1 / Scale, _denominators, _numerators);
         }
     }
 }

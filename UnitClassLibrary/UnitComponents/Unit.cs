@@ -33,11 +33,8 @@ namespace UnitClassLibrary
     public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>>, IComparable where T : IUnitType
     {
         #region Properties
-        private readonly T _unitType;
-        private readonly Measurement _measurement;
-
-        override public IUnitType UnitType { get { return _unitType; } }
-        override public Measurement Measurement { get{ return _measurement; } }
+        override public IUnitType UnitType { get; }
+        override public Measurement Measurement { get; }
 
         public double IntrinsicValue { get { return Measurement.Value; } }
         public double ErrorMargin { get { return Measurement.ErrorMargin; } }
@@ -50,20 +47,20 @@ namespace UnitClassLibrary
         protected Unit() { }
         public Unit(T unitType, double value = 1.0)
         {
-            this._unitType = unitType;         
-            this._measurement = new Measurement(value, unitType.InitialErrorMargin(value));         
+            this.UnitType = unitType;         
+            this.Measurement = new Measurement(value, unitType.InitialErrorMargin(value));         
         }
         public Unit(T unit, Measurement measurement)
         {
-            this._unitType = unit;
+            this.UnitType = unit;
             if (Measurement.ErrorPropagationIsEnabled)
             {
-                this._measurement = measurement;
+                this.Measurement = measurement;
             }
             else
             {
                 var value = measurement.Value;
-                this._measurement = new Measurement(value, unit.InitialErrorMargin(value));
+                this.Measurement = new Measurement(value, unit.InitialErrorMargin(value));
             }       
         }
         public Unit(T type, Unit unitToConvert)
@@ -72,14 +69,14 @@ namespace UnitClassLibrary
             {
                 throw new Exception("Units do not have the same Dimensions");
             }
-            this._unitType = type;
-            this._measurement = unitToConvert.MeasurementIn(type);
+            this.UnitType = type;
+            this.Measurement = unitToConvert.MeasurementIn(type);
         }
 
         public Unit(Unit<T> toCopy)
         {
-            this._unitType = (T)toCopy.UnitType;
-            this._measurement = toCopy.Measurement;
+            this.UnitType = (T)toCopy.UnitType;
+            this.Measurement = toCopy.Measurement;
         }
 
         /// <summary>
@@ -87,13 +84,17 @@ namespace UnitClassLibrary
         /// </summary>
         private Unit(T type, double value, double error)
         {
-            this._unitType = type;
-            this._measurement = new Measurement(value, error);
+            this.UnitType = type;
+            this.Measurement = new Measurement(value, error);
         }
         #endregion
 
         #region Public Methods
-
+        public double ValueIn<T2>(T2 unitType)
+            where T2 : T
+        {
+            return base.ValueIn(unitType);
+        }
         public static U Min<U>(U unit1, U unit2) where U : Unit<T>
         {
             if (unit1 < unit2)
