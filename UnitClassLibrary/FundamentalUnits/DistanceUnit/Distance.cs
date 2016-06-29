@@ -61,33 +61,27 @@ namespace UnitClassLibrary.DistanceUnit
 
         new public Distance AbsoluteValue()
         {
-            return new Distance(base.Negate());
+            return new Distance(base.AbsoluteValue());
         }
 
         #region Static Properties
         private static readonly Distance _zeroDistance = new Distance(Exactly(0, Inches));
-        public static Distance ZeroDistance { get { return _zeroDistance; } }
+        public static Distance ZeroDistance => _zeroDistance;
 
-        // Only marginally usefull.
-        // Names are too similar to the methods below, and we want people to use those ones.
-        //public static readonly Distance Inch = new Distance(new Inch(), new Measurement(1));
-        //public static readonly Distance Foot = new Distance(new Foot(), new Measurement(1));
-        //public static readonly Distance Millimeter = new Distance(new Millimeter(), new Measurement(1));
+        public static DistanceType Inches => new Inch();
+        public static DistanceType Feet => new Foot();
+        public static DistanceType Millimeters => new Millimeter();
+        public static DistanceType Centimeters => new Centimeter();
+        public static DistanceType Kilometers => new Kilometer();
 
-        public static DistanceType Inches { get { return new Inch(); } }
-        public static DistanceType Feet { get { return new Foot(); } }
-        public static DistanceType Millimeters { get { return new Millimeter(); } }
-        public static DistanceType Centimeters { get { return new Centimeter(); } }
-        public static DistanceType Kilometers { get { return new Kilometer(); } }
+        public Measurement InInches => MeasurementIn(Inches);
+        public Measurement InFeet => MeasurementIn(Feet);
+        public Measurement InMillimeters => MeasurementIn(Millimeters);
+        public Measurement InCentimeters => MeasurementIn(Centimeters);
 
-        public Measurement InInches { get { return MeasurementIn(Inches); } }
-        public Measurement InFeet { get { return MeasurementIn(Feet); } }
-        public Measurement InMillimeters { get { return MeasurementIn(Millimeters); } }
-        public Measurement InCentimeters { get { return MeasurementIn(Centimeters); } }
-       
-        public static Distance QuarterInch { get { return new Distance(Exactly(0.25, Inches)); } }
-        public static Distance SixteenthInch { get { return new Distance(Exactly(0.0375, Inches));} }
-       
+        public static Distance QuarterInch => new Distance(Exactly(0.25, Inches));
+        public static Distance SixteenthInch => new Distance(Exactly(0.0375, Inches));
+
         #endregion
         #region Operator Overloads
 

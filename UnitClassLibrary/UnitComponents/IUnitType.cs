@@ -20,7 +20,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary
 {
@@ -67,13 +66,7 @@ namespace UnitClassLibrary
     public abstract class AbstractDerivedUnitType : IUnitType
     {
         public abstract UnitDimensions Dimensions();
-        public double ConversionFactor
-        {
-            get
-            {
-                return Dimensions().ConversionFactor;
-            }
-        }
+        public double ConversionFactor => Dimensions().ConversionFactor;
 
         public abstract string AsStringSingular();
         public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
@@ -145,7 +138,8 @@ namespace UnitClassLibrary
     public class DimensionLess : AbstractDerivedUnitType
     {
         private static DimensionLess _instance = new DimensionLess();
-        public static DimensionLess Instance { get { return _instance; } }
+        public static DimensionLess Instance => _instance;
+
         private DimensionLess()
         {
 
