@@ -190,19 +190,22 @@ namespace UnitLibraryTests
 
 
         /// <summary>
-        /// We don't allow hashing on units.
+        /// Tests GetHashCodeOperation
         /// </summary>
         [Test()]
         public void Distance_GetHashCode()
         {
             // arrange
-            Distance distance = new Distance(new Millimeter(), 14.1875);
+            Distance Distance = new Distance(new Millimeter(), 14.1875);
+            double number = 14.1875;
 
             // act
-            Action hashing = () => distance.GetHashCode();
+            int DistanceHashCode = Distance.GetHashCode();
+
+            int hashCode = number.GetHashCode();
 
             // assert
-            hashing.ShouldThrow<NotSupportedException>("We don't support hashing on units.");
+            hashCode.ShouldBeEquivalentTo(DistanceHashCode);
         }
 
         /// <summary>

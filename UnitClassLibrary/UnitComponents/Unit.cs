@@ -265,7 +265,7 @@ namespace UnitClassLibrary
 
         public override int GetHashCode()
         {
-           throw new NotSupportedException("You shouldn't hash on units");
+            return _IntrinsicValue.GetHashCode();
         }
 
         public bool Equals(Unit<T> other)
