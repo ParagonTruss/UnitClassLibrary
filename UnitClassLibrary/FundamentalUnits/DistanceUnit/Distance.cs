@@ -29,7 +29,6 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 
 namespace UnitClassLibrary.DistanceUnit
 {
-    [JsonObject(MemberSerialization.OptIn)]
     public sealed partial class Distance : Unit<DistanceType>
     {
         
@@ -37,7 +36,6 @@ namespace UnitClassLibrary.DistanceUnit
         
         public Distance(DistanceType distanceUnit, double value) : base(distanceUnit, value) { }
 
-        [JsonConstructor]
         public Distance(DistanceType distanceUnit, Measurement measurement)
             : base(distanceUnit, measurement) { }
 
@@ -74,10 +72,19 @@ namespace UnitClassLibrary.DistanceUnit
         public static DistanceType Centimeters => new Centimeter();
         public static DistanceType Kilometers => new Kilometer();
 
+        [Obsolete("Please use Value in Inches instead.")]
         public Measurement InInches => MeasurementIn(Inches);
+        [Obsolete("Please use Value in Feet instead.")]
         public Measurement InFeet => MeasurementIn(Feet);
+        [Obsolete("Please use Value in Millimeters instead.")]
         public Measurement InMillimeters => MeasurementIn(Millimeters);
+        [Obsolete("Please use Value in Centimeters instead.")]
         public Measurement InCentimeters => MeasurementIn(Centimeters);
+
+        public double ValueInInches => ValueIn(Inches);
+        public double ValueInFeet => ValueIn(Feet);
+        public double ValueInMillimeters => ValueIn(Millimeters);
+        public double ValueInCentimeters => ValueIn(Centimeters);
 
         public static Distance QuarterInch => new Distance(Exactly(0.25, Inches));
         public static Distance SixteenthInch => new Distance(Exactly(0.0375, Inches));

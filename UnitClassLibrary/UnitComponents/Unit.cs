@@ -36,11 +36,11 @@ namespace UnitClassLibrary
         override public IUnitType UnitType { get; }
         override public Measurement Measurement { get; }
 
-        public double IntrinsicValue { get { return Measurement.Value; } }
-        public double ErrorMargin { get { return Measurement.ErrorMargin; } }
+        protected double _IntrinsicValue => Measurement.Value;
+        //public double ErrorMargin => Measurement.ErrorMargin;
 
-        public static Unit<T> Zero { get { return Exactly(0, Activator.CreateInstance<T>()); } }
-       // private Type Ge
+        public static Unit<T> Zero => Exactly(0, Activator.CreateInstance<T>());
+        // private Type Ge
         #endregion
 
         #region Constructors
@@ -202,17 +202,17 @@ namespace UnitClassLibrary
         {
             if (UnitType is DerivedUnitType)
             {
-                return IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnitAsString() + "s";
+                return _IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnitAsString() + "s";
             }
 
             int digits = 0;
-            double roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
+            double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
             while (digits < 15 && 
                 this.Measurement != new Measurement(roundedIntrinsicValue, 0))
             {
                 digits++;
-                roundedIntrinsicValue = Math.Round(IntrinsicValue, digits);
+                roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
             }
 
             return String.Format("{0} {1}", roundedIntrinsicValue, this.UnitType.AsStringPlural());
@@ -265,7 +265,7 @@ namespace UnitClassLibrary
 
         public override int GetHashCode()
         {
-            return IntrinsicValue.GetHashCode();
+           throw new NotSupportedException("You shouldn't hash on units");
         }
 
         public bool Equals(Unit<T> other)
