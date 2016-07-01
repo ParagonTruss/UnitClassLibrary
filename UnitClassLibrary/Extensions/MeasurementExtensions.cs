@@ -44,9 +44,14 @@ namespace UnitClassLibrary
             return new Unit<T>(unitType, m);
         }
 
-        public static double Value(this double number)
-        {
-            return number;
-        }
+        //public static double Value(this double number)
+        //{
+        //    return number;
+        //}
+
+        public static double ToThe(this double number, double exponent) => Math.Pow(number, exponent);
+        public static double Squared(this double number) => Math.Pow(number, 2);
+        public static double Cubed(this double number) => Math.Pow(number, 3);
+        public static double SquareRoot(this double number) => Math.Pow(number, 0.5);
     }
 }
