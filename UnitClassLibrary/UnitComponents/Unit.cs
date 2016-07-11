@@ -30,7 +30,8 @@ namespace UnitClassLibrary
     /// <summary>
     /// A generic implementation of all your favorite units.
     /// </summary>
-    public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>>, IComparable where T : IUnitType
+    public class Unit<T> : Unit, IEquatable<Unit<T>>, IComparable<Unit<T>>, IComparable 
+        where T : IUnitType, new()
     {
         #region Properties
         override public IUnitType UnitType { get; }
@@ -39,7 +40,7 @@ namespace UnitClassLibrary
         protected double _IntrinsicValue => Measurement.Value;
         //public double ErrorMargin => Measurement.ErrorMargin;
 
-        public static Unit<T> Zero => Exactly(0, Activator.CreateInstance<T>());
+        public static Unit<T> Zero => Exactly(0, new T());
         // private Type Ge
         #endregion
 
