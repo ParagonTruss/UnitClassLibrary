@@ -75,76 +75,76 @@ namespace UnitLibraryTests
             //copiedTime.ShouldBeEquivalentTo(architecturalTime);
         }
 
-        /// <summary>
-        /// Tests mathmatical operators
-        /// </summary>
-        [Test()]
-        public void MultiDimensionalUnit()
-        {
-            Distance distance = new Distance(new Inch(), 4);
-            Time time = new Time(new Second(), 33);
-            Unit result = distance / time;
-            Speed speed1 = new Speed(new InchPerSecond(), 4.0/33.0);
-            Speed speed2 = speed1;
+        ///// <summary>
+        ///// Tests mathmatical operators
+        ///// </summary>
+        //[Test()]
+        //public void MultiDimensionalUnit()
+        //{
+        //    Distance distance = new Distance(new Inch(), 4);
+        //    Time time = new Time(new Second(), 33);
+        //    Unit result = distance / time;
+        //    Speed speed1 = new Speed(new InchPerSecond(), 4.0/33.0);
+        //    Speed speed2 = speed1;
 
-            (speed1 == result).Should().BeTrue();
-            (speed1 == speed2).Should().BeTrue();
+        //    (speed1 == result).Should().BeTrue();
+        //    (speed1 == speed2).Should().BeTrue();
 
-        }
+        //}
 
-        [Test()]
-        public void DerivedUnits_Multiplication()
-        {
-            Distance fiveMeters = new Distance(new Meter(), 5);
-            Distance twoMiles = new Distance(new Mile(), 2);
+        //[Test()]
+        //public void DerivedUnits_Multiplication()
+        //{
+        //    Distance fiveMeters = new Distance(new Meter(), 5);
+        //    Distance twoMiles = new Distance(new Mile(), 2);
 
-            Unit area =  twoMiles * fiveMeters;        
-            Area acreage = new Area(new Acre(), 3.977);
-            Unit addition = area + acreage;
-            (area == acreage).Should().BeTrue();
+        //    Unit area =  twoMiles * fiveMeters;        
+        //    Area acreage = new Area(new Acre(), 3.977);
+        //    Unit addition = area + acreage;
+        //    (area == acreage).Should().BeTrue();
 
-            bool exceptionThrown = false;
-            try
-            {
-                Area areaAsInchesSquared = new Area(new SquareInch(), area);
-            }
-            catch
-            {
-                exceptionThrown = true;
-            }
-            (exceptionThrown).Should().BeFalse();
+        //    bool exceptionThrown = false;
+        //    try
+        //    {
+        //        Area areaAsInchesSquared = new Area(new SquareInch(), area);
+        //    }
+        //    catch
+        //    {
+        //        exceptionThrown = true;
+        //    }
+        //    (exceptionThrown).Should().BeFalse();
 
-            Unit notAnArea = area * new Angle(new Radian(), 2);
-            bool exceptionThrown2 = false;
-            try
-            {
-                Area areaAsInchesSquared = new Area(new SquareInch(), notAnArea);
-            }
-            catch
-            {
-                exceptionThrown2 = true;
-            }
-            (exceptionThrown2).Should().BeTrue();
-        }
+        //    Unit notAnArea = area * new Angle(new Radian(), 2);
+        //    bool exceptionThrown2 = false;
+        //    try
+        //    {
+        //        Area areaAsInchesSquared = new Area(new SquareInch(), notAnArea);
+        //    }
+        //    catch
+        //    {
+        //        exceptionThrown2 = true;
+        //    }
+        //    (exceptionThrown2).Should().BeTrue();
+        //}
 
-        [Test]
-        public void DerivedUnit_Constructors()
-        {
-            DerivedUnitType type = new DerivedUnitType(1.0, new List<IUnitType>() { new InchPerSecond(), new Minute() });
-            Unit unit = new Unit<DerivedUnitType>(type, 34);
+        //[Test]
+        //public void DerivedUnit_Constructors()
+        //{
+        //    DerivedUnitType type = new DerivedUnitType(1.0, new List<IUnitType>() { new InchPerSecond(), new Minute() });
+        //    Unit unit = new Unit<DerivedUnitType>(type, 34);
 
-            string str = type.AsStringSingular();
-            Assert.Pass();
-            //Time kilometerTime = new Time(new Kilometer(), 1);
+        //    string str = type.AsStringSingular();
+        //    Assert.Pass();
+        //    //Time kilometerTime = new Time(new Kilometer(), 1);
 
-            //(kilometerTime == new Time(new Millimeter(), 1000000)).Should().BeTrue();
-            //(kilometerTime == new Time(new Centimeter(), 100000)).Should().BeTrue();
-            //(kilometerTime == new Time(new Inch(), 39370.1)).Should().BeTrue();
-            //(kilometerTime == new Time(new Foot(), 3280.84)).Should().BeTrue();
-            //(kilometerTime == new Time(new Yard(), 1093.61)).Should().BeTrue();
-            //(kilometerTime == new Time(new Mile(), 0.621371)).Should().BeTrue();
-            //(kilometerTime == new Time(new Meter(), 1000)).Should().BeTrue();
-            //kilometerTime.Architectural.Should().Be("3280'10 1/16\""); //need to recheck
-        }
+        //    //(kilometerTime == new Time(new Millimeter(), 1000000)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Centimeter(), 100000)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Inch(), 39370.1)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Foot(), 3280.84)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Yard(), 1093.61)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Mile(), 0.621371)).Should().BeTrue();
+        //    //(kilometerTime == new Time(new Meter(), 1000)).Should().BeTrue();
+        //    //kilometerTime.Architectural.Should().Be("3280'10 1/16\""); //need to recheck
+        //}
     }
 }

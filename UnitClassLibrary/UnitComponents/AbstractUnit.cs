@@ -58,8 +58,8 @@ namespace UnitClassLibrary
             return this.Measurement.Value*ConversionFromThisTo(unitType);
         }
 
-        public abstract Unit Invert();
-        public abstract Unit Multiply(Unit unit);
+        //public abstract Unit Invert();
+        //public abstract Unit Multiply(Unit unit);
         //abstract public Unit<T> Multiply<T>(Measurement scalar) where T : IUnitType;
         //abstract public Unit<T> Divide<T>(Measurement divisor) where T : IUnitType;
 
@@ -67,16 +67,16 @@ namespace UnitClassLibrary
         public abstract Unit Divide(Measurement divisor);
 
 
-        public Unit Divide(Unit unit)
-        {
-            return this.Multiply(unit.Invert());
-        }
+        //public Unit Divide(Unit unit)
+        //{
+        //    return this.Multiply(unit.Invert());
+        //}
 
 
-        public static Unit operator *(Unit unit1, Unit unit2)
-        {
-            return unit1.Multiply(unit2);
-        }
+        //public static Unit operator *(Unit unit1, Unit unit2)
+        //{
+        //    return unit1.Multiply(unit2);
+        //}
         public static Unit operator *(Unit unit, Measurement m)
         {
             return unit.Multiply(m);
@@ -85,10 +85,10 @@ namespace UnitClassLibrary
         {
             return unit*m;
         }
-        public static Unit operator /(Unit unit1, Unit unit2)
-        {
-            return unit1.Divide(unit2);
-        }
+        //public static Unit operator /(Unit unit1, Unit unit2)
+        //{
+        //    return unit1.Divide(unit2);
+        //}
         public static Unit operator /(Unit unit, Measurement divisor)
         {
             return unit.Divide(divisor);

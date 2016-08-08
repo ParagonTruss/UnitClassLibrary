@@ -80,61 +80,93 @@ namespace UnitClassLibrary
         }
     }
 
-    public class DerivedUnitType : AbstractDerivedUnitType
-    {
-        public override double DefaultErrorMargin { get; }
+    //public class DerivedUnitType : AbstractDerivedUnitType
+    //{
+        //public override double DefaultErrorMargin { get; }
 
-      
-        private readonly UnitDimensions _dimensions;
+        
+        //private readonly UnitDimensions _dimensions;
 
-        public override UnitDimensions Dimensions()
-        {
-            return _dimensions;
-        }
+        //public override UnitDimensions Dimensions()
+        //{
+        //    return _dimensions;
+        //}
 
-        public DerivedUnitType()
-        {
-            this._dimensions = new UnitDimensions(1.0);
-        }
-        public DerivedUnitType(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
-            : this(new UnitDimensions(scale, numerators, denominators)) { }
-        public DerivedUnitType(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null) 
-        {
-            throw new NotImplementedException();
-            //this._dimensions = new UnitDimensions(scale, numerators, denominators);
-        }
-        public DerivedUnitType(UnitDimensions dimensions)
-        {
-            this._dimensions = dimensions;
-        }
+        //public DerivedUnitType()
+        //{
+        //    this._dimensions = new UnitDimensions(1.0);
+        //}
+        //public DerivedUnitType(double scale, List<FundamentalUnitType> numerators, List<FundamentalUnitType> denominators = null)
+        //    : this(new UnitDimensions(scale, numerators, denominators)) { }
+        //public DerivedUnitType(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null) 
+        //{
+        //    throw new NotImplementedException();
+        //    //this._dimensions = new UnitDimensions(scale, numerators, denominators);
+        //}
+        //public DerivedUnitType(UnitDimensions dimensions)
+        //{
+        //    this._dimensions = dimensions;
+        //}
 
-        public DerivedUnitType(double scale, IUnitType numerator, IUnitType denominator)
-        {
-            this._dimensions = new UnitDimensions(scale, numerator, denominator);
-        }
+        //public DerivedUnitType(double scale, IUnitType numerator, IUnitType denominator)
+        //{
+        //    this._dimensions = new UnitDimensions(scale, numerator, denominator);
+        //}
 
-        #region Static Methods
-        public static DerivedUnitType Multiply(IUnitType type1, IUnitType type2)
-        {
-            return new DerivedUnitType(type1.Dimensions().Multiply(type2.Dimensions()));    
-        }
+        //#region Static Methods
+        //public static DerivedUnitType Multiply(IUnitType type1, IUnitType type2)
+        //{
+        //    return new DerivedUnitType(type1.Dimensions().Multiply(type2.Dimensions()));    
+        //}
 
-        public static DerivedUnitType Divide(IUnitType type1, IUnitType type2)
-        {
-            return new DerivedUnitType(type1.Dimensions().Divide(type2.Dimensions()));
-        }
+        //public static DerivedUnitType Divide(IUnitType type1, IUnitType type2)
+        //{
+        //    return new DerivedUnitType(type1.Dimensions().Divide(type2.Dimensions()));
+        //}
 
-        public static DerivedUnitType Power(IUnitType unitType, int power)
-        {
-            return new DerivedUnitType(unitType.Dimensions().ToThe(power));
-        }
+        //public static DerivedUnitType Power(IUnitType unitType, int power)
+        //{
+        //    return new DerivedUnitType(unitType.Dimensions().ToThe(power));
+        //}
 
-        public override string AsStringSingular()
-        { throw new NotImplementedException(); }
 
-        public override string AsStringPlural()
-        { throw new NotImplementedException(); }
-        #endregion
+        ////    #region String methods
+        //public string AsStringSingular()
+        //{
+        //    string result = Scale.ToString() + "-" + JustTheUnitAsString();
+        //    return result;
+        //}
+
+        //internal string JustTheUnitAsString()
+        //{
+        //    string result = "";
+        //    if (_numerators.Count != 0)
+        //    {
+        //        result += _numerators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+        //    }
+        //    if (_denominators.Count != 0)
+        //    {
+        //        result += " over " + _denominators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+        //    }
+        //    return result;
+        //}
+
+        //public string AsStringPlural()
+        //{ return AsStringSingular() + "s"; }
+
+        //public override string ToString()
+        //{
+        //    if (Scale == 1)
+        //    {
+        //        return AsStringSingular();
+        //    }
+        //    else
+        //    {
+        //        return AsStringPlural();
+        //    }
+        //}
+        ////    #endregion
+        //#endregion
     }
 
-} 
+ 

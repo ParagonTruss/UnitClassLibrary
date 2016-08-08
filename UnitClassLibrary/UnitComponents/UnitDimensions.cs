@@ -207,43 +207,6 @@ namespace UnitClassLibrary
         {
             return ToThe(-1);
         }
-
-    //    #region String methods
-    //    public string AsStringSingular()
-    //    {
-    //        string result = Scale.ToString() + "-" + JustTheUnitAsString();
-    //        return result;
-    //    }
-
-    //    internal string JustTheUnitAsString()
-    //    {
-    //        string result = "";
-    //        if (_numerators.Count != 0)
-    //        {
-    //            result += _numerators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
-    //        }
-    //        if (_denominators.Count != 0)
-    //        {
-    //            result += " over " + _denominators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
-    //        }
-    //        return result;
-    //    }
-
-    //    public string AsStringPlural()
-    //    { return AsStringSingular() + "s"; }
-
-    //    public override string ToString()
-    //    {
-    //        if (Scale == 1)
-    //        {
-    //            return AsStringSingular();
-    //        }
-    //        else
-    //        {
-    //            return AsStringPlural();
-    //        }
-    //    }
-    //    #endregion
    }
 
     public static class FundamentalUnitTypeExtensions

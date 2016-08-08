@@ -126,23 +126,23 @@ namespace UnitClassLibrary
             return new Unit<T>((T)UnitType, Measurement.AbsoluteValue());
         }
 
-        public override Unit Multiply(Unit unit)
-        {
-            var type = DerivedUnitType.Multiply(this.UnitType, unit.UnitType);
+        //public override Unit Multiply(Unit unit)
+        //{
+        //    var type = DerivedUnitType.Multiply(this.UnitType, unit.UnitType);
 
-            return new Unit<DerivedUnitType>(type, this.Measurement*unit.Measurement);
-        }
+        //    return new Unit<DerivedUnitType>(type, this.Measurement*unit.Measurement);
+        //}
 
-        public override Unit Invert()
-        {
-            return new Unit<DerivedUnitType>(new DerivedUnitType(Dimensions.Invert()), 1.0 / Measurement);
-        }
+        //public override Unit Invert()
+        //{
+        //    return new Unit<DerivedUnitType>(new DerivedUnitType(Dimensions.Invert()), 1.0 / Measurement);
+        //}
 
-        public Unit<DerivedUnitType> ToThe(int power)
-        {
-            var type = DerivedUnitType.Power(this.UnitType, power);
-            return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
-        }
+        //public Unit<DerivedUnitType> ToThe(int power)
+        //{
+        //    var type = DerivedUnitType.Power(this.UnitType, power);
+        //    return new Unit<DerivedUnitType>(type, this.Measurement ^ power);
+        //}
 
         public Unit<T> Add(Unit<T> unit)
         {
@@ -318,10 +318,10 @@ namespace UnitClassLibrary
         {
             return unit.Mod(modulus);
         }
-        public static Unit<DerivedUnitType> operator ^(Unit<T> unit, int power)
-        {
-            return unit.ToThe(power);
-        }
+        //public static Unit<DerivedUnitType> operator ^(Unit<T> unit, int power)
+        //{
+        //    return unit.ToThe(power);
+        //}
         public static bool operator <(Unit<T> unit1, Unit<T> unit2)
         {
             return unit1.Measurement < unit2.MeasurementIn(unit1.UnitType);
