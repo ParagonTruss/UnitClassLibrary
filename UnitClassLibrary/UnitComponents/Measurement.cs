@@ -27,7 +27,7 @@ namespace UnitClassLibrary
 {
     public enum ErrorMarginSetting { StaticTolerances, ErrorPropagation }
     
-    public struct Measurement : IEquatable<Measurement>, IComparable<Measurement>, IFormattable
+    public sealed class Measurement : IEquatable<Measurement>, IComparable<Measurement>, IFormattable
     {
         #region global public variables
         
@@ -60,6 +60,11 @@ namespace UnitClassLibrary
 
         #region Constructors
 
+        public Measurement()
+        {
+            this.Value = 0;
+            this.ErrorMargin = DefaultErrorMargin;
+        }
         public Measurement(double intrinsicValue)
         {
             this.Value = intrinsicValue;

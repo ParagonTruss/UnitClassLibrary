@@ -39,7 +39,7 @@ namespace UnitClassLibrary
             nameof(TemperatureType),
             nameof(TimeType)
         };
-        internal static int FundamentalUnitCount => FundamentalTypes.Count;
+        internal const int FundamentalUnitCount = 5;
 
         public double ConversionFactor { get; private set; }
 
@@ -146,10 +146,6 @@ namespace UnitClassLibrary
             }
             return true;
         }
-
-    
-
-      
 
         public UnitDimensions Squared()
         {

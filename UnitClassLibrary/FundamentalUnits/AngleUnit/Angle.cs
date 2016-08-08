@@ -70,25 +70,19 @@ namespace UnitClassLibrary.AngleUnit
         {
             return new Angle(base.Negate());
         }
-        public static Measurement Sine(Angle angle)
+        public static double Sine(Angle angle)
         {
-            var m = angle.MeasurementIn(new Radian());
-
-            return new Measurement(Math.Sin(m.Value), Math.Cos(m.Value) * m.ErrorMargin);
+            return Math.Sin(angle.InRadians.Value);
         }
 
         public static Measurement Cosine(Angle angle)
         {
-            var m = angle.MeasurementIn(new Radian());
-
-            return new Measurement(Math.Cos(m.Value), Math.Sin(m.Value) * m.ErrorMargin);
+            return Math.Cos(angle.InRadians.Value);
         }
 
         public static Measurement Tangent(Angle angle)
         {
-            var m = angle.MeasurementIn(Radians);
-
-            return new Measurement(Math.Tan(m.Value), m.ErrorMargin / Math.Pow(Math.Cos(m.Value), 2));
+            return Math.Tan(angle.InRadians.Value);
         }
 
         public static Angle ArcCos(Measurement m)
@@ -109,11 +103,11 @@ namespace UnitClassLibrary.AngleUnit
             double error;
             var d1 = Math.Acos(m.Value + m.ErrorMargin);
             var d2 = Math.Acos(m.Value - m.ErrorMargin);
-            if (Double.IsNaN(d1))
+            if (double.IsNaN(d1))
             {
                 error = d2 - value;
             }
-            else if (Double.IsNaN(d2))
+            else if (double.IsNaN(d2))
             {
                 error = value - d1;
             }
@@ -180,10 +174,6 @@ namespace UnitClassLibrary.AngleUnit
         public Measurement InDegrees => MeasurementIn(new Degree());
         public Measurement InRadians => MeasurementIn(new Radian());
 
-        // Only marginally usefull.
-        // Names are too similar to the methods below, and we want people to use those ones.
-        //public static Angle Radian { get { return new Angle(1, Radians); } }
-        //public static Angle Degree { get { return new Angle(1, Degrees); } }
 
         public static AngleType Radians => new Radian();
         public static AngleType Degrees => new Degree();
