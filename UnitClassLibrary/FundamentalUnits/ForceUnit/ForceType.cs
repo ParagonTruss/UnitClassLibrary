@@ -28,33 +28,17 @@ namespace UnitClassLibrary.ForceUnit
     public class ForceType : FundamentalUnitType
     {
         private static Pound _defaultForceType = new Pound();
-        public override double ConversionFactor
-        {
-            get
-            {
-                return _defaultForceType.ConversionFactor;
-            }
-        }
+        public override double ConversionFactor => _defaultForceType.ConversionFactor;
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return _defaultForceType.DefaultErrorMargin;
-            }
-        }
+        public override double DefaultErrorMargin => _defaultForceType.DefaultErrorMargin;
 
         public override string AsStringSingular()
         {
             return _defaultForceType.AsStringSingular();
         }
 
-        public override string Type
-        {
-           get { return nameof(ForceType); }
-        }
+        public override string Type => nameof(ForceType);
 
-        
 
         public static Force operator *(Measurement m, ForceType type)
         {

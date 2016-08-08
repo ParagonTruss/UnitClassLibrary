@@ -24,26 +24,13 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : DistanceType
     {     
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Millimeter";
         }
 
-        override public double ConversionFactor
-                        
-            {
-                get
-                {
-                    return 0.0393700787401575D;
-                }
-            }
+        public override double ConversionFactor => 0.0393700787401575D;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 }

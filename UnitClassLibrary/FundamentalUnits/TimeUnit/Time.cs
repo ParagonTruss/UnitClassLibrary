@@ -30,7 +30,7 @@ namespace UnitClassLibrary.TimeUnit
 
         public Time(Unit<TimeType> time) : base(time) { }
 
-        new public Time Negate()
+        public new Time Negate()
         {
             return (Time)(this.Negate());
         }

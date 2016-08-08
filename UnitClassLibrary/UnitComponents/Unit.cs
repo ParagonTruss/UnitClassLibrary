@@ -34,8 +34,8 @@ namespace UnitClassLibrary
         where T : IUnitType
     {
         #region Properties
-        override public IUnitType UnitType { get; }
-        override public Measurement Measurement { get; }
+        public override IUnitType UnitType { get; }
+        public override Measurement Measurement { get; }
 
         protected double _IntrinsicValue => Measurement.Value;
         //public double ErrorMargin => Measurement.ErrorMargin;
@@ -54,15 +54,10 @@ namespace UnitClassLibrary
         public Unit(T unit, Measurement measurement)
         {
             this.UnitType = unit;
-            if (Measurement.ErrorPropagationIsEnabled)
-            {
-                this.Measurement = measurement;
-            }
-            else
-            {
-                var value = measurement.Value;
-                this.Measurement = new Measurement(value, unit.InitialErrorMargin(value));
-            }       
+         
+            var value = measurement.Value;
+            this.Measurement = new Measurement(value, unit.InitialErrorMargin(value));
+                 
         }
         public Unit(T type, Unit unitToConvert)
         {
@@ -131,14 +126,14 @@ namespace UnitClassLibrary
             return new Unit<T>((T)UnitType, Measurement.AbsoluteValue());
         }
 
-        override public Unit Multiply(Unit unit)
+        public override Unit Multiply(Unit unit)
         {
             var type = DerivedUnitType.Multiply(this.UnitType, unit.UnitType);
 
             return new Unit<DerivedUnitType>(type, this.Measurement*unit.Measurement);
         }
 
-        override public Unit Invert()
+        public override Unit Invert()
         {
             return new Unit<DerivedUnitType>(new DerivedUnitType(Dimensions.Invert()), 1.0 / Measurement);
         }
@@ -167,7 +162,7 @@ namespace UnitClassLibrary
             Unit<T> conversion = new Unit<T>((T)this.UnitType, unit);
             return new Unit<T>((T)this.UnitType, this.Measurement - conversion.Measurement);
         }
-        override public Unit Multiply(Measurement scalar)
+        public override Unit Multiply(Measurement scalar)
         {
             return this._Multiply(scalar);
         }
@@ -181,7 +176,7 @@ namespace UnitClassLibrary
             return this.Measurement / (divisor.MeasurementIn(this.UnitType));
         }
 
-        override public Unit Divide(Measurement divisor)
+        public override Unit Divide(Measurement divisor)
         {
             return this._Divide(divisor);
         }
@@ -368,20 +363,6 @@ namespace UnitClassLibrary
         
 
         #endregion
-    }
-
-    public class UnitLess : Unit<DimensionLess>
-    {
-        public static implicit operator UnitLess(double d)
-        {
-            return new UnitLess(d);
-        }
-        public static implicit operator UnitLess(Measurement m)
-        {
-            return new UnitLess(m);
-        }
-        public UnitLess(double d) : base(DimensionLess.Instance, d) { }
-        public UnitLess(Measurement m) : base(DimensionLess.Instance, m) { }
     }
    
 }

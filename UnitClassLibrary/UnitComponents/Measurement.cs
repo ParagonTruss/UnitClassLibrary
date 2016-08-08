@@ -35,8 +35,7 @@ namespace UnitClassLibrary
         /// set to 1 billionth.
         /// </summary>
         public static double DefaultErrorMargin { get; set; } = 0.00000001;
-        public static ErrorMarginSetting ErrorMarginSetting { get; set; } = ErrorMarginSetting.StaticTolerances;
-        public static bool ErrorPropagationIsEnabled { get { return ErrorMarginSetting == ErrorMarginSetting.ErrorPropagation; } }
+        public static bool ErrorPropagationIsEnabled => false;
 
 
         #endregion
@@ -49,39 +48,29 @@ namespace UnitClassLibrary
         #endregion
 
         #region Properties
-        public static Measurement Zero { get { return new Measurement(0.0, 0.0);} }
-        
+        public static Measurement Zero => new Measurement(0.0, 0.0);
+
         public double Value { get; }
 
         public double ErrorMargin { get; }
 
-        public double PercentageError { get { return ErrorMargin / Value; } }
+        public double PercentageError => ErrorMargin / Value;
+
         #endregion
 
         #region Constructors
 
-        [JsonConstructor]
-        public Measurement(double intrinsicValue, double? errorMargin = null) : this()
+        public Measurement(double intrinsicValue)
         {
-            if (errorMargin == null)
-            {
-                errorMargin = DefaultErrorMargin;
-            }
             this.Value = intrinsicValue;
-            this.ErrorMargin = Math.Abs((double)errorMargin);
-            _checkMeasurement();
+            this.ErrorMargin = DefaultErrorMargin;
+        }
+        public Measurement(double intrinsicValue, double errorMargin)
+        {
+            this.Value = intrinsicValue;
+            this.ErrorMargin = errorMargin;
         }
 
-        private void _checkMeasurement()
-        {
-            if (ErrorPropagationIsEnabled)
-            {
-                if (Double.IsNaN(Value) || Double.IsNaN(ErrorMargin) || (Value > 1 && PercentageError > 0.50))
-                {
-                    throw new Exception();
-                }
-            }
-        }
         #endregion
 
         #region Public methods

@@ -25,7 +25,7 @@ using System.Text;
 
 namespace UnitClassLibrary.DerivedUnits.Mass
 {
-    abstract public class MassType : AbstractDerivedUnitType
+    public abstract class MassType : AbstractDerivedUnitType
     {
     }
 }

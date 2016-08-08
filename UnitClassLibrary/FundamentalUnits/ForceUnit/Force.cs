@@ -43,8 +43,9 @@ namespace UnitClassLibrary.ForceUnit
         #region Static Properties
         public static readonly Force ZeroForce = new Force(new Pound(), new Measurement());
 
-        public static ForceType Pounds { get { return new Pound(); } }
-        public Measurement InPounds { get { return this.MeasurementIn(Pounds); } }
+        public static ForceType Pounds => new Pound();
+        public Measurement InPounds => this.MeasurementIn(Pounds);
+
         #endregion
         #region Public Methods
 #endregion

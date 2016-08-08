@@ -24,23 +24,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
     public class Kilometer : DistanceType
     {
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Kilometer";
         }
 
-        override public double ConversionFactor
-        {
-            get { return 39370.0787401575D; }
-        }
+        public override double ConversionFactor => 39370.0787401575D;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 
     public static class KilometerExtensions

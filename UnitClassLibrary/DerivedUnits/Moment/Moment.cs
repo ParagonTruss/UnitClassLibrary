@@ -41,14 +41,14 @@ namespace UnitClassLibrary.DerivedUnits
         {
         }
 
-        public static Moment ZeroMoment { get { return new Moment(Exactly(0, new PoundInch())); } }
+        public static Moment ZeroMoment => new Moment(Exactly(0, new PoundInch()));
 
         // naming is a little off. should be InchPounds.
-        public Measurement InPoundInches { get {return MeasurementIn(new PoundInch());} }
-        public static MomentType PoundInches { get { return new PoundInch(); } }
+        public Measurement InPoundInches => MeasurementIn(new PoundInch());
+        public static MomentType PoundInches => new PoundInch();
 
-        public Measurement InFootPounds { get { return MeasurementIn(new FootPound()); } }
-        public static MomentType FootPounds { get { return new FootPound(); } }
+        public Measurement InFootPounds => MeasurementIn(new FootPound());
+        public static MomentType FootPounds => new FootPound();
 
         #region Operator Overloads
 

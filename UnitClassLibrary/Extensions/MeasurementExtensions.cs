@@ -48,5 +48,16 @@ namespace UnitClassLibrary
         {
             return number;
         }
+
+        public static double SquareRoot(this double number)
+        {
+            return Math.Sqrt(number);
+        }
+
+        public static double ToThe(this double number, double power)
+        {
+            return Math.Pow(number, power);
+        }
+
     }
 }

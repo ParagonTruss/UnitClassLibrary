@@ -31,7 +31,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
             return new UnitDimensions(43560, new List<FundamentalUnitType>() { new Foot(), new Foot() });
         }
 
-        override public string AsStringPlural() { return "Acres"; } 
-        override public string AsStringSingular() { return "Acre"; }      
+        public override string AsStringPlural() { return "Acres"; } 
+        public override string AsStringSingular() { return "Acre"; }      
     }
 }

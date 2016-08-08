@@ -47,12 +47,6 @@ namespace UnitClassLibrary.AngleUnit.Temperature
             }
         }
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return 0.5555555555555555D;
-            }
-        }
+        public override double DefaultErrorMargin => 0.5555555555555555D;
     }
 }

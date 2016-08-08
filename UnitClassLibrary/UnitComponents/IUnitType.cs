@@ -39,8 +39,8 @@ namespace UnitClassLibrary
         public abstract double DefaultErrorMargin { get; }
         public abstract double ConversionFactor { get; }
 
-        abstract public string Type { get; }
-        abstract public string AsStringSingular();
+        public abstract string Type { get; }
+        public abstract string AsStringSingular();
         public virtual string AsStringPlural()
         {
             return AsStringSingular() + "s";
@@ -54,12 +54,6 @@ namespace UnitClassLibrary
         public double InitialErrorMargin(double intrinsicValue)
         {
             return DefaultErrorMargin;
-            //var onePartInAMillion = intrinsicValue * 0.000001;
-            //if (onePartInAMillion < DefaultErrorMargin)
-            //{
-            //    return DefaultErrorMargin;
-            //}
-            //return onePartInAMillion;
         }
     }
 
@@ -134,27 +128,5 @@ namespace UnitClassLibrary
         { return Dimensions().AsStringPlural(); }
         #endregion
     }
-
-    public class DimensionLess : AbstractDerivedUnitType
-    {
-        private static DimensionLess _instance = new DimensionLess();
-        public static DimensionLess Instance => _instance;
-
-        private DimensionLess()
-        {
-
-        }
-
-        public override UnitDimensions Dimensions()
-        {          
-            return new UnitDimensions(1.0);
-        }
-
-        public override string AsStringSingular()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
 
 } 

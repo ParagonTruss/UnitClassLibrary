@@ -49,7 +49,7 @@ namespace UnitClassLibrary.SpeedUnit
         //    }
         //}
 
-        new public Speed Negate()
+        public new Speed Negate()
         {
             return new Speed(base.Negate());
         }

@@ -23,32 +23,19 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
     public class Inch : DistanceType
     {
-        override public string AsStringPlural()
+        public override string AsStringPlural()
         {
             return "Inches";
         }
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Inch";
         }
 
-        override public double ConversionFactor
-        {
-            get { return 1; }
-        }
+        public override double ConversionFactor => 1;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                // one sixty fourth of an inch:
-                //return 0.015625;
-
-                // one thirty second of an inch:
-                return 0.03125;
-            }
-        }
+        public override double DefaultErrorMargin => 0.03125;
     }
 
     //public static class InchExtensions

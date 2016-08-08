@@ -27,10 +27,7 @@ namespace UnitClassLibrary.FundamentalUnits.TemperatureUnit
 {
     public class Celsius : TemperatureType
     {
-        public override double DefaultErrorMargin
-        {
-            get { return 5.0/90.0; }
-        }
+        public override double DefaultErrorMargin => 5.0/90.0;
         public override double ConversionFactor
         { get {throw new NotImplementedException();} }
         public override string AsStringSingular()

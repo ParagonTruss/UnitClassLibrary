@@ -35,7 +35,8 @@ namespace UnitClassLibrary.DistributedForceUnit
         public DistributedForce(Unit unit)
             : base(PoundsPerInch, unit) { }
 
-        public static DistributedForce Zero { get { return new DistributedForce(Exactly(0, new PoundPerInch())); } }
+        public static DistributedForce Zero => new DistributedForce(Exactly(0, new PoundPerInch()));
+
         #region Arithmetic Operators
 
         public static DistributedForce operator +(DistributedForce DistributedForce1, DistributedForce DistributedForce2)
@@ -64,16 +65,16 @@ namespace UnitClassLibrary.DistributedForceUnit
         }
         #endregion
 
-        public Measurement InPoundsPerInch { get { return ValueIn(new PoundPerInch()); } }
-        public static DistributedForceType PoundsPerInch { get { return new PoundPerInch(); } }
+        public Measurement InPoundsPerInch => ValueIn(new PoundPerInch());
+        public static DistributedForceType PoundsPerInch => new PoundPerInch();
 
-        public Measurement InPoundsPerFoot { get { return ValueIn(new PoundPerFoot()); } }
-        public static DistributedForceType PoundsPerFoot { get { return new PoundPerFoot(); } }
+        public Measurement InPoundsPerFoot => ValueIn(new PoundPerFoot());
+        public static DistributedForceType PoundsPerFoot => new PoundPerFoot();
 
-        public Measurement InNewtonsPerMeter { get { return ValueIn(new NewtonPerMeter()); } }
-        public static DistributedForceType NewtonsPerMeter { get { return new NewtonPerMeter(); } }
-        
-        public Measurement InKilonewtonsPerMeter { get { return ValueIn(new KilonewtonPerMeter()); } }
-        public static DistributedForceType KilonewtonsPerMeter { get { return new KilonewtonPerMeter(); } }
+        public Measurement InNewtonsPerMeter => ValueIn(new NewtonPerMeter());
+        public static DistributedForceType NewtonsPerMeter => new NewtonPerMeter();
+
+        public Measurement InKilonewtonsPerMeter => ValueIn(new KilonewtonPerMeter());
+        public static DistributedForceType KilonewtonsPerMeter => new KilonewtonPerMeter();
     }
 }

@@ -52,12 +52,12 @@ namespace UnitClassLibrary.DistanceUnit
             : base(type, unit) { }
         #endregion
 
-        new public Distance Negate()
+        public new Distance Negate()
         {
             return new Distance(base.Negate());
         }
 
-        new public Distance AbsoluteValue()
+        public new Distance AbsoluteValue()
         {
             return new Distance(base.AbsoluteValue());
         }

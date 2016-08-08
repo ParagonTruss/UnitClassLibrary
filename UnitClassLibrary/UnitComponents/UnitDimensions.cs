@@ -43,8 +43,8 @@ namespace UnitClassLibrary
         private List<FundamentalUnitType> _denominators;
 
         public double Scale { get; private set; }
-        public IList<FundamentalUnitType> Numerators { get { return new ReadOnlyCollection<FundamentalUnitType>( _numerators); } }
-        public IList<FundamentalUnitType> Denominators { get { return new ReadOnlyCollection<FundamentalUnitType>(_denominators); } }
+        public IList<FundamentalUnitType> Numerators => new ReadOnlyCollection<FundamentalUnitType>( _numerators);
+        public IList<FundamentalUnitType> Denominators => new ReadOnlyCollection<FundamentalUnitType>(_denominators);
         public double ConversionFactor
         {
             get

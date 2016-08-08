@@ -26,11 +26,11 @@ namespace UnitClassLibrary
 {
     public abstract class Unit
     {
-        abstract public IUnitType UnitType { get; }
-        abstract public Measurement Measurement { get; }
+        public abstract IUnitType UnitType { get; }
+        public abstract Measurement Measurement { get; }
 
-        public double ConversionFactor { get { return UnitType.ConversionFactor; } }
-        public UnitDimensions Dimensions { get { return UnitType.Dimensions(); } }
+        public double ConversionFactor => UnitType.ConversionFactor;
+        public UnitDimensions Dimensions => UnitType.Dimensions();
 
         public double ConversionFromThisTo(IUnitType unit)
         {
@@ -58,13 +58,13 @@ namespace UnitClassLibrary
             return this.Measurement.Value*ConversionFromThisTo(unitType);
         }
 
-        abstract public Unit Invert();
-        abstract public Unit Multiply(Unit unit);
+        public abstract Unit Invert();
+        public abstract Unit Multiply(Unit unit);
         //abstract public Unit<T> Multiply<T>(Measurement scalar) where T : IUnitType;
         //abstract public Unit<T> Divide<T>(Measurement divisor) where T : IUnitType;
 
-        abstract public Unit Multiply(Measurement scalar);
-        abstract public Unit Divide(Measurement divisor);
+        public abstract Unit Multiply(Measurement scalar);
+        public abstract Unit Divide(Measurement divisor);
 
 
         public Unit Divide(Unit unit)

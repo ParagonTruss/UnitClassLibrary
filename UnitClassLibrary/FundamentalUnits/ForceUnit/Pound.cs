@@ -33,20 +33,8 @@ namespace UnitClassLibrary.ForceUnit
             return "Pound";
         }
 
-        public override double ConversionFactor
-        {
-            get
-            {
-                return 1.0;
-            }
-        }
+        public override double ConversionFactor => 1.0;
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return 1;
-            }
-        }
+        public override double DefaultErrorMargin => 1;
     }
 }

@@ -24,23 +24,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
     public class Centimeter : DistanceType
     {
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Centimeter";
         }
 
-        override public double ConversionFactor
-        {
-            get { return 0.393700787401575D; }
-        }
+        public override double ConversionFactor => 0.393700787401575D;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 
     public static class CentimeterExtensions

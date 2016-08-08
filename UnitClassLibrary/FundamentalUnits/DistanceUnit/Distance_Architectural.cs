@@ -31,13 +31,7 @@ namespace UnitClassLibrary.DistanceUnit
     public partial class Distance
     {
 
-        public string Architectural
-        {
-            get
-            {
-                return ConvertToArchitecturalString(this);
-            }
-        }
+        public string Architectural => ConvertToArchitecturalString(this);
 
         /// <summary>
         /// Converts any possible type of Architectual String into internal units

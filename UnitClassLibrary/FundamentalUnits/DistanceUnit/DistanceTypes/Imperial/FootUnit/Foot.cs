@@ -24,28 +24,19 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
     public class Foot : DistanceType
     {
-        override public string AsStringPlural()
+        public override string AsStringPlural()
         {
             return "Feet";
         }
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Foot";
         }
 
-        override public double ConversionFactor
-        {
-            get { return 12; }
-        }
+        public override double ConversionFactor => 12;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 
     public static class FootExtensions

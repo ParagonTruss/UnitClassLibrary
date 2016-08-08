@@ -23,9 +23,6 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public abstract class TimeType : FundamentalUnitType
     {
-        public override string Type
-        {
-            get { return nameof(TimeType); }
-        }
+        public override string Type => nameof(TimeType);
     }
 }

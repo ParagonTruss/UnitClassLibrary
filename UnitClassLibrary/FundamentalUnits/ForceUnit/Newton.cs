@@ -33,20 +33,8 @@ namespace UnitClassLibrary.ForceUnit
             return "Newton";
         }
 
-        public override double ConversionFactor
-        {
-            get
-            {
-                return 0.22480894309971;
-            }
-        }
+        public override double ConversionFactor => 0.22480894309971;
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return new Pound().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Pound().DefaultErrorMargin / ConversionFactor;
     }
 }

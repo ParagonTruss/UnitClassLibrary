@@ -27,11 +27,9 @@ namespace UnitClassLibrary.FundamentalUnits.TemperatureUnit
 {
     public class Fahrenheit : TemperatureType
     {
-        public override double DefaultErrorMargin
-        {
-            get { return 0.1; }        
-        }
-        public override double ConversionFactor { get { return 1.0; } }
+        public override double DefaultErrorMargin => 0.1;
+        public override double ConversionFactor => 1.0;
+
         public override string AsStringSingular()
         {
             return "Degree Fahrenheit";

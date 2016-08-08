@@ -24,25 +24,13 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
     public class Second : TimeType
     {
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Second";
         }
 
-        override public double ConversionFactor
-        {
-            get
-            {
-                return 1;
-            }
-        }
+        public override double ConversionFactor => 1;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return 0.01;
-            }
-        }
+        public override double DefaultErrorMargin => 0.01;
     }
 }

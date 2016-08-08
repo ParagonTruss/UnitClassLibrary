@@ -49,23 +49,13 @@ namespace UnitClassLibrary.AreaUnit
         {
 
         }
-        public static AreaType SquareInches { get { return new SquareInch(); } }
-        public Measurement InSquareInches { get { return MeasurementIn(new SquareInch()); } }
+        public static AreaType SquareInches => new SquareInch();
+        public Measurement InSquareInches => MeasurementIn(new SquareInch());
 
         public Distance SquareRoot()
         {
-            var value = this.MeasurementIn(new SquareInch()).SquareRoot();
+            var value = this.ValueIn(new SquareInch()).SquareRoot();
             return new Distance(new Inch(), value);
         }
-
-        //new public Area Negate()
-        //{
-        //    return new Area(base.Negate());
-        //}
-
-        //new public Area AbsoluteValue()
-        //{
-        //    return new Area(base.AbsoluteValue());
-        //}
     }
 }

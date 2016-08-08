@@ -28,12 +28,12 @@ namespace UnitClassLibrary.AngleUnit
 {
     public sealed class Angle : Unit<AngleType>
     {
-        public Angle ProperAngle { get { return this % FullCircle; } }
+        public Angle ProperAngle => this % FullCircle;
 
-        public static Angle ZeroAngle { get { return Exactly(0, Degrees); } }
-        public static Angle RightAngle { get { return Exactly(90, Degrees); } }
-        public static Angle StraightAngle { get { return Exactly(180, Degrees); } }
-        public static Angle FullCircle { get { return Exactly(360, Degrees); } }
+        public static Angle ZeroAngle => Exactly(0, Degrees);
+        public static Angle RightAngle => Exactly(90, Degrees);
+        public static Angle StraightAngle => Exactly(180, Degrees);
+        public static Angle FullCircle => Exactly(360, Degrees);
 
         public Angle(AngleType type, Measurement measurement)
             : base(type, measurement) { }
@@ -177,15 +177,15 @@ namespace UnitClassLibrary.AngleUnit
             return new Angle(angle1.Mod(angle2));
         }
 
-        public Measurement InDegrees { get { return MeasurementIn(new Degree()); } }
-        public Measurement InRadians { get { return MeasurementIn(new Radian()); } }
+        public Measurement InDegrees => MeasurementIn(new Degree());
+        public Measurement InRadians => MeasurementIn(new Radian());
 
         // Only marginally usefull.
         // Names are too similar to the methods below, and we want people to use those ones.
         //public static Angle Radian { get { return new Angle(1, Radians); } }
         //public static Angle Degree { get { return new Angle(1, Degrees); } }
 
-        public static AngleType Radians { get { return new Radian(); } }
-        public static AngleType Degrees { get { return new Degree(); } }
+        public static AngleType Radians => new Radian();
+        public static AngleType Degrees => new Degree();
     }
 }

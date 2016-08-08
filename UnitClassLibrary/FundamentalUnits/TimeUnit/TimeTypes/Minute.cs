@@ -24,25 +24,13 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
     public class Minute : TimeType
     {
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Minute";
         }
 
-        override public double ConversionFactor
-        {
-            get
-            {
-                return 60;
-            }
-        }
+        public override double ConversionFactor => 60;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Second().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Second().DefaultErrorMargin / ConversionFactor;
     }
 }

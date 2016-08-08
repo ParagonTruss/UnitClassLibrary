@@ -26,31 +26,18 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Radian : AngleType
     {
-        override public string AsStringPlural()
+        public override string AsStringPlural()
         {
             return "Radians";
         }
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Radian";
         }
 
-        override public double ConversionFactor
-        {
-            get
-            {
-                // 180 / pi. Degrees are the standard unit.
-                return 57.2957795131D;
-            }
-        }
+        public override double ConversionFactor => 57.2957795131D;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Degree().DefaultErrorMargin / this.ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Degree().DefaultErrorMargin / this.ConversionFactor;
     }
 }

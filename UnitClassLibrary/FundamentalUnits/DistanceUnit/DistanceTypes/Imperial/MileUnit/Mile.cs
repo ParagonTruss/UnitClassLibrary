@@ -25,26 +25,14 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
     public class Mile : DistanceType
     {
 
-        override public string AsStringSingular()
+        public override string AsStringSingular()
         {
             return "Mile";
         }
 
-        override public double ConversionFactor
-        {
-            get
-            {
-                return 63360;            
-            }
-        }
+        public override double ConversionFactor => 63360;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 
     public static class MileExtensions

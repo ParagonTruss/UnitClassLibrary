@@ -25,9 +25,9 @@ using UnitClassLibrary.AngleUnit;
 
 namespace UnitClassLibrary
 {
-    abstract public class AngleType : FundamentalUnitType
+    public abstract class AngleType : FundamentalUnitType
     {
-        public override string Type { get { return nameof(AngleType); } }
+        public override string Type => nameof(AngleType);
 
         public static Angle operator *(double scalar, AngleType type)
         {

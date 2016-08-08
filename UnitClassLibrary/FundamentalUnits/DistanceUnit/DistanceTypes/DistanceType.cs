@@ -25,26 +25,11 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
     public class DistanceType : FundamentalUnitType
     {
         private static Inch _defaultDistanceType = new Inch(); 
-        public override double ConversionFactor
-        {
-            get
-            {
-                return _defaultDistanceType.ConversionFactor;
-            }
-        }
+        public override double ConversionFactor => _defaultDistanceType.ConversionFactor;
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return _defaultDistanceType.DefaultErrorMargin;
-            }
-        }
+        public override double DefaultErrorMargin => _defaultDistanceType.DefaultErrorMargin;
 
-        public override string Type
-        {
-           get { return nameof(DistanceType); }
-        }
+        public override string Type => nameof(DistanceType);
 
         public override string AsStringSingular()
         {

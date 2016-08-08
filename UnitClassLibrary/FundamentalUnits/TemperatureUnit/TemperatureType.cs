@@ -25,11 +25,8 @@ using System.Text;
 
 namespace UnitClassLibrary.TemperatureUnit
 {
-    abstract public class TemperatureType : FundamentalUnitType
+    public abstract class TemperatureType : FundamentalUnitType
     {
-        public override string Type
-        {
-           get { return nameof(TemperatureType); }
-        }
+        public override string Type => nameof(TemperatureType);
     }
 }

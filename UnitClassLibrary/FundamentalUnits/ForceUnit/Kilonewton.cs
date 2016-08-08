@@ -31,20 +31,8 @@ namespace UnitClassLibrary.ForceUnit
             return "Kilonewton";
         }
 
-        public override double ConversionFactor
-        {
-            get
-            {
-                return 224.80894309971;
-            }
-        }
+        public override double ConversionFactor => 224.80894309971;
 
-        public override double DefaultErrorMargin
-        {
-            get
-            {
-                return new Pound().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Pound().DefaultErrorMargin / ConversionFactor;
     }
 }

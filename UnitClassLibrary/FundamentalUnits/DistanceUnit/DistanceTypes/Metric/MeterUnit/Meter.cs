@@ -29,18 +29,9 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
             return "Meter";
         }
 
-        override public double ConversionFactor
-        {
-            get { return 39.3700787401575D; }
-        }
+        public override double ConversionFactor => 39.3700787401575D;
 
-        override public double DefaultErrorMargin
-        {
-            get
-            {
-                return new Inch().DefaultErrorMargin / ConversionFactor;
-            }
-        }
+        public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;
     }
 
     public static class MeterExtensions
