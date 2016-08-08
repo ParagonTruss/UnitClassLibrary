@@ -28,7 +28,8 @@ namespace UnitClassLibrary
         double ConversionFactor { get; }
         UnitDimensions Dimensions();
 
-        double InitialErrorMargin(double initialValue);
+        //double InitialErrorMargin(double initialValue);
+        double DefaultErrorMargin { get; }
 
         string AsStringSingular();
         string AsStringPlural();      
@@ -51,24 +52,27 @@ namespace UnitClassLibrary
             return new UnitDimensions(1.0, new List<FundamentalUnitType>() { this });
         }
 
-        public double InitialErrorMargin(double intrinsicValue)
-        {
-            return DefaultErrorMargin;
-        }
+        //public double InitialErrorMargin(double intrinsicValue)
+        //{
+        //    return DefaultErrorMargin;
+        //}
     }
 
     public abstract class AbstractDerivedUnitType : IUnitType
     {
+        public virtual double DefaultErrorMargin => 0.01*ConversionFactor;
+
+
         public abstract UnitDimensions Dimensions();
         public double ConversionFactor => Dimensions().ConversionFactor;
 
         public abstract string AsStringSingular();
         public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
 
-        public virtual double InitialErrorMargin(double intrinsicValue)
-        {
-            return Dimensions().InitialErrorMargin(intrinsicValue);
-        }
+        //public virtual double InitialErrorMargin(double intrinsicValue)
+        //{
+        //    return Dimensions().InitialErrorMargin(intrinsicValue);
+        //}
 
         public override string ToString()
         {
@@ -78,6 +82,9 @@ namespace UnitClassLibrary
 
     public class DerivedUnitType : AbstractDerivedUnitType
     {
+        public override double DefaultErrorMargin { get; }
+
+      
         private readonly UnitDimensions _dimensions;
 
         public override UnitDimensions Dimensions()
@@ -93,7 +100,8 @@ namespace UnitClassLibrary
             : this(new UnitDimensions(scale, numerators, denominators)) { }
         public DerivedUnitType(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null) 
         {
-            this._dimensions = new UnitDimensions(scale, numerators, denominators);
+            throw new NotImplementedException();
+            //this._dimensions = new UnitDimensions(scale, numerators, denominators);
         }
         public DerivedUnitType(UnitDimensions dimensions)
         {
@@ -122,10 +130,10 @@ namespace UnitClassLibrary
         }
 
         public override string AsStringSingular()
-        { return Dimensions().AsStringSingular(); }
+        { throw new NotImplementedException(); }
 
         public override string AsStringPlural()
-        { return Dimensions().AsStringPlural(); }
+        { throw new NotImplementedException(); }
         #endregion
     }
 

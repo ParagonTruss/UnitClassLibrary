@@ -31,172 +31,115 @@ namespace UnitClassLibrary
 {
     public sealed class UnitDimensions
     {
-        public static readonly string[] FundamentalTypes =
-            new string[] {
+        internal static readonly List<string> FundamentalTypes = new List<string>(5)
+        {
             nameof(AngleType),
             nameof(DistanceType),
             nameof(ForceType),
             nameof(TemperatureType),
-            nameof(TimeType) };
+            nameof(TimeType)
+        };
+        internal static int FundamentalUnitCount => FundamentalTypes.Count;
 
-        private List<FundamentalUnitType> _numerators;
-        private List<FundamentalUnitType> _denominators;
+        public double ConversionFactor { get; private set; }
 
-        public double Scale { get; private set; }
-        public IList<FundamentalUnitType> Numerators => new ReadOnlyCollection<FundamentalUnitType>( _numerators);
-        public IList<FundamentalUnitType> Denominators => new ReadOnlyCollection<FundamentalUnitType>(_denominators);
-        public double ConversionFactor
+        private int[] _dimensions;
+        private int this[int index] => _dimensions[index];
+
+        private UnitDimensions() {}
+
+        public UnitDimensions(double conversionFactor, IList<int> dimensions)
         {
-            get
+            this.ConversionFactor = conversionFactor;
+
+            this._dimensions = new int[FundamentalUnitCount];
+            for (int i = 0; i < FundamentalUnitCount; i++)
             {
-                double result = Scale;
-                if (_numerators.Count != 0)
-                {
-                    result *= _numerators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
-                }
-                if (_denominators.Count != 0)
-                {
-                    result /= _denominators.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
-                }
-                return result;
+                this._dimensions[i] = dimensions[i];
             }
         }
 
-        public double InitialErrorMargin(double intrinsicValue)
-        {
-            double percentageError = _numerators.Sum(u => u.DefaultErrorMargin) / intrinsicValue;
-            percentageError += _denominators.Sum(u => u.DefaultErrorMargin);
-            if (percentageError < 0.001)
-            {
-                percentageError = 0.001;
-            }
-            return percentageError * intrinsicValue;
-        }
-
-        public string AsStringSingular()
-        {
-            string result = Scale.ToString() + "-" + JustTheUnitAsString();
-            return result;         
-        }
-
-        internal string JustTheUnitAsString()
-        {
-            string result = "";
-            if (_numerators.Count != 0)
-            {
-                result += _numerators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
-            }
-            if (_denominators.Count != 0)
-            {
-                result += " over " + _denominators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
-            }
-            return result;
-        }
-
-        public string AsStringPlural()
-        { return AsStringSingular() + "s"; }
-
-        public override string ToString()
-        {
-            if (Scale == 1)
-            {
-                return AsStringSingular();
-            }
-            else
-            {
-                return AsStringPlural();
-            }
-        }
-        //public UnitDimensions()
-        //{
-        //    this.Scale = 1.0;
-        //    _numerators = new List<FundamentalUnitType>();
-        //    _denominators = new List<FundamentalUnitType>();
-        //}
-     
         public UnitDimensions(double scale, IUnitType numerator = null, IUnitType denominator = null)
         {
-            this.Scale = scale;
-            _numerators = new List<FundamentalUnitType>();
-            _denominators = new List<FundamentalUnitType>();
+            this.ConversionFactor = scale;
+            this._dimensions = new int[FundamentalUnitCount];
+            
             if (numerator != null)
             {
-                _numerators.AddRange(numerator.Dimensions().Numerators);
-                _denominators.AddRange(numerator.Dimensions().Denominators);
+                this.ConversionFactor *= numerator.ConversionFactor;
+                AddTo(this._dimensions, numerator.Dimensions()._dimensions);
             }
             if (denominator != null)
             {
-                _denominators.AddRange(denominator.Dimensions().Numerators);
-                _numerators.AddRange(denominator.Dimensions().Denominators);
+                this.ConversionFactor /= denominator.ConversionFactor;
+               AddTo(this._dimensions, denominator.Dimensions()._dimensions);
             }
         }
 
         public UnitDimensions(double scale, List<FundamentalUnitType> numerator, List<FundamentalUnitType> denominator = null)
         {
-            this.Scale = scale;
-            _numerators = new List<FundamentalUnitType>();
-            _denominators = new List<FundamentalUnitType>();
-            this._numerators.AddRange(numerator);
+            this.ConversionFactor = scale * numerator.Aggregate(1d, (d1, d2) => d1 * d2.ConversionFactor);
+
+            this._dimensions = new int[FundamentalUnitCount];
+            foreach (var unitType in numerator)
+            {
+                this._dimensions[unitType.DimensionIndex()]++;
+            }
             if (denominator != null)
             {
-                this._denominators.AddRange(denominator);
-            }
-        }
-
-        public UnitDimensions(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null)
-        {
-            this.Scale = scale;
-            this._numerators = new List<FundamentalUnitType>();
-            this._denominators = new List<FundamentalUnitType>();
-            foreach (var unitType in numerators)
-            {
-                this._numerators.AddRange(unitType.Dimensions()._numerators);
-                this._denominators.AddRange(unitType.Dimensions()._denominators);
-            }
-            if (denominators != null)
-            {
-                foreach (var unitType in denominators)
+                this.ConversionFactor /= denominator.Aggregate(1d, (d1, d2) => d1 * d2.ConversionFactor);
+                foreach (var unitType in denominator)
                 {
-                    this._numerators.AddRange(unitType.Dimensions()._denominators);
-                    this._denominators.AddRange(unitType.Dimensions()._numerators);
+                    this._dimensions[unitType.DimensionIndex()]--;
                 }
             }
         }
+
+        //public UnitDimensions(double scale, List<IUnitType> numerators, List<IUnitType> denominators = null)
+        //{
+        //    this.Scale = scale;
+        //    this._numerators = new List<FundamentalUnitType>();
+        //    this._denominators = new List<FundamentalUnitType>();
+        //    foreach (var unitType in numerators)
+        //    {
+        //        this._numerators.AddRange(unitType.Dimensions()._numerators);
+        //        this._denominators.AddRange(unitType.Dimensions()._denominators);
+        //    }
+        //    if (denominators != null)
+        //    {
+        //        foreach (var unitType in denominators)
+        //        {
+        //            this._numerators.AddRange(unitType.Dimensions()._denominators);
+        //            this._denominators.AddRange(unitType.Dimensions()._numerators);
+        //        }
+        //    }
+        //}
 
         public UnitDimensions(List<FundamentalUnitType> numerators) : this(1.0, numerators) { }
 
-        private void _cancelUnits()
+        /// <summary>
+        /// Modifes the values in the first array, by adding the items from the second.
+        /// </summary>
+        private static void AddTo(int[] dimAddedTo, int[] add)
         {
-            var fundamentalTypes = FundamentalTypes;
-            var sortedNum = _sortUnits(_numerators);
-            var sortedDenom = _sortUnits(_denominators);
-          
-            for (int i = 0; i < fundamentalTypes.Length; i++)
+            for (int i = 0; i < FundamentalUnitCount; i++)
             {
-                var n = Math.Min(sortedNum[i].Count, sortedDenom[i].Count);
-                if (n != 0)
-                {
-                    var nums = sortedNum[i].Take(n);
-                    var num = nums.Select(u => u.ConversionFactor).Aggregate((u,v) => u* v);
-                    var denoms = sortedDenom[i].Take(n);
-                    var denom = denoms.Select(u => u.ConversionFactor).Aggregate((u, v) => u * v);
-
-                    this.Scale *= num / denom;
-                    sortedNum[i] = sortedNum[i].Skip(n).ToList();
-                    sortedDenom[i] = sortedDenom[i].Skip(n).ToList();
-                }
+                dimAddedTo[i] += add[i];
             }
-            this._numerators = sortedNum.SelectMany(list => list).ToList();
-            this._denominators = sortedDenom.SelectMany(list => list).ToList();
         }
 
+        private static void Subtract(int[] dimSubtractedFrom, int[] minus)
+        {
+            for (int i = 0; i < FundamentalUnitCount; i++)
+            {
+                dimSubtractedFrom[i] -= minus[i];
+            }
+        }
         public static bool HaveSameDimensions(UnitDimensions dim1, UnitDimensions dim2)
         {
-            int[] count1 = dim1._countUnits();
-            int[] count2 = dim2._countUnits();
-            for (int i = 0; i < count1.Length; i++)
+            for (int i = 0; i < FundamentalUnitCount; i++)
             {
-                if (count1[i] != count2[i])
+                if (dim1[i] != dim2[i])
                 {
                     return false;
                 }
@@ -204,58 +147,9 @@ namespace UnitClassLibrary
             return true;
         }
 
-        private int[] _countUnits()
-        {
-            int[] num = _countUnits(_numerators);
-            int[] denom = _countUnits(_denominators);
-            int[] result = new int[num.Length];
-            for (int i = 0; i < num.Length; i++)
-            {
-                result[i] = num[i] - denom[i];
-            }
-            return result;
-        }
+    
 
-        private static int[] _countUnits(List<FundamentalUnitType> units)
-        {           
-            int[] results = new int[FundamentalTypes.Length];
-
-            for (int i = 0; i < units.Count; i++)
-            {
-                results[_indexOf(units[i])]++;
-            }
-            
-            return results;
-        }
-
-        private List<FundamentalUnitType>[] _sortUnits(List<FundamentalUnitType> units)
-        {
-            var results = new List<FundamentalUnitType>[FundamentalTypes.Length];
-
-            for (int j = 0; j < FundamentalTypes.Length; j++)
-            {
-                results[j] = new List<FundamentalUnitType>();
-            }
-
-            for (int i = 0; i < units.Count; i++)
-            {
-                results[_indexOf(units[i])].Add(units[i]);
-            }
-
-            return results;
-        }
-
-        private static int _indexOf(FundamentalUnitType unit)
-        {
-            for (int i = 0; i < FundamentalTypes.Length; i++)
-            {
-                if (unit.Type == FundamentalTypes[i])
-                {
-                    return i;
-                }
-            }
-            throw new NotSupportedException();
-        }
+      
 
         public UnitDimensions Squared()
         {
@@ -264,47 +158,97 @@ namespace UnitClassLibrary
 
         public UnitDimensions Multiply(UnitDimensions dimensions)
         {
-            var numerators = this._numerators.ToList();
-            numerators.AddRange(dimensions._numerators);
-
-            var denominators = this._denominators.ToList();
-            denominators.AddRange(dimensions._denominators);
-
-            var dim = new UnitDimensions(this.Scale * dimensions.Scale, numerators, denominators);
-            dim._cancelUnits();
+            var newDim = new int[FundamentalUnitCount];
+            for (int i = 0; i < FundamentalUnitCount; i++)
+            {
+                newDim[i] = this[i] + dimensions[i];
+            }
+            var dim = new UnitDimensions
+            {
+                ConversionFactor =  this.ConversionFactor*dimensions.ConversionFactor,
+                _dimensions = newDim,
+            };
+     
             return dim;
         }
 
         public UnitDimensions Divide(UnitDimensions dimensions)
         {
-            var numerators = this._numerators.ToList();
-            numerators.AddRange(dimensions._denominators);
+            var newDim = new int[FundamentalUnitCount];
+            for (int i = 0; i < FundamentalUnitCount; i++)
+            {
+                newDim[i] = this[i] - dimensions[i];
+            }
+            var dim = new UnitDimensions
+            {
+                ConversionFactor = this.ConversionFactor / dimensions.ConversionFactor,
+                _dimensions = newDim,
+            };
 
-            var denominators = this._denominators.ToList();
-            denominators.AddRange(dimensions._numerators);
-
-            var dim = new UnitDimensions(this.Scale / dimensions.Scale, numerators, denominators);
-            dim._cancelUnits();
             return dim;
         }
 
         internal UnitDimensions ToThe(int power)
         {
-            var result = new UnitDimensions(1.0);
-            for (int i = 0; i < Math.Abs(power); i++)
+            var newDim = new int[FundamentalUnitCount];
+            for (int i = 0; i < FundamentalUnitCount; i++)
             {
-               result = result.Multiply(this);
+                newDim[i] = this[i]*power;
             }
-            if (power < 0)
+            var dim = new UnitDimensions
             {
-                result = result.Invert();
-            }
-            return result;
+                ConversionFactor = Math.Pow( this.ConversionFactor, power),
+                _dimensions = newDim,
+            };
+            return dim;
         }
 
         public UnitDimensions Invert()
         {
-            return new UnitDimensions(1 / Scale, _denominators, _numerators);
+            return ToThe(-1);
         }
+
+    //    #region String methods
+    //    public string AsStringSingular()
+    //    {
+    //        string result = Scale.ToString() + "-" + JustTheUnitAsString();
+    //        return result;
+    //    }
+
+    //    internal string JustTheUnitAsString()
+    //    {
+    //        string result = "";
+    //        if (_numerators.Count != 0)
+    //        {
+    //            result += _numerators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+    //        }
+    //        if (_denominators.Count != 0)
+    //        {
+    //            result += " over " + _denominators.Select(u => u.AsStringSingular()).Aggregate((s, t) => s + "-" + t);
+    //        }
+    //        return result;
+    //    }
+
+    //    public string AsStringPlural()
+    //    { return AsStringSingular() + "s"; }
+
+    //    public override string ToString()
+    //    {
+    //        if (Scale == 1)
+    //        {
+    //            return AsStringSingular();
+    //        }
+    //        else
+    //        {
+    //            return AsStringPlural();
+    //        }
+    //    }
+    //    #endregion
+   }
+
+    public static class FundamentalUnitTypeExtensions
+    {
+        internal static int DimensionIndex(this FundamentalUnitType unitType) => UnitDimensions.FundamentalTypes.IndexOf(unitType.Type);
+      
     }
 }

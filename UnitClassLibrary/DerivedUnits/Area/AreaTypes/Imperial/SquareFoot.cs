@@ -31,9 +31,7 @@ namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
     {
         public override UnitDimensions Dimensions()
         {
-            
-            return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() });
-          
+            return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() }); 
         }
 
         public override string AsStringSingular()

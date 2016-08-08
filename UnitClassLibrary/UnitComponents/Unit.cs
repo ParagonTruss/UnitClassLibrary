@@ -49,14 +49,14 @@ namespace UnitClassLibrary
         public Unit(T unitType, double value = 1.0)
         {
             this.UnitType = unitType;         
-            this.Measurement = new Measurement(value, unitType.InitialErrorMargin(value));         
+            this.Measurement = new Measurement(value, unitType.DefaultErrorMargin);         
         }
         public Unit(T unit, Measurement measurement)
         {
             this.UnitType = unit;
          
             var value = measurement.Value;
-            this.Measurement = new Measurement(value, unit.InitialErrorMargin(value));
+            this.Measurement = new Measurement(value, unit.DefaultErrorMargin);
                  
         }
         public Unit(T type, Unit unitToConvert)
@@ -196,11 +196,6 @@ namespace UnitClassLibrary
         #region Overrides
         public override string ToString()
         {
-            if (UnitType is DerivedUnitType)
-            {
-                return _IntrinsicValue * Dimensions.Scale + " " + Dimensions.JustTheUnitAsString() + "s";
-            }
-
             int digits = 0;
             double roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
 
@@ -211,7 +206,7 @@ namespace UnitClassLibrary
                 roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
             }
 
-            return String.Format("{0} {1}", roundedIntrinsicValue, this.UnitType.AsStringPlural());
+            return $"{roundedIntrinsicValue} {this.UnitType.AsStringPlural()}";
         }
 
         public string ToString<TFormatAsType>(TFormatAsType type)
