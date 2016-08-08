@@ -27,15 +27,19 @@ namespace UnitClassLibrary.ForceUnit
 {
     public sealed partial class Force : Unit<ForceType>
     {
-        public Force(ForceType type, Measurement value) : base(type,value)
+        public Force(ForceType type, double value) : base(type,value)
         {
             
         }
-        public Force(Measurement value, ForceType type) : base(type, value)
+        public Force(double value, ForceType type) : base(type, value)
         {
 
         }
 
+        public Force(ForceType type, Measurement value)
+        {
+            
+        }
         public Force(Unit<ForceType> unit) : base(unit)
         {
                 
@@ -61,17 +65,17 @@ namespace UnitClassLibrary.ForceUnit
             return new Force(force1.Subtract(force2));
         }
 
-        public static Force operator *(Force force, Measurement scalar)
+        public static Force operator *(Force force, double scalar)
         {
             return new Force(force._Multiply(scalar));
         }
 
-        public static Force operator *(Measurement scalar, Force force)
+        public static Force operator *(double scalar, Force force)
         {
             return force * scalar;
         }
 
-        public static Force operator /(Force force, Measurement divisor)
+        public static Force operator /(Force force, double divisor)
         {
             return new Force(force._Divide(divisor));
         }

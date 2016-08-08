@@ -28,10 +28,9 @@ namespace UnitClassLibrary
 {
     public class CubicInch : VolumeType
     {
-        public override UnitDimensions Dimensions()
-        {         
-            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Inch(), new Inch(), new Inch() });
-        }
+        private static UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Inch(), new Inch(), new Inch() }); 
+        public override UnitDimensions Dimensions => _dimensions;
+
 
         public override string AsStringSingular()
         {

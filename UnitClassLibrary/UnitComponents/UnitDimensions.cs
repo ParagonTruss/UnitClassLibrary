@@ -67,12 +67,12 @@ namespace UnitClassLibrary
             if (numerator != null)
             {
                 this.ConversionFactor *= numerator.ConversionFactor;
-                AddTo(this._dimensions, numerator.Dimensions()._dimensions);
+                AddTo(this._dimensions, numerator.Dimensions._dimensions);
             }
             if (denominator != null)
             {
                 this.ConversionFactor /= denominator.ConversionFactor;
-               AddTo(this._dimensions, denominator.Dimensions()._dimensions);
+                SubtractFrom(this._dimensions, denominator.Dimensions._dimensions);
             }
         }
 
@@ -128,7 +128,7 @@ namespace UnitClassLibrary
             }
         }
 
-        private static void Subtract(int[] dimSubtractedFrom, int[] minus)
+        private static void SubtractFrom(int[] dimSubtractedFrom, int[] minus)
         {
             for (int i = 0; i < FundamentalUnitCount; i++)
             {

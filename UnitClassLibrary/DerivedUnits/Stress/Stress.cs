@@ -29,11 +29,11 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
         public static Stress ZeroStress => new Stress(Exactly(0, PSI));
 
         #region Constructors
-        public Stress(Measurement value, StressType type) : base(type, value)
+        public Stress(double value, StressType type) : base(type, value)
         {
 
         }
-        public Stress(StressType type, Measurement value) :  base(type, value)
+        public Stress(StressType type, double value) :  base(type, value)
         {
                 
         }
@@ -45,7 +45,7 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
 
         public Measurement InPSI => MeasurementIn(new PoundPerSquareInch());
 
-        public static PoundPerSquareInch PSI => new PoundPerSquareInch();
+        public static StressType PSI => new PoundPerSquareInch();
 
         #region Operator Overloads
 
@@ -59,17 +59,17 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
             return new Stress(stress1.Subtract(stress2));
         }
 
-        public static Stress operator *(Stress stress, Measurement scalar)
+        public static Stress operator *(Stress stress, double scalar)
         {
             return new Stress(stress._Multiply(scalar));
         }
 
-        public static Stress operator *(Measurement scalar, Stress stress)
+        public static Stress operator *(double scalar, Stress stress)
         {
             return stress * scalar;
         }
 
-        public static Stress operator /(Stress stress, Measurement divisor)
+        public static Stress operator /(Stress stress, double divisor)
         {
             return new Stress(stress._Divide(divisor));
         }

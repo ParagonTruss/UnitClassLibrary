@@ -37,9 +37,7 @@ namespace UnitClassLibrary.DistributedForceUnit
             return "Pounds per Inch";
         }
 
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new Pound(), new Inch());
-        }
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new Inch());
     }
 }

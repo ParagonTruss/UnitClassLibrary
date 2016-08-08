@@ -42,7 +42,7 @@ namespace UnitClassLibrary.ForceUnit
 
         public static Force operator *(Measurement m, ForceType type)
         {
-            return new Force(m, type);
+            return new Force(type,m);
         }
 
         public static Force operator *(double d, ForceType type)

@@ -30,7 +30,7 @@ namespace UnitClassLibrary
         public abstract Measurement Measurement { get; }
 
         public double ConversionFactor => UnitType.ConversionFactor;
-        public UnitDimensions Dimensions => UnitType.Dimensions();
+        public UnitDimensions Dimensions => UnitType.Dimensions;
 
         public double ConversionFromThisTo(IUnitType unit)
         {
@@ -60,11 +60,11 @@ namespace UnitClassLibrary
 
         //public abstract Unit Invert();
         //public abstract Unit Multiply(Unit unit);
-        //abstract public Unit<T> Multiply<T>(Measurement scalar) where T : IUnitType;
-        //abstract public Unit<T> Divide<T>(Measurement divisor) where T : IUnitType;
+        //abstract public Unit<T> Multiply<T>(double scalar) where T : IUnitType;
+        //abstract public Unit<T> Divide<T>(double divisor) where T : IUnitType;
 
-        public abstract Unit Multiply(Measurement scalar);
-        public abstract Unit Divide(Measurement divisor);
+        public abstract Unit Multiply(double scalar);
+        public abstract Unit Divide(double divisor);
 
 
         //public Unit Divide(Unit unit)
@@ -77,19 +77,19 @@ namespace UnitClassLibrary
         //{
         //    return unit1.Multiply(unit2);
         //}
-        public static Unit operator *(Unit unit, Measurement m)
+        public static Unit operator *(Unit unit, double number)
         {
-            return unit.Multiply(m);
+            return unit.Multiply(number);
         }
-        public static Unit operator *(Measurement m, Unit unit)
+        public static Unit operator *(double number, Unit unit)
         {
-            return unit*m;
+            return unit*number;
         }
         //public static Unit operator /(Unit unit1, Unit unit2)
         //{
         //    return unit1.Divide(unit2);
         //}
-        public static Unit operator /(Unit unit, Measurement divisor)
+        public static Unit operator /(Unit unit, double divisor)
         {
             return unit.Divide(divisor);
         }
@@ -104,7 +104,7 @@ namespace UnitClassLibrary
 
         protected static bool _HaveTheSameDimensions(Unit unit1, Unit unit2)
         {
-            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions(), unit2.UnitType.Dimensions());
+            return UnitDimensions.HaveSameDimensions(unit1.UnitType.Dimensions, unit2.UnitType.Dimensions);
         }
         protected static bool _ValuesAreEqual(Unit unit1, Unit unit2)
         {

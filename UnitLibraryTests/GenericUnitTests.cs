@@ -19,6 +19,7 @@ using UnitClassLibrary.AreaUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
 using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit;
 using UnitClassLibrary.AngleUnit;
+using UnitClassLibrary.DistributedForceUnit;
 
 namespace UnitLibraryTests
 {
@@ -28,6 +29,14 @@ namespace UnitLibraryTests
     [TestFixture()]
     public class GenericUnitTests
     {
+        [Test]
+        public void DistributedForceType_MultiplicationOperator()
+        {
+            var distributedForce = 100.0 * DistributedForce.PoundsPerInch;
+
+            Assert.Pass();
+        }
+
         [Test()]
         public void Generic_Tests()
         {

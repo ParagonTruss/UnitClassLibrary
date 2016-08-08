@@ -23,34 +23,25 @@ using System.Linq;
 
 namespace UnitClassLibrary
 {
-    public interface IUnitType
+    public abstract class IUnitType
     {
-        double ConversionFactor { get; }
-        UnitDimensions Dimensions();
-
-        //double InitialErrorMargin(double initialValue);
-        double DefaultErrorMargin { get; }
-
-        string AsStringSingular();
-        string AsStringPlural();      
+        public abstract double ConversionFactor { get; }
+        public abstract UnitDimensions Dimensions { get; }
+        public abstract double DefaultErrorMargin { get; }
+        public abstract string AsStringSingular();
+        public abstract string AsStringPlural();
     }
-   
+
     public abstract class FundamentalUnitType : IUnitType
     {
-        public abstract double DefaultErrorMargin { get; }
-        public abstract double ConversionFactor { get; }
-
         public abstract string Type { get; }
-        public abstract string AsStringSingular();
-        public virtual string AsStringPlural()
+
+        public override string AsStringPlural()
         {
             return AsStringSingular() + "s";
         }
 
-        public UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { this });
-        }
+        public override UnitDimensions Dimensions => new UnitDimensions(1.0, new List<FundamentalUnitType>() {this});
 
         //public double InitialErrorMargin(double intrinsicValue)
         //{
@@ -60,14 +51,12 @@ namespace UnitClassLibrary
 
     public abstract class AbstractDerivedUnitType : IUnitType
     {
-        public virtual double DefaultErrorMargin => 0.01*ConversionFactor;
+        public override double DefaultErrorMargin => 0.01*ConversionFactor;
 
 
-        public abstract UnitDimensions Dimensions();
-        public double ConversionFactor => Dimensions().ConversionFactor;
+        public override double ConversionFactor => Dimensions.ConversionFactor;
 
-        public abstract string AsStringSingular();
-        public virtual string AsStringPlural() { return AsStringSingular() + "s"; }
+        public override string AsStringPlural() { return AsStringSingular() + "s"; }
 
         //public virtual double InitialErrorMargin(double intrinsicValue)
         //{
@@ -76,7 +65,7 @@ namespace UnitClassLibrary
 
         public override string ToString()
         {
-            return this.Dimensions().ToString();
+            return this.Dimensions.ToString();
         }
     }
 

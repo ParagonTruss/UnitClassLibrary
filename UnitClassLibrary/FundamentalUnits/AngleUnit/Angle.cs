@@ -35,11 +35,11 @@ namespace UnitClassLibrary.AngleUnit
         public static Angle StraightAngle => Exactly(180, Degrees);
         public static Angle FullCircle => Exactly(360, Degrees);
 
-        public Angle(AngleType type, Measurement measurement)
-            : base(type, measurement) { }
+        public Angle(AngleType type, double value)
+            : base(type, value) { }
 
-        public Angle(Measurement measurement, AngleType type)
-         : base(type, measurement) { }
+        public Angle(double value, AngleType type)
+         : base(type, value) { }
 
         public Angle(Unit<AngleType> angle) : base(angle) { }
 
@@ -75,67 +75,67 @@ namespace UnitClassLibrary.AngleUnit
             return Math.Sin(angle.InRadians.Value);
         }
 
-        public static Measurement Cosine(Angle angle)
+        public static double Cosine(Angle angle)
         {
             return Math.Cos(angle.InRadians.Value);
         }
 
-        public static Measurement Tangent(Angle angle)
+        public static double Tangent(Angle angle)
         {
             return Math.Tan(angle.InRadians.Value);
         }
 
-        public static Angle ArcCos(Measurement m)
-        {
-            double value;
-            if (1.0 < m.Value && m.Value < 1.1)
-            {
-                value = 0;
-            }
-            else if (-1.0 > m.Value && m.Value > -1.1)
-            {
-                value = Math.PI;
-            }
-            else
-            {
-                value = Math.Acos(m.Value);
-            }
-            double error;
-            var d1 = Math.Acos(m.Value + m.ErrorMargin);
-            var d2 = Math.Acos(m.Value - m.ErrorMargin);
-            if (double.IsNaN(d1))
-            {
-                error = d2 - value;
-            }
-            else if (double.IsNaN(d2))
-            {
-                error = value - d1;
-            }
-            else
-            {
-                error = Math.Max(d2 - value, value - d1);
-            }
-            return new Angle(new Measurement(value, error), Radians);
-        }
+        //public static Angle ArcCos(Measurement m)
+        //{
+        //    double value;
+        //    if (1.0 < m.Value && m.Value < 1.1)
+        //    {
+        //        value = 0;
+        //    }
+        //    else if (-1.0 > m.Value && m.Value > -1.1)
+        //    {
+        //        value = Math.PI;
+        //    }
+        //    else
+        //    {
+        //        value = Math.Acos(m.Value);
+        //    }
+        //    double error;
+        //    var d1 = Math.Acos(m.Value + m.ErrorMargin);
+        //    var d2 = Math.Acos(m.Value - m.ErrorMargin);
+        //    if (double.IsNaN(d1))
+        //    {
+        //        error = d2 - value;
+        //    }
+        //    else if (double.IsNaN(d2))
+        //    {
+        //        error = value - d1;
+        //    }
+        //    else
+        //    {
+        //        error = Math.Max(d2 - value, value - d1);
+        //    }
+        //    return new Angle(new Measurement(value, error), Radians);
+        //}
 
-        public static Angle ArcSin(Measurement m)
-        {
-            var errorMargin = m.ErrorMargin * Math.Pow(1 - m.Value * m.Value, -0.5);
-            double value;
-            if (1.0 < m.Value && m.Value < 1.1)
-            {
-                value = 90;
-            }
-            else if (-1.0 > m.Value && m.Value > -1.1)
-            {
-                value = -90;
-            }
-            else
-            {
-                value = Math.Asin(m.Value);
-            }
-            return new Angle(new Degree(),new Measurement(value, errorMargin));
-        }
+        ////public static Angle ArcSin(Measurement m)
+        //{
+        //    var errorMargin = m.ErrorMargin * Math.Pow(1 - m.Value * m.Value, -0.5);
+        //    double value;
+        //    if (1.0 < m.Value && m.Value < 1.1)
+        //    {
+        //        value = 90;
+        //    }
+        //    else if (-1.0 > m.Value && m.Value > -1.1)
+        //    {
+        //        value = -90;
+        //    }
+        //    else
+        //    {
+        //        value = Math.Asin(m.Value);
+        //    }
+        //    return new Angle(new Degree(),new Measurement(value, errorMargin));
+        //}
 
         //public Angle Reverse()
         //{
@@ -152,17 +152,17 @@ namespace UnitClassLibrary.AngleUnit
             return new Angle(angle1.Subtract(angle2));
         }
 
-        public static Angle operator *(Angle angle, Measurement scalar)
+        public static Angle operator *(Angle angle, double scalar)
         {
             return new Angle(angle._Multiply(scalar));
         }
 
-        public static Angle operator *(Measurement scalar, Angle angle)
+        public static Angle operator *(double scalar, Angle angle)
         {
             return angle * scalar;
         }
 
-        public static Angle operator /(Angle angle, Measurement divisor)
+        public static Angle operator /(Angle angle, double divisor)
         {
             return new Angle(angle._Divide(divisor));
         }

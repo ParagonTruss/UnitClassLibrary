@@ -30,10 +30,6 @@ namespace UnitClassLibrary.SpeedUnit
 {
     public class Speed : Unit<SpeedType>
     {
-        public Speed(SpeedType speedType) : base(speedType)
-        {
-
-        }
         public Speed(SpeedType speedType, Measurement measurement)
             : base(speedType, measurement) { }
 

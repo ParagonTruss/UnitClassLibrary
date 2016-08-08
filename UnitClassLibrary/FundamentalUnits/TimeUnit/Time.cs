@@ -25,8 +25,8 @@ namespace UnitClassLibrary.TimeUnit
 {
     public sealed class Time : Unit<TimeType> 
     {
-         public Time(TimeType timeType, double value = 1.0)
-            : base(timeType, value) { }
+        public Time(TimeType timeType, double value)
+           : base(timeType, value) { }
 
         public Time(Unit<TimeType> time) : base(time) { }
 
@@ -49,17 +49,17 @@ namespace UnitClassLibrary.TimeUnit
             return (Time)(time1.Subtract(time2));
         }
 
-        public static Time operator *(Time time, Measurement scalar)
+        public static Time operator *(Time time, double scalar)
         {
             return (Time)(time.Multiply(scalar));
         }
 
-        public static Time operator *(Measurement scalar, Time time)
+        public static Time operator *(double scalar, Time time)
         {
             return time * scalar;
         }
 
-        public static Time operator /(Time time, Measurement divisor)
+        public static Time operator /(Time time, double divisor)
         {
             return time / divisor;
         }

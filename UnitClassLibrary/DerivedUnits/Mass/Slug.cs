@@ -25,16 +25,15 @@ using System.Text;
 
 namespace UnitClassLibrary.DerivedUnits.Mass
 {
-    public class Slug : MassType
+    public class Slug 
+        //: MassType
     {
-        public override UnitDimensions Dimensions()
-        {
-            throw new NotImplementedException();
-        }
+        //public override UnitDimensions Dimensions => _dimensions;
+        //private static readonly UnitDimensions _dimensions =
 
-        public override string AsStringSingular()
-        {
-            return "Slug";
-        }
+        //public override string AsStringSingular()
+        //{
+        //    return "Slug";
+        //}
     }
 }

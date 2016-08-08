@@ -30,10 +30,10 @@ namespace UnitClassLibrary.DerivedUnits.Mass
 {
     public class Kilogram : MassType
     {
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Newton(), new Second(), new Second() }, new List<FundamentalUnitType>() { new Meter() });
-        }
+
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() {new Newton(), new Second(), new Second()},
+            new List<FundamentalUnitType>() {new Meter()});
 
         public override string AsStringSingular()
         {

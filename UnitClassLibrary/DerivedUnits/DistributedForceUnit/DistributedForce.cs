@@ -26,7 +26,7 @@ namespace UnitClassLibrary.DistributedForceUnit
 {
     public class DistributedForce : Unit<DistributedForceType>
     {
-        public DistributedForce(Measurement value, DistributedForceType type)
+        public DistributedForce(double value, DistributedForceType type)
             : base(type, value) { }
 
         public DistributedForce(Unit<DistributedForceType> unit)
@@ -49,17 +49,17 @@ namespace UnitClassLibrary.DistributedForceUnit
             return new DistributedForce(DistributedForce1.Subtract(DistributedForce2));
         }
 
-        public static DistributedForce operator *(DistributedForce DistributedForce, Measurement scalar)
+        public static DistributedForce operator *(DistributedForce DistributedForce, double scalar)
         {
             return new DistributedForce(DistributedForce._Multiply(scalar));
         }
 
-        public static DistributedForce operator *(Measurement scalar, DistributedForce DistributedForce)
+        public static DistributedForce operator *(double scalar, DistributedForce DistributedForce)
         {
             return DistributedForce * scalar;
         }
 
-        public static DistributedForce operator /(DistributedForce DistributedForce, Measurement divisor)
+        public static DistributedForce operator /(DistributedForce DistributedForce, double divisor)
         {
             return new DistributedForce(DistributedForce._Divide(divisor));
         }

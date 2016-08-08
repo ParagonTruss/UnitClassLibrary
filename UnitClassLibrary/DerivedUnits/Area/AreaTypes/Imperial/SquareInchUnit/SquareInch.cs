@@ -30,9 +30,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit
         public override string AsStringPlural(){ return "Square Inches"; } 
         public override string AsStringSingular() { return "Square Inch"; }
 
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1, new List<FundamentalUnitType>() { new Inch(), new Inch() });
-        }
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1, new List<FundamentalUnitType>() {new Inch(), new Inch()});
     }
 }

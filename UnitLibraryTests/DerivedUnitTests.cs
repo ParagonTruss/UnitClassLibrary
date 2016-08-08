@@ -13,13 +13,7 @@ namespace UnitLibraryTests
     [TestFixture]
     class DerivedUnitTests
     {
-        [Test]
-        public void DistributedForceType_MultiplicationOperator()
-        {
-            var distributedForce = 100.0 * DistributedForce.PoundsPerInch;
-
-            Assert.Pass();
-        }
+        
 
         [Test]
         public void DerivedUnits_SpeedTest()

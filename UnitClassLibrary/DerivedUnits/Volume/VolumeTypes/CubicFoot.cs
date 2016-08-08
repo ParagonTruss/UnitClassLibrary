@@ -28,10 +28,8 @@ namespace UnitClassLibrary.DerivedUnits.Volume.VolumeTypes
 {
     public class CubicFoot : VolumeType
     {
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Foot(), new Foot(), new Foot() });
-        }
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Foot(), new Foot(), new Foot() });
+        public override UnitDimensions Dimensions => _dimensions;
 
         public override string AsStringSingular()
         {

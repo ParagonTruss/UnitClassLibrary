@@ -39,8 +39,8 @@ namespace UnitClassLibrary.DistanceUnit
         public Distance(DistanceType distanceUnit, Measurement measurement)
             : base(distanceUnit, measurement) { }
 
-        public Distance(Measurement measurement, DistanceType distanceType)
-            : base(distanceType, measurement) { }
+        public Distance(double value, DistanceType distanceType)
+            : base(distanceType, value) { }
 
         public Distance(string architectural)
             : this(new Inch(), _convertArchitectualStringToValueInInches(architectural)) { }
@@ -102,17 +102,17 @@ namespace UnitClassLibrary.DistanceUnit
             return new Distance(distance1.Subtract(distance2));
         }
 
-        public static Distance operator *(Distance distance, Measurement scalar)
+        public static Distance operator *(Distance distance, double scalar)
         {
             return new Distance(distance._Multiply(scalar));
         }
 
-        public static Distance operator *(Measurement scalar, Distance distance)
+        public static Distance operator *(double scalar, Distance distance)
         {
             return distance * scalar;
         }
 
-        public static Distance operator /(Distance distance, Measurement divisor)
+        public static Distance operator /(Distance distance, double divisor)
         {
             return new Distance(distance._Divide(divisor));
         }

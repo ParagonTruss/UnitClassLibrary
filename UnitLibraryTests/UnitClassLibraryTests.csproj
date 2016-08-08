@@ -55,7 +55,6 @@
   <ItemGroup>
     <Compile Include="DerivedUnitTests.cs" />
     <Compile Include="GenericUnitTests.cs" />
-    <Compile Include="TimeTests.cs" />
     <Compile Include="DistanceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

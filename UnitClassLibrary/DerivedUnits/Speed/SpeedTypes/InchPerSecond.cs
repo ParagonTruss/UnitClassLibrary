@@ -38,10 +38,9 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
             return "Inch per Second";
         }
 
-        public override UnitDimensions Dimensions()
-        {
-           return new UnitDimensions(1.0, new Inch(), new Second());          
-        }
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Inch(), new Second());
+        
 
         public DistanceType GetDistanceType()
         {

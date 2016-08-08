@@ -33,9 +33,7 @@ namespace UnitClassLibrary.DistributedForceUnit
             return "Newtons per Meter";
         }
 
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new Newton(), new Meter());
-        }
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Newton(), new Meter());
     }
 }

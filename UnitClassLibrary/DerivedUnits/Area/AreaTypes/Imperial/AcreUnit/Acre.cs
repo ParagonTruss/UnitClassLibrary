@@ -26,10 +26,9 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
 {
     public class Acre : AreaType
     {
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(43560, new List<FundamentalUnitType>() { new Foot(), new Foot() });
-        }
+
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(43560, new List<FundamentalUnitType>() {new Foot(), new Foot()});
 
         public override string AsStringPlural() { return "Acres"; } 
         public override string AsStringSingular() { return "Acre"; }      

@@ -28,10 +28,8 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
 {
     public class PoundPerSquareInch : StressType
     {
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new Pound(), new SquareInch());
-        }
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new SquareInch());
+        public override UnitDimensions Dimensions => _dimensions;
 
         public override string AsStringSingular()
         {

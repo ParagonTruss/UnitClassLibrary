@@ -29,10 +29,9 @@ namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
 {
     public class SquareFoot : AreaType
     {
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(new List<FundamentalUnitType>() { new Foot(), new Foot() }); 
-        }
+
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(new List<FundamentalUnitType>() {new Foot(), new Foot()});
 
         public override string AsStringSingular()
         {

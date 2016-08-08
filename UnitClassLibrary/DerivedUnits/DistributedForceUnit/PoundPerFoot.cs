@@ -37,9 +37,7 @@ namespace UnitClassLibrary.DistributedForceUnit
             return "Pounds per foot";
         }
 
-        public override UnitDimensions Dimensions()
-        {
-            return new UnitDimensions(1.0, new Pound(), new Foot());
-        }
+        public override UnitDimensions Dimensions => _dimensions;
+        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new Foot());
     }
 }

@@ -28,7 +28,7 @@ namespace UnitClassLibrary.DerivedUnits
     public class Moment : Unit<MomentType>
     {
 
-        public Moment(Measurement m, MomentType type) : base(type, m)
+        public Moment(double number, MomentType type) : base(type, number)
         {
                 
         }
@@ -62,17 +62,17 @@ namespace UnitClassLibrary.DerivedUnits
             return new Moment(moment1.Subtract(moment2));
         }
 
-        public static Moment operator *(Moment moment, Measurement scalar)
+        public static Moment operator *(Moment moment, double scalar)
         {
             return new Moment(moment._Multiply(scalar));
         }
 
-        public static Moment operator *(Measurement scalar, Moment moment)
+        public static Moment operator *(double scalar, Moment moment)
         {
             return moment * scalar;
         }
 
-        public static Moment operator /(Moment moment, Measurement divisor)
+        public static Moment operator /(Moment moment, double divisor)
         {
             return new Moment(moment._Divide(divisor));
         }

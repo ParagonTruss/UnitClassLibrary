@@ -36,17 +36,15 @@ namespace UnitClassLibrary.DerivedUnits
         //{
         //    return _defaultMomentType.AsStringPlural();
         //}
-        public override UnitDimensions Dimensions()
-        {
-            return _defaultMomentType.Dimensions();
-        }
+
+        public override UnitDimensions Dimensions => _defaultMomentType.Dimensions;
 
         public override double DefaultErrorMargin => 0.01;
 
-        public static Moment operator *(Measurement m, MomentType type)
-        {
-            return new Moment(m, type);
-        }
+        //public static Moment operator *(Measurement m, MomentType type)
+        //{
+        //    return new Moment(m, type);
+        //}
 
         public static Moment operator *(double d, MomentType type)
         {

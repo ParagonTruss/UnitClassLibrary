@@ -27,13 +27,9 @@ namespace UnitClassLibrary
 {
     public class Volume : Unit<VolumeType>
     {
-        public static readonly Volume Zero = new Volume(new CubicInch(), new Measurement());
+        public static readonly Volume Zero = new Volume(new CubicInch(), 0);
 
         public Volume(VolumeType unitType, double value) : base(unitType, value)
-        {
-        }
-
-        public Volume(VolumeType unitType, Measurement value) : base(unitType, value)
         { }
 
         public Measurement InCubicInches => this.MeasurementIn(new CubicInch());
