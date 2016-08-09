@@ -45,7 +45,6 @@ namespace UnitClassLibrary
         #endregion
 
         #region Constructors
-        protected Unit() { }
         public Unit(T unitType, double value)
         {
             this.UnitType = unitType;         
@@ -217,20 +216,8 @@ namespace UnitClassLibrary
 
         public override bool Equals(object other)
         {
-            if (other == null)
-            {
-                return false;
-            }
-            try
-            {
-                Unit<T> unit = (Unit<T>)other;
-                return Unit<T>._ValuesAreEqual(this, unit);
-            }
-            catch
-            {
-
-                return false;
-            }
+            return (other as Unit<T>)?.Equals(this) ?? false;
+           
         }
 
         public int CompareTo(object other)
@@ -261,12 +248,9 @@ namespace UnitClassLibrary
 
         public bool Equals(Unit<T> other)
         {
-            if (other == null)
-            {
-                return false;
-            }
-            return _ValuesAreEqual(this, other);
+            return other != null && _ValuesAreEqual(this, other);
         }
+
         #endregion
 
         #region Operator Overloads

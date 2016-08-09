@@ -25,7 +25,8 @@ using System.Text;
 
 namespace UnitClassLibrary.DerivedUnits.Mass
 {
-    class Mass : Unit<MassType>
+    class Mass
+    //    :Unit<MassType>
     {
     }
 }

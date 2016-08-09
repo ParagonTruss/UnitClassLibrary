@@ -36,7 +36,7 @@ namespace UnitClassLibrary.ForceUnit
 
         }
 
-        public Force(ForceType type, Measurement value)
+        public Force(ForceType type, Measurement value) : base(type,value)
         {
             
         }
