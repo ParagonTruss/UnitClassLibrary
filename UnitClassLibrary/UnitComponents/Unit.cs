@@ -306,7 +306,7 @@ namespace UnitClassLibrary
         {
             return unit._Multiply(scalar);
         }
-        public static Measurement operator /(Unit<T> unit, Unit<T> divisor)
+        public static double operator /(Unit<T> unit, Unit<T> divisor)
         {
             return unit.Divide(divisor);
         }
