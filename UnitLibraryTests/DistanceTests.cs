@@ -61,10 +61,18 @@ namespace UnitLibraryTests
             Distance subtractionDistance = inchDistance - architecturalDistance;
             Distance additionDistance = inchDistance + architecturalDistance;
 
+
+            Distance tenFeet = new Distance(10, Distance.Feet);
+            Distance fiveInches = new Distance(5, new Inch());
+
+            var quotient = tenFeet/fiveInches;
+
             // assert
             (subtractionDistance == (Distance.ZeroDistance)).Should().BeTrue();
             (additionDistance == (new Distance(new Millimeter(), 720.725))).Should().BeTrue();
             additionDistance.Architectural.Should().Be("2'4 6/16\"");
+
+            quotient.Should().BeApproximately(24, 0.0001);
         }
 
         [Test]

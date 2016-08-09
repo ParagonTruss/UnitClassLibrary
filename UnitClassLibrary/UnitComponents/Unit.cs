@@ -170,9 +170,10 @@ namespace UnitClassLibrary
         {
             return new Unit<T>((T)this.UnitType, this.Measurement * scalar);
         }
+
         public double Divide(Unit<T> divisor)
         {
-            return this._IntrinsicValue / (divisor._IntrinsicValue);
+            return this._IntrinsicValue / (divisor.ValueIn(this.UnitType));
         }
 
         public override Unit Divide(double divisor)
