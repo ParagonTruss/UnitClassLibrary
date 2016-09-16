@@ -34,12 +34,12 @@ namespace UnitClassLibrary
 
         public override string AsStringSingular()
         {
-            return "Cubic Inch";
+            return "cu. in.";
         }
 
         public override string AsStringPlural()
         {
-            return "Cubic Inches";
+            return "cu. in.";
         }
     }
 }

@@ -32,11 +32,11 @@ namespace UnitClassLibrary.FundamentalUnits.TemperatureUnit
 
         public override string AsStringSingular()
         {
-            return "Degree Fahrenheit";
+            return "degree F";
         }
         public override string AsStringPlural()
         {
-            return "Degrees Fahrenheit";
+            return "degrees F";
         }
 
     }

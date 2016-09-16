@@ -36,11 +36,11 @@ namespace UnitClassLibrary.DerivedUnits
 
         public override string AsStringSingular()
         {
-            return "Pound-Inch";
+            return "lb-in.";
         }
         public override string AsStringPlural()
         {
-            return "Pound-Inches";
+            return "lb-in.";
         }
     }
 }

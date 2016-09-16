@@ -23,11 +23,19 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : DistanceType
-    {     
+    {
         public override string AsStringSingular()
         {
-            return "Millimeter";
+            return "mm";
         }
+
+        public override string AsStringPlural()
+        {
+            return "mm";
+        }
+
+
+
 
         public override double ConversionFactor => 0.0393700787401575D;
 

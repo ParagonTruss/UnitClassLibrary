@@ -30,7 +30,7 @@ namespace UnitClassLibrary.ForceUnit
 
         public override string AsStringSingular()
         {     
-            return "Pound";
+            return "lb";
         }
 
         public override double ConversionFactor => 1.0;

@@ -28,7 +28,7 @@ namespace UnitClassLibrary.AngleUnit
     {
         public override string AsStringSingular()
         {
-            return "Degree";
+            return "degree";
         }
 
         public override double ConversionFactor => 1.0;

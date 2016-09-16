@@ -15,11 +15,11 @@ namespace UnitClassLibrary.DerivedUnits
 
         public override string AsStringSingular()
         {
-            return "Pound-Foot";
+            return "lb-ft";
         }
         public override string AsStringPlural()
         {
-            return "Pound-Feet";
+            return "lb-ft";
         }
     }
 }

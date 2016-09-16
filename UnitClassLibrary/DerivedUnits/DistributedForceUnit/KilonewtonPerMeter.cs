@@ -30,7 +30,7 @@ namespace UnitClassLibrary.DistributedForceUnit
     {
         public override string AsStringSingular()
         {
-            return "Kilonewtons per Meter";
+            return "kN/m";
         }
 
         public override UnitDimensions Dimensions => _dimensions;

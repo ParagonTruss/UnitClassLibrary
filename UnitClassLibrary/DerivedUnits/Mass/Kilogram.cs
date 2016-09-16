@@ -37,7 +37,12 @@ namespace UnitClassLibrary.DerivedUnits.Mass
 
         public override string AsStringSingular()
         {
-            return "Kilogram";
+            return "kg";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "kg";
         }
     }
 }

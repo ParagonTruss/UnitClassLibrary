@@ -26,7 +26,12 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
     {
         public override string AsStringSingular()
         {
-            return "Centimeter";
+            return "cm";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "cm";
         }
 
         public override double ConversionFactor => 0.393700787401575D;

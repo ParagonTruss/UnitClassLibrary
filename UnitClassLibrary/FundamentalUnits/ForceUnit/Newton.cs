@@ -30,7 +30,12 @@ namespace UnitClassLibrary.ForceUnit
 
         public override string AsStringSingular()
         {
-            return "Newton";
+            return "N";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "N";
         }
 
         public override double ConversionFactor => 0.22480894309971;

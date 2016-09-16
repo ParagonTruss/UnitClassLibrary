@@ -33,11 +33,11 @@ namespace UnitClassLibrary.DerivedUnits.Volume.VolumeTypes
 
         public override string AsStringSingular()
         {
-            return "Cubic Foot";
+            return "cu. ft";
         }
         public override string AsStringPlural()
         {
-            return "Cubic Feet";
+            return "cu. ft";
         }
     }
 }

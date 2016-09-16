@@ -26,7 +26,12 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 
         public override string AsStringSingular()
         {
-            return "Second";
+            return "s";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "s";
         }
 
         public override double ConversionFactor => 1;

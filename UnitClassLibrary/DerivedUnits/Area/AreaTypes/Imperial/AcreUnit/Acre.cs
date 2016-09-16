@@ -30,7 +30,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(43560, new List<FundamentalUnitType>() {new Foot(), new Foot()});
 
-        public override string AsStringPlural() { return "Acres"; } 
-        public override string AsStringSingular() { return "Acre"; }      
+        public override string AsStringPlural() { return "acres"; } 
+        public override string AsStringSingular() { return "acre"; }      
     }
 }

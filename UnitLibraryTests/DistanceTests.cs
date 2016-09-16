@@ -230,9 +230,9 @@ namespace UnitLibraryTests
             // act            
 
             // assert
-            Distance.ToString().Should().Be("14 Millimeters");
-            Distance2.ToString().Should().Be("0 Millimeters");
-            Distance3.ToString().Should().Be("1 Millimeters");
+            Distance.ToString().Should().Be("14 mm");
+            Distance2.ToString().Should().Be("0 mm");
+            Distance3.ToString().Should().Be("1 mm");
         }
 
         /// <summary>

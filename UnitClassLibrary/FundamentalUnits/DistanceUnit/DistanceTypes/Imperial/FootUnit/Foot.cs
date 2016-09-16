@@ -26,12 +26,12 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
     {
         public override string AsStringPlural()
         {
-            return "Feet";
+            return "ft";
         }
 
         public override string AsStringSingular()
         {
-            return "Foot";
+            return "ft";
         }
 
         public override double ConversionFactor => 12;

@@ -28,12 +28,12 @@ namespace UnitClassLibrary.AngleUnit
     {
         public override string AsStringPlural()
         {
-            return "Radians";
+            return "radians";
         }
 
         public override string AsStringSingular()
         {
-            return "Radian";
+            return "radian";
         }
 
         public override double ConversionFactor => 57.2957795131D;

@@ -35,7 +35,7 @@ namespace UnitClassLibrary.DerivedUnits
 
         public override string AsStringSingular()
         {
-            return "Newton-Meter";
+            return "N-m";
         }
     }
 }

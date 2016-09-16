@@ -25,12 +25,12 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
     {
         public override string AsStringPlural()
         {
-            return "Inches";
+            return "in.";
         }
 
         public override string AsStringSingular()
         {
-            return "Inch";
+            return "in.";
         }
 
         public override double ConversionFactor => 1;

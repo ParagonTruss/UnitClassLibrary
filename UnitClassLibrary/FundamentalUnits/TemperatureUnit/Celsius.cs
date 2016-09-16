@@ -32,11 +32,11 @@ namespace UnitClassLibrary.FundamentalUnits.TemperatureUnit
         { get {throw new NotImplementedException();} }
         public override string AsStringSingular()
         {
-            return "Degree Celsius";
+            return "degree C";
         }
         public override string AsStringPlural()
         {
-            return "Degrees Celsius";
+            return "degrees C";
         }
     }
 }

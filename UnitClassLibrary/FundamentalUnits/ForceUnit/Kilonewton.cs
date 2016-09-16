@@ -28,10 +28,17 @@ namespace UnitClassLibrary.ForceUnit
     {
         public override string AsStringSingular()
         {
-            return "Kilonewton";
+            return "kN";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "kN";
         }
 
         public override double ConversionFactor => 224.80894309971;
+
+       
 
         public override double DefaultErrorMargin => new Pound().DefaultErrorMargin / ConversionFactor;
     }

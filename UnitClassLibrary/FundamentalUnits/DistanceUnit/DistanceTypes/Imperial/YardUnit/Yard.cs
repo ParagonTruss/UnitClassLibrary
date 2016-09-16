@@ -26,7 +26,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
     {
         public override string AsStringSingular()
         {
-            return "Yard";
+            return "yd";
         }
 
         public override double ConversionFactor => 36;

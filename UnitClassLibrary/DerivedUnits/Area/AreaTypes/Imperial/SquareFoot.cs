@@ -35,11 +35,11 @@ namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
 
         public override string AsStringSingular()
         {
-            return "Square Foot";
+            return "sq. ft.";
         }
         public override string AsStringPlural()
         {
-            return "Square Feet";
+            return "sq. ft.";
         }
     }
 }

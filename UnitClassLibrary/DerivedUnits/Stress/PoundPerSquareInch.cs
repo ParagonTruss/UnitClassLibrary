@@ -33,11 +33,11 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
 
         public override string AsStringSingular()
         {
-            return "Pound per Square Inch.";
+            return "psi";
         }
         public override string AsStringPlural()
         {
-            return "Pounds per Square Inch.";
+            return "psi";
         }
     }
 }

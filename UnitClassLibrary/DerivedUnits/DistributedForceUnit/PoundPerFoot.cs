@@ -30,11 +30,11 @@ namespace UnitClassLibrary.DistributedForceUnit
     {
         public override string AsStringSingular()
         {
-            return "Pound per foot";
+            return "lb/ft";
         }
         public override string AsStringPlural()
         {
-            return "Pounds per foot";
+            return "lbs/ft";
         }
 
         public override UnitDimensions Dimensions => _dimensions;

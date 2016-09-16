@@ -26,7 +26,12 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
     {
         public override string AsStringSingular()
         {
-            return "Kilometer";
+            return "km";
+        }
+
+        public override string AsStringPlural()
+        {
+            return "km";
         }
 
         public override double ConversionFactor => 39370.0787401575D;

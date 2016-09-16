@@ -30,12 +30,12 @@ namespace UnitClassLibrary.AngleUnit.Temperature
     {
         public override string AsStringPlural()
         {
-            return "Kelvin";
+            return "K";
         }
 
         public override string AsStringSingular()
         {
-            return "Kelvin";
+            return "K";
         }
 
         public override double ConversionFactor
