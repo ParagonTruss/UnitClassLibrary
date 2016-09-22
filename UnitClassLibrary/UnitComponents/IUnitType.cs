@@ -38,7 +38,7 @@ namespace UnitClassLibrary
 
         public override string AsStringPlural()
         {
-            return AsStringSingular() + "s";
+            return this.AsStringSingular() + "s";
         }
 
         public override UnitDimensions Dimensions => new UnitDimensions(1.0, new List<FundamentalUnitType>() {this});

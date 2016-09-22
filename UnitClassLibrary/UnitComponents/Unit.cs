@@ -209,8 +209,14 @@ namespace UnitClassLibrary
             return $"{roundedIntrinsicValue} {this.UnitType.AsStringPlural()}";
         }
 
-        public string ToString<TFormatAsType>(TFormatAsType type)
-            where TFormatAsType : T
+        public string ToString(int numberOfDecimalPlaces)
+        {
+            double roundedIntrinsicValue = Math.Round(_IntrinsicValue, numberOfDecimalPlaces);
+
+            return $"{roundedIntrinsicValue} {this.UnitType.AsStringPlural()}";
+        }
+
+        public string ToString<TFormatAsType>(TFormatAsType type) where TFormatAsType : T
         {
             return new Unit<T>(type, this.MeasurementIn(type)).ToString();
         }

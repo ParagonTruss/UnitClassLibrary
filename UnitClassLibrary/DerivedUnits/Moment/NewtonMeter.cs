@@ -37,5 +37,9 @@ namespace UnitClassLibrary.DerivedUnits
         {
             return "N-m";
         }
+        public override string AsStringPlural()
+        {
+            return AsStringSingular();
+        }
     }
 }

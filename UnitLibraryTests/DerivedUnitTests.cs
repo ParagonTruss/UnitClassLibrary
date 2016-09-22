@@ -1,9 +1,11 @@
-﻿using NUnit.Framework;
+﻿using FluentAssertions;
+using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnitClassLibrary;
+using UnitClassLibrary.DerivedUnits;
 using UnitClassLibrary.DerivedUnits.StressUnit;
 using UnitClassLibrary.DistanceUnit;
 using UnitClassLibrary.DistributedForceUnit;
@@ -66,5 +68,15 @@ namespace UnitLibraryTests
 
             Assert.Pass();
         }
+
+        [Test]
+        public void Moment_ToStringTest()
+        {
+
+            var moment = new Moment(-173.87, Moment.PoundInches);
+
+            moment.ToString().Should().Be("-173.87 lb-in.");
+        }
+
     }
 }

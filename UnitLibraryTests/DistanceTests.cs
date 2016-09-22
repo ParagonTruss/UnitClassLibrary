@@ -236,6 +236,25 @@ namespace UnitLibraryTests
         }
 
         /// <summary>
+        /// Tests ToString with specified number of decimals
+        /// </summary>
+        [Test()]
+        public void Distance_ToString_NumberOfDecimals()
+        {
+            // arrange
+            Distance Distance = new Distance(new Millimeter(), 14.1875);
+            Distance Distance2 = new Distance(new Millimeter(), 0.0001);
+            Distance Distance3 = new Distance(new Millimeter(), 1.13);
+            //should come back rounded due 
+            // act            
+
+            // assert
+            Distance.ToString(3).Should().Be("14.188 mm");
+            Distance2.ToString(1).Should().Be("0 mm");
+            Distance3.ToString(0).Should().Be("1 mm");
+        }
+
+        /// <summary>
         /// Tests CompareTo implementation
         /// </summary>
         [Test()]

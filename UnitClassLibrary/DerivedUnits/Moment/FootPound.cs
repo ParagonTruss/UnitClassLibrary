@@ -19,7 +19,7 @@ namespace UnitClassLibrary.DerivedUnits
         }
         public override string AsStringPlural()
         {
-            return "lb-ft";
+            return AsStringSingular();
         }
     }
 }

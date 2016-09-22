@@ -40,7 +40,7 @@ namespace UnitClassLibrary.DerivedUnits
         }
         public override string AsStringPlural()
         {
-            return "lb-in.";
+            return AsStringSingular();
         }
     }
 }
