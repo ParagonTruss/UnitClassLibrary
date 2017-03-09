@@ -114,6 +114,7 @@
     <Compile Include="FundamentalUnits\TemperatureUnit\Kelvin.cs" />
     <Compile Include="Extensions\IUnitTypeExtensions.cs" />
     <Compile Include="Extensions\MeasurementExtensions.cs" />
+    <Compile Include="FundamentalUnits\TimeUnit\TimeTypes\Hour.cs" />
     <Compile Include="UnitComponents\AbstractUnit.cs" />
     <Compile Include="UnitComponents\Unit.cs" />
     <Compile Include="UnitComponents\IUnitType.cs" />
