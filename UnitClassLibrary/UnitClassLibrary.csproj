@@ -78,6 +78,7 @@
     <Compile Include="DerivedUnits\Moment\NewtonMeter.cs" />
     <Compile Include="DerivedUnits\Moment\FootPound.cs" />
     <Compile Include="DerivedUnits\Moment\PoundInch.cs" />
+    <Compile Include="DerivedUnits\Speed\SpeedTypes\MilePerHour.cs" />
     <Compile Include="DerivedUnits\Stress\PoundPerSquareInch.cs" />
     <Compile Include="DerivedUnits\Stress\Stress.cs" />
     <Compile Include="DerivedUnits\Stress\StressType.cs" />
