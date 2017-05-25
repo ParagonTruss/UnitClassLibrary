@@ -24,15 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit
 {
     public class Meter : DistanceType
     {
-        public override string AsStringSingular()
-        {
-            return "m";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "m";
-        }
+        public override string Abbreviation => "m";
 
         public override double ConversionFactor => 39.3700787401575D;
 

@@ -31,13 +31,6 @@ namespace UnitClassLibrary.DerivedUnits.Volume.VolumeTypes
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() { new Foot(), new Foot(), new Foot() });
         public override UnitDimensions Dimensions => _dimensions;
 
-        public override string AsStringSingular()
-        {
-            return "cu. ft";
-        }
-        public override string AsStringPlural()
-        {
-            return "cu. ft";
-        }
+        public override string Abbreviation => "cu. ft";
     }
 }

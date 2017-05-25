@@ -206,14 +206,14 @@ namespace UnitClassLibrary
                 roundedIntrinsicValue = Math.Round(_IntrinsicValue, digits);
             }
 
-            return $"{roundedIntrinsicValue} {this.UnitType.AsStringPlural()}";
+            return $"{roundedIntrinsicValue} {this.UnitType.Abbreviation}";
         }
 
         public string ToString(int numberOfDecimalPlaces)
         {
             double roundedIntrinsicValue = Math.Round(_IntrinsicValue, numberOfDecimalPlaces);
 
-            return $"{roundedIntrinsicValue} {this.UnitType.AsStringPlural()}";
+            return $"{roundedIntrinsicValue} {this.UnitType.Abbreviation}";
         }
 
         public string ToString<TFormatAsType>(TFormatAsType type) where TFormatAsType : T

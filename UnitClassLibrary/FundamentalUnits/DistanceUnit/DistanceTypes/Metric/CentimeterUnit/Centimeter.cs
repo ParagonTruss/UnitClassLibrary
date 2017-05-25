@@ -24,15 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit
 {
     public class Centimeter : DistanceType
     {
-        public override string AsStringSingular()
-        {
-            return "cm";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "cm";
-        }
+        public override string Abbreviation => "cm";
 
         public override double ConversionFactor => 0.393700787401575D;
 

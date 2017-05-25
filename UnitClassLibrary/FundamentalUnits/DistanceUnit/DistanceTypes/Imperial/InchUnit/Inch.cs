@@ -23,15 +23,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
     public class Inch : DistanceType
     {
-        public override string AsStringPlural()
-        {
-            return "in.";
-        }
-
-        public override string AsStringSingular()
-        {
-            return "in.";
-        }
+        public override string Abbreviation => "in.";
 
         public override double ConversionFactor => 1;
 

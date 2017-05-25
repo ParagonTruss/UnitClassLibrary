@@ -28,15 +28,7 @@ namespace UnitClassLibrary.AngleUnit.Temperature
 {
     public class Kelvin : TemperatureType
     {
-        public override string AsStringPlural()
-        {
-            return "K";
-        }
-
-        public override string AsStringSingular()
-        {
-            return "K";
-        }
+        public override string Abbreviation => "K";
 
         public override double ConversionFactor
         {

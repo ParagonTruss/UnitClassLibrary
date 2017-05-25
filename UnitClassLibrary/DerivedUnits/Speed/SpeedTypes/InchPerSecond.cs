@@ -28,28 +28,9 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public class InchPerSecond : SpeedType
     {
-        public override string AsStringPlural()
-        {
-            return "Inches per Second";
-        }
-
-        public override string AsStringSingular()
-        {
-            return "Inch per Second";
-        }
+        public override string Abbreviation => "in./s";
 
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Inch(), new Second());
-        
-
-        public DistanceType GetDistanceType()
-        {
-            return new Inch();
-        }
-
-        public TimeType GetTimeType()
-        {
-            return new Second();
-        }
     }
 }

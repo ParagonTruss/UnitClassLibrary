@@ -33,13 +33,6 @@ namespace UnitClassLibrary.DerivedUnits.Area.AreaTypes.Imperial
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(new List<FundamentalUnitType>() {new Foot(), new Foot()});
 
-        public override string AsStringSingular()
-        {
-            return "sq. ft.";
-        }
-        public override string AsStringPlural()
-        {
-            return "sq. ft.";
-        }
+        public override string Abbreviation => "sq. ft.";
     }
 }

@@ -26,9 +26,7 @@ namespace UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit
 {
     public class SquareInch : AreaType
     {
-        
-        public override string AsStringPlural(){ return "sq. in."; } 
-        public override string AsStringSingular() { return "sq. in."; }
+        public override string Abbreviation => "sq. in.";
 
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1, new List<FundamentalUnitType>() {new Inch(), new Inch()});

@@ -36,7 +36,9 @@ namespace UnitClassLibrary.TimeUnit
         }
 
         
-
+        public static TimeType Hours { get; } = new Hour();
+        public static TimeType Minutes { get; } = new Minute();
+        public static TimeType Seconds { get; } = new Second();
         #region Operator Overloads
 
         public static Time operator +(Time time1, Time time2)

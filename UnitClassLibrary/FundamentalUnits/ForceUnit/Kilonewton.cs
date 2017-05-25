@@ -26,15 +26,7 @@ namespace UnitClassLibrary.ForceUnit
 {
     public class Kilonewton : ForceType
     {
-        public override string AsStringSingular()
-        {
-            return "kN";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "kN";
-        }
+        public override string Abbreviation => "kN";
 
         public override double ConversionFactor => 224.80894309971;
 

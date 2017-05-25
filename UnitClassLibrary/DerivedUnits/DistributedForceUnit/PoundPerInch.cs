@@ -28,14 +28,7 @@ namespace UnitClassLibrary.DistributedForceUnit
 {
     public class PoundPerInch : DistributedForceType
     {
-        public override string AsStringSingular()
-        {
-            return "lb/in.";
-        }
-        public override string AsStringPlural()
-        {
-            return "lbs/in.";
-        }
+        public override string Abbreviation => "lbs/in.";
 
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new Inch());

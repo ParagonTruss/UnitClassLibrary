@@ -25,6 +25,14 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public abstract class SpeedType : AbstractDerivedUnitType
     {
+        public static Speed operator *(double d, SpeedType type)
+        {
+            return new Speed(d, type);
+        }
 
+        public static Speed operator *(int m, SpeedType type)
+        {
+            return new Speed(m, type);
+        }
     }
 }

@@ -31,14 +31,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes
 
         public override string Type => nameof(DistanceType);
 
-        public override string AsStringSingular()
-        {
-            return _defaultDistanceType.AsStringSingular();
-        }
-        public override string AsStringPlural()
-        {
-            return _defaultDistanceType.AsStringPlural();
-        }
+        public override string Abbreviation => _defaultDistanceType.Abbreviation;
 
         //public static Distance operator *(Measurement m, DistanceType type)
         //{

@@ -17,37 +17,25 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using UnitClassLibrary.DistanceUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes;
-
 using UnitClassLibrary.SpeedUnit.SpeedTypes;
-using UnitClassLibrary.TimeUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary.SpeedUnit
 {
     public class Speed : Unit<SpeedType>
     {
-        public Speed(SpeedType speedType, Measurement measurement)
-            : base(speedType, measurement) { }
+        public Speed(double value, SpeedType speedType)
+            : base(speedType, value) { }
+        
+        public Speed(SpeedType speedType, double value)
+            : base(speedType, value) { }
 
         public Speed(Unit<SpeedType> copy) : base(copy) { }
-        //public Speed(DerivedUnitType type, Measurement measurement)
-        //{
-        //    var nums = type.Dimensions.Numerators;
-        //    var denoms = type.Dimensions.Denominators;
-        //    if (nums.Count == 1 && (nums.First() is DistanceType) &&
-        //        denoms.Count == 1 && (denoms.First() is ITimeType))
-        //    {
-        //        this.UnitType 
-        //    }
-        //}
 
         public new Speed Negate()
         {
             return new Speed(base.Negate());
         }
+        
+        public static SpeedType MPH { get; } = new MilePerHour();
     }
 }

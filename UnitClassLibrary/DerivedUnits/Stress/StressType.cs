@@ -26,6 +26,14 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
 {
     public abstract class StressType : AbstractDerivedUnitType
     {
-       
+        public static Stress operator *(double d, StressType type)
+        {
+            return new Stress(d, type);
+        }
+
+        public static Stress operator *(int m, StressType type)
+        {
+            return new Stress(m, type);
+        }
     }
 }

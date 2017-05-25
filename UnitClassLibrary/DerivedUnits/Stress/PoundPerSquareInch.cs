@@ -31,13 +31,6 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new SquareInch());
         public override UnitDimensions Dimensions => _dimensions;
 
-        public override string AsStringSingular()
-        {
-            return "psi";
-        }
-        public override string AsStringPlural()
-        {
-            return "psi";
-        }
+        public override string Abbreviation => "psi";
     }
 }

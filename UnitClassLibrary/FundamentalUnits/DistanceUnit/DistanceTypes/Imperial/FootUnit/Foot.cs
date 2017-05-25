@@ -24,15 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit
 {
     public class Foot : DistanceType
     {
-        public override string AsStringPlural()
-        {
-            return "ft";
-        }
-
-        public override string AsStringSingular()
-        {
-            return "ft";
-        }
+        public override string Abbreviation => "ft";
 
         public override double ConversionFactor => 12;
 

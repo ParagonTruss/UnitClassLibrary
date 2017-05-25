@@ -1,4 +1,4 @@
-/*
+﻿/*
     This file is part of Unit Class Library.
     Copyright (C) 2016 Paragon Component Systems, LLC.
 
@@ -24,8 +24,7 @@ namespace UnitClassLibrary.DerivedUnits.StressUnit
 {
     public class PoundPerSquareFoot : StressType
     {
-        public override string AsStringSingular() => "psf";
-        public override string AsStringPlural() => "psf";
+        public override string Abbreviation => "psf";
         public override UnitDimensions Dimensions { get; } = new UnitDimensions(1.0, new Pound(), new SquareFoot());
     }
 }

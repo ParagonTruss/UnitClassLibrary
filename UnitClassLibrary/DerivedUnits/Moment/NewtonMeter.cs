@@ -31,15 +31,8 @@ namespace UnitClassLibrary.DerivedUnits
     {
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() {new Newton(), new Meter()});
-        
 
-        public override string AsStringSingular()
-        {
-            return "N-m";
-        }
-        public override string AsStringPlural()
-        {
-            return AsStringSingular();
-        }
+
+        public override string Abbreviation => "N-m";
     }
 }

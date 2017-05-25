@@ -23,16 +23,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Second : TimeType
     {
-
-        public override string AsStringSingular()
-        {
-            return "s";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "s";
-        }
+        public override string Abbreviation => "s";
 
         public override double ConversionFactor => 1;
 

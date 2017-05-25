@@ -1,4 +1,4 @@
-/*
+﻿/*
     This file is part of Unit Class Library.
     Copyright (C) 2016 Paragon Component Systems, LLC.
 
@@ -21,8 +21,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Hour : TimeType
     {
-        public override string AsStringSingular() => "hr";
-        public override string AsStringPlural() => "hr";
+        public override string Abbreviation => "hr";
         public override double ConversionFactor { get; } = 3600;
         public override double DefaultErrorMargin => new Second().DefaultErrorMargin / this.ConversionFactor;
     }

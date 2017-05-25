@@ -28,14 +28,7 @@ namespace UnitClassLibrary.DistributedForceUnit
 {
     public class PoundPerFoot : DistributedForceType
     {
-        public override string AsStringSingular()
-        {
-            return "lb/ft";
-        }
-        public override string AsStringPlural()
-        {
-            return "lbs/ft";
-        }
+        public override string Abbreviation => "lbs/ft";
 
         public override UnitDimensions Dimensions => _dimensions;
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Pound(), new Foot());

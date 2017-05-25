@@ -35,14 +35,6 @@ namespace UnitClassLibrary.DerivedUnits.Mass
         private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new List<FundamentalUnitType>() {new Newton(), new Second(), new Second()},
             new List<FundamentalUnitType>() {new Meter()});
 
-        public override string AsStringSingular()
-        {
-            return "kg";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "kg";
-        }
+        public override string Abbreviation => "kg";
     }
 }

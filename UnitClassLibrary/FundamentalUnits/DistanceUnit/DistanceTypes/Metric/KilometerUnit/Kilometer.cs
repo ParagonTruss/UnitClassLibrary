@@ -24,15 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit
 {
     public class Kilometer : DistanceType
     {
-        public override string AsStringSingular()
-        {
-            return "km";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "km";
-        }
+        public override string Abbreviation => "km";
 
         public override double ConversionFactor => 39370.0787401575D;
 

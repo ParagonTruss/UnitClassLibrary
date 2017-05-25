@@ -24,16 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit
 {
     public class Mile : DistanceType
     {
-
-        public override string AsStringSingular()
-        {
-            return "mi.";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "mi.";
-        }
+        public override string Abbreviation => "mi.";
 
         public override double ConversionFactor => 63360;
 

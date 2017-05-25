@@ -26,15 +26,7 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Radian : AngleType
     {
-        public override string AsStringPlural()
-        {
-            return "radians";
-        }
-
-        public override string AsStringSingular()
-        {
-            return "radian";
-        }
+        public override string Abbreviation => "radians";
 
         public override double ConversionFactor => 57.2957795131D;
 

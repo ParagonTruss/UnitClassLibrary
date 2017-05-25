@@ -30,13 +30,7 @@ namespace UnitClassLibrary.FundamentalUnits.TemperatureUnit
         public override double DefaultErrorMargin => 5.0/90.0;
         public override double ConversionFactor
         { get {throw new NotImplementedException();} }
-        public override string AsStringSingular()
-        {
-            return "degree C";
-        }
-        public override string AsStringPlural()
-        {
-            return "degrees C";
-        }
+
+        public override string Abbreviation => "degrees C";
     }
 }

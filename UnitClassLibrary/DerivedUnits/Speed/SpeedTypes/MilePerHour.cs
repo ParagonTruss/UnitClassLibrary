@@ -24,8 +24,7 @@ namespace UnitClassLibrary.SpeedUnit.SpeedTypes
 {
     public class MilePerHour : SpeedType
     {
-        public override string AsStringSingular() => "mph";
-        public override string AsStringPlural() => "mph";
+        public override string Abbreviation => "mph";
         public override UnitDimensions Dimensions { get; } = new UnitDimensions(1.0, new Mile(), new Hour());
     }
 }

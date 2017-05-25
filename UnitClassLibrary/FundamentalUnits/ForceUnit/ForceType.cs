@@ -31,11 +31,7 @@ namespace UnitClassLibrary.ForceUnit
         public override double ConversionFactor => _defaultForceType.ConversionFactor;
 
         public override double DefaultErrorMargin => _defaultForceType.DefaultErrorMargin;
-
-        public override string AsStringSingular()
-        {
-            return _defaultForceType.AsStringSingular();
-        }
+        public override string Abbreviation => _defaultForceType.Abbreviation;
 
         public override string Type => nameof(ForceType);
 

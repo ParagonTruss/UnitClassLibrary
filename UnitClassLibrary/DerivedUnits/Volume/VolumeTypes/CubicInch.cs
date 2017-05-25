@@ -32,14 +32,6 @@ namespace UnitClassLibrary
         public override UnitDimensions Dimensions => _dimensions;
 
 
-        public override string AsStringSingular()
-        {
-            return "cu. in.";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "cu. in.";
-        }
+        public override string Abbreviation => "cu. in.";
     }
 }

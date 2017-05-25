@@ -24,17 +24,7 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit
 {
     public class Millimeter : DistanceType
     {
-        public override string AsStringSingular()
-        {
-            return "mm";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "mm";
-        }
-
-
+        public override string Abbreviation => "mm";
 
 
         public override double ConversionFactor => 0.0393700787401575D;

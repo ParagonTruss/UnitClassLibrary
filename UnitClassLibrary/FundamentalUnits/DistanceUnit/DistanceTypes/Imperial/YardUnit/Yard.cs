@@ -24,11 +24,6 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit
 {
     public class Yard : DistanceType
     {
-        public override string AsStringSingular()
-        {
-            return "yd";
-        }
-
         public override double ConversionFactor => 36;
 
         public override double DefaultErrorMargin => new Inch().DefaultErrorMargin / ConversionFactor;

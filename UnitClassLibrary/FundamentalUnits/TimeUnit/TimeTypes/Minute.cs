@@ -23,16 +23,7 @@ namespace UnitClassLibrary.TimeUnit.TimeTypes
 {
     public class Minute : TimeType
     {
-
-        public override string AsStringSingular()
-        {
-            return "min.";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "mins.";
-        }
+        public override string Abbreviation => "mins.";
 
         public override double ConversionFactor => 60;
 

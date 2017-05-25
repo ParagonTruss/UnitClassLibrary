@@ -26,13 +26,9 @@ namespace UnitClassLibrary.AngleUnit
 {
     public class Degree : AngleType
     {
-        public override string AsStringSingular()
-        {
-            return "degree";
-        }
-
         public override double ConversionFactor => 1.0;
 
         public override double DefaultErrorMargin => 0.1;
+        public override string Abbreviation => "degrees";
     }
 }

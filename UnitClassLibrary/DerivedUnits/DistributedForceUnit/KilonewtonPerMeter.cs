@@ -28,12 +28,7 @@ namespace UnitClassLibrary.DistributedForceUnit
 {
     public class KilonewtonPerMeter : DistributedForceType
     {
-        public override string AsStringSingular()
-        {
-            return "kN/m";
-        }
-
-        public override UnitDimensions Dimensions => _dimensions;
-        private static readonly UnitDimensions _dimensions = new UnitDimensions(1.0, new Kilonewton(), new Meter());
+        public override UnitDimensions Dimensions { get; } = new UnitDimensions(1.0, new Kilonewton(), new Meter());
+        public override string Abbreviation => "kN/m";
     }
 }

@@ -27,16 +27,7 @@ namespace UnitClassLibrary.ForceUnit
 {
     public class Newton : ForceType
     {
-
-        public override string AsStringSingular()
-        {
-            return "N";
-        }
-
-        public override string AsStringPlural()
-        {
-            return "N";
-        }
+        public override string Abbreviation => "N";
 
         public override double ConversionFactor => 0.22480894309971;
 
