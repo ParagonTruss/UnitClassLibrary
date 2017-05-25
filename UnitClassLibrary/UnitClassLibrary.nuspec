@@ -9,7 +9,7 @@
     <projectUrl>https://github.com/ParagonTruss/UnitClassLibrary</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <copyright>Copyright © 2016 Paragon Component Systems, LLC</copyright>
+    <copyright>Copyright © 2017 Paragon Component Systems, LLC</copyright>
     <licenseUrl>https://www.gnu.org/licenses/lgpl-2.1.txt</licenseUrl>
   </metadata>
 </package>

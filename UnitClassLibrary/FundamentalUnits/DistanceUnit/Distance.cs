@@ -1,6 +1,6 @@
 ﻿/*
     This file is part of Unit Class Library.
-    Copyright (C) 2017 Paragon Component Systems, LLC.
+    Copyright (C) 2016 Paragon Component Systems, LLC.
 
     This library is free software; you can redistribute it and/or
     modify it under the terms of the GNU Lesser General Public
@@ -66,11 +66,11 @@ namespace UnitClassLibrary.DistanceUnit
         private static readonly Distance _zeroDistance = new Distance(Exactly(0, Inches));
         public static Distance ZeroDistance => _zeroDistance;
 
-        public static DistanceType Inches { get; } = new Inch();
-        public static DistanceType Feet { get; } = new Foot();
-        public static DistanceType Millimeters { get; } = new Millimeter();
-        public static DistanceType Centimeters { get; } = new Centimeter();
-        public static DistanceType Kilometers { get; } = new Kilometer();
+        public static DistanceType Inches => new Inch();
+        public static DistanceType Feet => new Foot();
+        public static DistanceType Millimeters => new Millimeter();
+        public static DistanceType Centimeters => new Centimeter();
+        public static DistanceType Kilometers => new Kilometer();
 
         [Obsolete("Please use Value in Inches instead.")]
         public Measurement InInches => MeasurementIn(Inches);

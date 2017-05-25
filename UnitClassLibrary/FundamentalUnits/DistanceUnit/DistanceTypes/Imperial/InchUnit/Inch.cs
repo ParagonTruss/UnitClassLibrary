@@ -17,8 +17,6 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-using System;
-
 namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 {
     public class Inch : DistanceType
@@ -29,22 +27,4 @@ namespace UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit
 
         public override double DefaultErrorMargin => 0.03125;
     }
-
-    //public static class InchExtensions
-    //{
-    //    public static Distance FromInchesToDistance(this double passedDouble)
-    //    {
-    //        return new Distance(new Inch(), passedDouble);
-    //    }
-
-    //    public static Distance FromInchesToDistance(this int passedint)
-    //    {
-    //        return new Distance(new Inch(), passedint);
-    //    }
-
-    //    public static double AsInches(this Distance passedDistance)
-    //    {
-    //        return passedDistance.ConversionFromThisTo(new Inch());
-    //    }
-    //}
 }
