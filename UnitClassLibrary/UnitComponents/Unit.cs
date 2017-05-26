@@ -213,7 +213,8 @@ namespace UnitClassLibrary
         {
             double roundedIntrinsicValue = Math.Round(_IntrinsicValue, numberOfDecimalPlaces);
 
-            return $"{roundedIntrinsicValue} {this.UnitType.Abbreviation}";
+            var str = $"{roundedIntrinsicValue} {this.UnitType.Abbreviation}";
+            return str;
         }
 
         public string ToString<TFormatAsType>(TFormatAsType type) where TFormatAsType : T

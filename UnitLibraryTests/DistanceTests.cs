@@ -15,6 +15,7 @@ using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
 
 using UnitClassLibrary.AngleUnit;
+using UnitClassLibrary.ForceUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitLibraryTests
@@ -25,6 +26,32 @@ namespace UnitLibraryTests
     [TestFixture()]
     public class DistanceTests
     {
+        [Test()]
+        public void Force_ToString()
+        {
+
+            // arrange & act
+
+            //numeric value constructor
+            var dist = new Distance(new Inch(), 14.1875);
+
+            "my string".Should().Be("my string");
+            var str =  dist.ToString(4);
+            str.Should().Be("14.1875 in.");
+            
+            var force = new Force(new Pound(), 14.1875);
+            str = force.ToString(4);
+            str.Should().Be("14.1875 lb");
+//            //architectural string constructor
+//            var architecturalDistance = new Distance("1' 2 3/16\"");
+//
+//            //copy constructor
+//            var copiedDistance = new Distance(architecturalDistance);
+//
+//            // assert
+//            copiedDistance.ShouldBeEquivalentTo(architecturalDistance);
+        }
+        
         /// <summary>
         /// Tests the architectural string constructor and the regular Distance constructor
         /// </summary>

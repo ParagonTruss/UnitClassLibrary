@@ -27,6 +27,7 @@ namespace UnitClassLibrary.ForceUnit
 {
     public class Pound : ForceType
     {
+        public override string Abbreviation => "lb";
         public override double ConversionFactor => 1.0;
 
         public override double DefaultErrorMargin => 1;
