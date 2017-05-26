@@ -1,15 +1,10 @@
 ﻿using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnitClassLibrary;
 using UnitClassLibrary.DerivedUnits;
 using UnitClassLibrary.DerivedUnits.StressUnit;
 using UnitClassLibrary.DistanceUnit;
-using UnitClassLibrary.DistributedForceUnit;
-using static UnitClassLibrary.DistributedForceUnit.PoundPerInch;
+
 namespace UnitLibraryTests
 {
     [TestFixture]

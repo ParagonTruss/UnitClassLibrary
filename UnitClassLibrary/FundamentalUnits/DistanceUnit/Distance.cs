@@ -18,13 +18,11 @@
 */
 
 using System;
-using System.Collections.Generic;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
-using Newtonsoft.Json;
 using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.KilometerUnit;
 
 namespace UnitClassLibrary.DistanceUnit

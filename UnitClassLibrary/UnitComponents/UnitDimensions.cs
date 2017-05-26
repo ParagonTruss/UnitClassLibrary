@@ -18,10 +18,8 @@
 */
 
 using System;
-using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.Linq;
-using UnitClassLibrary.AngleUnit;
 using UnitClassLibrary.DistanceUnit.DistanceTypes;
 using UnitClassLibrary.ForceUnit;
 using UnitClassLibrary.TemperatureUnit;
