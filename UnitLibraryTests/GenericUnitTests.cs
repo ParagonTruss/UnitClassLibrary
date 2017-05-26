@@ -1,24 +1,8 @@
-﻿using System;
-using UnitClassLibrary;
-using System.Collections.Generic;
-using FluentAssertions;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using UnitClassLibrary.TimeUnit;
 using UnitClassLibrary.TimeUnit.TimeTypes;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MillimeterUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.CentimeterUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.FootUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.YardUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.MileUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Metric.MeterUnit;
 using UnitClassLibrary.SpeedUnit.SpeedTypes;
 using UnitClassLibrary.SpeedUnit;
-using UnitClassLibrary.DistanceUnit;
-using UnitClassLibrary.AreaUnit;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.AcreUnit;
-using UnitClassLibrary.AreaUnit.AreaTypes.Imperial.SquareInchesUnit;
-using UnitClassLibrary.AngleUnit;
 using UnitClassLibrary.DistributedForceUnit;
 
 namespace UnitLibraryTests

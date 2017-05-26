@@ -18,12 +18,6 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using UnitClassLibrary.AngleUnit;
-using UnitClassLibrary.DistanceUnit.DistanceTypes;
-using UnitClassLibrary.DistanceUnit.DistanceTypes.Imperial.InchUnit;
-using UnitClassLibrary.TimeUnit.TimeTypes;
 
 namespace UnitClassLibrary
 {
