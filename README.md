@@ -1,5 +1,7 @@
 # Welcome!
 
+[![codecov](https://codecov.io/gh/ParagonTruss/UnitClassLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/ParagonTruss/UnitClassLibrary)
+
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
 If you need help using any of the features or want to talk to someone, jump into our [chat room](https://www.hipchat.com/gxRdV6tby)!
