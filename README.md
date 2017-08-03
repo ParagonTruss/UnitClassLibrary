@@ -1,6 +1,6 @@
 # Welcome!
 
-[![codecov](https://codecov.io/gh/ParagonTruss/UnitClassLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/ParagonTruss/UnitClassLibrary)
+[![Coverage Status](https://coveralls.io/repos/github/ParagonTruss/UnitClassLibrary/badge.svg?branch=code-coverage)](https://coveralls.io/github/ParagonTruss/UnitClassLibrary?branch=code-coverage) [![codecov](https://codecov.io/gh/ParagonTruss/UnitClassLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/ParagonTruss/UnitClassLibrary)
 
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
