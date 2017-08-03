@@ -2,6 +2,7 @@ before_build:
  - nuget restore
 configuration: Release
 build:
+    project: UnitClassLibrary.sln
     publish_nuget: true
 test_script:
  - .\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:".\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" -targetargs:".\UnitLibraryTests\bin\Release\UnitLibraryTests.dll" -filter:"+[UnitClassLibrary*]* -[UnitLibraryTests*]*" -output:UnitClassLibrary_coverage.xml
