@@ -1,10 +1,9 @@
 # Welcome!
 
-[![Coverage Status](https://coveralls.io/repos/github/ParagonTruss/UnitClassLibrary/badge.svg?branch=code-coverage)](https://coveralls.io/github/ParagonTruss/UnitClassLibrary?branch=code-coverage) [![codecov](https://codecov.io/gh/ParagonTruss/UnitClassLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/ParagonTruss/UnitClassLibrary)
+[![Coverage Status](https://coveralls.io/repos/github/ParagonTruss/UnitClassLibrary/badge.svg)](https://coveralls.io/github/ParagonTruss/UnitClassLibrary) [![codecov](https://codecov.io/gh/ParagonTruss/UnitClassLibrary/branch/master/graph/badge.svg)](https://codecov.io/gh/ParagonTruss/UnitClassLibrary)
 
 Welcome to the Unit Class Library Project. This project is for anyone who wants to avoid the pain that comes with supporting imperial and metric units in their applications.
 
-If you need help using any of the features or want to talk to someone, jump into our [chat room](https://www.hipchat.com/gxRdV6tby)!
 ### Overview
 For an overview of how this library works visit the [Overview Page](https://bitbucket.org/Clearspan/unit-class-library/wiki/Overview).
 
