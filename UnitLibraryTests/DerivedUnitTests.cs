@@ -13,6 +13,7 @@ namespace UnitLibraryTests
         
 
         [Test]
+        [Ignore("Ignore speed tests")]
         public void DerivedUnits_SpeedTest()
         {
             var total = Stress.ZeroStress;
@@ -26,6 +27,7 @@ namespace UnitLibraryTests
         }
 
         [Test]
+        [Ignore("Ignore speed tests")]
         public void FundamentalUnit_SpeedTest()
         {
             var total = Distance.ZeroDistance;
@@ -39,6 +41,7 @@ namespace UnitLibraryTests
         }
 
         [Test]
+        [Ignore("Ignore speed tests")]
         public void Measurement_SpeedTest()
         {
             var total = new Measurement();
@@ -52,6 +55,7 @@ namespace UnitLibraryTests
         }
 
         [Test]
+        [Ignore("Ignore speed tests")]
         public void Double_SpeedTest()
         {
             var total = 0;
