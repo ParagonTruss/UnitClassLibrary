@@ -23,6 +23,7 @@ namespace UnitLibraryTests
     /// Test Class for all conversion functions 
     /// </summary>
     [TestFixture()]
+    [Ignore("Testing")]
     public class DistanceTests
     {
         [Test()]
