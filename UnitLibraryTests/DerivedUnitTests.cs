@@ -8,7 +8,6 @@ using UnitClassLibrary.DistanceUnit;
 namespace UnitLibraryTests
 {
     [TestFixture]
-    [Ignore("Testing")]
     class DerivedUnitTests
     {
         
